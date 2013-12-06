@@ -1,0 +1,54 @@
+/*
+*
+* #base #reset
+*
+*/
+
+
+@include global-reset;
+
+* { @include box-sizing (border-box); }
+
+html{
+	height:100%;
+	width: 100%;
+}
+
+html {
+	font-size: 85%; 
+}
+
+body {
+	@include font-text;
+	font-size: 1rem;
+	line-height: 1.5rem; 
+	@media screen and(max-width:767px){
+		font-size: 0.9rem;
+	}
+}
+
+#{headings()} {
+	@include font-headings;
+}
+
+h1 { @include heading-primary;   }
+h2 { @include heading-secondary; }
+h3 { @include heading-tertiary;  }
+
+a {
+	//link-colors($normal, $hover, $active, $visited, $focus)
+	@include link-colors($color-links, $color-links-hover, $color-links-active, $color-links-visited, $color-links-hover);
+}
+
+
+img {
+	max-width: 100%;
+}
+
+strong {
+	@include font-text-bold;
+}
+
+p {
+	margin-bottom: 1rem;
+}

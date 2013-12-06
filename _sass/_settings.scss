@@ -1,0 +1,116 @@
+/*
+*
+* #settings
+*
+*/
+
+
+
+
+// colors
+$color-site-background: #fff;
+$color-primary: #303335;
+$color-black: #000000;
+$color-white: #FFFFFF;
+$color-background: #EBEBEB;
+$color-button-background: #222;
+$color-button: #fff;
+$color-text: #848484;
+$color-text-light: lighten($color-text,20%);
+$color-headings: $color-black;
+$color-links: $color-black;
+$color-links-hover: $color-primary;
+$color-links-active: red;
+$color-links-focus: green;
+$color-links-visited: $color-links;
+
+
+// fonts
+$font-dir: "../fonts";
+$font-headings: 'Oswald', sans-serif;
+$font-text: 'Open sans', sans-serif;
+
+
+@mixin reset (){
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-style: normal;
+}
+
+@mixin hide-text() {
+	text-indent: -5000px;
+	font-size: 0px;
+}
+
+@mixin font-headings () {
+	font-family: $font-headings;
+	color: $color-headings;
+	font-weight: 400;
+}
+
+@mixin font-headings-light-italic () {
+	font-family: $font-headings;
+	font-style: italic;
+}
+
+@mixin font-headings-light () {
+	font-family: $font-headings;
+	font-weight: 300;
+}
+
+@mixin font-text () {
+	font-family: $font-text;
+	color: $color-text;
+	font-weight: 300;
+}
+
+@mixin font-text-bold () {
+	font-family: $font-text;
+	font-weight: 600;
+	color: darken($color-text,25%);
+}
+
+@mixin heading-primary () {
+	font-size: 2.2rem;
+	line-height: 1.2;
+	margin-bottom: 2rem;
+	@media screen and(max-width:767px){
+		font-size: 1.75rem;
+	}
+}
+
+@mixin heading-secondary () {
+	font-size: 1.5rem;
+	line-height: 1.8rem;
+	margin-bottom: 1rem;
+}
+
+@mixin heading-tertiary () {
+	font-size: 1.25rem;
+	line-height: 1.6rem;
+	margin-bottom: 1rem;
+}
+
+@mixin csshyphenation () {
+	-webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto
+}
+
+@mixin hide () {
+	clip: rect(0px 0px 0px 0px);
+}
+
+@mixin show () {
+	clip: auto;
+}
+
+@mixin cover-text-shadow () {
+	color: rgba(255,255,255,1);
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+	text-decoration: none;
+}
+

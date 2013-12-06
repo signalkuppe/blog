@@ -1,0 +1,169 @@
+/*
+*
+* #cover #image
+*
+**/
+
+.cover {
+   /* inline styles in html */
+   position:relative;
+   background-repeat: no-repeat;
+   background-position: center center fixed; 
+   background-size: cover;
+}
+
+.cover-header,
+.cover-caption,
+.cover-guide {
+   @include hide;
+   .is-rendered & {
+      @include show;
+   }
+}
+
+.cover-guide {
+   position: absolute;
+   bottom: 50%;
+   margin-bottom: -2rem;
+   left: 0;
+   right: 0;
+   text-align: center;
+   font-size: 4rem;
+   line-height: 1;
+   a {
+      color: white;
+      @include opacity(0.7);
+      text-decoration: none;
+      &:hover {
+         @include opacity(1); 
+      }
+   }
+}
+
+.cover-header {
+   position: absolute;
+   top: 0px;
+   left: 0;
+   right: 0;
+   height: 0;
+   text-align: center;
+   min-height: 94px;
+   background:rgba(0,0,0,0) image-url("menu.png") top left;
+   a {
+      color: white;
+      text-decoration: none;  
+   }
+}
+
+.cover-header h1,
+.cover-header h2, {
+   @include reset;
+   @include cover-text-shadow;
+}
+
+.cover-header h1 {
+   text-transform: uppercase;
+   margin-top: 2rem;
+   margin-bottom: 0.25rem;
+   font-size: 1.75rem;
+}
+
+.cover-header  h2 {
+   @include font-headings-light;
+   margin-bottom: 0.85rem;
+   font-size: 1rem;
+}
+
+.cover-header-menu-toggle {
+   @include cover-text-shadow;
+   font-size: 1.5rem;
+}
+
+.cover-header-menu-wrapper {
+   @include transition(all, 1s, linear, 0.5s);
+   @include opacity(0);
+   @include hide;
+   position: absolute;
+   top: 130px;
+   left: 0;
+   right: 0;
+   text-align: center; 
+   ul {
+      display: inline-block;
+      background: rgba(0,0,0,0.7);
+      padding: 20px 40px;
+      li {
+         a {
+            @include cover-text-shadow;
+            display: block;
+            padding: 5px 10px;
+            font-size: 11px;
+            text-transform: uppercase;     
+         }
+      }
+   }
+   &.is-open {
+      @include opacity(1);
+      @include show;
+   }
+}
+
+
+.cover-caption { 
+   position: absolute;
+   bottom: 2rem;
+   left: 0;
+   right: 0;
+   text-align: center;
+   @media screen and(min-width:1920px){
+      bottom: 3rem;
+   }
+}
+
+.cover-caption > h1 {
+   @include reset;
+   @include font-headings-light;
+   display: inline-block;
+   text-align: center;
+   font-size: 1rem;
+   a {
+      @include cover-text-shadow;
+   }
+   @media screen and(min-width:768px){
+      font-size: 1.25rem;
+   }
+   @media screen and(min-width:1024px){
+      font-size: 1.5rem
+   }
+   @media screen and(min-width:1920px){
+      font-size: 1.75rem
+   }
+}
+
+.cover-search { 
+   position: absolute;
+   height: 100px;
+   bottom: 50%;
+   margin-bottom: -50px;
+   left: 0;
+   right: 0;
+   text-align: center;
+   input[type="text"] {
+      font-family: $font-text;
+      font-size: 1rem;
+      border: none;
+      height: 40px;
+      padding: 0 0.5rem;
+      @media screen and(min-width:1024px){
+         width: 300px;
+      }
+   }
+   button {
+      font-size: 1rem;
+      background: black;
+      color: white;
+      border: none;
+      height: 40px;
+      width: 40px;
+   }
+}

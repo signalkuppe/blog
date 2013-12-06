@@ -1,0 +1,46 @@
+/*
+*
+* #print #media
+*
+**/
+
+@media print{
+
+	body, html {
+		background: none;
+		color: black;
+		font-size: 9pt!important;
+	}
+	
+	strong {
+		color: black;
+	}
+
+	#{headings()} {
+		font-family: $font-text;
+	}
+
+	.cover,
+	.bottom-navigation,
+	.post-print,
+	.post-gallery,
+	.post-footer {
+		display: none;
+	}
+
+	.post-print-thanks {
+		display: block;
+	}
+
+	.post-title,
+	.post-date,
+	.post-content {
+		margin-bottom: 20px;
+	}
+
+	.content {
+		width: 100%;
+		margin: 0; padding: 0;
+		background: none;
+	}
+}
