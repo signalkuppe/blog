@@ -1,0 +1,31 @@
+
+// Imports
+
+@import "compass";
+@import "settings";
+@import "base";
+@import "photoswipe";
+@import "icons";
+@import "buttons";
+@import "top-anchor";
+@import "cover";
+@import "post";
+@import "bottom-navigation";
+@import "print";
+
+
+.content {
+	margin: 2rem auto;
+	max-width: 51em;
+	padding: 0 1rem;
+	@media screen and(min-width:768px){
+		padding: 0 2rem;
+	}
+	@media screen and(min-width:768px){
+		margin: 4rem auto;
+	}
+}
+
+.footer {
+	margin-top: 4rem;
+}

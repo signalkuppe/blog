@@ -1,0 +1,7 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery.smooth-scroll": "~1.4.13"
+  }
+}
