@@ -1,3 +1,5 @@
-name: Your New Jekyll Site
+name: Signalkuppe
+description: Blog personale di Matteo Leoni
 markdown: redcarpet
 pygments: true
+exclude: [bower.json, .bowerrc, README]
