@@ -19,10 +19,12 @@
 	max-width: 51em;
 	padding: 0 1rem;
 	@media screen and(min-width:768px){
+		margin: 6rem auto;
 		padding: 0 2rem;
 	}
-	@media screen and(min-width:768px){
-		margin: 4rem auto;
+	@media screen and(min-width:1920px){
+		margin: 8rem auto;
+		max-width: 64em;
 	}
 }
 
