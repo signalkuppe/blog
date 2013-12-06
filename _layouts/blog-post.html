@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="it" id="top">
+{% include head.html %}
+  <body>
+    <div class="cover">
+      <header role="navigation" class="cover-header">
+        <div class="header-navigation">
+            {% include branding.html %}
+            {% include main-menu.html %}
+        </div>
+      </header>
+      <!--/header-->  
+      <div class="cover-guide">
+        <a href="#post">
+          <i aria-hidden="true" class="icon-play"></i>
+        </a>
+      </div>
+      <div class="cover-caption">
+        <h1><a href="/alpinismo/2013/11/30/resegone-canalone-comera.html">{{page.caption}}</a></h1>  
+      </div>
+    </div>
+    {{ content }}
+    {% include scripts.html %}
+  </body>
+</html>
