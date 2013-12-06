@@ -73,7 +73,7 @@ $font-text: 'Open sans', sans-serif;
 
 @mixin heading-primary () {
 	font-size: 2.2rem;
-	line-height: 1.2;
+	line-height: 1.4;
 	margin-bottom: 2rem;
 	@media screen and(max-width:767px){
 		font-size: 1.75rem;
