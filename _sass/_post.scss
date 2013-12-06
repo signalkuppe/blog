@@ -32,15 +32,25 @@
 	margin: 4rem auto;
 }
 
-.post-icon {
+.post-downloads-download {
 	@include float-left;
-	width: 50%;
+	width: 100%;
 	text-align: center;
-	.post-icon-content {
+	.post-downloads-download-icon {
 		margin: 0 auto;
+		a {
+			text-decoration: none;
+			color: $color-text;
+			&:hover {
+				color: $color-links-hover;
+			}
+		}
 		i {
 			font-size: 3rem;
 		}
+	}
+	.post-downloads--withgps & {
+		width: 50%;
 	}
 }
 
