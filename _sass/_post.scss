@@ -28,14 +28,19 @@
 	text-transform: uppercase;
 }
 
-.post-content {
-	margin-bottom: 4rem;
+.post-footer {
+	margin: 4rem auto;
 }
 
-.post-print {
-	margin-top: 4rem;
-	a {
-		text-decoration: none;
+.post-icon {
+	@include float-left;
+	width: 50%;
+	text-align: center;
+	.post-icon-content {
+		margin: 0 auto;
+		i {
+			font-size: 3rem;
+		}
 	}
 }
 
@@ -44,47 +49,4 @@
 	margin-top: 40px;
 	padding: 10px;
 	border: 1px solid black;
-}
-
-.post-gallery,
-.post-footer {
-	margin-bottom: 2rem;
-}
-
-.post-gallery {
-	@include clearfix;
-	ul {
-		@include clearfix;
-		margin-bottom: 1rem;
-	}
-	li {
-		@include float-left;
-	}
-	li, img {
-		width: 70px;
-		height: 70px;
-	}
-	@media screen and(min-width:1024px){
-		li, img {
-			width: 150px;
-			height: 150px;
-		}
-	}
-}
-
-.post-gallery-flickr-credit {
-	font-size:0.75rem;
-	a {
-		text-decoration: none;
-	}
-}
-
-.post-attach {
-	li {
-		display: inline-block;
-		margin-right: 20px;
-		a {
-			text-decoration: none;
-		}
-	}
 }
