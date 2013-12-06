@@ -1,9 +1,59 @@
 ---
-layout: default
+layout: blog-post
 ---
-<h2>{{ page.title }}</h2>
-<p class="meta">{{ page.date | date_to_string }}</p>
 
-<div class="post">
-{{ content }}
-</div>
+
+<style>
+	.cover {
+	   background-image: url("/img/covers/{{ page.date| date: "%d%m%y" }}/1.jpg");
+	}
+   @media (min-width:1024px){
+		.cover {
+			background-image: url("/img/covers/{{ page.date| date: "%d%m%y" }}/2.jpg");
+		}
+   }
+   @media (min-width:1366px){
+		.cover {
+			background-image: url("/img/covers/{{ page.date| date: "%d%m%y" }}/3.jpg");
+		}
+   }
+   @media (min-width:1920px){
+		.cover {
+			background-image: url("/img/covers/{{ page.date| date: "%d%m%y" }}/4.jpg");
+		}
+   }
+</style>
+
+
+
+<article class="post" id="post">
+	<header class="post-header">
+		<h1>{{ page.title }}</h1>
+		<time class="post-date">
+			{% assign m = page.date | date: "%-m" %}
+			{{ page.date | date: "%-d" }}
+			{% case m %}
+			  {% when '1' %}Gennaio
+			  {% when '2' %}Februar
+			  {% when '3' %}M&auml;rz
+			  {% when '4' %}April
+			  {% when '5' %}Mai
+			  {% when '6' %}Juni
+			  {% when '7' %}Juli
+			  {% when '8' %}August
+			  {% when '9' %}September
+			  {% when '10' %}Oktober
+			  {% when '11' %}Novembre
+			  {% when '12' %}Dezember
+			{% endcase %}
+			{{ page.date | date: "%Y" }}			
+		</time>
+	</header>
+	<div class="post-content">
+		{{ content }}
+		<p>{{ page.url }}</p>
+	</div>
+</article>
+
+
+
