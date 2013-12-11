@@ -25,8 +25,7 @@ layout: blog-post
 </style>
 
 
-
-<article class="post" id="post">
+<article class="post container" id="post">
 	<header class="post-header">
 		<h1 class="post-title">{{ page.title }}</h1>
 		<time pubdate datetime="{{ page.date | date: "%Y-%m-%d" }}" class="post-date">
@@ -34,17 +33,17 @@ layout: blog-post
 			{{ page.date | date: "%-d" }}
 			{% case m %}
 			  {% when '1' %}Gennaio
-			  {% when '2' %}Februar
-			  {% when '3' %}M&auml;rz
-			  {% when '4' %}April
-			  {% when '5' %}Mai
-			  {% when '6' %}Juni
-			  {% when '7' %}Juli
-			  {% when '8' %}August
-			  {% when '9' %}September
-			  {% when '10' %}Oktober
+			  {% when '2' %}Febbraio
+			  {% when '3' %}Marzo
+			  {% when '4' %}Aprile
+			  {% when '5' %}Maggio
+			  {% when '6' %}Giugno
+			  {% when '7' %}Luglio
+			  {% when '8' %}Agosto
+			  {% when '9' %}Settembre
+			  {% when '10' %}Ottobre
 			  {% when '11' %}Novembre
-			  {% when '12' %}Dezember
+			  {% when '12' %}Dicembre
 			{% endcase %}
 			{{ page.date | date: "%Y" }}			
 		</time>
@@ -78,6 +77,27 @@ layout: blog-post
 		</div>
 	</footer>
 </article>
-
+<aside role="navigation" class="page-navigation">
+	<nav>
+		<ul>
+        {% if page.previous.url %}
+        	<li>
+        		<a href="{{page.previous.url}}" title="Post precedente: {{page.previous.title}}">
+        			<img src="/img/covers/{{ page.previous.date| date: "%d%m%y" }}/cover.jpg" />
+                	<span>{{page.previous.title}}</span>
+                </a> 
+        	</li>
+        {% endif %} 
+        {% if page.next.url %}
+        	<li>
+        		<a href="{{page.next.url}}" title="Post successivo: {{page.next.title}}">
+        			<img src="/img/covers/{{ page.next.date| date: "%d%m%y" }}/cover.jpg" />
+                	<span>{{page.next.title}}</span>
+                </a> 
+        	</li>
+        {% endif %} 
+		</ul>
+	</nav>
+</aside>
 
 

@@ -68,7 +68,6 @@ $font-text: 'Open sans', sans-serif;
 @mixin font-text-bold () {
 	font-family: $font-text;
 	font-weight: 600;
-	color: darken($color-text,25%);
 }
 
 @mixin heading-primary () {
