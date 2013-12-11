@@ -25,10 +25,13 @@ $color-links-focus: green;
 $color-links-visited: $color-links;
 
 
-// fonts
+// typo
 $font-dir: "../fonts";
 $font-headings: 'Oswald', sans-serif;
 $font-text: 'Open sans', sans-serif;
+$base-font-size: 1rem;
+$base-line-height: 1.5rem;
+
 
 
 @mixin reset (){
