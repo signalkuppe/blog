@@ -77,22 +77,38 @@ layout: blog-post
 		</div>
 	</footer>
 </article>
-<aside role="navigation" class="page-navigation">
+<aside role="navigation" class="post-navigation">
 	<nav>
 		<ul>
         {% if page.previous.url %}
-        	<li>
+        	<li class="post-navigation-prev">
         		<a href="{{page.previous.url}}" title="Post precedente: {{page.previous.title}}">
-        			<img src="/img/covers/{{ page.previous.date| date: "%d%m%y" }}/cover.jpg" />
-                	<span>{{page.previous.title}}</span>
+        			<div class="post-navigation-image">
+	        			<div class="post-navigation-icon">
+	        				<i class="icon-arrow-left2"></i>
+	        			</div>
+        				<img src="/img/covers/{{ page.previous.date| date: "%d%m%y" }}/cover.jpg" />
+        			</div>
+                	<div class="post-navigation-info">
+                		{{ page.previous.date| date: "%d/%m/%y" }}
+                		{{page.previous.title}}
+                	</div>
                 </a> 
         	</li>
         {% endif %} 
         {% if page.next.url %}
-        	<li>
+        	<li class="post-navigation-next">
         		<a href="{{page.next.url}}" title="Post successivo: {{page.next.title}}">
-        			<img src="/img/covers/{{ page.next.date| date: "%d%m%y" }}/cover.jpg" />
-                	<span>{{page.next.title}}</span>
+                	<div class="post-navigation-info">
+                		{{ page.next.date| date: "%d/%m/%y" }}
+                		{{page.next.title}}
+                	</div>
+        			<div class="post-navigation-image">
+	        			<div class="post-navigation-icon">
+	        				<i class="icon-arrow-right2"></i>
+	        			</div>
+        				<img src="/img/covers/{{ page.next.date| date: "%d%m%y" }}/cover.jpg" />
+        			</div>
                 </a> 
         	</li>
         {% endif %} 

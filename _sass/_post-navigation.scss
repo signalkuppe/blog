@@ -1,0 +1,65 @@
+/*
+*
+* #post #navigation
+*
+**/
+
+
+.post-navigation {
+	@include float-left;
+	width: 100%;
+	padding: 0 1rem;
+}
+
+%post-navigation-item {
+	&:hover {
+		img {
+			@include filter(opacity(100%) saturate(1));
+		}			
+	}
+}
+
+.post-navigation-prev,
+.post-navigation-next {
+	@extend %post-navigation-item;
+}
+
+.post-navigation-prev {
+	@include float-left;
+}
+
+.post-navigation-next {
+	@include float-right;
+}
+
+.post-navigation-image,
+.post-navigation-info {
+	@include float-left;
+}
+
+.post-navigation-image {
+	@include inline-block;
+	@include border-radius(50%);
+	position: relative;
+	img {
+		@include filter(opacity(60%) saturate(0));
+		@include border-radius(50%);
+		display: block;
+	}
+	.post-navigation-icon {
+		position: absolute;
+		z-index: 100;
+		top: 35%;
+		left: 35%;
+		background: black;
+		color: white;
+		font-size: 3rem;
+		padding: 10px;
+		@include cover-text-shadow;
+		@include border-radius(50%);
+	}
+}
+
+.post-navigation-info {
+	
+}
