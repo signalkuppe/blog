@@ -18,14 +18,14 @@
 .post-title {
 	margin-bottom: 2rem;
 	text-align: center;
+	@media screen and(min-width:1366px){
+		font-size:3rem;
+	}
 }
 
 .post-date {
-	display: block;
+	@include date;
 	text-align: center;
-	font-size: 0.85rem;
-	margin-bottom: 1rem;
-	text-transform: uppercase;
 }
 
 .post-footer {
