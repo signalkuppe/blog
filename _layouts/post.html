@@ -83,31 +83,35 @@ layout: blog-post
         {% if page.previous.url %}
         	<li class="post-navigation-prev">
         		<a href="{{page.previous.url}}" title="Post precedente: {{page.previous.title}}">
+					<div class="post-navigation-icon">
+						<i class="icon-arrow-left2"></i>
+					</div>
         			<div class="post-navigation-image">
-	        			<div class="post-navigation-icon">
-	        				<i class="icon-arrow-left2"></i>
-	        			</div>
         				<img src="/img/covers/{{ page.previous.date| date: "%d%m%y" }}/cover.jpg" />
         			</div>
-                	<div class="post-navigation-info">
-                		{{ page.previous.date| date: "%d/%m/%y" }}
-                		{{page.previous.title}}
-                	</div>
+                	<article class="post-navigation-info">
+                		<time pubdate datetime="{{ page.previous.date | date: "%Y-%m-%d" }}" class="post-navigation-info-date">
+                		{{ page.previous.date | date: "%d/%m/%y" }}
+                		</time>
+                		<h1 class="post-navigation-info-title">{{page.previous.title}}</h1>
+                	</article>
                 </a> 
         	</li>
         {% endif %} 
         {% if page.next.url %}
         	<li class="post-navigation-next">
         		<a href="{{page.next.url}}" title="Post successivo: {{page.next.title}}">
-                	<div class="post-navigation-info">
-                		{{ page.next.date| date: "%d/%m/%y" }}
-                		{{page.next.title}}
-                	</div>
+                	<article class="post-navigation-info">
+                		<time pubdate datetime="{{ page.next.date | date: "%Y-%m-%d" }}" class="post-navigation-info-date">
+                		{{ page.next.date | date: "%d/%m/%y" }}
+                		</time>
+                		<h1 class="post-navigation-info-title">{{page.next.title}}</h1>
+                	</article>
         			<div class="post-navigation-image">
-	        			<div class="post-navigation-icon">
-	        				<i class="icon-arrow-right2"></i>
-	        			</div>
         				<img src="/img/covers/{{ page.next.date| date: "%d%m%y" }}/cover.jpg" />
+        			</div>
+        			<div class="post-navigation-icon">
+        				<i class="icon-arrow-right2"></i>
         			</div>
                 </a> 
         	</li>

@@ -33,33 +33,31 @@
 }
 
 .post-navigation-image,
-.post-navigation-info {
+.post-navigation-info,
+.post-navigation-icon {
 	@include float-left;
+}
+
+.post-navigation-icon {
+	@include border-radius(50%);
+	background: black;
+	color: white;
+	font-size: 3rem;
+	padding: 10px;
 }
 
 .post-navigation-image {
 	@include inline-block;
 	@include border-radius(50%);
-	position: relative;
 	img {
 		@include filter(opacity(60%) saturate(0));
 		@include border-radius(50%);
 		display: block;
 	}
-	.post-navigation-icon {
-		position: absolute;
-		z-index: 100;
-		top: 35%;
-		left: 35%;
-		background: black;
-		color: white;
-		font-size: 3rem;
-		padding: 10px;
-		@include cover-text-shadow;
-		@include border-radius(50%);
-	}
 }
 
 .post-navigation-info {
-	
+	.post-navigation-info-date {
+		@include date;
+	}
 }
