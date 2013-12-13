@@ -8,7 +8,7 @@
 .post-navigation {
 	@include float-left;
 	width: 100%;
-	padding: 0 1rem;
+	padding: 8rem 1rem;
 }
 
 %post-navigation-item {
@@ -17,11 +17,28 @@
 			@include filter(opacity(100%) saturate(1));
 		}			
 	}
+	@media screen and (min-width:1366px){
+		height: 100px;
+		min-width: 683px;
+		display: block;
+	}
+}
+
+%post-navigation-visible-large {
+	display: none;
+	@media screen and (min-width:1366px){
+		display: block;
+	}
 }
 
 .post-navigation-prev,
 .post-navigation-next {
 	@extend %post-navigation-item;
+}
+
+.post-navigation-image,
+.post-navigation-info {
+	@extend %post-navigation-visible-large;
 }
 
 .post-navigation-prev {
@@ -30,34 +47,56 @@
 
 .post-navigation-next {
 	@include float-right;
+	text-align: right;
 }
 
 .post-navigation-image,
 .post-navigation-info,
 .post-navigation-icon {
-	@include float-left;
+	.post-navigation-prev & {
+		float: left;
+	}
+	.post-navigation-next & {
+		float: right;
+	}
 }
 
 .post-navigation-icon {
-	@include border-radius(50%);
-	background: black;
-	color: white;
-	font-size: 3rem;
-	padding: 10px;
+	line-height:120px;
+	margin-right:1.5rem;
+	i {
+		@include border-radius(50%);
+		font-size: 2rem;
+		padding: 10px;
+		background: black;
+		color: white;
+	}
 }
 
 .post-navigation-image {
-	@include inline-block;
+	height: 120px;
+	margin-right: 1.5rem;
+	.post-navigation-next & {
+		margin-left: 1.5rem;
+	}
 	@include border-radius(50%);
 	img {
 		@include filter(opacity(60%) saturate(0));
 		@include border-radius(50%);
+		max-height: 100%;
 		display: block;
 	}
 }
 
 .post-navigation-info {
+	padding-top: 25px;
+	.post-navigation-info-title {
+		@include truncate(450px);
+		margin: 0;
+		font-size: 1.5rem;
+	}
 	.post-navigation-info-date {
 		@include date;
+		margin-bottom: 0;
 	}
 }
