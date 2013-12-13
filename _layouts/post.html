@@ -28,25 +28,7 @@ layout: blog-post
 <article class="post container" id="post">
 	<header class="post-header">
 		<h1 class="post-title">{{ page.title }}</h1>
-		<time pubdate datetime="{{ page.date | date: "%Y-%m-%d" }}" class="post-date">
-			{% assign m = page.date | date: "%-m" %}
-			{{ page.date | date: "%-d" }}
-			{% case m %}
-			  {% when '1' %}Gennaio
-			  {% when '2' %}Febbraio
-			  {% when '3' %}Marzo
-			  {% when '4' %}Aprile
-			  {% when '5' %}Maggio
-			  {% when '6' %}Giugno
-			  {% when '7' %}Luglio
-			  {% when '8' %}Agosto
-			  {% when '9' %}Settembre
-			  {% when '10' %}Ottobre
-			  {% when '11' %}Novembre
-			  {% when '12' %}Dicembre
-			{% endcase %}
-			{{ page.date | date: "%Y" }}			
-		</time>
+		<time pubdate datetime="{{ page.date | date: "%Y-%m-%d" }}" class="post-date">{{ page.date | localize: "%d %M %Y" }}</time>
 	</header>
 	<div class="post-content">
 		{{ content }}
@@ -101,18 +83,18 @@ layout: blog-post
         {% if page.next.url %}
         	<li class="post-navigation-next">
         		<a href="{{page.next.url}}" title="Post successivo: {{page.next.title}}">
+        			<div class="post-navigation-icon">
+        				<i class="icon-arrow-right2"></i>
+        			</div>
+        			<div class="post-navigation-image">
+        				<img src="/img/covers/{{ page.next.date| date: "%d%m%y" }}/cover.jpg" />
+        			</div>
                 	<article class="post-navigation-info">
                 		<time pubdate datetime="{{ page.next.date | date: "%Y-%m-%d" }}" class="post-navigation-info-date">
                 		{{ page.next.date | date: "%d/%m/%y" }}
                 		</time>
                 		<h1 class="post-navigation-info-title">{{page.next.title}}</h1>
                 	</article>
-        			<div class="post-navigation-image">
-        				<img src="/img/covers/{{ page.next.date| date: "%d%m%y" }}/cover.jpg" />
-        			</div>
-        			<div class="post-navigation-icon">
-        				<i class="icon-arrow-right2"></i>
-        			</div>
                 </a> 
         	</li>
         {% endif %} 
