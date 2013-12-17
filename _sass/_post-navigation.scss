@@ -6,20 +6,19 @@
 
 
 .post-navigation {
+	background: $color-gray-light;
 	@include float-left;
 	width: 100%;
-	padding: 8rem 1rem;
+	padding: 1rem 1rem;
+	@media screen and (min-width:1366px){
+		padding: 4rem 1rem;
+	}
 }
 
 %post-navigation-item {
-	&:hover {
-		img {
-			@include filter(opacity(100%) saturate(1));
-		}			
-	}
 	@media screen and (min-width:1366px){
 		height: 100px;
-		min-width: 683px;
+		min-width: 600px;
 		display: block;
 	}
 }
@@ -63,26 +62,60 @@
 
 .post-navigation-icon {
 	line-height:120px;
-	margin-right:1.5rem;
+	.post-navigation-prev & {
+		margin-right: 1.5rem;
+	}
+	.post-navigation-next & {
+		margin-left: 1.5rem;
+	}
 	i {
 		@include border-radius(50%);
-		font-size: 2rem;
-		padding: 10px;
+		font-size: 1.5rem;
+		padding: 5px;
 		background: black;
 		color: white;
+		@media screen and (min-width:600px){
+			font-size: 2rem;
+			padding: 10px;
+		}
+	}
+	span {
+		position: relative;
+		bottom: 5px;
+		font-size: 0.85rem;
+		.post-navigation-prev & {
+			margin-left: 0.25rem;
+		}
+		.post-navigation-next & {
+			margin-right: 0.25rem;
+		}
+		@media screen and (min-width:600px){
+			font-size: 1rem;
+			.post-navigation-prev & {
+				margin-left: 1rem;
+			}
+			.post-navigation-next & {
+				margin-right: 1rem;
+			}
+		}
+		@media screen and (min-width:1366px){
+			display: none;
+		}
 	}
 }
 
 .post-navigation-image {
 	height: 120px;
-	margin-right: 1.5rem;
+	.post-navigation-prev & {
+		margin-right: 1.5rem;
+	}
 	.post-navigation-next & {
 		margin-left: 1.5rem;
 	}
 	@include border-radius(50%);
 	img {
-		@include filter(opacity(60%) saturate(0));
 		@include border-radius(50%);
+		border: 6px solid $color-white;
 		max-height: 100%;
 		display: block;
 	}

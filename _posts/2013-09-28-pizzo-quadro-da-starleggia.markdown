@@ -7,6 +7,7 @@ categories: alpinismo
 tags: pizzo quadro valle spluga starleggia bivacco servizio
 caption: "La discesa verso la Valle della Sancia"
 gps: true
+flickr: 72157631732939639
 ---
 
 Un mese di Settembre secco, caldo e soleggiato ci invita di nuovo ad andare in momtagna. Partiamo quindi per salire il **PIzzo Quadro** e quasi completare, mi manca solo il **Pizzo Suretta**,  la salita delle montagne più importanti della **Valle Spluga**.  In auto raggiungiamo **Chiavenna** e poi **Campodolcino**, dover si stacca la strada, stretta ma asfaltata, che ci conduce a **Starleggia**. Appena oltre l'abitato lasciamo l'auto in un ampio spiazzo in prossimità della stanga a quota 1640 m.

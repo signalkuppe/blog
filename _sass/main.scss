@@ -4,7 +4,6 @@
 @import "compass";
 @import "settings";
 @import "base";
-@import "photoswipe";
 @import "icons";
 @import "buttons";
 @import "top-anchor";
@@ -13,19 +12,13 @@
 @import "post-navigation";
 @import "print";
 
+// plugins
+
+@import "swipebox";
+
 
 .container {
-	margin: 2rem auto;
-	max-width: 51em;
-	padding: 0 1rem;
-	@media screen and(min-width:768px){
-		margin: 6rem auto;
-		padding: 0 2rem;
-	}
-	@media screen and(min-width:1920px){
-		margin: 8rem auto;
-		max-width: 64em;
-	}
+	@include container;
 }
 
 .footer {

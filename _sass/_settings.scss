@@ -11,6 +11,8 @@ $legacy-support-for-ie: false;
 $color-site-background: #fff;
 $color-primary: #303335;
 $color-black: #000000;
+$color-gray: #ccc;
+$color-gray-light: #eee;
 $color-white: #FFFFFF;
 $color-background: #EBEBEB;
 $color-button-background: #222;
@@ -131,3 +133,14 @@ $base-line-height: 1.5rem;
     text-overflow: ellipsis;
 }
 
+@mixin container () {
+	max-width: 54em;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+@mixin destroy_container () {
+	max-width: none;
+	margin: 0;
+	padding: 0;
+}

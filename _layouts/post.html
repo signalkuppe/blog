@@ -25,12 +25,30 @@ layout: blog-post
 </style>
 
 
-<article class="post container" id="post">
-	<header class="post-header">
+<article class="post" id="post">
+	<header class="post-header container">
 		<h1 class="post-title">{{ page.title }}</h1>
 		<time pubdate datetime="{{ page.date | date: "%Y-%m-%d" }}" class="post-date">{{ page.date | localize: "%d %B %Y" }}</time>
 	</header>
-	<div class="post-content">
+	<footer class="post-footer container">
+		<div class="post-meta">
+			<div class="post-meta-item">
+				<a href="#" class="print">
+					<i aria-hidden="true" class="icon-print"></i>
+				</a>		
+			</div>
+			{% if page.gps%}
+			<div class="post-meta">
+				<div class="post-meta-item">
+					<a href="{{ site.url }}/downloads/{{ page.date| date: "%d%m%y" }}/gps.zip">
+						<i aria-hidden="true" class="icon-download"></i>
+					</a>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</footer>
+	<div class="post-content container">
 		{{ content }}
 	</div>
 	<div class="post-print-thanks">
@@ -41,28 +59,6 @@ layout: blog-post
 			{% flickr_photoset page.flickr %}
 		{% endif %}
 	</div>
-	<footer class="post-footer">
-		<div class="post-downloads{% if page.gps%}--withgps{% endif%}">
-			<div class="post-downloads-download">
-				<div class="post-downloads-download-icon">
-					<p><small>Stampa pagina</small></p>
-					<a href="#" class="print">
-						<i aria-hidden="true" class="icon-print"></i>
-					</a>
-				</div>			
-			</div>
-			{% if page.gps%}
-			<div class="post-downloads-download">
-				<div class="post-downloads-download-icon">
-					<p><small>Scarica tracce</small></p>
-					<a href="{{ site.url }}/downloads/{{ page.date| date: "%d%m%y" }}/gps.zip">
-						<i aria-hidden="true" class="icon-download"></i>
-					</a>
-				</div>
-			</div>
-			{% endif %}
-		</div>
-	</footer>
 </article>
 <aside role="navigation" class="post-navigation">
 	<nav>
@@ -72,6 +68,7 @@ layout: blog-post
         		<a href="{{page.previous.url}}" title="Post precedente: {{page.previous.title}}">
 					<div class="post-navigation-icon">
 						<i class="icon-arrow-left2"></i>
+						<span>Post precedente</span>
 					</div>
         			<div class="post-navigation-image">
         				<img src="/img/covers/{{ page.previous.date| date: "%d%m%y" }}/cover.jpg" />
@@ -89,6 +86,7 @@ layout: blog-post
         	<li class="post-navigation-next">
         		<a href="{{page.next.url}}" title="Post successivo: {{page.next.title}}">
         			<div class="post-navigation-icon">
+        				<span>Post successivo</span>
         				<i class="icon-arrow-right2"></i>
         			</div>
         			<div class="post-navigation-image">
