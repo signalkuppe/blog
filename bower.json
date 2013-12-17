@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "jquery.smooth-scroll": "~1.4.13",
-    "jQuery-Unorphanize": "https://github.com/simeydotme/jQuery-Unorphanize.git"
+    "jQuery-Unorphanize": "https://github.com/simeydotme/jQuery-Unorphanize.git",
+    "swipebox": "*"
   }
 }

@@ -16,9 +16,10 @@
 }
 
 .post-title {
-	margin-bottom: 2rem;
+	margin-bottom: 0.5rem;
 	text-align: center;
 	@media screen and(min-width:1366px){
+		margin-bottom: 1rem;
 		font-size:3rem;
 	}
 }
@@ -33,25 +34,6 @@
 }
 
 .post-downloads-download {
-	@include float-left;
-	width: 100%;
-	text-align: center;
-	.post-downloads-download-icon {
-		margin: 0 auto;
-		a {
-			text-decoration: none;
-			color: $color-text;
-			&:hover {
-				color: $color-links-hover;
-			}
-		}
-		i {
-			font-size: 3rem;
-		}
-	}
-	.post-downloads--withgps & {
-		width: 50%;
-	}
 }
 
 .post-print-thanks {
@@ -59,4 +41,41 @@
 	margin-top: 40px;
 	padding: 10px;
 	border: 1px solid black;
+}
+
+.post-gallery {
+	@include container;
+	@include clearfix;
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+	li {
+		@include inline-block;
+		margin: 0 1rem 1rem 0;
+		img {
+			@include border-radius(50%);
+			@include filter(saturate(0));
+			border: 6px solid;
+			border-color: $color-gray-light;
+			width: 80px;
+			@media screen and(min-width:768px){
+				width: 100px;
+			}
+			@media screen and(min-width:1024px){
+				width: 120px;
+			}
+			@media screen and(min-width:1366px){
+				width: 150px;
+			}
+		}
+		a:hover img {
+			@include filter(saturate(1));
+			border-color: darken($color-gray-light,10%);
+		}
+	}
+	@media screen and(min-width:1366px){
+		@include destroy_container;
+		max-width: 70%;
+		margin: 8rem auto;
+		text-align: center;
+	}
 }
