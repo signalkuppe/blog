@@ -36,6 +36,11 @@ layout: blog-post
 	<div class="post-print-thanks">
 		Grazie per aver stampato questa pagina!
 	</div>
+	<div class="post-gallery">
+		{% if page.flickr%}
+			{% flickr_photoset page.flickr %}
+		{% endif %}
+	</div>
 	<footer class="post-footer">
 		<div class="post-downloads{% if page.gps%}--withgps{% endif%}">
 			<div class="post-downloads-download">
