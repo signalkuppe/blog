@@ -10,22 +10,25 @@
 	@include float-left;
 	width: 100%;
 	padding: 1rem 1rem;
-	@media screen and (min-width:1366px){
+	@media screen and (min-width:1024px){
 		padding: 4rem 1rem;
 	}
 }
 
 %post-navigation-item {
-	@media screen and (min-width:1366px){
+	@media screen and (min-width:1024px){
 		height: 100px;
-		min-width: 600px;
+		min-width: 380px;
 		display: block;
+	}
+	@media screen and (min-width:1366px){
+		min-width: 600px;
 	}
 }
 
 %post-navigation-visible-large {
 	display: none;
-	@media screen and (min-width:1366px){
+	@media screen and (min-width:1024px){
 		display: block;
 	}
 }
@@ -98,7 +101,7 @@
 				margin-right: 1rem;
 			}
 		}
-		@media screen and (min-width:1366px){
+		@media screen and (min-width:1024px){
 			display: none;
 		}
 	}
@@ -124,9 +127,12 @@
 .post-navigation-info {
 	padding-top: 25px;
 	.post-navigation-info-title {
-		@include truncate(450px);
+		@include truncate(290px);
 		margin: 0;
-		font-size: 1.5rem;
+		font-size: 1.25rem;
+		@media screen and (min-width:1366px){
+			@include truncate(400px);
+		}
 	}
 	.post-navigation-info-date {
 		@include date;

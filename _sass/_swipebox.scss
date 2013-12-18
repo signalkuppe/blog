@@ -116,34 +116,6 @@ html.swipebox {
   top: 0!important;
 }
 
-#swipebox-action #swipebox-prev, #swipebox-action #swipebox-next,
-#swipebox-action #swipebox-close {
-  background-image: image-url('swipebox/icons.png');
-  background-repeat: no-repeat;
-  border: none!important;
-  text-decoration: none!important;
-  cursor: pointer;
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  top: 0;
-}
-
-#swipebox-action #swipebox-close {
-  background-position: 15px 12px;
-  left: 40px;
-}
-
-#swipebox-action #swipebox-prev {
-  background-position: -32px 13px;
-  right: 100px;
-}
-
-#swipebox-action #swipebox-next {
-  background-position: -78px 13px;
-  right: 40px;
-}
-
 #swipebox-action #swipebox-prev.disabled,
 #swipebox-action #swipebox-next.disabled {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
@@ -242,12 +214,14 @@ html.swipebox {
 }
 
 #swipebox-action {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.7);
+  border-top: 1px solid $color-white;
 }
 
 #swipebox-caption {
   @include font-headings;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.7);
+  border-bottom: 1px solid $color-white;
   color: black!important;
   font-size: 1.2rem;
   line-height: 43px;
@@ -260,4 +234,19 @@ html.swipebox {
   border: 1px solid $color-gray-light;
 }
 
+#swipebox-action #swipebox-prev, #swipebox-action #swipebox-next,
+#swipebox-action #swipebox-close {
+  background: none;
+  border: none!important;
+  text-decoration: none!important;
+  cursor: pointer;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0;
+}
 
+#swipebox-prev {
+  @extend .icon-arrow-left;
+  color: black;
+}

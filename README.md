@@ -4,9 +4,11 @@
 
 
 1. [Ruby](https://www.ruby-lang.org/it/)
-2. [Compass](http://compass-style.org/)
-3. [Jekyll](http://jekyllrb.com/)
-4. [Bower](http://bower.io/)
+2. [flickraw](http://hanklords.github.io/flickraw/)
+3  [i18n](https://github.com/svenfuchs/i18n)
+3. [Compass](http://compass-style.org/)
+4. [Jekyll](http://jekyllrb.com/)
+5. [Bower](http://bower.io/)
 
 ## Installation
 
