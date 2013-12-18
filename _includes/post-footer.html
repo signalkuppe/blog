@@ -1,0 +1,26 @@
+<div class="post-footer">
+			<ul class="post-footer-list">
+				<li>
+					<a title="condividi su Facebook" href="https://www.facebook.com/sharer/sharer.php?u={{site.url }}{{page.url}}">
+						<i class="icon-facebook"></i>
+					</a>
+				</li>
+				<li>
+					<a title="condividi su Twitter" href="https://twitter.com/intent/tweet?url={{site.url }}{{page.url}}&text={{ page.title }}">
+						<i class="icon-twitter"></i>
+					</a>
+				</li>
+				<li>
+					<a title="condividi su Google Plus" href="https://plus.google.com/share?url={{site.url }}{{page.url}}">
+						<i class="icon-google-plus"></i>
+					</a>
+				</li>
+				{% if page.gps%}
+				<li class="gps">
+					<a title="scarica la traccia gps" href="{{ site.url }}/downloads/{{ page.date| date: "%d%m%y" }}/gps.zip">
+						<i class="icon-earth"></i>
+					</a>
+				</li>
+				{% endif %}
+			</ul>
+		</div>

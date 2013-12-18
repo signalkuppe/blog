@@ -33,10 +33,27 @@
 }
 
 .post-footer {
-	margin: 4rem auto;
+	@include clear;
+	text-align: center;
+	margin: 3rem 0;
 }
 
-.post-downloads-download {
+.post-footer-list {
+	li {
+		@include inline-block;
+	}
+	a {
+		text-decoration: none;
+	}
+	i {
+		@include border-radius(50%);
+		color: $color-primary;
+		font-size: 3rem;
+		padding: 5px;
+		a:hover & {
+			color: red;
+		}
+	}
 }
 
 .post-print-thanks {
@@ -72,7 +89,7 @@
 		}
 		a:hover img {
 			@include filter(saturate(1));
-			border-color: darken($color-gray-light,10%);
+			border-color: $color-primary;
 		}
 	}
 	@media screen and(min-width:1366px){
@@ -84,6 +101,7 @@
 }
 
 .post-disqus {
-	display: none;
 	@include container;
+	margin-bottom: 4rem;
 }
+

@@ -30,7 +30,7 @@ html.swipebox {
 }
 
 #swipebox-slider .slide {
-  background: image-url('swipebox/loader.gif') no-repeat center center;
+  background: url("img/loader.gif") no-repeat center center;
   height: 100%;
   width: 100%;
   line-height: 1px;
@@ -114,6 +114,34 @@ html.swipebox {
 
 #swipebox-caption.force-visible-bars {
   top: 0!important;
+}
+
+#swipebox-action #swipebox-prev, #swipebox-action #swipebox-next,
+#swipebox-action #swipebox-close {
+  background-image: none;
+  background-repeat: no-repeat;
+  border: none!important;
+  text-decoration: none!important;
+  cursor: pointer;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0;
+}
+
+#swipebox-action #swipebox-close {
+  background-position: 15px 12px;
+  left: 40px;
+}
+
+#swipebox-action #swipebox-prev {
+  background-position: -32px 13px;
+  right: 100px;
+}
+
+#swipebox-action #swipebox-next {
+  background-position: -78px 13px;
+  right: 40px;
 }
 
 #swipebox-action #swipebox-prev.disabled,
@@ -206,47 +234,73 @@ html.swipebox {
 /* Skin 
 --------------------------*/
 #swipebox-overlay {
-  background: rgba(255,255,255,0.95);
+  background: #0d0d0d;
 }
 
 #swipebox-action, #swipebox-caption {
-  background-color: none;
+  text-shadow: 1px 1px 1px black;
+  background-color: #0d0d0d;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0d0d0d), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(#0d0d0d, #000000);
+  background-image: -moz-linear-gradient(#0d0d0d, #000000);
+  background-image: -o-linear-gradient(#0d0d0d, #000000);
+  background-image: linear-gradient(#0d0d0d, #000000);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=95);
+  opacity: 0.95;
 }
 
 #swipebox-action {
-  background: rgba(255,255,255,0.7);
-  border-top: 1px solid $color-white;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 #swipebox-caption {
-  @include font-headings;
-  background: rgba(255,255,255,0.7);
-  border-bottom: 1px solid $color-white;
-  color: black!important;
-  font-size: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: white!important;
+  font-size: 15px;
   line-height: 43px;
-  @media screen and(min-width:1024px){
-    font-size: 2rem;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+
+// customization
+
+#swipebox-caption {
+  @include font-headings;
+  font-size: 1rem;
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
   }
 }
 
-#swipebox-slider .slide img {
-  border: 1px solid $color-gray-light;
+#swipebox-next,
+#swipebox-prev,
+#swipebox-close{
+  color: white!important;
+  padding-top: 15px;
 }
 
-#swipebox-action #swipebox-prev, #swipebox-action #swipebox-next,
-#swipebox-action #swipebox-close {
-  background: none;
-  border: none!important;
-  text-decoration: none!important;
-  cursor: pointer;
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  top: 0;
+#swipebox-prev,
+#swipebox-next
+{
+  font-size: 2rem;
+}
+
+#swipebox-close {
+  font-size: 1.5rem;
+}
+
+#swipebox-next {
+    @include useIcon;
+    @extend .icon-arrow-right;
 }
 
 #swipebox-prev {
-  @extend .icon-arrow-left;
-  color: black;
+    @include useIcon;
+    @extend .icon-arrow-left;
 }
+
+#swipebox-close {
+    @include useIcon;
+    @extend .icon-close; 
+}
+

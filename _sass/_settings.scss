@@ -8,22 +8,22 @@
 $legacy-support-for-ie: false;
 
 // colors
-$color-site-background: #fff;
-$color-primary: #303335;
+$color-primary: #f57605;
 $color-black: #000000;
 $color-gray: #ccc;
 $color-gray-light: #eee;
 $color-white: #FFFFFF;
+$color-site-background: $color-white;
 $color-background: #EBEBEB;
 $color-button-background: #222;
 $color-button: #fff;
 $color-text: #848484;
 $color-text-light: lighten($color-text,20%);
 $color-headings: $color-black;
-$color-links: $color-black;
-$color-links-hover: $color-primary;
-$color-links-active: red;
-$color-links-focus: green;
+$color-links: $color-primary;
+$color-links-hover: lighten($color-primary,10%);
+$color-links-active: darken($color-primary,20%);
+$color-links-focus: darken($color-primary,20%);
 $color-links-visited: $color-links;
 
 
@@ -137,6 +137,24 @@ $base-line-height: 1.5rem;
 	max-width: 54em;
 	margin: 0 auto;
 	padding: 0 1rem;
+}
+
+@mixin clear {
+	 // For modern browsers
+	  &:before,
+	  &:after {
+	    content:" ";
+	    display:table;
+	  }
+
+	  &:after {
+	    clear:both;
+	  }
+
+	  // For IE 6/7 (trigger hasLayout)
+	  & {
+	    *zoom:1;
+	  }
 }
 
 @mixin destroy_container () {
