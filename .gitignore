@@ -1,5 +1,9 @@
 _site
 bower_components
 _sass/.sass-cache/
+<<<<<<< HEAD
 css
 _cache/flickr/*
+=======
+css
+>>>>>>> 4f558fc062eca7d564ce57a9a795f0c3691d8a9a
