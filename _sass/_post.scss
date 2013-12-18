@@ -20,6 +20,9 @@
 	text-align: center;
 	@media screen and(min-width:1366px){
 		margin-bottom: 1rem;
+		font-size:2.5rem;
+	}
+	@media screen and(min-width:1920px){
 		font-size:3rem;
 	}
 }
@@ -63,7 +66,7 @@
 			@media screen and(min-width:1024px){
 				width: 120px;
 			}
-			@media screen and(min-width:1366px){
+			@media screen and(min-width:1920px){
 				width: 150px;
 			}
 		}
@@ -74,8 +77,13 @@
 	}
 	@media screen and(min-width:1366px){
 		@include destroy_container;
-		max-width: 70%;
+		max-width: 95%;
 		margin: 8rem auto;
 		text-align: center;
 	}
+}
+
+.post-disqus {
+	display: none;
+	@include container;
 }
