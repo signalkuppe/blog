@@ -37,6 +37,10 @@ a {
 	@include link-colors($color-links, $color-links-hover, $color-links-active, $color-links-visited, $color-links-hover);
 }
 
+a.container-link {
+	@include link-colors(inherit, inherit, inherit, inherit, inherit);
+}
+
 
 img {
 	max-width: 100%;

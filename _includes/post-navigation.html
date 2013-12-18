@@ -1,0 +1,42 @@
+        <nav>
+        <ul>
+        {% if page.previous.url %}
+        <li class="post-navigation-prev">
+        	<a class="container-link" href="{{page.previous.url}}" title="Post precedente: {{page.previous.title}}">
+        			<div class="post-navigation-icon">
+        				<i class="icon-arrow-left"></i>
+        				<span>Post precedente</span>
+        			</div>
+        		<div class="post-navigation-image">
+        			<img src="/img/covers/{{ page.previous.date| date: "%d%m%y" }}/cover.jpg" />
+        		</div>
+        	<article class="post-navigation-info">
+        		<time pubdate datetime="{{ page.previous.date | date: "%Y-%m-%d" }}" class="post-navigation-info-date">
+        		{{ page.previous.date | localize: "%d %B %Y" }}
+        		</time>
+        		<h1 class="post-navigation-info-title">{{page.previous.title}}</h1>
+        	</article>
+        </a> 
+        </li>
+        {% endif %} 
+        {% if page.next.url %}
+        <li class="post-navigation-next">
+        	<a class="container-link" href="{{page.next.url}}" title="Post successivo: {{page.next.title}}">
+        		<div class="post-navigation-icon">
+        			<span>Post successivo</span>
+        			<i class="icon-arrow-right"></i>
+        		</div>
+        		<div class="post-navigation-image">
+        			<img src="/img/covers/{{ page.next.date| date: "%d%m%y" }}/cover.jpg" />
+        		</div>
+        	<article class="post-navigation-info">
+        		<time pubdate datetime="{{ page.next.date | date: "%Y-%m-%d" }}" class="post-navigation-info-date">
+        		{{ page.next.date | localize: "%d %B %Y" }}
+        		</time>
+        		<h1 class="post-navigation-info-title">{{page.next.title}}</h1>
+        	</article>
+        </a> 
+        </li>
+        {% endif %} 
+        </ul>
+</nav>

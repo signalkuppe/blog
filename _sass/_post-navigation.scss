@@ -77,6 +77,9 @@
 		padding: 5px;
 		background: black;
 		color: white;
+		a:hover & {
+			background: $color-primary;
+		}
 		@media screen and (min-width:600px){
 			font-size: 2rem;
 			padding: 10px;

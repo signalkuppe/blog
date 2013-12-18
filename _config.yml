@@ -1,6 +1,7 @@
 name: Signalkuppe
 slogan: Parole oltre i 4000m
 description: Blog personale di Matteo Leoni
+url: http://www.signalkuppe.com
 markdown: redcarpet
 pygments: true
 paginate: 1
