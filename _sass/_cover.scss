@@ -10,13 +10,6 @@
    background-repeat: no-repeat;
    background-position: center center fixed; 
    background-size: cover;
-   margin-bottom: 2rem;
-   @media screen and(min-width:768px){
-      margin-bottom: 4rem;
-   }
-   @media screen and(min-width:1920px){
-      margin-bottom: 6rem;
-   }
 }
 
 .cover-header,

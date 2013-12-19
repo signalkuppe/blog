@@ -15,13 +15,23 @@ html{
 }
 
 html {
-	font-size: 85%; 
+	font-size: 100%; 
 }
 
 body {
 	@include font-text;
 	font-size: $base-font-size;
 	line-height: $base-line-height; 
+}
+
+::selection {
+	background: $color-primary; /* Safari */
+	color: $color-white;
+}
+
+::-moz-selection {
+	background: $color-primary; /* firefox */
+	color: $color-white;
 }
 
 #{headings()} {
@@ -35,6 +45,12 @@ h3 { @include heading-tertiary;  }
 a {
 	//link-colors($normal, $hover, $active, $visited, $focus)
 	@include link-colors($color-links, $color-links-hover, $color-links-active, $color-links-visited, $color-links-hover);
+}
+
+p a:active {
+	background: $color-links;
+	color: $color-white;
+	text-decoration: none;
 }
 
 a.container-link {
@@ -55,5 +71,10 @@ small {
 }
 
 p {
+	font-size: 0.85rem;
 	margin-bottom: 1rem;
+	line-height: 1.6;
+	@media screen and(min-width:768px){
+		font-size: 1rem;
+	}
 }

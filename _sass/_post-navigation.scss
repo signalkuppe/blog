@@ -22,7 +22,7 @@
 		display: block;
 	}
 	@media screen and (min-width:1366px){
-		min-width: 600px;
+		min-width: 580px;
 	}
 }
 
@@ -130,11 +130,11 @@
 .post-navigation-info {
 	padding-top: 25px;
 	.post-navigation-info-title {
-		@include truncate(290px);
+		@include truncate(270px);
 		margin: 0;
 		font-size: 1.25rem;
 		@media screen and (min-width:1366px){
-			@include truncate(400px);
+			@include truncate(420px);
 		}
 	}
 	.post-navigation-info-date {

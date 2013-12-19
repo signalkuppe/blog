@@ -9,21 +9,21 @@
 }
 
 .post-header {
-	margin-bottom: 2rem;
+	margin-bottom: 2rem!important;
 	@media screen and(min-width:768px){
-		margin-bottom: 4rem;
+		margin-bottom: 4rem!important;
 	}
 }
 
 .post-title {
-	margin-bottom: 0.5rem;
+	font-size:1.85rem;
+	margin-bottom: 1rem;
 	text-align: center;
-	@media screen and(min-width:1366px){
-		margin-bottom: 1rem;
+	@media screen and(min-width:768px){
 		font-size:2.5rem;
 	}
-	@media screen and(min-width:1920px){
-		font-size:3rem;
+	@media screen and(min-width:1366px){
+		font-size:2.8rem;
 	}
 }
 
@@ -35,23 +35,30 @@
 .post-footer {
 	@include clear;
 	text-align: center;
-	margin: 3rem 0;
+	margin: 2rem 0;
+	@media screen and(min-width:1024px){
+		margin:8rem 0;
+	}
 }
 
 .post-footer-list {
 	li {
 		@include inline-block;
-	}
-	a {
-		text-decoration: none;
-	}
-	i {
-		@include border-radius(50%);
-		color: $color-primary;
-		font-size: 3rem;
-		padding: 5px;
-		a:hover & {
-			color: red;
+		a {
+			text-decoration: none;
+			i {
+				@include border-radius(50%);
+				color: $color-links;
+				font-size: 2.5rem;
+				padding: 5px;
+				@media screen and(min-width:768px){
+					font-size: 3rem;
+					padding: 10px;
+				}
+			}
+			&:hover i {
+				color: $color-links-hover;
+			}
 		}
 	}
 }
@@ -70,7 +77,7 @@
 	margin-bottom: 4rem;
 	li {
 		@include inline-block;
-		margin: 0 1rem 1rem 0;
+		margin: 0 0.5rem 0.5rem 0;
 		img {
 			@include border-radius(50%);
 			@include filter(saturate(0));
@@ -89,7 +96,7 @@
 		}
 		a:hover img {
 			@include filter(saturate(1));
-			border-color: $color-primary;
+			border-color: $color-gray;
 		}
 	}
 	@media screen and(min-width:1366px){

@@ -1,0 +1,20 @@
+<style>
+	.cover {
+	   background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/1.jpg");
+	}
+   @media (min-width:1024px){
+		.cover {
+			background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/2.jpg");
+		}
+   }
+   @media (min-width:1366px){
+		.cover {
+			background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/3.jpg");
+		}
+   }
+   @media (min-width:1920px){
+		.cover {
+			background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/4.jpg");
+		}
+   }
+</style>
