@@ -4,11 +4,10 @@ description: Blog personale di Matteo Leoni
 url: http://www.signalkuppe.com
 markdown: redcarpet
 pygments: true
-paginate: 1
 exclude: [bower.json, .bowerrc, README]
 flickr:
  cache_dir:       "./_cache/flickr"
- api_key:          80746c780a241a477e8472f30c1151dc
- shared_secret:    dbbe0d13f1aaaaa6
- access_token:     72157638758769856-de4e8d84d1d27b5c
- access_secret:    c9f10bec10839c07
+ api_key:          yourapykey
+ shared_secret:    yoursharedsecret
+ access_token:     youraccesstoken
+ access_secret:    youraccesssecret
