@@ -2,40 +2,20 @@
 layout: blog-post
 ---
 
-
-<style>
-	.cover {
-	   background-image: url("/img/covers/{{ page.date| date: "%d%m%y" }}/1.jpg");
-	}
-   @media (min-width:1024px){
-		.cover {
-			background-image: url("/img/covers/{{ page.date| date: "%d%m%y" }}/2.jpg");
-		}
-   }
-   @media (min-width:1366px){
-		.cover {
-			background-image: url("/img/covers/{{ page.date| date: "%d%m%y" }}/3.jpg");
-		}
-   }
-   @media (min-width:1920px){
-		.cover {
-			background-image: url("/img/covers/{{ page.date| date: "%d%m%y" }}/4.jpg");
-		}
-   }
-</style>
+{% include post-cover.html %}
 
 
-<article class="post" id="post">
+<article class="post main-content" id="post">
 	<header class="post-header container">
 		<h1 class="post-title">{{ page.title }}</h1>
 		<time pubdate datetime="{{ page.date | date: "%Y-%m-%d" }}" class="post-date">{{ page.date | localize: "%d %B %Y" }}</time>
 	</header>
-	<footer class="container">
-		{% include post-footer.html %}
-	</footer>
 	<div class="post-content container">
 		{{ content }}
 	</div>
+	<footer class="container">
+		{% include post-footer.html %}
+	</footer>
 	<div class="post-print-thanks">
 		Grazie per aver stampato questa pagina!
 	</div>

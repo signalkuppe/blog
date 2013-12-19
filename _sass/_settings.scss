@@ -8,7 +8,7 @@
 $legacy-support-for-ie: false;
 
 // colors
-$color-primary: #f57605;
+$color-primary: #0d85bc;
 $color-black: #000000;
 $color-gray: #ccc;
 $color-gray-light: #eee;
@@ -17,20 +17,21 @@ $color-site-background: $color-white;
 $color-background: #EBEBEB;
 $color-button-background: #222;
 $color-button: #fff;
-$color-text: #848484;
+$color-text: #5b5b5b;
 $color-text-light: lighten($color-text,20%);
 $color-headings: $color-black;
 $color-links: $color-primary;
-$color-links-hover: lighten($color-primary,10%);
-$color-links-active: darken($color-primary,20%);
-$color-links-focus: darken($color-primary,20%);
+$color-links-hover: darken($color-links,10%);
+$color-links-active: darken($color-links,20%);
+$color-links-focus: darken($color-links,20%);
 $color-links-visited: $color-links;
 
 
 // typo
 $font-dir: "../fonts";
 $font-headings: 'Oswald', sans-serif;
-$font-text: 'Open sans', sans-serif;
+$font-text: 'Varela', sans-serif;
+$font-alt: 'Open sans', sans-serif;
 $base-font-size: 1rem;
 $base-line-height: 1.5rem;
 
@@ -72,12 +73,11 @@ $base-line-height: 1.5rem;
 
 @mixin font-text-bold () {
 	font-family: $font-text;
-	font-weight: 600;
 }
 
 @mixin heading-primary () {
 	font-size: 2.2rem;
-	line-height: 1.4;
+	line-height: 1.3;
 	margin-bottom: 2rem;
 	@media screen and(max-width:767px){
 		font-size: 1.75rem;
@@ -120,8 +120,11 @@ $base-line-height: 1.5rem;
 }
 
 @mixin date () {
+	font-family: $font-alt;
+	color: $color-text-light;
+	font-weight:300;
 	display: block;
-	font-size: 0.85rem;
+	font-size: 0.8rem;
 	margin-bottom: 1rem;
 	text-transform: uppercase;
 }
@@ -134,7 +137,7 @@ $base-line-height: 1.5rem;
 }
 
 @mixin container () {
-	max-width: 54em;
+	max-width: 46em;
 	margin: 0 auto;
 	padding: 0 1rem;
 }

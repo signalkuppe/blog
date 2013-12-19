@@ -4,6 +4,7 @@ description: Blog personale di Matteo Leoni
 url: http://www.signalkuppe.com
 markdown: redcarpet
 pygments: true
+baseurl: /
 exclude: [bower.json, .bowerrc, README]
 flickr:
  cache_dir:       "./_cache/flickr"
