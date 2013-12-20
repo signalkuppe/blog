@@ -7,8 +7,9 @@
 
 #scrollUp {
 	@include useIcon;
-    @extend .icon-arrow-left;
-    color: white;
+    @extend .icon-arrow-up;
+    bottom: 20px;
+    right: 20px;
     font-size: 3rem;
-    background: black;
+    text-decoration: none;
 }
