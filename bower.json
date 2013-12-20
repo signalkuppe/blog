@@ -5,6 +5,6 @@
     "jquery.smooth-scroll": "~1.4.13",
     "jQuery-Unorphanize": "https://github.com/simeydotme/jQuery-Unorphanize.git",
     "swipebox": "*",
-    "SocialCount": "https://github.com/filamentgroup/SocialCount.git#~0.1.6"
+    "scrollup": "*"
   }
 }

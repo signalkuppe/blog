@@ -17,7 +17,7 @@ $color-site-background: $color-white;
 $color-background: #EBEBEB;
 $color-button-background: #222;
 $color-button: #fff;
-$color-text: #5b5b5b;
+$color-text: #373737;
 $color-text-light: lighten($color-text,20%);
 $color-headings: $color-black;
 $color-links: $color-primary;
@@ -30,8 +30,7 @@ $color-links-visited: $color-links;
 // typo
 $font-dir: "../fonts";
 $font-headings: 'Oswald', sans-serif;
-$font-text: 'Varela', sans-serif;
-$font-alt: 'Open sans', sans-serif;
+$font-text: 'Open Sans', sans-serif;
 $base-font-size: 1rem;
 $base-line-height: 1.5rem;
 
@@ -68,11 +67,18 @@ $base-line-height: 1.5rem;
 @mixin font-text () {
 	font-family: $font-text;
 	color: $color-text;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 @mixin font-text-bold () {
 	font-family: $font-text;
+	font-weight: 600;
+}
+
+@mixin font-text-italic () {
+	font-family: $font-text;
+	font-weight: 400;
+	font-style: italic;
 }
 
 @mixin heading-primary () {
@@ -120,8 +126,8 @@ $base-line-height: 1.5rem;
 }
 
 @mixin date () {
-	font-family: $font-alt;
 	color: $color-text-light;
+	font-family: $font-text;
 	font-weight:300;
 	display: block;
 	font-size: 0.8rem;

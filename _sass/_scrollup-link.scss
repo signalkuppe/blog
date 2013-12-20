@@ -1,0 +1,14 @@
+/*
+*
+* #scroll #up #link
+*
+*/
+
+
+#scrollUp {
+	@include useIcon;
+    @extend .icon-arrow-left;
+    color: white;
+    font-size: 3rem;
+    background: black;
+}
