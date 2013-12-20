@@ -1,3 +1,5 @@
 $(function () {
-    $.scrollUp();
+    $.scrollUp({
+    	scrollText: ''
+    });
 });
