@@ -66,14 +66,17 @@ strong {
 	@include font-text-bold;
 }
 
+em {
+	@include font-text-italic;
+}
+
 small {
 	font-size: 0.85rem;
 }
 
 p {
-	font-size: 0.85rem;
+	font-size: 0.9rem;
 	margin-bottom: 1rem;
-	line-height: 1.6;
 	@media screen and(min-width:768px){
 		font-size: 1rem;
 	}

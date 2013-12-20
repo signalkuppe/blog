@@ -37,42 +37,63 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-twitter:before {
+.icon-facebook:before {
 	content: "\e600";
 }
-.icon-google-plus:before {
+.icon-twitter:before {
 	content: "\e601";
 }
-.icon-facebook:before {
+.icon-instagram:before {
 	content: "\e602";
 }
-.icon-earth:before {
+.icon-google-plus:before {
 	content: "\e603";
 }
-.icon-menu:before {
+.icon-github:before {
 	content: "\e604";
 }
-.icon-print:before {
+.icon-github2:before {
 	content: "\e605";
 }
-.icon-bubble:before {
+.icon-github3:before {
 	content: "\e606";
 }
-.icon-arrow-right:before {
+.icon-github4:before {
 	content: "\e607";
 }
-.icon-arrow-left:before {
+.icon-flickr:before {
 	content: "\e608";
 }
-.icon-github:before {
+.icon-pinterest:before {
 	content: "\e609";
 }
-.icon-close:before {
+.icon-earth:before {
 	content: "\e60a";
 }
+.icon-attachment:before {
+	content: "\e60b";
+}
+.icon-bubble:before {
+	content: "\e60c";
+}
+.icon-bubbles:before {
+	content: "\e60d";
+}
 .icon-play:before {
+	content: "\e60e";
+}
+.icon-arrow-right:before {
 	content: "\e60f";
 }
-.icon-arrow-down:before {
+.icon-arrow-left:before {
 	content: "\e610";
+}
+.icon-arrow-up:before {
+	content: "\e611";
+}
+.icon-arrow-down:before {
+	content: "\e612";
+}
+.icon-menu:before {
+	content: "\e613";
 }
