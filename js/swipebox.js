@@ -1,8 +1,18 @@
 jQuery(function($) {
 
-	var next_icon = '<i class="icon-right"></i>';
-	var prev_icon = '<i class="icon-left"></i>';
-	$(".post-gallery-link").swipebox();
+	$(".post-gallery-link").swipebox(
+	{
+		beforeOpen: function()
+		{
+			$.scrollUp.destroy();
+		},
+		afterClose: function()
+		{
+		    $.scrollUp({
+		    	scrollText: ''
+		    });
+		} 
+	});
 
 
 });

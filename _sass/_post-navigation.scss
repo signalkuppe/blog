@@ -16,9 +16,10 @@
 }
 
 %post-navigation-item {
+	width: 50%;
 	@media screen and (min-width:1024px){
 		height: 100px;
-		min-width: 380px;
+		min-width: 350px;
 		display: block;
 	}
 	@media screen and (min-width:1366px){
@@ -50,6 +51,7 @@
 .post-navigation-next {
 	@include float-right;
 	text-align: right;
+	width: 50%;
 }
 
 .post-navigation-image,
@@ -66,14 +68,14 @@
 .post-navigation-icon {
 	line-height:120px;
 	.post-navigation-prev & {
-		margin-right: 1.5rem;
+		margin-right: 1.25rem;
 	}
 	.post-navigation-next & {
-		margin-left: 1.5rem;
+		margin-left: 1.25rem;
 	}
 	i {
 		@include border-radius(50%);
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		padding: 5px;
 		background: black;
 		color: white;
@@ -88,7 +90,7 @@
 	span {
 		position: relative;
 		bottom: 5px;
-		font-size: 0.85rem;
+		font-size: 0.7rem;
 		.post-navigation-prev & {
 			margin-left: 0.25rem;
 		}
@@ -130,15 +132,17 @@
 .post-navigation-info {
 	padding-top: 25px;
 	.post-navigation-info-title {
-		@include truncate(270px);
+		@include truncate(250px);
 		margin: 0;
-		font-size: 1.25rem;
+		font-size: 1rem;
 		@media screen and (min-width:1366px){
+			font-size: 1.25rem;
 			@include truncate(420px);
 		}
 	}
 	.post-navigation-info-date {
 		@include date;
+		font-size: 0.85rem;
 		margin-bottom: 0;
 	}
 }

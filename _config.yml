@@ -5,10 +5,4 @@ url: http://www.signalkuppe.com
 markdown: redcarpet
 pygments: true
 baseurl: /
-exclude: [bower.json, .bowerrc, README]
-flickr:
- cache_dir:       "./_cache/flickr"
- api_key:          yourapykey
- shared_secret:    yoursharedsecret
- access_token:     youraccesstoken
- access_secret:    youraccesssecret
+exclude: [bower.json, .bowerrc, README, s3_website.yml]

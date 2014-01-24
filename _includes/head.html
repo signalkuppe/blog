@@ -10,6 +10,9 @@
 -->
 <head>
     <meta charset="utf-8">
+    <!--######## TEMP ##########-->
+    <meta name="robots" content="noindex">
+    <!--######## TEMP ##########-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>{{ site.name }} | {{ page.title }}</title>
     {% if page.description %}
@@ -18,7 +21,7 @@
     <meta name="description" content="{{site.description}}" />
     {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="cleartype" content="on" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl}}images/favicons/favicon.ico" />
     <link rel="apple-touch-icon" href="{{ site.baseurl}}images/favicons/apple-touch-icon.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl}}images/favicons/apple-touch-icon-144x144.png" />

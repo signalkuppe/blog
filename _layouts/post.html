@@ -21,6 +21,9 @@ layout: blog-post
 	</div>
 	<div class="post-gallery">
 		{% if page.flickr%}
+			<div class="post-gallery-mobile">
+				<a href="#" rel="gallery" class="post-gallery-mobile-link">gallery</a>
+			</div>
 			{% flickr_photoset page.flickr %}
 		{% endif %}
 	</div>
