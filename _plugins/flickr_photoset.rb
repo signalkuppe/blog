@@ -77,7 +77,7 @@ module Jekyll
             output += "        <br/><span class=\"alt-flickr\"><a href=\"#{photo['urlFlickr']}\" target=\"_blank\">Voir la video en grand</a></span>\n"
             output += "      </li>\n"
           else
-            output += "      <li><a class=\"post-gallery-link\" href=\"#{photo['urlOpened']}\" title=\"#{photo['title']}\"><img src=\"#{photo['urlThumb']}\"></a></li>\n"
+            output += "      <li><a rel=\"gallery\" class=\"post-gallery-link\" href=\"#{photo['urlOpened']}\" title=\"#{photo['title']}\"><img data-src=\"#{photo['urlThumb']}\"></a></li>\n"
           end
         end
 

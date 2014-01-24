@@ -10,6 +10,7 @@
    background-repeat: no-repeat;
    background-position: center center fixed; 
    background-size: cover;
+   background-color: $color-black;
 }
 
 .cover-header,
@@ -63,15 +64,15 @@
 
 .cover-header h1 {
    text-transform: uppercase;
-   margin-top: $base-line-height * 1.5;
-   margin-bottom: $base-line-height/6;
-   font-size: 1.75rem;
+   margin-top: $base-line-height ;
+   margin-bottom: $base-line-height/8;
+   font-size: 1.5rem;
 }
 
 .cover-header  h2 {
    @include font-headings-light;
    margin-bottom: $base-line-height/2;
-   font-size: 1rem;
+   font-size: 0.85rem;
 }
 
 .cover-header-menu-toggle {
@@ -84,7 +85,7 @@
    @include opacity(0);
    @include hide;
    position: absolute;
-   top: 130px;
+   top: 150px;
    left: 0;
    right: 0;
    text-align: center; 
@@ -111,7 +112,7 @@
 
 .cover-caption { 
    position: absolute;
-   bottom: $base-line-height * 1.5;
+   bottom: $base-line-height;
    left: 0;
    right: 0;
    text-align: center;
@@ -125,12 +126,12 @@
    @include font-headings-light;
    display: inline-block;
    text-align: center;
-   font-size: 1rem;
+   font-size: 0.85rem;
    a {
       @include cover-text-shadow;
    }
    @media screen and(min-width:768px){
-      font-size: 1.25rem;
+      font-size: 1rem;
    }
 }
 

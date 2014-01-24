@@ -7,9 +7,13 @@
 
 #scrollUp {
 	@include useIcon;
+	@include border-radius(50%);
     @extend .icon-arrow-up;
     bottom: 20px;
     right: 20px;
-    font-size: 3rem;
+    font-size: 1.25rem;
+    padding: 5px;
     text-decoration: none;
+    background: rgba($color-gray,0.8);
+    color: $color-white;
 }
