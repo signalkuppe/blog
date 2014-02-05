@@ -23,7 +23,6 @@
 }
 
 .cover-guide {
-   display: none;
    position: absolute;
    bottom: 50%;
    margin-bottom: -2rem;
@@ -64,16 +63,11 @@
 }
 
 .cover-header h1 {
-   text-transform: uppercase;
-   margin-top: $base-line-height ;
-   margin-bottom: $base-line-height/8;
-   font-size: 1.5rem;
+   @include site-title;
 }
 
 .cover-header  h2 {
-   @include font-headings-light;
-   margin-bottom: $base-line-height/2;
-   font-size: 0.85rem;
+   @include site-slogan;
 }
 
 .cover-header-menu-toggle {
