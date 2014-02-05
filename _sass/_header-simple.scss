@@ -1,0 +1,36 @@
+/*
+*
+* #header #simple
+*
+**/
+
+
+.header-simple {
+	text-align: center;
+	h1,h2 {
+		@include reset;
+	}
+	h1 {
+		@include site-title;
+	}
+	h2 {
+		@include site-slogan;
+	}
+	a {
+		text-decoration: none;
+	}
+	margin-bottom: $base-line-height*2;
+}
+
+.header-simple-menu {
+	margin-top: $base-line-height;
+	ul {
+		@include inline-block-list(10px);
+		li {
+			a {
+				text-transform: uppercase;
+				color: $color-black;
+			}
+		}
+	}
+}

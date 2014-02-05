@@ -11,7 +11,6 @@ function finish ()
 	{
 		
 		setTimeout(function() {
-			  $('.cover-guide').show();
 		      console.log("pagina caricata")
 		}, 500);
 		

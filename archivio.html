@@ -2,10 +2,32 @@
 layout: archivio
 title: Archivio dei post
 ---
-<ul>
-{% for post in site.posts %}
 
-<li><a href="{{ post.url }}">{{ post.title}}</a></li>
+<div class="archive">
+	<nav class="archive-posts">
+		<dl>
+	    {% for post in site.posts %}
+	    {% unless post.next %}
+	      <dt class="archive-posts-year">{{ post.date | date: '%Y' }}</dt>
+	    {% else %}
+	      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+	      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+	      {% if year != nyear %}
+	        <dt class="archive-posts-year">{{ post.date | date: '%Y' }}</dt>
+	      {% endif %}
+	    {% endunless %}
+			<dd class="archive-post">
+				<a href="{{ post.url }}">
+					<div class="archive-post-cover">
+						<img src="{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/cover.jpg" />
+					</div>
+					<div class="archive-post-date">{{post.date| date:"%d/%m/%y" }}</div>
+					<div class="archive-post-title">{{post.title}}</div>
+				</a>
+			</dd>
+		{% endfor %} 	
+		</dl>	
+	</nav>
+</div>
 
-{% endfor %} 	
-</ul>
+
