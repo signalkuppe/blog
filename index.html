@@ -4,9 +4,21 @@ title: Parole oltre i 4000m
 ---
 	{% for post in site.posts limit:1 %} 
 	<style>
-		.cover {
+	   .cover {
 		   background-image: url("{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/1.jpg");
 		}
+		/* Retina iPad in portrait */
+		@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio: 2) {
+	   	    .cover {
+				background-image: url("{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/1-high.jpg");
+	   	    }
+		}
+	   /* Retina iPad in lanscape */
+	   @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio: 2){
+	   	    .cover {
+				background-image: url("{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/2-high.jpg");
+	   	    }
+	   }
 	   @media (min-width:1024px){
 			.cover {
 				background-image: url("{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/2.jpg");

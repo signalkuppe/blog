@@ -38,6 +38,39 @@
 	}
 }
 
+.post-gps {
+	@include container;
+	text-align: center;
+	ul {
+			margin-top: 2rem;
+			margin-bottom: 2rem;
+	}
+	li {
+		@include inline-block;
+		margin-right: 15px;
+		a {
+			@include inline-block;
+			@include border-radius;
+			padding: 0.5rem;
+			color: $color-primary;
+			border: 2px solid $color-primary;
+			text-decoration: none;
+			&:hover {
+				background: $color-primary;
+				color: $color-white;
+			}
+			i {
+				margin-right: 5px;
+			}
+		}
+	}
+	@media screen and(max-width:1024px){
+		li.post-gps-link--gpx {
+			display: none;
+		}
+	}
+}
+
 .post-footer-list {
 	li {
 		@include inline-block;
@@ -67,45 +100,69 @@
 	border: 1px solid black;
 }
 
+.post-gallery-mobile {
+	text-align: center;
+	.post-gallery-mobile-link {
+		color: $color-black;
+		span {
+			display: block;
+		}
+		i {
+			font-size: 4rem;
+		}
+		text-decoration: none;
+	}	
+}
+
 .post-gallery {
 	@include container;
 	@include clearfix;
-	margin-top: 4rem;
-	margin-bottom: 4rem;
-	li {
-		@include inline-block;
-		margin: 0 0.5rem 0.5rem 0;
-		img {
-			@include border-radius(50%);
-			@include filter(saturate(0));
-			border: 6px solid;
-			border-color: $color-gray-light;
-			width: 80px;
-			@media screen and(min-width:768px){
-				width: 100px;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	text-align: center;
+	.post-gallery-list
+	{
+		li {
+			@include inline-block;
+			margin: 0 0.5rem 0.5rem 0;
+			img {
+				@include border-radius(50%);
+				//@include filter(saturate(0));
+				border: 6px solid;
+				border-color: $color-gray-light;
+				width: 80px;
+				@media screen and(min-width:768px){
+					width: 100px;
+				}
+				@media screen and(min-width:1024px){
+					width: 120px;
+				}
+				@media screen and(min-width:1920px){
+					width: 150px;
+				}
 			}
-			@media screen and(min-width:1024px){
-				width: 120px;
-			}
-			@media screen and(min-width:1920px){
-				width: 150px;
+			a:hover img {
+				//@include filter(saturate(1));
+				border-color: $color-primary;
 			}
 		}
-		a:hover img {
-			@include filter(saturate(1));
-			border-color: $color-gray;
+		&.post-gallery-list--mobile {
+			margin-top: 2rem;
 		}
 	}
 	@media screen and(min-width:1366px){
 		@include destroy_container;
 		max-width: 95%;
 		margin: 8rem auto;
-		text-align: center;
 	}
 }
 
 .post-disqus {
 	@include container;
+	margin-top: 4rem;
 	margin-bottom: 4rem;
+	@media screen and(min-width:1366px){
+		margin-top: 8rem;
+	}
 }
 

@@ -30,7 +30,7 @@ html.swipebox {
 }
 
 #swipebox-slider .slide {
-  background: url("img/swipebox/loader.gif") no-repeat center center;
+  background: url("../img/swipebox/loader.gif") no-repeat center center;
   height: 100%;
   width: 100%;
   line-height: 1px;
@@ -93,9 +93,23 @@ html.swipebox {
   width: 100%;
 }
 
+@media screen and(max-width:768px){
+    #swipebox-action {
+      height: 70px;
+    }
+}
+
 #swipebox-action {
   bottom: -50px;
 }
+
+@media screen and(max-width:768px){
+  #swipebox-action {
+    bottom: -70px;
+  }
+}
+
+
 #swipebox-action.visible-bars {
   bottom: 0;
 }
@@ -129,10 +143,6 @@ html.swipebox {
   top: 0;
 }
 
-#swipebox-action #swipebox-close {
-  background-position: 15px 12px;
-  left: 40px;
-}
 
 #swipebox-action #swipebox-prev {
   background-position: -32px 13px;
@@ -279,6 +289,10 @@ html.swipebox {
   padding-top: 15px;
 }
 
+#swipebox-close{
+  left: 15px;
+}
+
 #swipebox-prev,
 #swipebox-next
 {
@@ -304,3 +318,8 @@ html.swipebox {
     @extend .icon-close; 
 }
 
+@media screen and(max-width:768px){
+  #swipebox-action #swipebox-close {
+    left: 20px!important;
+  }
+}
