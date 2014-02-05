@@ -73,6 +73,7 @@ $base-line-height: 1.5rem;
 @mixin font-text-bold () {
 	font-family: $font-text;
 	font-weight: 600;
+	color: $color-black;
 }
 
 @mixin font-text-italic () {

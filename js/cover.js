@@ -1,6 +1,9 @@
 $(document).ready(function()
 {
 
+
+	$(window).scrollTop(0);
+
 	function handleResize()
 	{
 	var h = $(window).height();
@@ -18,6 +21,7 @@ $(document).ready(function()
 	$(window).resize(function(){
 	    handleResize();
 	});
+
 
 
 	var $menubutton = $("#menu-link");
