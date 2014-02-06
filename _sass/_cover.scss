@@ -11,6 +11,7 @@
    background-position: center center fixed; 
    background-size: cover;
    background-color: $color-black;
+   height: 100vh;
 }
 
 .cover-header,
@@ -22,23 +23,32 @@
    }
 }
 
-.cover-guide {
+.cover-guide,
+.loader-text {
    position: absolute;
    bottom: 50%;
-   margin-bottom: -2rem;
    left: 0;
    right: 0;
    text-align: center;
+}
+
+.cover-guide {
    font-size: 4rem;
    line-height: 1;
+   margin-bottom: -2rem;
    a {
-      color: white;
+      color: $color-white;
       @include opacity(0.7);
       text-decoration: none;
       &:hover {
          @include opacity(1); 
       }
    }
+}
+
+.loader-text {
+   color: $color-white;
+   margin-bottom: -3.5rem;
 }
 
 .cover-header {
@@ -127,33 +137,5 @@
    }
    @media screen and(min-width:768px){
       font-size: 1rem;
-   }
-}
-
-.cover-search { 
-   position: absolute;
-   height: 100px;
-   bottom: 50%;
-   margin-bottom: -50px;
-   left: 0;
-   right: 0;
-   text-align: center;
-   input[type="text"] {
-      font-family: $font-text;
-      font-size: 1rem;
-      border: none;
-      height: 40px;
-      padding: 0 0.5rem;
-      @media screen and(min-width:1024px){
-         width: 300px;
-      }
-   }
-   button {
-      font-size: 1rem;
-      background: black;
-      color: white;
-      border: none;
-      height: 40px;
-      width: 40px;
    }
 }
