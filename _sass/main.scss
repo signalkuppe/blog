@@ -11,13 +11,13 @@
 @import "post-navigation";
 @import "archive";
 @import "print";
+@import "loader";
 
 
 // plugins
 
-@import "swipebox";
+@import "image-lightbox";
 @import "scrollup-link";
-@import "pace";
 
 .main-content {
 	margin-top: 2rem;
@@ -36,3 +36,4 @@
 .footer {
 	margin-top: 4rem;
 }
+

@@ -18,9 +18,6 @@ title: Archivio dei post
 	    {% endunless %}
 			<dd class="archive-post">
 				<a href="{{ post.url }}">
-					<div class="archive-post-cover">
-						<img src="{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/cover.jpg" />
-					</div>
 					<div class="archive-post-date">{{post.date| date:"%d/%m/%y" }}</div>
 					<div class="archive-post-title">{{post.title}}</div>
 				</a>

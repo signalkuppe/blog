@@ -4,10 +4,8 @@
   "dependencies": {
     "jquery.smooth-scroll": "~1.4.13",
     "jQuery-Unorphanize": "https://github.com/simeydotme/jQuery-Unorphanize.git",
-    "swipebox": "*",
     "scrollup": "*",
     "fastclick": "~0.6.10",
-    "enquire": "~2.1.0",
-    "pace": "~0.4.17"
+    "enquire": "~2.1.0"
   }
 }

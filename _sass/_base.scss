@@ -16,6 +16,9 @@ html{
 
 html {
 	font-size: 100%; 
+	/* killing 300ms touch delay in IE */
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
 }
 
 body {

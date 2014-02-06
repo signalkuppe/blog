@@ -1,0 +1,132 @@
+/*
+*
+* #loader #progress #animation
+*
+**/
+
+$vendor: '', '-webkit-', '-moz-', '-ms-', '-o-';
+
+@mixin animation-timing-function($name) {
+    @each $prefix in $vendor {
+        #{$prefix}animation-timing-function: $name;
+    }
+}
+
+@mixin animation-name($name) {
+    @each $prefix in $vendor {
+        #{$prefix}animation-name: $name;
+    }
+}
+
+@mixin animation-fill-mode($mode) {
+    @each $prefix in $vendor {
+        #{$prefix}animation-fill-mode: $mode;
+    }
+}
+
+@mixin animation-duration($duration) {
+    @each $prefix in $vendor {
+        #{$prefix}animation-duration: $duration;
+    }
+}
+
+@mixin animation-iteration-count($value) {
+  @each $prefix in $vendor {
+    #{$prefix}animation-iteration-count: $value;
+  }
+}
+
+@mixin animation-delay($value) {
+    @each $prefix in $vendor {
+        #{$prefix}animation-delay: $value;
+    }
+}
+
+@mixin animation-direction($value) {
+    @each $prefix in $vendor {
+        #{$prefix}animation-delay: $value;
+    }
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content; 
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    } 
+}
+
+$items: loader-item-1 loader-item-2 loader-item-3 loader-item-4 loader-item-5 loader-item-6 loader-item-7;
+$rotate: -60deg;
+
+@mixin rotate {
+  @include transform(rotate($rotate));
+  $rotate: $rotate + 60;
+}
+
+$black: #000;
+$paint-color:
+  #2ecc71,
+  #3498db,
+  #9b59b6,
+  #e67e22,
+  #c0392b,
+  #e74c3c,
+  #e74c8c;
+
+
+@for $i from 1 through 3 {
+  .loader {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0px;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    @include animation-name(animation-1);
+    @include animation-duration($i+2s);
+    @include animation-iteration-count(infinite);
+    @include animation-timing-function(linear);
+    @include transform-origin(50%,0%);
+    
+    @for $i from 1 through 6 {
+      .loader-item-#{$i}{
+        span {
+          position: absolute;
+          width: 15px;
+          height: 15px;   
+          background: nth($paint-color, $i);
+          @include border-radius(15px);
+        }
+      }
+    }
+  
+    @each $i in $items {
+      .#{$i} {
+        @include rotate;
+      }
+    }
+  }
+}
+
+.loader {
+  left: 0px;
+  top: 40px;
+}
+
+@include keyframes (animation-1) {
+  from {
+    @include transform(rotate(0deg));
+  } 
+  to {
+    @include transform(rotate(3600deg));
+  }
+}
