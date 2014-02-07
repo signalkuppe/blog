@@ -15,24 +15,24 @@ $(document).ready(function()
 		// non farlo nel post che arriva dalla home
 		if(window.location.hash!="#start")
 		{
+			// remove inline style
+			coverdiv.css('background-image','');
 			// trova la cover
 			var cover = coverdiv.css('background-image').replace(/(url)|(")|(\()|(\))/g,'');
 			// nascondila e nascondi la guida
-			coverdiv.css({'background-image':'none'});
+			coverdiv.css('background-image','none');
 			coverload.show();
 			coverguide.hide();
 			var coverimg = new Image();
 			// se c'è mostrala solo quando è caricata
-			if(cover!='none') 
-			{
-				coverimg.src = cover;
-				coverimg.onload = function (img) {
-					// la cover è caricata
-					coverdiv.css({'background-image':'url("'+img.target.src+'")'});
-					coverload.hide();
-					coverguide.show();
-				};
-			}
+			coverimg.src = cover;
+			coverimg.onload = function (img) {
+				// la cover è caricata
+				coverdiv.css({'background-image':'url("'+cover+'")'});
+				coverload.hide();
+				coverguide.show();
+			
+			};		
 		}
 	}
 
@@ -57,6 +57,7 @@ $(document).ready(function()
 	    handleResize();
 	    bg();
 	});
+
 
 
 
