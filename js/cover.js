@@ -26,9 +26,9 @@ $(document).ready(function()
 			if(cover!='none') 
 			{
 				coverimg.src = cover;
-				coverimg.onload = function (cover) {
+				coverimg.onload = function (img) {
 					// la cover è caricata
-					coverdiv.css({'background-image':cover});
+					coverdiv.css({'background-image':'url("'+img.target.src+'")'});
 					coverload.hide();
 					coverguide.show();
 				};
@@ -38,7 +38,6 @@ $(document).ready(function()
 
 	bg();
 
-	/* test */
 
 	function handleResize()
 	{
