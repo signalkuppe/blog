@@ -6,7 +6,7 @@ description: "Traversata dal Breithorn Occidentale a quello centrale con partenz
 categories: alpinismo
 tags: breithorn occidentale centrale monte rosa
 caption: "Lo scivolo nord dalla cresta"
-flickr: 72157640287780346
+flickr: 72157640297815005
 map: 45°56'28.55",7°44'51.87"
 ---
 
