@@ -42,7 +42,7 @@
 			{
 				var description = $( 'a[href="' + $( '#imagelightbox' ).attr( 'src' ) + '"] img' ).attr( 'alt' );
 				if( description.length > 0 )
-					$( '<div id="imagelightbox-caption">' + description + '</div>' ).appendTo( 'body' );
+					$( '<div id="imagelightbox-caption"><span>' + description + '</span></div>' ).appendTo( 'body' );
 			},
 			captionOff = function()
 			{
