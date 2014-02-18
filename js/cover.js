@@ -2,16 +2,22 @@ $(document).ready(function()
 {
 	$('html,body').scrollTop(0);
 
+	$(window).bind('orientationchange', function() {
+	  if($(window).scrollTop < 150)
+	  {
+	  	$('html,body').scrollTop(0);
+	  }
+	});
+
 	var coverdiv = $('.cover');
 	var coverguide = $('.cover-guide');
 	var coverload = $('.loader,.loader-text');
 
 	/* controlla che la cover sia caricata  */
 
-	coverload.hide();
-
 	var bg = function () 
 	{
+		coverload.hide();
 		// non farlo nel post che arriva dalla home
 		if(window.location.hash!="#start")
 		{
@@ -39,7 +45,8 @@ $(document).ready(function()
 				coverload.hide();
 				coverguide.show();
 			
-			};		
+			};						
+
 		}
 	}
 
