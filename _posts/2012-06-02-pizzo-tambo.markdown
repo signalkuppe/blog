@@ -5,7 +5,7 @@ date:   2012-06-02
 description: "Salita al Pizzo Tambò per la via normale dal Passo dello Spluga"
 categories: alpinismo
 tags: spluga passo tambò pizzo
-caption: "Panorma dalla vetta del Pizzo Tambò"
+caption: "Panorama dalla vetta del Pizzo Tambò"
 flickr: 72157630026824916
 map: 46°29'49.46",9°17'0.21"
 ---
