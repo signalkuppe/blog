@@ -9,6 +9,9 @@ layout: blog-post
 	<header class="post-header container">
 		<h1 class="post-title">{{ page.title }}</h1>
 		<time pubdate datetime="{{ page.date | date: "%Y-%m-%d" }}" class="post-date">{{ page.date | localize: "%d %B %Y" }}</time>
+		<span class="post-author">
+			<a href="https://plus.google.com/110274853083140603802?rel=author">Google</a>
+		</span>
 	</header>
 	<div class="post-content container">
 		{{ content }}

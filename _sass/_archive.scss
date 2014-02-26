@@ -5,7 +5,6 @@
 **/
 
 .archive {
-	text-align:center;
 	padding: 20px;
 }
 
@@ -42,7 +41,6 @@
 
 @media screen and (min-width:1024px){
 	.archive {
-		text-align:left;
 		width: 800px;
 		margin: 0 auto;
 	}
@@ -53,12 +51,4 @@
 	.archive-post-date {
 		margin-right: 10px;
 	}
-}
-
-@media screen and (min-width:1366px){
-
-}
-
-@media screen and (min-width:1920px){
-
 }

@@ -29,6 +29,10 @@
 	text-align: center;
 }
 
+.post-author {
+	@include hide;
+}
+
 .post-footer {
 	@include clear;
 	text-align: center;
@@ -150,10 +154,10 @@
 			margin-top: 2rem;
 		}
 	}
-	@media screen and(min-width:1366px){
+	@media screen and(min-width:1024px){
 		@include destroy_container;
 		max-width: 95%;
-		margin: 8rem auto;
+		margin: 6rem auto;
 	}
 }
 
@@ -161,7 +165,7 @@
 	@include container;
 	margin-top: 4rem;
 	margin-bottom: 4rem;
-	@media screen and(min-width:1366px){
+	@media screen and(min-width:1024px){
 		margin-top: 8rem;
 	}
 }
