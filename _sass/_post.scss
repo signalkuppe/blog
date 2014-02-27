@@ -124,6 +124,9 @@
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 	text-align: center;
+	.post-gallery-caption{
+		@include hide;
+	}
 	.post-gallery-list
 	{
 		li {
