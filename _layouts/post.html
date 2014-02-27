@@ -20,7 +20,7 @@ layout: blog-post
 		Grazie per aver stampato questa pagina!
 	</div>
 	{% if page.flickr%}
-	<div class="post-gallery">
+	<figure class="post-gallery">
 		<div class="post-gallery-mobile">
 			<a href="#" rel="gallery" class="post-gallery-mobile-link">
 			    <span>Guarda le foto</span>
@@ -28,7 +28,8 @@ layout: blog-post
 			</a>
 		</div>
 		{% flickr_photoset page.flickr %}
-	</div>
+		<figcaption class="post-gallery-caption">{{ page.title }}</figcaption>
+	</figure>
 	{% endif %}
 	{% if page.gps%}
 	<div class="post-gps">
