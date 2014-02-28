@@ -11,7 +11,7 @@ map: 45°56'28.55",7°44'51.87"
 ---
 
 
-L'amico Stefano, fresco del Corso di Alpinismo vorrebbe salire il suo prmo Quattromila. Eccolo accontentato. Partenza all'alba da casa e salita al **Plateau Rosà 3470 m** con la prima funivia da **Cervinia**. Condizioni meteo ottime con temperatura tale da garantire la tenuta della neve, caduta in abbondanza lo scorso mese di Giugno, per tutto il giorno. Dall'arrivo della funivia andiamo a E e saliamo fino al **Colle del Breithorn 3831 m** lasciandoci alle spalle gli impianti per lo sci estivo e la folla degli sciatori.
+L'amico Stefano, fresco del Corso di Alpinismo vorrebbe salire il suo primo Quattromila. Eccolo accontentato. Partenza all'alba da casa e salita al **Plateau Rosà 3470 m** con la prima funivia da **Cervinia**. Condizioni meteo ottime con temperatura tale da garantire la tenuta della neve, caduta in abbondanza lo scorso mese di Giugno, per tutto il giorno. Dall'arrivo della funivia andiamo a E e saliamo fino al **Colle del Breithorn 3831 m** lasciandoci alle spalle gli impianti per lo sci estivo e la folla degli sciatori.
 
 Qui formiamo due cordate: io con mio padre e Stefano con Cristiano. Belli carichi affrontiamo il tratto che, con qualche zig-zag, percorre il versante O del **Breithorn Occidentale**. La traccia è ben battuta e la neve bella compatta. Superiamo cordate improbabili: salitori solitari, gruppi di turisti senza ramponi e slegati, clienti condotti da guide in perfetto equipaggiamento. Anche noi non scherziamo però: imbrago, viti da ghiaccio, cordini vari, moschettoni, corda da 8 mm 30 m, ghette, ramponi.
 

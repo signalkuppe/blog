@@ -1,64 +1,9 @@
 ---
-layout: index
+layout: blog-post
 title: Parole oltre i 4000m
 ---
-	{% for post in site.posts limit:1 %} 
-	<style>
-	   .cover {
-		   background-image: url("{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/1.jpg");
-		}
-		/* Retina iPad in portrait */
-		@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio: 2) {
-	   	    .cover {
-				background-image: url("{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/1-high.jpg");
-	   	    }
-		}
-	   /* Retina iPad in landscape */
-	   @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio: 2){
-	   	    .cover {
-				background-image: url("{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/2-high.jpg");
-	   	    }
-	   }
-	   @media (min-width:1024px){
-			.cover {
-				background-image: url("{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/2.jpg");
-			}
-	   }
-	   @media (min-width:1366px){
-			.cover {
-				background-image: url("{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/3.jpg");
-			}
-	   }
-	   @media (min-width:1920px){
-			.cover {
-				background-image: url("{{ site.baseurl}}img/covers/{{ post.date| date: "%d%m%y" }}/4.jpg");
-			}
-	   }
-	</style>
-	{% endfor %}
+ 
 
-	  <div class="cover-guide">
-	  	{% for post in site.posts limit:1 %} 
-	    <a href="{{ post.url }}#start">
-	      <i aria-hidden="true" class="icon-play"></i>
-	    </a>
-	    {% endfor %}
-	  </div>
-      <!-- loader-->
-      <div class="loader">
-        <div class="loader-item-1"><span></span></div>
-        <div class="loader-item-2"><span></span></div>
-        <div class="loader-item-3"><span></span></div>
-        <div class="loader-item-4"><span></span></div>
-        <div class="loader-item-5"><span></span></div>
-        <div class="loader-item-6"><span></span></div>
-      </div>
-      <div class="loader-text">Carico la cover...</div>
-      <!--/loader-->
-
-	  <div class="cover-caption">
-	  	{% for post in site.posts limit:1 %}  
-	 		<h1><a href="{{ post.url }}#start">{{ post.caption }}</a></h1>  
-		{% endfor %}
-	  </div>
-
+{% assign page = site.posts.first %}
+{% assign content = page.content %}
+{% include post.html %}

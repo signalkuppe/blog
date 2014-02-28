@@ -2,13 +2,6 @@ $(document).ready(function()
 {
 	$('html,body').scrollTop(0);
 
-	$(window).bind('orientationchange', function() {
-	  if($(window).scrollTop < 150)
-	  {
-	  	$('html,body').scrollTop(0);
-	  }
-	});
-
 	var coverdiv = $('.cover');
 	var coverguide = $('.cover-guide');
 	var coverload = $('.loader,.loader-text');
@@ -18,36 +11,33 @@ $(document).ready(function()
 	var bg = function () 
 	{
 		coverload.hide();
-		// non farlo nel post che arriva dalla home
-		if(window.location.hash!="#start")
+
+		// remove inline style
+		coverdiv.css('background-image','');
+		// trova la cover
+		var cover = coverdiv.css('background-image').replace(/(url)|(")|(\()|(\))/g,'');
+		// nascondila e nascondi la guida
+		var coverimg = new Image();
+		coverimg.src = cover;
+
+		// se non è già caricata
+		if(!coverimg.complete)
 		{
-			// remove inline style
-			coverdiv.css('background-image','');
-			// trova la cover
-			var cover = coverdiv.css('background-image').replace(/(url)|(")|(\()|(\))/g,'');
-			// nascondila e nascondi la guida
-			var coverimg = new Image();
-			coverimg.src = cover;
-
-			// se non è già caricata
-			if(!coverimg.complete)
-			{
-				coverdiv.css('background-image','none');
-				coverload.show();
-				coverguide.hide();
-			}
-			
-			// mostrala solo quando è caricata
-
-			coverimg.onload = function (img) {
-				// la cover è caricata
-				coverdiv.css({'background-image':'url("'+cover+'")'});
-				coverload.hide();
-				coverguide.show();
-			
-			};						
-
+			coverdiv.css('background-image','none');
+			coverload.show();
+			coverguide.hide();
 		}
+		
+		// mostrala solo quando è caricata
+
+		coverimg.onload = function (img) {
+			// la cover è caricata
+			coverdiv.css({'background-image':'url("'+cover+'")'});
+			coverload.hide();
+			coverguide.show();
+		
+		};						
+		
 	}
 
 	bg();
