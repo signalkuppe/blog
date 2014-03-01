@@ -1,5 +1,5 @@
 {% include post-cover.html %}
-<article class="post main-content" id="post">
+<article class="post main-content" id="post" data-caption="{{ page.caption }}">
 	<header class="post-header container">
 		<h1 class="post-title">{{ page.title }}</h1>
 		<time pubdate datetime="{{ page.date | date: "%Y-%m-%d" }}" class="post-date">{{ page.date | localize: "%d %B %Y" }}</time>

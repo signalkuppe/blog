@@ -2,9 +2,18 @@ $(document).ready(function()
 {
 	$('html,body').scrollTop(0);
 
-	var coverdiv = $('.cover');
-	var coverguide = $('.cover-guide');
-	var coverload = $('.loader,.loader-text');
+	var coverdiv = $('.cover'),
+	coverguide = $('.cover-guide'),
+	coverload = $('.loader,.loader-text'),
+	coverlink = $('.cover-caption-link');
+
+	// setta il testo della caption in home
+	/* IMPROVE */
+
+ 	if(coverlink.text() == "")
+ 	{
+ 		coverlink.text($('#post').data('caption'));
+ 	}
 
 	/* controlla che la cover sia caricata  */
 
