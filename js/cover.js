@@ -49,27 +49,30 @@ $(document).ready(function()
 		
 	}
 
-	bg();
-
-
-	function handleResize()
+	if(coverdiv)
 	{
-		var h = $(window).height();
-	    coverdiv.css({'height':h+'px'});
-	    coverdiv.addClass('is-rendered');
+		bg();
+
+		function handleResize()
+		{
+			var h = $(window).height();
+		    coverdiv.css({'height':h+'px'});
+		    coverdiv.addClass('is-rendered');
+		}
+
+		function checkGuide ()
+		{
+			$menucontainer.hasClass('is-open') ? coverguide.hide() : coverguide.show();
+		}
+
+		handleResize();
+		
+		$(window).resize(function(){
+		    handleResize();
+		    bg();
+		});		
 	}
 
-	function checkGuide ()
-	{
-		$menucontainer.hasClass('is-open') ? coverguide.hide() : coverguide.show();
-	}
-
-	handleResize();
-	
-	$(window).resize(function(){
-	    handleResize();
-	    bg();
-	});
 
 
 
