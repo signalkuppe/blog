@@ -6,6 +6,7 @@
 
 
 .header-simple {
+	margin-bottom: $base-line-height;
 	text-align: center;
 	h1,h2 {
 		@include reset;
@@ -19,7 +20,6 @@
 	a {
 		text-decoration: none;
 	}
-	margin-bottom: $base-line-height*2;
 }
 
 .header-simple-menu {
@@ -32,5 +32,11 @@
 				color: $color-black;
 			}
 		}
+	}
+}
+
+@media screen and (min-width:1024px) {
+	.header-simple {
+		margin-bottom: $base-line-height*2;
 	}
 }

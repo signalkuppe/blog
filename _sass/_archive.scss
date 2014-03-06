@@ -8,14 +8,52 @@
 	padding: 20px;
 }
 
+.archive-years {
+	@include font-headings;
+	@include clearfix;
+	text-align: center;
+	margin-bottom: $base-line-height*2;
+	ul {
+		li {
+			@include inline-block;
+			a {
+				@include inline-block;
+				@include border-radius(50%);
+				width: 50px;
+				height: 50px;
+				line-height: 48px;
+				text-align: center;
+				text-decoration: none;
+				background: $color-primary;
+				color: $color-white;
+				border: 2px $color-primary;
+				margin-right: 5px;
+				&:active {
+
+				}
+			}
+		}
+	}
+}
+
 .archive-posts-year {
 	@include font-headings;
-	@include heading-primary;
+	@include heading-secondary;
 	margin-bottom: $base-line-height*2;
+	i {
+		display: none;
+		color: $color-primary;
+	}
+	&:target {
+		i {
+			@include inline-block;
+		}
+	}
 }
 
 
 .archive-post {
+	font-size:0.85rem;
 	margin-bottom: $base-line-height;
 	padding-bottom:$base-line-height;
 	border-bottom: 1px solid $color-gray-light;
@@ -43,6 +81,20 @@
 	.archive {
 		width: 800px;
 		margin: 0 auto;
+	}
+	.archive-years{
+		text-align: center;
+		margin-bottom: $base-line-height*4;
+		ul {
+			@include inline-block-list;
+			li {
+				margin-right: 10px;
+				margin-bottom: 0;
+			}
+		}
+	}
+	.archive-post {
+		font-size:1rem;
 	}
 	.archive-post-date,
 	.archive-post-title{

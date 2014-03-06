@@ -4,16 +4,42 @@ title: Archivio dei post
 ---
 
 <div class="archive">
-	<nav class="archive-posts">
-		<dl>
+	<div class="archive-years">
+		<ul>
 	    {% for post in site.posts %}
 	    {% unless post.next %}
-	      <dt class="archive-posts-year">{{ post.date | date: '%Y' }}</dt>
+	      <li class="archive-years-year">
+	      	<a href="#year-{{ post.date | date: '%Y' }}">{{ post.date | date: '%Y' }}</a>
+	      </li>
 	    {% else %}
 	      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
 	      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
 	      {% if year != nyear %}
-	        <dt class="archive-posts-year">{{ post.date | date: '%Y' }}</dt>
+	      <li class="archive-years-year">
+	      	<a href="#year-{{ post.date | date: '%Y' }}">{{ post.date | date: '%Y' }}</a>
+	      </li>
+	      {% endif %}
+	    {% endunless %}
+		{% endfor %} 
+		</ul>
+
+	</div>
+	<nav class="archive-posts">
+		<dl>
+	    {% for post in site.posts %}
+	    {% unless post.next %}
+	      <dt class="archive-posts-year" id="year-{{ post.date | date: '%Y' }}">
+	      	<i aria-hidden="true" class="icon-bookmark"></i>
+	      	{{ post.date | date: '%Y' }}
+	      </dt>
+	    {% else %}
+	      {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+	      {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
+	      {% if year != nyear %}
+	        <dt class="archive-posts-year" id="year-{{ post.date | date: '%Y' }}">
+	        	<i aria-hidden="true" class="icon-bookmark"></i>
+	        	{{ post.date | date: '%Y' }}
+	        </dt>
 	      {% endif %}
 	    {% endunless %}
 			<dd class="archive-post">
