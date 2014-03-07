@@ -1,0 +1,24 @@
+/*
+*
+* #layout #scaffolding
+*
+*/
+
+
+.main-content {
+	margin-top: 2rem;
+	@media screen and(min-width:768px){
+      margin-top: 4rem;
+    }
+    @media screen and(min-width:1920px){
+      margin-top: 6rem;
+   }
+}
+
+.container {
+	@include container;
+}
+
+.footer {
+	margin-top: 4rem;
+}

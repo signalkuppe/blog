@@ -1,14 +1,22 @@
 <ul>
-	<li class="post-gps-link post-gps-link--kml">
+	<li class="post-utilities-link post-utilities-link--print">
+		<a href="#" class="print">
+		<i class="icon-print"></i>
+		Stampa
+		</a>
+	</li>
+	{% if page.gps %}
+	<li class="post-utilities-link post-utilities-link--kml">
 		<a title="scarica la traccia gps per google earth" href="{{ site.url }}/downloads/{{ page.date| date: "%d%m%y" }}/{{ page.date| date: "%d%m%y" }}.kml" download="{{ page.date| date: "%d%m%y" }}.kml">
 			<i class="icon-earth"></i>
 			Traccia per Google Earth
 		</a>
 	</li>
-	<li class="post-gps-link post-gps-link--gpx">
+	<li class="post-utilities-link post-utilities-link--gpx">
 		<a title="scarica la traccia gps in formato .gpx" href="{{ site.url }}/downloads/{{ page.date| date: "%d%m%y" }}/{{ page.date| date: "%d%m%y" }}.gpx" download="{{ page.date| date: "%d%m%y" }}.gpx">
 			<i class="icon-disk"></i>
 			Traccia formato .gpx
 		</a>
 	</li>
+	{% endif %}
 </ul>

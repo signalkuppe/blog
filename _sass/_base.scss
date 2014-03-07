@@ -60,6 +60,8 @@ a.container-link {
 	@include link-colors(inherit, inherit, inherit, inherit, inherit);
 }
 
+// list in content
+
 .post-content ul {
 	list-style: disc;
 	margin: 2rem 20px;

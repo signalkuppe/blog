@@ -1,0 +1,13 @@
+{
+  "name": "Signalkuppe.com",
+  "description": "Personal blog",
+  "version": "0.9.0",
+  "homepage": "http://www.signalkuppe.com",
+  "author": {
+    "name": "Matteo Leoni"
+  },
+  "dependencies": {
+    "grunt-contrib-uglify": "^0.2.7",
+    "grunt": "^0.4.2"
+  }
+}

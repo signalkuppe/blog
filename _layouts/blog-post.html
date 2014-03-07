@@ -2,7 +2,7 @@
 <html lang="it" id="top">
 {% include head.html %}
   <body>
-    <div class="cover">
+    <figure class="cover">
       <header role="navigation" class="cover-header">
         <div class="header-navigation">
             {% include branding.html %}
@@ -27,15 +27,13 @@
       <div class="loader-text">Carico la cover...</div>
       <!--/loader-->
 
-      <div class="cover-caption">
-        <h1><a href="#post" class="cover-caption-link">{{page.caption}}</a></h1>  
-      </div>
-    </div>
+      <figcaption class="cover-caption">
+        <p><a href="#post" class="cover-caption-link">{{page.caption}}</a></p>  
+      </figcaption>
+    </figure>
     <section class="content" role="main">
         {{ content }}
     </section>
-    {% include scripts-libraries.html %}
-    {% include scripts-common.html %}
-    {% include scripts-post.html %}
+    {% include scripts.html %}
   </body>
 </html>
