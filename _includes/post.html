@@ -25,14 +25,12 @@
 		<figcaption class="post-gallery-caption">{{ page.title }}</figcaption>
 	</figure>
 	{% endif %}
-	{% if page.gps%}
-	<div class="post-gps">
-		{% include post-gps.html %}
-	</div>
-	{% endif %}
-    {% include disqus.html %}
 	<footer class="container">
-		{% include post-footer.html %}
+	<div class="post-utilities">
+		{% include post-utilities.html %}
+	</div>
+    {% include disqus.html %}
+	{% include post-footer.html %}
 	</footer>
 </article>
 <aside role="navigation" class="post-navigation">

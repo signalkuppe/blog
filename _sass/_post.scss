@@ -42,7 +42,7 @@
 	}
 }
 
-.post-gps {
+.post-utilities {
 	@include container;
 	text-align: center;
 	ul {
@@ -68,8 +68,9 @@
 			}
 		}
 	}
-	@media screen and(max-width:1024px){
-		li.post-gps-link--gpx {
+	@media screen and (max-width:1024px){
+		li.post-utilities-link--gpx,
+		li.post-utilities-link--print {
 			display: none;
 		}
 	}
