@@ -54,7 +54,7 @@ module.exports = function(grunt) {
       options: {
         indent: 3,
         indent_char: ' ',
-        wrap_line_length: 56,
+        wrap_line_length: 75,
         brace_style: 'expand',
         unformatted: ['sub']
       },
