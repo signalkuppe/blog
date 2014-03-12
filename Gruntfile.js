@@ -49,6 +49,22 @@ module.exports = function(grunt) {
           'css/app.min.css': ['css/app.css']
         }
       }
+    },
+    prettify: {
+      options: {
+        indent: 3,
+        indent_char: ' ',
+        wrap_line_length: 56,
+        brace_style: 'expand',
+        unformatted: ['sub']
+      },
+      all: {
+        expand: true,
+        cwd: '_site/',
+        ext: '.html',
+        src: ['*.html','**/*.html'],
+        dest: '_site/'
+      }
     }
   });
 
@@ -56,9 +72,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-prettify');
 
   // Default task(s).
   grunt.registerTask('default', ['uglify','shell']);
-  grunt.registerTask('compress', ['uglify','cssmin']);
+  grunt.registerTask('compress', ['uglify','cssmin','prettify']);
 
 };

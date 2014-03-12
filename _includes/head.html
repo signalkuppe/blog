@@ -19,27 +19,26 @@
     {% else %}
     <meta name="description" content="{{site.description}}" />
     {% endif %}
-
+    
+     <!-- @@@@@@@@@@@@@@ facebook @@@@@@@@@@@@@@ -->
     <meta property="og:image" content="{{ site.url}}/img/covers/{{ page.date| date: "%d%m%y" }}/cover.jpg" />
     <meta property="og:title" content="{{ page.title }}"/>
     <meta property="og:site_name" content="{{ site.name }}"/>
     <meta property="og:type" content="blog"/>
-
+    <!-- @@@@@@@@@@@@@@ responsive @@@@@@@@@@@@@@ -->
     <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- @@@@@@@@@@@@@@ icons @@@@@@@@@@@@@@ -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl}}img/favicons/favicon.ico" />
     <link rel="apple-touch-icon" href="{{ site.baseurl}}img/favicons/apple-touch-icon.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl}}img/favicons/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="{{ site.baseurl}}img/favicons/apple-touch-icon-114x114.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="{{ site.baseurl}}img/favicons/apple-touch-icon-72x72.png" />
-    <!-- Custom CSS -->
-    <!--[if gt IE 8]><!-->
-    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300|Open+Sans:400italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- @@@@@@@@@@@@@@ css   @@@@@@@@@@@@@@ -->
     <link rel="stylesheet" href="{{ site.baseurl}}css/app.min.css" />
+    <!-- @@@@@@@@@@@@@@ spazio nerd  @@@@@@@@@@@@@@ -->
     <!--
-    per i nerd: qui trovate il css non compresso 
-    <link rel="stylesheet" href="{{ site.baseurl}}css/app.css" />
+    // css non compresso // -> <link rel="stylesheet" href="{{ site.baseurl}}css/app.css" />
     -->
-    <!--<![endif]-->
 
 </head>
