@@ -2,12 +2,14 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     uglify: {
-      my_target: {
+      my_target:
+      {
         options: {
           //compress: true,
           //beautify: false
         },
-        files: {
+        files:
+        {
           'js/app.js':
           [
             'bower_components/jquery/jquery.min.js',
@@ -28,13 +30,24 @@ module.exports = function(grunt) {
           ]
         }
       }
-    }, 
+    },
+    shell: {                               
+      upload:
+      {                      
+        options: {                    
+          stdout: true
+        },
+        command: 's3_website push'
+      }
+    } 
   });
 
-  // Load the plugin that provides the "uglify" task.
+ 
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-shell');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['uglify','shell']);
+  grunt.registerTask('compress', ['uglify']);
 
 };
