@@ -20,5 +20,5 @@ Siamo i primi e quelli che ci seguono fanno molto meno fatica, ma sai la soddisf
 
 Quanto volte sono salito al Campelli? Sicuramente più di dieci da quando a sei anni mi ci ha portato mio padre. il Campelli è sempre una bella montagna, ma oggi è stato un giorno veramente speciale per averla salita in condizioni hymalaiane.
 
-Rientro con lunghe scivolate fino al **Rifugio Lecco quota 1780 m** che troviamo, sfortunatamente per noi, strapieno e quindi il solito salamino anziché pizzoccheri o polenta con pietanze a scelta. Funivia, auto ed in 45 minuti siamo a casa. Tempo discreto con scuarci di sole fra le nuvole scure. Ottimo per le foto d'effetto.
+Rientro con lunghe scivolate fino al **Rifugio Lecco quota 1780 m** che troviamo, sfortunatamente per noi, strapieno e quindi il solito salamino anziché pizzoccheri o polenta con pietanze a scelta. Funivia, auto ed in 45 minuti siamo a casa. Tempo discreto con squarci di sole fra le nuvole scure. Ottimo per le foto d'effetto.
 
