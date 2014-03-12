@@ -1,6 +1,6 @@
 _site
 bower_components
-js/app.js
+js/app.min.js
 node_modules
 _sass/.sass-cache/
 <<<<<<< HEAD
