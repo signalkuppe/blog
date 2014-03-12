@@ -3,6 +3,10 @@ module.exports = function(grunt) {
   grunt.initConfig({
     uglify: {
       my_target: {
+        options: {
+          //compress: true,
+          //beautify: false
+        },
         files: {
           'js/app.js':
           [

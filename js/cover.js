@@ -39,7 +39,7 @@ $(document).ready(function()
 		
 		// mostrala solo quando è caricata
 
-		coverimg.onload = function (img) {
+		coverimg.onload = function () {
 			// la cover è caricata
 			coverdiv.css({'background-image':'url("'+cover+'")'});
 			coverload.hide();
@@ -49,7 +49,7 @@ $(document).ready(function()
 		
 	}
 
-	if(coverdiv)
+	if($('body').hasClass('has-cover'))
 	{
 		bg();
 
