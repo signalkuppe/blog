@@ -6,6 +6,7 @@
 
 
 @include global-reset;
+@include establish-baseline;
 
 * { @include box-sizing (border-box); }
 
@@ -15,7 +16,6 @@ html{
 }
 
 html {
-	font-size: 100%; 
 	/* killing 300ms touch delay in IE */
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
@@ -37,13 +37,17 @@ body {
 	color: $color-white;
 }
 
-#{headings()} {
+
+#{headings(4)} {
 	@include font-headings;
+	margin: 0;
 }
 
-h1 { @include heading-primary;   }
-h2 { @include heading-secondary; }
-h3 { @include heading-tertiary;  }
+h1 { @include t-xlarge; }
+h2 { @include t-large;  }
+h3 { @include t-medium; }
+h4 { @include t-base;   }
+
 
 a {
 	//link-colors($normal, $hover, $active, $visited, $focus)
@@ -63,39 +67,17 @@ a.container-link {
 // list in content
 
 .post-content ul {
-	list-style: disc;
-	margin: 2rem 20px;
-	font-size: 0.9rem;
-	margin-bottom: 1rem;
-	@media screen and(min-width:768px){
-		font-size: 1rem;
-		margin: 2rem 40px;
-		li {
-			margin-bottom: 0.5rem;
-		}
-	}
+
 }
 
 img {
 	max-width: 100%;
 }
 
-strong {
-	@include font-text-bold;
-}
+strong  { @include t-strong; }
+em  	{ @include font-text-italic; }
+small   { @include t-small; }
 
-em {
-	@include font-text-italic;
-}
-
-small {
-	font-size: 0.85rem;
-}
-
-p{
-	font-size: 0.9rem;
-	margin-bottom: 1rem;
-	@media screen and(min-width:768px){
-		font-size: 1rem;
-	}
+p {
+	@include leader;
 }
