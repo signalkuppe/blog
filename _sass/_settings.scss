@@ -32,10 +32,62 @@ $color-links-visited: $color-links;
 $font-dir: "../fonts";
 $font-headings: 'Oswald', sans-serif;
 $font-text: 'Open Sans', sans-serif;
-$base-font-size: 1rem;
-$base-line-height: 1.5rem;
+$base-font-size: 16px;
+$base-line-height: 24px;
+
+$tiny-font-size: 10px;
+$tiny-font-leading: 0.75;
+$small-font-size: 13px;
+$small-font-leading: 0.75;
+$base-font-size: 16px;
+$base-font-leading: 1;
+$medium-font-size: 20px;
+$medium-font-leading: 1.25;
+$large-font-size: 34px;
+$large-font-leading: 1.25;
+$xlarge-font-size: 43px;
+$xlarge-font-leading: 1.5;
 
 
+@mixin typeSize($size) {
+ @if $size == "tiny" {
+  @include adjust-font-size-to($tiny-font-size);
+  @include adjust-leading-to($tiny-font-leading);
+ }
+ @if $size == "small" {
+  @include adjust-font-size-to($small-font-size);
+  @include adjust-leading-to($small-font-leading);
+ }
+ @if $size == "base" {
+  @include adjust-font-size-to($base-font-size);
+  @include adjust-leading-to($base-font-leading);
+ }
+ @if $size == "medium" {
+  @include adjust-font-size-to($medium-font-size);
+  @include adjust-leading-to($medium-font-leading);
+ }
+ @if $size == "large" {
+  @include adjust-font-size-to($large-font-size);
+  @include adjust-leading-to($large-font-leading);
+ }
+ @if $size == "xlarge" {
+  @include adjust-font-size-to($xlarge-font-size);
+  @include adjust-leading-to($xlarge-font-leading);
+ }
+}
+
+// Type weights
+@mixin t-ultrastrong 	{ font-weight: 700; }
+@mixin t-strong 		{ font-weight: 600; }
+@mixin t-regular 		{ font-weight: 400; }
+@mixin t-light 			{ font-weight: 300; }
+
+@mixin t-tiny   { @include typeSize(tiny);  }
+@mixin t-small  { @include typeSize(small); }
+@mixin t-base   { @include typeSize(base);  }
+@mixin t-medium { @include typeSize(medium);}
+@mixin t-large  { @include typeSize(large); }
+@mixin t-xlarge { @include typeSize(xlarge);}
 
 @mixin reset (){
 	margin: 0;
@@ -50,9 +102,9 @@ $base-line-height: 1.5rem;
 }
 
 @mixin font-headings () {
+	@include t-regular;
 	font-family: $font-headings;
 	color: $color-headings;
-	font-weight: 400;
 }
 
 @mixin font-headings-light-italic () {
@@ -61,24 +113,21 @@ $base-line-height: 1.5rem;
 }
 
 @mixin font-headings-light () {
+	@include t-light;
 	font-family: $font-headings;
-	font-weight: 300;
 }
 
 @mixin font-text () {
+	@include t-regular;
 	font-family: $font-text;
 	color: $color-text;
-	font-weight: 400;
 }
 
 @mixin font-text-bold () {
-	font-family: $font-text;
-	font-weight: 600;
-	color: $color-black;
+	@include t-strong;
 }
 
 @mixin font-text-italic () {
-	font-family: $font-text;
 	font-weight: 400;
 	font-style: italic;
 }

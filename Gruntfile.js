@@ -32,6 +32,13 @@ module.exports = function(grunt) {
       }
     },
     shell: {
+      listen:
+      {                      
+        options: {                    
+          stdout: true
+        },
+        command: 'jekyll serve --watch'
+      }, 
       build:
       {                      
         options: {                    
@@ -82,6 +89,19 @@ module.exports = function(grunt) {
           dest: '_site/'                  
         }]
       }
+    },
+    processhtml: {
+      dist: {
+        files: [
+          {
+          expand: true,     
+          cwd: '_site/',   
+          src: ['**/*.html'],
+          dest: '_site/',  
+          ext: '.html'
+        },
+        ],
+      }
     }
   });
 
@@ -90,11 +110,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-prettify');
-  grunt.loadNpmTasks('grunt-contrib-imagemin')
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-processhtml');
 
   // Default task(s).
   grunt.registerTask('default', ['uglify','shell']);
+  grunt.registerTask('listen', ['shell:listen']);
   grunt.registerTask('compress', ['uglify','cssmin','prettify']);
-  grunt.registerTask('deploy', ['shell:build','uglify','cssmin','prettify','shell:upload']);
+  grunt.registerTask('deploy', ['shell:build','uglify','cssmin','processhtml','prettify','shell:upload']);
 
 };
