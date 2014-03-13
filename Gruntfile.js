@@ -31,7 +31,14 @@ module.exports = function(grunt) {
         }
       }
     },
-    shell: {                               
+    shell: {
+      build:
+      {                      
+        options: {                    
+          stdout: true
+        },
+        command: 'jekyll build'
+      },                            
       upload:
       {                      
         options: {                    
@@ -43,7 +50,7 @@ module.exports = function(grunt) {
     cssmin: {
       combine: {
       options: {
-        banner: '/* Ho compresso il css per salvare circa 25kb :-) */'
+        banner: '/* I\'ve compressed this stylesheet to save 25kb */'
       },
         files: {
           'css/app.min.css': ['css/app.css']
@@ -65,6 +72,16 @@ module.exports = function(grunt) {
         src: ['*.html','**/*.html'],
         dest: '_site/'
       }
+    },
+    imagemin: {                          
+      dynamic: {                         
+        files: [{
+          expand: true,                 
+          cwd: '_site/',                 
+          src: ['**/*.{png,jpg,gif}'],   
+          dest: '_site/'                  
+        }]
+      }
     }
   });
 
@@ -73,9 +90,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-prettify');
+  grunt.loadNpmTasks('grunt-contrib-imagemin')
 
   // Default task(s).
   grunt.registerTask('default', ['uglify','shell']);
   grunt.registerTask('compress', ['uglify','cssmin','prettify']);
+  grunt.registerTask('deploy', ['shell:build','uglify','cssmin','prettify','shell:upload']);
 
 };
