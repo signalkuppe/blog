@@ -9,27 +9,27 @@
 	background: $color-gray-light;
 	@include float-left;
 	width: 100%;
-	padding: 1rem 1rem;
-	@media screen and (min-width:1024px){
-		padding: 4rem 1rem;
+	padding: 10px;
+	@media screen and (min-width: $breakpoint-desktop){
+		padding: 60px 20px;
 	}
 }
 
 %post-navigation-item {
 	width: 50%;
-	@media screen and (min-width:1024px){
+	@media screen and (min-width: $breakpoint-desktop){
 		height: 100px;
 		min-width: 350px;
 		display: block;
 	}
-	@media screen and (min-width:1366px){
+	@media screen and (min-width: $breakpoint-desktop-large){
 		min-width: 580px;
 	}
 }
 
 %post-navigation-visible-large {
 	display: none;
-	@media screen and (min-width:1024px){
+	@media screen and (min-width: $breakpoint-desktop){
 		display: block;
 	}
 }
@@ -68,45 +68,34 @@
 .post-navigation-icon {
 	line-height:120px;
 	.post-navigation-prev & {
-		margin-right: 1.25rem;
+		margin-right: 10px;
 	}
 	.post-navigation-next & {
-		margin-left: 1.25rem;
+		margin-left: 10px;
 	}
 	i {
-		@include border-radius(50%);
-		font-size: 1.25rem;
-		padding: 5px;
-		background: black;
-		color: white;
-		a:hover & {
-			background: $color-primary;
-		}
-		@media screen and (min-width:600px){
-			font-size: 2rem;
-			padding: 10px;
-		}
+		@include button-icon(default-inverse);
+		@include t-large;
 	}
 	span {
 		position: relative;
 		bottom: 5px;
-		font-size: 0.7rem;
 		.post-navigation-prev & {
 			margin-left: 0.25rem;
 		}
 		.post-navigation-next & {
 			margin-right: 0.25rem;
 		}
-		@media screen and (min-width:600px){
-			font-size: 1rem;
+		@media screen and (min-width: $breakpoint-tablet-small){
+			@include t-regular;
 			.post-navigation-prev & {
-				margin-left: 1rem;
+				margin-left: 10px;
 			}
 			.post-navigation-next & {
-				margin-right: 1rem;
+				margin-right: 10px;
 			}
 		}
-		@media screen and (min-width:1024px){
+		@media screen and (min-width: $breakpoint-desktop){
 			display: none;
 		}
 	}
@@ -115,10 +104,10 @@
 .post-navigation-image {
 	height: 120px;
 	.post-navigation-prev & {
-		margin-right: 1.5rem;
+		margin-right: 10px
 	}
 	.post-navigation-next & {
-		margin-left: 1.5rem;
+		margin-left: 10px;
 	}
 	@include border-radius(50%);
 	img {
@@ -130,19 +119,19 @@
 }
 
 .post-navigation-info {
-	padding-top: 25px;
+	padding-top: 30px;
 	.post-navigation-info-title {
+		@include t-regular;
 		@include truncate(250px);
 		margin: 0;
-		font-size: 1rem;
-		@media screen and (min-width:1366px){
-			font-size: 1.25rem;
+		@media screen and (min-width: $breakpoint-desktop-large){
+			@include t-medium;
 			@include truncate(420px);
 		}
 	}
 	.post-navigation-info-date {
 		@include date;
-		font-size: 0.85rem;
+		@include t-small;
 		margin-bottom: 0;
 	}
 }

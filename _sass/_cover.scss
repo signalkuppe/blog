@@ -23,6 +23,10 @@
    }
 }
 
+.cover-header {
+   @include padding-leader;
+}
+
 .cover-guide,
 .loader-text {
    position: absolute;
@@ -33,7 +37,8 @@
 }
 
 .cover-guide {
-   margin-bottom: -2rem;
+   font-size: $xxlarge-font-size;
+   margin-bottom: -$xxlarge-font-size;
    a {
       color: $color-white;
       @include opacity(0.85);
@@ -80,7 +85,7 @@
 
 .cover-header-menu-toggle {
    @include cover-text-shadow;
-   font-size: 1.5rem;
+   font-size: $medium-font-size;
 }
 
 .cover-header-menu-wrapper {
@@ -119,21 +124,19 @@
    left: 0;
    right: 0;
    text-align: center;
-   @media screen and(min-width:1920px){
+   @media screen and (min-width: $breakpoint-desktop-xlarge){
       bottom: $base-line-height * 2;
    }
 }
 
 .cover-caption > p {
+   font-size: $base-font-size;
    @include reset;
-   @include font-headings-light;
+   @include font-headings;
+   @include t-light;
    display: inline-block;
    text-align: center;
-   font-size: 0.85rem;
    a {
       @include cover-text-shadow;
-   }
-   @media screen and(min-width:768px){
-      font-size: 1rem;
    }
 }

@@ -6,7 +6,7 @@
 
 
 .header-simple {
-	margin-bottom: $base-line-height;
+	@include trailer;
 	text-align: center;
 	h1,h2 {
 		@include reset;
@@ -23,7 +23,7 @@
 }
 
 .header-simple-menu {
-	margin-top: $base-line-height;
+	@include leader;
 	ul {
 		@include inline-block-list(10px);
 		li {
@@ -35,8 +35,8 @@
 	}
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: $breakpoint-desktop) {
 	.header-simple {
-		margin-bottom: $base-line-height*2;
+		@include trailer(2);
 	}
 }

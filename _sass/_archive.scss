@@ -9,28 +9,13 @@
 }
 
 .archive-years {
-	@include font-headings;
 	@include clearfix;
 	text-align: center;
-	margin-bottom: $base-line-height*2;
 	ul {
+		@include inline-block-list;
 		li {
-			@include inline-block;
 			a {
-				@include inline-block;
-				@include border-radius(50%);
-				width: 50px;
-				height: 50px;
-				line-height: 48px;
-				text-align: center;
-				text-decoration: none;
-				background: $color-primary;
-				color: $color-white;
-				border: 2px $color-primary;
-				margin-right: 5px;
-				&:active {
-
-				}
+				@include button(primary);
 			}
 		}
 	}
@@ -38,8 +23,8 @@
 
 .archive-posts-year {
 	@include font-headings;
-	@include heading-secondary;
-	margin-bottom: $base-line-height*2;
+	@include t-large;
+	@include leader(2);
 	i {
 		display: none;
 		color: $color-primary;
@@ -53,9 +38,8 @@
 
 
 .archive-post {
-	font-size:0.85rem;
-	margin-bottom: $base-line-height;
-	padding-bottom:$base-line-height;
+	@include leader;
+	@include padding-trailer(0.5);
 	border-bottom: 1px solid $color-gray-light;
 	a {
 		color: $color-black;
@@ -63,28 +47,19 @@
 	}
 }
 
- .archive-post + .archive-posts-year {
-	margin-top: $base-line-height*4;
-}
-
-
 .archive-post-date {
-	font-size: 0.85rem;
-	margin-bottom: 2px;
-	color: $color-text-light;
-	font-weight:300;
-	text-decoration: none!important;
+	@include date;
+	@include trailer(0.5);
 }
 
 
-@media screen and (min-width:1024px){
+@media screen and (min-width: $breakpoint-desktop){
 	.archive {
 		width: 800px;
 		margin: 0 auto;
 	}
 	.archive-years{
 		text-align: center;
-		margin-bottom: $base-line-height*4;
 		ul {
 			@include inline-block-list;
 			li {
@@ -92,9 +67,6 @@
 				margin-bottom: 0;
 			}
 		}
-	}
-	.archive-post {
-		font-size:1rem;
 	}
 	.archive-post-date,
 	.archive-post-title{
