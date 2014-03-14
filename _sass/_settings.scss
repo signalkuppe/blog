@@ -27,53 +27,86 @@ $color-links-active: darken($color-links,20%);
 $color-links-focus: darken($color-links,20%);
 $color-links-visited: $color-links;
 
-
 // typo
+
+/* Modular Scale
+	----------------------
+	16px @ 1:1.414		
+	----------------------*/
+@import url("http://fonts.googleapis.com/css?family=Oswald:400,700,300|Open+Sans:400italic,400,300,600,700");
 $font-dir: "../fonts";
 $font-headings: 'Oswald', sans-serif;
 $font-text: 'Open Sans', sans-serif;
 $base-font-size: 16px;
 $base-line-height: 24px;
-
-$tiny-font-size: 10px;
-$tiny-font-leading: 0.75;
-$small-font-size: 13px;
-$small-font-leading: 0.75;
+$tiny-font-size: 8px;
+$tiny-font-leading: 1;
+$small-font-size: 12px;
+$small-font-leading: 1.1;
 $base-font-size: 16px;
 $base-font-leading: 1;
-$medium-font-size: 20px;
-$medium-font-leading: 1.25;
-$large-font-size: 34px;
-$large-font-leading: 1.25;
-$xlarge-font-size: 43px;
-$xlarge-font-leading: 1.5;
-
+$medium-font-size: 23px;
+$medium-font-leading: 1;
+$large-font-size: 32px;
+$large-font-leading: 1;
+$xlarge-font-size: 45px;
+$xlarge-font-leading: 1;
+$xxlarge-font-size: 63px;
+$xxlarge-font-leading: 1;
 
 @mixin typeSize($size) {
- @if $size == "tiny" {
-  @include adjust-font-size-to($tiny-font-size);
-  @include adjust-leading-to($tiny-font-leading);
- }
- @if $size == "small" {
-  @include adjust-font-size-to($small-font-size);
-  @include adjust-leading-to($small-font-leading);
- }
- @if $size == "base" {
-  @include adjust-font-size-to($base-font-size);
-  @include adjust-leading-to($base-font-leading);
- }
- @if $size == "medium" {
-  @include adjust-font-size-to($medium-font-size);
-  @include adjust-leading-to($medium-font-leading);
- }
- @if $size == "large" {
-  @include adjust-font-size-to($large-font-size);
-  @include adjust-leading-to($large-font-leading);
- }
- @if $size == "xlarge" {
-  @include adjust-font-size-to($xlarge-font-size);
-  @include adjust-leading-to($xlarge-font-leading);
- }
+	@if $size == "tiny" {
+		@include adjust-font-size-to($tiny-font-size);
+		@include adjust-leading-to($tiny-font-leading);
+	}
+	@if $size == "small" {
+		@include adjust-font-size-to($tiny-font-size);
+		@include adjust-leading-to($tiny-font-leading);
+		@media screen and (min-width: $breakpoint-tablet){
+			@include adjust-font-size-to($small-font-size);
+			@include adjust-leading-to($small-font-leading);
+		}
+	}
+	@if $size == "base" {
+		@include adjust-font-size-to($small-font-size);
+		@include adjust-leading-to($small-font-leading);
+		@media screen and (min-width: $breakpoint-tablet){
+			@include adjust-font-size-to($base-font-size);
+			@include adjust-leading-to($base-font-leading);
+		}
+	}
+	@if $size == "medium" {
+		@include adjust-font-size-to($base-font-size);
+		@include adjust-leading-to($base-font-leading);
+		@media screen and (min-width: $breakpoint-tablet){
+			@include adjust-font-size-to($medium-font-size);
+			@include adjust-leading-to($medium-font-leading);
+		}
+	}
+	@if $size == "large" {
+		@include adjust-font-size-to($medium-font-size);
+		@include adjust-leading-to($medium-font-leading);
+		@media screen and (min-width: $breakpoint-tablet){
+			@include adjust-font-size-to($large-font-size);
+			@include adjust-leading-to($large-font-leading);
+		}
+	}
+	@if $size == "xlarge" {
+		@include adjust-font-size-to($large-font-size);
+		@include adjust-leading-to($large-font-leading);
+		@media screen and (min-width: $breakpoint-tablet){
+			@include adjust-font-size-to($xlarge-font-size);
+			@include adjust-leading-to($xlarge-font-leading);
+		}
+	}
+	@if $size == "xxlarge" {
+		@include adjust-font-size-to($xlarge-font-size);
+		@include adjust-leading-to($xlarge-font-leading);
+		@media screen and (min-width: $breakpoint-tablet){
+			@include adjust-font-size-to($xxlarge-font-size);
+			@include adjust-leading-to($xxlarge-font-leading);
+		}
+	}
 }
 
 // Type weights
@@ -82,13 +115,29 @@ $xlarge-font-leading: 1.5;
 @mixin t-regular 		{ font-weight: 400; }
 @mixin t-light 			{ font-weight: 300; }
 
-@mixin t-tiny   { @include typeSize(tiny);  }
-@mixin t-small  { @include typeSize(small); }
-@mixin t-base   { @include typeSize(base);  }
-@mixin t-medium { @include typeSize(medium);}
-@mixin t-large  { @include typeSize(large); }
-@mixin t-xlarge { @include typeSize(xlarge);}
+@mixin t-tiny    { @include typeSize(tiny);  }
+@mixin t-small   { @include typeSize(small); }
+@mixin t-base    { @include typeSize(base);  }
+@mixin t-medium  { @include typeSize(medium);}
+@mixin t-large   { @include typeSize(large); }
+@mixin t-xlarge  { @include typeSize(xlarge);}
+@mixin t-xxlarge { @include typeSize(xxlarge);}
 
+// container
+
+$container-width: 46em;
+
+// breakpoints
+
+$breakpoint-tablet-small:       600px;
+$breakpoint-tablet:             768px;
+$breakpoint-desktop:            1024px;
+$breakpoint-desktop-large:      1366px;
+$breakpoint-desktop-xlarge:     1920px;
+$breakpoint-desktop-xxlarge:    2560px;
+
+
+// mixins
 @mixin reset (){
 	margin: 0;
 	padding: 0;
@@ -107,50 +156,15 @@ $xlarge-font-leading: 1.5;
 	color: $color-headings;
 }
 
-@mixin font-headings-light-italic () {
-	font-family: $font-headings;
-	font-style: italic;
-}
-
-@mixin font-headings-light () {
-	@include t-light;
-	font-family: $font-headings;
-}
-
 @mixin font-text () {
 	@include t-regular;
 	font-family: $font-text;
 	color: $color-text;
 }
 
-@mixin font-text-bold () {
-	@include t-strong;
-}
-
 @mixin font-text-italic () {
 	font-weight: 400;
 	font-style: italic;
-}
-
-@mixin heading-primary () {
-	font-size: 2.2rem;
-	line-height: 1.3;
-	margin-bottom: 2rem;
-	@media screen and(max-width:767px){
-		font-size: 1.75rem;
-	}
-}
-
-@mixin heading-secondary () {
-	font-size: 1.5rem;
-	line-height: 1.8rem;
-	margin-bottom: 1rem;
-}
-
-@mixin heading-tertiary () {
-	font-size: 1.25rem;
-	line-height: 1.6rem;
-	margin-bottom: 1rem;
 }
 
 @mixin csshyphenation () {
@@ -181,8 +195,6 @@ $xlarge-font-leading: 1.5;
 	font-family: $font-text;
 	font-weight:300;
 	display: block;
-	font-size: 0.8rem;
-	margin-bottom: 1rem;
 	text-transform: uppercase;
 }
 
@@ -194,7 +206,7 @@ $xlarge-font-leading: 1.5;
 }
 
 @mixin container () {
-	max-width: 46em;
+	max-width: $container-width;
 	margin: 0 auto;
 	padding: 0 1rem;
 }
@@ -224,15 +236,64 @@ $xlarge-font-leading: 1.5;
 }
 
 @mixin site-title (){
+   font-size: $medium-font-size;
+   @include trailer(0.25);
    text-transform: uppercase;
-   margin-top: $base-line-height ;
-   margin-bottom: $base-line-height/8;
-   font-size: 1.5rem;
 }
 
 @mixin site-slogan (){
-   @include font-headings-light;
-   margin-bottom: $base-line-height/2;
-   font-size: 0.85rem;
+   font-size: $small-font-size;
+   @include trailer(1);
+   @include t-light;
+}
+
+// buttons
+
+@mixin button ($type){
+	@include inline-block;
+	@include border-radius;
+	text-decoration: none;
+	padding: 10px;
+	border: 2px solid;
+	@if $type == "primary" {
+		border-color: $color-primary;
+		color: $color-primary;
+		&:hover {
+			background: $color-primary;
+			color: $color-white;
+		}
+	}
+	@if $type == "default" {
+		border-color: $color-text;
+		color: $color-text;
+		&:hover {
+			background: $color-text;
+			color: $color-white;
+		}
+	}
+	i {
+		margin-right: 5px;
+	}
+}
+
+// icon button
+
+@mixin button-icon ($type) {
+	@include border-radius(50%);
+	padding: 5px;
+	@if $type == "primary"{
+		color: $color-links;
+	}
+	@if $type == "default"{
+		color: $color-text;
+	}
+	@if $type == "primary-inverse"{
+		background: $color-primary;
+		color: $color-white;
+	}
+	@if $type == "default-inverse"{
+		background: $color-text;
+		color: $color-white;
+	}		
 }
 
