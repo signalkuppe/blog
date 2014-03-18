@@ -9,21 +9,24 @@
 }
 
 .post-header {
-	@include leader(2);
-	@include trailer(2);
+	@include vertical-space(2,both,margin);
 	@media screen and (min-width:$breakpoint-tablet){
-		@include leader(4);
+		@include vertical-space(4,both,margin);
 	}
 }
 
 .post-title {
-	@include t-xlarge;
-	@include trailer(0.5);
+	@include t-large;
+	@include vertical-space(1,bottom,margin);
 	text-align: center;
+	@media screen and (min-width:$breakpoint-tablet){
+		@include t-xlarge;
+	}
 }
 
 .post-date {
 	@include date;
+	@include t-small;
 	text-align: center;
 }
 
@@ -34,16 +37,15 @@
 .post-footer {
 	@include clear;
 	text-align: center;
-	margin: rhythm(2) 0;
+	@include vertical-space(2,both,margin);
 	@media screen and (min-width:$breakpoint-desktop){
-		margin: rhythm(4) 0;
+		@include vertical-space(4,both,margin);
 	}
 }
 
 .post-utilities {
 	@include container;
-	@include leader(2);
-	@include trailer(6);
+	@include vertical-space(4,both,margin);
 	text-align: center;
 	ul {
 		@include inline-block-list(5px);
@@ -67,7 +69,7 @@
 		a {
 			text-decoration: none;
 			i {
-				@include t-xxlarge;
+				@include t-xlarge;
 				@include button-icon(primary);
 			}
 		}
@@ -75,7 +77,7 @@
 }
 
 .post-print-thanks {
-	@include trailer(2);
+	@include vertical-space(1,top,margin);
 	display: none;
 	padding: 10px;
 	border: 1px solid black;
@@ -98,7 +100,7 @@
 .post-gallery {
 	@include container;
 	@include clearfix;
-	@include leader(2);
+	@include vertical-space(2,top,margin);
 	text-align: center;
 	.post-gallery-caption{
 		@include hide;
@@ -128,18 +130,20 @@
 			}
 		}
 		&.post-gallery-list--mobile {
-			@include leader;
-			@include trailer;
+			@include vertical-space(1,both,margin);
 		}
 	}
 	@media screen and (min-width:$breakpoint-desktop){
 		@include destroy_container;
 		max-width: 80%;
-		margin: rhythm(6) auto;
+		@include vertical-space(4,top,margin);
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
 
 .post-disqus {
+	@include vertical-space(2,top,padding);
 	@include container;
 }
 

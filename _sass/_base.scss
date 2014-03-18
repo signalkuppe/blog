@@ -6,13 +6,13 @@
 
 
 @include global-reset;
-@include establish-baseline;
 
 * { @include box-sizing (border-box); }
 
 html{
 	height:100%;
 	width: 100%;
+	font-size: 100%;
 }
 
 html {
@@ -42,6 +42,10 @@ body {
 	margin: 0;
 }
 
+h2 {
+	@include t-medium;
+}
+
 
 a {
 	//link-colors($normal, $hover, $active, $visited, $focus)
@@ -61,12 +65,11 @@ a.container-link {
 // list in content
 
 .post-content ul {
-	@include trailer(1.5);
-	@include leader(1.5);
+	@include vertical-space(1,both,margin);
 	list-style: disc;
 	margin-left: $base-font-size*2;
 	li {
-		@include trailer(0.5);
+		@include vertical-space(0.5,bottom,margin);
 	}
 }
 
@@ -79,5 +82,9 @@ em  	{ @include font-text-italic; }
 small   { @include t-small; }
 
 p {
-	@include leader;
+	@include t-small;
+	@include vertical-space(1,bottom,margin);
+	@media screen and (min-width:$breakpoint-tablet){
+		@include t-base;
+	}
 }

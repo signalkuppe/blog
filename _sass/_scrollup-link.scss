@@ -6,8 +6,8 @@
 
 
 #scrollUp {
+    font-size: $base-font-size;
 	@include useIcon;
-    @include t-regular;
 	@include border-radius(50%);
     @extend .icon-arrow-up;
     bottom: 20px;
