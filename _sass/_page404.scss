@@ -10,15 +10,15 @@
 }
 
 .page404-title {
-	@include trailer;
-	font-size: 5rem;
+	@include t-xxxlarge;
+	@include vertical-space(1,bottom,margin);
 }
 
 .page404-icon {
-	@include trailer(2);
-	font-size: 5rem;
+	@include t-xxxlarge;
 }
 
 .page404-text{
+	@include vertical-space(4,top,margin);
 	@include t-small;
 }

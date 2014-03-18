@@ -24,7 +24,7 @@
 }
 
 .cover-header {
-   @include padding-leader;
+   @include vertical-space(1,top,padding);
 }
 
 .cover-guide,
@@ -37,8 +37,8 @@
 }
 
 .cover-guide {
-   font-size: $xxlarge-font-size;
-   margin-bottom: -$xxlarge-font-size;
+   @include t-xxlarge;
+   margin-bottom: -$xxlarge-font-size/2;
    a {
       color: $color-white;
       @include opacity(0.85);
@@ -102,11 +102,14 @@
       background: rgba(0,0,0,0.7);
       padding: 20px 40px;
       li {
+         @include vertical-space(0.75,bottom,margin);
+         &:last-child {
+            margin-bottom: 0;
+         }
          a {
+            @include t-tiny;
             @include cover-text-shadow;
             display: block;
-            padding: 5px 10px;
-            font-size: 11px;
             text-transform: uppercase;     
          }
       }
@@ -130,7 +133,6 @@
 }
 
 .cover-caption > p {
-   font-size: $base-font-size;
    @include reset;
    @include font-headings;
    @include t-light;

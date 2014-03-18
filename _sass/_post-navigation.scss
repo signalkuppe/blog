@@ -75,16 +75,19 @@
 	}
 	i {
 		@include button-icon(default-inverse);
-		@include t-large;
+		@media screen and (min-width: $breakpoint-tablet-small){
+			@include t-medium;
+		}
 	}
 	span {
+		@include t-small;
 		position: relative;
 		bottom: 5px;
 		.post-navigation-prev & {
-			margin-left: 0.25rem;
+			margin-left: 5px;
 		}
 		.post-navigation-next & {
-			margin-right: 0.25rem;
+			margin-right: 5px;
 		}
 		@media screen and (min-width: $breakpoint-tablet-small){
 			@include t-regular;
@@ -121,17 +124,15 @@
 .post-navigation-info {
 	padding-top: 30px;
 	.post-navigation-info-title {
-		@include t-regular;
 		@include truncate(250px);
 		margin: 0;
 		@media screen and (min-width: $breakpoint-desktop-large){
-			@include t-medium;
 			@include truncate(420px);
 		}
 	}
 	.post-navigation-info-date {
+		@include t-tiny;
 		@include date;
-		@include t-small;
-		margin-bottom: 0;
+		@include vertical-space(0.25,bottom,margin);
 	}
 }

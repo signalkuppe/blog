@@ -6,12 +6,12 @@
 
 
 .main-content {
-	@include trailer(2);
+	@include vertical-space(2,bottom,margin);
 	@media screen and (min-width: $breakpoint-tablet){
-      @include trailer(4);
+      @include vertical-space(4,bottom,margin);
     }
     @media screen and (min-width: $breakpoint-desktop-xlarge){
-      @include trailer(6);
+      @include vertical-space(6,bottom,margin);
    }
 }
 
@@ -20,5 +20,5 @@
 }
 
 .footer {
-	@include trailer(4);
+	@include vertical-space(4,bottom,margin);
 }

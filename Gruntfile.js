@@ -117,6 +117,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['uglify','shell']);
   grunt.registerTask('listen', ['shell:listen']);
   grunt.registerTask('compress', ['uglify','cssmin','prettify']);
-  grunt.registerTask('deploy', ['shell:build','uglify','cssmin','processhtml','prettify','shell:upload']);
+  grunt.registerTask('deploy', ['shell:build','uglify','cssmin','processhtml','prettify']);
 
 };

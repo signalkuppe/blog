@@ -6,7 +6,8 @@
 
 
 .header-simple {
-	@include trailer;
+	@include vertical-space(1,top,padding);
+	@include vertical-space(1,bottom,margin);
 	text-align: center;
 	h1,h2 {
 		@include reset;
@@ -22,21 +23,9 @@
 	}
 }
 
-.header-simple-menu {
-	@include leader;
-	ul {
-		@include inline-block-list(10px);
-		li {
-			a {
-				text-transform: uppercase;
-				color: $color-black;
-			}
-		}
-	}
-}
 
 @media screen and (min-width: $breakpoint-desktop) {
 	.header-simple {
-		@include trailer(2);
+		@include vertical-space(2,bottom,margin);
 	}
 }

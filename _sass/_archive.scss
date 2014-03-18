@@ -10,10 +10,14 @@
 
 .archive-years {
 	@include clearfix;
+	@include vertical-space(4,bottom,margin);
 	text-align: center;
 	ul {
-		@include inline-block-list;
 		li {
+			@include inline-block;
+			text-align: center;
+			@include vertical-space(0.5,bottom,margin);
+			margin-right: 5px;
 			a {
 				@include button(primary);
 			}
@@ -24,7 +28,7 @@
 .archive-posts-year {
 	@include font-headings;
 	@include t-large;
-	@include leader(2);
+	@include vertical-space(1.5,bottom,margin);
 	i {
 		display: none;
 		color: $color-primary;
@@ -36,10 +40,13 @@
 	}
 }
 
+.archive-post + .archive-posts-year {
+	@include vertical-space(4,top,margin);
+}
 
 .archive-post {
 	@include leader;
-	@include padding-trailer(0.5);
+	@include vertical-space(1,bottom,padding);
 	border-bottom: 1px solid $color-gray-light;
 	a {
 		color: $color-black;
@@ -48,8 +55,9 @@
 }
 
 .archive-post-date {
+	font-size: $small-font-size;
 	@include date;
-	@include trailer(0.5);
+	@include vertical-space(0.5,bottom,margin);
 }
 
 
@@ -60,6 +68,7 @@
 	}
 	.archive-years{
 		text-align: center;
+		@include vertical-space(6,bottom,margin);
 		ul {
 			@include inline-block-list;
 			li {
