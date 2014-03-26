@@ -12,6 +12,9 @@
    background-size: cover;
    background-color: $color-black;
    height: 100vh;
+   &.is-under-menu {
+      
+   }
 }
 
 .cover-header,
@@ -29,6 +32,8 @@
 
 .cover-guide,
 .loader-text {
+   height: 100px;
+   margin-bottom:-75px;
    position: absolute;
    bottom: 50%;
    left: 0;
@@ -36,9 +41,12 @@
    text-align: center;
 }
 
+.loader-text {
+   padding-top: 50px;
+}
+
 .cover-guide {
    @include t-xxlarge;
-   margin-bottom: -$xxlarge-font-size/2;
    a {
       color: $color-white;
       @include opacity(0.85);
@@ -50,8 +58,8 @@
 }
 
 .loader-text {
+   @include t-small;
    color: $color-white;
-   margin-bottom: -3.5rem;
 }
 
 .cover-header {
@@ -84,34 +92,52 @@
 }
 
 .cover-header-menu-toggle {
+   @include inline-block;
+   @include vertical-space(0,top,margin);
    @include cover-text-shadow;
-   font-size: $medium-font-size;
+   @include set-font-size-to($menu-button-font-size);
+   padding: 20px;
 }
 
 .cover-header-menu-wrapper {
-   @include transition(all, 1s, linear, 0.5s);
+   @include transition(all, 1.5s, linear, 0.5s);
    @include opacity(0);
    @include hide;
    position: absolute;
-   top: 150px;
+   top: 170px;
    left: 0;
    right: 0;
    text-align: center; 
    ul {
-      display: inline-block;
-      background: rgba(0,0,0,0.7);
-      padding: 20px 40px;
+      @include inline-block;
+      padding: 0px;
+      max-width: 200px;
       li {
-         @include vertical-space(0.75,bottom,margin);
-         &:last-child {
-            margin-bottom: 0;
-         }
+         @include inline-block;
+         margin-right: 20px;
+         margin-bottom: 20px;
          a {
-            @include t-tiny;
-            @include cover-text-shadow;
-            display: block;
-            text-transform: uppercase;     
+            @include border-radius(50%);
+            @include t-small;
+            @include inline-block;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            color: $color-white!important;
+            background: rgba(0,0,0,0.75);
+            &:hover,&:active {
+               background: rgba(0,0,0,1);
+            }  
          }
+         &:nth-child(2n + 2) {
+            margin-right: 0;
+            @media screen and (min-width: $breakpoint-tablet){
+               margin-right: 20px;
+            }
+         }
+      }
+      @media screen and (min-width: $breakpoint-tablet){
+         max-width: 500px;
       }
    }
    &.is-open {

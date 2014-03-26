@@ -8,7 +8,7 @@
 $legacy-support-for-ie: false;
 
 // colors
-$color-primary: #0d85bc;
+$color-primary: #066ca6;
 $color-black: #000000;
 $color-gray: #ccc;
 $color-gray-light: #eee;
@@ -29,10 +29,7 @@ $color-links-visited: $color-links;
 
 // typo
 
-/* Modular Scale
-	----------------------
-	16px @ 1:1.414		
-	----------------------*/
+
 @import url("http://fonts.googleapis.com/css?family=Oswald:400,700,300|Open+Sans:400italic,400,300,600,700");
 $font-dir: "../fonts";
 $font-headings: 'Oswald', sans-serif;
@@ -57,6 +54,8 @@ $xxlarge-font-size: 56px;
 $xxlarge-font-leading: 1;
 $xxxlarge-font-size: 64px;
 $xxxlarge-font-leading: 1;
+
+$menu-button-font-size: 24px;
 
 @mixin set-font-size-to($size){
 	font-size: $size/$rem-unit+rem;
@@ -272,14 +271,21 @@ $breakpoint-desktop-xxlarge:    2560px;
 
 @mixin site-title () {
    @include t-medium;
-   @include vertical-space(0.5,bottom,margin);
+   @include vertical-space(0.25,bottom,margin);
    text-transform: uppercase;
 }
 
 @mixin site-slogan (){
    @include t-small;
    @include t-light;
-   @include vertical-space(1,bottom,margin);
+}
+
+@mixin filter( $var ){
+	-webkit-filter: $var;
+	-moz-filter: $var;
+	-ms-filter: $var;
+	-o-filter: $var;
+	filter: $var;
 }
 
 // buttons

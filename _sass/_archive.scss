@@ -19,7 +19,20 @@
 			@include vertical-space(0.5,bottom,margin);
 			margin-right: 5px;
 			a {
-				@include button(primary);
+				@include t-small;
+				@include inline-block;
+				@include border-radius(50%);
+				line-height: 38px;
+	            width: 60px;
+	            height: 60px;
+				text-decoration: none;
+				padding: 10px;
+				border: 2px solid $color-primary;
+				text-align: center;
+				&:hover {
+					background: $color-primary;
+					color: $color-white;
+				}
 			}
 		}
 	}

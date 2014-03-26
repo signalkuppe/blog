@@ -7,6 +7,6 @@
     "scrollup": "*",
     "fastclick": "~0.6.10",
     "enquire": "~2.1.0",
-    "pace": "~0.4.17"
+    "iOS-Orientationchange-Fix": "https://github.com/scottjehl/iOS-Orientationchange-Fix.git"
   }
 }

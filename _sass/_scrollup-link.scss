@@ -6,13 +6,12 @@
 
 
 #scrollUp {
-    font-size: $base-font-size;
 	@include useIcon;
 	@include border-radius(50%);
     @extend .icon-arrow-up;
     bottom: 20px;
     right: 20px;
-    padding: 5px;
+    padding: 10px;
     text-decoration: none;
     background: rgba($color-gray-dark,0.8);
     color: $color-white;
