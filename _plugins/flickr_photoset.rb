@@ -25,9 +25,11 @@ module Jekyll
 
       @photoset       = params[0]
       @photoThumbnail = params[1] || "Large Square"
-      @photoEmbeded   = params[2] || "Medium 800"
+      @photoEmbeded   = params[2] || "Medium 640"
       @photoOpened    = params[3] || "Large"
+      @photoOpened2   = params[3] || "Original"
       @video          = params[4] || "Site MP4"
+
     end
 
     def render(context)
@@ -110,12 +112,14 @@ module Jekyll
 
       photos.photo.each_index do | i |
 
+
         title = photos.photo[i].title
         id    = photos.photo[i].id
 
         urlThumb   = String.new
         urlEmbeded = String.new
         urlOpened  = String.new
+        urlOpened2  = String.new
         urlVideo   = String.new
 
         sizes = flickr.photos.getSizes(:photo_id => id)
@@ -123,6 +127,7 @@ module Jekyll
         urlThumb       = sizes.find {|s| s.label == @photoThumbnail }
         urlEmbeded     = sizes.find {|s| s.label == @photoEmbeded }
         urlOpened      = sizes.find {|s| s.label == @photoOpened }
+        urlOpened2      = sizes.find {|s| s.label == @photoOpened2 }
         urlVideo       = sizes.find {|s| s.label == @video }
 
         photo = {
@@ -130,6 +135,7 @@ module Jekyll
           'urlThumb' => urlThumb ? urlThumb.source : '',
           'urlEmbeded' => urlEmbeded ? urlEmbeded.source : '',
           'urlOpened' => urlOpened ? urlOpened.source : '',
+          'urlOpened2' => urlOpened2 ? urlOpened2.source : '',
           'urlVideo' => urlVideo ? urlVideo.source : '',
           'urlFlickr' => urlVideo ? urlVideo.url : '',
         }

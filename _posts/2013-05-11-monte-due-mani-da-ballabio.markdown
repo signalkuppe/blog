@@ -8,10 +8,10 @@ tags: monte due mani valsassina primavera ballabio
 caption: "Il Bivacco Locatelli"
 gps: true
 flickr: 72157640366191574
-map: 45°53'49.45",9°26'58.90"
+map: 45°53’49.45",9°26’58.90"
 ---
 
-Devo sgranchire le gambe, è troppo tempo che sono fermo. Decido di andare al **Monte Due Mani** salendo da **Ballabio** visto che non ci sono mai stato. la partenza del sentiero è in Via Roma, poco dopo l'uscita della galleria proveniente da Lecco. Le pendenze sono costanti e i numerosi tornanti consentono di prendere facilmente il ritmo.
+Devo sgranchire le gambe, è troppo tempo che sono fermo. Decido di andare al **Monte Due Mani** salendo da **Ballabio** visto che non ci sono mai stato. la partenza del sentiero è in Via Roma, poco dopo l’uscita della galleria proveniente da Lecco. Le pendenze sono costanti e i numerosi tornanti consentono di prendere facilmente il ritmo.
 
 Seguo sempre le indicazioni per il **Bivacco Emanuela**, la vegetazione comincia a diradarsi favorendo splendidi panorami verso Lecco e la pianura. Attraverso quindi un bellissimo bosco di betulle e quindi con un ultima strappo arrivo al bivacco.
 

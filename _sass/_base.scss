@@ -52,6 +52,10 @@ a {
 	@include link-colors($color-links, $color-links-hover, $color-links-active, $color-links-visited, $color-links-hover);
 }
 
+a {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 p a:active {
 	background: $color-links;
 	color: $color-white;
@@ -73,6 +77,10 @@ a.container-link {
 	}
 }
 
+.post-content a {
+	@include t-strong;
+}
+
 img {
 	max-width: 100%;
 }
@@ -80,6 +88,7 @@ img {
 strong  { @include t-strong; }
 em  	{ @include font-text-italic; }
 small   { @include t-small; }
+strong  { color: $color-black;}
 
 p {
 	@include t-small;
