@@ -44,7 +44,7 @@ $small-font-size: 13px;
 $small-font-leading: 1.5;
 $base-font-size: $rem-unit;
 $base-font-leading: $base-line-height/$rem-unit;
-$medium-font-size: 24px;
+$medium-font-size: 20px;
 $medium-font-leading: 1.5;
 $large-font-size: 32px;
 $large-font-leading: 1.4;
@@ -112,33 +112,22 @@ $menu-button-font-size: 24px;
 	@if $size == "medium" {
 		@include set-font-size-to($medium-font-size);
 		@include set-leading-to($medium-font-leading);
-		@media screen and (min-width: $breakpoint-tablet){
-
-		}
 	}
 	@if $size == "large" {
 		@include set-font-size-to($large-font-size);
 		@include set-leading-to($large-font-leading);
-		@media screen and (min-width: $breakpoint-tablet){
-		}
 	}
 	@if $size == "xlarge" {
 		@include set-font-size-to($xlarge-font-size);
 		@include set-leading-to($xlarge-font-leading);
-		@media screen and (min-width: $breakpoint-tablet){
-		}
 	}
 	@if $size == "xxlarge" {
 		@include set-font-size-to($xxlarge-font-size);
 		@include set-leading-to($xxlarge-font-leading);
-		@media screen and (min-width: $breakpoint-tablet){
-		}
 	}
 	@if $size == "xxxlarge" {
 		@include set-font-size-to($xxxlarge-font-size);
 		@include set-leading-to($xxxlarge-font-leading);
-		@media screen and (min-width: $breakpoint-tablet){
-		}
 	}
 }
 

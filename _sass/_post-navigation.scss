@@ -128,11 +128,16 @@
 		margin: 0;
 		@media screen and (min-width: $breakpoint-desktop-large){
 			@include truncate(420px);
+			@include t-medium;
 		}
 	}
 	.post-navigation-info-date {
 		@include t-tiny;
 		@include date;
 		@include vertical-space(0.25,bottom,margin);
+		@media screen and (min-width: $breakpoint-desktop-large){
+			@include vertical-space(0.1,bottom,margin);
+			@include t-small;
+		}
 	}
 }

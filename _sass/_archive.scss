@@ -11,7 +11,9 @@
 .archive-years {
 	@include clearfix;
 	@include vertical-space(4,bottom,margin);
-	text-align: center;
+	max-width: 600px;
+	margin-right: auto;
+	margin-left: auto;
 	ul {
 		li {
 			@include inline-block;
