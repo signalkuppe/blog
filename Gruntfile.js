@@ -39,7 +39,7 @@ module.exports = function(grunt) {
           stdout: true
         },
         command: 'jekyll serve --watch'
-      }, 
+      },
       build:
       {                      
         options: {                    
@@ -67,11 +67,10 @@ module.exports = function(grunt) {
     },
     prettify: {
       options: {
-        indent: 3,
+        indent: 2,
         indent_char: ' ',
         wrap_line_length: 75,
-        brace_style: 'expand',
-        unformatted: ['sub']
+        brace_style: 'expand'
       },
       all: {
         expand: true,
