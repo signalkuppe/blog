@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Monviso 3.841m"
+title: "Monviso 3841m"
 date: 2009-09-06
 description: "Salita al Monviso per la via normale dal Pian del Re per il Rifugio Quintino Sella"
 categories: alpinismo
@@ -12,11 +12,11 @@ map: 44°40’3.47"N, 7° 5’25.07"E
 
 Un’altra bellissima montagna che volevo salire da tempo. Vedi sempre quel triangolo all’orizzonte e cominci a sentire un’attrazione magnetica che ti costringe a salirlo per forza. Aspettiamo Settembre, il periodo migliore per affrontare questa salita. Troveremo infatti condizioni perfette, pochissima neve e neanche una nuvola.
 
-Partiamo dal **Pian del Re**, proprio dalla sorgente del fiume Po (parcheggio a pagamento)in direzione del **Rifugio Quintino Sella**. Il sentiero che porta al rifugio,agevole e ben segnato, è dominato dall’aspra parete nord del Monviso. Tagliamo a mezza costa una vecchia morena che porta ad un pianoro di detriti lungo il quale si snoda l’ultimo tratto del percorso ed in circa due ore arriviamo al confortevole e panoramico Rifugio.
+Partiamo dal **Pian del Re**, proprio dalla sorgente del fiume Po (parcheggio a pagamento) in direzione del **Rifugio Quintino Sella**. Il sentiero che porta al rifugio, agevole e ben segnato, è dominato dall’aspra parete nord del Monviso. Tagliamo a mezza costa una vecchia morena che porta ad un pianoro di detriti lungo il quale si snoda l’ultimo tratto del percorso ed in circa due ore arriviamo al confortevole e panoramico Rifugio.
 
-La vista sulla pianura cuneese è spettacolare, soprattutto al tramonto. Non c’è tantissima gente, il mangiare non è malvagio. Tutti a letto alle 22 visto che la sveglia suono alle 4. Alle luci delle frontali imbocchiamo il sentiero che aggira il laghetto sotto il rifugio e sale in direzione del **Passo delle Sagnette**. E qui la prima difficoltà: una bella ferrata fisica e abbastanza esposta. Raggiungiamo il passo dal quale è visibile la parete sud, lungo la quale sale la via normale.
+La vista sulla pianura cuneese è spettacolare, soprattutto al tramonto. Non c’è tantissima gente, il mangiare non è malvagio. Tutti a letto alle 22 visto che la sveglia suona alle 4. Alle luci delle frontali imbocchiamo il sentiero che aggira il laghetto sotto il rifugio e sale in direzione del **Passo delle Sagnette**. E qui la prima difficoltà: una bella ferrata fisica e abbastanza esposta. Raggiungiamo il passo dal quale è visibile la parete sud, lungo la quale sale la via normale.
 
-Dal passo si perdono circa 80-90 metri di quota per poi iniziare l’avvicinamento al **Bivacco Andreotti** lungo una vallone detrico. Questo è il tratto più noioso della salita (specialmente al ritorno). L’ultimo tratto è molto ripido e taglia le gambe. Al bivacco mangiamo qualcosa ma ci rimettiamo subito in marcia visto che manca il ancora il tratto più impegnativo della via. Subito dopo il bivacco troviamo quel che rimane dell’ex ghiacciaio Sella, ormai ridotto a semplice nevaio.
+Dal passo si perdono circa 80-90 metri di quota per poi iniziare l’avvicinamento al **Bivacco Andreotti** lungo una vallone detrico. Questo è il tratto più noioso della salita (specialmente al ritorno). L’ultimo tratto è molto ripido e taglia le gambe. Al bivacco mangiamo qualcosa ma ci rimettiamo subito in marcia visto che manca ancora il tratto più impegnativo della via. Subito dopo il bivacco troviamo quel che rimane dell’ex ghiacciaio Sella, ormai ridotto a semplice nevaio.
 
 Dopo il nevaio inizia la parete vera e propria. Il primo tratto è un semplice traverso orizzontale. Dopodichè si affrontano la **&ldquo;cascatella&rdquo;** e il **&ldquo;Diedro camino&rdquo;** con arrampicata sul II grado. Dopo questa prima arrampicata si prosegue per facile sentiero fra sfasciumi fino ad arrivare alla guglia denominata **&ldquo;Duomo di Milano&rdquo;**. Dopo il Duomo di Milano arriva il **Camino dei &ldquo;Fornelli&rdquo;** forse il tratto più impegnativo della via, anche se mai realmente difficile (quando è in condizioni, con del vetrato non sarebbe stata una passeggiata). Si arriva quindi ad un traverso sul canalone Grande di Viso che mette in comunicazione la parete sud e la parete Est. Da qui per facili roccette raggiungiamo la vetta (5h circa).
 

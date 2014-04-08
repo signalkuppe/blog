@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Lagginhorn 4.010m, cresta ovest"
+title: "Lagginhorn 4010m, cresta ovest"
 date: 2009-07-28
 description: "Ascesa al Lagginhorn per la via normale dalla cresta ovest. Pernottamento alla Weissmieshutte"
 categories: alpinismo

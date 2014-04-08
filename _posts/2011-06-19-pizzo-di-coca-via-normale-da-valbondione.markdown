@@ -12,7 +12,7 @@ map: 46°4’18.28",10° 0’40.05"
 
 Quando ti viene la voglia di andare, ti vengono anche delle idee strane, tipo battere il tuo record di dislivello in una sola giornata. Coinvolgo mio padre come sempre e quindi **Pizzo di Coca 3052 m da Valbondione, Valle Seriana, località Sambughera 988 m. Totale 2064 metri.**
 
-Partenza alle ore 7, dopo le solite due ore di macchina da casa, e via per il **sentiero 301** che strappa ripido per il **Rifugio Coca**.
+Partenza alle ore 7 dopo le solite due ore di macchina da casa e via per il **sentiero 301** che strappa ripido per il **Rifugio Coca**.
 
 Giornata splendida, dopo una notte di forti temporali e pioggia da uragano. Poco sotto il rifugio si deve attraversare il torrente su un ponte e salire una scalinata di cemento. Cascata d’acqua impressionante. Ci siamo dovuti attaccare ai corrimano per non essere trascinati via. Quindi piedi a mollo e pantaloni zuppi. Sosta al Rifugio Coca a 1892 m per una generale strizzata di abiti e calze, rapido cambio di magliette, torta con tè caldo ristoratore per essere pronti di nuovo.
 
