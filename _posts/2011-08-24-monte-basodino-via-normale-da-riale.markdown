@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Monte Basodino 3.273m"
+title: "Monte Basodino 3273m"
 date: 2011-08-24
 description: "Salita al Monte Basodino per la via normale dalla Bocchetta di Castel: partenza da Riale e pernottamento al Rifugio Maria Luisa"
 categories: alpinismo

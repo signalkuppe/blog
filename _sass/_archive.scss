@@ -10,8 +10,8 @@
 
 .archive-years {
 	@include clearfix;
-	@include vertical-space(4,bottom,margin);
-	max-width: 600px;
+	@include vertical-space(2,bottom,margin);
+	max-width: 500px;
 	margin-right: auto;
 	margin-left: auto;
 	ul {

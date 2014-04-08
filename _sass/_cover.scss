@@ -12,9 +12,6 @@
    background-size: cover;
    background-color: $color-black;
    height: 100vh;
-   &.is-under-menu {
-      
-   }
 }
 
 .cover-header,
@@ -42,7 +39,7 @@
 }
 
 .loader-text {
-   padding-top: 50px;
+   padding-top: 55px;
 }
 
 .cover-guide {
@@ -110,6 +107,7 @@
    text-align: center; 
    ul {
       @include inline-block;
+      text-transform: uppercase;
       padding: 0px;
       max-width: 200px;
       li {
@@ -118,13 +116,13 @@
          margin-bottom: 20px;
          a {
             @include border-radius(50%);
-            @include t-small;
+            @include t-tiny;
             @include inline-block;
             width: 70px;
             height: 70px;
             line-height: 70px;
             color: $color-white!important;
-            background: rgba(0,0,0,0.75);
+            background: rgba(0,0,0,1);
             &:hover,&:active {
                background: rgba(0,0,0,1);
             }  
