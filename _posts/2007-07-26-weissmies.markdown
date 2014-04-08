@@ -13,7 +13,7 @@ Rieccoci di nuovo a 4000m (per la nona volta): obiettivo il Weissmies, 4027m, un
 
 Dopo una breve perlustrazione al ghiacciaio, scendiamo alla Weissmieshutte, un accogliente e comodo rifugio situato poco sopra il primo troncone della funivia, a 2796m. Il giorno successivo sveglia alle 3:45, una rapida colazione e partiamo con le luci delle frontali.
 
-Lasciamo a sinistra il sentiero che porta verso il Fletschorn e risaliamo i facili pendii che ci riportano sul **Triftgletscher**. Montiamo i ramponi e incominciamo la marcia sul ghiacciaio molto crepacciato. Alcuni rinunciano proprio davanti ad un bel buco! La prima rampa è ripida, ed anche un pò esposta, bisogna fare un pò di attenzione.
+Lasciamo a sinistra il sentiero che porta verso il Fletschorn e risaliamo i facili pendii che ci riportano sul **Triftgletscher**. Montiamo i ramponi e incominciamo la marcia sul ghiacciaio molto crepacciato. Alcuni rinunciano proprio davanti ad un bel buco! La prima rampa è ripida, ed anche un legegrmente esposta, bisogna fare un po’ di attenzione.
 
 Il resto della salita è semplice, ma abbastanza faticoso. Si giunge in cresta e si arriva ad una piccola **sella a 3750m** prima della rampa finale. L’ultimo tratto è più ripido ma ormai niente può più fermarci. Il panorama dalla vetta è spettacolare, si vedono Lago Maggiore, il Lago d’Orta, le pianure lombarde, tutti i 4000m del valllese e il Monte Rosa.
 
