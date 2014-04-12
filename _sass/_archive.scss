@@ -29,10 +29,12 @@
 	            height: 60px;
 				text-decoration: none;
 				padding: 10px;
-				border: 2px solid $color-primary;
+				border: 2px solid $color-gray;
 				text-align: center;
+				color: $color-black;
 				&:hover {
 					background: $color-primary;
+					border: 2px solid $color-primary;
 					color: $color-white;
 				}
 			}
@@ -72,18 +74,18 @@
 .archive-post-date {
 	font-size: $small-font-size;
 	@include date;
-	@include vertical-space(0.5,bottom,margin);
+	@include vertical-space(0.25,bottom,margin);
 }
 
 
-@media screen and (min-width: $breakpoint-desktop){
+@media screen and (min-width: $breakpoint-tablet){
 	.archive {
-		width: 800px;
+		width: 768px;
 		margin: 0 auto;
 	}
 	.archive-years{
 		text-align: center;
-		@include vertical-space(6,bottom,margin);
+		@include vertical-space(4,bottom,margin);
 		ul {
 			@include inline-block-list;
 			li {

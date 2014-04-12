@@ -12,6 +12,9 @@
    background-size: cover;
    background-color: $color-black;
    height: 100vh;
+   &.is-under-menu{
+      @include filter(grayscale(100%));
+   }
 }
 
 .cover-header,
@@ -118,13 +121,15 @@
             @include border-radius(50%);
             @include t-tiny;
             @include inline-block;
-            width: 70px;
-            height: 70px;
-            line-height: 70px;
+            width: 72px;
+            height: 72px;
+            line-height: 66px;
             color: $color-white!important;
+            border: 3px solid $color-white;
             background: rgba(0,0,0,1);
             &:hover,&:active {
                background: rgba(0,0,0,1);
+              // border: 3px solid $color-white;
             }  
          }
          &:nth-child(2n + 2) {

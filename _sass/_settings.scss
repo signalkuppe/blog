@@ -46,10 +46,12 @@ $base-font-size: $rem-unit;
 $base-font-leading: $base-line-height/$rem-unit;
 $medium-font-size: 20px;
 $medium-font-leading: 1.5;
+$big-font-size: 24px;
+$big-font-leading: 1.5;
 $large-font-size: 32px;
 $large-font-leading: 1.4;
 $xlarge-font-size: 42px;
-$xlarge-font-leading: 1.4;
+$xlarge-font-leading: 1.5;
 $xxlarge-font-size: 56px;
 $xxlarge-font-leading: 1;
 $xxxlarge-font-size: 64px;
@@ -113,6 +115,10 @@ $menu-button-font-size: 24px;
 		@include set-font-size-to($medium-font-size);
 		@include set-leading-to($medium-font-leading);
 	}
+	@if $size == "big" {
+		@include set-font-size-to($big-font-size);
+		@include set-leading-to($big-font-leading);
+	}
 	@if $size == "large" {
 		@include set-font-size-to($large-font-size);
 		@include set-leading-to($large-font-leading);
@@ -142,6 +148,7 @@ $menu-button-font-size: 24px;
 @mixin t-small    { @include typeSize(small); }
 @mixin t-base     { @include typeSize(base);  }
 @mixin t-medium   { @include typeSize(medium);}
+@mixin t-big      { @include typeSize(big);}
 @mixin t-large    { @include typeSize(large); }
 @mixin t-xlarge   { @include typeSize(xlarge);}
 @mixin t-xxlarge  { @include typeSize(xxlarge);}
@@ -200,12 +207,11 @@ $breakpoint-desktop-xxlarge:    2560px;
 }
 
 @mixin hide () {
-	position: absolute;
-	clip: rect(0px 0px 0px 0px);
+	visibility: hidden;
 }
 
 @mixin show () {
-	clip: auto;
+	visibility: visible;
 }
 
 @mixin cover-text-shadow () {
@@ -259,9 +265,12 @@ $breakpoint-desktop-xxlarge:    2560px;
 }
 
 @mixin site-title () {
-   @include t-medium;
-   @include vertical-space(0.25,bottom,margin);
-   text-transform: uppercase;
+	@include t-medium;
+	@include vertical-space(0.25,bottom,margin);
+	text-transform: uppercase;
+	@media screen and (min-width: $breakpoint-desktop){
+		@include t-big;
+	}
 }
 
 @mixin site-slogan (){

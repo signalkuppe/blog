@@ -14,6 +14,6 @@ Era da un po’ che volevo fotografare il tramonto dal **Monte Barro**. Partiamo
 
 Sono le 18 il sole comincia ad abbassarsi, c'è molta foschia e siamo ababstanza scettici sulla riuscita delle foto. All'improvviso spunta un bellissimo **fagiano** che decide purtroppo di battare subito in ritirata precludendoci qualsiasi tentativo di scatto. Continuiamo lungo il facile sentiero fino all'attacco della **crestina finale**.
 
-Alle 18:30 il sole sta per sparire dietro il **Cornizzolo**: proprio in quel momento mi trovo di fianco ad un bellissimo albero in fiore. Monto rapidamente il grandangolo, attivo il flash di reimpimento e scatto. I **laghi brianzoli** sono in una posizione perfetta per dare ulteriore profondità all'immagine. Monto il tele in fretta per riprendere il un dettaglio del Cornizzolo prima che sparisca nell'ombra.
+Alle 18:30 il sole sta per sparire dietro il **Cornizzolo**: proprio in quel momento mi trovo di fianco ad un bellissimo rododendro in fiore. Monto rapidamente il grandangolo, attivo il flash di reimpimento e scatto. I **laghi brianzoli** sono in una posizione perfetta per dare ulteriore profondità all'immagine. Monto il tele in fretta per riprendere il un dettaglio del Cornizzolo prima che sparisca nell'ombra.
 
 Riusciamo a scendere senza la frontali fino al percheggio dove non può mancare una foto alla **SS36** con lae scie delle macchine al rientro dal weekend. La sera è proprio il momento ideale per salire questa semplice e panoramicissima cima.
