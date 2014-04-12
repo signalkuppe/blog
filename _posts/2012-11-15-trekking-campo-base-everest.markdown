@@ -4,7 +4,7 @@ title:  "Trekking al campo base dell’Everest"
 date: 2012-11-15
 description: "Trekking al campo base dell’Everest con partenza da Lukla, salita al Cho-La Pass e discesa dalla valle di Gokyo"
 categories: trekking
-tags: campo base Everest Khumbu Cho-La Pass Gokyo Nepal
+tags: world Everest Khumbu Cho-La Pass Gokyo Nepal
 caption: "Portatore nella valle del Khumbu"
 flickr: 72157632129604539
 map: 27°48’16.53", 86°43’2.39"

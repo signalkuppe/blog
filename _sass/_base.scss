@@ -13,9 +13,6 @@ html{
 	height:100%;
 	width: 100%;
 	font-size: 100%;
-}
-
-html {
 	/* killing 300ms touch delay in IE */
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
@@ -24,6 +21,7 @@ html {
 body {
 	@include font-text;
 	@include t-base;
+	text-rendering: optimizeLegibility;
 }
 
 ::selection {

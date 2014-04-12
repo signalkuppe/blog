@@ -100,7 +100,7 @@
 .post-gallery {
 	@include container;
 	@include clearfix;
-	@include vertical-space(2,top,margin);
+	@include vertical-space(4,top,margin);
 	text-align: center;
 	.post-gallery-caption{
 		@include hide;
