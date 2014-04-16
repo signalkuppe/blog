@@ -22,6 +22,10 @@ body {
 	@include font-text;
 	@include t-base;
 	text-rendering: optimizeLegibility;
+	&.black {
+		background: $color-black;
+	}
+
 }
 
 ::selection {
