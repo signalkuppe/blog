@@ -1,0 +1,89 @@
+/*
+*
+* #meteo
+*
+**/
+
+.meteo {
+	color:$color-white!important;;
+	padding: 20px;
+	max-width: 450px;
+	margin: 0 auto;
+	text-align: center;
+	h1 {
+		color:$color-gray!important;
+		@include font-text;
+		@include t-big;
+		@include vertical-space(1,bottom,margin);
+	}
+	.meteo-unit {
+		@include t-light;
+		color:$color-gray!important;
+	}
+}
+
+.meteo-description,
+.meteo-update {
+	@include t-small;
+	@include t-light;
+	color:$color-text-light!important;
+	strong {
+		color: $color-gray;
+	}
+}
+
+.meteo-description {
+	@include vertical-space(0.15,bottom,margin);
+}
+
+.meteo-update {
+	@include vertical-space(1.5,bottom,margin);
+}
+
+.meteo-rain {
+	@include vertical-space(2,bottom,margin);
+}
+
+.meteo-current-temperature,
+.meteo-current-umidity,
+.meteo-current-pressure,
+.meteo-rain-rate,
+.meteo-rain-daily {
+	@include vertical-space(0.25,bottom,margin);
+	text-align: center;
+	@include t-xlarge;
+	@include t-ultrastrong;
+	margin-right: 15px;
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.meteo-extremes {
+	h1 {
+		@include t-big;
+		@include t-light;
+		@include vertical-space(1,bottom,margin);
+		@include vertical-space(2,top,margin);
+	}
+	table {
+		width: 140px;
+		margin: 0 auto;
+		td {
+			padding-bottom: 10px;
+			@include t-strong;
+			color:$color-white!important;
+		}
+		td.meteo-extremes-param {
+			padding-right: 10px;
+			@include t-light;
+		}
+	}
+}
+
+.meteo-graphs{
+	@include vertical-space(2,top,margin);
+	img {
+		@include vertical-space(0.5,bottom,margin);
+	}
+}

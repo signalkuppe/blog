@@ -11,6 +11,9 @@
 	text-align: center;
 	h1,h2 {
 		@include reset;
+		.black & {
+			color:$color-white!important;
+		}
 	}
 	h1 {
 		@include site-title;

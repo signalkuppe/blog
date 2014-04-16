@@ -27,7 +27,8 @@ module.exports = function(grunt) {
             'js/print.js',
             'js/scrollup.js',
             'js/fastclick.js',
-            'js/web-app-links-safari.js'
+            'js/web-app-links-safari.js',
+            'js/meteo.js'
           ]
         }
       }
@@ -61,7 +62,7 @@ module.exports = function(grunt) {
         banner: '/* I\'ve compressed this stylesheet to save 25kb */'
       },
         files: {
-          'css/app.min.css': ['css/app.css']
+          '_site/css/app.min.css': ['_site/css/app.css']
         }
       }
     },
