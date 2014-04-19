@@ -41,7 +41,7 @@
 			captionOn = function()
 			{
 				var description = $( 'a[href="' + $( '#imagelightbox' ).attr( 'src' ) + '"] img' ).attr( 'alt' );
-				if( description.length > 0 )
+				if( description && description.length > 0 )
 					$( '<div id="imagelightbox-caption"><span>' + description + '</span></div>' ).appendTo( 'body' );
 			},
 			captionOff = function()
@@ -57,6 +57,7 @@
 			onLoadStart: 	function() { captionOff(); activityIndicatorOn(); },
 			onLoadEnd:	 	function() { captionOn(); activityIndicatorOff(); }
 		});
+
 
 	});
 
