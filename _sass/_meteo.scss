@@ -46,6 +46,7 @@
 
 .meteo-current-temperature,
 .meteo-current-umidity,
+.meteo-current-wind,
 .meteo-current-pressure,
 .meteo-rain-rate,
 .meteo-rain-daily {
@@ -57,7 +58,13 @@
 	&:last-child {
 		margin-right: 0;
 	}
+	.meteo-current-wind-dir {
+		@include t-base;
+		@include t-light;
+		color:$color-gray!important;
+	}
 }
+
 
 .meteo-extremes {
 	h1 {
@@ -82,8 +89,19 @@
 }
 
 .meteo-graphs{
-	@include vertical-space(2,top,margin);
+	@include vertical-space(3,top,margin);
+	@include vertical-space(4,bottom,padding);
 	img {
 		@include vertical-space(0.5,bottom,margin);
+	}
+	a {
+		@include t-small;
+		color: $color-white;
+		text-decoration: none;
+		i {
+			@include t-xxlarge;
+			display: block;
+			@include vertical-space(0.25,bottom,margin);
+		}
 	}
 }

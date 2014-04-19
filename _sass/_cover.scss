@@ -12,9 +12,6 @@
    background-size: cover;
    background-color: $color-black;
    height: 100vh;
-   @include transition-property(height,width);
-   @include transition-duration(1s);
-   @include transition-timing-function(ease-in);
    &.is-under-menu{
       @include filter(grayscale(100%));
    }
