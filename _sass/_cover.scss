@@ -63,6 +63,7 @@
 }
 
 .cover-header {
+   @include background-image(linear-gradient($color-black, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.1) 85%, transparent));
    position: absolute;
    top: 0px;
    left: 0;
@@ -70,7 +71,6 @@
    height: 0;
    text-align: center;
    min-height: 94px;
-   background:rgba(0,0,0,0) image-url("menu.png") top left;
    a {
       color: white;
       text-decoration: none;  
@@ -98,54 +98,46 @@
    @include set-font-size-to($menu-button-font-size);
    padding: 20px;
 }
-
-.cover-header-menu-wrapper {
+.menu {
    @include transition(all, 1.5s, linear, 0.5s);
-   @include opacity(0);
-   @include hide;
-   position: absolute;
-   top: 170px;
-   left: 0;
-   right: 0;
-   text-align: center; 
+   background: $color-black;
+   height: 0;
+   &.is-open {
+      height: 40px;
+   }
+}
+
+
+.menu-wrapper {
+   padding: 10px 0px;
    ul {
-      @include inline-block;
-      text-transform: uppercase;
-      padding: 0px;
-      max-width: 200px;
-      li {
-         @include inline-block;
-         margin-right: 20px;
-         margin-bottom: 20px;
-         a {
-            @include border-radius(50%);
-            @include t-tiny;
-            @include inline-block;
-            width: 72px;
-            height: 72px;
-            line-height: 66px;
-            color: $color-white!important;
-            border: 3px solid $color-white;
-            background: rgba(0,0,0,1);
-            &:hover,&:active {
-               background: rgba(0,0,0,1);
-              // border: 3px solid $color-white;
-            }  
-         }
-         &:nth-child(2n + 2) {
-            margin-right: 0;
-            @media screen and (min-width: $breakpoint-tablet){
-               margin-right: 20px;
-            }
-         }
-      }
-      @media screen and (min-width: $breakpoint-tablet){
-         max-width: 500px;
+      text-align: center;
+      visibility: hidden;
+      .is-open & {
+         visibility: visible;
       }
    }
-   &.is-open {
-      @include opacity(1);
-      @include show;
+   li {
+         @include inline-block;
+   }
+   a {
+      @include t-tiny;
+      @include inline-block;
+      padding: 10px;
+      color: lighten($color-text-light,30%);
+      text-decoration: none;
+      text-transform: uppercase;
+      &:hover {
+         color: $color-white;
+      }
+      i {
+         color: lighten($color-text-light,50%);
+      }
+   }
+   @media screen and (min-width: $breakpoint-tablet){
+      a {
+         @include t-small;
+      }
    }
 }
 
