@@ -68,10 +68,10 @@ module.exports = function(grunt) {
     },
     prettify: {
       options: {
-        indent: 2,
+        indent: 3,
         indent_char: ' ',
-        wrap_line_length: 75,
-        brace_style: 'expand'
+        wrap_line_length: 0,
+        brace_style: 'end-expand'
       },
       all: {
         expand: true,

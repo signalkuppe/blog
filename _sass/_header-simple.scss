@@ -4,16 +4,33 @@
 *
 **/
 
+.header-simple-menu {
+	@include background-image(linear-gradient($color-gray, $color-white));
+	.menu-wrapper {
+		a {
+		  color: $color-text-light;
+		  &:hover {
+		     color: $color-black;
+		  }
+	      i {
+	         color: darken($color-text-light,10%);
+	      }
+		}
+	}
+	&.is-open {
+	  height: 60px;
+	}
+}
+
+.header-simple-navigation {
+	@include vertical-space(1,top,padding);
+}
 
 .header-simple {
-	@include vertical-space(1,top,padding);
-	@include vertical-space(1,bottom,margin);
+	@include vertical-space(0.5,bottom,margin);
 	text-align: center;
 	h1,h2 {
 		@include reset;
-		.black & {
-			color:$color-white!important;
-		}
 	}
 	h1 {
 		@include site-title;
@@ -23,12 +40,7 @@
 	}
 	a {
 		text-decoration: none;
-	}
-}
-
-
-@media screen and (min-width: $breakpoint-desktop) {
-	.header-simple {
-		@include vertical-space(2,bottom,margin);
+		color: $color-black;
+		text-shadow: none;
 	}
 }

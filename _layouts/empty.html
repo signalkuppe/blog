@@ -2,11 +2,14 @@
 <html lang="it" id="top">
 {% include head.html %}
   <body>
-      <header role="navigation" class="header-simple">
+    <header role="navigation" class="menu header-simple-menu" id="menu-container">
+      {% include main-menu.html %}
+    </header>
+      <div role="navigation" class="header-simple">
         <div class="header-simple-navigation">
             {% include branding.html %}
         </div>
-      </header>
+      </div>
       <!--/header--> 
       <section role="main">
         {{ content }}
