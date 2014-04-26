@@ -12,9 +12,6 @@
    background-size: cover;
    background-color: $color-black;
    height: 100vh;
-   &.is-under-menu{
-      @include filter(grayscale(100%));
-   }
 }
 
 .cover-header,
