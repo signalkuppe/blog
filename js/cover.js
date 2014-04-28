@@ -60,20 +60,6 @@ $(document).ready(function()
 		    coverdiv.addClass('is-rendered');
 		}
 
-		function checkGuide ()
-		{
-			if($menucontainer.hasClass('is-open'))
-			{
-				coverguide.hide();
-				coverdiv.addClass('is-under-menu');
-			}
-			else
-			{
-				coverguide.show()
-				coverdiv.removeClass('is-under-menu');
-			}
-		}
-
 		handleResize();
 		
 		$(window).resize(function(){
@@ -92,12 +78,10 @@ $(document).ready(function()
 	$menubutton.click(function()
 	{
 		$menucontainer.toggleClass("is-open");
-		checkGuide();
 	});
 
 	$(document).keyup(function(e) {     
 	    if(e.keyCode== 27) {
-	        coverguide.show();
 	        if($menucontainer.hasClass("is-open"))
 	        {
 	        	$menucontainer.removeClass('is-open')
