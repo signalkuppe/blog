@@ -135,6 +135,7 @@
 		@include t-tiny;
 		@include date;
 		@include vertical-space(0.25,bottom,margin);
+		-webkit-text-stroke: 0.35px;
 		@media screen and (min-width: $breakpoint-desktop-large){
 			@include vertical-space(0.1,bottom,margin);
 			@include t-small;

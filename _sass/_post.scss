@@ -24,10 +24,16 @@
 	}
 }
 
-.post-date {
+.post-date,
+.post-signalkuppe {
 	@include date;
 	@include t-small;
 	text-align: center;
+	-webkit-text-stroke: 0.35px;
+}
+
+.post-signalkuppe {
+	text-transform: none;
 }
 
 .post-author {
@@ -110,23 +116,23 @@
 		li {
 			@include inline-block;
 			margin: 0 0.5rem 0.5rem 0;
+			width: 80px;
 			img {
 				@include border-radius(50%);
 				border: 6px solid;
 				border-color: $color-gray-light;
-				width: 80px;
-				@media screen and (min-width:$breakpoint-tablet){
-					width: 100px;
-				}
-				@media screen and (min-width:$breakpoint-desktop){
-					width: 120px;
-				}
-				@media screen and (min-width:$breakpoint-desktop-xlarge){
-					width: 150px;
-				}
 			}
 			a:hover img {
 				border-color: $color-primary;
+			}
+			@media screen and (min-width:$breakpoint-tablet){
+				width: 100px;
+			}
+			@media screen and (min-width:$breakpoint-desktop){
+				width: 120px;
+			}
+			@media screen and (min-width:$breakpoint-desktop-xlarge){
+				width: 150px;
 			}
 		}
 		&.post-gallery-list--mobile {
@@ -147,3 +153,41 @@
 	@include container;
 }
 
+ul.signalkuppe-work {
+	@include clearfix;
+	@include vertical-space(2,both,margin);
+	list-style:none;
+	list-style-type: none;
+	margin-left:0!important;
+	padding: 0;
+	li {
+		float: left;
+		width: 33.3%;
+		@media screen and (min-width:$breakpoint-tablet-small){
+			width: 25%;
+		}
+		@media screen and (min-width:$breakpoint-desktop-large){
+			width: 20%;
+		}
+		a,img {
+			@include transition(all,0.3s,ease-in-out);
+		}
+		a:hover img {
+			@include transform(scale(1.1));
+		}
+	}
+	@media screen and (min-width:$breakpoint-tablet){
+		@include vertical-space(4,both,margin);
+	}
+	@media screen and (min-width:$breakpoint-desktop-large){
+		@include vertical-space(5,both,margin);
+	}
+}
+
+.signalkuppe-contact {
+	text-align: center;
+	a {
+		@include button(primary);
+		margin-right: 10px;
+	}
+}
