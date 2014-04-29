@@ -8,6 +8,7 @@
 @include global-reset;
 
 * { @include box-sizing (border-box); }
+* {-webkit-tap-highlight-color: rgba(0,0,0,0);}
 
 html{
 	height:100%;
@@ -21,7 +22,6 @@ html{
 body {
 	@include font-text;
 	@include t-base;
-	text-rendering: optimizeLegibility;
 	&.black {
 		background: $color-black;
 	}
@@ -52,10 +52,6 @@ h2 {
 a {
 	//link-colors($normal, $hover, $active, $visited, $focus)
 	@include link-colors($color-links, $color-links-hover, $color-links-active, $color-links-visited, $color-links-hover);
-}
-
-a {
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 p a:active {
@@ -95,6 +91,7 @@ strong  { color: $color-black;}
 p {
 	@include t-small;
 	@include vertical-space(1,bottom,margin);
+	-webkit-text-stroke: 0.35px;
 	@media screen and (min-width:$breakpoint-tablet){
 		@include t-base;
 	}

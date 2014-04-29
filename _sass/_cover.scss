@@ -120,6 +120,7 @@
    a {
       @include t-tiny;
       @include inline-block;
+      -webkit-text-stroke: 0.35px;
       padding: 10px;
       color: lighten($color-text-light,30%);
       text-decoration: none;

@@ -265,12 +265,9 @@ $breakpoint-desktop-xxlarge:    2560px;
 }
 
 @mixin site-title () {
-	@include t-medium;
+	@include t-big;
 	@include vertical-space(0.25,bottom,margin);
 	text-transform: uppercase;
-	@media screen and (min-width: $breakpoint-desktop){
-		@include t-big;
-	}
 }
 
 @mixin site-slogan (){
