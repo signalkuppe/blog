@@ -15,18 +15,14 @@
     -->
 <head>
     <meta charset="utf-8">
-    <!--######## TEMP ##########-->
-    <meta name="robots" content="noindex">
-    <!--######## TEMP ##########-->
     <title>{{ site.name }} | {{ page.title }}</title>
     {% if page.description %}
     <meta name="description" content="{{page.description}}" />
     {% else %}
     <meta name="description" content="{{site.description}}" />
     {% endif %}
-    
     <!--facebook -->
-    <meta property="og:image" content="{{ site.url}}/img/covers/{{ page.date| date: "%d%m%y" }}/cover.jpg" />
+    <meta property="og:image" content="{{site.url}}/img/covers/{{ page.date| date: "%d%m%y" }}/cover.jpg" />
     <meta property="og:title" content="{{ page.title }}"/>
     <meta property="og:site_name" content="{{ site.name }}"/>
     <meta property="og:type" content="blog"/>
@@ -38,7 +34,8 @@
     <link rel="apple-touch-icon" href="{{ site.baseurl}}img/favicons/apple-touch-icon.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl}}img/favicons/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="{{ site.baseurl}}img/favicons/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ site.baseurl}}img/favicons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="{{site.baseurl}}img/favicons/apple-touch-icon-72x72.png" />
+    <link rel="canonical" href="{{site.url}}{{page.url}}"/>
     <!--css-->
     <!-- build:css {{ site.baseurl }}css/app.min.css -->
     <link rel="stylesheet" href="{{ site.baseurl}}css/app.css" />

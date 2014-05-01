@@ -29,7 +29,6 @@
 	@include date;
 	@include t-small;
 	text-align: center;
-	-webkit-text-stroke: 0.35px;
 }
 
 .post-signalkuppe {
@@ -189,5 +188,11 @@ ul.signalkuppe-work {
 	a {
 		@include button(primary);
 		margin-right: 10px;
+		&.signalkuppe-contact-scarica {
+			display: none;
+			@media screen and (min-width:$breakpoint-desktop){
+				display: inline-block;
+			}
+		}
 	}
 }
