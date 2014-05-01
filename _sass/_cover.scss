@@ -28,7 +28,7 @@
 }
 
 .cover-guide,
-.loader-text {
+.loader {
    height: 100px;
    margin-bottom:-75px;
    position: absolute;
@@ -39,7 +39,8 @@
 }
 
 .loader-text {
-   padding-top: 55px;
+   padding-bottom: 10px;
+   color: $color-white;
 }
 
 .cover-guide {

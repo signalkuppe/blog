@@ -91,7 +91,6 @@ strong  { color: $color-black;}
 p {
 	@include t-small;
 	@include vertical-space(1,bottom,margin);
-	-webkit-text-stroke: 0.35px;
 	@media screen and (min-width:$breakpoint-tablet){
 		@include t-base;
 	}
