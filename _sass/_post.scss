@@ -185,6 +185,7 @@ ul.signalkuppe-work {
 
 .signalkuppe-contact {
 	text-align: center;
+	@include vertical-space(2,bottom,padding);
 	a {
 		@include button(primary);
 		margin-right: 10px;
@@ -194,5 +195,11 @@ ul.signalkuppe-work {
 				display: inline-block;
 			}
 		}
+	}
+	@media screen and (min-width:$breakpoint-tablet){
+		@include vertical-space(4,bottom,padding);
+	}
+	@media screen and (min-width:$breakpoint-desktop-large){
+		@include vertical-space(5,bottom,padding);
 	}
 }
