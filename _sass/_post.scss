@@ -4,10 +4,6 @@
 *
 **/
 
-.post p {
-	@include csshyphenation;
-}
-
 .post-header {
 	@include vertical-space(2,both,margin);
 	@media screen and (min-width:$breakpoint-tablet){
@@ -185,7 +181,7 @@ ul.signalkuppe-work {
 
 .signalkuppe-contact {
 	text-align: center;
-	@include vertical-space(2,bottom,padding);
+	@include vertical-space(4,bottom,margin);
 	a {
 		@include button(primary);
 		margin-right: 10px;
@@ -197,9 +193,20 @@ ul.signalkuppe-work {
 		}
 	}
 	@media screen and (min-width:$breakpoint-tablet){
-		@include vertical-space(4,bottom,padding);
+		@include vertical-space(5,bottom,padding);
 	}
 	@media screen and (min-width:$breakpoint-desktop-large){
-		@include vertical-space(5,bottom,padding);
+		@include vertical-space(6,bottom,padding);
+	}
+}
+
+.signalkuppe-license {
+	@include vertical-space(2,bottom,padding);
+	text-align: center;
+	img {
+		@include vertical-space(1,bottom,padding);
+	}
+	p {
+		@include t-tiny;
 	}
 }
