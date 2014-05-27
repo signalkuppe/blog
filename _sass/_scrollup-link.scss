@@ -6,13 +6,19 @@
 
 
 #scrollUp {
-	@include useIcon;
 	@include border-radius(50%);
-    @extend .icon-arrow-up;
+    width: 32px;
+    height: 32px;
     bottom: 20px;
     right: 20px;
-    padding: 10px;
     text-decoration: none;
+    text-align: center;
     background: rgba($color-gray-dark,0.8);
-    color: $color-white;
+    .icon {
+    	padding: 6px;
+    	width: 32px;
+    	height: 32px;
+    	vertical-align: middle;
+		fill: $color-white;
+    }
 }

@@ -12,9 +12,6 @@
 		  &:hover {
 		     color: $color-black;
 		  }
-	      i {
-	         color: darken($color-text-light,10%);
-	      }
 		}
 	}
 	&.is-open {
@@ -24,6 +21,11 @@
 
 .header-simple-navigation {
 	@include vertical-space(1,top,padding);
+	.cover-header-menu-toggle {
+		.icon {
+			fill: $color-text-light!important;
+		 }
+	}
 }
 
 .header-simple {

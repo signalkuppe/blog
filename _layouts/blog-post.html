@@ -2,6 +2,7 @@
 <html lang="it" id="top">
 {% include head.html %}
   <body class="has-cover">
+    {% include svg.html %}
     <header role="navigation" class="menu" id="menu-container">
       {% include main-menu.html %}
     </header>
@@ -12,7 +13,7 @@
       <!--/header-->  
       <div class="cover-guide">
         <a href="#post">
-          <i aria-hidden="true" class="icon-arrow-down"></i>
+          <svg class="icon icon-arrow-down" viewBox="0 0 32 32"><use xlink:href="#icon-arrow-down"></use></svg>
         </a>
       </div>
       <!-- loader-->

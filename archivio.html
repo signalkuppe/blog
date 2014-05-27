@@ -30,7 +30,7 @@ description: Archivio annuale degli articoli
        {% for post in site.posts %}
        {% unless post.next %}
          <dt class="archive-posts-year" id="year-{{ post.date | date: '%Y' }}">
-            <i aria-hidden="true" class="icon-bookmark"></i>
+            <svg class="icon icon-bookmark" viewBox="0 0 32 32" id="camera"><use xlink:href="#icon-bookmark"></use></svg>
             {{ post.date | date: '%Y' }}
          </dt>
        {% else %}
@@ -38,7 +38,7 @@ description: Archivio annuale degli articoli
          {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
          {% if year != nyear %}
            <dt class="archive-posts-year" id="year-{{ post.date | date: '%Y' }}">
-            <i aria-hidden="true" class="icon-bookmark"></i>
+            <svg class="icon icon-bookmark" viewBox="0 0 32 32" id="camera"><use xlink:href="#icon-bookmark"></use></svg>
             {{ post.date | date: '%Y' }}
            </dt>
          {% endif %}

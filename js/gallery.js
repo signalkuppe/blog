@@ -18,17 +18,20 @@ $(document).ready(function()
 		})		
 	}
 
+	$('#eye').hide();
 	var _mostraGallery = function (button)
 	{
 		_showImages();
 		button.find('span').text('Nascondi le foto');
-		button.find('i').attr({'class':'icon-eye-blocked'})
+		$('#camera').hide();
+		$('#eye').show();
 
 	}
 	var _nascondiGallery = function (button)
 	{
 		$links.hide();
-		button.find('i').attr({'class':'icon-camera'})
+		$('#eye').hide();
+		$('#camera').show();
 		button.find('span').text('Guarda le foto');
 
 	}

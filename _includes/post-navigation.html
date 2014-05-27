@@ -4,7 +4,7 @@
         <li class="post-navigation-prev">
         	<a class="container-link" href="{{page.previous.url}}" title="Post precedente: {{page.previous.title}}">
         			<div class="post-navigation-icon">
-        				<i class="icon-arrow-left"></i>
+        				<svg class="icon icon-arrow-left" viewBox="0 0 32 32" id="camera"><use xlink:href="#icon-arrow-left"></use></svg>
         				<span>Post precedente</span>
         			</div>
         		<div class="post-navigation-image">
@@ -24,7 +24,7 @@
         	<a class="container-link" href="{{page.next.url}}" title="Post successivo: {{page.next.title}}">
         		<div class="post-navigation-icon">
         			<span>Post successivo</span>
-        			<i class="icon-arrow-right"></i>
+                                <svg class="icon icon-arrow-right" viewBox="0 0 32 32" id="camera"><use xlink:href="#icon-arrow-right"></use></svg>
         		</div>
         		<div class="post-navigation-image">
         			<img src="/img/covers/{{ page.next.date| date: "%d%m%y" }}/cover.jpg" />

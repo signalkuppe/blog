@@ -73,10 +73,14 @@
 	.post-navigation-next & {
 		margin-left: 10px;
 	}
-	i {
+	.icon {
 		@include button-icon(default-inverse);
+		padding: 5px;
+		width: 24px;
+		height: 24px;
 		@media screen and (min-width: $breakpoint-tablet-small){
-			@include t-medium;
+			width: 32px;
+			height: 32px;
 		}
 	}
 	span {
