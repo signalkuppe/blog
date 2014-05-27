@@ -3,7 +3,7 @@ layout: post
 title:  "Monte Due Mani da Ballabio"
 date:   2013-05-11
 description: "salita al Monte Due Mani con partenza da Ballabio per il Bivacco Emanuela"
-categories: escursioni
+categories: escursionismo
 tags: monte due mani valsassina primavera ballabio
 caption: "Il Bivacco Locatelli"
 gps: true
