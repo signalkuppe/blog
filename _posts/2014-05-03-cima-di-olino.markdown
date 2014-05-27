@@ -3,7 +3,7 @@ layout: post
 title: "Cima D'Olino"
 date: 2014-05-03
 description: "Escursione alla Cima d'Olino dall'Alpe Paglio per il Pian delle Betulle e l'Alpe Ortighera"
-categories: escursioni
+categories: escursionismo
 tags: valsassina olino valvarrone
 caption: "Vecchio larice sotto la Cima d'Olino"
 flickr: 72157644152289368

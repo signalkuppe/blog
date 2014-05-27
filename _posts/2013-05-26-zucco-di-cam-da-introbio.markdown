@@ -3,7 +3,7 @@ layout: post
 title:  "Zucco di Cam da Introbio"
 date:   2013-05-26
 description: "salita allo Zucco di Cam con partenza da Introbio e passaggio dalla Bocchetta di Foppabona"
-categories: escursioni
+categories: escursionismo
 tags: zucco cam valsassina primavera
 caption: "Dalla vetta dello Zucco di Cam"
 flickr: 72157640298173775

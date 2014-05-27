@@ -3,7 +3,7 @@ layout: post
 title: "Capanna Como"
 date: 2014-05-18
 description: "Escursione alla Capanna Como per la Val Darengo con partenza dal Crotto Dangri"
-categories: escursioni
+categories: escursionismo
 tags: lario livo capanna como
 caption: "Il Torrente Darengo"
 flickr: 72157644696998216

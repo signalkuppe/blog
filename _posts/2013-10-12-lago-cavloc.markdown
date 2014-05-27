@@ -3,7 +3,7 @@ layout: post
 title:  "Ciaspolata al Lago Cavloc"
 date:   2013-10-12
 description: "Ciaspolata sotto la neve al Lago Cavloc, con partenza dal Maloja"
-categories: escursioni
+categories: escursionismo
 tags: ciaspole lago cavloc nevicata neve svizzera maloja val bregaglia engadina
 caption: "Il Lago Cavloc in un insolito scendario autunnale"
 gps: true

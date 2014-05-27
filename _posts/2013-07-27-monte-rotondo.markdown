@@ -3,7 +3,7 @@ layout: post
 title:  "Monte Rotondo 2496m"
 date:   2013-07-27
 description: "Salita al Monte Rotondo da Premana per l’Alpe Fraina"
-categories: escursioni
+categories: escursionismo
 tags: valvarrone premana monte rotondo valsassina
 caption: "Valvarrone, Alpe Fraina"
 flickr: 72157641689963084

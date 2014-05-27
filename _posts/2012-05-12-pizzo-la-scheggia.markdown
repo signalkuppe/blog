@@ -3,7 +3,7 @@ layout: post
 title:  "Pizzo La Scheggia 2466m"
 date:   2012-05-12
 description: "Salita al Pizzo La Scheggia per la via normale da Arvogno passando dall’Alpe Forno"
-categories: escursioni
+categories: escursionismo
 tags: scheggia pizzo arvogno ossola
 caption: "Sulla cresta del Pizzo La Scheggia"
 flickr: 72157629703682318

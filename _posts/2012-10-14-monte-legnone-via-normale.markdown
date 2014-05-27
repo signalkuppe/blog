@@ -3,7 +3,7 @@ layout: post
 title:  "Monte Legnone 2609m"
 date:   2012-10-14
 description: "salita al Monte Legnone dalla Valvarrone con partenza dal Rifugio Roccoli Lorla"
-categories: escursioni
+categories: escursionismo
 tags: autunno valvarrone monte legnone
 caption: "La cresta sopra la Ca’ De Legn"
 flickr: 72157640547493405
