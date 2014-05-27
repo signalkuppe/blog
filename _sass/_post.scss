@@ -91,8 +91,10 @@
 		span {
 			display: block;
 		}
-		i {
-			@include t-xxlarge;
+		.icon{
+			fill: $color-black;
+			width: 56px;
+			height: 56px;
 		}
 		text-decoration: none;
 	}	

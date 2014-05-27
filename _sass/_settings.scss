@@ -43,7 +43,7 @@ $tiny-font-leading: 1;
 $small-font-size: 13px;
 $small-font-leading: 1.5;
 $base-font-size: $rem-unit;
-$base-font-leading: 1.6;
+$base-font-leading: 1.5;
 $medium-font-size: 20px;
 $medium-font-leading: 1.5;
 $big-font-size: 24px;
@@ -291,23 +291,40 @@ $breakpoint-desktop-xxlarge:    2560px;
 	text-decoration: none;
 	padding: 10px;
 	border: 2px solid;
+	line-height: 20px;
 	@if $type == "primary" {
 		border-color: $color-primary;
 		color: $color-primary;
+		.icon {
+			fill: $color-primary;
+			vertical-align: middle;
+		}
 		&:hover {
 			background: $color-primary;
 			color: $color-white;
+			.icon {
+				fill: $color-white;
+			}
 		}
 	}
 	@if $type == "default" {
 		border-color: $color-text;
 		color: $color-text;
+		.icon {
+			fill: $color-text;
+			vertical-align: middle;
+		}
 		&:hover {
 			background: $color-text;
 			color: $color-white;
+			.icon {
+				fill: $color-white;
+			}
 		}
 	}
-	i {
+	.icon {
+		width: 20px;
+		height: 20px;
 		margin-right: 5px;
 	}
 }
@@ -324,12 +341,12 @@ $breakpoint-desktop-xxlarge:    2560px;
 		color: $color-text;
 	}
 	@if $type == "primary-inverse"{
-		background: $color-primary;
+		fill: $color-primary;
 		color: $color-white;
 	}
 	@if $type == "default-inverse"{
 		background: $color-text;
-		color: $color-white;
+		fill: $color-white;
 	}		
 }
 

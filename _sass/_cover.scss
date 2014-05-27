@@ -44,13 +44,17 @@
 }
 
 .cover-guide {
-   @include t-xxlarge;
    a {
-      color: $color-white;
-      @include opacity(0.85);
-      text-decoration: none;
-      &:hover {
-         @include opacity(1); 
+      .icon {
+         @include opacity(0.85);
+         fill: $color-white;
+         width: 56px;
+         height: 56px;
+      }
+      &:hover{
+         .icon {
+            @include opacity(1);
+         }
       }
    }
 }
@@ -91,13 +95,15 @@
 
 .cover-header-menu-toggle {
    @include inline-block;
-   @include vertical-space(0,top,margin);
-   @include cover-text-shadow;
-   @include set-font-size-to($menu-button-font-size);
-   padding: 20px;
+   @include vertical-space(1,top,padding);
+   .icon {
+      fill: $color-white;
+      width: 24px;
+      height:24px;
+   }
 }
 .menu {
-   @include transition(all, 1.5s, linear, 0.5s);
+   @include transition(all, 0.5s, linear, 0.5s);
    background: $color-black;
    height: 0;
    &.is-open {

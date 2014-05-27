@@ -1,20 +1,20 @@
 <ul>
 	<li class="post-utilities-link post-utilities-link--print">
 		<a href="#" class="print">
-		<i class="icon-print"></i>
+		<svg class="icon icon-print" viewBox="0 0 32 32" id="camera"><use xlink:href="#icon-print"></use></svg>
 		Stampa
 		</a>
 	</li>
 	{% if page.gps %}
 	<li class="post-utilities-link post-utilities-link--kml">
 		<a title="scarica la traccia gps per google earth" href="{{ site.url }}/downloads/{{ page.date| date: "%d%m%y" }}/{{ page.date| date: "%d%m%y" }}.kml" download="{{ page.date| date: "%d%m%y" }}.kml">
-			<i class="icon-earth"></i>
+			<svg class="icon icon-earth" viewBox="0 0 32 32" id="camera"><use xlink:href="#icon-earth"></use></svg>
 			Traccia per Google Earth
 		</a>
 	</li>
 	<li class="post-utilities-link post-utilities-link--gpx">
 		<a title="scarica la traccia gps in formato .gpx" href="{{ site.url }}/downloads/{{ page.date| date: "%d%m%y" }}/{{ page.date| date: "%d%m%y" }}.gpx" download="{{ page.date| date: "%d%m%y" }}.gpx">
-			<i class="icon-disk"></i>
+			<svg class="icon icon-disk" viewBox="0 0 32 32" id="camera"><use xlink:href="#icon-disk"></use></svg>
 			Traccia formato .gpx
 		</a>
 	</li>
