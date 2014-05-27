@@ -3,7 +3,7 @@ layout: post
 title:  "Ciaspolata al Passo del San Bernardino"
 date:   2014-02-09
 description: "ciaspolata al Passo del San Bernardino con partenza dal villaggio"
-categories: escursioni
+categories: escursionismo
 tags: ciaspole neve svizzera san bernardino
 caption: "Il passo sommeso dalla neve"
 flickr: 72157640846265853

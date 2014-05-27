@@ -3,7 +3,7 @@ layout: post
 title:  "Monte Garzirola 2116m"
 date:   2014-03-08
 description: "Salita al Monte Garzirola da Dasio per il Passo di San Lucio"
-categories: escursioni
+categories: escursionismo
 tags: ciaspole neve cavargna
 caption: "La chiesa di San Lucio"
 flickr: 72157642058012593

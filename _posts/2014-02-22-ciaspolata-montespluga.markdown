@@ -3,7 +3,7 @@ layout: post
 title:  "Ciaspolata a Montespluga"
 date:   2014-02-22
 description: "ciaspolata a Montespluga con partenza da Madesimo"
-categories: escursioni
+categories: escursionismo
 tags: ciaspole neve spluga
 caption: "La casa cantoniera di Stuetta"
 flickr: 72157641524983715
