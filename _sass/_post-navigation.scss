@@ -86,7 +86,7 @@
 	span {
 		@include t-small;
 		position: relative;
-		bottom: 5px;
+		bottom: 10px;
 		.post-navigation-prev & {
 			margin-left: 5px;
 		}
