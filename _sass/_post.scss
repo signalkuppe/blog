@@ -46,7 +46,7 @@
 
 .post-utilities {
 	@include container;
-	@include vertical-space(4,both,margin);
+	@include vertical-space(5,both,margin);
 	text-align: center;
 	ul {
 		@include inline-block-list(5px);
@@ -139,7 +139,7 @@
 	@media screen and (min-width:$breakpoint-desktop){
 		@include destroy_container;
 		max-width: 80%;
-		@include vertical-space(5,top,margin);
+		@include vertical-space(6,top,margin);
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -148,6 +148,9 @@
 .post-disqus {
 	@include vertical-space(2,top,padding);
 	@include container;
+	@media screen and (min-width:$breakpoint-tablet){
+		@include vertical-space(4,top,padding);
+	}
 }
 
 ul.signalkuppe-work {
