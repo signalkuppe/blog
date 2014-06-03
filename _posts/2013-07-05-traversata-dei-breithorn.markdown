@@ -7,7 +7,7 @@ categories: alpinismo
 tags: breithorn occidentale centrale monte rosa
 caption: "Lo scivolo nord dalla cresta"
 flickr: 72157640297815005
-map: 45°56’28.55",7°44’51.87"
+map: 45.940077,7.749666
 ---
 
 

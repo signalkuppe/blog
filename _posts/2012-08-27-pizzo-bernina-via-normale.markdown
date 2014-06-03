@@ -7,7 +7,7 @@ categories: alpinismo
 tags: pizzo bernina marinelli via normale
 caption: "Il Pizzo Bernina all’alba"
 flickr: 72157631324267820
-map: 46°23’5.28", 9°54’22.83"
+map: 46.382580,9.908142
 ---
 
 

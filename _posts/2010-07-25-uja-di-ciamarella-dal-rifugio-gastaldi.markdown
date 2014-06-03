@@ -8,7 +8,7 @@ tags: uja ciamarella lanzo gastaldi
 caption: "Sulla cresta finale dell’Uja di Ciamarella"
 flickr: 72157625155978331
 gps: true
-map: 45°19’40.92"N, 7° 8’41.45"E
+map: 45.328074,7.144986
 ---
 
 Non poteva mancare la salita alla **cima più alta della valli di Lanzo**, che con i suoi 3676m domina Il **Pian della Mussa**. La salita si può effettuare in giornata ma abbiamo deciso di pernottare al **Rifugio Gastaldi** per gustarci al meglio la salita e ammirare la splendida parete della Uja di Bessanese.

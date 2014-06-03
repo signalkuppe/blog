@@ -7,7 +7,7 @@ categories: alpinismo
 tags: ossola formazza basodino
 caption: "Il giacciaio superiore del Basodino "
 flickr: 72157641869613585
-map: 46°24’42.14",8°28’6.46"
+map: 46.411598,8.468375
 ---
 
 Ancora con mio padre andiamo a completare il trittico delle cime più alte della **Val Formazza.**Dopo aver compiuto le ascensioni della **Punta d’Arbola 3235 m** e del **Blinnenhorn 3374 m** eccoci al **Monte Basodino 3273 m.**. Questa volta ci muoviamo da casa con tutta calma ed in auto raggiungiamo **Riale** un gioiellino **walser** come tutti i paesi posti nelle parte alta delle valli attorno al **Monte Rosa.**

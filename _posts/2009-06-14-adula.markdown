@@ -7,7 +7,7 @@ categories: alpinismo
 tags: adula ticino svizzera
 caption: "Adula, Ghiacciaio della Bresciana"
 flickr: 72157620246801574
-map: 46°29’37.74"N, 9°2’24.81"E
+map: 46.493755,9.040256
 ---
 
 

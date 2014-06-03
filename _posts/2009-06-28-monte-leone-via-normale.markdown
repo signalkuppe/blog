@@ -7,7 +7,7 @@ categories: alpinismo
 tags: monte leone svizzera sempione
 caption: "La Capanna Monte Leone"
 flickr: 72157621969727860
-map: 46°14’57.87"N, 8°6’36.40"E
+map: 46.249381,8.110131
 ---
 
 Anche questa era un cima che volevo salire da diversi anni. Decidiamo di dormire alla **Capanna Monte Leone** per spezzare la salita in due giorni. La scelta non si rileverà azzeccata visto che l’avvicinamento al ghiacciaio del Breithorn allungherà decisamente la salita.

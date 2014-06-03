@@ -8,7 +8,7 @@ tags: ciaspole neve spluga
 caption: "La casa cantoniera di Stuetta"
 flickr: 72157641524983715
 gps: true
-map: 46°29’22.72",9°20’13.40"E
+map: 46.489310,9.336967
 ---
 
 Dopo la rinuncia in favore del San Bernardino decidiamo di provare a raggiungere **Montespluga** per scattare qualche foto visto il periodo eccezionalmente nevoso. Lasciamo la macchina poco prima dell’ingresso della galleria che conduce a Madesimo e iniziamo, ciaspole ai piedi, e risalire quello che si intravede della SS36, ormai sepolta dalla neve.

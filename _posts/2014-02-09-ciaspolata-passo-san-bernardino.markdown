@@ -7,7 +7,7 @@ categories: escursionismo
 tags: ciaspole neve svizzera san bernardino
 caption: "Il passo sommeso dalla neve"
 flickr: 72157640846265853
-map: 46°27’45.43",  9°11’31.06"
+map: 46.496055,9.170735
 ---
 
 È caduta davvero tanta neve sulle Alpi, Domenica è il giorno giusto per andare a scattare qualche foto. L’idea era quella di raggiungere Montespluga da Madesimo ma visto il bollettino (grado 4) scegliamo una meta più tranquilla: il **Passo del San Bernardino**

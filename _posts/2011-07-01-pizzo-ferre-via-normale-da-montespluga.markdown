@@ -7,7 +7,7 @@ categories: alpinismo
 tags: spluga pizzo ferrè 
 caption: "Sulla cresta del Pizzo Ferrè"
 flickr: 72157641872561363
-map: 46°27’42.07", 9°16’46.80"
+map: 46.462005,9.279053
 ---
 
 Ci siamo dati un obiettivo, quello di salire le principali cime della **Val Spluga** e quindi solita levataccia per essere alle 7,30 al parcheggio di **Montespluga.** Mattinata serena ma fa veramente freddo, appena un +5°C con vento teso da NW.

@@ -7,7 +7,7 @@ categories: alpinismo
 tags: 4000m rosa vda
 caption: "Punta Parrot, Monte Rosa"
 flickr: 72157600036182865
-map: 45°55'43.44"N, 7°52'23.37"E
+map: 45.928428,7.870649
 ---
 
 Venerdì 2 e Sabato 2 settembre 2005 sono partito con mio padre per l'ultima escursione sul Rosa con l'obiettivo di conquistare le altre 2 punte che ci mancavano, ovvero la **Zumstein e la Parrot**. Partenza da **Alagna** con la prima funivia per Indren alle 8:30 alla volta della Punta Gnifetti, l'intenzione è quella di dormire alla Capanna Margherita!

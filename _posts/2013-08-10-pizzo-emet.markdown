@@ -8,7 +8,7 @@ tags: pizzo emet via normale cresta SO spluga
 caption: "In vetta al Pizzo Emet 3210m"
 gps: true
 flickr: 72157640176458776
-map:  46°28’19.40",9°23’8.33"
+map: 46.466995,9.409612
 ---
 
 Dopo lo strapazzo di **Dufourspitze** ecco una salita di tutto riposo, ma importante. Questo è il quarto tassello dell’idea di fare tutte le cime più importanti della **Valle Spluga**.

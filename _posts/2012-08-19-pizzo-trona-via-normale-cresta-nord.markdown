@@ -7,7 +7,7 @@ categories: alpinismo
 tags: biandino pizzo trona
 caption: "Panorama dalla vetta del Pizzo Trona"
 flickr: 72157631181968964
-map: 46°0’59.42",9°32’11.70"
+map: 46.017857,9.533621
 ---
 
 Dopo il **Pizzo Alto** vediamo di salire un’altra cima della costiera della **Val Varrone**. In auto fino ad **Introbio Valsassina** poi con la 16 fino al secondo ponte della strada sterrata che sale in **Val Biandino**.

@@ -23,7 +23,7 @@
 	@include vertical-space(1,top,padding);
 	.cover-header-menu-toggle {
 		.icon {
-			fill: $color-text-light!important;
+			fill: $color-text-light;
 		 }
 	}
 }
@@ -44,5 +44,27 @@
 		text-decoration: none;
 		color: $color-black;
 		text-shadow: none;
+	}
+}
+
+// header with map
+
+.header-simple--gmap{
+	@extend .header-simple;
+	position: absolute;
+	top: 20px;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	margin: 0;
+	a,h1,h2 {
+		color: $color-white;
+	}
+	.header-simple-navigation {
+		.cover-header-menu-toggle {
+			.icon {
+				fill: $color-white!important;
+			 }
+		}
 	}
 }

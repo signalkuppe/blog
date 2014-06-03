@@ -7,7 +7,7 @@ categories: alpinismo
 tags: arbola blinnenhorn formazza
 caption: "Tramonto sull’Arbola"
 flickr: 72157605922599892
-map: 46°23’12.74"N, 8°19’7.98"E
+map: 46.386576,8.318876
 ---
 
 Splendida escursione di due giorni nel cuore della Val Formazza. Dopo la rinuncia di settimana scorsa questa volta è andato tutto per il meglio. La salita inizia dal **Lago di Morasco** (si lascia la macchina nei pressi della partenza della teleferica dell’ENEL) inerpicandosi per un sentiero abbastanza ripido. Abbiamo scelto di percorrere il sentiero vecchio (anche se chiuso) quello nuovo infatti è meno tracciato e ammazza subito il fiato.

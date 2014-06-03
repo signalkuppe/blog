@@ -7,7 +7,7 @@ categories: escursionismo
 tags: scheggia pizzo arvogno ossola
 caption: "Sulla cresta del Pizzo La Scheggia"
 flickr: 72157629703682318
-map: 46°11’2.71",8°24’54.38
+map: 46.184120,8.415042
 ---
 
 Il **Pizzo la Scheggia** è la montagna più alta che si affaccia sulla **Val Vigezzo.** Si arriva in auto fino ad **Arvogno a quota 1247 m,** passando per **Santa Maria Maggiore.** Lasciata l’auto appena fuori del paesino troviamo le indicazioni per la nostra cima. Purtroppo dobbiamo perdere quasi centocinquanta metri di quota, pensa che goduria al ritorno, e scendere nella valle fino al torrente Melezzo che costeggiamo per un tratto fino al ponte che lo attraversa.

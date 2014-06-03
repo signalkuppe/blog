@@ -7,7 +7,7 @@ categories: trekking
 tags: rwenzori world africa
 caption: "La capanna John Matte a 3550m"
 flickr: 72157643833044944
-map: 0°23'7.63"N, 29°52'21.15"E
+map: 0.385888,29.872523
 ---
 
 Quest'anno trekking alle Montagne del **Rwenzori** con salita al **Picco Margherita 5109 metri.** Siamo un gruppo di sei, Matteo e Giorgio Leoni, la Guida Alpina Alberto Bianchi, Corrado, Rodolfo e Lino; tutti esperti alpinisti e collaudati trekkers.

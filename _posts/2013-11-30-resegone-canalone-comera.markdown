@@ -8,7 +8,7 @@ tags: resegone canalone comera valsassina lecco
 caption: "Risalendo il primo tratto del Canalone Comera"
 gps: true
 flickr: 72157640175578636
-map: 45°51’27.54",9°27’59.66"
+map: 45.858281,9.469522
 ---
 
 

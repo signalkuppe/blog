@@ -7,7 +7,7 @@ categories: alpinismo
 tags: vallese svizzera 4000m
 caption: "Il Weisshorn visto dal Bishorn"
 flickr: 72157600610814510
-map: 46° 7’3.97"N, 7°42’53.95"E
+map: 46.117762,7.715127
 ---
 
 Salita facile su pendio ripido ma poco crepacciato, complice anche la stagione estiva relativamente fresca e instabile. Partenza Sabato 1 Luglio alle 4:45 da Seregno, sconfinamento al Sempione e poi via diretti verso **Zinal** nel cuore del Vallese. Verso la fine del paese si svolta a sinistra per raggiungere un campeggio. Dopo pochi tornanti si lascia la macchina ed inizia il sentiero che porta alla **Cabane de Tracuit** (3270m).

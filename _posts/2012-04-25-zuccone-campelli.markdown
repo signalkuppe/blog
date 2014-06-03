@@ -7,7 +7,7 @@ categories: alpinismo
 tags: valsassina zuccone campelli
 caption: "Il Canalone dei Camosci in veste invernale"
 flickr: 72157629542236606
-map: 45°57’20.79",9°31’1.30"
+map: 45.955024,9.517412
 ---
 
 Le adorate **Prealpi Lombarde** ci regalano ancora una sorpresa. Nevica! Riconoscenti alla ITB che aprirà gli impianti dei **Piani di Bobbio** il 25 Aprile, programmiamo di fare il **Zuccone Campelli**, finalmente in veste invernale per via dei 50 cm di neve fresca appena caduta.

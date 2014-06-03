@@ -1,8 +1,10 @@
 ---
-layout: empty
+layout: gmap
 title: Archivio dei post
 description: Archivio annuale degli articoli
 ---
+
+<div class="archive-map" id="mappa"></div>
 
 <div class="archive">
    <div class="archive-years">
@@ -54,3 +56,9 @@ description: Archivio annuale degli articoli
    </nav>
 </div>
 
+
+<div class="archive-map-data" hidden>
+  {% for post in site.posts %}
+    {{ post.map }}+{{post.date| date:"%d/%m/%y" }}+{{ post.title }}+{{ post.url }} {% unless forloop.last %}|{% endunless %}
+  {% endfor %}
+</div>

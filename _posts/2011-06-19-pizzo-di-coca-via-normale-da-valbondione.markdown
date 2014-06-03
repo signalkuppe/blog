@@ -7,7 +7,7 @@ categories: alpinismo
 tags: orobie pizzo coca valseriana 
 caption: "Sulla cresta finale del Pizzo di Coca"
 flickr: 72157641972081704
-map: 46°4’18.28",10° 0’40.05"
+map: 46.071819,10.011324
 ---
 
 Quando ti viene la voglia di andare, ti vengono anche delle idee strane, tipo battere il tuo record di dislivello in una sola giornata. Coinvolgo mio padre come sempre e quindi **Pizzo di Coca 3052 m da Valbondione, Valle Seriana, località Sambughera 988 m. Totale 2064 metri.**

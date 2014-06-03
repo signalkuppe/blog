@@ -7,7 +7,7 @@ categories: trekking
 tags: world Everest Khumbu Cho-La Pass Gokyo Nepal
 caption: "Portatore nella valle del Khumbu"
 flickr: 72157632129604539
-map: 27°48’16.53", 86°43’2.39"
+map: 27.792025,86.718187
 ---
 
 

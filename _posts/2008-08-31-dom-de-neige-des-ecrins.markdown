@@ -7,7 +7,7 @@ categories: alpinismo
 tags: ecrins francia 4000m
 caption: "Sul Glacier Blanc"
 flickr: 72157607044865421
-map: 44°55’29.96"N, 6°21’12.30"E
+map: 44.924766,6.353353
 ---
 
 

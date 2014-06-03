@@ -7,7 +7,7 @@ categories: escursionismo
 tags: zucco cam valsassina primavera
 caption: "Dalla vetta dello Zucco di Cam"
 flickr: 72157640298173775
-map: 46°0’8.04",9°29’11.35"
+map: 46.000844,9.485879°
 gps: true
 ---
 

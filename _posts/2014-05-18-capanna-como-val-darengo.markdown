@@ -7,7 +7,7 @@ categories: escursionismo
 tags: lario livo capanna como
 caption: "Il Torrente Darengo"
 flickr: 72157644696998216
-map: 46°13'25.98", 9°15'30.63"
+map: 46.223872,9.258517
 gps: true
 ---
 
