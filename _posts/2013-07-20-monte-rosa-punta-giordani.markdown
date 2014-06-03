@@ -7,7 +7,7 @@ categories: alpinismo
 tags: punta giordani via normale indren monte rosa
 caption: "A pochi metri dalla Giordani"
 flickr: 72157640287780346
-map: 45°54’20.32",7°52’4.97"
+map: 45.905868,7.867622
 ---
 
 

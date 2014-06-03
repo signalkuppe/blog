@@ -8,7 +8,7 @@ tags: disgrazia rifugio ponti valtellina
 caption: "Dalla cima del Disgrazia"
 flickr: 72157642357069633
 gps: true
-map: 46°16’5.76"N, 9°45’3.47"E
+map: 46.268190,9.750360
 ---
 
 La stagione non decolla c’è poco d fare. Il caldo assassino di Luglio mi ha fatto passare la voglia di alta quota.Rimane la possibilità di fare qualche crestina. Optiamo per la normale al Disgrazia, una cima che ho sempre voluto salire.

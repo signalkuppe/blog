@@ -7,7 +7,7 @@ categories: escursionismo
 tags: valvarrone premana monte rotondo valsassina
 caption: "Valvarrone, Alpe Fraina"
 flickr: 72157641689963084
-map: 46° 4’14.03",9°29’34.05"
+map: 46.070481,9.492963
 ---
 
 È una delle cime che mi mancano della Valvarrone, insieme al Mellasc. Alle 7:30 parcheggio la macchina alla fine di Premana e imbocco l’evidente mulattiera che conduce all’**Alpe Fraina**. Come al solito è presente il classico cartello gigante con le indicazioni per tutte le escursioni, diciamo che è impossibile sbagliare strada. Indica 5h:30m per la cima, mi sento in forma vediamo in quanto tempo riesco a farcela.

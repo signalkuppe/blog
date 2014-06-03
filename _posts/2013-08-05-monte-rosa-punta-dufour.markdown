@@ -7,7 +7,7 @@ categories: alpinismo
 tags: punta dufour via normale svizzera monte rosa
 caption: "In vetta alla Dufour, 4633m"
 flickr: 72157634991347338
-map: 45°56’29.59",7°51’47.17"
+map: 45.937207,7.865366
 ---
 
 Finalmente è arrivato il momento: ho il socio (il fido Stefano), la prenotazione al rifugio e due giornate di bel tempo, la Dufour non può essere più rimandata. Partiamo di primo mattino da Desio alla volta di **Zermatt**, e arriviamo alla stazione di **Täsch** per le 10. Da qui prendiamo il primo trenino che porta a Zermatt (circa 13€ A/R) e quindi il trenino per Il **Gornergrat** (70€ A/R).

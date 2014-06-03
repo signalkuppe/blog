@@ -7,7 +7,7 @@ categories: escursionismo
 tags: barro lecco brianza 
 caption: "Ultime luci sul Barro"
 flickr: 72157643660342615
-map: 45°49'50.93", 9°22'48.79"E
+map: 45.830826,9.380219
 ---
 
 Era da un po’ che volevo fotografare il tramonto dal **Monte Barro**. Partiamo alle 17 da Desio alla volta di **Galbiate**; fino al 1° Maggio è possibile salire in macchina fino alla **Baita Alpini** (seguire le indicazione per l'Eremo) quindi ne approfittiamo e parcheggiamo nell'ampio piazzale. Da qui percorriamo a piedi la strada asfaltata fino all'**Eremo**.

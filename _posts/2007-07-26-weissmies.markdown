@@ -7,7 +7,7 @@ categories: alpinismo
 tags: vallese svizzera 4000m
 caption: "I crepacci del Triftgletscher"
 flickr: 72157601049817554
-map: 46° 7’39.71"N, 8°0’43.22"E
+map: 46.127624,8.011954
 ---
 Rieccoci di nuovo a 4000m (per la nona volta): obiettivo il Weissmies, 4027m, una splendida montagna a cavallo tra la valle di Saas Fee e la Val D’Ossola, visibile anche da Milano. Partenza martedi 27 Luglio da Seregno, arriviamo a **Saas Grund** dove prendiamo la funivia che ci porta ai 3200m di **Hohsaas**.
 

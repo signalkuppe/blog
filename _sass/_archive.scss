@@ -10,6 +10,7 @@
 
 .archive-years {
 	@include clearfix;
+	@include vertical-space(2,top,padding);
 	@include vertical-space(2,bottom,margin);
 	max-width: 500px;
 	margin-right: auto;
@@ -102,5 +103,16 @@
 	}
 	.archive-post-date {
 		margin-right: 10px;
+	}
+}
+
+// #map
+
+.archive-map {
+   position:relative;
+   height: 100vh;
+   z-index: 1;
+	img {
+		max-width: none; // fix for map images
 	}
 }

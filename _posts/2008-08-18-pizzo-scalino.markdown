@@ -7,7 +7,7 @@ categories: alpinismo
 tags: scalino valtellina valmalenco
 caption: "Mucche al Rifugio Cristina"
 flickr: 72157606865500014
-map: 46°16’59.99"N, 9°59’58.82"E
+map: 46.278527,9.973541
 ---
 
 Difficile trovare due giornate consecutive di bel tempo in questa seconda metà di Agosto sempre instabile sulle regioni alpine. Un bel 3000 di grande soddisfazione da fare in giornata è il **Pizzo Scalino**, chiamato anche il *&ldquo;Cervino della Valtellina&rdquo;*. Si parte dalla località **Campo Moro** in Valmalenco; all’ultimo bivio si svolta a destra seguendo le indicazioni per il **Rifugio Cristina**.

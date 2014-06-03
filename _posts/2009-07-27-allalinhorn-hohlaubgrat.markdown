@@ -7,7 +7,7 @@ categories: alpinismo
 tags: allalinhorn hohlaubgrat vallese svizzera 4000
 caption: "Sulla Hohlaubgrat"
 flickr: 72157642558737233
-map: 46° 2’45.14"N, 7°53’41.47"E
+map: 46.045901,7.895071
 ---
 
 Primo quattromila stagionale per una via molto bella e meno frequentata rispetto alla via normale percorsa ogni giorno da decine di alpinisti. All’arrivo a **Saas Fee** lasciamo la macchina al mega-parcheggio che si trova poco prima di entrare in paese. Il parcheggio è obbligatorio visto che è vietata la circolazione alle macchine.

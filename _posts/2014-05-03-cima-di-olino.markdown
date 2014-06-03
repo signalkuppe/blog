@@ -7,7 +7,7 @@ categories: escursionismo
 tags: valsassina olino valvarrone
 caption: "Vecchio larice sotto la Cima d'Olino"
 flickr: 72157644152289368
-map: 46° 0'39.29"N, 9°25'43.47"E
+map: 46.010905,9.428735
 gps: true
 ---
 

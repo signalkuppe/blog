@@ -7,7 +7,7 @@ categories: alpinismo
 tags: rocciamelone susa
 caption: "Parte alta del Rocciamelone"
 flickr: 72157606485675993
-map: 45°12’12.82"N, 7°4’38.03"E
+map: 45.203592,7.077251
 ---
 
 Tornando dalla disfatta degli Ecrins mi aveva colpito l’imponente vetta del Rocciamelone. È una montagna famosissima ma non avendo mai frequentato quelle zone non ha mai avuto l’occasione di salirla. Partiamo sabato mattina da Seregno alla volta della Val di Susa. Appena entrati a Susa si svolta destra imboccando la strada che conduce al Rifugio la Reposa. La strada è molto stretta, sembra un piccolo Gavia in certi punti. L’ultimo tratto è sterrato ma agevole. Lasciamo la macchina nel comodo parcheggio situato accanto alla partenza delle teleferica del Rifugio Ca’ D’Asti, la nostra meta di oggi. Si sale per un comodo e ben tracciato sentiero che, con ripidi tornanti, porta in breve tempo al Rifugio (2854m 1:30-2h).

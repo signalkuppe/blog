@@ -7,10 +7,10 @@ categories: alpinismo
 tags: valsassina grignetta cresta cermenati
 caption: "Sulla cresta Cermenati"
 flickr: 72157629502546284
-map: 45°55’19.63",9°23’28.54"
+map: 45.921677,9.390288
 ---
 
-Siamo ai primi di Aprile e finalmente una nevicata. Partiamo prestissimo per essere ai **Piani dei Resinelli** alle prime luci dell’alba. All’imbocco del parcheggio prendiamo a destra la stradina che porta al bar ristoro, ve lo consiglio, e subito dopo prendiamo la ripida deviazione a sinistra verso il rifugio Porta. Troviamo la stanga aperta, è una strada privata, per cui riusciamo ad arrivare fin dove la strada è percorribile lasciando l’auto al solito slargo sterrato. Fra le nebbie dell’alba sollevate dal primo sole, le previsioni danno tempo bello e soleggiato, intravediamo un ben più alto spessore in quota.
+Siamo ai primi di Aprile e finalmente è arrivata una nevicata. Partiamo prestissimo per essere ai **Piani dei Resinelli** alle prime luci dell’alba. All’imbocco del parcheggio prendiamo a destra la stradina che porta al bar ristoro, ve lo consiglio, e subito dopo prendiamo la ripida deviazione a sinistra verso il rifugio Porta. Troviamo la stanga aperta, è una strada privata, per cui riusciamo ad arrivare fin dove la strada è percorribile lasciando l’auto al solito slargo sterrato. Fra le nebbie dell’alba sollevate dal primo sole, le previsioni danno tempo bello e soleggiato, intravediamo un ben più alto spessore in quota.
 
 Siamo i primi e con grande soddisfazione calpestiamo la neve vergine e battiamo la pista. Fino alla deviazione per i **Torrioni Magnagni**ppp non servono i ramponi, ma qui li calziamo visto che dobbiamo fare qualche traverso ed il percorso si inerpica leggermente. La neve fresca supera i trenta centimetri e tutto attorno è uno spettacolo illuminato dal sole. Continuiamo la salita arrivando allo sbocco del **Canalone Cecilia** per poi risalire l’ultimo canale, catene, che ci porta sul tratto terminale della cresta e da qui in vetta alla **Grigna Meridionale 2177 m.**
 

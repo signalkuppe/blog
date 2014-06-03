@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it" id="top">
+{% include head.html %}
+  <body>
+    {% include svg.html %}
+    <header role="navigation" class="menu header-simple-menu" id="menu-container">
+      {% include main-menu.html %}
+    </header>
+      <div role="navigation" class="header-simple--gmap">
+        <div class="header-simple-navigation">
+            {% include branding.html %}
+        </div>
+      </div>
+      <!--/header--> 
+      <section role="main">
+        {{ content }}
+      </section>
+  {% include scripts.html %}
+  </body>
+</html>

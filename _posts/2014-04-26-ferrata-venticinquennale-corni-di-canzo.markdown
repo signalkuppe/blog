@@ -7,7 +7,7 @@ categories: ferrata
 tags: ferrata corni canzo
 caption: "Sul traverso della ferrata del venticinquennale"
 flickr: 72157644327066501
-map: 45°51'46.15"N, 9°19'21.34"E
+map: 45.862459,9.322405
 gps: true
 ---
 

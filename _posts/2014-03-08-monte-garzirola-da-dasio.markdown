@@ -8,7 +8,7 @@ tags: ciaspole neve cavargna
 caption: "La chiesa di San Lucio"
 flickr: 72157642058012593
 gps: true
-map: 46°7’4.84"N,9°4’21.35"E
+map: 46.117957,9.072658
 ---
 
 Dopo le intense nevicate di Fabbraio, Marzo inizia con un bel anticiclone e tempo decisamente mite. L’idea era quella di salire il Pizzo di Gino, ma il pericolo valanghe in aumento (3 marcato) ci fa desistere. Dediciamo quindi di andare sul sicuro e salire il **Monte Garzirola**.

@@ -7,7 +7,7 @@ categories: alpinismo
 tags: monviso quintino sella pian del re
 caption: "Dalla cima del Monviso"
 flickr: 72157622816899028
-map: 44°40’3.47"N, 7° 5’25.07"E
+map: 44.667539,7.090259
 ---
 
 Un’altra bellissima montagna che volevo salire da tempo. Vedi sempre quel triangolo all’orizzonte e cominci a sentire un’attrazione magnetica che ti costringe a salirlo per forza. Aspettiamo Settembre, il periodo migliore per affrontare questa salita. Troveremo infatti condizioni perfette, pochissima neve e neanche una nuvola.

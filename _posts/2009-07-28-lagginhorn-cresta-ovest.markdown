@@ -7,7 +7,7 @@ categories: alpinismo
 tags: lagginhorn vallese svizzera 4000
 caption: "Sulla vetta del Lagginhorn"
 flickr: 72157642558928203
-map: 46°9’24.79"N, 8°0’11.21"E
+map: 46.157009,8.003104
 ---
 
 La due giorni vallesana si conclude con la salita del Lagginhorn lungo la via normale, ovvero la **cresta ovest**. Come per la Weissmies si parte dalla **Weissmieshutte**, facilmente raggiungibile dalla stazione intermedia degli impianti di Hohsaas. La cena non è malvagia, le cotolette impanate hanno fatto la loro porca figura.

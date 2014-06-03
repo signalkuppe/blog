@@ -8,7 +8,7 @@ tags: valvarrone pizzo alto premana
 caption: "Premana, Alpe Piancauda"
 gps: true
 flickr: 72157629351679972
-map:  46°4’38.35", 9°27’28.86"
+map: 46.077196,9.457873
 ---
 
 Continua la siccità, per cui vista la poca neve presente decidiamo di fare una delle cime che si affacciano sulla **Val Varrone.** Il Pizzo Alto è posto sulla cresta che parte dal Monte Legnone ed arriva al Pizzo dei Tre Signori. L’idea è quindi quella di farle tutte le cime.

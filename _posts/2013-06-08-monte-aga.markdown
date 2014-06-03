@@ -8,7 +8,7 @@ tags: orobie brembana
 caption: "Verso la cresta del Monte Aga"
 gps: true
 flickr: 72157643665219753
-map: 46° 2'49.12"N, 9°52'50.00"
+map: 46.046971,9.880556
 ---
 
 La meteo ci apre una finestra di bel tempo per cui decido di andare ad esplorare nuove valli e cime. Dopo la **Val Seriane** ed il **Pizzo di Coca** ci avventuriamo in **Val Brembana** arrivando fino a **Carona** dove lasciamo l'auto appena fuori dal paese, quando la strada asfaltata compie un tornante e dove troviamo i cartelli, che indicano gli itinerari per il **Rifugio Calvi** e ed il **Rifugio Longo** nostra tappa intermedia.

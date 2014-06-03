@@ -8,6 +8,7 @@ tags: ciaspole lago cavloc nevicata neve svizzera maloja val bregaglia engadina
 caption: "Il Lago Cavloc in un insolito scendario autunnale"
 gps: true
 flickr: 72157640147768275
+map: 46.379833,9.705041
 ---
 
 Siamo al 12 Ottobre. La neve sta cadendo sopra i mille metri nella nostra regione. Partenza al buio e via lungo la **SS36 fino a Chiavenna**, poi confine. **Val Bregaglia, Bondo, Vicosoprano 1068 m** ove la pioggia comincia a diventare neve. Saliamo verso il **Passo del Maloja 1815 m** con la strada completamente ricoperta di neve compatta. Abbiamo le gomme da neve, ma senza 4x4 non saremmo riusciti a raggiungere il Passo.

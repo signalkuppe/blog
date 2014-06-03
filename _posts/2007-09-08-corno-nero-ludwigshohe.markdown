@@ -7,7 +7,7 @@ categories: alpinismo
 tags: monterosa 4000m
 caption: "Sotto la Ludwigshohe"
 flickr: 72157601966956040
-map: 45°55’11.74"N, 7°52’18.08"E
+map: 45.918023,7.868391
 ---
 
 Potevo lasciar passare un’estate intera senza andare sul mio amato Monte Rosa? Puntualmente, preso da una forte crisi di astinenza ritorniamo sull’amata montagna per salire 3 delle cime &ldquo;facili&rdquo; che ancora ci mancano: **Corno Nero, Ludwigshohe** e Piramide Vincent. Sabato 8 settembre imbocchiamo la stretta e interminabile valle di Alagna per raggiungere il versante sud del Rosa.

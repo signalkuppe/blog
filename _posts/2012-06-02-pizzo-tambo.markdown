@@ -7,7 +7,7 @@ categories: alpinismo
 tags: spluga passo tambò pizzo
 caption: "Panorama dalla vetta del Pizzo Tambò"
 flickr: 72157630026824916
-map: 46°29’49.46",9°17’0.21"
+map: 46.496842,9.283132
 ---
 
 Come sempre cerchiamo le condizioni meteo migliori per un’ascensione. Quindi eccoci alle 7,30 al **Passo dello Spluga m 2114** con un bel sole e temperatura vicina allo zero. Dovremmo trovare la neve, caduta lo scorso maggio, abbastanza dura e quindi non sprofondare troppo. Iniziamo la salita prendendo la traccia di sentiero che parte dietro la casermetta della Guardia di Finanza  e che si innalza su dossi in direzione OSO verso la cima del **Pizzo Tambò 3279 m**, che vediamo diritta davanti a noi.
