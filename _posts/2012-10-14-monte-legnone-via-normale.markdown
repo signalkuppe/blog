@@ -7,7 +7,7 @@ categories: escursionismo
 tags: autunno valvarrone monte legnone
 caption: "La cresta sopra la Ca’ De Legn"
 flickr: 72157640547493405
-map: 46.094627,9.414679°
+map: 46.094627,9.414679
 ---
 
 Il **Monte Legnone** è la montagna più alta della **Val Varrone** e rappresenta un bel balcone su tutta la bassa **Valtellina** ed i monti della **Valle Spluga**, **Val Masino e Disgrazia**. L’ho salito già altre volte, ma oggi ho ben tre motivi per ripetere l’ascensione. Il primo perchè fa freddo e tenterà di nevicare, sapete tutti quanto io adori la neve,  il secondo per fare un allenamento in vista della partenza per il Nepal ed il terzo per verificare se il **Nevaio del Colombano** è riuscito a sopravvivere all’ennesima estate calda sopra media. Quest’ultima iniziativa mi è stata richiesta dall’amico **Riccardo Scotti membro del Comitato Glaciologico Lombardo** ed uno degli autori del libro **I Ghiacciai della Lombardia**.
