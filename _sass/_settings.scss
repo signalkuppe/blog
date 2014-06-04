@@ -297,7 +297,7 @@ $breakpoint-desktop-xxlarge:    2560px;
 		color: $color-primary;
 		.icon {
 			fill: $color-primary;
-			vertical-align: middle;
+			vertical-align: top;
 		}
 		&:hover {
 			background: $color-primary;
@@ -316,6 +316,21 @@ $breakpoint-desktop-xxlarge:    2560px;
 		}
 		&:hover {
 			background: $color-text;
+			color: $color-white;
+			.icon {
+				fill: $color-white;
+			}
+		}
+	}
+	@if $type == "w" {
+		border-color: $color-white;
+		color: $color-white;
+		.icon {
+			fill: $color-white;
+			vertical-align: top;
+		}
+		&:hover {
+			background: rgba(0,0,0,0.7);
 			color: $color-white;
 			.icon {
 				fill: $color-white;

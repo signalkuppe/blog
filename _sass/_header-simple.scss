@@ -46,25 +46,3 @@
 		text-shadow: none;
 	}
 }
-
-// header with map
-
-.header-simple--gmap{
-	@extend .header-simple;
-	position: absolute;
-	top: 20px;
-	left: 0;
-	right: 0;
-	z-index: 1000;
-	margin: 0;
-	a,h1,h2 {
-		color: $color-white;
-	}
-	.header-simple-navigation {
-		.cover-header-menu-toggle {
-			.icon {
-				fill: $color-white!important;
-			 }
-		}
-	}
-}

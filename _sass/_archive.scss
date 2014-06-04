@@ -8,10 +8,17 @@
 	padding: 20px;
 }
 
+.archive-home {
+	@include vertical-space(2,both,padding);
+	text-align: center;
+	a {
+		@include button(primary);
+	}
+}
+
 .archive-years {
 	@include clearfix;
-	@include vertical-space(2,top,padding);
-	@include vertical-space(2,bottom,margin);
+	@include vertical-space(2,both,padding);
 	max-width: 500px;
 	margin-right: auto;
 	margin-left: auto;
@@ -115,4 +122,68 @@
 	img {
 		max-width: none; // fix for map images
 	}
+	.archive-map-buttons {
+		position: absolute;
+		bottom: 40px;
+		left: 10px;
+		z-index: 1000;
+		width: 100%;
+		a {
+			padding: 5px!important;
+			@include t-small;
+			@include button(w);
+			margin-right: 5px;
+			.icon {
+				width: 16px;
+				height: 16px;
+			}
+		}
+	}
+	@media screen and (min-width: $breakpoint-tablet){
+		.archive-map-buttons {
+			a {
+				padding: 10px!important;
+				@include t-base;
+				margin-right: 5px;
+				.icon {
+					width: 20px;
+					height: 20px;
+				}
+			}	
+		}		
+	}
+	@media screen and (min-width: $breakpoint-desktop-large){
+		.archive-map-buttons {
+			right: 20px;
+			bottom: 40px;
+			left: auto;
+			z-index: 1000;
+			width: auto;	
+		}		
+	}
+}
+.map-link {
+	@include border-radius;
+	border: 2px solid $color-primary;
+	background:$color-primary;
+	color: $color-white!important;
+	text-decoration:none;
+	padding: 2px 4px;
+	display: inline-block;
+	margin-top: 5px;
+}
+
+.window-left {
+	float: left;
+	width: 80px;
+	img {
+		width: 80px;
+	}
+}
+.window-right {
+	margin-left: 100px;
+}
+
+.gm-style-iw[style]{
+	width: auto!important;
 }

@@ -19,26 +19,78 @@ $(document).ready(function()
 			})
 		})
 
-		var map = new GMaps
-		({
-	        div: '#mappa',
-	        lat: 45.5929,
-	        lng: 9.88252,
-	        zoom: 8,
-	        scrollwheel: false,
-	        mapTypeId: 'satellite'
-      	});
+		function _drawMap(z,l)
+		{
+			var map = new GMaps
+			({
+		        div: '#mappa',
+		        lat: l,
+		        lng: 8.28252,
+		        zoom: z,
+		        scrollwheel: false,
+		        panControl: false,
+		        mapTypeControl: false,
+		        mapTypeId: 'satellite',
+			    zoomControlOptions: {
+			        style: google.maps.ZoomControlStyle.DEFAULT,
+			        position: google.maps.ControlPosition.TOP_LEFT
+			    }
+	      	});
+			
+	      	points.forEach(function (p)
+	      	{	
+				map.addMarker({
+					lat: p.lat,
+				  	lng: p.lng,
+				  	icon: '/img/marker.png',
+					infoWindow: {
+					  content: '<div class="window-left"><img src="/img/covers/'+p.date.replace(/\//g,'')+'/cover.jpg" /></div><div class="window-right"><span>'+p.date+'</span><br /><strong>'+p.title+'</strong><br /><a class="map-link" href="'+p.url+'" />Leggi tutto</a></div>'
+					}
+				});
+	      	});
+
+	      	$('#mappa').append('<div class="archive-map-buttons"><a href="/" class="btn"><svg class="icon icon-home2" viewBox="0 0 32 32"><use xlink:href="#icon-home2"></use></svg>Torna alla homepage</a><a href="#years"><svg class="icon icon-arrow-down" viewBox="0 0 32 32"><use xlink:href="#icon-arrow-down"></use></svg>Archivio annuale</a></div>')
+
+		}
+
+
+		enquire.register("screen and (max-width:767px)", {
+			// cambia lo zoom
+		    match : function() 
+		    {
+		    	_drawMap(6,45.7929);
+		    },                           
+		    unmatch : function()
+		    {
+		    	_drawMap(8,45.7929);
+		    }  
+		      
+		});
+
+		enquire.register("screen and (min-width:768px)", {
+			// cambia lo zoom
+		    match : function() 
+		    {
+		    	_drawMap(8,45.7929);
+		    },                              
+		    unmatch : function()
+		    {
+		    	_drawMap(6,45.7929);
+		    }  
+		      
+		});
+
+		function handleResize()
+		{
+			var h = $(window).height();
+		    $('.archive-map').css({'height':h+'px'});
+		}
+
+		handleResize();
 		
-      	points.forEach(function (p)
-      	{	
-			map.addMarker({
-				lat: p.lat,
-			  	lng: p.lng,
-				infoWindow: {
-				  content: '<span>'+p.date+'</span><br /><strong>'+p.title+'</strong><br /><a href="'+p.url+'" />Vai al post</a>'
-				}
-			});
-      	})
+		$(window).resize(function(){
+		    handleResize();
+		});
 
 
 	}

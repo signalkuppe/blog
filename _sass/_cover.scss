@@ -102,6 +102,7 @@
       height:24px;
    }
 }
+
 .menu {
    @include transition(all, 0.5s, linear, 0.5s);
    background: $color-black;

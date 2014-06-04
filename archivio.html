@@ -4,10 +4,10 @@ title: Archivio dei post
 description: Archivio annuale degli articoli
 ---
 
-<div class="archive-map" id="mappa"></div>
-
+<div class="archive-map" id="mappa">
+</div>
 <div class="archive">
-   <div class="archive-years">
+   <div class="archive-years" id="years">
       <ul>
        {% for post in site.posts %}
        {% unless post.next %}
