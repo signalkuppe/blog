@@ -285,13 +285,24 @@ $breakpoint-desktop-xxlarge:    2560px;
 
 // buttons
 
-@mixin button ($type){
+@mixin button ($type, $size:default){
 	@include inline-block;
 	@include border-radius;
 	text-decoration: none;
-	padding: 10px;
 	border: 2px solid;
 	line-height: 20px;
+	@if $size == "default" {
+		padding: 10px;
+		@include t-base;		
+	}
+	@if $size == "small" {
+		padding: 5px;
+		@include t-small;		
+	}
+	@if $size == "tiny" {
+		padding: 3px;
+		@include t-tiny;		
+	}
 	@if $type == "primary" {
 		border-color: $color-primary;
 		color: $color-primary;
@@ -341,6 +352,10 @@ $breakpoint-desktop-xxlarge:    2560px;
 		width: 20px;
 		height: 20px;
 		margin-right: 5px;
+		@if $size == "small" {
+			width: 16px;
+			height: 16px;		
+		}		
 	}
 }
 

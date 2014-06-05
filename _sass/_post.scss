@@ -20,15 +20,10 @@
 	}
 }
 
-.post-date,
-.post-signalkuppe {
+.post-date {
 	@include date;
 	@include t-small;
 	text-align: center;
-}
-
-.post-signalkuppe {
-	text-transform: none;
 }
 
 .post-author {
@@ -150,68 +145,5 @@
 	@include container;
 	@media screen and (min-width:$breakpoint-tablet){
 		@include vertical-space(4,top,padding);
-	}
-}
-
-ul.signalkuppe-work {
-	@include clearfix;
-	@include vertical-space(2,both,margin);
-	list-style:none;
-	list-style-type: none;
-	margin-left:0!important;
-	padding: 0;
-	li {
-		float: left;
-		width: 33.3%;
-		@media screen and (min-width:$breakpoint-tablet-small){
-			width: 25%;
-		}
-		@media screen and (min-width:$breakpoint-desktop-large){
-			width: 20%;
-		}
-		a,img {
-			@include transition(all,0.3s,ease-in-out);
-		}
-		a:hover img {
-			@include transform(scale(1.1));
-		}
-	}
-	@media screen and (min-width:$breakpoint-tablet){
-		@include vertical-space(4,both,margin);
-	}
-	@media screen and (min-width:$breakpoint-desktop-large){
-		@include vertical-space(5,both,margin);
-	}
-}
-
-.signalkuppe-contact {
-	text-align: center;
-	@include vertical-space(4,bottom,margin);
-	a {
-		@include button(primary);
-		margin-right: 10px;
-		&.signalkuppe-contact-scarica {
-			display: none;
-			@media screen and (min-width:$breakpoint-desktop){
-				display: inline-block;
-			}
-		}
-	}
-	@media screen and (min-width:$breakpoint-tablet){
-		@include vertical-space(5,bottom,padding);
-	}
-	@media screen and (min-width:$breakpoint-desktop-large){
-		@include vertical-space(6,bottom,padding);
-	}
-}
-
-.signalkuppe-license {
-	@include vertical-space(2,bottom,padding);
-	text-align: center;
-	img {
-		@include vertical-space(1,bottom,padding);
-	}
-	p {
-		@include t-tiny;
 	}
 }

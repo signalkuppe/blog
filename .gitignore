@@ -1,3 +1,4 @@
+.DS_store
 _site
 bower_components
 js/app.min.js

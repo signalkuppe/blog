@@ -5,6 +5,14 @@ $(document).ready(function()
 	});
 })
 
+$(document).on("click","a",function() {
+    $(this).smoothScroll({
+		preventDefault: false
+	});
+
+	console.log('click')
+});
+
 
 
 
