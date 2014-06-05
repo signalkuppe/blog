@@ -128,32 +128,22 @@
 		left: 10px;
 		z-index: 1000;
 		width: 100%;
+		text-align: center;
 		a {
-			padding: 5px!important;
-			@include t-small;
-			@include button(w);
+			@include button(w,small);
 			margin-right: 5px;
-			.icon {
-				width: 16px;
-				height: 16px;
-			}
 		}
 	}
 	@media screen and (min-width: $breakpoint-tablet){
 		.archive-map-buttons {
 			a {
-				padding: 10px!important;
-				@include t-base;
-				margin-right: 5px;
-				.icon {
-					width: 20px;
-					height: 20px;
-				}
+				@include button(w,default);
 			}	
 		}		
 	}
 	@media screen and (min-width: $breakpoint-desktop-large){
 		.archive-map-buttons {
+			text-align: left;
 			right: 20px;
 			bottom: 40px;
 			left: auto;
@@ -162,28 +152,45 @@
 		}		
 	}
 }
-.map-link {
+
+.archive-map-link {
 	@include border-radius;
 	border: 2px solid $color-primary;
-	background:$color-primary;
-	color: $color-white!important;
+	background:$color-white;
+	color: $color-primary!important;
 	text-decoration:none;
 	padding: 2px 4px;
 	display: inline-block;
-	margin-top: 5px;
-}
-
-.window-left {
-	float: left;
-	width: 80px;
-	img {
-		width: 80px;
+	margin-top: 8px;
+	&:hover {
+		background:$color-primary;
+		color: $color-white!important;		
 	}
 }
-.window-right {
-	margin-left: 100px;
+
+.archive-map-window-left {
+	@include float-left;
+	width: 90px;
+	img {
+		@include border-radius(50%);
+		border: 4px solid;
+		border-color: $color-gray-light;
+		width: 90px;
+	}
+	a:hover img {
+		border-color: $color-primary;
+	}
+}
+.archive-map-window-right {
+	margin-left: 110px;
 }
 
+// infowindow
 .gm-style-iw[style]{
 	width: auto!important;
+	height: auto!important;
+	top: 0;
+	left: 0;
+	padding: 0;
+	background: none;
 }

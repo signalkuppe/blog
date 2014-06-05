@@ -41,9 +41,12 @@ $(document).ready(function()
 
 		coverimg.onload = function () {
 			// la cover è caricata
-			coverdiv.css({'background-image':'url("'+cover+'")'});
+			coverdiv.css({'background-image':'url("'+cover+'")'}).attr('data-loaded','opacity');
 			coverload.hide();
 			coverguide.show();
+			setTimeout(function(){
+  				coverdiv.attr('data-loaded','true')
+			},1000);
 		
 		};						
 		

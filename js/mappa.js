@@ -44,7 +44,7 @@ $(document).ready(function()
 				  	lng: p.lng,
 				  	icon: '/img/marker.png',
 					infoWindow: {
-					  content: '<div class="window-left"><img src="/img/covers/'+p.date.replace(/\//g,'')+'/cover.jpg" /></div><div class="window-right"><span>'+p.date+'</span><br /><strong>'+p.title+'</strong><br /><a class="map-link" href="'+p.url+'" />Leggi tutto</a></div>'
+					  content: '<div class="archive-map-window-left"><a href="'+p.url+'" /><img src="/img/covers/'+p.date.replace(/\//g,'')+'/cover.jpg" /></a></div><div class="archive-map-window-right"><span>'+p.date+'</span><br /><strong>'+p.title+'</strong><br /><a class="archive-map-link" href="'+p.url+'" />Leggi tutto</a></div>'
 					}
 				});
 	      	});
