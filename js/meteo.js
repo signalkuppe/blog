@@ -4,7 +4,7 @@ $(document).ready(function()
 
 	if($( "#meteo-container" ).length > 0)
 	{
-		$( "#meteo-container" ).load( "/meteo/meteo.html");
+		$( "#meteo-container" ).load( "/meteo/amazon.html?"+ new Date().getTime());
 	}
 
 })

@@ -53,7 +53,7 @@
 		var instanceF = $( '.post-gallery-link' ).imageLightbox(
 		{
 			onStart:		function() { overlayOn(); closeButtonOn( instanceF ); $.scrollUp.destroy();},
-			onEnd:			function() { overlayOff(); captionOff(); closeButtonOff(); activityIndicatorOff();$.scrollUp({ scrollText: ''}); },
+			onEnd:			function() { overlayOff(); captionOff(); closeButtonOff(); activityIndicatorOff();$.scrollUp({ scrollText: ''});     $('#scrollUp').append('<svg class="icon icon-arrow-up" viewBox="0 0 32 32"><use xlink:href="#icon-arrow-up"></use></svg>');},
 			onLoadStart: 	function() { captionOff(); activityIndicatorOn(); },
 			onLoadEnd:	 	function() { captionOn(); activityIndicatorOff(); }
 		});

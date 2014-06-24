@@ -4,6 +4,7 @@ $(document).ready(function()
 
 	var coverdiv = $('.cover'),
 	coverguide = $('.cover-guide'),
+	covercaption = $('.cover-caption'),
 	coverload = $('.loader,.loader-text'),
 	coverlink = $('.cover-caption-link');
 
@@ -20,6 +21,7 @@ $(document).ready(function()
 	var bg = function () 
 	{
 		coverload.hide();
+		covercaption.hide();
 
 		// remove inline style
 		coverdiv.css('background-image','');
@@ -35,19 +37,18 @@ $(document).ready(function()
 			coverdiv.css('background-image','none');
 			coverload.show();
 			coverguide.hide();
+			covercaption.hide();
 		}
 		
+
 		// mostrala solo quando è caricata
 
 		coverimg.onload = function () {
 			// la cover è caricata
-			coverdiv.css({'background-image':'url("'+cover+'")'}).attr('data-loaded','opacity');
+			coverdiv.css({'background-image':'url("'+cover+'")'});
 			coverload.hide();
 			coverguide.show();
-			setTimeout(function(){
-  				coverdiv.attr('data-loaded','true')
-			},1000);
-		
+			covercaption.show();		
 		};						
 		
 	}
