@@ -1,17 +1,9 @@
 $(document).ready(function()
 {
 	$('a').smoothScroll({
-		preventDefault: false
+		preventDefault: true
 	});
 })
-
-$(document).on("click","a",function() {
-    $(this).smoothScroll({
-		preventDefault: false
-	});
-
-	console.log('click')
-});
 
 
 

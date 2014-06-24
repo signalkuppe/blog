@@ -6,19 +6,29 @@
 
 .cover {
    /* inline styles in html */
-   @include transition(opacity, 0.3s, ease-in-out, 0s);
    position:relative;
    background-repeat: no-repeat;
    background-position: center center fixed; 
    background-size: cover;
    background-color: $color-black;
    height: 100vh;
-   &[data-loaded="opacity"]{
-      @include opacity(0.7);
-   }
    &[data-loaded="true"]{
-      @include opacity(1);
+     -webkit-animation: filter-animation 1s;
    }
+}
+
+@-webkit-keyframes filter-animation {
+  0% {
+    -webkit-filter: grayscale(1);
+  }
+  
+  50% {
+    -webkit-filter: grayscale(0.7);
+  }
+  
+  100% {
+    -webkit-filter: grayscale(0);
+  }
 }
 
 .cover-header,
@@ -107,6 +117,7 @@
       fill: $color-white;
       width: 24px;
       height:24px;
+      stroke: #ccc;
    }
 }
 
@@ -135,7 +146,6 @@
    a {
       @include t-tiny;
       @include inline-block;
-      -webkit-text-stroke: 0.35px;
       padding: 10px;
       color: lighten($color-text-light,30%);
       text-decoration: none;

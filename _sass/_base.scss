@@ -8,7 +8,9 @@
 @include global-reset;
 
 * { @include box-sizing (border-box); }
-* {-webkit-tap-highlight-color: rgba(0,0,0,0);}
+body * {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
 
 html, body {-webkit-text-size-adjust: 100%;}
 
