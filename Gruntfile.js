@@ -59,7 +59,7 @@ module.exports = function(grunt) {
     cssmin: {
       combine: {
       options: {
-        banner: '/* I\'ve compressed this stylesheet to save 25kb */'
+        banner: '/* L\'ho compresso per risparmiare circa 25kb */'
       },
         files: {
           '_site/css/app.min.css': ['_site/css/app.css']
@@ -82,11 +82,14 @@ module.exports = function(grunt) {
       }
     },
     imagemin: {                          
-      dynamic: {                         
+      dynamic: {
+        options: {                       // Target options
+          progressive: true
+        },                         
         files: [{
           expand: true,                 
           cwd: '_site/',                 
-          src: ['**/*.{png,jpg,gif}'],   
+          src: ['**/*.jpg'],   
           dest: '_site/'                  
         }]
       }
@@ -117,7 +120,7 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', ['uglify','shell']);
   grunt.registerTask('listen', ['shell:listen']);
-  grunt.registerTask('compress', ['uglify','cssmin','prettify']);
-  grunt.registerTask('deploy', ['shell:build','uglify','cssmin','processhtml','prettify']);
+  grunt.registerTask('compress', ['uglify','cssmin','prettify','imagemin']);
+  grunt.registerTask('deploy', ['shell:build','imagemin','uglify','cssmin','processhtml','prettify']);
 
 };
