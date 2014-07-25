@@ -112,7 +112,7 @@
 
 .cover-header-menu-toggle {
    @include inline-block;
-   @include vertical-space(1,top,padding);
+   @include vertical-space(0.75,top,padding);
    .icon {
       fill: $color-white;
       width: 24px;

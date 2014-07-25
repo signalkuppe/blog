@@ -8,6 +8,7 @@ tags: venosta trentino
 caption: "Sulla cresta finale della Palla Bianca"
 flickr: 72157645170071489
 map: 46.798327,10.726782
+gps: true
 ---
 
 Un'estate piovosa ci tiene lontano dalle cime più alte. Decidiamo di sfruttare la prima occasione buona per provare un'uscita in tenda, mai tentata prima d'ora. La zona più stabile nel weekend sembra essere quella della **Val Venosta**, puntiamo quindi alla cima più alta delle Alpi dell’Ötztal, ovvero la **Palla Bianca** o Weißkugel.
