@@ -117,7 +117,9 @@
       fill: $color-white;
       width: 24px;
       height:24px;
-      stroke: #ccc;
+      stroke:$color-black;
+      stroke-width:1px;
+      stroke-opacity:0.6;
    }
 }
 

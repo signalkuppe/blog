@@ -49,7 +49,7 @@ $(document).ready(function()
 			coverload.hide();
 			coverguide.show();
 			covercaption.show();		
-		};						
+		};			
 		
 	}
 
