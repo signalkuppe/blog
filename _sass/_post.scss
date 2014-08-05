@@ -33,9 +33,9 @@
 .post-footer {
 	@include clear;
 	text-align: center;
-	@include vertical-space(2,both,margin);
+	@include vertical-space(2,both,padding);
 	@media screen and (min-width:$breakpoint-desktop){
-		@include vertical-space(4,both,margin);
+		@include vertical-space(4,both,padding);
 	}
 }
 
@@ -60,14 +60,10 @@
 }
 
 .post-footer-list {
-	@include inline-block-list(5px);
+	@include inline-block-list(10px);
 	li {
-		a {
-			text-decoration: none;
-			i {
-				@include t-xlarge;
-				@include button-icon(primary);
-			}
+		.icon {
+			@include button-icon(primary-inverse);
 		}
 	}
 }

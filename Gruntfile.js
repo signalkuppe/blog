@@ -15,7 +15,7 @@ module.exports = function(grunt) {
             'bower_components/jquery/jquery.min.js',
             'bower_components/jquery.smooth-scroll/jquery.smooth-scroll.min.js',
             'bower_components/jQuery-Unorphanize/unorphanize.jquery.min.js',
-            'bower_components/scrollup/js/jquery.scrollUp.min.js',
+            'bower_components/scrollup/src/jquery.scrollUp.min.js',
             'bower_components/fastclick/lib/fastclick.js',
             'bower_components/enquire/dist/enquire.min.js',
             'bower_components/iOS-Orientationchange-Fix/ios-orientationchange-fix.js',
@@ -33,21 +33,34 @@ module.exports = function(grunt) {
         }
       }
     },
-    shell: {
-      listen:
-      {                      
-        options: {                    
-          stdout: true
-        },
-        command: 'jekyll serve --watch'
+    svgstore: {
+      options: {
+        prefix : 'icon-', // This will prefix each ID
+        cleanup: ['fill','stroke'],
+        svg: { // will be added as attributes to the resulting SVG
+          style:"display:none;"
+        }
       },
+      default_task: {
+        files: {
+          '_includes/svg-defs.svg': ['svg/*.svg'],
+        }
+      }
+    },
+    shell: {
       build:
       {                      
         options: {                    
           stdout: true
         },
         command: 'jekyll build'
-      },                            
+      },
+      serve:{                      
+        options: {                    
+          stdout: true
+        },
+        command: 'jekyll serve --watch'
+      },                             
       upload:
       {                      
         options: {                    
@@ -106,7 +119,18 @@ module.exports = function(grunt) {
         },
         ],
       }
-    }
+    },
+    watch: {
+      svg: {
+        files: ['svg/*.svg'],
+        tasks: ['svgstore']
+      },
+      site: {
+        files: ['*.html','_layout/*.html','_includes/*.html','_posts/*.md','_sass/*,scss','js/*.js'],
+        tasks: ['shell:build']
+      }
+    },
+
   });
 
  
@@ -116,11 +140,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-prettify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-processhtml');
+  grunt.loadNpmTasks('grunt-svgstore');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify','shell']);
-  grunt.registerTask('listen', ['shell:listen']);
-  grunt.registerTask('compress', ['uglify','cssmin','prettify','imagemin']);
+
+  grunt.registerTask('listen', ['shell:serve']);
+  grunt.registerTask('svg', ['watch:svg']);
   grunt.registerTask('deploy', ['shell:build','imagemin','uglify','cssmin','processhtml','prettify']);
 
 };
