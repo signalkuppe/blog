@@ -15,7 +15,7 @@ module.exports = function(grunt) {
             'bower_components/jquery/jquery.min.js',
             'bower_components/jquery.smooth-scroll/jquery.smooth-scroll.min.js',
             'bower_components/jQuery-Unorphanize/unorphanize.jquery.min.js',
-            'bower_components/scrollup/src/jquery.scrollUp.min.js',
+            'bower_components/scrollup/src/jquery.scrollUp.js',
             'bower_components/fastclick/lib/fastclick.js',
             'bower_components/enquire/dist/enquire.min.js',
             'bower_components/iOS-Orientationchange-Fix/ios-orientationchange-fix.js',
