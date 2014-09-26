@@ -4,11 +4,7 @@ bower_components
 js/app.min.js
 node_modules
 _sass/.sass-cache/
-<<<<<<< HEAD
 css
 _cache/flickr/*
 s3_website.yml
 _config.yml
-=======
-css
->>>>>>> 4f558fc062eca7d564ce57a9a795f0c3691d8a9a
