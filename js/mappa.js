@@ -49,7 +49,7 @@ $(document).ready(function()
 				});
 	      	});
 
-	      	$('#mappa').append('<div class="archive-map-buttons"><a href="/" class="btn"><svg class="icon icon-home2" viewBox="0 0 32 32"><use xlink:href="#icon-home2"></use></svg>Torna alla homepage</a><a id="archive-years" href="#years"><svg class="icon icon-arrow-down" viewBox="0 0 32 32"><use xlink:href="#icon-arrow-down"></use></svg>Archivio annuale</a></div>')
+	      	$('#mappa').append('<div class="archive-map-buttons"><a href="/" class="btn"><svg class="icon icon-home" viewBox="0 0 32 32"><use xlink:href="#icon-home"></use></svg>Torna alla homepage</a><a id="archive-years" href="#years"><svg class="icon icon-arrow-down" viewBox="0 0 32 32"><use xlink:href="#icon-arrow-down"></use></svg>Archivio annuale</a></div>')
 			$('#archive-years').on('click', function() {
 				$.smoothScroll({
 			  		scrollTarget: '#years'

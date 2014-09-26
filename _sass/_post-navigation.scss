@@ -75,6 +75,7 @@
 		margin-left: 10px;
 	}
 	.icon {
+		@include border-radius(50%);
 		@include button-icon(default-inverse);
 		padding: 5px;
 		width: 24px;
