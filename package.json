@@ -20,6 +20,12 @@
     "grunt-processhtml": "^0.3.0"
   },
   "dependencies": {
+<<<<<<< HEAD
     "grunt-contrib-imagemin": "^0.7.2"
+=======
+    "grunt-contrib-imagemin": "^0.7.1",
+    "grunt-svgstore": "^0.3.1",
+    "grunt-contrib-watch": "^0.6.1"
+>>>>>>> af775e09e40f8e28b6b24d79d5d78d6688b9e6a4
   }
 }

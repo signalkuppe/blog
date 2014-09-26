@@ -367,9 +367,9 @@ $breakpoint-desktop-xxlarge:    2560px;
 // icon button
 
 @mixin button-icon ($type) {
-	@include border-radius(50%);
-	padding: 5px;
-	@if $type == "primary"{
+	width: 48px;
+	height: 48px;
+	@if $type == "primary" {
 		color: $color-links;
 	}
 	@if $type == "default"{
