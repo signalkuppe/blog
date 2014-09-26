@@ -54,15 +54,11 @@
 	@include font-headings;
 	@include t-large;
 	@include vertical-space(1.5,bottom,margin);
-	.icon {
-		display: none;
-		fill: $color-primary;
-		width: 24px;
-		height: 24px;
-	}
 	&:target {
-		.icon {
-			@include inline-block;
+		span {
+			background: $color-primary;
+			color: $color-white;
+			padding:0.5rem 1rem;
 		}
 	}
 }

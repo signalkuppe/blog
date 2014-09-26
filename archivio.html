@@ -12,14 +12,14 @@ description: Archivio annuale degli articoli
        {% for post in site.posts %}
        {% unless post.next %}
          <li class="archive-years-year">
-            <a href="#year-{{ post.date | date: '%Y' }}">{{ post.date | date: '%Y' }}</a>
+            <a class="show-target" href="#year-{{ post.date | date: '%Y' }}">{{ post.date | date: '%Y' }}</a>
          </li>
        {% else %}
          {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
          {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
          {% if year != nyear %}
          <li class="archive-years-year">
-            <a href="#year-{{ post.date | date: '%Y' }}">{{ post.date | date: '%Y' }}</a>
+            <a class="show-target" href="#year-{{ post.date | date: '%Y' }}">{{ post.date | date: '%Y' }}</a>
          </li>
          {% endif %}
        {% endunless %}
@@ -32,16 +32,14 @@ description: Archivio annuale degli articoli
        {% for post in site.posts %}
        {% unless post.next %}
          <dt class="archive-posts-year" id="year-{{ post.date | date: '%Y' }}">
-            <svg class="icon icon-bookmark" viewBox="0 0 32 32" id="camera"><use xlink:href="#icon-bookmark"></use></svg>
-            {{ post.date | date: '%Y' }}
+            <span>{{ post.date | date: '%Y' }}</span>
          </dt>
        {% else %}
          {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
          {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
          {% if year != nyear %}
            <dt class="archive-posts-year" id="year-{{ post.date | date: '%Y' }}">
-            <svg class="icon icon-bookmark" viewBox="0 0 32 32" id="camera"><use xlink:href="#icon-bookmark"></use></svg>
-            {{ post.date | date: '%Y' }}
+            <span>{{ post.date | date: '%Y' }}</span>
            </dt>
          {% endif %}
        {% endunless %}

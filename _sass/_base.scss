@@ -50,6 +50,9 @@ body {
 
 h2 {
 	@include t-medium;
+	@media screen and (min-width:$breakpoint-tablet){
+		@include t-large;
+	}
 }
 
 
@@ -71,11 +74,15 @@ a.container-link {
 // list in content
 
 .post-content ul {
+	@include t-small;
 	@include vertical-space(1,both,margin);
 	list-style: disc;
 	margin-left: $base-font-size*2;
 	li {
 		@include vertical-space(0.5,bottom,margin);
+	}
+	@media screen and (min-width:$breakpoint-tablet){
+		@include t-base;
 	}
 }
 
@@ -84,6 +91,7 @@ a.container-link {
 }
 
 img {
+	@include transition(all,0.5s,ease-in-out);
 	max-width: 100%;
 }
 
@@ -93,6 +101,7 @@ small   { @include t-small; }
 strong  { color: $color-black;}
 
 p {
+	@include transition(all,0.5s,ease-in-out);
 	@include t-small;
 	@include vertical-space(1,bottom,margin);
 	@media screen and (min-width:$breakpoint-tablet){

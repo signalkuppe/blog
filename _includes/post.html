@@ -1,10 +1,13 @@
 {% include post-cover.html %}
-<article class="post main-content" id="post" data-caption="{{ page.caption }}">
+<article itemscope itemtype="http://schema.org/Article" class="post main-content" id="post" data-caption="{{ page.caption }}">
 	<header class="post-header container">
-		<h1 class="post-title">{{ page.title }}</h1>
-		<time pubdate datetime="{{ page.date | date: "%Y-%m-%d" }}" class="post-date">{{ page.date | localize: "%d %B %Y" }}</time>
+		<h1 class="post-title" itemprop="name">{{ page.title }}</h1>
+		<time itemprop="datePublished" content="{{ page.date | date: "%Y-%m-%d" }}" pubdate datetime="{{ page.date | date: "%Y-%m-%d" }}" class="post-date">{{ page.date | localize: "%d %B %Y" }}</time>
 		<span class="post-author">
-			<a href="https://plus.google.com/110274853083140603802?rel=author">Google</a>
+			<a href="https://plus.google.com/110274853083140603802?rel=author" itemprop="name">Matteo Leoni</a>
+		</span>
+		<span class="post-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<span itemprop="name">Matteo Leoni</span>
 		</span>
 	</header>
 	<div class="post-content container">

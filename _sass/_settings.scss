@@ -240,22 +240,27 @@ $breakpoint-desktop-xxlarge:    2560px;
 	padding: 0 1rem;
 }
 
+
+@mixin center () {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+} 
+
 @mixin clear {
-	 // For modern browsers
-	  &:before,
-	  &:after {
-	    content:" ";
-	    display:table;
-	  }
+	&:before,
+	&:after {
+		content:" ";
+		display:table;
+	}
 
-	  &:after {
-	    clear:both;
-	  }
-
-	  // For IE 6/7 (trigger hasLayout)
-	  & {
-	    *zoom:1;
-	  }
+	&:after {
+		clear:both;
+	}
+	& {
+		*zoom:1;
+	}
 }
 
 @mixin destroy_container () {
