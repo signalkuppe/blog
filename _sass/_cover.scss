@@ -1,7 +1,6 @@
 /*
 *
 * #cover #image
-*
 **/
 
 .cover {
@@ -63,7 +62,7 @@
 .cover-guide {
    a {
       .icon {
-         @include opacity(0.85);
+         @include opacity(0.75);
          fill: $color-white;
          width: 56px;
          height: 56px;
@@ -117,7 +116,8 @@
       fill: $color-white;
       width: 24px;
       height:24px;
-      stroke: #ccc;
+      stroke: $color-black;
+      stroke-opacity:0.5;
    }
 }
 

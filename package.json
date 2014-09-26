@@ -20,6 +20,6 @@
     "grunt-processhtml": "^0.3.0"
   },
   "dependencies": {
-    "grunt-contrib-imagemin": "^0.7.1"
+    "grunt-contrib-imagemin": "^0.7.2"
   }
 }
