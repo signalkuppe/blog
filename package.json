@@ -20,6 +20,7 @@
     "grunt-processhtml": "^0.3.0"
   },
   "dependencies": {
+    "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-imagemin": "^0.8.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-svgstore": "^0.3.1",
