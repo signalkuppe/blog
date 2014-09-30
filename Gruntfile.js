@@ -14,7 +14,7 @@ module.exports = function(grunt) {
         {
           'js/app.min.js':
           [
-            'bower_components/jquery/dist/jquery.min.js',
+            'bower_components/jquery/jquery.min.js',
             'bower_components/jquery.smooth-scroll/jquery.smooth-scroll.min.js',
             'bower_components/jQuery-Unorphanize/unorphanize.jquery.min.js',
             'bower_components/scrollup/src/jquery.scrollUp.js',
