@@ -101,7 +101,7 @@ module.exports = function(grunt) {
         options: {                       // Target options
           optimizationLevel: 7,
           progressive: true,
-          use: [jpegRecompress()]
+          use: [jpegRecompress({min:35,max:85})]
         },                         
         files: [{
           expand: true,                 
