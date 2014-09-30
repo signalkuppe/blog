@@ -134,6 +134,7 @@ module.exports = function(grunt) {
         tasks: ['shell:build']
       }
     },
+    clean: ['_site']
 
   });
 
@@ -146,11 +147,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-processhtml');
   grunt.loadNpmTasks('grunt-svgstore');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Default task(s).
 
   grunt.registerTask('listen', ['shell:serve']);
   grunt.registerTask('svg', ['watch:svg']);
-  grunt.registerTask('deploy', ['shell:build','imagemin','uglify','cssmin','processhtml','prettify']);
+  grunt.registerTask('deploy', ['clean','shell:build','imagemin','uglify','cssmin','processhtml','prettify']);
 
 };
