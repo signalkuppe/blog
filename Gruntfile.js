@@ -153,6 +153,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('listen', ['shell:serve']);
   grunt.registerTask('svg', ['watch:svg']);
-  grunt.registerTask('deploy', ['clean','shell:build','imagemin','uglify','cssmin','processhtml','prettify']);
+  grunt.registerTask('deploy', ['shell:build','imagemin','uglify','cssmin','processhtml','prettify']);
 
 };
