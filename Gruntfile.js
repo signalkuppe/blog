@@ -1,3 +1,5 @@
+var jpegRecompress = require('imagemin-jpeg-recompress');
+
 module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
@@ -97,8 +99,9 @@ module.exports = function(grunt) {
     imagemin: {                          
       dynamic: {
         options: {                       // Target options
+          optimizationLevel: 7,
           progressive: true,
-          optimizationLevel: 5,
+          use: [jpegRecompress()]
         },                         
         files: [{
           expand: true,                 
