@@ -20,8 +20,9 @@
     "grunt-processhtml": "^0.3.0"
   },
   "dependencies": {
-    "grunt-contrib-imagemin": "0.7.2",
+    "grunt-contrib-imagemin": "^0.8.1",
+    "grunt-contrib-watch": "^0.6.1",
     "grunt-svgstore": "^0.3.1",
-    "grunt-contrib-watch": "^0.6.1"
+    "imagemin-jpeg-recompress": "^1.0.1"
   }
 }
