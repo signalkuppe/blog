@@ -42,8 +42,10 @@ $tiny-font-size: 10px;
 $tiny-font-leading: 1;
 $small-font-size: 13px;
 $small-font-leading: 1.5;
+$small-alt-font-size: 14px;
+$small-alt-font-leading: 1.6;
 $base-font-size: $rem-unit;
-$base-font-leading: 1.5;
+$base-font-leading: 1.6;
 $medium-font-size: 20px;
 $medium-font-leading: 1.5;
 $big-font-size: 24px;
@@ -107,6 +109,10 @@ $menu-button-font-size: 24px;
 		@include set-font-size-to($small-font-size);
 		@include set-leading-to($small-font-leading);
 	}
+	@if $size == "small-alt" {
+		@include set-font-size-to($small-alt-font-size);
+		@include set-leading-to($small-alt-font-leading);
+	}
 	@if $size == "base" {
 		@include set-font-size-to($base-font-size);
 		@include set-leading-to($base-font-leading);
@@ -146,6 +152,7 @@ $menu-button-font-size: 24px;
 // Type size
 @mixin t-tiny     { @include typeSize(tiny);  }
 @mixin t-small    { @include typeSize(small); }
+@mixin t-small-alt{ @include typeSize(small-alt); }
 @mixin t-base     { @include typeSize(base);  }
 @mixin t-medium   { @include typeSize(medium);}
 @mixin t-big      { @include typeSize(big);}
