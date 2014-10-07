@@ -29,8 +29,6 @@ $color-links-visited: $color-links;
 
 // typo
 
-
-@import url("http://fonts.googleapis.com/css?family=Oswald:400,700,300|Open+Sans:400italic,400,300,600,700");
 $font-dir: "../fonts";
 $font-headings: 'Oswald', sans-serif;
 $font-text: 'Open Sans', sans-serif;
@@ -45,7 +43,7 @@ $small-font-leading: 1.5;
 $small-alt-font-size: 14px;
 $small-alt-font-leading: 1.6;
 $base-font-size: $rem-unit;
-$base-font-leading: 1.6;
+$base-font-leading: 1.5;
 $medium-font-size: 20px;
 $medium-font-leading: 1.5;
 $big-font-size: 24px;
