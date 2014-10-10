@@ -21,6 +21,7 @@ html{
 	/* killing 300ms touch delay in IE */
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
+	text-rendering: optimizeLegibility;
 }
 
 body {
@@ -90,15 +91,23 @@ a.container-link {
 	@include t-strong;
 }
 
+.post-content h2 {
+	@include t-ultrastrong;
+	@include t-big;
+	@include vertical-space(1,top,padding);
+	font-family: $font-text;
+	color: $color-text;
+}
+
 img {
 	@include transition(all,0.5s,ease-in-out);
 	max-width: 100%;
 }
 
-strong  { @include t-strong; }
+strong  { @include t-ultrastrong; }
 em  	{ @include font-text-italic; }
 small   { @include t-small; }
-strong  { color: $color-black;}
+strong  { color: $color-gray-darker; letter-spacing: -0.1px;}
 
 p {
 	@include transition(all,0.5s,ease-in-out);
