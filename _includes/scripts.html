@@ -19,12 +19,39 @@
 <script src="{{ site.baseurl}}js/meteo.js"></script>
 <!-- /build -->
 <script type="text/javascript">
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+/* carica disqus solo sullo scroll*/
+var ds_loaded = false;
+function loadDisqus()
+{
+    var disqus_div = $("#disqus_thread");
+    var top = disqus_div.offset().top;
+    var disqus_data = disqus_div.data();
+    if ( !ds_loaded && $(window).scrollTop() + $(window).height() > top ) 
+    {
+        ds_loaded = true;
+        for (var key in disqus_data) 
+        {
+            if (key.substr(0,6) == 'disqus') 
+            {
+                window['disqus_' + key.replace('disqus','').toLowerCase()] = disqus_data[key];
+            }
+        }
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = 'http://' + window.disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        console.log('disqus caricato','url: '+disqus_url+' shortname: '+disqus_shortname)
+    }  
+}
+$(function () 
+{
+    var disqus_div = $("#disqus_thread");
+    if (disqus_div.size() > 0) 
+    {
+        $(window).scroll(loadDisqus);      
+    }  
+});
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <script>

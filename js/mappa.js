@@ -17,7 +17,9 @@ $(document).ready(function()
 				lng: c.split('+')[0].split(',')[1].replace(/\s/g,''),
 				url: c.split('+')[3].replace(/\s/g,'')
 			})
-		})
+		});
+
+
 
 		function _drawMap(z,l)
 		{
@@ -44,7 +46,7 @@ $(document).ready(function()
 				  	lng: p.lng,
 				  	icon: '/img/marker.png',
 					infoWindow: {
-					  content: '<div class="archive-map-window-left"><a href="'+p.url+'" /><img src="/img/covers/'+p.date.replace(/\//g,'')+'/cover.jpg" /></a></div><div class="archive-map-window-right"><span>'+p.date+'</span><br /><strong>'+p.title+'</strong><br /><a class="archive-map-link" href="'+p.url+'" />Leggi tutto</a></div>'
+					  content: '<div class="archive-map-window-left"><a href="'+p.url+'" /><img src="/img/covers/'+p.date.replace(/\//g,'')+'/cover.jpg" /></a></div><div class="archive-map-window-right"><span>'+p.date+'</span><br /><p><strong>'+p.title+'</strong></p><a class="archive-map-link" href="'+p.url+'" />Leggi l\'articolo</a></div>'
 					}
 				});
 	      	});
@@ -54,7 +56,6 @@ $(document).ready(function()
 				$.smoothScroll({
 			  		scrollTarget: '#years'
 				});
-				console.log('aaa')
 				return false;
 			});
 

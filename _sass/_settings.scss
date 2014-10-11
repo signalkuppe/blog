@@ -299,6 +299,7 @@ $breakpoint-desktop-xxlarge:    2560px;
 @mixin button ($type, $size:default){
 	@include inline-block;
 	@include border-radius;
+	@include transition(all,0.25s,ease-in-out);
 	text-decoration: none;
 	border: 2px solid;
 	line-height: 20px;
@@ -320,6 +321,7 @@ $breakpoint-desktop-xxlarge:    2560px;
 		.icon {
 			fill: $color-primary;
 			vertical-align: top;
+			@include transition(all,0.25s,ease-in-out);
 		}
 		&:hover {
 			background: $color-primary;
