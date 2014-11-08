@@ -42,7 +42,7 @@
 
 .post-utilities {
 	@include container;
-	@include vertical-space(5,both,margin);
+	@include vertical-space(2,both,margin);
 	text-align: center;
 	ul {
 		@include inline-block-list(5px);
@@ -57,6 +57,9 @@
 		li.post-utilities-link--print {
 			display: none;
 		}
+	}
+	@media screen and (min-width:$breakpoint-desktop){
+		@include vertical-space(3,both,padding);
 	}
 }
 
@@ -156,7 +159,7 @@
 }
 
 .post-disqus {
-	@include vertical-space(2,top,padding);
+	@include vertical-space(3,top,padding);
 	@include container;
 	@media screen and (min-width:$breakpoint-tablet){
 		@include vertical-space(4,top,padding);
