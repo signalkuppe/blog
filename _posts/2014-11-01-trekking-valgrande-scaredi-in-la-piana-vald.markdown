@@ -2,7 +2,7 @@
 layout: post
 title:  "Trekking in Valgrande: Scaredi, In La Piana, Bocchetta di Vald"
 date:   2014-11-01
-description: "Escursione fotografica per riprendere la Tre Cime di Lavaredo con dietro la via lattea, consigli e qualche informazione sulla tecnica di ripresa"
+description: "Trekking di due giorni in Valgrande: partenza dalla Val Loana, Alpe Scaredi, e bivacco a In La Piana. Secondo giorno rientro per la Bocchetta di Vald e la Bocchetta di Cavalla"
 categories: trekking
 tags: dolomiti
 caption: "La pozza di In La Piana"
