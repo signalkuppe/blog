@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Trekking in Valgrande, Scaredi In La Piana Vald"
+title:  "Trekking in Valgrande: Scaredi, In La Piana, Bocchetta di Vald"
 date:   2014-11-01
 description: "Escursione fotografica per riprendere la Tre Cime di Lavaredo con dietro la via lattea, consigli e qualche informazione sulla tecnica di ripresa"
 categories: trekking
