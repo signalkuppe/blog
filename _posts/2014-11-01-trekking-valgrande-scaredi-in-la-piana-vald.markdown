@@ -61,7 +61,7 @@ trecento metri il fianco Ovest della valle lungo una traccia di sentiero bella, 
 
 Arrivati alla **Bocchetta di Cavalla** ci affacciamo nella **Val Loana** e 
 vediamo subito sotto di noi il parcheggio di Fondo li Gabbi con le nostre auto. Breve discesa passando per 
-l'Alpe di Cavalla con gli ultimo scatti su un panorama da favola di larici e faggi in veste autunnale. Anche 
+l'Alpe di Cavalla con gli ultimi scatti su un panorama da favola di larici e faggi in veste autunnale. Anche 
 oggi ci siamo fatti quasi 11 kilometri, di cui 1288 metri in salita e 957 in discesa, per sette ore e trenta 
 complessive di comodo camminare e di molte soste per fotografare le meraviglie che ci circondavano. 
 Non abbiamo tralasciato uno scatto! D'altra parte ci siamo venuti apposta!

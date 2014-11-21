@@ -37,6 +37,14 @@ ul.matteo-work {
 .matteo-contact {
 	text-align: center;
 	@include vertical-space(4,bottom,margin);
+	ul {
+		list-style:none;
+		margin:0;
+		padding:0;
+		@media screen and (min-width:$breakpoint-tablet){
+			li {display: inline-block;}
+		}
+	}
 	a {
 		@include button(primary);
 		margin-right: 10px;
