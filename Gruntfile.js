@@ -134,7 +134,16 @@ module.exports = function(grunt) {
         tasks: ['shell:build']
       }
     },
-    clean: ['_site']
+    clean: ['_site'],
+    penthouse: {
+      extract : {
+          outfile : 'css/above_the_fold.css',
+          css : '_site/css/app.css',
+          url : 'http://0.0.0.0:4000/',
+          width : 1300,
+          height : 900
+      },
+    }
 
   });
 
@@ -148,6 +157,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-svgstore');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-penthouse');
 
   // Default task(s).
 
