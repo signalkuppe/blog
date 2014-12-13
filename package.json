@@ -22,6 +22,7 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-imagemin": "0.8.1",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-penthouse": "^0.1.2",
     "grunt-svgstore": "^0.3.1",
     "imagemin-jpeg-recompress": "1.0.1"
   }
