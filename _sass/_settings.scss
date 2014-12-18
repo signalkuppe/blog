@@ -3,10 +3,6 @@
 * #settings
 *
 */
-
-
-$legacy-support-for-ie: false;
-
 // colors
 $color-primary: #066ca6;
 $color-black: #000000;
@@ -59,6 +55,8 @@ $xxxlarge-font-size: 64px;
 $xxxlarge-font-leading: 1;
 
 $menu-button-font-size: 24px;
+
+$border-radius-base: 5px;
 
 @mixin set-font-size-to($size){
 	font-size: $size/$rem-unit+rem;
@@ -182,6 +180,14 @@ $breakpoint-desktop-xxlarge:    2560px;
 	font-style: normal;
 }
 
+@mixin clearfix (){
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 @mixin hide-text() {
 	text-indent: -5000px;
 	font-size: 0px;
@@ -197,6 +203,18 @@ $breakpoint-desktop-xxlarge:    2560px;
 	@include t-base;
 	font-family: $font-text;
 	color: $color-text;
+}
+
+@mixin inline-block-list ($padding: false) {
+	li {
+		list-style: none;
+		display: inline-block;
+		white-space: nowrap;
+		@if $padding {
+			padding-left: $padding;
+			padding-right: $padding;
+		}
+	}
 }
 
 @mixin font-text-italic () {
@@ -297,9 +315,9 @@ $breakpoint-desktop-xxlarge:    2560px;
 // buttons
 
 @mixin button ($type, $size:default){
-	@include inline-block;
-	@include border-radius;
-	@include transition(all,0.25s,ease-in-out);
+	display: inline-block;
+	border-radius: $border-radius-base;
+	transition: all 0.25s ease-in-out;
 	text-decoration: none;
 	border: 2px solid;
 	line-height: 20px;
@@ -321,7 +339,7 @@ $breakpoint-desktop-xxlarge:    2560px;
 		.icon {
 			fill: $color-primary;
 			vertical-align: top;
-			@include transition(all,0.25s,ease-in-out);
+			transition: all 0.25s ease-in-out;
 		}
 		&:hover {
 			background: $color-primary;

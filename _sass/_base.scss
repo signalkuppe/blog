@@ -5,9 +5,7 @@
 */
 
 
-@include global-reset;
-
-* { @include box-sizing (border-box); }
+* { box-sizing:border-box; }
 body * {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -44,7 +42,7 @@ body {
 }
 
 
-#{headings(4)} {
+h1,h2,h3,h4 {
 	@include font-headings;
 	margin: 0;
 }
@@ -59,7 +57,11 @@ h2 {
 
 a {
 	//link-colors($normal, $hover, $active, $visited, $focus)
-	@include link-colors($color-links, $color-links-hover, $color-links-active, $color-links-visited, $color-links-hover);
+	color: $color-links;
+	&:hover   { color: $color-links-hover;    }
+	&:active  { color: $color-links-active;   }
+	&:visited { color: $color-links-visited;  }
+	&:focus   { color: $color-links-hover;    }
 }
 
 p a:active {
@@ -69,7 +71,11 @@ p a:active {
 }
 
 a.container-link {
-	@include link-colors(inherit, inherit, inherit, inherit, inherit);
+	color: $color-links;
+	&:hover   { color: inherit;  }
+	&:active  { color: inherit;  }
+	&:visited { color: inherit;  }
+	&:focus   { color: inherit;  }
 }
 
 // list in content
@@ -100,7 +106,7 @@ a.container-link {
 }
 
 img {
-	@include transition(all,0.5s,ease-in-out);
+	transition: all 0.5s ease-in-out;
 	max-width: 100%;
 }
 
@@ -110,7 +116,7 @@ small   { @include t-small; }
 strong  { color: $color-gray-darker; letter-spacing: -0.1px;}
 
 p {
-	@include transition(all,0.5s,ease-in-out);
+	transition: all 0.5s ease-in-out;
 	@include t-small-alt;
 	@include vertical-space(1,bottom,margin);
 	@media screen and (min-width:$breakpoint-tablet){

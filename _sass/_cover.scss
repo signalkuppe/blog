@@ -11,23 +11,6 @@
    background-size: cover;
    background-color: $color-black;
    height: 100vh;
-   &[data-loaded="true"]{
-     -webkit-animation: filter-animation 1s;
-   }
-}
-
-@-webkit-keyframes filter-animation {
-  0% {
-    -webkit-filter: grayscale(1);
-  }
-  
-  50% {
-    -webkit-filter: grayscale(0.7);
-  }
-  
-  100% {
-    -webkit-filter: grayscale(0);
-  }
 }
 
 .cover-header,
@@ -44,7 +27,7 @@
 }
 
 .cover-guide,
-.loader {
+.cover-loader {
    height: 100px;
    margin-bottom:-75px;
    position: absolute;
@@ -54,22 +37,26 @@
    text-align: center;
 }
 
-.loader-text {
-   padding-bottom: 10px;
-   color: $color-white;
+.cover-loader {
+   margin-bottom:-45px;
+}
+
+.cover-loader img {
+   width:128px;
+   height: 128px;
 }
 
 .cover-guide {
    a {
       .icon {
-         @include opacity(0.75);
+         opacity:0.75;
          fill: $color-white;
          width: 56px;
          height: 56px;
       }
       &:hover{
          .icon {
-            @include opacity(1);
+            opacity:1;
          }
       }
    }
@@ -81,7 +68,11 @@
 }
 
 .cover-header {
-   @include background-image(linear-gradient($color-black, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.1) 85%, transparent));
+   background-image:linear-gradient(
+      $color-black,
+      rgba(0,0,0,0.8) 30%,
+      rgba(0,0,0,0.1) 85%,
+      transparent);
    position: absolute;
    top: 0px;
    left: 0;
@@ -110,7 +101,7 @@
 }
 
 .cover-header-menu-toggle {
-   @include inline-block;
+   display: inline-block;
    @include vertical-space(0.75,top,padding);
    .icon {
       fill: $color-white;
@@ -123,7 +114,7 @@
 }
 
 .menu {
-   @include transition(all, 0.5s, linear, 0.5s);
+   transition: all 0.5s linear 0.5s;
    background: $color-black;
    height: 0;
    &.is-open {
@@ -142,11 +133,11 @@
       }
    }
    li {
-         @include inline-block;
+          display: inline-block;
    }
    a {
       @include t-tiny;
-      @include inline-block;
+      display: inline-block;
       padding: 10px;
       color: lighten($color-text-light,30%);
       text-decoration: none;

@@ -5,7 +5,7 @@
 **/
 
 .header-simple-menu {
-	@include background-image(linear-gradient($color-gray, $color-white));
+	background-image: linear-gradient($color-gray, $color-white);
 	.menu-wrapper {
 		a {
 		  color: $color-text-light;

@@ -8,3 +8,5 @@ css
 _cache/flickr/*
 s3_website.yml
 _config.yml
+.sass-cache
+.sass-cache/
