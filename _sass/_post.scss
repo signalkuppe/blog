@@ -12,7 +12,7 @@
 }
 
 .post-title {
-	@include transition(all,0.5s,ease-in-out);
+	transition: all 0.5s ease-in-out;
 	@include t-large;
 	@include vertical-space(1,bottom,margin);
 	text-align: center;
@@ -30,6 +30,27 @@
 .post-author {
 	@include hide;
 }
+
+/*
+.post-content {
+	margin:0 1rem;
+	@media screen and (min-width:$breakpoint-tablet){
+		margin:0 2rem;
+	}
+	@media screen and (min-width:$breakpoint-desktop){
+		@include container;
+	}
+	@media screen and (min-width:$breakpoint-desktop-large){
+		@include destroy_container;
+		column-count: 2;
+		column-gap: 4rem;
+		margin:0 4rem;
+		p {
+			break-inside: avoid; 
+		}
+	}
+}
+*/
 
 .post-footer {
 	@include clear;
@@ -66,7 +87,7 @@
 		a {
 			text-decoration: none;
 			.icon {
-				@include transition(all,0.5s,ease-in-out);
+				transition: all 0.5s ease-in-out;
 				fill: $color-text;
 				width: 48px;
 				height: 48px;
@@ -112,9 +133,9 @@
 	.post-gallery-list
 	{
 		li {
-			@include transition(all,0.5s,ease-in-out);
-			@include inline-block;
-			@include border-radius(50%);
+			transition: all 0.5s ease-in-out;
+			display: inline-block;
+			border-radius: 50%;
 			border: 6px solid;
 			border-color: $color-gray-light;
 			margin: 0 0.5rem 0.5rem 0;
@@ -124,7 +145,7 @@
 			background-position: center center;
 			background-repeat: no-repeat;
 			img {
-				@include border-radius(50%);
+				border-radius: 50%;
 			}
 			@media screen and (min-width:$breakpoint-tablet){
 				width: 100px;

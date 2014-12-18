@@ -2,6 +2,8 @@ require 'i18n'
 
 LOCALE = 'it'
 
+I18n.enforce_available_locales = false
+
 module Jekyll
   module I18nFilter
     def localize(input, format=nil)

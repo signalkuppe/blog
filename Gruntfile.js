@@ -7,8 +7,7 @@ module.exports = function(grunt) {
       my_target:
       {
         options: {
-          //compress: true,
-          //beautify: false
+          compress: true,
         },
         files:
         {
@@ -56,13 +55,7 @@ module.exports = function(grunt) {
           stdout: true
         },
         command: 'jekyll build'
-      },
-      serve:{                      
-        options: {                    
-          stdout: true
-        },
-        command: 'jekyll serve --watch'
-      },                             
+      },                          
       upload:
       {                      
         options: {                    
@@ -105,9 +98,9 @@ module.exports = function(grunt) {
         },                         
         files: [{
           expand: true,                 
-          cwd: '_site/',                 
+          cwd: 'img/',                 
           src: ['**/*.jpg'],   
-          dest: '_site/'                  
+          dest: 'img/'                  
         }]
       }
     },
@@ -124,14 +117,33 @@ module.exports = function(grunt) {
         ],
       }
     },
+    sass: {
+      dist: {
+        files: {
+          'css/app.css': '_sass/app.scss'
+        }
+      }
+    },
+    connect: {
+      server: {
+        options: {
+          port: 8080,
+          base: '_site'
+        }
+      }
+    },
     watch: {
       svg: {
         files: ['svg/*.svg'],
         tasks: ['svgstore']
       },
       site: {
-        files: ['*.html','_layout/*.html','_includes/*.html','_posts/*.md','_sass/*,scss','js/*.js'],
+        files: ['*.html','js/*.js','_layouts/*.html','_includes/*.html','_posts/*.md'],
         tasks: ['shell:build']
+      },
+      scss: {
+        files: ['_sass/*.scss'],
+        tasks: ['sass','autoprefixer','shell:build']
       }
     },
     clean: ['_site'],
@@ -139,10 +151,37 @@ module.exports = function(grunt) {
       extract : {
           outfile : 'css/above_the_fold.css',
           css : '_site/css/app.css',
-          url : 'http://0.0.0.0:4000/',
+          url : 'http://0.0.0.0:8080/',
           width : 1300,
           height : 900
       },
+    },
+    autoprefixer: {
+      basic: {
+          src: 'css/app.css',
+      }
+    },
+    'string-replace': {
+    inline: {
+            files: [
+              {
+              expand: true,     
+              cwd: '_site/',   
+              src: ['**/*.html'],
+              dest: '_site/',  
+              ext: '.html'
+            }
+          ],
+        options: {
+          replacements: [
+            // place files inline example
+            {
+              pattern: '<link rel="stylesheet" href="/css/above_the_fold.css" />',
+              replacement: "<!--non-blocking above the fold inline css--><style><%= grunt.file.read('css/above_the_fold.css') %></style>"
+            }
+          ]
+        }
+      }
     }
 
   });
@@ -158,11 +197,34 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-penthouse');
+  grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-string-replace');
 
   // Default task(s).
 
-  grunt.registerTask('listen', ['shell:serve']);
+  grunt.registerTask('listen', ['connect','watch']);
   grunt.registerTask('svg', ['watch:svg']);
-  grunt.registerTask('deploy', ['shell:build','imagemin','uglify','cssmin','processhtml','prettify']);
+  grunt.registerTask('imageoptim', ['imagemin']);
+  grunt.registerTask('pre-deploy', ['imageoptim',
+                                'sass',
+                                'autoprefixer',
+                                'shell:build',
+                                'uglify',
+                                'cssmin',
+                                'processhtml',
+                                'string-replace',
+                                'prettify']);
+  grunt.registerTask('deploy', ['imageoptim',
+                                'sass',
+                                'autoprefixer',
+                                'shell:build',
+                                'uglify',
+                                'cssmin',
+                                'processhtml',
+                                'string-replace',
+                                'prettify',
+                                'shell:upload']);
 
 };

@@ -5,7 +5,7 @@ $(document).ready(function()
 	var coverdiv = $('.cover'),
 	coverguide = $('.cover-guide'),
 	covercaption = $('.cover-caption'),
-	coverload = $('.loader,.loader-text'),
+	coverload = $('.cover-loader'),
 	coverlink = $('.cover-caption-link');
 
 	// setta il testo della caption in home
