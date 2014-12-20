@@ -753,7 +753,8 @@ p {
     font-size: 0.8125rem;
     line-height: 1.5;
     position: relative;
-    bottom: 10px; }
+    bottom: 10px;
+    color: #373737; }
     .post-navigation-prev .post-navigation-icon span {
       margin-left: 5px; }
     .post-navigation-next .post-navigation-icon span {
