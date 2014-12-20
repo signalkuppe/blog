@@ -249,5 +249,14 @@ module.exports = function(grunt) {
                                 'string-replace',
                                 'htmlmin',
                                 'shell:upload']);
+  grunt.registerTask('deploy-prod',['sass',
+                                'autoprefixer',
+                                'shell:build',
+                                'uglify',
+                                'cssmin',
+                                'processhtml',
+                                'string-replace',
+                                'htmlmin',
+                                'shell:upload']);
 
 };
