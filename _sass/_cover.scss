@@ -38,12 +38,16 @@
 }
 
 .cover-loader {
+   color: white;
    margin-bottom:-45px;
+   span {
+      font-size: $tiny-font-size;
+   }
 }
 
 .cover-loader img {
-   width:128px;
-   height: 128px;
+   width:70px;
+   height: 70px;
 }
 
 .cover-guide {
