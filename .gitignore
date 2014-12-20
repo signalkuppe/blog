@@ -4,7 +4,6 @@ bower_components
 js/app.min.js
 node_modules
 _sass/.sass-cache/
-css
 _cache/flickr/*
 s3_website.yml
 _config.yml
