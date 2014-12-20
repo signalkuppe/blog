@@ -75,7 +75,7 @@ module.exports = function(grunt) {
       },
       fold: {
         options: {
-          banner: '/* These monsters are inline fonts, they save http requests */'
+          banner: '/* compressed above the fold css */'
         },
         files: {
           'css/above_the_fold.min.css': ['css/above_the_fold.css']
@@ -198,7 +198,7 @@ module.exports = function(grunt) {
           replacements: [
             // place files inline example
             {
-              pattern: '<link rel="stylesheet" href="/css/above_the_fold.min.css" />',
+              pattern: '<link rel="stylesheet" href="/css/above_the_fold.min.css">',
               replacement: "<!--non-blocking above the fold inline css--><style><%= grunt.file.read('css/above_the_fold.min.css') %></style>"
             }
           ]
@@ -230,7 +230,7 @@ module.exports = function(grunt) {
   grunt.registerTask('listen', ['connect','watch']);
   grunt.registerTask('svg', ['watch:svg']);
   grunt.registerTask('imageoptim', ['imagemin']);
-  grunt.registerTask('pre-deploy', ['imageoptim',
+  grunt.registerTask('pre-deploy', [
                                 'sass',
                                 'autoprefixer',
                                 'shell:build',
