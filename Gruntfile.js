@@ -65,12 +65,20 @@ module.exports = function(grunt) {
       }
     },
     cssmin: {
-      combine: {
-      options: {
-        banner: '/* L\'ho compresso per risparmiare circa 25kb */'
-      },
+      main: {
+        options: {
+          banner: '/* Compressed to save ~25kb */'
+        },
         files: {
-          '_site/css/app.min.css': ['_site/css/app.css']
+          '_site/css/app.min.css': ['_site/css/app.css'],
+        }
+      },
+      fold: {
+        options: {
+          banner: '/* These monsters are inline fonts, they save http requests */'
+        },
+        files: {
+          'css/above_the_fold.min.css': ['css/above_the_fold.css']
         }
       }
     },
@@ -87,6 +95,20 @@ module.exports = function(grunt) {
         ext: '.html',
         src: ['*.html','**/*.html'],
         dest: '_site/'
+      }
+    },
+    htmlmin: {                                   
+      multiple: {
+        options: {                          
+          removeComments: true,
+          collapseWhitespace: true
+        },                                  
+        files: [{                                  
+          expand: true,     
+          cwd: '_site/',   
+          src: ['**/*.html'],
+          dest: '_site/'                      
+        }]
       }
     },
     imagemin: {                          
@@ -176,8 +198,8 @@ module.exports = function(grunt) {
           replacements: [
             // place files inline example
             {
-              pattern: '<link rel="stylesheet" href="/css/above_the_fold.css" />',
-              replacement: "<!--non-blocking above the fold inline css--><style><%= grunt.file.read('css/above_the_fold.css') %></style>"
+              pattern: '<link rel="stylesheet" href="/css/above_the_fold.min.css" />',
+              replacement: "<!--non-blocking above the fold inline css--><style><%= grunt.file.read('css/above_the_fold.min.css') %></style>"
             }
           ]
         }
@@ -201,6 +223,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-string-replace');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
   // Default task(s).
 
@@ -215,7 +238,7 @@ module.exports = function(grunt) {
                                 'cssmin',
                                 'processhtml',
                                 'string-replace',
-                                'prettify']);
+                                'htmlmin']);
   grunt.registerTask('deploy', ['imageoptim',
                                 'sass',
                                 'autoprefixer',
@@ -224,7 +247,7 @@ module.exports = function(grunt) {
                                 'cssmin',
                                 'processhtml',
                                 'string-replace',
-                                'prettify',
+                                'htmlmin',
                                 'shell:upload']);
 
 };

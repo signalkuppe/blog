@@ -31,27 +31,6 @@
 	@include hide;
 }
 
-/*
-.post-content {
-	margin:0 1rem;
-	@media screen and (min-width:$breakpoint-tablet){
-		margin:0 2rem;
-	}
-	@media screen and (min-width:$breakpoint-desktop){
-		@include container;
-	}
-	@media screen and (min-width:$breakpoint-desktop-large){
-		@include destroy_container;
-		column-count: 2;
-		column-gap: 4rem;
-		margin:0 4rem;
-		p {
-			break-inside: avoid; 
-		}
-	}
-}
-*/
-
 .post-footer {
 	@include clear;
 	text-align: center;
