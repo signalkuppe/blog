@@ -9,3 +9,4 @@ s3_website.yml
 _config.yml
 .sass-cache
 .sass-cache/
+css/app.css
