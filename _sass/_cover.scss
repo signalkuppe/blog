@@ -114,7 +114,7 @@
 }
 
 .menu {
-   transition: all 0.5s linear 0.5s;
+   transition: all 0.15s ease-in;
    background: $color-black;
    height: 0;
    &.is-open {
