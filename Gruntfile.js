@@ -251,9 +251,9 @@ module.exports = function(grunt) {
                                 'shell:upload']);
   grunt.registerTask('deploy-prod',['sass',
                                 'autoprefixer',
+                                'shell:build',
                                 'uglify',
                                 'cssmin',
-                                'shell:build',
                                 'processhtml',
                                 'string-replace',
                                 'htmlmin',
