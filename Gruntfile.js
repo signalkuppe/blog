@@ -160,7 +160,7 @@ module.exports = function(grunt) {
         tasks: ['svgstore']
       },
       site: {
-        files: ['*.html','js/*.js','_layouts/*.html','_includes/*.html','_posts/*.md'],
+        files: ['*.html','js/*.js','_layouts/*.html','_includes/*.html','_posts/*.markdown'],
         tasks: ['shell:build']
       },
       scss: {

@@ -96,7 +96,7 @@
 			@include inline-block-list;
 			li {
 				margin-right: 10px;
-				margin-bottom: 0;
+				@include vertical-space(0.5,bottom,margin);
 			}
 		}
 	}
