@@ -149,8 +149,8 @@
 	@media screen and (min-width:$breakpoint-desktop){
 		@include destroy_container;
 		max-width: 80%;
-		@include vertical-space(4,top,margin);
-		@include vertical-space(3,bottom,margin);
+		@include vertical-space(6,top,margin);
+		@include vertical-space(4,bottom,margin);
 		margin-left: auto;
 		margin-right: auto;
 	}
