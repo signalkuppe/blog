@@ -31,7 +31,7 @@
 
 			closeButtonOn = function( instance )
 			{
-				$( '<a href="#" id="imagelightbox-close">Close</a>' ).appendTo( 'body' ).on( 'click', function(){ $( this ).remove(); instance.quitImageLightbox(); return false; });
+				$( '<a href="#" title="chiudi" id="imagelightbox-close">Close</a>' ).appendTo( 'body' ).on( 'click', function(){ $( this ).remove(); instance.quitImageLightbox(); return false; });
 			},
 			closeButtonOff = function()
 			{
