@@ -29,7 +29,8 @@ module.exports = function(grunt) {
             'js/scrollup.js',
             'js/fastclick.js',
             'js/web-app-links-safari.js',
-            'js/meteo.js'
+            'js/meteo.js',
+            'js/sharewindow.js'
           ]
         }
       }
