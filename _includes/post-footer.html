@@ -1,17 +1,20 @@
+{% capture shareurl %}
+{{site.url}}{{page.url}}
+{% endcapture %}
 <div class="post-footer">
 	<ul class="post-footer-list">
 		<li>
-			<a title="condividi su Facebook" href="https://www.facebook.com/sharer/sharer.php?u={{site.url }}{{page.url}}">
+			<a title="condividi su Facebook" class="post-footer-share" href="https://www.facebook.com/sharer/sharer.php?u={{shareurl | bitly}}">
 				<svg class="icon icon-facebook" viewBox="0 0 32 32"><use xlink:href="#icon-facebook"></use></svg>
 			</a>
 		</li>
 		<li>
-			<a title="condividi su Twitter" href="https://twitter.com/intent/tweet?url={{site.url }}{{page.url}}&text={{ page.title }} @signalkuppe">
+			<a title="condividi su Twitter" class="post-footer-share" href="https://twitter.com/intent/tweet?url={{shareurl | bitly}}&text={{ page.title }} @signalkuppe">
 				<svg class="icon icon-twitter" viewBox="0 0 32 32"><use xlink:href="#icon-twitter"></use></svg>
 			</a>
 		</li>
 		<li>
-			<a title="condividi su Google Plus" href="https://plus.google.com/share?url={{site.url }}{{page.url}}">
+			<a title="condividi su Google Plus" class="post-footer-share" href="https://plus.google.com/share?url={{shareurl | bitly}}">
 				<svg class="icon icon-googleplus" viewBox="0 0 32 32"><use xlink:href="#icon-googleplus"></use></svg>
 			</a>
 		</li>
