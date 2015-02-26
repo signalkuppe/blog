@@ -35,12 +35,14 @@ $base-line-height: 24px;
 
 $tiny-font-size: 10px;
 $tiny-font-leading: 1;
+$xsmall-font-size: 12px;
+$xsmall-font-leading: 1.5;
 $small-font-size: 13px;
 $small-font-leading: 1.5;
 $small-alt-font-size: 14px;
 $small-alt-font-leading: 1.6;
 $base-font-size: 16px;
-$base-font-leading: 1.65;
+$base-font-leading: 1.6;
 $medium-font-size: 20px;
 $medium-font-leading: 1.5;
 $big-font-size: 24px;
@@ -102,6 +104,10 @@ $border-radius-base: 5px;
 		@include set-font-size-to($tiny-font-size);
 		@include set-leading-to($tiny-font-leading);
 	}
+	@if $size == "xsmall" {
+		@include set-font-size-to($xsmall-font-size);
+		@include set-leading-to($xsmall-font-leading);
+	}
 	@if $size == "small" {
 		@include set-font-size-to($small-font-size);
 		@include set-leading-to($small-font-leading);
@@ -148,6 +154,7 @@ $border-radius-base: 5px;
 
 // Type size
 @mixin t-tiny     { @include typeSize(tiny);  }
+@mixin t-xsmall   { @include typeSize(xsmall); }
 @mixin t-small    { @include typeSize(small); }
 @mixin t-small-alt{ @include typeSize(small-alt); }
 @mixin t-base     { @include typeSize(base);  }
@@ -249,6 +256,7 @@ $breakpoint-desktop-xxlarge:    2560px;
 	@include t-light;
 	display: block;
 	text-transform: uppercase;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 @mixin truncate ($width) {
