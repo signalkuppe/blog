@@ -5,7 +5,8 @@
 **/
 
 .post-header {
-	@include vertical-space(2,both,margin);
+	@include vertical-space(1.5,top,margin);
+	@include vertical-space(1,bottom,margin);
 	@media screen and (min-width:$breakpoint-tablet){
 		@include vertical-space(4,both,margin);
 	}
