@@ -56,6 +56,13 @@ module.exports = function(grunt) {
           stdout: true
         },
         command: 'jekyll build'
+      },
+      buildlast:
+      {                      
+        options: {                    
+          stdout: true
+        },
+        command: 'jekyll build --limit_posts 1'
       },                          
       upload:
       {                      
@@ -143,7 +150,8 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'css/app.css': '_sass/app.scss'
+          'css/app.css': '_sass/app.scss',
+          'css/print.css': '_sass/print.scss'
         }
       }
     },
@@ -162,7 +170,7 @@ module.exports = function(grunt) {
       },
       site: {
         files: ['*.html','js/*.js','_layouts/*.html','_includes/*.html','_posts/*.markdown'],
-        tasks: ['shell:build']
+        tasks: ['shell:buildlast']
       },
       scss: {
         files: ['_sass/*.scss'],

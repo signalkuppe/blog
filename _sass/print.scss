@@ -1,0 +1,66 @@
+/*
+*
+* #print #media
+*
+**/
+
+@page {
+	margin: 2cm;
+}
+
+body, html {
+	background: none;
+	color: black;
+}
+.post-content p { 
+	font-size: 8pt;
+	font-family: verdana, arial, sans-serif;
+}
+strong {
+	color: black;
+}
+
+#menu-container,
+.menu-wrapper,
+.cover,
+.post-navigation,
+.post-author,
+.post-date,
+.post-print,
+.post-gallery,
+.post-utilities,
+.post-disqus,
+.post-footer {
+	display: none;
+}
+
+.post-print-thanks {
+	margin-top: 40px;
+	display: block;
+	padding: 10px;
+	border: 1px solid black;
+}
+
+h1.post-title{
+	font-size: 14pt;
+	font-weight: bold;
+	font-family:verdana, arial, sans-serif;
+}
+h2 {
+	font-size: 10pt;
+	font-weight: bold;
+	font-family:verdana, arial, sans-serif;		
+}
+.post-title,
+.post-date,
+.post-content {
+	margin-bottom: 20px;
+}
+
+.content,.container {
+	width: 100%;
+	margin: 0 auto; padding: 0;
+	background: none;
+	max-width: 100%;
+}
+
