@@ -16,7 +16,7 @@
     "grunt-shell": "^0.6.4",
     "grunt-contrib-cssmin": "^0.9.0",
     "grunt-prettify": "^0.3.4",
-    "grunt-processhtml": "^0.3.0"
+    "grunt-processhtml": "^0.3.7"
   },
   "dependencies": {
     "grunt-autoprefixer": "^2.0.0",
