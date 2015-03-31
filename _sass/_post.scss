@@ -80,10 +80,7 @@
 }
 
 .post-print-thanks {
-	@include vertical-space(1,top,margin);
 	display: none;
-	padding: 10px;
-	border: 1px solid black;
 }
 
 .post-gallery-mobile {
