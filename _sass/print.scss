@@ -5,7 +5,7 @@
 **/
 
 @page {
-	margin: 2cm;
+	margin: 3cm;
 }
 
 body, html {
@@ -13,7 +13,7 @@ body, html {
 	color: black;
 }
 .post-content p { 
-	font-size: 6pt;
+	font-size: 8pt!important;
 	font-family: verdana, arial, sans-serif;
 }
 strong {
@@ -35,6 +35,7 @@ strong {
 }
 
 .post-print-thanks {
+	font-size: 8pt;
 	margin-top: 40px;
 	display: block;
 	padding: 10px;
