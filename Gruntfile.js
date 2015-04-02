@@ -208,7 +208,7 @@ module.exports = function(grunt) {
             // place files inline example
             {
               pattern: '<link rel="stylesheet" href="/css/above_the_fold.min.css">',
-              replacement: "<!--non-blocking above the fold inline css--><style><%= grunt.file.read('css/above_the_fold.min.css') %></style>"
+              replacement: "<!--non-blocking above the fold inline css--><style media="screen"><%= grunt.file.read('css/above_the_fold.min.css') %></style>"
             }
           ]
         }
