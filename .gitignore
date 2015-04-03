@@ -10,3 +10,4 @@ _config.yml
 .sass-cache
 .sass-cache/
 css/app.css
+css/print.css
