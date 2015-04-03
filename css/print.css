@@ -4,14 +4,14 @@
 *
 **/
 @page {
-  margin: 2cm; }
+  margin: 3cm; }
 
 body, html {
   background: none;
   color: black; }
 
 .post-content p {
-  font-size: 8pt;
+  font-size: 8pt !important;
   font-family: verdana, arial, sans-serif; }
 
 strong {
@@ -31,6 +31,7 @@ strong {
   display: none; }
 
 .post-print-thanks {
+  font-size: 8pt;
   margin-top: 40px;
   display: block;
   padding: 10px;
