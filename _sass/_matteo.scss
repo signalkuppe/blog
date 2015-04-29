@@ -73,3 +73,33 @@ ul.matteo-work {
 		@include t-tiny;
 	}
 }
+
+.matteo-gio {
+	background: $color-gray-light;
+	padding: 20px;
+	@include clearfix;
+	@include vertical-space(2,both,margin);
+	@media screen and (min-width:$breakpoint-tablet){
+		@include vertical-space(4,both,margin);
+	}
+	@media screen and (min-width:$breakpoint-desktop-large){
+		@include vertical-space(5,both,margin);
+	}
+	img {
+		margin: 0 auto 20px auto;
+		border-radius: 50%; 
+		width:150px;
+		border: 6px solid white;
+		display: block;
+		@media screen and (min-width:$breakpoint-tablet){
+			float: left;
+			margin:0 1.5em 0 0;
+		}
+	}
+	p {
+		margin-top: 0px;
+		@media screen and (min-width:$breakpoint-tablet){
+			margin-top: 20px;
+		}
+	}
+}
