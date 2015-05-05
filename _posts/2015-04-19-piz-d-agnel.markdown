@@ -5,7 +5,7 @@ date:   2015-04-19
 description: "Relazione della salita con traccia gps del Piz d'Agnel con partenza dallo Julier Pass"
 categories: alpinismo
 tags: svizzera engadina ciaspole
-caption: "Risalendo la Val d'Agnel"
+caption: "Sulla Vadret d'Agnel"
 flickr: 72157650053540214
 gps: true
 map: 46.511470,9.702302
