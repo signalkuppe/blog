@@ -26,6 +26,6 @@ Come ottica ho il mio fidato **Zuiko 12mm f2.0** (24mm equivalenti), fuoco manua
 
 * Può essere **utile una torcia** per illuminare la chiesetta in primo piano
 
-* **Portatevi tutta l'acqua si cui avete bisogno** se avete intenzione di bivaccare, non se ne trova nei paraggi a parte quella dei laghetti
+* **Portatevi tutta l'acqua di cui avete bisogno** se avete intenzione di bivaccare, non se ne trova nei paraggi a parte quella dei laghetti
 
 * **Portatevi la tenda**: noi siamo stati fortunati ma ci sono 6 posti letto nel locale invernale ed è probabile che non sarete soli se la serata è quella buona.
