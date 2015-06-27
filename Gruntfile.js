@@ -174,7 +174,7 @@ module.exports = function(grunt) {
       },
       scss: {
         files: ['_sass/*.scss'],
-        tasks: ['sass','autoprefixer','shell:build']
+        tasks: ['sass','autoprefixer','copy']
       }
     },
     clean: ['_site'],
@@ -190,6 +190,14 @@ module.exports = function(grunt) {
     autoprefixer: {
       basic: {
           src: 'css/app.css',
+      }
+    },
+    copy: {
+      css: {
+        files: [
+          // includes files within path
+          {expand: true, src: ['css/*'], dest: '_site/'},
+        ]
       }
     },
     'string-replace': {
@@ -233,6 +241,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-string-replace');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
 

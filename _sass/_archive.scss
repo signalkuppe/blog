@@ -52,7 +52,8 @@
 
 .archive-posts-year {
 	@include font-headings;
-	@include t-large;
+	@include t-xlarge;
+	font-weight: 700;
 	@include vertical-space(1.5,bottom,margin);
 	&:target {
 		span {

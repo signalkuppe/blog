@@ -141,6 +141,7 @@
 .post-navigation-info {
 	padding-top: 30px;
 	.post-navigation-info-title {
+		font-weight: 700;
 		@include truncate(250px);
 		margin: 0;
 		@media screen and (min-width: $breakpoint-desktop-large){

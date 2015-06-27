@@ -52,8 +52,9 @@
 .meteo-rain-daily {
 	@include vertical-space(0.25,bottom,margin);
 	text-align: center;
+	@include font-headings;
 	@include t-xlarge;
-	@include t-ultrastrong;
+	font-weight: 700;
 	margin-right: 15px;
 	&:last-child {
 		margin-right: 0;

@@ -94,7 +94,10 @@ a.container-link {
 }
 
 .post-content a {
-	@include t-strong;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .post-content h2 {
@@ -111,19 +114,17 @@ img {
 }
 
 strong  { @include t-ultrastrong; }
-em  	{ @include font-text-italic; }
+em  	{ @include font-text-italic; font-weight: 300;}
 small   { @include t-small; }
-strong  { color: $color-gray-darker; letter-spacing: -0.1px;}
+strong  { color: black; font-weight: 400;}
 
 p {
 	transition: all 0.5s ease-in-out;
-	-webkit-font-smoothing: subpixel-antialiased;
-	@include t-small;
+	font-weight: 300;
+	//-webkit-font-smoothing: subpixel-antialiased;
+	@include t-base;
 	@include vertical-space(1,bottom,margin);
-	@media screen and (min-width:$breakpoint-tablet){
-		@include t-small-alt;
-	}
 	@media screen and (min-width:$breakpoint-desktop){
-		@include t-base;
+		@include t-base-alt;
 	}
 }

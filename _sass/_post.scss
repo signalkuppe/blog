@@ -14,11 +14,13 @@
 
 .post-title {
 	transition: all 0.5s ease-in-out;
-	@include t-large;
+	font-size: 42px;
+	line-height: 1.1;
+	font-weight: 700;
 	@include vertical-space(1,bottom,margin);
 	text-align: center;
 	@media screen and (min-width:$breakpoint-tablet){
-		@include t-xlarge;
+		@include t-large-alt;
 	}
 }
 
