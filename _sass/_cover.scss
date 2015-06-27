@@ -170,7 +170,7 @@
 .cover-caption > p {
    @include reset;
    @include font-headings;
-   @include t-light;
+   font-weight: 400;
    display: inline-block;
    text-align: center;
    a {

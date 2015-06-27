@@ -15,9 +15,9 @@ $color-site-background: $color-white;
 $color-background: #EBEBEB;
 $color-button-background: #222;
 $color-button: #fff;
-$color-text: #373737;
+$color-text: #333;
 $color-text-light: lighten($color-text,20%);
-$color-headings: $color-black;
+$color-headings: rgba(0,0,0,0.8);
 $color-links: $color-primary;
 $color-links-hover: darken($color-links,10%);
 $color-links-active: darken($color-links,20%);
@@ -27,8 +27,10 @@ $color-links-visited: $color-links;
 // typo
 
 $font-dir: "../fonts";
-$font-headings: 'Oswald', sans-serif;
-$font-text: 'Open Sans', sans-serif;
+//$font-headings: "jaf-bernina-sans-condensed",sans-serif;
+$font-headings: "jaf-bernina-sans-comp",sans-serif;
+$font-text: "jaf-bernina-sans",sans-serif;
+$font-sitetile : "jaf-bernina-sans-comp",sans-serif;
 
 $rem-unit: 16px;
 $base-line-height: 24px;
@@ -43,12 +45,16 @@ $small-alt-font-size: 14px;
 $small-alt-font-leading: 1.6;
 $base-font-size: 16px;
 $base-font-leading: 1.6;
+$base-alt-font-size: 18px;
+$base-alt-font-leading: 1.5;
 $medium-font-size: 20px;
 $medium-font-leading: 1.5;
 $big-font-size: 24px;
 $big-font-leading: 1.5;
 $large-font-size: 32px;
 $large-font-leading: 1.4;
+$large-alt-font-size: 52px;
+$large-alt-font-leading: 1.4;
 $xlarge-font-size: 42px;
 $xlarge-font-leading: 1.5;
 $xxlarge-font-size: 56px;
@@ -120,6 +126,10 @@ $border-radius-base: 5px;
 		@include set-font-size-to($base-font-size);
 		@include set-leading-to($base-font-leading);
 	}
+	@if $size == "base-alt" {
+		@include set-font-size-to($base-alt-font-size);
+		@include set-leading-to($base-alt-font-leading);
+	}
 	@if $size == "medium" {
 		@include set-font-size-to($medium-font-size);
 		@include set-leading-to($medium-font-leading);
@@ -131,6 +141,10 @@ $border-radius-base: 5px;
 	@if $size == "large" {
 		@include set-font-size-to($large-font-size);
 		@include set-leading-to($large-font-leading);
+	}
+	@if $size == "large-alt" {
+		@include set-font-size-to($large-alt-font-size);
+		@include set-leading-to($large-alt-font-leading);
 	}
 	@if $size == "xlarge" {
 		@include set-font-size-to($xlarge-font-size);
@@ -158,16 +172,18 @@ $border-radius-base: 5px;
 @mixin t-small    { @include typeSize(small); }
 @mixin t-small-alt{ @include typeSize(small-alt); }
 @mixin t-base     { @include typeSize(base);  }
+@mixin t-base-alt { @include typeSize(base-alt);  }
 @mixin t-medium   { @include typeSize(medium);}
 @mixin t-big      { @include typeSize(big);}
 @mixin t-large    { @include typeSize(large); }
+@mixin t-large-alt{ @include typeSize(large-alt); }
 @mixin t-xlarge   { @include typeSize(xlarge);}
 @mixin t-xxlarge  { @include typeSize(xxlarge);}
 @mixin t-xxxlarge { @include typeSize(xxxlarge);}
 
 // container
 
-$container-width: 46em;
+$container-width: 42em;
 
 // breakpoints
 
@@ -247,7 +263,7 @@ $breakpoint-desktop-xxlarge:    2560px;
 
 @mixin cover-text-shadow () {
 	color: rgba(255,255,255,1);
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+	//text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
 	text-decoration: none;
 }
 
@@ -302,14 +318,17 @@ $breakpoint-desktop-xxlarge:    2560px;
 }
 
 @mixin site-title () {
-	@include t-big;
-	@include vertical-space(0.25,bottom,margin);
+	font-family: $font-sitetile;
+	@include t-large;
+	@include t-ultrastrong;
+	@include vertical-space(0,bottom,margin);
 	text-transform: uppercase;
 }
 
 @mixin site-slogan (){
-   @include t-small;
-   @include t-light;
+   font-family: $font-sitetile;
+   font-weight: 400;
+   @include t-base;
 }
 
 @mixin filter( $var ){
