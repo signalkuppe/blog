@@ -125,6 +125,7 @@ p {
 	@include t-base;
 	@include vertical-space(1,bottom,margin);
 	@media screen and (min-width:$breakpoint-desktop){
-		@include t-base-alt;
+		font-size: 22px;
+		line-height: 1.5;
 	}
 }
