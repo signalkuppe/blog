@@ -119,8 +119,8 @@ small   { @include t-small; }
 strong  { color: black; font-weight: 400;}
 
 p {
-	transition: all 0.5s ease-in-out;
 	font-weight: 300;
+	letter-spacing: 0.01rem;
 	//-webkit-font-smoothing: subpixel-antialiased;
 	@include t-base;
 	@include vertical-space(1,bottom,margin);
