@@ -89,6 +89,7 @@
 .cover-header h2, {
    @include reset;
    color: white;
+   @include cover-text-shadow;
 }
 
 .cover-header h1 {
@@ -173,11 +174,13 @@
    font-weight: 400;
    display: inline-block;
    text-align: center;
-   font-size: 18px;
-   @include cover-text-shadow;
+   font-size: 17px;
+   background: rgba(0,0,0,0.8);
+   padding: 4px 12px;
+   border-radius: 16px;
    a {
-      @include double-cover-text-shadow;
       text-decoration: none;
+      color: white;
    }
 }
 

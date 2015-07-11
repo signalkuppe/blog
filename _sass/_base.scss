@@ -81,15 +81,11 @@ a.container-link {
 // list in content
 
 .post-content ul {
-	@include t-small;
 	@include vertical-space(1,both,margin);
 	list-style: disc;
 	margin-left: $base-font-size*2;
 	li {
 		@include vertical-space(0.5,bottom,margin);
-	}
-	@media screen and (min-width:$breakpoint-tablet){
-		@include t-base;
 	}
 }
 
@@ -121,11 +117,11 @@ strong  { color: black; font-weight: 400;}
 p {
 	font-weight: 300;
 	letter-spacing: 0.01rem;
-	//-webkit-font-smoothing: subpixel-antialiased;
-	@include t-base;
+	font-size: 16px;
+	line-height: 1.46;
 	@include vertical-space(1,bottom,margin);
 	@media screen and (min-width:768px){
 		font-size: 19px;
-		line-height: 1.5;
+		line-height: 1.56;
 	}
 }
