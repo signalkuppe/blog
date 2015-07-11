@@ -59,7 +59,7 @@ $(document).ready(function()
 
 		function handleResize()
 		{
-			var h = $(window).height();
+			var h = $(window).innerHeight();
 		    coverdiv.css({'height':h+'px'});
 		    coverdiv.addClass('is-rendered');
 		}

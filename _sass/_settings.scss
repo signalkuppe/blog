@@ -263,8 +263,12 @@ $breakpoint-desktop-xxlarge:    2560px;
 
 @mixin cover-text-shadow () {
 	color: rgba(255,255,255,1);
-	//text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
-	text-decoration: none;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+}
+
+@mixin double-cover-text-shadow () {
+	color: rgba(255,255,255,1);
+	text-shadow: 1px 1px 1px rgba(0,0,0,1);
 }
 
 @mixin date () {
