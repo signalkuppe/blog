@@ -146,7 +146,7 @@
 		margin: 0;
 		@media screen and (min-width: $breakpoint-desktop-large){
 			@include truncate(420px);
-			@include t-medium;
+			@include t-big;
 		}
 	}
 	.post-navigation-info-date {

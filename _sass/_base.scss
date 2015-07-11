@@ -125,7 +125,7 @@ p {
 	@include t-base;
 	@include vertical-space(1,bottom,margin);
 	@media screen and (min-width:768px){
-		font-size: 22px;
+		font-size: 19px;
 		line-height: 1.5;
 	}
 }
