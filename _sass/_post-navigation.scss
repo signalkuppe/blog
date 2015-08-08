@@ -142,21 +142,20 @@
 	padding-top: 30px;
 	.post-navigation-info-title {
 		font-weight: 700;
+		@include t-big;
 		@include truncate(250px);
 		margin: 0;
 		@media screen and (min-width: $breakpoint-desktop-large){
 			@include truncate(420px);
-			@include t-big;
 		}
 	}
 	.post-navigation-info-date {
-		@include t-tiny;
+		@include t-small;
 		@include date;
 		@include vertical-space(0.25,bottom,margin);
 		-webkit-text-stroke: 0.35px;
 		@media screen and (min-width: $breakpoint-desktop-large){
 			@include vertical-space(0.1,bottom,margin);
-			@include t-small;
 		}
 	}
 }
