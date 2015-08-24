@@ -57,6 +57,12 @@ module.exports = function(grunt) {
         },
         command: 'jekyll build'
       },
+      typeset: {
+        options: {                    
+          stdout: true
+        },
+        command: 'node typeset'        
+      },
       buildlast:
       {                      
         options: {                    
@@ -70,7 +76,7 @@ module.exports = function(grunt) {
           stdout: true
         },
         command: 's3_website push'
-      }
+      },
     },
     cssmin: {
       main: {
@@ -270,6 +276,7 @@ module.exports = function(grunt) {
   grunt.registerTask('deploy-prod',['sass',
                                 'autoprefixer',
                                 'shell:build',
+                                'shell:typeset',
                                 'uglify',
                                 'cssmin',
                                 'processhtml',
