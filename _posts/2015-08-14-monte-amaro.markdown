@@ -1,25 +1,20 @@
 ---
 layout: post
-title: "Monte Amaro"
-date: 2015-08-14
-description: "Escursione sulla vetta principale della Majella, il Monte Amaro, con pernottamento al Bivacco Pelino"
+title: "Piz Julier"
+date: 2015-08-30
+description: "Salita al Piz Julier per la via normale dallo Julier Pass e la Fuorcla Albana"
 categories: escursionismo
-tags: majella appennini 
-caption: "La vetta del Monte Amaro"
-flickr: 72157655678728344
+tags: engadina svizzera 
+caption: "Sulla cresta del Piz Julier"
+flickr: 72157658148019688
 gps: true
-map: 42.086237,14.086469
+map: 46.490873,9.759857
 ---
 
-Dopo il Gran Sasso è il turno della Majella, la seconda cima degli Appennini. Pernottiamo in un Bed & Breakfast a **Pretoro,** un bellissimo Borgo ai piedi del Passo Lanciano. La mattina seguente raggiungiamo in macchina il **Rifugio Pomilio** da dove ha inizio l'escursione: carichiamo gli zaini con tutto l'occorrente per passare la notte al **Bivacco Pelino** e ci incamminiamo lungo la strada asfaltata che termina prima della vetta del Blockhaus.
+Un classica montagna da fare a fine estate quando ormai è sparita ogni traccia di neve. Partiamo di buonora verso lo **Julier Pass** e parcheggiamo in località **Chamanna Del Stradin** poco prima del passo. La prima parte del sentiero risale una ripida morena al cospetto del Piz Albana per poi addentrarsi nella valle regalando bellissimi scorci sul Piz Lagrev.
 
-Al bivio scegliamo il percorso di sinistra, più breve ma anche più accidentato, che si regala magnifici scorci sui tanti **canyon** della Majella. Seguendo il filo di cresta arriviamo al fontanino della **Sella Acquaviva** dove facciamo scorta d'acqua. Da qui il sentiero si impenna decisamente per risalire le pendici del Monte Focalone. Inaspettatamente lungo un traverso troviamo un'altra sorgente: sarà l'ultima possibilità di rimpire le borracce, da qui in poi niente acqua!
+Raggiungiamo la **Fuorcla Albana** con un ripido sentiero su detriti: da qui la vista si apre verso St. Moritz e il Piz Languard, ed è ben visibile la lunga cresta che ci porterà in vetta. La cresta, apparentemente inaccessibile, è addomesticata da **catene e corrimano** nei punti più esposti, che la rendono facile e sicura, basta non soffrire di vertigini.
 
-Dopo un a breve sosta alla sella del **Bivacco Fusco** percorriamo la lunga cresta che conduce alla vetta del **Monte Focalone** (2676 metri). Qui realizziamo che la vetta non è quella che vedavamo sulla sinistra (Monte Acquaviva) ma è ancora molto lontana davanti a noi! Dalla cima il sentiero scende verso la sella per poi risalire fino alla **Cima Pomilio** dove veniamo accolti da un branco di camosci.
+Il tratto più bello forse è una catena esposta sul versante N e sulla **Vadret Güglia.** In breve arriviamo in vetta: **panorama grandioso** che spazia dal Badile all'Ortles, non c'è una nuvola, abbiamo scelto la giornata giusta.
 
-Dalla cima si scende nuovamente per poi compiere un lungo traverso costeggiando una bellissima **valletta carsica** che conduce alla base del Monte Amaro, un verde altipiano ricco di stelle alpine. Ci siamo, ecco la caratteristica mezza sfera rossa del Bivacco Pelino. Cena a base di **pasta ai funghi** Esselunga liofilizzata (una garanzia) e iniziamo i preperativi per scattare la foto alla via lattea. 
-
-Tutto si incastra alla perfezione, la **via lattea** si alza subito dopo il tramonto esattamente dietro il bivacco! Illuminiamo da dentro e lateralmente il bivacco per dare un tocco in più. Soddisfatti rientriamo e ci buttiamo nei sacchi a pelo. Purtroppo il **bivacco è pieno di spazzatura** un vero peccato. La mattina seguente ci alziamo presto per affrontare il lungo rientro prima che faccia caldo.
-
-Escursione magnifica attraverso **paesaggi lunari,** molto diversi da quelli alpini. Probabilmente l'estate è il periodo peggiore per affrontarla vista la lunghezza (14km solo andata!), il caldo e l'assenza di acqua per la maggior parte del percorso. 
-
+Salita semplice e super panoramica, merita sicuramente una bella gita a fine estate oppure in una bella giornata autunnale se il sentiero è ancora libero dalla neve.

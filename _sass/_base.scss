@@ -90,10 +90,7 @@ a.container-link {
 }
 
 .post-content a {
-	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
+	text-decoration: underline;
 }
 
 .post-content h2 {

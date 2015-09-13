@@ -138,7 +138,8 @@
 				height: 150px;
 			}
 			&:hover{
-				border-color: $color-primary;
+				border-color: darken($color-gray-light,8%);
+				transform: scale(1.1);
 			}
 		}
 		&.post-gallery-list--mobile {
