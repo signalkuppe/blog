@@ -64,11 +64,6 @@ a {
 	&:focus   { color: $color-links-hover;    }
 }
 
-p a:active {
-	background: $color-links;
-	color: $color-white;
-	text-decoration: none;
-}
 
 a.container-link {
 	color: $color-links;
@@ -91,6 +86,14 @@ a.container-link {
 
 .post-content a {
 	text-decoration: underline;
+	&:hover {
+		color: $color-links-hover;
+	}
+	&:active {
+		background: $color-links-hover;
+		color: white;
+		text-decoration: none;
+	}
 }
 
 .post-content h2 {
