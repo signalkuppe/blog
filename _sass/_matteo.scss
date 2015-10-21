@@ -13,6 +13,7 @@ ul.matteo-work {
 	li {
 		float: left;
 		width: 33.3%;
+		padding: 10px;
 		@media screen and (min-width:$breakpoint-tablet-small){
 			width: 25%;
 		}
