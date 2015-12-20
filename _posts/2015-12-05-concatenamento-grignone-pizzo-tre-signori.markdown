@@ -3,7 +3,7 @@ layout: post
 title: "Concatenamento di Grignone e Pizzo Tre Signori"
 date: 2015-12-05
 description: "Concatenamento in giornata del Grignone e del Pizzo Tre Signori, con partenza a arrivo da Pasturo"
-categories: escrusionismo
+categories: escursionismo
 tags: valsassina  
 caption: "Tramonto al Passo del Toro"
 flickr: 72157662473238771
