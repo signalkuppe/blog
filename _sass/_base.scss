@@ -112,7 +112,7 @@ img {
 strong  { @include t-ultrastrong; }
 em  	{ @include font-text-italic; font-weight: 300;}
 small   { @include t-small; }
-strong  { color: black; font-weight: 400;}
+strong  { color: rgba(0,0,0,0.8); font-weight: 400;}
 
 p {
 	font-weight: 300;

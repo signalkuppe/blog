@@ -139,7 +139,7 @@
       @include t-tiny;
       display: inline-block;
       padding: 10px;
-      color: lighten($color-text-light,30%);
+      color: rgba(255,255,255,0.8);
       text-decoration: none;
       text-transform: uppercase;
       &:hover {

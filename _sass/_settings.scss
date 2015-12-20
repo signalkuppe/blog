@@ -15,7 +15,7 @@ $color-site-background: $color-white;
 $color-background: #EBEBEB;
 $color-button-background: #222;
 $color-button: #fff;
-$color-text: #333;
+$color-text: rgba(0,0,0,0.65);
 $color-text-light: lighten($color-text,20%);
 $color-headings: rgba(0,0,0,0.8);
 $color-links: $color-primary;
@@ -44,9 +44,9 @@ $small-font-leading: 1.5;
 $small-alt-font-size: 14px;
 $small-alt-font-leading: 1.6;
 $base-font-size: 16px;
-$base-font-leading: 1.6;
+$base-font-leading: 1.8;
 $base-alt-font-size: 18px;
-$base-alt-font-leading: 1.5;
+$base-alt-font-leading: 1.6;
 $medium-font-size: 20px;
 $medium-font-leading: 1.5;
 $big-font-size: 24px;
@@ -183,7 +183,7 @@ $border-radius-base: 5px;
 
 // container
 
-$container-width: 700px;
+$container-width: 720px;
 
 // breakpoints
 
