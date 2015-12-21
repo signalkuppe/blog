@@ -116,13 +116,12 @@ strong  { color: rgba(0,0,0,0.8); font-weight: 400;}
 
 p {
 	font-weight: 300;
-	letter-spacing: 0.01rem;
-	font-size: 17px;
-	line-height: 1.6;
+	font-size: 16px;
+	line-height: 1.7;
 	hyphens: none!important;
 	@include vertical-space(1,bottom,margin);
 	@media screen and (min-width:768px){
-		font-size: 18px;
+		font-size: 17px;
 		line-height: 1.7;
 	}
 }
