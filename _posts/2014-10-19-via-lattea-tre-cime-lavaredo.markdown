@@ -20,12 +20,12 @@ Come ottica ho il mio fidato **Zuiko 12mm f2.0** (24mm equivalenti), fuoco manua
 
 ##Qualche consiglio##
 
-* Informatevi per tempo sulle condizioni meteo e sulla **posizione della via lattea**. Io ho utilizzato l'app [Photopills](http://www.photopills.com "Sito di Photopills") e l'ho trovata eccezionale: ti permette di calcolare l'orario, la posizione e l'intensità della Via Lattea in qualsiasi giorno dell'anno per qualsiasi posizione, oltre a darvi orario e posizione di alba e tramonto, un must!
+Informatevi per tempo sulle condizioni meteo e sulla **posizione della via lattea**. Io ho utilizzato l'app [Photopills](http://www.photopills.com "Sito di Photopills") e l'ho trovata eccezionale: ti permette di calcolare l'orario, la posizione e l'intensità della Via Lattea in qualsiasi giorno dell'anno per qualsiasi posizione, oltre a darvi orario e posizione di alba e tramonto, un must!
 
-* **Andate nei mesi autunnali** per ammirarla subito dopo il tramonto.
+**Andate nei mesi autunnali** per ammirarla subito dopo il tramonto.
 
-* Può essere **utile una torcia** per illuminare la chiesetta in primo piano
+Può essere **utile una torcia** per illuminare la chiesetta in primo piano
 
-* **Portatevi tutta l'acqua di cui avete bisogno** se avete intenzione di bivaccare, non se ne trova nei paraggi a parte quella dei laghetti
+**Portatevi tutta l'acqua di cui avete bisogno** se avete intenzione di bivaccare, non se ne trova nei paraggi a parte quella dei laghetti
 
-* **Portatevi la tenda**: noi siamo stati fortunati ma ci sono 6 posti letto nel locale invernale ed è probabile che non sarete soli se la serata è quella buona.
+**Portatevi la tenda**: noi siamo stati fortunati ma ci sono 6 posti letto nel locale invernale ed è probabile che non sarete soli se la serata è quella buona.

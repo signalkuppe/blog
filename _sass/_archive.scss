@@ -161,7 +161,8 @@
 	margin-top: 8px;
 	&:hover {
 		background:$color-primary;
-		color: $color-white!important;		
+		color: $color-white!important;
+		border-color: $color-primary;		
 	}
 }
 
