@@ -78,6 +78,7 @@ a.container-link {
 .post-content ul {
 	@include vertical-space(1,both,margin);
 	margin-left: $base-font-size*2;
+	list-style: disc;
 	li {
 		margin-bottom: 0;
 	}
