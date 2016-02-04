@@ -4,7 +4,7 @@
 *
 */
 // colors
-$color-primary: #000;
+$color-primary: #c73800;
 $color-black: #000000;
 $color-gray: #ccc;
 $color-gray-light: #eee;
@@ -365,14 +365,15 @@ $breakpoint-desktop-xxlarge:    2560px;
 		@include t-tiny;		
 	}
 	@if $type == "primary" {
-		border-color: $color-primary;
-		color: $color-primary;
+		border-color: $color-black;
+		color: $color-black;
 		.icon {
-			fill: $color-primary;
+			fill: $color-black;
 			vertical-align: top;
 			transition: all 0.25s ease-in-out;
 		}
 		&:hover {
+			border-color: $color-primary;
 			background: $color-primary;
 			color: $color-white;
 			.icon {
@@ -430,7 +431,7 @@ $breakpoint-desktop-xxlarge:    2560px;
 		color: $color-links;
 	}
 	@if $type == "default"{
-		color: $color-text;
+		color: $color-black;
 	}
 	@if $type == "primary-inverse"{
 		fill: $color-primary;
