@@ -77,31 +77,43 @@ a.container-link {
 
 .post-content ul {
 	@include vertical-space(1,both,margin);
-	list-style: disc;
+	list-style: none;
+	list-style-type: none;
 	margin-left: $base-font-size*2;
 	li {
-		@include vertical-space(0.5,bottom,margin);
+		margin-bottom: 0;
+		&:before {
+			content: "*";
+			display: inline-block;
+			margin-right: 3px;
+		}
 	}
 }
 
 .post-content a {
-	text-decoration: underline;
+	text-decoration: none;
+	color: $color-primary;
 	&:hover {
-		color: $color-links-hover;
+		color: $color-primary;
+		text-decoration: underline;
 	}
 	&:active {
 		background: $color-links-hover;
 		color: white;
 		text-decoration: none;
+		position:relative;
+		top:-2px;
 	}
 }
 
 .post-content h2 {
 	@include t-ultrastrong;
-	@include t-big;
+	font-size: 2.5rem;
 	@include vertical-space(1,top,padding);
-	font-family: $font-text;
+	@include vertical-space(1,bottom,margin);
 	color: $color-text;
+	text-align: center;
+
 }
 
 img {
