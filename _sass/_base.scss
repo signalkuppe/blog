@@ -103,8 +103,8 @@ a.container-link {
 .post-content h2 {
 	@include t-ultrastrong;
 	font-size: 2.5rem;
-	@include vertical-space(1,top,padding);
-	@include vertical-space(1,bottom,margin);
+	@include vertical-space(2,top,padding);
+	@include vertical-space(2,bottom,margin);
 	color: $color-text;
 	text-align: center;
 
