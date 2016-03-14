@@ -6,6 +6,7 @@ description: "Scialpinismo al Monte Salmurano con partenza dal parcheggio di Pes
 categories: scialpinismo
 tags: orobie neve scialpinismo valgerola
 caption: "Il Monte Salmurano in veste invernale"
+gps: true
 flickr: 72157665947562455
 map: 46.023725,9.580256
 ---
