@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pizzo Camino canale nord ovest"
+title: "Pizzo Camino Canale Nord Ovest"
 date: 2016-04-10
 description: "Realazione della salita al Pizzo Camino con partenza da Schilpario per la variante del canale NW"
 categories: alpinismo
