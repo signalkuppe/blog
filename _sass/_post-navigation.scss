@@ -130,8 +130,11 @@
 	}
 	&:hover{
 		.icon {
-			transition: all 0.5s ease-in-out;
+			transition: all 0.25s ease-in-out;
 			background: $color-primary;
+		}
+		img {
+			border-color: $color-primary;
 		}
 	}
 }
