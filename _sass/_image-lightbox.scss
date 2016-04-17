@@ -95,12 +95,12 @@
 			z-index: 10002;
 			top: 2.5em; /* 40 */
 			right: 2.5em; /* 40 */
-			border-radius: 50%;
+			//border-radius: 50%;
 			transition: color .3s ease;
 		}
 			#imagelightbox-close:hover
 			{
-				background-color: #111;
+				background-color: $color-primary;
 			}
 			#imagelightbox-close:before,
 			#imagelightbox-close:after
