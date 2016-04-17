@@ -75,7 +75,6 @@
 		margin-left: 10px;
 	}
 	.icon {
-		border-radius: 50%;
 		@include button-icon(default-inverse);
 		padding: 5px;
 		width: 24px;
@@ -124,7 +123,6 @@
 .container-link {
 	display: block;
 	img {
-		border-radius: 50%;
 		border: 6px solid;
 		border-color: $color-white;
 		max-height: 100%;
