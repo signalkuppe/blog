@@ -4,7 +4,7 @@
 *
 */
 // colors
-$color-primary: #c73800;
+$color-primary: #1c6e94;
 $color-black: #000000;
 $color-gray: #ccc;
 $color-gray-light: #eee;
@@ -64,7 +64,7 @@ $xxxlarge-font-leading: 1;
 
 $menu-button-font-size: 24px;
 
-$border-radius-base: 5px;
+$border-radius-base: 0px;
 
 @mixin set-font-size-to($size){
 	font-size: $size/$rem-unit+rem;

@@ -50,8 +50,13 @@
       .icon {
          opacity:0.75;
          fill: $color-white;
-         width: 56px;
-         height: 56px;
+         width: 48px;
+         height: 48px;
+         border: 4px solid rgba(255,255,255,0.75);
+         @media screen and (min-width: $breakpoint-desktop){
+           width: 56px;
+           height: 56px;
+         }
       }
       &:hover{
          .icon {
@@ -174,10 +179,12 @@
    font-weight: 400;
    display: inline-block;
    text-align: center;
-   font-size: 17px;
+   font-size: 15px;
    background: rgba(0,0,0,0.8);
    padding: 4px 12px;
-   border-radius: 16px;
+   @media screen and (min-width: $breakpoint-desktop){
+      font-size: 17px;
+   }
    a {
       text-decoration: none;
       color: white;
