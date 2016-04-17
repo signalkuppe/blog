@@ -2,7 +2,7 @@
 layout: post
 title: "Pizzo Camino Canale Nord Ovest"
 date: 2016-04-10
-description: "Relazione della salita al Pizzo Camino con partenza da Schilpario per la variante del canale NW"
+description: "Relazione della salita al Pizzo Camino con partenza da Schilpario per la variante del canale nord ovest"
 categories: alpinismo
 tags: orobie neve canale
 caption: "Sotto la vetta del Pizzo Camino"
