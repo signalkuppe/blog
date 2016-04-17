@@ -369,7 +369,7 @@ $breakpoint-desktop-xxlarge:    2560px;
 		color: $color-black;
 		.icon {
 			fill: $color-black;
-			vertical-align: top;
+			vertical-align: middle;
 			transition: all 0.25s ease-in-out;
 		}
 		&:hover {
