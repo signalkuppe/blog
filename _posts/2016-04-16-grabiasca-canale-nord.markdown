@@ -5,7 +5,7 @@ date: 2016-04-16
 description: "Relazione della salita al Monte Grabiasca per il canale nord, con partenza da Carona"
 categories: alpinismo
 tags: orobie neve canale
-caption: "Nel Canale Nord del Brabiasca"
+caption: "Nel Canale Nord del Grabiasca"
 flickr: 72157665320438354
 gps: true
 map: 46.033545,9.903612
