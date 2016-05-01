@@ -15,7 +15,7 @@ Dopo aver saltato la gita domenicale dello scorso weekend per via del pericolo 4
 
 Come al solito la Valgerola si conferma **una delle valli più nevose** delle Alpi, sopra i 1200m si supera facilmente il metro. La salita inizia dal parcheggio di **Pescegallo:** più o meno consapevolmente lasciamo sulla destra la traccia principale in favore di una pista che sale diretta nel bosco con pendenze molto sostenute. 
 
-In breve ci riallacciamo alla "normale" molto più agevole e di consuguenza anche più battuta. Dopo un **insidioso traverso** in prossimità di una baita vediamo in lontananza la diga del **Lago di Pescegallo.** Prima di raggiungerlo deviamo verso destra e, con un ultimo strappo, guadagniamo quota in direzione SE. Da qui la cima è ben visibile, così come la traccia che continua decisa verso sud. Questo tratto è davvero molto bello, merita decisamente qualche scatto.
+In breve ci riallacciamo alla “normale” molto più agevole e di consuguenza anche più battuta. Dopo un **insidioso traverso** in prossimità di una baita vediamo in lontananza la diga del **Lago di Pescegallo.** Prima di raggiungerlo deviamo verso destra e, con un ultimo strappo, guadagniamo quota in direzione SE. Da qui la cima è ben visibile, così come la traccia che continua decisa verso sud. Questo tratto è davvero molto bello, merita decisamente qualche scatto.
 
 Una volta raggiunto il pendio finale, con tre tornanti arrivo in cresta dove è presente una piccola cornice. Bel panorama dalla vetta, con le **valli bergamasche** avvolte dalla foschia. Tolgo le pelli e inizio la discesa. Neve fantastica, non si può davvero chidere di meglio! 
 
