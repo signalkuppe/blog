@@ -73,26 +73,17 @@ a.container-link {
 	&:focus   { color: inherit;  }
 }
 
-// list in content
-
-.post-content ul {
-	@include vertical-space(1,both,margin);
-	margin-left: $base-font-size*2;
-	list-style: disc;
-	li {
-		margin-bottom: 0;
-	}
-}
 
 .post-content a {
-	text-decoration: none;
-	color: $color-primary;
+	text-decoration: underline;
+	color: rgba(0,0,0,0.8);
+	font-weight: 400;
 	&:hover {
 		color: $color-primary;
 		text-decoration: underline;
 	}
 	&:active {
-		background: $color-links-hover;
+		background: rgba(0,0,0,0.8);
 		color: white;
 		text-decoration: none;
 		position:relative;
@@ -120,11 +111,10 @@ em  	{ @include font-text-italic; font-weight: 300;}
 small   { @include t-small; }
 strong  { color: rgba(0,0,0,0.8); font-weight: 400;}
 
-p {
+p,.post-content ul {
 	font-weight: 300;
 	font-size: 16px;
 	line-height: 1.7;
-	hyphens: none!important;
 	@include vertical-space(1,bottom,margin);
 	@media screen and (min-width:768px){
 		font-size: 18px;

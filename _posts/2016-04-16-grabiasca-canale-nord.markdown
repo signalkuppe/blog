@@ -13,7 +13,7 @@ map: 46.033545,9.903612
 
 Un altro canale che andava fatto prima o poi. La giornata non è delle migliori, ma decidiamo di tentare lo stesso. Tutto inizia con il solito **incubo** della strada da **Pagliari** al Calvi: 8km di puro strazio, da affrontare anche al ritorno. Meglio non pensarci e camminare a testa bassa.
 
-Dopo il Rifugio scendiamo verso il **laghetto** per imboccare la traccia che conduce alla base del canale. Si **sprofonda** ma non troppo, una piccola ravanatina senza troppe sofferenze. Eccoci all'attacco, **l canale è evidente** non si può sbagliare. Calziamo i ramponi e iniziamo a risalire il primo facile tratto con qualche zig-zag. 
+Dopo il Rifugio scendiamo verso il **laghetto** per imboccare la traccia che conduce alla base del canale. Si **sprofonda** ma non troppo, una piccola ravanatina senza troppe sofferenze. Eccoci all'attacco, **il canale è evidente** non si può sbagliare. Calziamo i ramponi e iniziamo a risalire il primo facile tratto con qualche zig-zag. 
 
 Il canale poi **si stringe** e diventa più divertente con alcuni tratti di neve ghiacciata. Le **difficoltà sono contenute,** oggi le condizioni sono perfette, non affiora alcun tratto roccioso. In breve sbuchiamo in cresta: a destra c'è subito **l'anticima,** mentre verso sinistra inizia la cresta che conduce alla **vetta principale.**
 

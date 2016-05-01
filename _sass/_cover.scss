@@ -48,19 +48,22 @@
 .cover-guide {
    a {
       .icon {
+         transition: 0.25s ease-in;
          opacity:0.75;
          fill: $color-white;
-         width: 48px;
-         height: 48px;
+         width: 42px;
+         height: 42px;
          border: 4px solid rgba(255,255,255,0.75);
          @media screen and (min-width: $breakpoint-desktop){
-           width: 56px;
-           height: 56px;
+           width: 48px;
+           height: 48px;
          }
       }
       &:hover{
          .icon {
+            border:4px solid rgba(255,255,255,0);
             opacity:1;
+            background: rgba(255,255,255,0.25);
          }
       }
    }
@@ -114,7 +117,7 @@
       height:24px;
       stroke:$color-black;
       stroke-width:1px;
-      stroke-opacity:0.6;
+      stroke-opacity:0.5;
    }
 }
 
