@@ -2,6 +2,11 @@
 	.cover {
 	   background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/1.jpg");
 	}
+	@media screen and (orientation : landscape) {
+		.cover {
+			background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/3.jpg");
+		}
+	}
 	/* Retina iPad in portrait */
 	@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio: 2) {
    	    .cover {
@@ -14,19 +19,29 @@
 			background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/2-high.jpg");
    	    }
    }
-   @media (min-width:1024px){
+   @media screen and(min-width:1024px) and (orientation : landscape) {
 		.cover {
 			background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/2.jpg");
 		}
    }
-   @media (min-width:1366px){
+   @media screen and (min-width:1366px) and (orientation : landscape) {
 		.cover {
 			background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/3.jpg");
 		}
    }
-   @media (min-width:1600px){
+   @media screen and (min-width:1600px) and (orientation : landscape) {
 		.cover {
 			background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/4.jpg");
+		}
+   }
+   @media screen and (orientation : portrait) {
+		.cover {
+			background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/1.jpg");
+		}
+   }
+   @media screen and (orientation : portrait) and (-webkit-min-device-pixel-ratio: 2) {
+		.cover {
+			background-image: url("{{ site.baseurl}}img/covers/{{ page.date| date: "%d%m%y" }}/1-high.jpg");
 		}
    }
 </style>
