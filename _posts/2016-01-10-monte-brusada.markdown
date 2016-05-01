@@ -11,7 +11,7 @@ gps: true
 map: 46.182270,9.497366
 ---
 
-La **Costiera dei Cech** mi mancava, e direi che ho scelto il giorno perfetto per andarci: un continuo "dentro e fuori" dalle nuvole ha creato degli scenari fantastici. L'escursione parte dall'**Alpe La Piazza** sopra **Cino** dove è possibile recuperare il pass per la carrozzabile. Il bar in centro è però chiuso, quindi proseguiamo confidando nella clemenza delle autorità. La strada per l'alpe si imbocca dalla parte bassa del paese (c'è una strada che passa proprio sotto la chiesa); è stretta ma agevole, con pochi tratti di sterrato.
+La **Costiera dei Cech** mi mancava, e direi che ho scelto il giorno perfetto per andarci: un continuo “dentro e fuori” dalle nuvole ha creato degli scenari fantastici. L'escursione parte dall'**Alpe La Piazza** sopra **Cino** dove è possibile recuperare il pass per la carrozzabile. Il bar in centro è però chiuso, quindi proseguiamo confidando nella clemenza delle autorità. La strada per l'alpe si imbocca dalla parte bassa del paese (c'è una strada che passa proprio sotto la chiesa); è stretta ma agevole, con pochi tratti di sterrato.
 
 Parcheggiamo e ci mettiamo in marcia, passando prima da una **chiesetta** e raggiungendo poi una delle tante carrozzabili che tagliano la Costiera dei Cech che, in breve, ci porta ai **Prati dell’O.** In corrispondenza di uno spiazzo abbandoniamo la strada e risaliamo uno stretto **sentiero con fondo cementato** che attraversa l'alpeggio prima in direzione nord, poi verso ovest (tornante). Una volta entrati nel bosco inzia il sentiero vero e proprio che, con molti zig-zag, guadagna la cresta e **l'Alpe Bassetta.**
 
