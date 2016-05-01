@@ -96,7 +96,6 @@ a.container-link {
 	font-size: 2.5rem;
 	@include vertical-space(2,top,padding);
 	@include vertical-space(2,bottom,margin);
-	color: $color-text;
 	text-align: center;
 
 }
@@ -120,6 +119,11 @@ p,.post-content ul {
 		font-size: 18px;
 		line-height: 1.8;
 	}
+}
+
+.post-content ul {
+	list-style: disc;
+	margin-left: 2rem;
 }
 
 /* Small caps */
