@@ -20,4 +20,4 @@ Il  **rifugio è molto grande** e abbastanza accogliente la cena a base di pasta
 
 Usciamo anche noi e iniziamo a salire lungo il ghiacciaio. Il percorso inizialmente **piega decisamente verso sinistra** per superare il pendio iniziale, per poi puntare dritto verso la vetta. Non ci sono segni di crepacci e la progressione è veloce. Arrivati all'ultima rampa si forma un clamoroso **tappo** per via delle numerose scuole di alpinismo con allievi più o meno esperti. La **crepaccia terminale** oggi è ben chiusa e si supera facilmente. Arriviamo in vetta con bufera e visibilità nulla anche se per fortuna dietro la croce il vento è relativamente calmo.
 
-Foto di rito e rapida discesa verso il Casati con la bufera che ci accompagnerà fino al Pizzini. E' una **salita semplice** e poco faticosa se si dorme al Casati, ideale per chi vuole iniziare a muovere i primi passi su un ghiacciaio.
+Foto di rito e rapida discesa verso il Casati con la bufera che ci accompagnerà fino al Pizzini. È una **salita semplice** e poco faticosa se si dorme al Casati, ideale per chi vuole iniziare a muovere i primi passi su un ghiacciaio.

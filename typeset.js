@@ -2,7 +2,8 @@ var fs= require('fs')
 	typeset = require('typeset'),
 	glob = require("glob"),
 	options = {
-	  only: '.post-content'    // string of a CSS selector to only apply typeset 
+	  only: '.post-content,.post-title,.cover-caption-link,.post-navigation-info-title,.archive-post-title',   // string of a CSS selector to only apply typeset 
+	  disable: ['hyphenate'] // array of features to disable
 	};
 
 	/*
