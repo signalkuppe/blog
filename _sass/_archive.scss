@@ -36,13 +36,13 @@
 	            height: 60px;
 				text-decoration: none;
 				padding: 10px;
-				border: 2px solid $color-gray;
+				border: 1px solid $color-gray-light;
 				text-align: center;
 				color: $color-black;
 				border-radius: none;
 				&:hover {
 					background: $color-primary;
-					border: 2px solid $color-primary;
+					border: 1px solid $color-primary;
 					color: $color-white;
 				}
 			}
@@ -79,11 +79,15 @@
 }
 
 .archive-post-date {
-	font-size: $small-font-size;
-	@include date;
+	font-size: $base-font-size;
+	font-weight: 500;
 	@include vertical-space(0.25,bottom,margin);
 }
 
+.archive-post-title {
+	font-size: $base-font-size;
+	font-weight: 300;
+}
 
 @media screen and (min-width: $breakpoint-tablet){
 	.archive {

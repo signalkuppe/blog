@@ -74,57 +74,17 @@ a.container-link {
 }
 
 
-.post-content a {
-	text-decoration: underline;
-	color: rgba(0,0,0,0.8);
-	font-weight: 400;
-	&:hover {
-		color: $color-primary;
-		text-decoration: underline;
-	}
-	&:active {
-		background: rgba(0,0,0,0.8);
-		color: white;
-		text-decoration: none;
-		position:relative;
-		top:-2px;
-	}
-}
 
-.post-content h2 {
-	@include t-ultrastrong;
-	font-size: 2.5rem;
-	@include vertical-space(2,top,padding);
-	@include vertical-space(2,bottom,margin);
-	text-align: center;
-
-}
 
 img {
 	transition: all 0.5s ease-in-out;
 	max-width: 100%;
 }
 
-strong  { @include t-ultrastrong; }
 em  	{ @include font-text-italic; font-weight: 300;}
 small   { @include t-small; }
-strong  { color: rgba(0,0,0,0.8); font-weight: 400;}
+strong  { color: rgba(0,0,0,0.9); font-weight: 500;}
 
-p,.post-content ul {
-	font-weight: 300;
-	font-size: 16px;
-	line-height: 1.7;
-	@include vertical-space(1,bottom,margin);
-	@media screen and (min-width:768px){
-		font-size: 18px;
-		line-height: 1.8;
-	}
-}
-
-.post-content ul {
-	list-style: disc;
-	margin-left: 2rem;
-}
 
 /* Small caps */
 .small-caps {font-variant: small-caps;}
