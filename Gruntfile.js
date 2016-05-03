@@ -68,7 +68,7 @@ module.exports = function(grunt) {
         options: {                    
           stdout: true
         },
-        command: 'jekyll build --limit_posts 1'
+        command: 'jekyll build --limit_posts 1;node typeset'
       },                          
       upload:
       {                      

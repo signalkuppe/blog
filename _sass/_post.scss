@@ -4,24 +4,68 @@
 *
 **/
 
-.post-header {
-	@include vertical-space(1.5,top,margin);
-	@include vertical-space(1,bottom,margin);
-	@media screen and (min-width:$breakpoint-tablet){
-		@include vertical-space(4,both,margin);
+.post-content a {
+	text-decoration: underline;
+	color: rgba(0,0,0,0.8);
+	font-weight: 400;
+	&:hover {
+		color: $color-primary;
+		text-decoration: underline;
+	}
+	&:active {
+		background: rgba(0,0,0,0.8);
+		color: white;
+		text-decoration: none;
+		position:relative;
+		top:-2px;
 	}
 }
 
+.post-content h2 {
+	@include t-ultrastrong;
+	font-size: 2.5rem;
+	@include vertical-space(2,top,padding);
+	@include vertical-space(2,bottom,margin);
+	text-align: center;
+
+}
+
 .post-title {
-	font-size: 44px;
+	font-size: 48px;
 	line-height: 1.1;
 	font-weight: 700;
 	@include vertical-space(1,bottom,margin);
 	text-align: center;
 	@media screen and (min-width:768px){
-		font-size: 58px;
+		font-size: 62px;
 	}
 }
+
+p,.post-content ul {
+	font-weight: 300;
+	font-size: 17px;
+	line-height: 1.7;
+	@include vertical-space(1,bottom,margin);
+	@media screen and (min-width:768px){
+		font-size: 19px;
+		line-height: 1.7;
+	}
+}
+
+.post-content ul {
+	list-style: disc;
+	margin-left: 2rem;
+}
+
+.post-header {
+	@include vertical-space(3,top,margin);
+	@include vertical-space(1.5,bottom,margin);
+	@media screen and (min-width:$breakpoint-tablet){
+		@include vertical-space(4.5,top,margin);
+		@include vertical-space(3,bottom,margin);
+	}
+}
+
 
 .post-date {
 	@include date;
@@ -63,20 +107,29 @@
 }
 
 .post-footer-list {
-	@include inline-block-list(15px);
+	@include inline-block-list(10px);
 	li {
 		a {
 			text-decoration: none;
 			.icon {
-				transition: all 0.25s ease-in;
+				transition: all 0.2s ease-in;
 				fill: white;
-				width: 42px;
-				height: 42px;
-				background: black;
+				width: 40px;
+				height: 40px;
 				padding: 5px;
-				&:hover {
-					background: $color-primary;
+				&.icon-facebook {
+					background: #3b5998;
 				}
+				&.icon-twitter {
+					background: #55acee;
+				}
+			}
+			&:hover {
+				@media screen and (max-width:$breakpoint-desktop){
+					.icon {
+						transform: scale(1.2);
+					}
+				}		
 			}
 		}
 	}
@@ -117,11 +170,17 @@
 			height: 150px;
 			border: 4px solid white;
 			transition: all 0.25s ease-in-out;
-			&:hover {
-				border-color: rgba(255,255,255,0.5);
+			&:nth-child(odd):hover {
 				@media screen and (min-width:$breakpoint-desktop){
 					transform: rotate(3deg);
 				}
+			}
+			&:nth-child(even):hover {
+				@media screen and (min-width:$breakpoint-desktop){
+					transform: rotate(-3deg);
+				}
+			}
+			&:hover {
 				img {
 					filter: saturate(1);
 				}
