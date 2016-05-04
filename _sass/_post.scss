@@ -125,11 +125,11 @@ p,.post-content ul {
 				}
 			}
 			&:hover {
-				@media screen and (max-width:$breakpoint-desktop){
+				//@media screen and (max-width:$breakpoint-desktop){
 					.icon {
 						transform: scale(1.2);
 					}
-				}		
+				//}		
 			}
 		}
 	}
