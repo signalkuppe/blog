@@ -124,17 +124,32 @@
 	display: block;
 	img {
 		border: 6px solid;
-		border-color: $color-white;
+		border-color: rgba(255,255,255,0.3);
 		max-height: 100%;
 		display: block;
 	}
 	&:hover{
 		.icon {
-			transition: all 0.25s ease-in-out;
+			transition: all 0.1s ease-in;
 			background: $color-primary;
 		}
 		img {
-			border-color: #ccc;
+			transition: all 0.1s ease-in;
+			border-color: white;
+		}
+	}
+	.post-navigation-prev & {
+		&:hover img {
+			@media screen and (min-width:$breakpoint-desktop){
+				transform: rotate(-3deg);
+			}
+		}
+	}
+	.post-navigation-next & {
+		&:hover img {
+			@media screen and (min-width:$breakpoint-desktop){
+				transform: rotate(3deg);
+			}
 		}
 	}
 }

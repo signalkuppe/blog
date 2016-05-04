@@ -33,4 +33,4 @@ module Jekyll
       BitlyFilterCache.instance.shorten(input)
     end
   end
-end
+end*/
