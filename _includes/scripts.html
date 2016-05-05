@@ -62,7 +62,7 @@ function loadDisqus()
     var disqus_div = $("#disqus_thread");
     var top = disqus_div.offset().top;
     var disqus_data = disqus_div.data();
-    if ( !ds_loaded && $(window).scrollTop() + $(window).height() > top ) 
+    if ( !ds_loaded && $(window).scrollTop() + $(window).height() > 50 ) 
     {
         ds_loaded = true;
         for (var key in disqus_data) 
@@ -77,7 +77,6 @@ function loadDisqus()
         dsq.async = true;
         dsq.src = 'http://' + window.disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        console.log('disqus caricato','url: '+disqus_url+' shortname: '+disqus_shortname)
     }  
 }
 $(function () 

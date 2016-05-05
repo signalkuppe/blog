@@ -289,7 +289,10 @@ $breakpoint-desktop-xxlarge:    2560px;
 @mixin container () {
 	max-width: $container-width;
 	margin: 0 auto;
-	padding: 0 2rem;
+	padding: 0 1.5rem;
+	@media screen and (min-width: $breakpoint-tablet) { 
+		padding: 0 2rem;
+	}
 }
 
 
