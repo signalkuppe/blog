@@ -37,14 +37,14 @@
 	@include vertical-space(1,bottom,margin);
 	text-align: center;
 	@media screen and (min-width:768px){
-		font-size: 64px;
+		font-size: 66px;
 	}
 }
 
 p,.post-content ul {
 	font-weight: 300;
 	font-size: 17px;
-	line-height: 1.75;
+	line-height: 1.8;
 	@include vertical-space(1,bottom,margin);
 	@media screen and (min-width:768px){
 		font-size: 19px;

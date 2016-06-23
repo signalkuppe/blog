@@ -52,14 +52,16 @@
          width: 36px;
          height: 36px;
          background: none;
-         border:4px solid rgba(255,255,255,0.7);
+         border:2px solid rgba(255,255,255,0.7);
          @media screen and (min-width: $breakpoint-tablet){
            width: 48px;
            height: 48px;
+           border-width: 4px;
          }
          @media screen and (max-height:568px){
            width: 30px;
            height: 30px;
+           
          }
 
       }

@@ -3,7 +3,7 @@ var fs= require('fs')
 	glob = require("glob"),
 	options = {
 	  only: '.post-content,.post-title,.cover-caption-link,.post-navigation-info-title,.archive-post-title',   // string of a CSS selector to only apply typeset 
-	  disable: ['hyphenate'] // array of features to disable
+	  disable: ['hyphenate','ligatures'] // array of features to disable
 	};
 
 	/*
