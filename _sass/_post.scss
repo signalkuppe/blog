@@ -44,11 +44,11 @@
 p,.post-content ul {
 	font-weight: 300;
 	font-size: 17px;
-	line-height: 1.8;
+	line-height: 1.7;
 	@include vertical-space(1,bottom,margin);
 	@media screen and (min-width:768px){
 		font-size: 19px;
-		line-height: 1.7;
+		line-height: 1.8;
 	}
 }
 
@@ -58,6 +58,9 @@ p,.post-content ul {
 }
 
 .post-header {
+	max-width: 920px;
+	margin-left: auto;
+	margin-right: auto;
 	@include vertical-space(3,top,margin);
 	@include vertical-space(1.5,bottom,margin);
 	@media screen and (min-width:$breakpoint-tablet){
