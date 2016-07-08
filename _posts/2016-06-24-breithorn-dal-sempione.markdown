@@ -5,7 +5,7 @@ date: 2016-06-24
 description: "Via normale al Breithorn con partenza dal Passo del Sempione per l'Homattugletscher"
 categories: alpinismo
 tags: sempione breithorn
-caption: "Risalendo l'Homattugletscher"
+caption: "L'Hubschorn"
 flickr: 72157669877777782
 gps: true
 map: 46.238511,8.083833
