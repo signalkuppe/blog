@@ -19,7 +19,10 @@ body {
   box-sizing: border-box; }
 
 body * {
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-variant-ligatures: none;
+     -moz-font-variant-ligatures: none;
+          font-variant-ligatures: none; }
 
 html, body {
   -webkit-text-size-adjust: 100%; }
@@ -36,8 +39,8 @@ html {
 body {
   font-size: 1rem;
   line-height: 1.8;
-  font-family: "jaf-bernina-sans", sans-serif;
-  color: rgba(0, 0, 0, 0.65);
+  font-family: "proxima-nova", sans-serif;
+  color: rgba(0, 0, 0, 0.8);
   font-size: 1rem;
   line-height: 1.8; }
 
@@ -58,8 +61,8 @@ body {
 
 h1, h2{
   font-weight: 400;
-  font-family: "jaf-bernina-sans-comp", sans-serif;
-  color: rgba(0, 0, 0, 0.8);
+  font-family: "proxima-nova-extra-condensed", sans-serif;
+  color: rgba(0, 0, 0, 0.9);
   margin: 0; }
 
 h2 {
@@ -72,20 +75,6 @@ h2 {
 
 a {
   color: #1c6e94; }
-
-p {
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-hyphens: none !important;
-     -moz-hyphens: none !important;
-      -ms-hyphens: none !important;
-          hyphens: none !important;
-  margin-bottom: 1.5rem; }
-  @media screen and (min-width: 768px) {
-    p {
-      font-size: 18px;
-      line-height: 1.8; } }
 
 .wf-active h1,
 .wf-active h2,
@@ -121,15 +110,21 @@ p {
 .cover-header {
   padding-top: 1.5rem; }
 
-.cover-guide,
 .cover-loader {
-  height: 100px;
-  margin-bottom: -75px;
   position: absolute;
-  bottom: 50%;
-  left: 0;
-  right: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   text-align: center; }
+
+.cover-guide {
+  position: absolute;
+  bottom: 17px;
+  right: 20px;
+  text-align: center;
+  z-index: 1000; }
 
 .cover-loader {
   color: white;
@@ -138,15 +133,13 @@ p {
     font-size: 10px; }
 
 .cover-guide a .icon {
-  opacity: 0.75;
-  fill: #FFFFFF;
-  width: 48px;
-  height: 48px;
-  border: 4px solid rgba(255, 255, 255, 0.75); }
-  @media screen and (min-width: 1024px) {
-    .cover-guide a .icon {
-      width: 56px;
-      height: 56px; } }
+  -webkit-transition: 0.25s ease-in;
+          transition: 0.25s ease-in;
+  fill: white;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.3); }
 
 .cover-header {
   background-image: -webkit-linear-gradient(#000000, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.1) 85%, transparent);
@@ -173,7 +166,7 @@ p {
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8); }
 
 .cover-header h1 {
-  font-family: "jaf-bernina-sans-comp", sans-serif;
+  font-family: "proxima-nova-extra-condensed", sans-serif;
   font-size: 2rem;
   line-height: 1.4;
   font-weight: 700;
@@ -181,21 +174,21 @@ p {
   text-transform: uppercase; }
 
 .cover-header h2 {
-  font-family: "jaf-bernina-sans-comp", sans-serif;
+  font-family: "proxima-nova-extra-condensed", sans-serif;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.8; }
 
 .cover-header-menu-toggle {
   display: inline-block;
-  padding-top: 1.125rem; }
+  padding-top: 0.75rem; }
   .cover-header-menu-toggle .icon {
     fill: #FFFFFF;
     width: 24px;
     height: 24px;
     stroke: #000000;
     stroke-width: 1px;
-    stroke-opacity: 0.6; }
+    stroke-opacity: 0.5; }
 
 .menu {
   -webkit-transition: all 0.15s ease-in;
@@ -239,8 +232,8 @@ p {
   font-weight: normal;
   font-style: normal;
   font-weight: 400;
-  font-family: "jaf-bernina-sans-comp", sans-serif;
-  color: rgba(0, 0, 0, 0.8);
+  font-family: "proxima-nova-extra-condensed", sans-serif;
+  color: rgba(0, 0, 0, 0.9);
   font-weight: 400;
   display: inline-block;
   text-align: center;
@@ -299,6 +292,16 @@ p {
   top: 24px;
   left: 24px; }
 
+p{
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 1.5rem; }
+  @media screen and (min-width: 768px) {
+    p{
+      font-size: 19px;
+      line-height: 1.8; } }
+
 .post-print-thanks {
   display: none; }
   .post-gallery-mobile .post-gallery-mobile-link {
@@ -308,8 +311,8 @@ p {
       display: block; }
     .post-gallery-mobile .post-gallery-mobile-link .icon {
       fill: #000000;
-      width: 56px;
-      height: 56px; }
+      width: 48px;
+      height: 48px; }
 
 #scrollUp {
   width: 32px;
