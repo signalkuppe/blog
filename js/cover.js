@@ -94,4 +94,12 @@ $(document).ready(function()
 	    } 
 	});
 
+    $(window).scroll(function() {
+        if($(window).scrollTop() > 0) {
+            $('.cover-guide').fadeOut();
+        } else {
+            $('.cover-guide').fadeIn();
+        }
+    });
+
 })
