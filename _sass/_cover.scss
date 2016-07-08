@@ -36,13 +36,10 @@
 
 .cover-guide {
    position: absolute;
-   bottom: $base-line-height;
+   bottom: 17px;
    right: 20px;
    text-align: center; 
    z-index:1000; 
-   @media screen and (min-width: $breakpoint-desktop-xlarge){
-      bottom: $base-line-height * 2;
-   }
 }
 
 .cover-loader {
@@ -54,10 +51,7 @@
 }
 
 .cover-guide {
-   a {
-      display: block;
-      width: 32px;
-      height: 32px;      
+   a {   
       .icon {
          transition: 0.25s ease-in;
          fill: white;
