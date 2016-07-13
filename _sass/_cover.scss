@@ -23,7 +23,7 @@
 }
 
 .cover-header {
-   @include vertical-space(1,top,padding);
+   padding-top:20px;
 }
 
 .cover-loader {
@@ -36,7 +36,7 @@
 
 .cover-guide {
    position: absolute;
-   bottom: 17px;
+   bottom: 20px;
    right: 20px;
    text-align: center; 
    z-index:1000; 
@@ -51,19 +51,19 @@
 }
 
 .cover-guide {
-   a {   
+   a {  
+      display: block;
+      width: 32px;
+      height: 32px; 
       .icon {
          transition: 0.25s ease-in;
          fill: white;
-         width: 32px;
-         height: 32px;
          padding: 6px;
          background: rgba(255,255,255,0.3);
       }
       &:hover{
          .icon {
-            //fill: white;
-            //background: #ccc;
+           background: rgba(255,255,255,0.5);
          }
       }
    }
@@ -167,13 +167,10 @@
 
 .cover-caption { 
    position: absolute;
-   bottom: $base-line-height;
+   bottom: 20px;
    left: 0;
    right: 0;
    text-align: center;
-   @media screen and (min-width: $breakpoint-desktop-xlarge){
-      bottom: $base-line-height * 2;
-   }
 }
 
 .cover-caption > p {
@@ -183,14 +180,19 @@
    display: inline-block;
    text-align: center;
    font-size: 15px;
-   background: rgba(0,0,0,0.8);
-   padding: 4px 12px;
    @media screen and (min-width: $breakpoint-desktop){
       font-size: 17px;
    }
    a {
+     transition: background 0.25s ease-in;
+     display: block;
+     background: rgba(0,0,0,0.7);
+     padding: 4px 12px;
       text-decoration: none;
       color: white;
+      &:hover {
+        background: rgba(0,0,0,1);
+      }
    }
 }
 
