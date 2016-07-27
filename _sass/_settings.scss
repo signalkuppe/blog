@@ -326,9 +326,10 @@ $breakpoint-desktop-xxlarge:    2560px;
 
 @mixin site-title () {
 	font-family: $font-sitetile;
-	@include t-large;
+	font-size: 2.6rem;
 	@include t-ultrastrong;
-	@include vertical-space(0,bottom,margin);
+	margin: 0;
+	line-height:1 ;
 	text-transform: uppercase;
 }
 
@@ -336,6 +337,8 @@ $breakpoint-desktop-xxlarge:    2560px;
    font-family: $font-sitetile;
    font-weight: 400;
    @include t-base;
+   line-height: 1;
+   margin:5px 0 0 0;
 }
 
 @mixin filter( $var ){
