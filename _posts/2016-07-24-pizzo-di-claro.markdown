@@ -5,7 +5,7 @@ date: 2016-07-24
 description: "Via normale al Pizzo di Claro da Arvigo per l'Alp di Stabveder"
 categories: escursionismo
 tags: ticino pizzo claro
-caption: "Verso al vetta del Pizzo di Claro"
+caption: "Verso la vetta del Pizzo di Claro"
 flickr: 72157669058663453
 gps: true
 map: 46.296050,9.055655
