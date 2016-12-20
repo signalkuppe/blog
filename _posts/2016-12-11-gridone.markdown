@@ -5,7 +5,7 @@ date: 2016-12-11
 description: "Relazione della salita al Gridone con partenza da Mergugno nel comune di Brissago"
 categories: escursionismo
 tags: ticino gridone lago maggiore
-caption: "Verso la vetta del Pizzo di Claro"
+caption: "Il Rifugio Al Legn"
 flickr: 72157676571465880
 gps: true
 map: 46.123332,8.648039
