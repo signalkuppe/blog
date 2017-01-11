@@ -6,7 +6,7 @@ description: "Scialpinismo alla Punta Palasina in Val d’Ayas con partenza da E
 categories: scialpinismo
 tags: scialpinismo vda ayas
 caption: "Dalla Punta Palasina verso sud"
-flickr: 72157673619852982
+flickr: 72157675215045943
 map: 45.793807,7.767076
 gps: true
 ---
