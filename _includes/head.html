@@ -29,15 +29,19 @@
     <!--responsive stuff-->
     <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!--amp-->
+    {% if page.path contains '_posts' %}
+    <link rel="amphtml" href="{{ page.id | prepend: '/amp' | prepend: site.baseurl | prepend: site.url }}">
+    {% endif %}
     <!--icons-->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl}}img/favicons/fav-icon.ico" />
-    <link rel="apple-touch-icon" href="{{ site.baseurl}}img/favicons/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl}}img/favicons/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ site.baseurl}}img/favicons/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="{{site.baseurl}}img/favicons/apple-touch-icon-72x72.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl}}/img/favicons/fav-icon.ico" />
+    <link rel="apple-touch-icon" href="{{ site.baseurl}}/img/favicons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ site.baseurl}}/img/favicons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ site.baseurl}}/img/favicons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="{{site.baseurl}}/img/favicons/apple-touch-icon-72x72.png" />
     <link rel="canonical" href="{{site.url}}{{page.url}}"/>
-    <!-- build:css {{ site.baseurl}}css/above_the_fold.min.css -->
-    <link rel="stylesheet" href="{{ site.baseurl}}css.css" />
+    <!-- build:css {{ site.baseurl}}/css/above_the_fold.min.css -->
+    <link rel="stylesheet" href="{{ site.baseurl}}/css/app.css" />
     <!-- /build -->
-    <link rel="stylesheet" href="{{ site.baseurl}}css/print.css" media="print" />
+    <link rel="stylesheet" href="{{ site.baseurl}}/css/print.css" media="print" />
 </head>

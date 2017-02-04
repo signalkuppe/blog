@@ -150,6 +150,138 @@ module Jekyll
     end
   end
 
+
+  #per pagine amp
+
+  class FlickrPhotosetTagAmp < Liquid::Tag
+
+    def initialize(tag_name, markup, tokens)
+      super
+      params = Shellwords.shellwords markup
+
+      @photoset       = params[0]
+      @photoThumbnail = params[1] || "Large Square"
+      @photoEmbeded   = params[2] || "Medium 640"
+      @photoOpened    = params[3] || "Large"
+      @photoOpened2   = params[3] || "Original"
+      @video          = params[4] || "Site MP4"
+
+    end
+
+    def render(context)
+      # hack to convert a variable into an actual flickr set id
+      if @photoset =~ /([\w]+\.[\w]+)/i
+        @photoset = Liquid::Template.parse('{{ '+@photoset+' }}').render context
+      end
+
+      flickrConfig = context.registers[:site].config["flickr"]
+
+      if cache_dir = flickrConfig['cache_dir']
+        if !Dir.exist?(cache_dir)
+          Dir.mkdir(cache_dir, 0777)
+        end
+
+        path = File.join(cache_dir, "#{@photoset}-#{@photoThumbnail}-#{@photoEmbeded}-#{@photoOpened}-#{@video}.yml")
+        if File.exist?(path)
+          photos = YAML::load(File.read(path))
+        else
+          photos = generate_photo_data(@photoset, flickrConfig)
+          File.open(path, 'w') {|f| f.print(YAML::dump(photos)) }
+        end
+      else
+        photos = generate_photo_data(@photoset, flickrConfig)
+      end
+
+      if photos.count == 1
+        if photos[0]['urlVideo'] != ''
+          output = "<p style=\"text-align: center;\">\n"
+          output += "  <video controls poster=\"#{photos[0]['urlEmbeded']}\">\n"
+          output += "    <source src=\"#{photos[0]['urlVideo']}\" type=\"video/mp4\" />\n"
+          output += "  </video>\n"
+          output += "  <br/><span class=\"alt-flickr\"><a href=\"#{photos[0]['urlFlickr']}\" target=\"_blank\">Voir la video en grand</a></span>\n"
+          output += "</p>\n"
+        else
+          output = "<p style=\"text-align: center;\"><img class=\"th\" src=\"#{photos[0]['urlEmbeded']}\" title=\"#{photos[0]['title']}\" longdesc=\"#{photos[0]['title']}\" alt=\"#{photos[0]['title']}\" /></p>\n"
+        end
+      else
+        output = "<amp-carousel class=\"carousel1\" layout=\"responsive\" height=\"300\" width=\"400\" type=\"slides\">\n"
+        
+        photos.each do |photo|
+            output += "<div class=\"slide\">"
+            output += "<amp-img src=\"#{photo['urlThumb']}\" layout=\"fill\" width=\"400\" height=\"300\" alt=\"#{photo['title']}\"></amp-img>\n"
+            output += "<div class=\"caption\">#{photo['title']}</div>\n"
+            output += "</div>"
+        end
+
+        output += "</amp-carousel>\n"
+      end
+
+      # return content
+      output
+    end
+
+    def generate_photo_data(photoset, flickrConfig)
+      returnSet = Array.new
+
+      FlickRaw.api_key       = flickrConfig['api_key']
+      FlickRaw.shared_secret = flickrConfig['shared_secret']
+      flickr.access_token    = flickrConfig['access_token']
+      flickr.access_secret   = flickrConfig['access_secret']
+
+      begin
+        flickr.test.login
+      rescue Exception => e
+        raise "Bad token: #{flickrConfig['access_token']}"
+      end
+
+      begin
+        photos = flickr.photosets.getPhotos :photoset_id => photoset
+      rescue Exception => e
+        raise "Bad photoset: #{photoset}"
+      end
+
+      photos.photo.each_index do | i |
+
+
+        title = photos.photo[i].title
+        id    = photos.photo[i].id
+
+        urlThumb   = String.new
+        urlEmbeded = String.new
+        urlOpened  = String.new
+        urlOpened2  = String.new
+        urlVideo   = String.new
+
+        sizes = flickr.photos.getSizes(:photo_id => id)
+
+        urlThumb       = sizes.find {|s| s.label == @photoThumbnail }
+        urlEmbeded     = sizes.find {|s| s.label == @photoEmbeded }
+        urlOpened      = sizes.find {|s| s.label == @photoOpened }
+        urlOpened2      = sizes.find {|s| s.label == @photoOpened2 }
+        urlVideo       = sizes.find {|s| s.label == @video }
+
+        photo = {
+          'title' => title,
+          'urlThumb' => urlThumb ? urlThumb.source : '',
+          'urlEmbeded' => urlEmbeded ? urlEmbeded.source : '',
+          'urlOpened' => urlOpened ? urlOpened.source : '',
+          'urlOpened2' => urlOpened2 ? urlOpened2.source : '',
+          'urlVideo' => urlVideo ? urlVideo.source : '',
+          'urlFlickr' => urlVideo ? urlVideo.url : '',
+        }
+
+        returnSet.push photo
+      end
+
+      # sleep a little so that you don't get in trouble for bombarding the Flickr servers
+      sleep 1
+
+      returnSet
+    end
+  end
+
 end
 
 Liquid::Template.register_tag('flickr_photoset', Jekyll::FlickrPhotosetTag)
+
+Liquid::Template.register_tag('flickr_photoset_amp', Jekyll::FlickrPhotosetTagAmp)
