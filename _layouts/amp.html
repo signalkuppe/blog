@@ -135,10 +135,10 @@ layout: amp
           "@type":"WebPage",
           "@id":"{{ page.canonical_url | prepend: site.baseurl | prepend: site.url }}"
         },
-        "headline": "A{{ page.title }}",
+        "headline": "{{ page.title }}",
         "image": {
           "@type": "ImageObject",
-          "url": "{{ site.baseurl}}img/covers/{{ page.date| date: '%d%m%y' }}/2.jpg",
+          "url": "{{site.url}}img/covers/{{ page.date| date: '%d%m%y' }}/2.jpg",
           "height": 1024,
           "width": 768
         },
@@ -150,7 +150,8 @@ layout: amp
         },
         "publisher": {
           "@type": "Organization",
-          "name": "Signalkuppe"
+          "name": "Signalkuppe",
+          "logo": "https://it.gravatar.com/userimage/449313/726d5e2dea220cc4ca9ee3c06b646930.jpg"
         },
         "description": "{{page.description}}"
       }
