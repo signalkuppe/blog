@@ -204,11 +204,11 @@ module Jekyll
           output = "<p style=\"text-align: center;\"><img class=\"th\" src=\"#{photos[0]['urlEmbeded']}\" title=\"#{photos[0]['title']}\" longdesc=\"#{photos[0]['title']}\" alt=\"#{photos[0]['title']}\" /></p>\n"
         end
       else
-        output = "<amp-carousel class=\"carousel1\" layout=\"responsive\" height=\"300\" width=\"400\" type=\"slides\">\n"
+        output = "<amp-carousel class=\"carousel1\" layout=\"fixed-height\" height=\"300px\" type=\"slides\">\n"
         
         photos.each do |photo|
             output += "<div class=\"slide\">"
-            output += "<amp-img src=\"#{photo['urlThumb']}\" layout=\"fill\" width=\"400\" height=\"300\" alt=\"#{photo['title']}\"></amp-img>\n"
+            output += "<amp-img src=\"#{photo['urlThumb']}\" layout=\"responsive\"  width=\"400px\" height=\"300px\" alt=\"#{photo['title']}\"></amp-img>\n"
             output += "<div class=\"caption\">#{photo['title']}</div>\n"
             output += "</div>"
         end

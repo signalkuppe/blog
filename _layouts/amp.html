@@ -29,10 +29,6 @@ layout: amp
       background: black;
     }
 
-    .amp-brand {
-      margin-bottom: 1em;
-    }
-
     .amp-brand a {
       color: rgba(0,0,0,0.9);
       text-decoration: none;
@@ -46,6 +42,7 @@ layout: amp
     }
 
     .amp-brand h2 {
+      font-size: 1.25em;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: .02em;
@@ -62,8 +59,10 @@ layout: amp
     }
 
     .amp-post-title {
-      font-size: 2em;
+      font-size: 2.3em;
       margin:0;
+      line-height: 1.1;
+      margin-bottom: .2em;
     }
 
     .amp-post-date {
@@ -76,6 +75,15 @@ layout: amp
       padding: 1em;
       text-align: center;
       font-size: .85em;
+    }
+
+    .amp-gallery {
+      margin-top: 2em;
+    }
+
+    .amp-gallery img {
+        width: auto;
+        min-width: auto;
     }
 
     .amp-kml {
@@ -163,7 +171,6 @@ layout: amp
     <hgroup class="amp-brand">
       <a href="" title="Vai alla homepage del sito principale">
         <h2>{{ site.name }}</h2>
-        <h3>{{ site.slogan }}</h3>
       </a>
     </hgroup>
   </header>
