@@ -5,7 +5,7 @@ date: 2017-02-18
 description: "Scialpinismo al Rottalihorn con partenza da Realp, relazione e traccia gps di salita"
 categories: scialpinismo
 tags: scialpinismo svizzera andermatt realp
-caption: "Verso Realp"
+caption: "Alla base della Tälligrat"
 flickr: 72157678800723752
 map: 46.542484,8.465807
 gps: true
