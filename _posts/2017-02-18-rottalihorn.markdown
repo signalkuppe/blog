@@ -11,7 +11,7 @@ map: 46.542484,8.465807
 gps: true
 ---
 
-Raccolgo al volo la proposta di Roberto per una sabato oltralpe, destinazione **Realp** con cima da decidere in loco. Oltre il **Gottardo** come al solito cambia il clima: a sud prati, qui 20cm di neve fresca e atmosfera invernale. Parcheggiamo a Realp sborsando ben 3 franchi: la svizzera è così, bella ma cara! Siamo in quattro, tre muniti di sci e una splitboard. Seguiamo la strada, lasciando a sinistra la **via invernal** optando quindi per l'estiva, più ripida ma più diretta.
+Raccolgo al volo la proposta di Roberto per una sabato oltralpe, destinazione **Realp** con cima da decidere in loco. Oltre il **Gottardo** come al solito cambia il clima: a sud prati, qui 20cm di neve fresca e atmosfera invernale. Parcheggiamo a Realp sborsando ben 3 franchi: la svizzera è così, bella ma cara! Siamo in quattro, tre muniti di sci e una splitboard. Seguiamo la strada, lasciando a sinistra la **via invernale** optando quindi per l'estiva, più ripida ma più diretta.
 
 Prima parte con pendenze sostenute nella selva, poi usciamo su un **pianoro** molto scenografico con la baita di Stelliboden. Oggi scenari da cinque stelle, tutto **ovattato** e cielo limpido. Rovinano la festa solo le classiche **comitive svizzere** da 10 persone una in fila all'altra, tutte rigorosamente con mega attacconi diamir. Secondo tratto ripido e quindi altro pianoro; da qui vediamo in lontananza la cima verso SW. L'avvicinamento alla cima è spettacolare, non c'è nessuno, le comitive si sono dirette alla **Talligrat** lasciandoci infinite distese di neve fresca.
 

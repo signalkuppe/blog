@@ -358,7 +358,7 @@ $breakpoint-desktop-xxlarge:    2560px;
 	text-decoration: none;
 	border: 2px solid;
 	line-height: 20px;
-	font-weight: 300;
+	font-weight: 400;
 	@if $size == "default" {
 		padding: 10px;
 		@include t-base;		

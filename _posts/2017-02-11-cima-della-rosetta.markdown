@@ -2,7 +2,7 @@
 layout: post
 title: "Cima della Rosetta"
 date: 2017-02-11
-description: "Scialpinismo alla Cima della Rosetta per il Bar Bianco e discesa per i prati di Melarolo"
+description: "Scialpinismo alla Cima della Rosetta per il Bar Bianco e discesa per i prati di Mellarolo"
 categories: scialpinismo
 tags: scialpinismo valgerola rosetta
 caption: "Alba sulla Valtellina"
@@ -19,4 +19,4 @@ Nel frattempo **l'alba si infiamma** regalandoci uno spettacolo meraviglioso. Il
 
 Ci fermiamo prima della vetta per non perdere tempo, cambio di assetto e via a **sverginare il pendio.** E' il paradiso: **50cm di neve fresca** con sotto un buon fondo, non si può chiedere di meglio! Due ore e trenta di fatica per 10 minuti di gloria. Ovviamente si ripella, i **tritatori** sono arrivati ma c'è spazio per un'altra bella discesa, stavolta da sotto la vetta.
 
-Ma non è finita qui, il Nibi ha in serbo un'altra sopresa. **Discesa sul letame** per i prati di Melarolo! Detta così non sembra invitante ma è stata una figata pazzesca! 20cm di neve fresca sopra il prato, ad ogni curva lasciamo dietro di noi una **derapata** marrone. La giornata finisce lungo la strada per Rasura, dove veniamo recuperati dal nostro compagno di gita. Momenti indescrivibili nella magica orobia! 
+Ma non è finita qui, il Nibi ha in serbo un'altra sopresa. **Discesa sul letame** per i prati di Mellarolo! Detta così non sembra invitante ma è stata una figata pazzesca! 20cm di neve fresca sopra il prato, ad ogni curva lasciamo dietro di noi una **derapata** marrone. La giornata finisce lungo la strada per Rasura, dove veniamo recuperati dal nostro compagno di gita. Momenti indescrivibili nella magica orobia! 

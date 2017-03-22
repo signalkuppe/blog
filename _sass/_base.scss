@@ -8,7 +8,6 @@
 * { box-sizing:border-box; }
 body * {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
-	 font-variant-ligatures: none;
 }
 
 html, body {-webkit-text-size-adjust: 100%;}
@@ -17,10 +16,8 @@ html{
 	height:100%;
 	width: 100%;
 	font-size: 100%;
-	/* killing 300ms touch delay in IE */
 	-ms-touch-action: manipulation;
 	touch-action: manipulation;
-	text-rendering: optimizeLegibility;
 }
 
 body {
@@ -82,9 +79,9 @@ img {
 	max-width: 100%;
 }
 
-em  	{ @include font-text-italic; font-weight: 300;}
+em  	{ @include font-text-italic; font-weight: 400;}
 small   { @include t-small; }
-strong  { color: rgba(0,0,0,0.9); font-weight: 500;}
+strong  { color: rgba(0,0,0,0.9); font-weight: 700;}
 
 
 /* Small caps */
@@ -97,11 +94,11 @@ strong  { color: rgba(0,0,0,0.9); font-weight: 500;}
 .push-double{margin-right:.38em}
  */
 
-/* Single quote (') marks */
+/*
 .pull-single{margin-left:-.15em}
 .push-single{margin-right:.15em}
  
-/* Optical margin alignment for particular letters */
+
 .pull-T, .pull-V, .pull-W, .pull-Y {margin-left: -0.07em}
 .push-T, .push-V, .push-W, .push-Y {margin-right: 0.07em}
  
@@ -109,7 +106,7 @@ strong  { color: rgba(0,0,0,0.9); font-weight: 500;}
 .push-O, .push-C, .push-o, .push-c {margin-right: 0.04em}
  
 .pull-A {margin-left: -0.03em}
-.push-A {margin-right: 0.03em}
+.push-A {margin-right: 0.03em} */
 
 // FUOC typekit
 
