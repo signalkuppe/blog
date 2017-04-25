@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rottalihorn"
-date: 2017-02-18
+date: 2017-03-12
 description: "Scialpinismo al Rottalihorn con partenza da Realp, relazione e traccia gps di salita"
 categories: scialpinismo
 tags: scialpinismo svizzera andermatt realp

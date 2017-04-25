@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Capanna Cristallina"
-date: 2017-03-12
+date: 2017-02-18
 description: "Scialpinismo alla Capanna Cristallina con partenza da Ossasco. Salita alla Cima di Lago e traversata al Poncione di Valpiana"
 categories: scialpinismo
 tags: scialpinismo svizzera ticino bedretto
