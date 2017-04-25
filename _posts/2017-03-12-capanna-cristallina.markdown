@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Rottalihorn"
+title: "Capanna Cristallina"
 date: 2017-03-12
-description: "Scialpinismo al Rottalihorn con partenza da Realp, relazione e traccia gps di salita"
+description: "Scialpinismo alla Capanna Cristallina con partenza da Ossasco. Salita alla Cima di Lago e traversata al Poncione di Valpiana"
 categories: scialpinismo
-tags: scialpinismo svizzera andermatt realp
-caption: "Alla base della Tälligrat"
-flickr: 72157678800723752
-map: 46.542484,8.465807
+tags: scialpinismo svizzera ticino bedretto
+caption: "La Capanna Cristallina"
+flickr: 72157678456692914
+map: 46.471840,8.526242
 gps: true
 ---
 
