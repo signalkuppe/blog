@@ -68,7 +68,7 @@ module Jekyll
           output = "<p style=\"text-align: center;\"><img class=\"th\" src=\"#{photos[0]['urlEmbeded']}\" title=\"#{photos[0]['title']}\" longdesc=\"#{photos[0]['title']}\" alt=\"#{photos[0]['title']}\" /></p>\n"
         end
       else
-        output = "    <ul class=\"post-gallery-list\">\n"
+        output = "    <ul class=\"post-gallery-list\" id=\"post-gallery\">\n"
 
         photos.each do |photo|
           if photo['urlVideo'] != ''
@@ -79,7 +79,7 @@ module Jekyll
             output += "        <br/><span class=\"alt-flickr\"><a href=\"#{photo['urlFlickr']}\" target=\"_blank\">Voir la video en grand</a></span>\n"
             output += "      </li>\n"
           else
-            output += "      <li><a rel=\"gallery\" class=\"post-gallery-link\" href=\"#{photo['urlOpened']}\" title=\"#{photo['title']}\"><img data-src=\"#{photo['urlThumb']}\" alt=\"#{photo['title']}\"></a></li>\n"
+            output += "      <li><a rel=\"gallery\" class=\"post-gallery-link\" href=\"#{photo['urlOpened']}\" title=\"#{photo['title']}\"><img data-src=\"#{photo['urlEmbeded']}\" alt=\"#{photo['title']}\"></a></li>\n"
           end
         end
 
