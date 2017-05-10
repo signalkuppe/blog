@@ -168,18 +168,14 @@ p,.post-content ul {
 		column-count: 2;
 		column-gap: 0;
 		padding: 0 20px;
-		&:hover img {
-			filter: saturate(0);
-			opacity: 0.75;
-		}
 		li {
 			break-inside: avoid;
 			padding: 10px;
 			margin-bottom: -10px;
+			float: left;
 			&:hover {
 				img {
-					filter: saturate(1);
-					opacity: 1;
+					transform: scale(1.1);
 				}
 			}
 			a:active {
