@@ -26,7 +26,7 @@ Le cime sono coperte dalle nuvole, non è facile orientarsi. Dopo essere saliti 
 
 Escursione meravigliosa e molto varia paesaggisticamente, in autunno è un paradiso per chi è appassionato di fotografia. Una piccola considerazione sull'**itinerario di salita:** a mio avviso dall’Alpe Al Geggio conviene seguire il sentiero più evidente, lasciando sulla sinistra la traccia "ufficiale" che risale, dopo una presa dell'acqua, i pendii in direzione dei laghetti.
 
-Attraversato il Rio Castello, nei pressi del grosso masso di pietra ollare (il secondo, non il primo dell'area pic-nic) abbandonare la traccia che prosegue verso NE e risalire per pochi metri un canalino fino a incontrare un sentiero. Prenderlo in direzione W, abbandonarlo poco dopo nei pressi di una roccia (ometto), e salire senza direzione obbligata la **cresta sud** fino in vetta. Questa variante (allegata nel file gps) è molto più diretta della normale e permette di risparmiare una ventina di minuti.
+Attraversato il Rio Castello, nei pressi del grosso masso di pietra ollare (il secondo, non il primo dell'area pic-nic) **abbandonare la traccia** che prosegue verso NE e risalire per pochi metri un canalino fino a incontrare un sentiero. Prenderlo in direzione W, abbandonarlo poco dopo nei pressi di una roccia (ometto), e salire senza direzione obbligata la **cresta sud** fino in vetta. Questa variante (allegata nel file gps) è molto più diretta della normale e permette di risparmiare una ventina di minuti.
 
 
 
