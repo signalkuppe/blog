@@ -21,7 +21,7 @@ Prima di affrontare la parte finale costruisco un **ometto** per rincuorare i pr
 
 Vorremmo salire anche il **Pizzo Cornagiera** ma comincia già a scendere qualche goccia di pioggia, meglio rientrare. I versanti nord sono belli innevati, probabilmente c'è più neve adesso che durante tutto l'inverno. In breve siamo alla **Bocchetta di Olino.** 
 
-Verso sud precipita una **gola impervia,** la cartina però indica un sentiero sul ripido versante meridionale della Cima di Olino. In effetti, dopo un inizio poco promettente, inizia il **tratto più spettacolare della gita.** Un sentiero costituito da **roccia di verrucano** che supera un lungo tratto scosceso fino a guadagnare la dorsale che scende a Primaluna: mozzafiato!
+Verso sud precipita una **gola impervia,** la cartina però indica un sentiero sul ripido versante meridionale della Cima di Olino. In effetti, dopo un inizio poco promettente, inizia il **tratto più spettacolare della gita.** Un sentiero costituito da **roccia di verrucano** che supera un lungo tratto scosceso, fino a guadagnare la dorsale che scende a Primaluna: mozzafiato!
 
 La discesa poi è ben segnata e rapidamente rientriamo alla macchina sotto una pioggia battente. **Escursione bellissima** in una zona poco frequentata della Valsassina, resa ancora più suggestiva dalla giornata cupa e piovosa.
 
