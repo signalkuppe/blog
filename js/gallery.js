@@ -59,8 +59,15 @@ $(document).ready(function()
 	    match : function() 
 	    {
 	    	$activate.hide();
-			_mostraGallery($activate);
-			$links.removeClass('post-gallery-list--mobile');
+
+	    	// non caricarle all'inizio
+	    	$(window).scroll(function(){
+	    		if($(window).scrollTop() > $('.cover').height()) {
+					_mostraGallery($activate);
+					$links.removeClass('post-gallery-list--mobile');
+	    		}
+	    	});
+
 	    },      
 	     
 	    // nascondi sul resize on mobile                          
