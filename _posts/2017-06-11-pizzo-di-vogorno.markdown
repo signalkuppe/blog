@@ -5,7 +5,7 @@ date: 2017-06-11
 description: "Relazione della salita al Pizzo di Vogorno per la via normale dalla Val Verzasca per l'Alpe Bardughè"
 categories: escursionismo
 tags: verzasca ticino svizzera
-caption: "La cresta del Pizzo Scala"
+caption: "I laghi Vogorno e Maggiore"
 flickr: 72157682426969403
 map: 46.239602,8.893131
 gps: true
