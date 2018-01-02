@@ -16,6 +16,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
   {% comment %} site | slogan in homepage, title | site  in other pages{% endcomment %}
 
@@ -32,9 +33,10 @@
 
   {% if page.title %}
   <meta property="og:type" content="article" />
-  <meta property="og:image" content="{{site.url}}/img/covers/{{ page.date| date: "%d%m%y" }}/cover.jpg" />
+  <meta property="og:image" content="http://res.cloudinary.com/signalkuppe/image/upload/w_200,h_200,c_fill,f_auto,q_auto,g_center/blog/covers/{{ page.date| date: "%d%m%y" }}" />
+  <meta property="og:description" content="{{ page.description }}" />
   {% else %}
-  <meta property="og:image" content="https://it.gravatar.com/userimage/449313/726d5e2dea220cc4ca9ee3c06b646930.jpg?size=200" />
+  <meta property="og:image" content="https://it.gravatar.com/userimage/449313/a6c21654451335ca0d1505f55c4a81b9.png?size=200" />
   {% endif %}
   {% if page.title %}
   <meta property="og:title" content="{{ page.title }}"/>
