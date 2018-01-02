@@ -1,0 +1,35 @@
+<style>
+    .menu ul {
+        font-family: var(--font-monospace);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu li {
+        display: inline-block;
+        margin-right: 1em;
+    }
+
+    .menu li:last-child {
+        margin-right: 0;
+    }
+
+    .home li.menu-home {
+        display: none;
+    }
+
+    li.menu-home span {
+        clip: rect(0,0,0,0);
+        position: absolute;
+    }
+
+    .menu a {
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .menu a.active {
+        text-decoration: underline;
+    }
+</style>

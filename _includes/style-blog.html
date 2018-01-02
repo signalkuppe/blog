@@ -1,0 +1,122 @@
+<style>
+
+    .blog .menu {
+        height: var(--gutter);
+        line-height: var(--gutter);
+        padding: var(--gutter);
+        margin-bottom: var(--gutter);
+    }
+
+    .blog-map {
+        height: calc( 100vh - 90px);
+        width: 100vw;
+    }
+
+    /* marker (overrides inline styles) */
+    .map-icon[style] {
+        width: 2em!important;
+        height: 2em!important;;
+        border: 2px solid white!important;;
+        background: black!important;
+        transition: all .2s ease-in-out!important;
+    }
+
+    .map-icon[style]:hover {
+        background: var(--color-primary)!important;
+        border-color: var(--color-primary)!important;
+        border-width: 4px!important;
+    }
+
+    /* controls (default style override) */
+    .leaflet-top.leaflet-left {
+        left: auto!important;
+        top: auto!important;
+        bottom: var(--gutter)!important;
+        right: var(--gutter)!important;
+    }
+
+    /* popup wrappers (default style override) */
+    .leaflet-popup-content[style] {
+        width: auto!important;
+    }
+    .leaflet-popup-content-wrapper {
+        border-radius: 0px!important;
+    }
+
+    /* popup */
+
+    .map-popup {
+        display: flex;
+        padding: .15em;
+    }
+
+    .map-popup img {
+        width: 100px;
+        height: 100px;
+        margin-right: 1em;
+    }
+
+    .map-popup-info {
+            width: 180px;
+        }
+        
+    .map-popup-info-title {
+        font-weight: bold;
+        line-height: 1;
+        font-size: 1.35em;
+        margin-bottom: .25em;
+        min-width: 150px;
+    }
+
+    .map-popup a {
+        color: var(--color-text);
+        text-decoration: none;
+    }
+        
+    .map-popup-link {
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 1em!important;
+        font-family: var(--font-monospace);
+    }
+
+    @media screen and (orientation: portrait) { 
+        .blog-map {
+            clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0% 100%);
+        }
+    }
+
+    .blog-list {
+        max-width: 65ch;
+        margin: 4em auto 0 auto;
+        padding: 0 var(--gutter);
+    }
+
+    .blog-list h2 {
+        font-size: 2.5em;       
+    }
+
+    .blog-list time {
+        font-weight: 300;
+        font-size: .85em;
+        display: block;
+    }
+
+    .blog-list a {
+        font-weight: bold;
+        font-size: 1.25em;
+        font-family: var(--font-headings);
+    }
+
+    .blog-list dd {
+        margin: 0 0 2em 0;
+        line-height: 1.25;
+    }
+
+    @media screen and (orientation: landscape) { 
+        .blog-list h2 {
+            font-size: 3em;       
+        }
+    }
+
+</style>
