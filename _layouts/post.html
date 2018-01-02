@@ -28,11 +28,16 @@ layout: base
 
             <div class="post-content" itemprop="articleBody">{{ content }}</div>
 
-            <aside class="post-gallery">
-            {% if page.flickr%}
-                {% flickr_photoset page.flickr %}
-            {% endif %}  
-            </aside>
+            <aside class="post-gallery"></aside>
+            <div aria-hidden="true" class="post-gallery-loading">
+                Carico la gallery
+                <span class="loader"><span class="loader-inner"></span></span>
+            </div>
+            
+
+            <noscript>
+                Non sono riuscito a caricare le foto via javascript, <a href="https://www.flickr.com/photos/signalkuppe/albums/{{page.flickr}}">guardale a questo link</a>
+            </noscript>
                 
             <aside class="post-utilities">
                 <ul>
@@ -86,4 +91,3 @@ layout: base
     </main>
     
 </article>
-  

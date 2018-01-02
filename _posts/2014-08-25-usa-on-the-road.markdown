@@ -33,7 +33,7 @@ Mancano gli ultimi due parchi: Grand Teton e Yellowstone. Il giorno successivo �
 
 La vacanza è finita, dobbiamo rientrare a **Salt Lake City** per prendere l'aereo che ci riporterà a casa. Qui l'ultima piacevole sopresa: la strada che abbiamo scelto (US 89) si rivela più bella del previsto, in particolare la zona di **Bear Lake** con le vechie case dei **pionieri mormoni**. Ultima notte nella (bruttissima) Salt Lake City e poi aeroporto. Tre settimane intense che non dimenticherò mai!
 
-##Alcuni consigli utili
+## Alcuni consigli utili
 
 - **Comprate il biglietto aereo in anticipo**, non oltre Gennaio se dovete andare in estate
 - Se possibile **prenotate i campeggi** in anticipo, soprattutto a Yosemite
