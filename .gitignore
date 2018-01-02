@@ -1,13 +1,4 @@
-.DS_store
 _site
-bower_components
-js/app.min.js
-node_modules
-_sass/.sass-cache/
-_cache/flickr/*
-s3_website.yml
-_config.yml
 .sass-cache
-.sass-cache/
-css/app.css
-css/print.css
+.jekyll-metadata
+_cache/*.yml

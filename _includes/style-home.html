@@ -1,0 +1,95 @@
+<style>
+
+.home {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.home .menu  {
+    margin: var(--gutter);
+}
+
+.home h1 {
+    font-family: var(--font-text);
+    margin: var(--gutter);
+    line-height: 1.3;
+    font-size: 1.25em;
+}
+
+.home h1 .desc {
+    font-weight: 300;
+}
+.home p {
+    display: none;
+}
+
+.home-illustration {
+    height: 100%;
+    width: 100%;
+    background: var(--color-primary);
+    position: relative;
+}
+
+.home-illustration svg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 95%;
+}
+
+@media screen and (orientation: portrait) { 
+    .home-illustration {
+        clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .home-illustration svg {
+        width: 90%;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .home {
+        display: grid;
+        grid-template-rows: min-content min-content auto;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas: "svg menu"
+                             "svg intro"
+                             "svg claim";
+        grid-gap: var(--gutter);
+        
+    }
+    
+    .home header {
+        grid-area: menu;
+    }
+
+    .home .menu {
+        margin: var(--gutter) var(--gutter) 0 0;
+    }
+
+    .home h1 {
+        font-size: 1em;
+        grid-area: intro;
+        margin: 0 var(--gutter) 1em 0;
+    }
+
+    .home h1 .name {
+        display: block;
+        font-size: 3em;
+    }
+
+    .home p {
+        display: block;
+        grid-area: claim;
+        margin: var(--gutter) var(--gutter) var(--gutter) 0 0;
+    }
+
+    .home-illustration {
+        grid-area: svg;
+    }
+
+    .home-illustration svg {
+        width: 40vw;
+    }
+}    
+</style>

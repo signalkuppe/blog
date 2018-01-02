@@ -1,0 +1,26 @@
+---
+layout: base
+title: Blog
+permalink: /blog/
+---
+
+<section class="blog">
+    <header>
+        {% include menu.html %}
+    </header>
+    <aside class="blog-map" id="map"></aside>
+    <main class="blog-list">
+        <h2>Archivio dei post</h2>
+        <dl>
+            {% for post in site.posts %}
+            <dt>
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d/%m/%y' }}</time>
+                <a href="{{ post.url | relative_url }}" title="Leggi l'articolo">
+                    {{ post.title }}
+                </a>
+            </dt>
+            <dd>{{ post.description }}</dd>
+            {% endfor %}
+        </dl>
+    </main>
+</section>

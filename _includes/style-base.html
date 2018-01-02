@@ -1,0 +1,41 @@
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 100%;
+    }
+
+    @media screen and (min-width: 768px) {
+        html { 
+            font-size: 112.5%;
+        }
+    }
+
+    body {
+        font-family: var(--font-text);
+        line-height: 1.5;
+        color: var(--color-text);
+        background: var(--body-background);
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+        font-family: var(--font-headings);
+        font-weight: 900;
+        color: var(--color-headings);
+    }
+
+    a {
+        text-decoration-skip: ink;
+        color: var(--font-text);
+    }
+
+    svg[icon] {
+        display: inline-block;
+        font-size: inherit;
+        height: 1em;
+        overflow: visible;
+        vertical-align: -.125em;
+    }
+</style>

@@ -1,0 +1,248 @@
+<style>
+
+    @media screen and (orientation: portrait) {
+        .post-cover {
+            background-image: url('http://res.cloudinary.com/signalkuppe/image/upload/w_1680,c_fill,ar_9:16,f_auto,q_auto,g_center/blog/covers/{{ page.date| date: "%d%m%y" }}');
+        }
+    }
+
+    @media screen and (orientation: landscape) {
+        .post-cover {
+            background-image: url('http://res.cloudinary.com/signalkuppe/image/upload/w_1680,c_fill,ar_16:9,f_auto,q_auto,g_center/blog/covers/{{ page.date| date: "%d%m%y" }}');
+        }
+    }
+
+    .post ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .post-cover-caption,
+    .post-cover a {
+        color: white;
+    }
+
+    /* Cover */
+    .post-cover {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: var(--gutter);
+        background-repeat: no-repeat;
+        background-color: black;
+        background-size: cover;
+        background-position: left top;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;     
+    }
+
+    /* overlay */
+    .post-cover::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.3);
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .is-loading .post-cover-caption {
+        opacity: 0;
+    }
+
+    .post-cover .menu {
+        z-index: 10;
+    }
+
+    .post-cover-caption,
+    .post-cover [href="#post"] {
+        align-self: center;
+        z-index: 10;
+    }
+
+    .post-cover-caption {
+        font-weight: 900;
+        font-size: 3em;
+        line-height: 1;
+    }
+
+    .post-cover-loading {
+        font-family: var(--font-family-headings);
+        font-size: 1.5em;
+        font-weight: 900;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        display: block;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .post-cover-loading {
+        display: none;
+    }
+
+    .is-loading .post-cover-loading {
+        display: block;
+    }
+
+    .post-cover.is-loading {
+        background-size: 0px 0px;     
+    }
+
+    .post-cover.is-loading [href="#post"],
+    .post-cover.is-loading .menu {
+        visibility: hidden;
+    }
+
+    .post-cover.is-loading::after {
+        background: transparent;
+    }
+
+    [href="#post"] {
+        animation: upDown 2s infinite;
+    }
+
+    [href="#post"] svg {
+        width: 2em;
+        height: 2em;
+    }
+    
+    .post-body {
+        max-width: 65ch;
+        margin: 4em auto 0 auto;
+        padding: 0 var(--gutter);
+    }
+
+    .post-title h1 {
+        font-size: 2.5em;
+        margin: 0; 
+        line-height: 1;
+    }
+
+    .post-date {
+        font-weight: 300;
+    }
+
+    .post-content {
+        margin: 2em 0 4em 0;
+    }
+
+    .post-content h2 + p {
+        margin-top: 0;
+    }
+
+    .post-content h2 {
+        font-weight: 700;
+        margin: 1.25em 0 .25em 0;
+    }
+
+    .post-gallery ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 150px);
+        margin-bottom: 5em;
+    }
+
+    .post-gallery img {
+        display: block;
+        transition: transform .2s ease-in-out;
+    }
+
+    .post-gallery img:hover {
+        transform: scale(1.1);
+    }
+
+    .post-utilities ul {
+        margin-bottom: 5em;
+    }
+
+    .post-utilities li {
+        display: inline-block;
+        margin-right: 1.5em;
+    }
+
+    .post-utilities:last-child {
+        margin-right: 0;
+        display: none;
+    }
+
+    .post-utilities svg {
+        margin-right: .25em;
+    }
+
+    @media screen and (orientation: landscape) {
+        .post-utilities li:last-child {
+            display: inline-block;
+        }
+        .post-cover-caption {
+            font-size: 4em;
+        }
+        .post-title h1 {
+            font-size: 3em;
+        }
+    }
+
+    @media screen and (orientation: landscape) and (min-width: 1920px) {
+        .post-cover-caption {
+            font-size: 6em;
+        }
+    }
+
+    .post-comments {
+        margin-bottom: 4em;
+    }
+
+    .post-nav {
+        padding-bottom: 2em;
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        height: 100px;
+        margin-top: 100px;
+        left: 50%;
+    }
+
+    .post-nav ul {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 var(--gutter);
+    }
+
+    .post-nav li:first-child svg {
+        margin-right: .5em;
+    }
+
+    .post-nav li:last-child svg {
+        margin-left: .5em;
+    }
+
+    @keyframes upDown {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translate(-50%, 0);
+        }
+        40% {
+            transform: translate(-50%, -30px);
+        }
+        60% {
+            transform: translate(-50%, -15px);
+        }
+    }
+
+    /*!
+    * baguetteBox.js
+    * @author  feimosi
+    * @version 1.9.1
+     * @url https://github.com/feimosi/baguetteBox.js
+    */ #baguetteBox-overlay{display:none;opacity:0;position:fixed;overflow:hidden;top:0;left:0;width:100%;height:100%;z-index:1000000;background-color:#222;background-color:rgba(0,0,0,.8);-webkit-transition:opacity .5s ease;transition:opacity .5s ease}#baguetteBox-overlay.visible{opacity:1}#baguetteBox-overlay .full-image{display:inline-block;position:relative;width:100%;height:100%;text-align:center}#baguetteBox-overlay .full-image figure{display:inline;margin:0;height:100%}#baguetteBox-overlay .full-image img{display:inline-block;width:auto;height:auto;max-height:100%;max-width:100%;vertical-align:middle;-webkit-box-shadow:0 0 8px rgba(0,0,0,.6);-moz-box-shadow:0 0 8px rgba(0,0,0,.6);box-shadow:0 0 8px rgba(0,0,0,.6)}#baguetteBox-overlay .full-image figcaption{display:block;position:absolute;bottom:0;width:100%;text-align:center;line-height:1.8;white-space:normal;color:#ccc;background-color:#000;background-color:rgba(0,0,0,.6);font-family:sans-serif}#baguetteBox-overlay .full-image:before{content:"";display:inline-block;height:50%;width:1px;margin-right:-1px}#baguetteBox-slider{position:absolute;left:0;top:0;height:100%;width:100%;white-space:nowrap;-webkit-transition:left .4s ease,-webkit-transform .4s ease;transition:left .4s ease,-webkit-transform .4s ease;transition:left .4s ease,transform .4s ease;transition:left .4s ease,transform .4s ease,-webkit-transform .4s ease,-moz-transform .4s ease}#baguetteBox-slider.bounce-from-right{-webkit-animation:bounceFromRight .4s ease-out;animation:bounceFromRight .4s ease-out}#baguetteBox-slider.bounce-from-left{-webkit-animation:bounceFromLeft .4s ease-out;animation:bounceFromLeft .4s ease-out}@-webkit-keyframes bounceFromRight{0%,100%{margin-left:0}50%{margin-left:-30px}}@keyframes bounceFromRight{0%,100%{margin-left:0}50%{margin-left:-30px}}@-webkit-keyframes bounceFromLeft{0%,100%{margin-left:0}50%{margin-left:30px}}@keyframes bounceFromLeft{0%,100%{margin-left:0}50%{margin-left:30px}}.baguetteBox-button#next-button,.baguetteBox-button#previous-button{top:50%;top:calc(50% - 30px);width:44px;height:60px}.baguetteBox-button{position:absolute;cursor:pointer;outline:0;padding:0;margin:0;border:0;-moz-border-radius:15%;border-radius:15%;background-color:#323232;background-color:rgba(50,50,50,.5);color:#ddd;font:1.6em sans-serif;-webkit-transition:background-color .4s ease;transition:background-color .4s ease}.baguetteBox-button:focus,.baguetteBox-button:hover{background-color:rgba(50,50,50,.9)}.baguetteBox-button#next-button{right:2%}.baguetteBox-button#previous-button{left:2%}.baguetteBox-button#close-button{top:20px;right:2%;right:calc(2% + 6px);width:30px;height:30px}.baguetteBox-button svg{position:absolute;left:0;top:0}.baguetteBox-spinner{width:40px;height:40px;display:inline-block;position:absolute;top:50%;left:50%;margin-top:-20px;margin-left:-20px}.baguetteBox-double-bounce1,.baguetteBox-double-bounce2{width:100%;height:100%;-moz-border-radius:50%;border-radius:50%;background-color:#fff;opacity:.6;position:absolute;top:0;left:0;-webkit-animation:bounce 2s infinite ease-in-out;animation:bounce 2s infinite ease-in-out}.baguetteBox-double-bounce2{-webkit-animation-delay:-1s;animation-delay:-1s}@-webkit-keyframes bounce{0%,100%{-webkit-transform:scale(0);transform:scale(0)}50%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes bounce{0%,100%{-webkit-transform:scale(0);-moz-transform:scale(0);transform:scale(0)}50%{-webkit-transform:scale(1);-moz-transform:scale(1);transform:scale(1)}}
+</style>
