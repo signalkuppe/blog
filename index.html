@@ -1,9 +1,17 @@
 ---
-layout: blog-post
-title: Parole oltre i 4000m
+layout: base
+_id: home
 ---
- 
-
-{% assign page = site.posts.first %}
-{% assign content = page.content %}
-{% include post.html %}
+<section class="home">
+    <header>
+        {% include menu.html %}
+    </header>
+    <main>
+        <h1><span class="name">Matteo</span> <span class="desc">sviluppatore web e grande appassionato di montagna</span></h1>
+        <p>Ogni tanto scrivo su <a href="https://www.facebook.com/signalkuppe" target="_blank">Facebook</a> e <a href="https://twitter.com/signalkuppe" target="_blank">Twitter</a> e posto qualche foto su <a href="http://instagram.com/signalkuppe" target="_blank">Instagram</a>. 
+            Questo blog vuole essere un <strong>semplice diario</strong> delle mie avventure. </p>
+    </main>
+    <aside class="home-illustration" aria-hidden="true">
+        {% include illustration-figure.html %}
+    </aside>
+</section>
