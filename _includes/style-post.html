@@ -26,8 +26,8 @@
     /* Cover */
     .post-cover {
         position: relative;
-        height: 100vh;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
         margin: 0;
         padding: var(--gutter);
         background-repeat: no-repeat;
@@ -51,18 +51,16 @@
         height: 100vh;
     }
 
-    .is-loading .post-cover-caption {
-        opacity: 0;
-    }
-
-    .post-cover .menu {
+    .post-cover .menu,
+    .post-cover-caption,
+    .post-cover [href="#post"]  {
         z-index: 10;
     }
 
     .post-cover-caption,
     .post-cover [href="#post"] {
+        -webkit-align-self: center;
         align-self: center;
-        z-index: 10;
     }
 
     .post-cover-caption {
@@ -71,42 +69,8 @@
         line-height: 1;
     }
 
-    .post-cover-loading {
-        font-family: var(--font-family-headings);
-        font-size: 1.5em;
-        font-weight: 900;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        display: block;
-        display: inline-block;
-        text-align: center;
-    }
-
-    .post-cover-loading {
-        display: none;
-    }
-
-    .is-loading .post-cover-loading {
-        display: block;
-    }
-
-    .post-cover.is-loading {
-        background-size: 0px 0px;     
-    }
-
-    .post-cover.is-loading [href="#post"],
-    .post-cover.is-loading .menu {
-        visibility: hidden;
-    }
-
-    .post-cover.is-loading::after {
-        background: transparent;
-    }
-
     [href="#post"] {
+        text-align: center;
         animation: upDown 2s infinite;
     }
 
@@ -156,20 +120,31 @@
     .post-gallery ul {
         margin: 0;
         display: grid;
-        grid-template-columns: repeat(auto-fill, 150px);
+        grid-template-columns: repeat(auto-fill, 100px);
         max-width: 80vw;
     }
 
     .post-gallery img {
         display: block;
         transition: transform .2s ease-in-out;
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
         object-fit: cover;
     }
 
     .post-gallery img:hover {
         transform: scale(1.1);
+    }
+
+    @media screen and (min-width: 768px) {
+        .post-gallery ul {
+            grid-template-columns: repeat(auto-fill, 150px);
+        }
+
+        .post-gallery img {
+            width: 150px;
+            height: 150px;
+        }    
     }
 
     /* bigger gallery outside container */
@@ -184,15 +159,12 @@
         }
 
         .post-gallery ul {
-            display: grid;
             grid-template-columns: repeat(auto-fill, 300px);
             max-width: 60vw;
             margin: 0 auto;
         }
 
         .post-gallery img {
-            display: block;
-            transition: transform .2s ease-in-out;
             width: 300px;
             height: 300px;
         }       
