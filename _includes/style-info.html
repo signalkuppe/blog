@@ -60,6 +60,12 @@
         position: absolute;
         left: var(--gutter);
         top: 3em;
+        opacity: 0;
+        transition: all .2s ease-in-out;
+    }
+
+    .wf-active .info-cover-caption {
+        opacity: 1;
     }
 
     @media screen and (orientation: landscape) {
