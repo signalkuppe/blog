@@ -203,7 +203,7 @@
     if(orientation === 'portrait') {
         zoom = 7;
         lat = 45.7929;
-        lng = 9;
+        lng = 9.0000;
     }
 
     if(orientation === 'landscape') {
@@ -211,6 +211,8 @@
         lat = 45.7929;
         lng = 9.38252;
     }
+
+    console.log(orientation, lat, lng)
 
     /* Create js collection of map points */
     var markers = [
