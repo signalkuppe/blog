@@ -87,7 +87,7 @@
     
     .post-body {
         max-width: 65ch;
-        margin: 6em auto 0 auto;
+        margin: 4em auto 0 auto;
         padding: 0 var(--gutter);
     }
 
@@ -157,6 +157,10 @@
 
     @media screen and (min-width: 1680px) {
 
+        .post-body {
+            margin-top: 6em;
+        }
+
         .post-gallery {
             width: 100vw;
             position: relative;
@@ -218,6 +222,12 @@
         }
         .post-title h1 {
             font-size: 3em;
+        }
+    }
+
+    @media screen and (orientation: landscape) and (min-width: 1680px) {
+        .post-cover-caption {
+            font-size: 5em;
         }
     }
 
