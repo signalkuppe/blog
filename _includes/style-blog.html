@@ -51,9 +51,16 @@
     /* popup wrappers (default style override) */
     .leaflet-popup-content[style] {
         width: auto!important;
+        background: var(--body-background)!important;
+        color: var(--color-text)!important;
     }
     .leaflet-popup-content-wrapper {
         border-radius: 0px!important;
+        background: var(--body-background)!important;
+    }
+
+    .dark .leaflet-tile-pane {
+        filter: grayscale(100%);
     }
 
     /* popup */

@@ -4,11 +4,17 @@
         .post-cover {
             background-image: url('http://res.cloudinary.com/signalkuppe/image/upload/w_1680,c_fill,ar_9:16,f_auto,q_auto,g_center/blog/covers/{{ page.date| date: "%d%m%y" }}');
         }
+        .dark .post-cover {
+            background-image: url('http://res.cloudinary.com/signalkuppe/image/upload/w_1680,c_fill,ar_9:16,f_auto,q_auto,g_center,e_grayscale/blog/covers/{{ page.date| date: "%d%m%y" }}');
+        }
     }
 
     @media screen and (orientation: landscape) {
         .post-cover {
             background-image: url('http://res.cloudinary.com/signalkuppe/image/upload/w_1680,c_fill,ar_16:9,f_auto,q_auto,g_center/blog/covers/{{ page.date| date: "%d%m%y" }}');
+        }
+        .dark .post-cover {
+            background-image: url('http://res.cloudinary.com/signalkuppe/image/upload/w_1680,c_fill,ar_16:9,f_auto,q_auto,g_center,e_grayscale/blog/covers/{{ page.date| date: "%d%m%y" }}');
         }
     }
 
@@ -145,6 +151,10 @@
         height: 100px;
         object-fit: cover;
         float: left;
+    }
+
+    .dark .post-gallery img {
+        filter: grayscale(1);
     }
 
     .post-gallery img:hover {

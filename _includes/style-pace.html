@@ -12,7 +12,7 @@
     }
 
     .pace .pace-progress {
-        background: #fcd25a;
+        background: var(--color-primary);
         position: fixed;
         z-index: 2000;
         top: 0;
@@ -21,19 +21,27 @@
         height: 2px;
     }
 
+    .dark .pace .pace-progress {
+        background: white;
+    }
+
     .pace .pace-progress-inner {
         display: block;
         position: absolute;
         right: 0px;
         width: 100px;
         height: 100%;
-        box-shadow: 0 0 10px #fcd25a, 0 0 5px var(--color-primary);
+        box-shadow: 0 0 10px var(--color-primary), 0 0 5px var(--color-primary);
         opacity: 1.0;
         -webkit-transform: rotate(3deg) translate(0px, -4px);
         -moz-transform: rotate(3deg) translate(0px, -4px);
         -ms-transform: rotate(3deg) translate(0px, -4px);
         -o-transform: rotate(3deg) translate(0px, -4px);
         transform: rotate(3deg) translate(0px, -4px);
+    }
+
+    .dark .pace .pace-progress-inner {
+        box-shadow: 0 0 10px white, 0 0 5px white;
     }
 
     .pace .pace-activity {
@@ -53,6 +61,11 @@
         -ms-animation: pace-spinner 400ms linear infinite;
         -o-animation: pace-spinner 400ms linear infinite;
         animation: pace-spinner 400ms linear infinite;
+    }
+
+    .dark .pace .pace-activity {
+        border-top-color: white;
+        border-left-color: white;
     }
 
     @-webkit-keyframes pace-spinner {

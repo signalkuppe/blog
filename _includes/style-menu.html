@@ -26,11 +26,11 @@
         margin-right: 0;
     }
 
-    .home li.menu-home {
+    .menu-home {
         display: none;
     }
 
-    li.menu-home span {
+    .menu-home span {
         clip: rect(0,0,0,0);
         position: absolute;
     }
@@ -44,4 +44,14 @@
         text-decoration: underline;
     }
 
+    .menu-theme svg {
+        position: relative;
+        top: 2px;
+    }
+
+    @supports not (--var: 'black') {
+        .menu-theme {
+            display: none;
+        }
+    }
 </style>
