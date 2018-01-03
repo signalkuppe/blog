@@ -22,6 +22,7 @@
         min-height: calc(100% - 0px);
         width: 100%;
         margin: 0;
+        padding: 30px;
         padding: var(--gutter);
         background-repeat: no-repeat;
         background-size: cover;
@@ -58,10 +59,14 @@
         font-size: 3em;
         line-height: 1;
         position: absolute;
+        left: 30px;
         left: var(--gutter);
         top: 3em;
-        opacity: 0;
         transition: all .2s ease-in-out;
+    }
+
+    .js .info-cover-caption {
+        opacity: 0;
     }
 
     .wf-active .info-cover-caption {
@@ -101,13 +106,12 @@
        list-style: none;
        margin-top: 3em;
        padding: 0;
-       display: grid;
-       grid-template-columns: repeat(auto-fill, 7em);
-       grid-gap: 1em;
+       overflow: hidden;
     }
 
     .info-body li {
-        align-self: center;
+       float: left;
+       padding: .5em;
     }
 
     .info-body li svg {

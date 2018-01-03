@@ -5,8 +5,11 @@
     }
 
     .blog .menu {
+        height: 30px;
         height: var(--gutter);
+        line-height: 30px;
         line-height: var(--gutter);
+        padding: 30px;
         padding: var(--gutter);
         margin-bottom: var(--gutter);
         transition: all .2s ease-in-out;
@@ -15,6 +18,10 @@
     .blog-map {
         height: calc( 100vh - 90px);
         width: 100vw;
+    }
+
+    .no-js .blog-map {
+        display: none;
     }
 
     /* marker (overrides inline styles) */
