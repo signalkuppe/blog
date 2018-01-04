@@ -17,15 +17,14 @@
     }
 
     .blog-map {
-        height: calc( 100vh - 90px);
+        height: calc(100vh - 90px);
         width: 100vw;
         position: relative;
     }
 
     .blog-map [href="#archivio"] {
         position: absolute;
-        bottom: 30px;
-        bottom: var(--gutter);
+        bottom: 60px;
         left: 50%;
         transform: translate(-50%, 0);
         z-index: 1000;
@@ -34,8 +33,8 @@
     }
 
     [href="#archivio"] svg {
-        width: 4em;
-        height: 4em;
+        width: 40px;
+        height: 40px;
     }
     
     .no-js .blog-map {
@@ -111,6 +110,10 @@
         background: var(--body-background)!important;
     }
 
+    .leaflet-pane {
+        height: 100%;
+    }
+
     .dark .leaflet-tile-pane {
         filter: grayscale(100%);
     }
@@ -169,8 +172,8 @@
         padding: 0 var(--gutter);
     }
 
-    .blog-list h2 {
-        font-size: 2.5em;       
+    .blog-list dl {
+        margin-top: 4em;
     }
 
     .blog-list time {
@@ -190,11 +193,6 @@
         line-height: 1.25;
     }
 
-    @media screen and (orientation: landscape) { 
-        .blog-list h2 {
-            font-size: 3em;       
-        }
-    }
 
     @keyframes upDown {
         0%,

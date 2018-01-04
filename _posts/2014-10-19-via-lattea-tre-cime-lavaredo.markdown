@@ -18,7 +18,7 @@ Scelgo la seconda ipotesi e ripercorro parte del percorso fatto all'andata fino 
 
 Come ottica ho il mio fidato **Zuiko 12mm f2.0** (24mm equivalenti), fuoco manuale all'infinito, ISO 3200 e 30 secondi di esposizione. Siamo al limite del mosso delle stelle, ma scendendo sotto i 30 secondi la scena verrebbe sottoesposta. Merita anche uno scatto con il **Rokinon 3.5mm fisheye** che con la sua apertura consente di riprende un'ampia porzione della Via Lattea allungando anche i tempi del mosso. Purtroppo il limite di questo sistema è la resa ad alti ISO, ma i risultati sono comunque buoni! Andiamo a letto soddisfatti puntando la sveglia per **vedere l'alba**. Puntuale alle 6:45 il solo inizia a sorgere. Cambiamo il punto di ripresa per cogliere l'alba dal versante dei laghetti: siamo fortunati, sono presenti delle nuvole che si incendiano mano a mano che il sole si alza all'orizzonte! Tra l'altro siamo soli, visto che la maggior parte degli altri fotografi si è concentrata sulle Tre Cime. 
 
-##Qualche consiglio##
+## Qualche consiglio
 
 Informatevi per tempo sulle condizioni meteo e sulla **posizione della via lattea**. Io ho utilizzato l'app [Photopills](http://www.photopills.com "Sito di Photopills") e l'ho trovata eccezionale: ti permette di calcolare l'orario, la posizione e l'intensità della Via Lattea in qualsiasi giorno dell'anno per qualsiasi posizione, oltre a darvi orario e posizione di alba e tramonto, un must!
 

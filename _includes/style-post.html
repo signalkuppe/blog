@@ -91,8 +91,8 @@
     }
 
     [href="#post"] svg {
-        width: 2em;
-        height: 2em;
+        width: 40px;
+        height: 40px;
     }
     
     .post-body {
@@ -102,19 +102,25 @@
         padding: 0 var(--gutter);
     }
 
-    .post-title h1 {
-        font-size: 2.5em;
-        margin: 0; 
-        line-height: 1;
-    }
-
     .post-date {
+        display: block;
         font-weight: 300;
+        margin-top: .25em;
     }
 
     .post-content {
         margin: 2em 0 4em 0;
     }
+
+    .post-content ul {
+        list-style: disc;
+        margin-left: 1em;
+    }
+
+    .post-content li {
+        margin-bottom: 1em;
+    }
+
 
     .post-content h2 + p {
         margin-top: 0;
@@ -232,9 +238,6 @@
         }
         .post-cover-caption {
             font-size: 4em;
-        }
-        .post-title h1 {
-            font-size: 3em;
         }
     }
 

@@ -80,10 +80,19 @@
       --font-headings: "proxima-nova-condensed", -apple-system, sans-serif;
       --font-monospace: "ocr-a-std", monospace;
       --body-background:white;
-      --color-primary: rgb(255, 230, 1);
+      --color-primary: #FC0;
       --color-text: rgba(0,0,0,0.8);
       --color-headings: rgba(0,0,0,0.9);
+      --color-pace: #FC0;
       --gutter: 30px;
+    }
+
+    .dark {
+      --body-background:black;
+      --color-primary: midnightblue;
+      --color-text: white;
+      --color-headings: white;
+      --color-pace: white;
     }
   </style>
 
@@ -92,6 +101,7 @@
   {% include style-base.html %}
   {% include style-buttons.html %}
   {% include style-menu.html %}
+  {% include style-pagetitle.html %}
 
   {% if page._id == 'home' %}
   {% include style-home.html %}

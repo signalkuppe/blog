@@ -12,7 +12,7 @@
     }
 
     .pace .pace-progress {
-        background: var(--color-primary);
+        background: var(--color-pace);
         position: fixed;
         z-index: 2000;
         top: 0;
@@ -21,27 +21,19 @@
         height: 2px;
     }
 
-    .dark .pace .pace-progress {
-        background: white;
-    }
-
     .pace .pace-progress-inner {
         display: block;
         position: absolute;
         right: 0px;
         width: 100px;
         height: 100%;
-        box-shadow: 0 0 10px var(--color-primary), 0 0 5px var(--color-primary);
+        box-shadow: 0 0 10px var(--color-pace), 0 0 5px var(--color-pace);
         opacity: 1.0;
         -webkit-transform: rotate(3deg) translate(0px, -4px);
         -moz-transform: rotate(3deg) translate(0px, -4px);
         -ms-transform: rotate(3deg) translate(0px, -4px);
         -o-transform: rotate(3deg) translate(0px, -4px);
         transform: rotate(3deg) translate(0px, -4px);
-    }
-
-    .dark .pace .pace-progress-inner {
-        box-shadow: 0 0 10px white, 0 0 5px white;
     }
 
     .pace .pace-activity {
@@ -53,19 +45,14 @@
         width: 24px;
         height: 24px;
         border: solid 2px transparent;
-        border-top-color: var(--color-primary);
-        border-left-color: var(--color-primary);
+        border-top-color: var(--color-pace);
+        border-left-color: var(--color-pace);
         border-radius: 50%;
         -webkit-animation: pace-spinner 400ms linear infinite;
         -moz-animation: pace-spinner 400ms linear infinite;
         -ms-animation: pace-spinner 400ms linear infinite;
         -o-animation: pace-spinner 400ms linear infinite;
         animation: pace-spinner 400ms linear infinite;
-    }
-
-    .dark .pace .pace-activity {
-        border-top-color: white;
-        border-left-color: white;
     }
 
     @-webkit-keyframes pace-spinner {

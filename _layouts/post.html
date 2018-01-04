@@ -16,7 +16,7 @@ layout: base
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting"> 
 
             <header class="post-title">
-                <h1 itemprop="name headline" id="post">{{ page.title | escape }}</h1>
+                <h1 class="pagetitle" itemprop="name headline" id="post">{{ page.title | escape }}</h1>
                 <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
                     {% include date.html date=page.date %}
                 </time>
