@@ -4,6 +4,10 @@
             color: white;
     }
 
+    .blog {
+        height: 100%;
+    }
+
     .blog .menu {
         height: 30px;
         height: var(--gutter);
@@ -17,24 +21,26 @@
     }
 
     .blog-map {
-        height: calc(100vh - 90px);
+        height: calc(100% - 90px);
         width: 100vw;
         position: relative;
     }
 
     .blog-map [href="#archivio"] {
         position: absolute;
-        bottom: 60px;
+        bottom: 50px;
         left: 50%;
-        transform: translate(-50%, 0);
+        margin-left: -20px;
         z-index: 1000;
         color: white;
         animation: upDown 2s infinite;
+        width: 40px;
+        height: 40px;
     }
 
     [href="#archivio"] svg {
-        width: 40px;
-        height: 40px;
+        width: 100%;
+        height: 100%;
     }
     
     .no-js .blog-map {
@@ -108,10 +114,6 @@
     .leaflet-popup-content-wrapper {
         border-radius: 0px!important;
         background: var(--body-background)!important;
-    }
-
-    .leaflet-pane {
-        height: 100%;
     }
 
     .dark .leaflet-tile-pane {
