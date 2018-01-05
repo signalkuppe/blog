@@ -1,7 +1,6 @@
 ---
 layout: base 
 ---
-
     <header class="post-cover">
         {% include menu.html %}
         <h2 class="post-cover-caption" data-loadingtext="{{ page.caption }}">{{ page.caption }}</h2>
@@ -9,31 +8,23 @@ layout: base
             <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M143 256.3L7 120.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0L313 86.3c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.4 9.5-24.6 9.5-34 .1zm34 192l136-136c9.4-9.4 9.4-24.6 0-33.9l-22.6-22.6c-9.4-9.4-24.6-9.4-33.9 0L160 352.1l-96.4-96.4c-9.4-9.4-24.6-9.4-33.9 0L7 278.3c-9.4 9.4-9.4 24.6 0 33.9l136 136c9.4 9.5 24.6 9.5 34 .1z" class=""></path></svg>
         </a>
     </header>
-
-
     <main class="post-body">
-
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting"> 
-
             <header class="post-title">
                 <h1 class="pagetitle" itemprop="name headline" id="post">{{ page.title | escape }}</h1>
                 <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
                     {% include date.html date=page.date %}
                 </time>
             </header>
-
             <div class="post-content" itemprop="articleBody">{{ content }}</div>
-
             <aside class="post-gallery"></aside>
             <div aria-hidden="true" class="post-gallery-loading">
                 <strong>Carico la gallery</strong>
                 <span class="loader"><span class="loader-inner"></span></span>
             </div>
-
             <noscript>
                 Non sono riuscito a caricare le foto via javascript, <a href="https://www.flickr.com/photos/signalkuppe/albums/{{page.flickr}}">guardale a questo link</a>
             </noscript>
-                
             <aside class="post-utilities">
                 <ul>
                     <li>
@@ -55,18 +46,13 @@ layout: base
                     {% endif %}
                 </ul>
             </aside>
-
             <aside class="post-newsletter">
                 <p>Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH">Iscriviti alla newsletter</a></strong></p>
             </aside>
-            
             <aside class="post-comments">
                 <div class="disqus_thread"></div>
                 <noscript>Abilita javascript per vedere i commenti</noscript>
             </aside>
-
-            
-            
             <footer class="post-nav">
                 <nav>
                     <ul>
@@ -88,7 +74,4 @@ layout: base
                 </nav>
             </footer>
         </article>
-
     </main>
-    
-</article>
