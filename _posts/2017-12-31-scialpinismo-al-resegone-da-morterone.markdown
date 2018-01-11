@@ -5,7 +5,7 @@ date: 2017-12-31
 description: "Scialpinismo al Resegone con partenza da Morterone per la sorgente Forbesette e il Rifugio Azzoni e discesa lungo la Costa del Palio"
 categories: scialpinismo
 tags: scialpinismo resegone
-caption: "Il Rifugio Azzoni"
+caption: "Mare di nubi verso la pianura"
 flickr: 72157664225833608
 gps: true
 map: 45.873103,9.481666

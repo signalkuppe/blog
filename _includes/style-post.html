@@ -2,19 +2,19 @@
 
     @media screen and (orientation: portrait) {
         .post-cover {
-            background-image: url('https://res.cloudinary.com/signalkuppe/image/upload/w_1680,c_fill,ar_9:16,f_auto,q_auto,g_center/blog/covers/{{ page.date| date: "%d%m%y" }}');
+            background-image: url('https://res.cloudinary.com/signalkuppe/image/upload/h_1600,w_900,c_fill,f_auto,q_auto,g_center/blog/covers/{{ page.date| date: "%d%m%y" }}');
         }
         .dark .post-cover {
-            background-image: url('https://res.cloudinary.com/signalkuppe/image/upload/w_1680,c_fill,ar_9:16,f_auto,q_auto,g_center,e_grayscale/blog/covers/{{ page.date| date: "%d%m%y" }}');
+            background-image: url('https://res.cloudinary.com/signalkuppe/image/upload/h_1600,w_900,c_fill,f_auto,q_auto,g_center,e_grayscale/blog/covers/{{ page.date| date: "%d%m%y" }}');
         }
     }
 
     @media screen and (orientation: landscape) {
         .post-cover {
-            background-image: url('https://res.cloudinary.com/signalkuppe/image/upload/w_1680,c_fill,ar_16:9,f_auto,q_auto,g_center/blog/covers/{{ page.date| date: "%d%m%y" }}');
+            background-image: url('https://res.cloudinary.com/signalkuppe/image/upload/w_1600,h_900,c_fill,f_auto,q_auto,g_auto/blog/covers/{{ page.date| date: "%d%m%y" }}');
         }
         .dark .post-cover {
-            background-image: url('https://res.cloudinary.com/signalkuppe/image/upload/w_1680,c_fill,ar_16:9,f_auto,q_auto,g_center,e_grayscale/blog/covers/{{ page.date| date: "%d%m%y" }}');
+            background-image: url('https://res.cloudinary.com/signalkuppe/image/upload/w_1600,h_900,c_fill,f_auto,q_auto,g_auto,e_grayscale/blog/covers/{{ page.date| date: "%d%m%y" }}');
         }
     }
 
@@ -53,7 +53,7 @@
         left: 0;
         top: 0;
         z-index: 1;
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.2);
         width: 100%;
         min-height: calc(100% - 0px);
     }
