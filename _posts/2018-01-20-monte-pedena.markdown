@@ -13,12 +13,12 @@ map: 46.0702728,9.6454059
 
 Questo week end si torna nella dura orobia, meta designata il **Monte Pedena.** Siamo io e Fabrizio: partenza fissata alle 6:15 in modo da rientrare presto ed evitare le code pomeridiane. Lasciata Morbegno, saliamo in direzione del **Passo San Marco.**
 
-La relazione indicava esplicitamente: *“percorrere la strada fin dove possibile”*. Il nostro possibile si trova a circa 3km dall'inizio dell’itinerario, un bel riscaldamento insomma.
+La relazione indicava esplicitamente: *“percorrere la strada fin dove possibile”*. Il nostro possibile si trova a circa 3km dall’inizio dell’itinerario, un bel riscaldamento insomma.
 
 ## La salita
 Al **Rifugio Alpe Lago,** testiamo i nostri ARTVA e siamo pronti per la salita. Le pendenze sono subito sostenute, con numerosi zigzag attraverso un bosco di larici guadagniamo rapidamente quota, superando due baite. Sono ancora convalescente, devo tenere il mio passo, faccio da tappo a Fabrizio che vorrebbe filare via come una scheggia. 
 
-Segue un bellissimo vallone che ci fa rifiatare. L'ultimo tratto piega decisamente a ovest, in direzione della cresta che scende dalla vetta. Neve dura e compatta, le **pelli sono al limite.** In qualche modo arriviamo alla base della **sella** che decidiamo di raggiungere sci in spalla. Il vento ha fatto disastri, l’itinerario non è in grandi condizioni. 
+Segue un bellissimo vallone che ci fa rifiatare. L’ultimo tratto piega decisamente a ovest, in direzione della cresta che scende dalla vetta. Neve dura e compatta, le **pelli sono al limite.** In qualche modo arriviamo alla base della **sella** che decidiamo di raggiungere sci in spalla. Il vento ha fatto disastri, l’itinerario non è in grandi condizioni. 
 
 Lasciati gli sci puntiamo la cima muniti di **piccozza.** La rampa è ben gradinata e non servono i ramponi. Purtroppo tra noi e la vetta vera e propria c’è una **cornice affilata** di neve instabile. Non mi fido e decido di fermarmi all’anticima.
 
