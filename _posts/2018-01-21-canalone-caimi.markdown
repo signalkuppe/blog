@@ -19,7 +19,7 @@ Lasciamo la macchina al parcheggio e iniziamo a salire lungo la stradina che sal
 ## Il fascino del 35mm
 Assistiamo a **un’alba magnifica,** la luce filtrata dalle nubi alte è semplicemente perfetta. Ho con me la mia nuova **Fuji X100F,** ottica fissa da 35mm equivalenti. Potrebbe essere una limitazione invece è una liberazione: non avendo lo zoom sono costretto a ragionare molto di più sulla composizione.
 
-L’esperienza di scatto è decisamente superiore, ti fa tornare la passione per la fotografia, la consiglio a tutti quelli che si sono stufati di portare dietro un corredo ingombrante.
+L’esperienza di scatto è decisamente superiore, ti fa tornare la passione per la fotografia. La consiglio a tutti quelli che si sono stufati di portare dietro un corredo ingombrante.
 
 ## Nel canale
 Calziamo i ramponi e attacchiamo il canale, inizialmente con i **bastoncini** visto che le pendenze sono modeste. Da metà canale in poi la **piccozza** torna utile. La nevicata della notte poggia sul vecchio strato di neve dura, la progressione è agevole.
