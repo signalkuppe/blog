@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Punta Larescia"
+title: "Punta di Larescia"
 date: 2018-01-28
-description: "Scialpinismo alla Punta Larescia nella Valle di Blenio con partenza dalla località Pianezza e rientro dalla Capanna Gorda"
+description: "Scialpinismo alla Punta di Larescia nella Valle di Blenio con partenza dalla località Pianezza e rientro dalla Capanna Gorda"
 categories: scialpinismo
 tags: scialpinismo svizzera ticino
 caption: La Valle di Blenio
