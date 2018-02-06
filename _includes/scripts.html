@@ -176,7 +176,7 @@
     })
 
     window.addEventListener('scroll', function() {
-        if (document.documentElement.scrollTop > 0) {
+        if (window.pageYOffset > 0) {
             document.getElementById('scrollLink').style.opacity = '0'
         } else {
             document.getElementById('scrollLink').style.opacity = '1'
