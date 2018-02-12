@@ -7,9 +7,21 @@ _id: home
         {% include menu.html %}
     </header>
     <main>
-        <h1><span class="name">Matteo</span> <span class="desc">sviluppatore web e grande appassionato di montagna</span></h1>
-        <p>Ogni tanto scrivo su <a href="https://www.facebook.com/signalkuppe" target="_blank">Facebook</a> e <a href="https://twitter.com/signalkuppe" target="_blank">Twitter</a> e posto qualche foto su <a href="http://instagram.com/signalkuppe" target="_blank">Instagram</a>. 
+        <h1 class="home-title"><span class="name">Matteo</span> <span class="desc">sviluppatore web e grande appassionato di montagna</span></h1>
+        <p class="home-intro"> Ogni tanto scrivo su <a href="https://www.facebook.com/signalkuppe" target="_blank">Facebook</a> e <a href="https://twitter.com/signalkuppe" target="_blank">Twitter</a> e posto qualche foto su <a href="http://instagram.com/signalkuppe" target="_blank">Instagram</a>. 
             Questo blog vuole essere un <strong>semplice diario</strong> delle mie avventure. </p>
+        <div class="home-latest">
+            <hr />
+            {% assign post = site.posts.first %}
+            <header>
+                <strong>Ultimo post 
+                    <svg aria-hidden="true" icon role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-hotjar fa-w-14 fa-2x"><path fill="currentColor" d="M414.9 161.5C340.2 29 121.1 0 121.1 0S222.2 110.4 93 197.7C11.3 252.8-21 324.4 14 402.6c26.8 59.9 83.5 84.3 144.6 93.4-29.2-55.1-6.6-122.4-4.1-129.6 57.1 86.4 165 0 110.8-93.9 71 15.4 81.6 138.6 27.1 215.5 80.5-25.3 134.1-88.9 148.8-145.6 15.5-59.3 3.7-127.9-26.3-180.9z" class=""></path></svg>
+                </strong>
+                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d/%m/%y' }}</time>
+            </header>
+            <h2><a href="{{ post.url | relative_url }}" title="Leggi l'articolo">{{ post.title }}</a></h2>
+            <p>{{ post.description }}</p>
+        </div>
     </main>
     <aside class="home-illustration" aria-hidden="true">
         {% include illustration-figure.html %}

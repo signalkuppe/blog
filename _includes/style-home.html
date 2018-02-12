@@ -7,12 +7,11 @@
     overflow: hidden;
 }
 
-.home .menu  {
-    margin: 30px;
+.home header {
     margin: var(--gutter);
 }
 
-.home h1 {
+.home-title {
     font-family: var(--font-family-text);
     margin: 30px;
     margin: var(--gutter);
@@ -20,11 +19,12 @@
     font-size: 1.25em;
 }
 
-.home h1 .desc {
+.home-title .desc {
     font-weight: 300;
 }
 
-.home p {
+.home-intro,
+.home-latest {
     display: none;
 }
 
@@ -67,28 +67,47 @@
         
         .home header {
             grid-area: menu;
+            margin: var(--gutter) 0 0 0;
         }
 
-        .home .menu {
-            margin: var(--gutter) var(--gutter) 0 0;
-        }
-
-        .home h1 {
+        .home-title  {
             font-size: 1em;
             grid-area: intro;
             margin: 0 var(--gutter) 2em 0;
         }
 
-        .home h1 .name {
+        .home-title .name {
             display: block;
             font-size: 3em;
         }
 
-        .home p {
+        .home-intro,
+        .home-latest {
             display: block;
             grid-area: claim;
             margin: 30px 30px 30px 0;
             margin: var(--gutter) var(--gutter) var(--gutter) 0;
+        }
+
+        .home-latest strong {
+            display: block;
+            margin-bottom: .5em;
+        }
+
+        .home-latest svg {
+            color: orangered;
+        }
+
+        .home-latest time {
+            text-transform: uppercase;
+            font-weight: 300;
+            font-size: 85%;
+        }
+
+        .home-latest h2,
+        .home-latest p {
+            font-weight: 400;
+            margin: 0;
         }
 
         .home-illustration {
