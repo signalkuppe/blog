@@ -8,7 +8,7 @@ tags: valsassina grigna
 caption: "Alba ai Resinelli"
 flickr: 72157690921651241
 map: 45.916209,9.392883
-crop: center
+crop: g_center
 ---
 
 Mio papà mi propone di fare il **Caimi,** un canale facile, perfetto per riprendere confidenza con i ramponi. Partiamo presto per evitare la *“mandria”* diretta ai Piani di Bobbio. 

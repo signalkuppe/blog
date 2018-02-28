@@ -9,7 +9,7 @@ caption: "Al cospetto del Piz Kesch"
 flickr: 72157690598313481
 gps: true
 map: 46.6121874,9.9186814
-crop: east
+crop: g_east
 ---
 
 Un altro conto in sospeso, l’anno scorso ci avevo provato ma ero stato respinto da un nebbione pazzesco. Siamo in quattro: io e Carlotta con gli sci, mio papà e Sergio con le ciaspole. L’Engadina ci accoglie con una delle sue **albe siberiane,** questa volta tocchiamo i -17°C.

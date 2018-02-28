@@ -9,7 +9,7 @@ caption: Dalla vetta del Mellasc
 flickr: 72157665671804478
 gps: true
 map: 46.056456,9.523720
-crop: center
+crop: g_center
 ---
 
 Il **Mellasc** era uno dei miei obiettivi per questa stagione. Siamo io e Fabrizio, partiamo presto per evitare possibile affollamenti. Nei giorni precedenti una debole perturbazione ha depositato un nuovo strato di neve fresca, il **bollettino** da pericolo 2 sulle Orobie occidentali, 3 invece sul quelle centrali e orientali. Siamo abbastanza tranquilli, ma la situazione va valutata bene strada facendo.

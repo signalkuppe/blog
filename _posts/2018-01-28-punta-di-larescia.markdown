@@ -9,6 +9,7 @@ caption: La Valle di Blenio
 flickr: 72157665435471858
 gps: true
 map: 46.492749,8.969891
+crop: x_1000
 ---
 
 Oggi siamo in tre: io e Carlotta con gli sci e mio papà con le ciaspole. Parte la ricerca di una cima semplice, mai fatta prima, con dislivello contenuto e bei panorami. Scelgo il metodo *“Google Earth”*, ovvero punto una zona, cerco foto e risalgo agli itinerari.
