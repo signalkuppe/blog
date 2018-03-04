@@ -20,11 +20,11 @@ Lasciamo la macchina alla chiesetta, Fabrizio vuole partire con le scarpette car
 
 Sbagliamo però praticamente subito, prendiamo il sentiero per **l’Agriturismo Brunino,** allungando notevolmente il percorso. Per fortuna i prati innevati ci sono davvero e riusciamo a mettere presto gli sci. **All’Alpe Cova** togliamo gli sci fino al punto ristoro sopra il Pialeral. 
 
-Da qui in poi la copertura nevosa è uniforme e procediamo con regolarità fino ai **Comolli.** Io sono già abbastanza stanco, Fabrizio invece è una macchina e non mostra segni di cedimento. Fa caldissimo, anche stando in maglietta si soffre, pazzesco.
+Da qui in poi la copertura nevosa è uniforme e procediamo con regolarità fino ai **Comolli.** Io sono già abbastanza stanco, Fabrizio invece è una macchina e non mostra segni di cedimento. Fa caldissimo, anche stando in maglietta si soffre, pazzesco!
 
 ## Il muro del pianto
 
-Attacchiamo il muro con gli sci senza rampanti. **Fino ai seni** procediamo bene con numerose pertichette, poi però sbagliamo seguendo una traccia verso sinistra che ci porta completamente fuori strada. Ci ritroviamo in uno dei punti più ripidi del pendio con neve instabile. Con molta cautela **togliamo gli sci** e proseguiamo a piedi. Per fortuna si riesce a gradinare bene la neve, ma la fatica aumenta e arrivo completamente cotto in cresta. Mettiamo i ramponi e finalmente arriviamo al Brioschi percorrendo la solita bellissima cresta.
+Attacchiamo il muro con gli sci senza rampanti. **Fino ai seni** procediamo bene con numerose pertichette, poi però sbagliamo seguendo una traccia verso sinistra che ci porta completamente fuori strada. Ci ritroviamo in uno dei punti più ripidi del pendio con neve instabile. Con molta cautela **togliamo gli sci** e proseguiamo a piedi. Per fortuna si riesce a gradinare bene la neve, ma la fatica aumenta e arrivo completamente cotto in cresta. Mettiamo i ramponi e finalmente arriviamo al **Brioschi** percorrendo la solita bellissima cresta.
 
 ## La discesa dal Brioschi
 
@@ -34,4 +34,4 @@ Ho i quadricipiti in fiamme, non riesco a godermela a pieno. Grazie a un **canal
 
 ## Rientro
 
-Prendiamo il **sentiero della ZacUp** che si ricongiunge con la normale poco dopo i Grassi e Lunghi. Col senno di poi era maglio salire da questa parte. Una giornata emozionante che difficilmente dimenticherò. Complessivamente si tratta di una **salita impegnativa** considerando il dislivello e il tipo di discesa: fatela se siete ben allenati. Io non ero al 100%, ci tornerò!
+Prendiamo il **sentiero della ZacUp** che si ricongiunge con la normale poco dopo i Grassi e Lunghi. Col senno di poi era meglio salire da questa parte. Una giornata emozionante che difficilmente dimenticherò. Complessivamente si tratta di una **salita impegnativa** considerando il dislivello e il tipo di discesa: fatela se siete ben allenati. Io non ero al 100%, ci tornerò!
