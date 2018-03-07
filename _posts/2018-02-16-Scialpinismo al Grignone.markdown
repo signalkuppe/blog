@@ -2,7 +2,7 @@
 layout: post
 title: "Scialpinismo al Grignone"
 date: 2018-02-16
-description: "Scialpinismo al Grignone con partenza da Balisio per la via invernale dal Pieleral e discesa dalla Foppa del Ger"
+description: "Scialpinismo al Grignone con partenza da Balisio per la via invernale dal Pialeral e discesa dalla Foppa del Ger"
 categories: scialpinismo
 tags: scialpinismo grigna
 caption: Verso i Comolli
