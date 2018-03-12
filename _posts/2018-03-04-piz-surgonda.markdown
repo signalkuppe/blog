@@ -16,8 +16,10 @@ Si torna allo **Julier,** dopo il tentativo fallito per maltempo una settimana p
 
 Al bivio per il **Piz Campagnung** prendiamo una vallettina sulla destra, lasciando sulla sinistra la traccia che sale alla **Fuorcla d'Agnel.** La salita è molto dolce, inaspettatamente c'è anche poca gente. Sono già stato tante volte in questa zona, ma i paesaggi meritano sempre, ampi spazi aperti e tante valli perfette per lo scialpinismo.
 
+## In vetta
+
 Con due ampi tornanti superiamo il **pendio finale** e arriviamo al colletto. Qui veniamo investiti da una bufera di vento, ci copriamo in fretta e studiamo la cresta. Neve durissima, optiamo per i **rampanti.** Stiamo alla sinistra di un primo saltino di roccia, passando sul versante meridionale. Qui due svizzeri rinunciano e tornano indietro. Cresta non difficile ma che richiede attenzione, soprattutto alle **cornici** sul versante nord.
 
-Non c'è una nuvola, panorama eccezionale in ogni direzione. Il vento non molla e siamo costretti a sendere in fretta. **Prima curve delicate,** c'è poco spazio e qualche roccia affiorante. Senza tornare al colletto tagliamo con un lungo traverso il pendio finale per poi regalarci qualche curva. La neve non è eccezionale, farina pesante, abbastanza faticosa da sciare ma onestamente c'è di peggio!
+Non c'è una nuvola, panorama eccezionale in ogni direzione. Il vento non molla e siamo costretti a sendere in fretta. **Prime curve delicate,** c'è poco spazio e qualche roccia affiorante. Senza tornare al colletto tagliamo con un lungo traverso il pendio finale per poi regalarci qualche curva. La neve non è eccezionale, farina pesante, abbastanza faticosa da sciare ma onestamente c'è di peggio!
 
-In basso la situazione peggiora, la neve sembra cemento, ormai è **sopravvivenza** fino al parcheggio. Lascio gli sci e lo zaino e vado a riprendere la macchina più in alto. Bellissima giornata, la salita è molto bella, facile nella prima parte con la sola cresta finale che richiede qualche accortezza in più. Se si vuole arrivare sci in vetta direi che la difficioltà è **BS.**
+In basso la situazione peggiora, la neve sembra cemento, ormai è **sopravvivenza** fino al parcheggio. Lascio gli sci e lo zaino e vado a riprendere la macchina più in alto. Bellissima giornata, la salita è molto bella, facile nella prima parte con la sola cresta finale che richiede qualche accortezza in più. Se si vuole arrivare sci in vetta direi che la difficioltà complessiva è **BS.**
