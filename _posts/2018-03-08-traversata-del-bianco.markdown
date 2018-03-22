@@ -2,7 +2,7 @@
 layout: post
 title: "Traversata del Bianco"
 date: 2018-03-08
-description: "Traversata del Bianco con gli sci, da Punta Helbronner a Chamonix per la Vallée Blanche"
+description: "Traversata del Bianco con gli sci, da Punta Helbronner a Chamonix per il Ghiacciaio del Gigante e la Mer de Glace"
 categories: scialpinismo
 tags: scialpinismo bianco chamonix
 caption: La parete est del Tacul
