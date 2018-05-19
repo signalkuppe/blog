@@ -3,11 +3,28 @@
         font-size: 2.5em;
         margin: 0; 
         line-height: 1;
+        text-align: center;
     }    
+
+    .pagetitle span {
+        position: relative;
+    }   
+
+    .pagetitle span::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 1em;
+        left: 0;
+        height: .1em;
+        width: 1em;
+        background: var(--color-primary);
+    }   
 
     @media screen and (min-width: 768px) { 
         .pagetitle {
             font-size: 3em;
         }   
     }
+
 </style>

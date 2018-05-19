@@ -59,7 +59,7 @@
         left: 0;
         top: 0;
         z-index: 1;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.1);
         width: 100%;
         min-height: calc(100% - 0px);
     }
@@ -74,6 +74,7 @@
     .post-cover [href="#post"] {
         -webkit-align-self: center;
         align-self: center;
+        margin: 0;
     }
 
     .post-cover-caption {
@@ -81,6 +82,7 @@
         font-size: 3.5em;
         line-height: 1;
         transition: all .2s ease-in-out;
+        text-align: center;
     }
 
     .post-cover-caption small {
@@ -118,6 +120,7 @@
         display: block;
         font-weight: 300;
         margin-top: .25em;
+        text-align: center;
     }
 
     .post-content {
@@ -146,6 +149,45 @@
         margin: 7em 0;
     }
 
+    .post-gallery {
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        left: 50%;
+        padding: 5em 0;
+        background: var(--color-gray-light);
+        opacity: 0;
+        transition: opacity .3s ease-in;
+    }
+
+   .post-gallery.is-loaded {
+        opacity: 1;
+    }
+
+    .post-gallery-title {
+        font-size: 2em;
+        font-weight: 400;
+        color: var(--color-text);
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 2em;
+    }
+
+     .post-gallery-title span {
+        position: relative;
+    }   
+
+     .post-gallery-title span::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 1em;
+        left: 0;
+        height: .1em;
+        width: 1em;
+        background: var(--color-primary);
+    }   
+
     .post-gallery-loading {
         text-align: center;
     }
@@ -157,6 +199,7 @@
     .post-gallery ul {
         margin: 0;
         max-width: 80vw;
+        margin: 0 auto;
         overflow: hidden;
     }
 
@@ -187,30 +230,22 @@
         }
     }
 
-    /* bigger gallery outside container */
-
-    @media screen and (min-width: 1680px) {
+    @media screen and (min-width: 1024px) {
 
         .post-body {
-            margin-top: 6em;
-        }
-
-        .post-gallery {
-            width: 100vw;
-            position: relative;
-            margin-left: -50vw;
-            left: 50%;
+            margin-top: 7em;
         }
 
         .post-gallery ul {
-            max-width: 1250px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         .post-gallery img {
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
         }       
+
     }
 
     /* bigger gallery outside container */
@@ -229,6 +264,7 @@
 
     .post-utilities ul {
         margin-bottom: 5em;
+        text-align: center;
     }
 
     .post-utilities li {
@@ -271,6 +307,7 @@
 
     .post-newsletter {
         margin-bottom: 5em;
+        text-align: center;
     }
 
     .post-comments {

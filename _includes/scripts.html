@@ -80,11 +80,14 @@
     var placeholder = 'http://res.cloudinary.com/signalkuppe/image/upload/blog/placeholder.jpg'
     var galleryContainer = document.querySelectorAll('.post-gallery')[0]
     var galleryLoading = document.querySelectorAll('.post-gallery-loading')[0]
-    var mqLarge = window.matchMedia("(min-width:1680px)");
+    var mqLarge = window.matchMedia("(min-width:1024px)");
 
     var _makeGallery = function (photos) {
         try {
-            var ul = document.createElement('ul');
+            var ul = document.createElement('ul')
+            var galleryTitle = document.createElement('h3')
+            galleryTitle.innerHTML = '<span>G</span>alleria fotografica'
+            galleryTitle.classList.add('post-gallery-title')
             for (var i=0; i < photos.length; i++) {
                 var li = document.createElement('li');
                 var thumb = photos[i].sizes.find(function(f){
@@ -100,17 +103,20 @@
                 } 
                 var title = photos[i].title
                 ul.appendChild(li);
-                li.innerHTML = '<a rel="gallery" class="post-gallery-link" href="'+full+'" title="'+title+'"><img src="'+thumb+'" alt="'+title+'"></a>';
+                li.innerHTML = '<a rel="gallery" class="post-gallery-link" href="'+full+'" title="'+title+'"><img src="'+thumb+'" alt="'+title+'"></a>'
             }
-
-            galleryContainer.style.display = 'block';
-            galleryContainer.appendChild(ul)
-            baguetteBox.run('.post-gallery', {
-                overlayBackgroundColor: 'rgba(0,0,0,0.9)'
-            });
+            galleryContainer.style.display = 'block'
+            setTimeout(function () {
+                galleryContainer.classList.add('is-loaded')
+                galleryContainer.appendChild(galleryTitle)
+                galleryContainer.appendChild(ul)
+                baguetteBox.run('.post-gallery', {
+                    overlayBackgroundColor: 'rgba(0,0,0,0.9)'
+                });
+            }, 100)
         }
         catch (err) {
-
+            console.log('Errore durante il caricamento della gallery', err)
         }
     }
     var _getPhotos = function () {
