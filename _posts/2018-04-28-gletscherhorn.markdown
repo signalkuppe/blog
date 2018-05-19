@@ -18,11 +18,21 @@ Forse l’ultima uscita sugli sci, voglio regalarmi un bel tremila, fuori dagli 
 
 Iniziamo la lunga risalita della **Val Bergalga** devastata dalle **valanghe.** Ne superiamo almeno quattro, una delle quale abbastanza complicata da salire e scendere. Superiamo l’alpeggio di **Olta Stofel** a 2074m e dopo **quattro chilometri**e mezzo di marcia finalmente arriviamo alla testata della valle. Ci vuole un’ora e mezza per arrivare fin qui!
 
+<figure>
+    <img src="https://farm1.staticflickr.com/964/41303842365_29ec7c4df5_c.jpg" alt="Verso il Gletscherhorn, valanga in Val Bergalga" /> 
+    <figcaption>Una delle tante valanghe lungo la Val Bergalga</figcaption>
+</figure>
+
 ## La salita alla vetta
 
 Risaliamo il **ripido pendio** sulla sinistra fino a quota 2365m, da qui è ben visibile il resto dell’itinerario. Le pendenze sono più dolci ma la salita à ancora lunga. La **pala finale** sembra vicina ma ci vorranno ancora due ore visto il nostro allenamento da sciatori della domenica. 
 
 Siamo cotti, ci facciamo forza a vicenda e arriviamo finalmente al **colletto** che separa la cima dalla Punta Predarossa. Qualche bomba energetica e affrontiamo la pala finale.
+
+<figure>
+    <img src="https://farm1.staticflickr.com/952/40397299110_772389834f_c.jpg" alt="La pala finale del Gletscherhorn" /> 
+    <figcaption>La pala finale del Gletscherhorn con la <strong>Punta Predarossa</strong></figcaption>
+</figure>
 
 Anche qui **il terreno è facile.** Con quattro pertichette raggiungiamo la cresta e dopo pochi metri, sci ai piedi, la vetta con il suo ometto in pietra. Qualche nuvola ma non ci possiamo proprio lamentare. 
 
