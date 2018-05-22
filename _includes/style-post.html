@@ -83,6 +83,7 @@
         line-height: 1;
         transition: all .2s ease-in-out;
         text-align: center;
+        margin-top: -.25em;
     }
 
     .post-cover-caption small {
@@ -151,6 +152,10 @@
     .post-content img {
         max-width: 100%;
         display: block;
+    }
+
+    .dark .post-content img {
+        filter: grayscale(1);
     }
 
     .post-content figcaption {

@@ -12,7 +12,7 @@ map: 46.044878,8.535215
 crop: x_1400,y_-200
 ---
 
-Inizia la **stagione delle escursioni;** dopo tanto sci fa piacere fare una camminata facile senza tutto quel materiale. Scegliamo un cima della Val Grande che ci mancava: il **Monte Zeda.**  L’obiettivo è anche quello di perlustrare il tratto finale del **Sentiero Bove,** uno degli itinerari che ho segnato nella mia infinita lista delle cose da fare.
+Inizia la **stagione delle escursioni;** dopo tanto sci è bello fare una camminata facile senza tutto quel materiale. Scegliamo un cima della Val Grande che ci mancava: il **Monte Zeda.**  L’obiettivo è anche quello di perlustrare il tratto finale del **Sentiero Bove,** uno degli itinerari che ho segnato nella mia infinita lista delle cose da fare.
 
 ## Partenza dal Passo Folungo
 
