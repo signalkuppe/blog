@@ -30,30 +30,28 @@
 
   <title>{{ title }} | {{ slogan }}</title>
   <meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
-
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@signalkuppe" />
+  <meta name="twitter:creator" content="@signalkuppe" />
+  <meta property="og:site_name" content="{{ site.title }}"/>
   {% if page.title %}
+  <meta name="twitter:title" content="{{ page.title }}"/>
+  <meta property="og:title" content="{{ page.title }}"/>
   <meta property="og:type" content="article" />
   <meta property="og:image" content="https://res.cloudinary.com/signalkuppe/image/upload/w_200,h_200,c_fill,f_auto,q_auto,g_center/blog/covers/{{ page.date| date: "%d%m%y" }}.jpg" />
   <meta property="og:description" content="{{ page.description }}" />
   {% else %}
+  <meta name="twitter:title" content="{{ page.title }}"/>
+  <meta property="og:title" content="{{ site.description }}"/>
   <meta property="og:image" content="https://it.gravatar.com/userimage/449313/a6c21654451335ca0d1505f55c4a81b9.png?size=200" />
   {% endif %}
-  {% if page.title %}
-  <meta property="og:title" content="{{ page.title }}"/>
-  {% else %}
-  <meta property="og:title" content="{{ site.description }}"/>
-  {% endif %}
-  <meta property="og:site_name" content="{{ site.title }}"/>
-
   <meta name="apple-mobile-web-app-capable" content="yes">
-  
   <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
   <link rel="manifest" href="/favicons/manifest.json">
   <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#000000">
   <meta name="theme-color" content="#ffffff">
-
   <link rel="canonical" href="{{ site.fullurl }}{{ page.url | replace:'index.html','' | replace:'.html', ''}}">
 
   <script>
@@ -85,8 +83,8 @@
   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
   crossorigin=""></script>
   {% endif %}
-
-  <style>
+  <!-- oh yes, inline styles, they are fast 😊 -->
+  <style media="screen">
     :root {
       --font-text: "proxima-nova", -apple-system, sans-serif;
       --font-headings: "proxima-nova-condensed", -apple-system, sans-serif;
