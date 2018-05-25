@@ -23,6 +23,7 @@ lang: "it"
 permalink: /:categories/:year/:month/:day/:title
 url: "https://www.signalkuppe.com" # the base hostname & protocol for your site, e.g. http://example.com
 fullurl: "https://www.signalkuppe.com" # the base hostname & protocol for your site, e.g. http://example.com
+include: [_redirects]
 sitemap:
     file: "/sitemap.xml"
     exclude:
