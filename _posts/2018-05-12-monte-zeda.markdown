@@ -2,7 +2,7 @@
 layout: post
 title: "Monte Zeda"
 date: 2018-05-12
-description: "Salita al Monte Zeda da Colle per il Passo Folungo"
+description: "Salita al Monte Zeda da Colle per il Passo Folungo passando per il Rifugio Pian Vadà"
 categories: escursionismo
 tags: valgrande ossola
 caption: "La Linea Cadorna"
