@@ -41,8 +41,7 @@
         min-height: calc(100% - 0px);
         width: 100%;
         margin: 0;
-        padding: 30px;
-        padding: var(--gutter);
+        padding: var(--gutter) var(--gutter) 0 var(--gutter);
         background-repeat: no-repeat;
         background-color: black;
         background-size: cover;
@@ -83,13 +82,16 @@
         line-height: 1;
         transition: all .2s ease-in-out;
         text-align: center;
-        margin-top: -.25em;
+        position: relative;
     }
 
     .post-cover-caption small {
-        font-size: 16px;
+        position: absolute;
+        left: 0;
+        top: -20px;
+        font-size: 14px;
         font-family:  var(--font-text);
-        font-weight: 400;
+        font-weight: 700;
         display: block;
         margin-bottom: 10px;
         opacity: 1;
@@ -101,8 +103,8 @@
     }
 
     [href="#post"] {
-        text-align: center;
         animation: upDown 2s infinite;
+        padding-bottom: .5em;
     }
 
     [href="#post"] svg {
