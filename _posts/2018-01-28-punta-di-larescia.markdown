@@ -8,7 +8,7 @@ tags: scialpinismo svizzera ticino
 caption: La Valle di Blenio
 flickr: 72157665435471858
 gps: true
-map: 46.492749,8.969891
+map: 46.504969,8.892647
 crop: x_1000
 ---
 
