@@ -80,7 +80,7 @@
     var placeholder = 'http://res.cloudinary.com/signalkuppe/image/upload/blog/placeholder.jpg'
     var galleryContainer = document.querySelectorAll('.post-gallery')[0]
     var galleryLoading = document.querySelectorAll('.post-gallery-loading')[0]
-    var mqLarge = window.matchMedia("(min-width:1024px)");
+    var mqLarge = window.matchMedia("(min-width:1366px)");
 
     var _makeGallery = function (photos) {
         try {
@@ -91,7 +91,7 @@
             for (var i=0; i < photos.length; i++) {
                 var li = document.createElement('li');
                 var thumb = photos[i].sizes.find(function(f){
-                    return f.label === 'Large Square'
+                    return f.label === 'Small 320'
                 }).source
                 var full = photos[i].sizes.find(function(f){
                     return f.label === 'Original'
