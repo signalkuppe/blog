@@ -14,7 +14,7 @@ crop: x_1200
 
 Tra le tutte le gite da fare, questa è sempre stata una di quelle più ambite. Una vera e propria **classica dello scialpinismo,** effettuabile subito dopo l’apertura del **Furka.** Lancio la proposta a Gabriele, che non solo accetta, ma offre il suo **camper** per una notte comoda e una partenza in perfetto orario. Impossibile lasciarsi scappare un‘occasione del genere. Partiamo con calma verso le venti e, dopo una veloce *“cena al sacco”*, arriviamo all'Hotel Belvedere alle undici e mezza sotto una magnifica stellata. Parcheggiamo a pochi metri dalla partenza e andiamo a letto.
 
-## La salita lungo il Ghiacciaio del Rodano
+## Il Ghiacciaio del Rodano
 
 Sveglia alle quattro, rapida colazione a base di gel Enervit, banana e Polase, vestizione, pelli e si parte alle quattro e quarantacinque. Grazie a uno scivolo di neve *“scavalchiamo”* il **negozio di souvenir.** Seguendo il tracciato per i turisti ci portiamo all’inizio del ghiacciaio. Le **condizioni** sono discrete, la neve non è molta ma c’è, il **rigelo** anche. Purtroppo è pieno delle tipiche conchette estive. Fin dopo la deviazione per il **Galenstock** rimaniamo sulla destra (salendo). Nella salita, dopo il bivio, siamo costretti a mettere i rampanti.
 
