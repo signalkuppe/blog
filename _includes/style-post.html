@@ -180,7 +180,7 @@
         margin-left: -50vw;
         left: 50%;
         padding: 5em 0;
-        background: var(--color-gray-light);
+        background: var(--color-gray);
         opacity: 0;
         transition: opacity .3s ease-in;
     }
@@ -191,8 +191,6 @@
 
     .post-gallery-title {
         font-size: 2em;
-        font-weight: 400;
-        color: var(--color-text);
         text-align: center;
         margin-top: 0;
         margin-bottom: 2em;
@@ -267,13 +265,21 @@
 
     @media screen and (min-width: 1024px) {
 
+        .post-gallery ul {
+            column-gap: 0.75em;
+        }
+        .post-gallery li {
+            margin-bottom: 0.75em;
+        }
+        .post-gallery img {
+            border-width: 0.75em;
+        }
+
         .post-body {
             margin-top: 7em;
         }
 
     }
-
-    /* bigger gallery outside container */
 
     @media screen and (min-width: 1920px) {
         .post-gallery ul {

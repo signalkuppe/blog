@@ -265,17 +265,15 @@
     markers.forEach(function(marker){
 
         var customIcon = L.divIcon({className: 'map-icon', html:'<img title="'+marker.title+'" src="'+marker.marker+'" />'}), // use custom div for icons
-            markerHtml = '<div class="map-popup">';
+            markerHtml = '<a href="'+marker.link+'" class="map-popup-link" title="Leggi il post"><div class="map-popup">';
 
             markerHtml += '<img src="'+marker.cover+'" />'
             markerHtml += '<div class="map-popup-info">'
-            markerHtml += '<div class="map-popup-info-title">'
-            markerHtml += '<a href="'+marker.link+'" title="Leggi il post">' + marker.title + '</a>'
-            markerHtml += '</div>'
+            markerHtml += '<div class="map-popup-info-title">' + marker.title + '</div>'
             markerHtml += '<div class="map-popup-info-date">'
             markerHtml += marker.date
             markerHtml += '</div>'
-            markerHtml += '<a class="map-popup-link" href="'+marker.link+'" title="Leggi il post">Leggi</a>'
+            markerHtml += '<span class="map-popup-readmore" title="Leggi il post">Leggi</span>'
             markerHtml += '</div>'
             markerHtml += '</div>'
 
