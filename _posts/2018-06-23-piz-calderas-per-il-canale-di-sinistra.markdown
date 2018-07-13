@@ -59,4 +59,4 @@ Individuato il canale, lo percorriamo in discesa tenendoci prevalentemente a des
 </figure>
 
 ## Merenda al Berghaus
-Meritata **sosta** con una insalata di wurstel, formaggio, verdure, pomidoro e cipolle, condita con una vinagrette di maionese e senape. Per finire torta di albicocche con panna, birra e caffè! Solito prezzo esorbitante svizzero. per fortuna ha offerto mio papà pagando con carta di credito! Difficoltà complessiva dell’itinerario PD-.
+Meritata **sosta** con una insalata di wurstel, formaggio, verdure, pomidoro e cipolle, condita con una vinaigrette di maionese e senape. Per finire torta di albicocche con panna, birra e caffè! Solito prezzo esorbitante svizzero. per fortuna ha offerto mio papà pagando con carta di credito! Difficoltà complessiva dell’itinerario PD-.
