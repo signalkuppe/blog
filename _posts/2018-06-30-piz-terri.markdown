@@ -3,7 +3,7 @@ layout: post
 title: "Piz Terri"
 date: 2018-06-30
 description: "Salita al Piz Terri in Valle di Blenio con partenza dall’Alpe Garzott (Lago di Luzzone) e il Rifugio Motterascio"
-categories: alpinismo
+categories: escursionismo
 tags: lucomagno luzzone terri
 caption: "La Diga del Luzzone"
 flickr: 72157698731051854
