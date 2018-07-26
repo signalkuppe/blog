@@ -9,7 +9,7 @@ caption: "Il torrente Piumogna"
 flickr: 72157696312234602
 gps: true
 map: 46.4300345,8.724065
-crop: x_600
+crop: x_1200
 ---
 
 Se volete fare più di millesettecento metri di dislivello e mettervi più di cinque ore di salita nelle gambe, il Pizzo Campo Tencia è la montagna ideale! Con mio padre e Sergio, compagni ideali per questo tipo di *“pazzie”*, partiamo alle 4:30 per percorrere l’autostrada del Gottardo fino all’uscita 42 di Quinto. Ritornati un poco verso S saliamo a **Dalpe** dove all’ingresso del paese prendiamo a destra per **Cleuro**. Da qui saliamo lungo una comoda sterrata fino al parcheggio di **Polpiano-Alpe Piumogna** a quota 1365m.
@@ -38,7 +38,7 @@ Complimenti al gestore! Senza la **scaletta** sarebbe stato molto complicato cal
 
 Proseguiamo in direzione S per traccia, blocchi e roccette fino alla conca di un laghetto a quota 2642m. Qui intravediamo per la prima volta  il **Ghiacciaio Grande di Croslina,** ormai ridotto ad una piccola placca di ghiaccio. La nostra meta è quattrocento metri sopra, ma per raggiungerla dobbiamo piegare a destra in direzione SW verso la **Bocchetta di Croslina,**. Prima parte lungo una divertente cresta con qualche gradino in ferro, poi un semplice e breve nevaio.
 
-Dalla bocchetta di quota 2867 prendiamo la **cresta NW** della nostra cima che percorriamo soprattutto sul filo seguendo i segnavia bianchi e blu fino alla vetta del **Pizzo Campo Tencia** 3078m, dopo 1700 metri circa di dislivello e cinque ore ed un quarto!
+Dalla bocchetta di quota 2867m prendiamo la **cresta NW** della nostra cima che percorriamo soprattutto sul filo seguendo i segnavia bianchi e blu fino alla vetta del **Pizzo Campo Tencia** 3078m, dopo 1700 metri circa di dislivello e cinque ore ed un quarto!
 
 <figure>
     <img src="https://farm1.staticflickr.com/852/42940350954_b1b8c5136f_c.jpg" alt="Pizzo Campo Tencia, la cresta finale" /> 
