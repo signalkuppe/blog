@@ -49,7 +49,7 @@ Dalla bocchetta di quota 2867m prendiamo la **cresta NW** della nostra cima che 
 
 Bella salita, di grande soddisfazione per la fatica ed il dislivello, ma mai noiosa. Intuiamo le cime attorno attraverso le nubi che ci stanno avvolgendo. Foto di rito e quattro chiacchere con dei ticinesi saliti per le pietraie del versante S dalla **Val Maggia** per la **Capanna Soveltra**.
 
-Rientro per lo stesso percorso fino alla Capanna Campo Tencia dove ci concediamo birra e un ottimo piatto di **gnocchi alll’aglio orsino**. Breve aggiornamento sulle condizioni della via con il bravo e simpatico gestore e poi di nuovo al parcheggio per riprendere l’auto.
+Rientro per lo stesso percorso fino alla Capanna Campo Tencia dove ci concediamo birra e un ottimo piatto di **gnocchi all’aglio orsino**. Breve aggiornamento sulle condizioni della via con il bravo e simpatico gestore e poi di nuovo al parcheggio per riprendere l’auto.
 
 <figure>
     <img src="https://farm1.staticflickr.com/845/41848940400_1a56f63e76_c.jpg" alt="Pizzo Campo Tencia, sosta alla Capanna" /> 
