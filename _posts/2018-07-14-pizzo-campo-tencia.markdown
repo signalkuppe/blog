@@ -52,8 +52,8 @@ Bella salita, di grande soddisfazione per la fatica ed il dislivello, ma mai noi
 Rientro per lo stesso percorso fino alla Capanna Campo Tencia dove ci concediamo birra e un ottimo piatto di **gnocchi all’aglio orsino**. Breve aggiornamento sulle condizioni della via con il bravo e simpatico gestore e poi di nuovo al parcheggio per riprendere l’auto.
 
 <figure>
-    <img src="https://farm1.staticflickr.com/845/41848940400_1a56f63e76_c.jpg" alt="Pizzo Campo Tencia, sosta alla Capanna" /> 
-    <figcaption>Ci ciamo guadagnati la nostra Calanda!</figcaption>
+    <img src="https://farm1.staticflickr.com/845/41848940400_8daccb7208_c.jpg" alt="Pizzo Campo Tencia, sosta alla Capanna" /> 
+    <figcaption>Ci siamo guadagnati la nostra Calanda!</figcaption>
 </figure>
 
 La sola **visita alla Capanna Campo Tencia** merita un’uscita, sia per gustare la sua ottima cucina e la molteplice varietà di torte, che per godere dell’ospitalità offerta. Potete passarci una notte ed il giorno dopo affrontare la ferrata delle creste.
