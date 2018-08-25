@@ -19,7 +19,11 @@ layout: base
                 </time>
             </header>
             <div class="post-content" itemprop="articleBody">{{ content }}</div>
-            <aside class="post-gallery"></aside>
+            <div role="alert" class="post-gallery-error" hidden>
+                Ops qualcosa è andato storto durante il caricamento della gallery! <br /><a href="https://www.flickr.com/photos/signalkuppe/albums/{{page.flickr}}">Qui la trovi su flickr</a>. Ti va di <a href="https://signalkuppe.wufoo.com/forms/contatta-signalkuppe/">segnalarmelo?</a>
+            </div>
+            <aside class="post-gallery">
+            </aside>
             <div aria-hidden="true" class="post-gallery-loading">
                 <strong>Carico la gallery</strong>
                 <span class="loader"><span class="loader-inner"></span></span>

@@ -77,11 +77,11 @@
     var xhr = new XMLHttpRequest();
     var photos = [];
     var photosLoaded = false;
-    var placeholder = 'http://res.cloudinary.com/signalkuppe/image/upload/blog/placeholder.jpg'
-    var galleryContainer = document.querySelectorAll('.post-gallery')[0]
-    var galleryLoading = document.querySelectorAll('.post-gallery-loading')[0]
+    var placeholder = 'http://res.cloudinary.com/signalkuppe/image/upload/blog/placeholder.jpg';
+    var galleryContainer = document.querySelector('.post-gallery');
+    var galleryLoading = document.querySelector('.post-gallery-loading');
+    var errorDiv = document.querySelector('.post-gallery-error');
     var mqLarge = window.matchMedia("(min-width:1366px)");
-
     var _makeGallery = function (photos) {
         try {
             var ul = document.createElement('ul')
@@ -91,7 +91,7 @@
             for (var i=0; i < photos.length; i++) {
                 var li = document.createElement('li');
                 var thumb = photos[i].sizes.find(function(f){
-                    return f.label === 'Small 320'
+                    return f.label === 'Small 320' || f.label === 'Medium'
                 }).source
                 var full = photos[i].sizes.find(function(f){
                     return f.label === 'Original'
@@ -117,6 +117,7 @@
         }
         catch (err) {
             console.log('Errore durante il caricamento della gallery', err)
+            errorDiv.removeAttribute('hidden')
         }
     }
     var _getPhotos = function () {
