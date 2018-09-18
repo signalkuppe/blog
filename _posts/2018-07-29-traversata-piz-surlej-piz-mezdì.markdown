@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Piz Surlej — Piz Mezdì"
+title: "Traversata dal Piz Surlej al Piz Mezdì"
 date: 2018-07-29
 description: "Relazione della traversata Piz Surlej - Piz Mezdì con partenza da St. Moritz Bad in senso antiorario, toccando le vette del Piz San Gian e del Piz Rosatsch"
 categories: escursionismo
