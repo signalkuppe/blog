@@ -16,14 +16,14 @@ Ancora una volta in **Engadina**: comoda da raggiungere, dall’ambiente magico 
 
 ## Partenza da St. Moritz Bad
 
-Solita levataccia, sosta al **Moreschi** per la colazione, via per la Val Bregaglia, il Maloja fino a **St. Moritz Bad** dove parcheggiamo di fianco ad un campo giochi con il dubbio di non essere proprio in regola. I parcheggi attorno sono tutti regolamentati, sono a pagamento ed hanno un limite di quattro ore.
+Solita levataccia, sosta al **Moreschi** per la colazione, via per la Val Bregaglia, il Maloja fino a **St. Moritz Bad** dove parcheggiamo di fianco ad un campo giochi, con il dubbio di non essere proprio in regola. I parcheggi attorno sono tutti regolamentati, sono a pagamento ed hanno un limite di quattro ore.
 
 <figure>
     <img src="https://farm2.staticflickr.com/1843/44717754502_117d986ffe_c.jpg" alt="St. Moritz Bad" /> 
     <figcaption>Il Bosco subito dopo la partenza</figcaption>
 </figure>
 
-Anche quest’anno il caldo assassino ha fuso tutta la neve, per cui partiamo leggeri con scarpette ed equipaggiamento ridotto al minimo. Seguiamo le indicazioni per il **Lej Dals Chöds** e la **Fuorcla Surlej** lungo un ottimo sentiero che si alza lungo il versante nord della valle e che offre subito magnifici scorci sulla piana di San Moritz ed il contrapposto versante. Il lago è un gioiellino, l'ambiente è da favole e gli svizzeri hanno piazzato anche un **Restaurant Hahnensee**.
+Anche quest’anno il caldo ha fuso tutta la neve, per cui partiamo leggeri con scarpette ed equipaggiamento ridotto al minimo. Seguiamo le indicazioni per il **Lej Dals Chöds** e la **Fuorcla Surlej** lungo un ottimo sentiero che si alza lungo il versante nord della valle e che offre subito magnifici scorci sulla piana di St. Moritz ed il contrapposto versante. Il lago è un gioiellino, l'ambiente è da favole e gli svizzeri hanno piazzato anche un **Restaurant Hahnensee**.
 
 <figure>
     <img src="https://farm2.staticflickr.com/1870/29829778517_e10d54c0c7_c.jpg" alt="Il Lej Dals Chöds" /> 
@@ -32,11 +32,11 @@ Anche quest’anno il caldo assassino ha fuso tutta la neve, per cui partiamo le
 
 Proseguiamo per boschi d’abeti e larici fino ad una pietraia che ci consegna al traverso del **Gian d’Alva**. Superato un costone abbandoniamo il bel sentiero che porta alla **Fuorcla Surlej** e puntiamo, senza percorso obbligato, verso la stazione a monte della seggiovia del **Margun Vegl** posta a quota 2647m.
 
-Qui ricompare una traccia che sale verso E e percorre la cresta che scende dalla nostra prima cima. Superiamo alcune balze rocciose per facili canali stando attenti a non perdere la traccia, non sempre evidente, e i radi ometti che rimpolpiamo lungo la via. Ultimo strappo per una *“bella pietraia”* ed eccoci in cima al **Piz Surlej** a quota 3187 m. La prima vetta è conquistata.
+Qui ricompare una traccia che sale verso E e percorre la cresta che scende dalla nostra prima cima. Superiamo alcune balze rocciose per facili canali stando attenti a non perdere la traccia, non sempre evidente, e i radi ometti che rimpolpiamo lungo la via. Ultimo strappo per una *“bella pietraia”* ed eccoci in cima al **Piz Surlej** a quota 3187m. La prima vetta è conquistata.
 
 ## Inizia la traversata
 
-Si apre subito un panorama indimenticabile con il Bernina a sud ed i monti dell’Avers a nord. Evidente a NE il lontano **Piz Mezdì** che raggiungeremo per cresta dall’aspetto lunare e da una infinita varietà di colori. Rosso, giallo, ocra, grigio, bianco. Sembra quasi di esser in cima ad un vulcano.
+Si apre subito un panorama indimenticabile con il Bernina a sud ed i monti dell’Avers a nord. Evidente a NE il lontano **Piz Mezdì** che raggiungeremo per cresta dall’aspetto lunare e da una infinita varietà di colori. Rosso, giallo, ocra, grigio, bianco. Sembra quasi di essere in cima ad un vulcano.
 
 <figure>
     <img src="https://farm2.staticflickr.com/1878/30896219048_530c476c89_c.jpg" alt="Traversata Piz Surlej - Piz Mezdì" /> 
@@ -45,7 +45,7 @@ Si apre subito un panorama indimenticabile con il Bernina a sud ed i monti dell�
 
 Quando si parla di cambiamenti climatici questa cresta è emblematica. Se vediamo foto di soli dieci anni fa e dello stesso fine mese vediamo una continua cresta di neve con cornici aggettanti a nord!
 
-Sosta, foto e poi ripartenza in discesa per traccia fino ad una specie di colle. Da qui risaliamo, con qualche passo di arrampicata, la quota 3184 non nominata ma evidente cima gemella del Surlej. Anche qui sosta per poi raggiungere con alcuni saliscendi, sempre sopra i 3000 metri, il Piz **San Gian** a 3134 m. Un paesaggio sempre vulcanico ci accompagna lungo una cresta un poco più affilata fino alla vicina vetta del **Piz Rosatsch** alto 3121 m.
+Sosta, foto e poi ripartenza in discesa per traccia fino ad una specie di colle. Da qui risaliamo, con qualche passo di arrampicata, la quota 3184 non nominata ma evidente cima gemella del Surlej. Anche qui sosta per poi raggiungere con alcuni saliscendi, sempre sopra i 3000 metri, il Piz **San Gian** a 3134 m. Un paesaggio vulcanico ci accompagna lungo una cresta un poco più affilata fino alla vicina vetta del **Piz Rosatsch** alto 3121 m.
 
 <figure>
     <img src="https://farm2.staticflickr.com/1882/44048326694_29eb922f8a_c.jpg" alt="Verso il Piz Rosatsch" /> 
@@ -61,7 +61,7 @@ La discesa dal pizzo rappresenta la parte più difficile, si fa per dire, di tut
     <figcaption>Il Piz Mezdì</figcaption>
 </figure>
 
-Al termine della discesa, la traccia ci porta sempre verso NNE lungo una specie di altipiano di rocce più chiare fino al **Cuolm d’Mez** 2982 m, insignificante elevazione, ma che non possiamo mancare. Da qui sempre sull’altipiano raggiungiamo la nostra ultima cima il **Piz Mezdì** a quota 2991 m.
+Al termine della discesa, la traccia ci porta sempre verso NNE su rocce più chiare fino al **Cuolm d’Mez** 2982m, insignificante elevazione, ma che non possiamo mancare. Da qui sempre sull’altipiano raggiungiamo la nostra ultima cima il **Piz Mezdì** a quota 2991m.
 
 ## Rientro
 
