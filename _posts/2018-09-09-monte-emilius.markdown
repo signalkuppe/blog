@@ -12,7 +12,7 @@ map: 45.679007, 7.384969
 crop: x_0
 ---
 
-Il giorno prima ho salito con due miei amici il Piz Languard, per loro la prima esperienza sopra i 3000m. Per il giorno dopo il programma era quello di salire la Punta Rossa della Grivola in giornata. **Mio papà** è col CAI al Rifugio Arbolle per salire in due giorni l’Emilius. Perché non fargli una sorpresa e andare trovarlo? Detto fatto, sveglia alle 4 e partenza alle 4:30 direzione Pila.
+Weekend intenso: sabato ho salito con due miei amici il Piz Languard, il programma per la domenica era quello di salire la Punta Rossa della Grivola in giornata. **Mio papà** è con il CAI al Rifugio Arbolle per effettuare in due giorni l’Emilius. Perché non fargli una sorpresa e andare trovarlo? Detto fatto, sveglia alle 4 e partenza alle 4:30 direzione Pila.
 
 ## Partenza da Pila
 
