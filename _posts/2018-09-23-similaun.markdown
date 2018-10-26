@@ -8,7 +8,7 @@ tags: venoste similaun
 caption: "La Alpe Venoste"
 flickr: 72157674915825078
 gps: true
-map: 46.454988, 10.525054
+map: 46.763706, 10.88068
 crop: x_300
 ---
 
