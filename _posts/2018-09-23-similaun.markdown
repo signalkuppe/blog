@@ -9,7 +9,7 @@ caption: "La Alpe Venoste"
 flickr: 72157674915825078
 gps: true
 map: 46.763706, 10.88068
-crop: x_700
+crop: x_800
 ---
 
 Dopo aver salito la **Palla Bianca** eccomi di nuovo in Alto Adige per conquistare una nuova cima. Ad essere sincero la scelta è stata determinata non solo dall’aspetto alpinistico, sicuramente interessante, ma anche da quello culinario: ritornare ad assaggiare le specialità della Birreria Forst a Merano!
