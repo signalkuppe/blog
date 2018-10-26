@@ -5,7 +5,7 @@ date: 2018-09-23
 description: "Relazione della via normale al Similaun nelle Alpi Venoste. Partenza da Vernago e pernottamento al rifugio Similaun."
 categories: alpinismo
 tags: venoste similaun
-caption: "La Alpe Venoste"
+caption: "Le Alpi Venoste"
 flickr: 72157674915825078
 gps: true
 map: 46.763706, 10.88068
