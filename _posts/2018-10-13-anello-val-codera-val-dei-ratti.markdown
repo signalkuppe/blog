@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Anello Val Codera — Val dei Ratti"
+title: "Anello Val Codera-Val dei Ratti"
 date: 2018-10-13
 description: "Giro ad anello con partenza da Novate Mezzola. Salita lungo la Val Ladrogno e il Bivacco Casorate Sempione, La Porta, Bocchetta di Spassato. Rientro per la Val dei Ratti."
 categories: escursionismo
@@ -9,7 +9,7 @@ caption: "La Val dei Ratti"
 flickr: 72157697242674910
 gps: true
 map: 46.237940,9.531455
-crop: x_200
+crop: x_1400
 version: v1542234284
 ---
 
