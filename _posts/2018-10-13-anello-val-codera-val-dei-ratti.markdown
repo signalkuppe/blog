@@ -13,9 +13,9 @@ crop: x_1400
 version: v1542234284
 ---
 
-Un **giro ad anello** di ampio respiro. Durissimo, ma che ci ha regalato delle soddisfazioni immense. Luoghi selvaggi e poco battuti, salite ripide e impervie, nebbie e colori autunnali: la montagna più bella. Alle otto siamo all partenza nei pressi dell’ampio **parcheggio di Mezzolpiano.** Compagna di avventura Monica, abitutata a queste *“scammellate”*. Sarà dura tenerle testa!
+Un **giro ad anello** di ampio respiro. Durissimo, ma che ci ha regalato delle soddisfazioni immense. Luoghi selvaggi e poco battuti, salite ripide e impervie, nebbie e colori autunnali: la montagna più bella. Alle otto siamo allA partenza nei pressi dell’ampio **parcheggio di Mezzolpiano.** Compagna di avventura Monica, abitutata a queste *“scammellate”*. Sarà dura tenerle testa!
 
-Assetto da sky race, microzaino e ai piedi le nostre Hoka salva-piedi. Seguiamo la mulattiera del **Sentiero Roma** fino a Codera. Da qui deviamo in direzione della selvaggia **Val Ladrogno.** Scendiamo fino al ponte sul Torrente Codera per raggiungere un secondo — bellissimo — ponte sul Torrente Val Ladrogno. 
+Assetto da sky race, microzaino e le nostre Hoka salva-piedi. Seguiamo la mulattiera del **Sentiero Roma** fino a Codera. Da qui deviamo in direzione della selvaggia **Val Ladrogno.** Scendiamo fino al ponte sul Torrente Codera per raggiungere un secondo — bellissimo — ponte sul Torrente Val Ladrogno. 
 
 <figure>
     <img src="https://farm5.staticflickr.com/4895/43867407800_8b74001a6f_c.jpg" alt="Il ponte sul Torrente Val Ladrogno" /> 
@@ -35,14 +35,14 @@ Costeggiamo tutto il versante della montagna con un alternanza di falsipiani e s
 
 Spuntiamo su una radura nei pressi di un grosso masso, dove notiamo **tre frecce dipinte** su una roccia. Purtroppo incrociamo anche due cacciatori. Il grande caldo per fortuna non gli ha consentito di catturare prede. 
 
-Ci scoraggiano a proseguire, vista la lunghezza dle percorso, ma non sanno con chi hanno a che fare. Andiamo a destra scendendo verso il torrente. Poco dopo riprendiamo subito a salire sulla sinistra, seguendo una **pista** battuta dai cavalli. Il bivacco è proprio qui sopra, ma lo vedremo solo all'ultimo! 
+Ci scoraggiano nel proseguire vista la lunghezza del percorso, ma non sanno con chi hanno a che fare. Andiamo a destra scendendo verso il torrente. PLo attraversiamo e riprendiamo subito dopo a salire sulla sinistra, seguendo una **pista** battuta dai cavalli. Il bivacco è proprio qui sopra, ma lo vedremo solo all'ultimo! 
 
 <figure>
     <img src="https://farm5.staticflickr.com/4884/44770997745_9eed0b10d2_c.jpg" alt="Bivacco Casorate-Sempione" /> 
     <figcaption>Il Bivacco Casorate-Sempione</figcaption>
 </figure>
 
-Breve pausa al **Bivacco Casorate-Sempione,** recuperiamo le energie con i nostri **Gu-Gel.** Monica ha apprezzato la variante al cioccolato, davvero squisita! Inizia qui il tratto più duro. Il sentiero diventa sempre meno evidente fino quasi a scomparire. Bisogna solo affidarsi ai bolli presenti sui massi. Il tempo si guasta. Non pioverà, ma le nebbie ci precludono la vista sulle vette granitiche che ci circondano. 
+Breve pausa al **Bivacco Casorate-Sempione** per recuperare le energie con i nostri **Gu-Gel.** Monica ha apprezzato la variante al cioccolato, davvero squisita! Inizia qui il tratto più duro. Il sentiero diventa sempre meno evidente fino quasi a scomparire. Bisogna solo affidarsi ai bolli presenti sui massi. Il tempo si guasta. Non pioverà, ma le nebbie ci precludono la vista sulle vette granitiche che ci circondano. 
 
 Più in alto l’erba lascia spazio a grossi blocchi di granito. Finalmente siamo alla sella della **Porta.** Nella nebbia più totale proseguiamo verso la Bocchetta di Spassato. Il terreno si fa più impegnativo e molto scivoloso. In presenza di neve questo tratto renderebbe obbligatori i ramponi. Eccoci al nostro gran premio della montagna, La Bocchetta di Spassato! 
 
@@ -60,6 +60,6 @@ Ci fermiamo a contemplare in silenzio questo spettacolo. In breve raggiungiamo i
     <figcaption>Discesa al tramonto lungo la Val dei Ratti</figcaption>
 </figure>
 
-Ormai il sole è tramontato quando arriviamo al parcheggio della partenza del Tracciolino. Non ci resta — si fa per dire — che scendere lungo la **mulattiera** che taglia i tornanti della strada. La affrontiamo di corsa con le frontali, stando attenti al ciotolato *“spacca-caviglie”*. Distrutti arriviamo a **Verceia.**
+Ormai il sole è tramontato quando arriviamo al parcheggio della partenza del Tracciolino. Non ci resta — si fa per dire — che scendere lungo la **mulattiera** che taglia i tornanti della strada. La affrontiamo di corsa con le frontali, stando attenti al ciotolato *“spacca-caviglie”*. Arriviamo stanchissimi a **Verceia.**
 
 Non è finita qui però: ci aspettano **3km in piano** per tornare a Novate Mezzola. Ultima corsa lungo la ciclabile, con risalita finale al parcheggio. In tutto saranno 30km ler 3000m di dislivello. Siamo distrutti, ma **pieni di goia** per una giornata ricca di emozioni che ricorderemo per sempre.
