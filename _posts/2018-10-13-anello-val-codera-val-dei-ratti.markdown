@@ -13,7 +13,7 @@ crop: x_1400
 version: v1542234284
 ---
 
-Un **giro ad anello** di ampio respiro. Durissimo, ma che ci ha regalato delle soddisfazioni immense. Luoghi selvaggi e poco battuti, salite ripide e impervie, nebbie e colori autunnali: la montagna più bella. Alle otto siamo allA partenza nei pressi dell’ampio **parcheggio di Mezzolpiano.** Compagna di avventura Monica, abitutata a queste *“scammellate”*. Sarà dura tenerle testa!
+Un **giro ad anello** di ampio respiro. Durissimo, ma che ci ha regalato delle soddisfazioni immense. Luoghi selvaggi e poco battuti, salite ripide e impervie, nebbie e colori autunnali: la montagna più bella. Alle otto siamo alla partenza nei pressi dell’ampio **parcheggio di Mezzolpiano.** Compagna di avventura Monica, abitutata a queste *“scammellate”*. Sarà dura tenerle testa!
 
 Assetto da sky race, microzaino e le nostre Hoka salva-piedi. Seguiamo la mulattiera del **Sentiero Roma** fino a Codera. Da qui deviamo in direzione della selvaggia **Val Ladrogno.** Scendiamo fino al ponte sul Torrente Codera per raggiungere un secondo — bellissimo — ponte sul Torrente Val Ladrogno. 
 
