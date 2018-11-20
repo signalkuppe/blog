@@ -62,4 +62,6 @@ Ci fermiamo a contemplare in silenzio questo spettacolo. In breve raggiungiamo i
 
 Ormai il sole è tramontato quando arriviamo al parcheggio della partenza del Tracciolino. Non ci resta — si fa per dire — che scendere lungo la **mulattiera** che taglia i tornanti della strada. La affrontiamo di corsa con le frontali, stando attenti al ciotolato *“spacca-caviglie”*. Arriviamo stanchissimi a **Verceia.**
 
-Non è finita qui però: ci aspettano **3km in piano** per tornare a Novate Mezzola. Ultima corsa lungo la ciclabile, con risalita finale al parcheggio. In tutto saranno 30km ler 3000m di dislivello. Siamo distrutti, ma **pieni di goia** per una giornata ricca di emozioni che ricorderemo per sempre.
+Non è finita qui però: ci aspettano **3km in piano** per tornare a Novate Mezzola. Ultima corsa lungo la ciclabile, con risalita finale al parcheggio.
+
+In tutto saranno 30km ler 3000m di dislivello. Siamo distrutti, ma **pieni di goia** per una giornata ricca di emozioni che ricorderemo per sempre.
