@@ -53,7 +53,7 @@ Più in alto l’erba lascia spazio a grossi blocchi di granito. Finalmente siam
 
 L’idea era quella di fare anche il Ligoncio, ma non avrebbe senso con questa nebbia. La salita è finita ma il rientro è ancora lunghissimo! Scendiamo lungo un **canalino** abbastanza ripido per guadagnare la testata della **Val dei Ratti.** Si apre uno scenario mozzafiato: siamo soli in un’immensa distesa di granito, con le nuvole che avvolgono le vette in lontananza. 
 
-Ci fermiamo a contemplare in silenzio questo spettacolo. In breve raggiungiamo il **Bivacco Volta.** Pranziamo con le poche cose che abbiamo e proseguiamo lungo la via più preve che evita il passaggio al Bivacco Primalpia. Il sole si abbassa all’orizzonte, la luca si scalda e le ombre si allungano. Respiriamo la magica atmosfera di un **tramonto autunnale.**
+Ci fermiamo a contemplare in silenzio questo spettacolo. In breve raggiungiamo il **Bivacco Volta.** Pranziamo con le poche cose che abbiamo e proseguiamo lungo la via più preve che evita il passaggio al Bivacco Primalpia. Il sole si abbassa all’orizzonte, la luce si scalda e le ombre si allungano. Respiriamo la magica atmosfera di un **tramonto autunnale.**
 
 <figure>
     <img src="https://farm5.staticflickr.com/4831/45634802022_a622c1d01a_c.jpg" alt="Discesa al tramonto lungo la Val dei Ratti" /> 
