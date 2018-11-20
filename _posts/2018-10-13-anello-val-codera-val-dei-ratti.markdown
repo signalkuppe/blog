@@ -22,6 +22,8 @@ Assetto da sky race, microzaino e le nostre Hoka salva-piedi. Seguiamo la mulatt
     <figcaption>Il ponte sul Torrente Val Ladrogno</figcaption>
 </figure>
 
+## La salita lungo la Val Ladrogno
+
 Inizia qui la **lunghissima salita** fino alla Bocchetta di Spassato. Siamo consapevoli di quello che ci aspetta, ma siamo venuti proprio per vincere questa sfida! Saliamo per ripidi tornanti nel bosco di castagni, incrociando il **Tracciolino.** Continuiamo a salire in uno splendido bosco di betulle fino alle baite di Mottala. 
 
 Riprendiamo a salire, con pendenze sempre sostenute, arrivando ai prati dell’alpe in **Cima al Bosco** dove è presente una baita solitaria con una vista mozzafiato su lago di Novate Mezzola. Ci concediamo una breve pausa per ammirare il panorama. Il sentiero ora piega decisamente verso est, addentrandosi nel cuore della Val Ladrogno. 
@@ -50,6 +52,8 @@ Più in alto l’erba lascia spazio a grossi blocchi di granito. Finalmente siam
     <img src="https://farm2.staticflickr.com/1921/44771004785_ec543a40d3_c.jpg" alt="Il tratto dopo la Porta prima della Bocchetta di Spassato" /> 
     <figcaption>Il tratto dopo la Porta</figcaption>
 </figure>
+
+## Il rientro per la Val dei Ratti
 
 L’idea era quella di fare anche il Ligoncio, ma non avrebbe senso con questa nebbia. La salita è finita ma il rientro è ancora lunghissimo! Scendiamo lungo un **canalino** abbastanza ripido per guadagnare la testata della **Val dei Ratti.** Si apre uno scenario mozzafiato: siamo soli in un’immensa distesa di granito, con le nuvole che avvolgono le vette in lontananza. 
 

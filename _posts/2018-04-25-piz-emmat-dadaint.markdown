@@ -8,7 +8,7 @@ tags: scialpinismo engadina svizzera
 caption: Dal Piz d’Emmat
 flickr: 72157693423089502
 gps: true
-map: 46.262727,9.421325
+map: 46.440698,9.686360
 crop: x_500
 ---
 
