@@ -35,7 +35,7 @@ Costeggiamo tutto il versante della montagna con un alternanza di falsipiani e s
 
 Spuntiamo su una radura nei pressi di un grosso masso, dove notiamo **tre frecce dipinte** su una roccia. Purtroppo incrociamo anche due cacciatori. Il grande caldo per fortuna non gli ha consentito di catturare prede. 
 
-Ci scoraggiano nel proseguire vista la lunghezza del percorso, ma non sanno con chi hanno a che fare. Andiamo a destra scendendo verso il torrente. PLo attraversiamo e riprendiamo subito dopo a salire sulla sinistra, seguendo una **pista** battuta dai cavalli. Il bivacco è proprio qui sopra, ma lo vedremo solo all'ultimo! 
+Ci scoraggiano nel proseguire vista la lunghezza del percorso, ma non sanno con chi hanno a che fare. Andiamo a destra scendendo verso il torrente. Lo attraversiamo e riprendiamo subito dopo a salire sulla sinistra, seguendo una **pista** battuta dai cavalli. Il bivacco è proprio qui sopra, ma lo vedremo solo all'ultimo! 
 
 <figure>
     <img src="https://farm5.staticflickr.com/4884/44770997745_9eed0b10d2_c.jpg" alt="Bivacco Casorate-Sempione" /> 
