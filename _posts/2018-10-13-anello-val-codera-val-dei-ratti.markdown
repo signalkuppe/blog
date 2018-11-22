@@ -24,9 +24,9 @@ Assetto da sky race, microzaino e le nostre Hoka salva-piedi. Seguiamo la mulatt
 
 ## La salita lungo la Val Ladrogno
 
-Inizia qui la **lunghissima salita** fino alla Bocchetta di Spassato. Siamo consapevoli di quello che ci aspetta, ma siamo venuti proprio per vincere questa sfida! Saliamo per ripidi tornanti nel bosco di castagni, incrociando il **Tracciolino.** Continuiamo a salire in uno splendido bosco di betulle fino alle baite di Mottala. 
+Inizia qui la **lunghissima salita** fino alla Bocchetta di Spassato. Siamo consapevoli di quello che ci aspetta, ma siamo venuti proprio per vincere questa sfida! Affrontiamo i ripidi tornanti nel bosco di castagni fino a incrociare il **Tracciolino.** Continuiamo poi in uno splendido bosco di betulle fino alle baite di Mottala. 
 
-Riprendiamo a salire, con pendenze sempre sostenute, arrivando ai prati dell’alpe in **Cima al Bosco** dove è presente una baita solitaria con una vista mozzafiato su lago di Novate Mezzola. Ci concediamo una breve pausa per ammirare il panorama. Il sentiero ora piega decisamente verso est, addentrandosi nel cuore della Val Ladrogno. 
+Con pendenze sempre sostenute, arriviamo ai prati dell’alpe in **Cima al Bosco** dove è presente una baita solitaria con una vista mozzafiato su lago di Novate Mezzola. Ci concediamo una breve pausa per ammirare il panorama. Il sentiero ora piega decisamente verso est, addentrandosi nel cuore della Val Ladrogno. 
 
 <figure>
     <img src="https://farm5.staticflickr.com/4905/31812930518_6e1ef5d2f1_c.jpg" alt="Il bellissimo bosco di betulle nei pressi delle baite di Mottala" /> 
@@ -68,4 +68,4 @@ Ormai il sole è tramontato quando arriviamo al parcheggio della partenza del Tr
 
 Non è finita qui però: ci aspettano **3km in piano** per tornare a Novate Mezzola. Ultima corsa lungo la ciclabile, con risalita finale al parcheggio.
 
-In tutto saranno 30km ler 3000m di dislivello. Siamo distrutti, ma **pieni di goia** per una giornata ricca di emozioni che ricorderemo per sempre.
+In tutto saranno 30km per 3000m di dislivello. Siamo distrutti, ma **pieni di goia** per una giornata ricca di emozioni che ricorderemo per sempre.
