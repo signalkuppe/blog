@@ -54,6 +54,6 @@ Ci prepariamo per la discesa, la cima è larga e si riescono a mettere comodamen
 </figure>
 
 Lo **sci alpinismo in pieno inverno** è fatto anche di freddo, vento e neve non ottimale, ma tutto viene ripagato dalla gioia di muoversi in questi ambienti severi.
-Complimenti a Monica per la sua prima uscita BSA, ha lottato senza mail mollare!
+Complimenti a Monica per la sua prima uscita BSA, ha lottato senza mai mollare!
 
 Situazione neve surreale. Metri di neve in quota e prati sotto i 2000m, quest’anno va così!
