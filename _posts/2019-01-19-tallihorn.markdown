@@ -9,6 +9,7 @@ caption: In discesa dal Tallihorn
 flickr: 72157702665549462
 gps: true
 map: 46.568817,9.231703
+crop: x_900
 ---
 
 Siamo Io, Fabrizio e Pietro. Partiamo alla volta del **San Bernardino** con l’idea di fare il Piz De Mucia. Al passo però il meteo è terribile, nevica e le cime sono completamente avvolte dalle nuvole. La perturbazione arriva da sud, quindi propongo di continuare per cercare fortuna **oltre lo spartiacque.** Scelta azzeccata, ampi squarci di sereno subito dopo il tunnel.
