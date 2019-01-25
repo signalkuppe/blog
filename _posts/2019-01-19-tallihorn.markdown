@@ -2,7 +2,7 @@
 layout: post
 title: "Tällihorn"
 date: 2019-01-19
-description: "Relazione dell’itinerario di scialpinismo al Tällihorn con partenza da Nufenen nel Canton Grigioni dopo il San Bernardino"
+description: "Relazione dell’itinerario di scialpinismo al Tällihorn nella Rheinwald (Canton Grigioni) con partenza da Nufenen dopo il San Bernardino"
 categories: scialpinismo
 tags: scialpinismo tallihorn nufenen 
 caption: In discesa dal Tällihorn
