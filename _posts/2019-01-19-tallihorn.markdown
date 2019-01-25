@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Tallihorn"
+title: "Tällihorn"
 date: 2019-01-19
-description: "Relazione dell’itinerario di scialpinismo al Tallihorn con partenza da Nufenen nel Canton Grigioni dopo il San Bernardino"
+description: "Relazione dell’itinerario di scialpinismo al Tällihorn con partenza da Nufenen nel Canton Grigioni dopo il San Bernardino"
 categories: scialpinismo
 tags: scialpinismo tallihorn nufenen 
 caption: In discesa dal Tallihorn
@@ -22,11 +22,11 @@ Siamo Io, Fabrizio e Pietro. Partiamo alla volta del **San Bernardino** con l’
 </figure>
 
 Il Chilchalphorn è ancora avvolto dalle nuvole, proseguiamo fino a **Nufenen** dove le cime sono libere.
-Vediamo dei bei pendii e decidiamo di partire da qui. Una rapida consultazione alla cartina e scegliamo come nostra meta il **Tallihorn.** Alla partenza c'è già tanta neve, un altro mondo rispetto al versante sud delle Alpi.
+Vediamo dei bei pendii e decidiamo di partire da qui. Una rapida consultazione alla cartina e scegliamo come nostra meta il **Tällihorn.** Alla partenza c'è già tanta neve, un altro mondo rispetto al versante sud delle Alpi.
 
 ## Partenza da Nufenen
 
-Un bel -12°C ma senza vento, condizioni quasi ideali per noi che iniziamo a sudare dopo pochi metri. Poco prima di noi è partito l’immancabile **“gruppone svizzero”** di venti elementi, rigorosamente uno in fila all’altro. Fabrizio si mette in modalità *“tutina”* e comincia a superarli uno dopo l’altro. Io e Pietro seguiamo a ruota. Ritmo Impossibile per gli svizzeri che non provano neanche un accenno di reazione.
+Un bel -12°C ma senza vento, condizioni quasi ideali per noi che iniziamo a sudare dopo pochi metri. Poco prima di noi è partito l’immancabile **“gruppone svizzero”** di venti elementi, rigorosamente uno in fila all’altro. Fabrizio si mette in modalità *“tutina”* e comincia a superarli uno dopo l’altro. Io e Pietro seguiamo a ruota. Ritmo impossibile per gli svizzeri che non provano neanche un accenno di reazione.
 
 <figure>
     <img src="https://farm5.staticflickr.com/4878/45915893055_5d2aa49eb8_c.jpg" alt="Scialpinismo al Tallihorn: la cresta finale" /> 
