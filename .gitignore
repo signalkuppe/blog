@@ -1,4 +1,4 @@
-_site
-.sass-cache
-.jekyll-metadata
+dist
 .DS_Store
+.gitignore
+node_modules

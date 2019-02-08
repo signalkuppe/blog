@@ -1,0 +1,16 @@
+{# Homepage layout #}
+{% import "macros.njk" as macro %}
+{{ macro.docType() }}
+{{ macro.htmlTag() }}
+  <head>
+    {{ macro.commonMeta() }}
+    {{ macro.favicons() }}
+    {{ macro.socialMeta(info.name, info.description, ogImage) }}
+    {{ macro.canonical(page.url) }}
+    {{ macro.metaTitle(info.name, info.slogan) }}
+  </head>
+  <body>
+    {{ content | safe }}
+  </body>
+</html>
+

@@ -1,0 +1,95 @@
+{# 
+# Social media meta tags
+# @param {string} title  - The page title
+# @param {string} description  - The page description
+# @param {string} image  - The page cloudinary image id
+# @param {string} twitterCard  - The type of twitter card (default = summary)
+# @param {string} ogType - The open graph type (default = article)
+#}
+
+{% macro socialMeta(title, description, image, twitterCard='summary', ogType='article') %}
+<meta name="description" content="{{ description }}">
+<meta name="twitter:card" content="{{ twitterCard }}" />
+<meta name="twitter:site" content="{{ info.twitter }}" />
+<meta name="twitter:creator" content="{{ info.twitter }}" />
+<meta property="og:site_name" content="{{ info.name }}" />
+<meta name="twitter:title" content="{{ title }} "/>
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:type" content="{{ ogType }}" />
+<meta property="og:image" content="{{ cloudinaryImageUrl(image, 'w_200,h_200,c_fill,f_auto,q_auto,g_center') }}" />
+<meta property="og:description" content="{{ description }}" />
+{% endmacro %}
+
+
+{# 
+# favicons
+#}
+
+{% macro favicons() %}
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#000000">
+<meta name="theme-color" content="#ffffff">
+{% endmacro %}
+
+{# 
+# Common meta tags
+#}
+
+{% macro commonMeta () %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+{% endmacro %}
+
+{# 
+# Canonical meta tags
+# @param {string} url - The page ulr
+#}
+
+{% macro canonical(pageUrl) %}
+<link rel="canonical" href="{{ info.baseUrl }}{{ pageUrl }}">
+{% endmacro %}
+
+
+{# 
+# Meta title
+# @param {string} title - The title
+# @param {string} slogan - The slogan adter the pipe
+#}
+
+{% macro metaTitle(title, slogan) %}
+<title>{{ title }} | {{ slogan }}</title>
+{% endmacro %}
+
+{# 
+# Document type
+#}
+
+{% macro docType() %}
+<!doctype html>
+{% endmacro %}
+
+{# 
+# html tag
+#}
+{% macro htmlTag() %}<html lang="it">{% endmacro %}
+
+{# 
+# Site css file
+#}
+
+{% macro css() %}
+<link href="/css/index.css" rel="stylesheet">
+{% endmacro %}
+
+
+{# 
+# Cloudinary image url
+# @param {string} id  - The image id
+# @param {string} transformation - The transformation to apply
+#}
+
+{% macro cloudinaryImageUrl(id, transformation) %}https://res.cloudinary.com/{{ info.cloudinaryCloudName }}/image/upload/{{ transformation }}/{{ id }}{% endmacro %}

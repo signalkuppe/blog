@@ -1,0 +1,4 @@
+{
+  "layout": "layouts/post.njk",
+  "permalink":  "{{ categories }}/{{ date | date: '%Y' }}/{{ date | date: '%m' }}/{{ date | date: '%d' }}/{{ title | slug }}/index.html"
+}
