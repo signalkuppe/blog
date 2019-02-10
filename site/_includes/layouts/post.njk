@@ -1,17 +1,43 @@
 {# Post layout #}
 {% import "macros.njk" as macro %}
+{% set postCover %}blog/covers/{{ date | formatDate('DDMMYY') }}{% endset %}
+{% set coverCrop %}g_auto{% endset %}
+{% if crop %}{% set coverCrop %}{{ crop }}{% endset %}{% endif %}
 {{ macro.docType() }}
 {{ macro.htmlTag() }}
   <head>
     {{ macro.commonMeta() }}
     {{ macro.favicons() }}
-    {{ macro.socialMeta(title, description, date | dateFolder) }}
+    {{ macro.socialMeta(title, description, postCover) }}
     {{ macro.canonical(page.url) }}
     {{ macro.metaTitle(title, info.slogan) }}
     {{ macro.css() }}
+    <style>
+ .ratio {
+  position: relative;
+  height: 100vh;
+  background: teal;
+  width: calc(0.666 * 100vh);
+  margin: auto;
+}   
+    </style>
   </head>
   <body>
-    {{ content | safe }}
+    <div class="lg:flex">
+      <div class="lg:w-1/2">
+        <figure class="relative">
+          <img class="ratio object-cover" src="{{ macro.cloudinaryImageUrl(postCover, 'w_1706,h_2560,c_fill,f_auto,q_auto,c_crop') }}" />
+          <figcaption class="absolute pin-l pin-b p-8 text-white text-5xl">{{ caption }}</figcaption>
+        </figure>
+      </div>
+      <div class="lg:w-1/2 h-screen overflow-auto">
+        <main class="max-w-md mt-16 lg:ml-8 lg:mr-8">
+          <h1 class="text-6xl mb-8 font-extrabold">{{ title }}</h1>
+          {{ content | safe }}
+        </main>
+      </div>
+    </div>
+    
   </body>
 </html>
 

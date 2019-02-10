@@ -8,8 +8,14 @@
     {{ macro.socialMeta(info.name, info.description, ogImage) }}
     {{ macro.canonical(page.url) }}
     {{ macro.metaTitle(info.name, info.slogan) }}
+    {{ macro.css() }}
   </head>
   <body>
+    <ul>
+    {% for post in collections.posts %}
+    <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+    {% endfor %}
+    </ul>
     {{ content | safe }}
   </body>
 </html>

@@ -8,7 +8,6 @@ const info = JSON.parse(fs.readFileSync(path.join(inputDir, '_data', 'info.json'
 module.exports = (eleventyConfig) => {
 
   /*
-
   * Create a custom nunjucks env, so we can pass some global vars for macros
   */
 
@@ -16,7 +15,6 @@ module.exports = (eleventyConfig) => {
     new Nunjucks.FileSystemLoader(path.join(inputDir, '_includes'))
   )
   
-  // add global var with site config
   nunjucksEnvironment.addGlobal('info', info)
   
   eleventyConfig.setLibrary('njk', nunjucksEnvironment)
@@ -31,13 +29,23 @@ module.exports = (eleventyConfig) => {
   * Formats a date according to the the staorage convention on cloudinary
   **/
 
-  eleventyConfig.addFilter('dateFolder', (dateString) => {
+  eleventyConfig.addFilter('formatDate', (dateString, format) => {
     try {
-      return dayjs(dateString).format('DD/MM/YY')
+      return dayjs(dateString).format(format)
     } catch (err) {
       console.error(err)
       return ''
     }
+  })
+
+  /*
+  * Add all posts as a collection
+  */
+
+  eleventyConfig.addCollection('posts', collection => {
+    return collection.getFilteredByGlob(path.join(inputDir, 'posts', '/*.md')).sort((a, b) => {
+      return b.date - a.date
+    })
   })
 
   return {
