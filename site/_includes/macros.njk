@@ -93,3 +93,13 @@
 #}
 
 {% macro cloudinaryImageUrl(id, transformation) %}https://res.cloudinary.com/{{ info.cloudinaryCloudName }}/image/upload/{{ transformation }}/{{ id }}{% endmacro %}
+
+{# 
+# Post cover image
+# @param {Object} date  - The post object data
+#}
+
+{% macro postCover(date, version, crop) %}
+{% set imageId %}blog/covers/{{ post.date | formatDate('DDMMYY') }}{% endset %}
+<pre>--{{ version | dump | safe  }}</pre>
+{% endmacro %}
