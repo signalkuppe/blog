@@ -10,9 +10,9 @@
 {% macro socialMeta(title, description, image, twitterCard='summary', ogType='article') %}
 <meta name="description" content="{{ description }}">
 <meta name="twitter:card" content="{{ twitterCard }}" />
-<meta name="twitter:site" content="{{ info.twitter }}" />
-<meta name="twitter:creator" content="{{ info.twitter }}" />
-<meta property="og:site_name" content="{{ info.name }}" />
+<meta name="twitter:site" content="{% info 'twitter' %}" />
+<meta name="twitter:creator" content="{% info 'twitter' %}" />
+<meta property="og:site_name" content="{% info 'name' %}" />
 <meta name="twitter:title" content="{{ title }} "/>
 <meta property="og:title" content="{{ title }}" />
 <meta property="og:type" content="{{ ogType }}" />
@@ -50,7 +50,7 @@
 #}
 
 {% macro canonical(pageUrl) %}
-<link rel="canonical" href="{{ info.baseUrl }}{{ pageUrl }}">
+<link rel="canonical" href="{% info 'baseUrl' %}{{ pageUrl }}">
 {% endmacro %}
 
 
@@ -85,21 +85,47 @@
 <link href="/css/index.css" rel="stylesheet">
 {% endmacro %}
 
+{# 
+# Site menu
+#}
+
+{% macro menu() %}
+<nav class="fixed pin-r pin-t m-4 z-50">
+  <button id="menuButton" lass="bg-black p-3 text-white" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Menu di navigazione">Menu</button>
+  <ul id="menu">
+    <li><a href="/" title="Torna alla pagina iniziale">Homepage</a></li>
+    <li><a href="/blog" title="Elenco completo dei post">Blog</a></li>
+    <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
+    <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
+  </ul>
+</nav>
+<script>
+  var button = document.querySelector('#menuButton')
+  var menu = document.querySelector('#menu')
+</script>
+{% endmacro %}
 
 {# 
 # Cloudinary image url
 # @param {string} id  - The image id
 # @param {string} transformation - The transformation to apply
+# @param {string} version - The image version (to bypass cloudinary's cdn cache)
 #}
 
-{% macro cloudinaryImageUrl(id, transformation) %}https://res.cloudinary.com/{{ info.cloudinaryCloudName }}/image/upload/{{ transformation }}/{{ id }}{% endmacro %}
+{% macro cloudinaryImageUrl(id, transformation, version) %}https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ transformation }}{% if version %}/{{ version }}{% endif %}/{{ id }}{% endmacro %}
 
 {# 
 # Post cover image
-# @param {Object} date  - The post object data
+# @param {String} postCoverId  - the cloudinary image id
+# @param {String} version  - the cloudinary image version
+# @param {String} crop - optional: the image crop
 #}
 
-{% macro postCover(date, version, crop) %}
-{% set imageId %}blog/covers/{{ post.date | formatDate('DDMMYY') }}{% endset %}
-<pre>--{{ version | dump | safe  }}</pre>
+{% macro postCover(postCoverId, version, crop) %}
+{% set baseTransformation %}w_1280,h_1920,c_crop,f_auto,q_auto{% endset %}
+{% set transformation = baseTransformation %}
+{% if crop %}
+{% set transformation %}{{ baseTransformation }},{{ crop }}{% endset %}
+{% endif %}
+{{ cloudinaryImageUrl(postCoverId, transformation, version) }}
 {% endmacro %}

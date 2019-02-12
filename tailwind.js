@@ -127,6 +127,8 @@ let colors = {
   'pink-light': '#fa7ea8',
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
+
+  'primary': '#FC0'
 }
 
 module.exports = {
@@ -953,33 +955,6 @@ module.exports = {
   | the plugin system works.
   |
   */
-
-  plugins: [
-    function ({ addUtilities, addComponents, e, prefix, config }) {
-      const objectFit = {
-        '.object-cover': {
-          objectFit: 'cover'
-        },
-        '.object-contain': {
-          objectFit: 'contain'
-        }
-      }
-      const ratioTwoThirds = {
-        '.ratio-2-3': {
-          width: 'calc(0.666 * 100vh)',
-        }
-      }
-      const ratioTwoThirdsRamainingSpace = {
-        '.ratio-2-3-ramaining': {
-          width: 'calc(100% - calc(0.666 * 100vh))',
-        }
-      }
-      addComponents(ratioTwoThirds)
-      addComponents(ratioTwoThirdsRamainingSpace)
-      addUtilities(objectFit)
-    },
-  ],
-
 
   /*
   |-----------------------------------------------------------------------------

@@ -1,0 +1,32 @@
+
+/**
+ * Custom utilities not in tailwind
+ */
+
+.object-cover {
+  object-fit: cover;
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+@responsive {
+  .sr-only {
+    clip: rect(0 0 0 0);
+    position: absolute;
+    white-space: nowrap;
+  }
+  .not-sr-only {
+    clip: none;
+    position: static;
+    white-space: auto;
+  }
+  .ratio-2-3 {
+    width: calc(100vh * 0.666);
+  }
+  .ratio-2-3-remaining {
+    width: calc(100% - calc(100vh * 0.666))
+  }
+}
+
