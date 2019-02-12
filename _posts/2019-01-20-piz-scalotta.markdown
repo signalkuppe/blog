@@ -2,7 +2,7 @@
 layout: post
 title: "Piz Scalotta"
 date: 2019-01-20
-description: "Relazione dell’itinerario di scialpinismo Piz Scalotta con partenza da Bivio e la val Gronda. Rientro per il vallone di Stalveder"
+description: "Relazione dell’itinerario di scialpinismo al Piz Scalotta per la Val Gronda con partenza da Bivio. Rientro per il vallone di Stalveder"
 categories: scialpinismo
 tags: scialpinismo bivio scalotta 
 caption: Il Piz Platta dalla vetta
