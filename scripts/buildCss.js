@@ -14,6 +14,7 @@ const source = path.join(process.cwd(), 'site/css/index.css')
 const dest = path.join(destDir, 'index.css')
 
 const buildCss = () => {
+  console.info('Building css...')
   mkdirp(destDir, (err) => {
     if (err) {
       console.error('Css write directory error', err)

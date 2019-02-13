@@ -90,8 +90,14 @@
 #}
 
 {% macro menu() %}
-<nav class="fixed pin-r pin-t m-4 z-50">
-  <button id="menuButton" lass="bg-black p-3 text-white" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Menu di navigazione">Menu</button>
+<nav id="menuContainer" class="sticky w-screen h-nav leading-nav landscape:ratio-2-3-remaining landscape:float-right pin-t z-50 p-2">
+  <a class="landscape:gutter-left inline-block no-underline text-black" href="/" title="Torna alla pagina iniziale">
+    <h1 class="text-lg uppercase">Signalkuppe</h1>
+  </a>
+  <button id="menuButton" class="float-right mt-3 mr-4 text-lg" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Menu di navigazione">
+    <span class="sr-only">Menu di navigazione</span>
+    {% include 'icons/menu.njk' %}
+  </button>
   <ul id="menu">
     <li><a href="/" title="Torna alla pagina iniziale">Homepage</a></li>
     <li><a href="/blog" title="Elenco completo dei post">Blog</a></li>
@@ -101,7 +107,21 @@
 </nav>
 <script>
   var button = document.querySelector('#menuButton')
+  var menuContainer = document.querySelector('#menuContainer')
   var menu = document.querySelector('#menu')
+  menu.classList.add('hidden')
+  var options = {
+    rootMargin: '0px',
+    threshold: 1.0
+  }
+  var callback = function (entries, observer) {
+    entries.forEach((entry) => {
+      console.log(entry)
+    });
+  }
+  var observer = new IntersectionObserver(callback, options);
+  var target = document.querySelector('#post-title')
+  observer.observe(target);
 </script>
 {% endmacro %}
 

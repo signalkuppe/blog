@@ -12,21 +12,23 @@
     {{ macro.css() }}
   </head>
   <body>
-    {{ macro.menu() }}
-    <div class="xl:clearfix">
-      <div class="xl:float-left">
+    <header>
+     {{ macro.menu() }}
+    </header>
+    <div class="landscape:clearfix">
+      <div class="landscape:float-left">
         <figure class="relative bg-primary z-0">
-          <img class="xl:ratio-2-3 h-screen object-cover block" src="{{ macro.postCover(postCoverId, version, crop)  }}" />
+          <img class="portrait:w-screen portrait:h-content landscape:ratio-2-3 h-screen object-cover block" src="{{ macro.postCover(postCoverId, version, crop)  }}" />
           <figcaption class="absolute pin-l pin-b p-8 text-white">
-            <div class="text-5xl xl:hidden">{{ title }}</div>
+            <div class="text-5xl landscape:hidden">{{ title }}</div>
             <span class="text-3xl">{{ caption }}</span>
           </figcaption>
         </figure>
       </div>
-      <main class="xl:float-left xl:h-screen xl:ratio-2-3-remaining overflow-auto">
-        <article class="max-w-md mt-16 xl:ml-12 xl:mr-8" itemscope itemtype="http://schema.org/Article">
+      <main class="landscape:h-content landscape:float-left landscape:h-screen landscape:ratio-2-3-remaining overflow-auto">
+        <article class="mt-16 max-w-md landscape:ml-12 landscape:gutter-left" itemscope itemtype="http://schema.org/Article">
           <header>
-            <h1 class="text-6xl mb-8 font-extrabold sr-only xl:not-sr-only">{{ title }}</h1>
+            <h1 id="post-title" class="text-6xl mb-8 font-extrabold sr-only landscape:not-sr-only break-words">{{ title }}</h1>
             <time class="capitalize" datetime="{{ date }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
             <span class="sr-only" itemprop="author" itemscope itemtype="http://schema.org/Person">
               <span itemprop="name">{% info 'twitter' %}</span>

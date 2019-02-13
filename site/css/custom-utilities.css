@@ -12,21 +12,31 @@
 }
 
 @responsive {
+  .gutter-left {
+    @apply ml-16
+  }
   .sr-only {
     clip: rect(0 0 0 0);
     position: absolute;
-    white-space: nowrap;
   }
   .not-sr-only {
     clip: none;
     position: static;
-    white-space: auto;
   }
   .ratio-2-3 {
     width: calc(100vh * 0.666);
   }
   .ratio-2-3-remaining {
     width: calc(100% - calc(100vh * 0.666))
+  }
+  .h-nav {
+    height: 4rem;
+  }
+  .leading-nav {
+    line-height: 3rem;
+  }
+  .h-content {
+    height: calc(100vh - 4rem);
   }
 }
 

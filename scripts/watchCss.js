@@ -5,7 +5,7 @@
 const chokidar = require('chokidar')
 const path = require('path')
 const buildCss = require('./buildCss')
-const watcher = chokidar.watch(path.join(process.cwd(), './site/css/*'), {
+const watcher = chokidar.watch(path.join(process.cwd(), './site/css/index.css'), {
   persistent: true
 })
 const watchCss = () => {
