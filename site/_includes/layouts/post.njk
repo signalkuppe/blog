@@ -25,10 +25,10 @@
           </figcaption>
         </figure>
       </div>
-      <main class="landscape:h-content landscape:float-left landscape:h-screen landscape:ratio-2-3-remaining overflow-auto">
+      <main id="main" class="landscape:h-content landscape:float-left landscape:h-screen landscape:ratio-2-3-remaining overflow-auto">
         <article class="mt-16 max-w-md landscape:ml-12 landscape:gutter-left" itemscope itemtype="http://schema.org/Article">
-          <header>
-            <h1 id="post-title" class="text-6xl mb-8 font-extrabold sr-only landscape:not-sr-only break-words">{{ title }}</h1>
+          <header id="pageHeader" class="pageHeader">
+            <h1 id="post-title" class="text-6xl mb-2 font-extrabold sr-only landscape:not-sr-only break-words">{{ title }}</h1>
             <time class="capitalize" datetime="{{ date }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
             <span class="sr-only" itemprop="author" itemscope itemtype="http://schema.org/Person">
               <span itemprop="name">{% info 'twitter' %}</span>
@@ -38,6 +38,9 @@
         </article>
       </main>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stickybits/3.6.1/stickybits.min.js"></script>
+    <script src="/js/menu.js"></script>
+    <script src="/js/topbarFade.js"></script>
   </body>
 </html>
 

@@ -12,6 +12,7 @@ module.exports = (eleventyConfig) => {
   */
 
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'favicons'))
+  eleventyConfig.addPassthroughCopy(path.join(inputDir, 'js'))
 
   /*
   * Add a universal shortcode for site info vars ({% info 'cloudinaryCloudName' %} -> signalkuppe)
