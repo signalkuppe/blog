@@ -128,7 +128,13 @@ let colors = {
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
 
-  'primary': '#FC0'
+  'primary-darkest': '#453411',
+  'primary-darker': '#684f1d',
+  'primary-dark': '#f2d024',
+  'primary': '#ffed4a',
+  'primary-light': '#fff382',
+  'primary-lighter': '#fff9c2',
+  'primary-lightest': '#fcfbeb',
 }
 
 module.exports = {
@@ -173,12 +179,9 @@ module.exports = {
     'md': '768px',
     'lg': '992px',
     'xl': '1200px',
-    'landscape': [
-      {'orientation': 'landscape'}
-    ],
-    'portrait': [
-      {'orientation': 'portrait'}
-    ]
+    'landscape': {'orientation': 'landscape'},
+    'landscape-large': {'min': '1920px', 'orientation': 'landscape'},
+    'portrait': {'orientation': 'portrait'}
   },
 
 
@@ -260,16 +263,16 @@ module.exports = {
   */
 
   textSizes: {
-    'xs': '.75rem',     // 12px
-    'sm': '.875rem',    // 14px
-    'base': '1rem',     // 16px
-    'lg': '1.125rem',   // 18px
-    'xl': '1.25rem',    // 20px
-    '2xl': '1.5rem',    // 24px
-    '3xl': '1.875rem',  // 30px
-    '4xl': '2.25rem',   // 36px
-    '5xl': '3rem',      // 48px
-    '6xl': '4rem',      // 64px
+    'xs': '.85rem',     // 14px
+    'sm': '1rem',       // 16px
+    'base': '1.125rem', // 18px
+    'lg': '1.25rem',    // 20px
+    'xl': '1.5rem',     // 24px
+    '2xl': '1.875rem',  // 30px
+    '3xl': '2.25rem',   // 36px
+    '4xl': '3rem',      // 48px
+    '5xl': '4rem',      // 64px
+    '6xl': '5rem',      // 80px
   },
 
 

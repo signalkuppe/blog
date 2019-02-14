@@ -12,9 +12,6 @@
 }
 
 @responsive {
-  .gutter-left {
-    @apply ml-16
-  }
   .sr-only {
     clip: rect(0 0 0 0);
     position: absolute;
@@ -28,6 +25,9 @@
   }
   .ratio-2-3-remaining {
     width: calc(100% - calc(100vh * 0.666))
+  }
+  .ratio-2-3-content-offset {
+    @apply ml-16
   }
   .h-nav {
     height: 4rem;

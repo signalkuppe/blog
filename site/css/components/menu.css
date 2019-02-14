@@ -4,8 +4,9 @@
   transition: transform 0.1s linear;
   transform: none;
   will-change: transform;
+  outline: none;
 }
 
-.close\:menu {
+.menu.is-closed {
   transform: translateX(100%);
 }

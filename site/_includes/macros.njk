@@ -89,24 +89,24 @@
 # Site menu
 #}
 
-{% macro menu() %}
+{% macro menu(active) %}
 <nav class="sticky w-screen h-nav leading-nav landscape:ratio-2-3-remaining landscape:float-right pin-t z-50 p-2">
-  <a class="landscape:gutter-left inline-block no-underline text-black" href="/" title="Torna alla pagina iniziale">
-    <h1 class="text-lg uppercase">Signalkuppe</h1>
+  <a class="landscape:ratio-2-3-content-offset inline-block no-underline text-black" href="/" title="Torna alla pagina iniziale">
+    <h1 class="text-base uppercase">Signalkuppe</h1>
   </a>
   <button id="menu-open" class="float-right mt-3 mr-4 text-lg" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
     {% include 'icons/menu.njk' %}
   </button>
-  <div id="menu" class="menu ist-reset bg-yellow-lightest h-screen fixed pin-r pin-t w-5/6 max-w-sm hidden">
-    <h2 class="text-center text-3xl mt-16 text-yellow-darker">Menu</h2>
-    <div class="mt-4 mb-16 text-center text-yellow-darker">{% include 'icons/sitemap.njk' %}</div>
+  <div id="menu" class="menu bg-primary-lightest h-screen fixed pin-r pin-t w-screen max-w-sm hidden">
+    <h2 class="text-center text-2xl mt-16 text-primary-darker">Menu</h2>
+    <div class="mt-4 mb-16 text-center text-primary-darker">{% include 'icons/sitemap.njk' %}</div>
     <ul class="list-reset">
-      <li class="hover:bg-yellow-lighter"><a class="block pt-2 pb-2 pl-4 pr-4 text-yellow-darker uppercase no-underline font-bold" href="/" title="Torna alla pagina iniziale">Homepage</a></li>
-      <li class="active border-primary border-l-8 bg-yellow-light"><a class="block pt-2 pb-2 pl-4 pr-4 text-yellow-darker uppercase no-underline font-bold" href="/blog" title="Elenco completo dei post">Blog</a></li>
-      <li class="hover:bg-yellow-lighter"><a class="block pt-2 pb-2 pl-4 pr-4 text-yellow-darker uppercase no-underline font-bold" href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
-      <li class="hover:bg-yellow-lighter"><a class="block pt-2 pb-2 pl-4 pr-4 text-yellow-darker uppercase no-underline font-bold" href="/info" title="Informazioni sull’autore">Info</a></li>
+      <li class="hover:bg-primary-lighter"><a class="block pt-2 pb-2 pl-4 pr-4 text-primary-darker uppercase no-underline font-bold" href="/" title="Torna alla pagina iniziale">Homepage</a></li>
+      <li{% if active === 'blog' %} class="border-primary-dark border-l-8 bg-primary-light"{% endif %}><a class="lock pt-2 pb-2 pl-4 pr-4 text-primary-darker uppercase no-underline font-bold" href="/blog" title="Elenco completo dei post">Blog</a></li>
+      <li class="hover:bg-primary-lighter"><a class="block pt-2 pb-2 pl-4 pr-4 text-primary-darker uppercase no-underline font-bold" href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
+      <li class="hover:bg-primary-lighter"><a class="block pt-2 pb-2 pl-4 pr-4 text-primary-darker uppercase no-underline font-bold" href="/info" title="Informazioni sull’autore">Info</a></li>
     </ul>
-    <button id="menu-close" class="absolute pin-t pin-r mt-5 mr-6 text-yellow-darker" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Chiudi il menu di navigazione">
+    <button id="menu-close" class="absolute pin-t pin-r mt-5 mr-6 text-primary-darker" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Chiudi il menu di navigazione">
       {% include 'icons/close.njk' %}
     </button>
   </div>
