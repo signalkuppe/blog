@@ -31,5 +31,8 @@
     "postcss": "^7.0.14",
     "postcss-import": "^12.0.1",
     "tailwindcss": "^0.7.4"
+  },
+  "dependencies": {
+    "stickybits": "^3.6.1"
   }
 }

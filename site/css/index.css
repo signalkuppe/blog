@@ -42,6 +42,7 @@
  
  @import "/components/buttons";
  @import "/components/pageHeader";
+ @import "/components/menu";
  /**
  /**
   * This injects all of Tailwind's utility classes, generated based on your

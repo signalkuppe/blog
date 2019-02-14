@@ -9,13 +9,13 @@
 
 .pageHeader.js-is-sticky,
 .pageHeader.js-is-stuck {
-  @apply relative bg-white pb-16 mb-16
+  @apply relative bg-white
 }
 
 .pageHeader.js-is-sticky::after,
 .pageHeader.js-is-stuck::after {
   content: '';
-  background: linear-gradient(white, transparent);
+  background: linear-gradient(white 40%, rgba(255,255,255,0) 60%);
   bottom: -8rem;
   height: 8rem;
   @apply block absolute pin-l w-full

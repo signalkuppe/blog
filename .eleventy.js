@@ -8,11 +8,12 @@ const info = JSON.parse(fs.readFileSync(path.join(inputDir, '_data', 'info.json'
 module.exports = (eleventyConfig) => {
 
   /*
-  * Copy static assest
+  * Copy static assest and node libs
   */
 
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'favicons'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'js'))
+  eleventyConfig.addPassthroughCopy('node_modules/stickybits/dist/stickybits.js')
 
   /*
   * Add a universal shortcode for site info vars ({% info 'cloudinaryCloudName' %} -> signalkuppe)
