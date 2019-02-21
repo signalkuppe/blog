@@ -2,7 +2,7 @@
  * Compiles tailwind css using postcss
  */
 
-const tailwindcss = require('tailwindcss')
+const postcssPresetEnv = require('postcss-preset-env');
 const autoprefixer = require('autoprefixer')
 const atImport = require("postcss-import")
 const postcss = require('postcss')
@@ -19,7 +19,7 @@ const buildCss = () => {
       console.error('Css write directory error', err)
     } else {
       fs.readFile(source, (err, css) => {
-        postcss([atImport(), tailwindcss('./tailwind.js'), autoprefixer])
+        postcss([atImport(), postcssPresetEnv({ stage: 0 }), autoprefixer])
           .process(css, { from: source, to: dest })
           .then(result => {
             fs.writeFile(dest, result.css, (err) => {

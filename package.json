@@ -30,7 +30,7 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^7.0.14",
     "postcss-import": "^12.0.1",
-    "tailwindcss": "^0.7.4"
+    "postcss-preset-env": "^6.5.0"
   },
   "dependencies": {
     "stickybits": "^3.6.1"

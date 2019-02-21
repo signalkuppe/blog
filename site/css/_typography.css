@@ -1,0 +1,34 @@
+html {
+  font-size: var(--fontSize0);
+}
+
+body {
+  font-family: system-ui;
+  line-height: var(--leadBase);
+}
+
+:--headings {
+  line-height: var(--leadNone);
+}
+
+h1 {
+  font-size: var(--fontSize6);
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: var(--verticalUnit);
+}
+
+h2 {
+  margin-bottom: var(--verticalUnit);
+}
+
+p + h2 {
+  margin-bottom: calc(var(--verticalUnit) * 2);
+}
+
+figure + p,
+figure + h2 {
+  margin-top: calc(var(--verticalUnit) * 3);
+}

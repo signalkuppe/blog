@@ -1,0 +1,21 @@
+/* Variables */
+:root {
+  --rootFontSize: 100%;
+  --fontSize0: 1rem;
+  --fontSize1: 19px;
+  --fontSize2: 23px;
+  --fontSize3: 28px;
+  --fontSize4: 33px;
+  --fontSize5: 39px;
+  --leadBase: 1.5;
+  --leadNone: 1;
+  --verticalUnit: var(--fontSize0);
+}
+
+/* Custom media queries */
+@custom-media --smallType (min-width: 320px);
+@custom-media --largeType (min-width: 1920px);
+
+
+/* Custom selectors */
+@custom-selector :--headings h1, h2, h3, h4, h5, h6;
