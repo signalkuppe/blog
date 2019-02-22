@@ -5,15 +5,20 @@
     const menu = document.querySelector('#menu')
     const closedClass = 'is-closed'
     menu.classList.add(closedClass)
-    menu.classList.remove('hidden')
+    menu.classList.remove('is-hidden')
     buttonOpen.addEventListener('click', (e) => {
       menu.classList.remove(closedClass)
       menu.setAttribute('tabindex', -1)
       buttonOpen.setAttribute('aria-expended', true)
       buttonClose.setAttribute('aria-expended', true)
       menu.focus()
-      menu.addEventListener('blur', function (e) {
+      menu.addEventListener('blur', (e) => {
         if (!e.relatedTarget) {
+          menu.classList.add(closedClass)
+        }
+      })
+      document.addEventListener('keyup', (event) => {
+        if (event.keyCode === 27) {
           menu.classList.add(closedClass)
         }
       })

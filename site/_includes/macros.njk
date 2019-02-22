@@ -86,27 +86,33 @@
 {% endmacro %}
 
 {# 
-# Site menu
+# Site header
+# @param {string} activeSection - The active section
 #}
 
-{% macro menu(active) %}
-<nav class="sticky w-screen h-nav leading-nav landscape:ratio-2-3-remaining landscape:float-right pin-t z-50 p-2">
-  <a class="landscape:ratio-2-3-content-offset inline-block no-underline text-black" href="/" title="Torna alla pagina iniziale">
-    <h1 class="text-base uppercase">Signalkuppe</h1>
+{% macro header(activeSection) %}
+{% set siteNameTag = 'p' %}
+{% if activeSection == 'front' %}
+{% set siteNameTag = 'h1' %}
+{% endif %}
+<nav class="header">
+  <a href="/" title="Torna alla pagina iniziale" class="header-siteNameLink">
+    <{{ siteNameTag }} class="header-siteName">{% info 'name' %}</{{ siteNameTag }}>
   </a>
-  <button id="menu-open" class="float-right mt-3 mr-4 text-lg" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
+  <button class="header-openMenuButton" id="menu-open" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
     {% include 'icons/menu.njk' %}
   </button>
-  <div id="menu" class="menu bg-primary-lightest h-screen fixed pin-r pin-t w-screen max-w-sm hidden">
-    <h2 class="text-center text-2xl mt-16 text-primary-darker">Menu</h2>
-    <div class="mt-4 mb-16 text-center text-primary-darker">{% include 'icons/sitemap.njk' %}</div>
-    <ul class="list-reset">
-      <li class="hover:bg-primary-lighter"><a class="block pt-2 pb-2 pl-4 pr-4 text-primary-darker uppercase no-underline font-bold" href="/" title="Torna alla pagina iniziale">Homepage</a></li>
-      <li{% if active === 'blog' %} class="border-primary-dark border-l-8 bg-primary-light"{% endif %}><a class="lock pt-2 pb-2 pl-4 pr-4 text-primary-darker uppercase no-underline font-bold" href="/blog" title="Elenco completo dei post">Blog</a></li>
-      <li class="hover:bg-primary-lighter"><a class="block pt-2 pb-2 pl-4 pr-4 text-primary-darker uppercase no-underline font-bold" href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
-      <li class="hover:bg-primary-lighter"><a class="block pt-2 pb-2 pl-4 pr-4 text-primary-darker uppercase no-underline font-bold" href="/info" title="Informazioni sull’autore">Info</a></li>
-    </ul>
-    <button id="menu-close" class="absolute pin-t pin-r mt-5 mr-6 text-primary-darker" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Chiudi il menu di navigazione">
+  <div id="menu" class="header-menu is-hidden">
+    <div class="header-menuContainer">
+      <h2 class="header-menuTitle">Menu</h2>
+      <ul class="header-menuList">
+        <li><a href="/" title="Torna alla pagina iniziale">Homepage</a></li>
+        <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
+        <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
+        <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
+      </ul>
+    </div>
+    <button id="menu-close" class="header-closeMenuButton" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Chiudi il menu di navigazione">
       {% include 'icons/close.njk' %}
     </button>
   </div>
@@ -123,17 +129,30 @@
 {% macro cloudinaryImageUrl(id, transformation, version) %}https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ transformation }}{% if version %}/{{ version }}{% endif %}/{{ id }}{% endmacro %}
 
 {# 
-# Post cover image
+# Cover image
 # @param {String} postCoverId  - the cloudinary image id
 # @param {String} version  - the cloudinary image version
 # @param {String} crop - optional: the image crop
 #}
 
-{% macro postCover(postCoverId, version, crop) %}
+{% macro coverImage(postCoverId, version, crop) %}
 {% set baseTransformation %}w_1280,h_1920,c_crop,f_auto,q_auto{% endset %}
 {% set transformation = baseTransformation %}
 {% if crop %}
 {% set transformation %}{{ baseTransformation }},{{ crop }}{% endset %}
 {% endif %}
 {{ cloudinaryImageUrl(postCoverId, transformation, version) }}
+{% endmacro %}
+
+{# 
+# Cover caption
+# @param {String} title  - the caption title
+# @param {String} description  - the caption description
+#}
+
+{% macro coverCaption(title, description) %}
+<div class="coverCaption">
+  <div class="coverCaption-title">{{ title }}</div>
+  <span class="coverCaption-description">{{ description }}</span>
+</div>
 {% endmacro %}

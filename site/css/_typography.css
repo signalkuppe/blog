@@ -1,5 +1,5 @@
 html {
-  font-size: var(--fontSize0);
+  font-size: var(--fontSizeRoot);
 }
 
 body {
@@ -8,11 +8,17 @@ body {
 }
 
 :--headings {
+  font-weight: 700;
   line-height: var(--leadNone);
 }
 
 h1 {
   font-size: var(--fontSize6);
+  margin-top: 0;
+}
+
+h2 {
+  font-size: var(--fontSize2);
   margin-top: 0;
 }
 
@@ -31,4 +37,9 @@ p + h2 {
 figure + p,
 figure + h2 {
   margin-top: calc(var(--verticalUnit) * 3);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

@@ -1,21 +1,47 @@
-/* Variables */
 :root {
-  --rootFontSize: 100%;
+  /* Typescale: Major third 1.250 */
+  --fontSizeRoot: 100%;
   --fontSize0: 1rem;
-  --fontSize1: 19px;
-  --fontSize2: 23px;
-  --fontSize3: 28px;
-  --fontSize4: 33px;
-  --fontSize5: 39px;
+  --fontSize1: 1.25rem;
+  --fontSize2: 1.563rem;
+  --fontSize3: 1.953rem;
+  --fontSize4: 2.441rem;
+  --fontSize5: 3.052rem;
+  --fontSize6: 3.815rem;
+  --fontSize7: 4.768rem;
   --leadBase: 1.5;
   --leadNone: 1;
   --verticalUnit: var(--fontSize0);
+  --horizontalUnit: var(--fontSize0);
+  --colorPrimary: #ffce00;
+  --colorSecondary: #000;
+  --colorGreyLighter: hsl(238, 20%, 98%);
+  --colorGreyLight: hsl(238, 20%, 96%);
+  --colorGreyMedium: hsl(238, 20%, 80%);
+  --colorGreyDark: hsl(238, 20%, 40%);
+  --colorGreyDarker: hsl(238, 20%, 10%);
 }
 
 /* Custom media queries */
-@custom-media --smallType (min-width: 320px);
-@custom-media --largeType (min-width: 1920px);
-
+@custom-media --mediumType (min-width: 64em); /* 1024px -> 18px base */
+@custom-media --largeType (min-width: 120em); /* 1920px -> 20px base */
+@custom-media --portrait (orientation: portrait);
+@custom-media --landscape (orientation: landscape);
+@custom-media --landscapeLarge (orientation: landscape) and (min-width: 120em);
 
 /* Custom selectors */
 @custom-selector :--headings h1, h2, h3, h4, h5, h6;
+
+
+@media (--mediumType) {
+  :root {
+    --fontSizeRoot: 112.5%;
+  }
+}
+
+@media (--largeType) {
+  :root {
+    --fontSizeRoot: 125%;
+  }
+}
+

@@ -1,0 +1,68 @@
+/*
+* Cover layout: fixed aspect ratio left banner and content on the right
+*/
+
+.l-cover-header {
+  height: 4em;
+}
+
+.l-cover-figure {
+  position: relative;
+}
+
+.l-cover-figure img {
+  display: block;
+  object-fit: cover;
+}
+
+.l-cover-caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (--portrait) {
+
+  .l-cover-figure {
+    height: calc(100vh - 4em);
+  }
+
+  .l-cover-figure img {
+    height: 100%;
+  }
+
+  .l-cover-header {
+    padding-left: var(--horizontalUnit);
+  }
+}
+
+@media (--landscape) {
+
+  .l-cover-header {
+    float:right;
+    width: calc(100% - calc(100vh * 0.666));
+  }
+  
+  .l-cover-left {
+    float: left;
+    height: 100vh;
+    width: calc(100vh * 0.666);
+  }
+
+  .l-cover-figure img {
+    height: 100vh;
+  }
+  
+  .l-cover-right {
+    height: calc(100vh - 4em);
+    width: calc(100% - calc(100vh * 0.666));
+    overflow-y: auto;
+  }
+  
+  .l-cover-header,
+  .l-cover-right {
+    padding-left: calc(var(--horizontalUnit) * 4);
+  }
+  
+}

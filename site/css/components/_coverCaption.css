@@ -1,0 +1,27 @@
+.coverCaption {
+  line-height: var(--leadNone);
+  padding: 2em 20% 2em 2em;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+}
+
+.coverCaption-title {
+  font-weight: 700;
+  font-size: var(--fontSize5);
+  margin-bottom: var(--verticalUnit);
+}
+
+.coverCaption-description {
+  font-size: var(--fontSize2);
+}
+
+@media (--portrait) {
+  .coverCaption-description {
+    display: none;
+  }
+}
+
+@media (--landscape) {
+  .coverCaption-title {
+    display: none;
+  }
+}

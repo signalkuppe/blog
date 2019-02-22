@@ -1,3 +1,6 @@
 @import "_reset.css";
 @import "_variables.css";
 @import "_typography.css";
+@import "layouts/_layoutCover.css";
+@import "components/_header.css";
+@import "components/_coverCaption.css";

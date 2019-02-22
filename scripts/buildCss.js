@@ -4,7 +4,7 @@
 
 const postcssPresetEnv = require('postcss-preset-env');
 const autoprefixer = require('autoprefixer')
-const atImport = require("postcss-import")
+const atImport = require('postcss-import')
 const postcss = require('postcss')
 const mkdirp = require('mkdirp')
 const fs = require('fs')
