@@ -16,7 +16,6 @@
   line-height: var(--leadNone);
 }
 
-.header-openMenuButton,
 .header-siteNameLink {
   display: inline-flex;
   flex-direction: column;
@@ -24,39 +23,43 @@
   height: 100%;
 }
 
-.header-closeMenuButton,
-.header-openMenuButton {
+.header button:active,
+.header-siteNameLink:active {
+  position: relative;
+  top: 1px;
+  left: 1px;
+}
+
+.header button,
+.header-menu {
+  outline: none;
+}
+
+.header button {
   appearance: none;
   background: none;
   border: none;
-}
-
-.header-openMenuButton {
   float: right;
   margin-right: var(--horizontalUnit);
-}
-
-.header-closeMenuButton {
-  position: fixed;
-  top: calc(var(--verticalUnit) * 1.25);
-  right: var(--horizontalUnit);
-  z-index: 1000;
+  margin-top: var(--verticalUnit);
+  border: 1px solid black;
+  box-shadow: 2px 2px 0 0 black;
 }
 
 .header-menu {
   position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 100vw;
+  top: 4rem;
+  right: var(--horizontalUnit);
+  width: 15em;
   background: var(--colorGreyLight);
   transform: translate3d(0, 0, 0);
-  transition: transform 0.2s linear;
+  opacity: 1;
+  transition: all 0.2s linear;
   will-change: transform;
   z-index: 100;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 1em;
+  border: 1px solid black;
+  box-shadow: 2px 2px 0 0 black;
 }
 
 .header-menu.is-hidden {
@@ -64,22 +67,12 @@
 }
 
 .header-menu.is-closed {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 100vw;
-  transform: translate3d(100%, 0, 0);
-}
-
-.header-menuContainer {
-  margin: 0 auto;
-  max-width: 48em;
+  transform: translate3d(0, -1em, 0);
+  opacity: 0;
 }
 
 .header-menuTitle {
-  font-size: var(--fontSize3);
-  margin: 0 0 calc(var(--verticalUnit) * 4) 0;
+  @mixin srOnly;
 }
 
 .header-menuList {
@@ -89,24 +82,18 @@
 
 .header-menuList a {
   display: block;
-  padding: calc(var(--verticalUnit) / 2) 0;
-  color: inherit;
+  color: var(--colorGreyDark);
   text-decoration: none;
-  text-transform: uppercase;
-  padding-left: var(--horizontalUnit);
-  margin-bottom: var(--verticalUnit);
-  margin-left: calc(-6px - var(--horizontalUnit));
-  border-left-style: solid;
-  border-width: 6px;
-  border-color: var(--colorGreyMedium);
 }
 
 .header-menuList a.is-active {
   font-weight: 700;
-  border-color: var(--colorPrimary);
+  color: var(--colorGreyDarker);
+  text-decoration: underline;
+  text-decoration: skip-ink;
 }
 
 .header-menuList a:hover {
-  border-color: var(--colorGreyDark);
   text-decoration: underline;
+  text-decoration: skip-ink;
 }

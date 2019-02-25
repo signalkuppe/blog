@@ -1,34 +1,49 @@
 (function() {
   document.addEventListener('DOMContentLoaded', (event) => {
-    const buttonOpen = document.querySelector('#menu-open')
-    const buttonClose = document.querySelector('#menu-close')
-    const menu = document.querySelector('#menu')
+    const buttonOpen = document.getElementById('menu-button')
+    const menu = document.getElementById('menu')
+    const closeIcon = document.getElementById('menu-closeIcon')
+    const openIcon = document.getElementById('menu-openIcon')
     const closedClass = 'is-closed'
     menu.classList.add(closedClass)
     menu.classList.remove('is-hidden')
-    buttonOpen.addEventListener('click', (e) => {
-      menu.classList.remove(closedClass)
+    const openMenu = () => {
       menu.setAttribute('tabindex', -1)
-      buttonOpen.setAttribute('aria-expended', true)
-      buttonClose.setAttribute('aria-expended', true)
+      buttonOpen.setAttribute('aria-expanded', true)
+      buttonOpen.setAttribute('aria-label', 'Chiudi il menu di navigazione')
       menu.focus()
-      menu.addEventListener('blur', (e) => {
-        if (!e.relatedTarget) {
-          menu.classList.add(closedClass)
-        }
-      })
-      document.addEventListener('keyup', (event) => {
-        if (event.keyCode === 27) {
-          menu.classList.add(closedClass)
-        }
-      })
+      openIcon.setAttribute('hidden', true)
+      closeIcon.removeAttribute('hidden')
+    }
+    const closeMenu = () => {
+      menu.classList.add(closedClass)
+      menu.removeAttribute('tabindex')
+      buttonOpen.setAttribute('aria-expanded', false)
+      buttonOpen.setAttribute('aria-label', 'Apri il menu di navigazione')
+      closeIcon.setAttribute('hidden', true)
+      openIcon.removeAttribute('hidden')
+    }
+    buttonOpen.addEventListener('click', (e) => {
+      menu.classList.toggle(closedClass)
+      const isClosed = menu.classList.contains(closedClass) ? false : true
+      if (isClosed) {
+        openMenu()
+      } else {
+        closeMenu()
+      }
       e.preventDefault()
     })
-    buttonClose.addEventListener('click', (e) => {
-      menu.classList.add(closedClass)
-      menu.removeAttribute('tabindex', -1)
-      buttonOpen.setAttribute('aria-expended', false)
-      buttonClose.setAttribute('aria-expended', false)
+    menu.addEventListener('blur', (e) => {
+      if (!e.relatedTarget) {
+        closeMenu()
+      } else {
+        openMenu()
+      }
+    })
+    document.addEventListener('keyup', (event) => {
+      if (event.keyCode === 27) {
+        closeMenu()
+      }
     })
   })
 })()

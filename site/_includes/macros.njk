@@ -99,22 +99,18 @@
   <a href="/" title="Torna alla pagina iniziale" class="header-siteNameLink">
     <{{ siteNameTag }} class="header-siteName">{% info 'name' %}</{{ siteNameTag }}>
   </a>
-  <button class="header-openMenuButton" id="menu-open" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
-    {% include 'icons/menu.njk' %}
+  <button class="header-menuButton" id="menu-button" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
+    <span id="menu-openIcon">{% include 'icons/menu.njk' %}</span>
+    <span id="menu-closeIcon" hidden>{% include 'icons/close.njk' %}</span>
   </button>
   <div id="menu" class="header-menu is-hidden">
-    <div class="header-menuContainer">
-      <h2 class="header-menuTitle">Menu</h2>
-      <ul class="header-menuList">
-        <li><a href="/" title="Torna alla pagina iniziale">Homepage</a></li>
-        <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
-        <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
-        <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
-      </ul>
-    </div>
-    <button id="menu-close" class="header-closeMenuButton" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Chiudi il menu di navigazione">
-      {% include 'icons/close.njk' %}
-    </button>
+    <h2 class="header-menuTitle">Menu</h2>
+    <ul class="header-menuList">
+      <li><a href="/" title="Torna alla pagina iniziale">Homepage</a></li>
+      <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
+      <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
+      <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
+    </ul>
   </div>
 </nav>
 {% endmacro %}

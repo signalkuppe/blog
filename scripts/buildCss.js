@@ -5,6 +5,7 @@
 const postcssPresetEnv = require('postcss-preset-env');
 const autoprefixer = require('autoprefixer')
 const atImport = require('postcss-import')
+const mixins = require('postcss-mixins')
 const postcss = require('postcss')
 const mkdirp = require('mkdirp')
 const fs = require('fs')
@@ -19,7 +20,7 @@ const buildCss = () => {
       console.error('Css write directory error', err)
     } else {
       fs.readFile(source, (err, css) => {
-        postcss([atImport(), postcssPresetEnv({ stage: 0 }), autoprefixer])
+        postcss([atImport(), mixins(), postcssPresetEnv({ stage: 0 }), autoprefixer])
           .process(css, { from: source, to: dest })
           .then(result => {
             fs.writeFile(dest, result.css, (err) => {
