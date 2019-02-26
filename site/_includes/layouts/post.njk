@@ -20,7 +20,7 @@
         <figure class="l-cover-figure">
           <img class="" src="{{ macro.coverImage(postCoverId, version, crop)  }}" />
           <figcaption class="l-cover-caption">
-            {{ macro.coverCaption(title, caption)}}
+            {{ macro.coverCaption(title, caption, date)}}
           </figcaption>
         </figure>
       </div>
@@ -29,7 +29,7 @@
           <header id="pageHeader">
             <h1>{{ title }}</h1>
             <time datetime="{{ date }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
-            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
               <span itemprop="name">{% info 'twitter' %}</span>
             </span>
           </header>

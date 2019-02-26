@@ -23,23 +23,35 @@ h2 {
 }
 
 p {
-  margin-bottom: var(--verticalUnit);
+  margin-bottom: var(--spaceUnit);
 }
 
 h2 {
-  margin-bottom: var(--verticalUnit);
+  margin-bottom: var(--spaceUnit);
 }
 
 p + h2 {
-  margin-bottom: calc(var(--verticalUnit) * 2);
+  margin-bottom: calc(var(--spaceUnit) * 2);
 }
 
 figure + p,
 figure + h2 {
-  margin-top: calc(var(--verticalUnit) * 3);
+  margin-top: calc(var(--spaceUnit) * 3);
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+@media (--mediumType) {
+  :root {
+    --fontSizeRoot: 112.5%;
+  }
+}
+
+@media (--largeType) {
+  :root {
+    --fontSizeRoot: 125%;
+  }
 }

@@ -11,8 +11,7 @@
   --fontSize7: 4.768rem;
   --leadBase: 1.5;
   --leadNone: 1;
-  --verticalUnit: var(--fontSize0);
-  --horizontalUnit: var(--fontSize0);
+  --spaceUnit: var(--fontSize0);
   --colorPrimary: #ffce00;
   --colorSecondary: #000;
   --colorGreyLighter: hsl(238, 20%, 98%);
@@ -20,35 +19,6 @@
   --colorGreyMedium: hsl(238, 20%, 80%);
   --colorGreyDark: hsl(238, 20%, 40%);
   --colorGreyDarker: hsl(238, 20%, 10%);
+  --headerHeight: calc(var(--fontSize0) * 4);
 }
 
-/* Custom media queries */
-@custom-media --mediumType (min-width: 64em); /* 1024px -> 18px base */
-@custom-media --largeType (min-width: 120em); /* 1920px -> 20px base */
-@custom-media --portrait (orientation: portrait);
-@custom-media --landscape (orientation: landscape);
-@custom-media --landscapeLarge (orientation: landscape) and (min-width: 120em);
-
-/* Custom selectors */
-@custom-selector :--headings h1, h2, h3, h4, h5, h6;
-
-
-@media (--mediumType) {
-  :root {
-    --fontSizeRoot: 112.5%;
-  }
-}
-
-@media (--largeType) {
-  :root {
-    --fontSizeRoot: 125%;
-  }
-}
-
-/* Mixins */
-
-@define-mixin srOnly {
-  position: absolute !important;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  clip: rect(1px, 1px, 1px, 1px);
-}

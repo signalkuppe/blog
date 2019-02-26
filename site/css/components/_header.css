@@ -30,6 +30,10 @@
   left: 1px;
 }
 
+.header button:active {
+  background: var(--colorPrimary);
+}
+
 .header button,
 .header-menu {
   outline: none;
@@ -40,17 +44,19 @@
   background: none;
   border: none;
   float: right;
-  margin-right: var(--horizontalUnit);
-  margin-top: var(--verticalUnit);
+  margin-right: var(--spaceUnit);
+  margin-top: calc(var(--headerHeight) / 2 - var(--spaceUnit));
   border: 1px solid black;
   box-shadow: 2px 2px 0 0 black;
+  position: relative;
+  z-index: 200;
 }
 
 .header-menu {
   position: fixed;
-  top: 4rem;
-  right: var(--horizontalUnit);
-  width: 15em;
+  top: calc(var(--headerHeight) / 2 + var(--spaceUnit));
+  right: var(--spaceUnit);
+  width: 12em;
   background: var(--colorGreyLight);
   transform: translate3d(0, 0, 0);
   opacity: 1;
@@ -90,10 +96,9 @@
   font-weight: 700;
   color: var(--colorGreyDarker);
   text-decoration: underline;
-  text-decoration: skip-ink;
 }
 
 .header-menuList a:hover {
-  text-decoration: underline;
-  text-decoration: skip-ink;
+  color: var(--colorGreyDarker);
+  text-decoration: underline var(--colorPrimary);
 }

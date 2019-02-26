@@ -144,10 +144,14 @@
 # Cover caption
 # @param {String} title  - the caption title
 # @param {String} description  - the caption description
+# @param {String} date  - the caption date
 #}
 
-{% macro coverCaption(title, description) %}
+{% macro coverCaption(title, description, date) %}
 <div class="coverCaption">
+  {% if date %}
+  <span class="coverCaption-date">{{ date | formatDate('DD MMMM YYYY') }}</span>
+  {% endif %}
   <div class="coverCaption-title">{{ title }}</div>
   <span class="coverCaption-description">{{ description }}</span>
 </div>

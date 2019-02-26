@@ -1,0 +1,5 @@
+@custom-media --mediumType (min-width: 64em); /* 1024px -> 18px base */
+@custom-media --largeType (min-width: 120em); /* 1920px -> 20px base */
+@custom-media --portrait (orientation: portrait);
+@custom-media --landscape (orientation: landscape);
+@custom-media --landscapeLarge (orientation: landscape) and (min-width: 150em);
