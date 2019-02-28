@@ -13,7 +13,7 @@ body {
 }
 
 h1 {
-  font-size: var(--fontSize6);
+  font-size: var(--fontSize5);
   margin-top: 0;
 }
 
@@ -23,7 +23,7 @@ h2 {
 }
 
 p {
-  margin-bottom: var(--spaceUnit);
+  margin-bottom: calc(var(--spaceUnit) * 3);
 }
 
 h2 {
@@ -31,17 +31,22 @@ h2 {
 }
 
 p + h2 {
-  margin-bottom: calc(var(--spaceUnit) * 2);
+  margin-bottom: var(--spaceUnit)
 }
 
 figure + p,
 figure + h2 {
-  margin-top: calc(var(--spaceUnit) * 3);
+  margin-top: calc(var(--spaceUnit) * 2);
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+time,
+figcaption {
+  color: var(--colorGreyMedium);
 }
 
 @media (--mediumType) {

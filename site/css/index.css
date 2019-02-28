@@ -7,4 +7,5 @@
 @import "_typography.css";
 @import "layouts/_layoutCover.css";
 @import "components/_header.css";
-@import "components/_coverCaption.css";
+@import "components/_cover.css";
+@import "components/_contentHeader.css";

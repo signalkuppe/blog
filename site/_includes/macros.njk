@@ -95,17 +95,17 @@
 {% if activeSection == 'front' %}
 {% set siteNameTag = 'h1' %}
 {% endif %}
-<nav class="header">
-  <a href="/" title="Torna alla pagina iniziale" class="header-siteNameLink">
-    <{{ siteNameTag }} class="header-siteName">{% info 'name' %}</{{ siteNameTag }}>
+<nav class="c-header">
+  <a href="/" title="Torna alla pagina iniziale" class="c-header-siteNameLink">
+    <{{ siteNameTag }} class="c-header-siteName">{% info 'name' %}</{{ siteNameTag }}>
   </a>
-  <button class="header-menuButton" id="menu-button" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
+  <button class="c-header-menuButton" id="menu-button" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
     <span id="menu-openIcon">{% include 'icons/menu.njk' %}</span>
     <span id="menu-closeIcon" hidden>{% include 'icons/close.njk' %}</span>
   </button>
-  <div id="menu" class="header-menu is-hidden">
-    <h2 class="header-menuTitle">Menu</h2>
-    <ul class="header-menuList">
+  <div id="menu" class="c-header-menu is-hidden">
+    <h2 class="c-header-menuTitle">Menu</h2>
+    <ul class="c-header-menuList">
       <li><a href="/" title="Torna alla pagina iniziale">Homepage</a></li>
       <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
       <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
@@ -141,18 +141,35 @@
 {% endmacro %}
 
 {# 
-# Cover caption
+# Cover
+# @param {String} date  - the caption date
 # @param {String} title  - the caption title
 # @param {String} description  - the caption description
-# @param {String} date  - the caption date
 #}
 
-{% macro coverCaption(title, description, date) %}
-<div class="coverCaption">
-  {% if date %}
-  <span class="coverCaption-date">{{ date | formatDate('DD MMMM YYYY') }}</span>
-  {% endif %}
-  <div class="coverCaption-title">{{ title }}</div>
-  <span class="coverCaption-description">{{ description }}</span>
-</div>
+{% macro cover(date, title, description) %}
+<figure class="c-cover">
+  {{ caller() }}
+  <figcaption class="c-cover-caption">
+    {% if date %}
+    <span class="c-cover-date">{{ date | formatDate('DD MMMM YYYY') }}</span>
+    {% endif %}
+    <div class="c-cover-title">{{ title }}</div>
+    <span class="c-cover-description">{{ description }}</span>
+  </figcaption>
+</figure>
+{% endmacro %}
+
+
+{# 
+# Page header
+# @param {String} title  - the page title
+# @param {Boolean} hideOnPortrait  - hides the page title on narrows layout (es: wirth cover layout)
+#}
+
+{% macro contentHeader(title, hideOnPortrait) %}
+<header id="contentHeader" class="c-contentHeader">
+  <h1 class="c-contentHeader-title{% if hideOnPortrait %} c-contentHeader-title--hideOnPortrait{% endif %}">{{ title }}</h1>
+  {{ caller() }}
+</header>
 {% endmacro %}

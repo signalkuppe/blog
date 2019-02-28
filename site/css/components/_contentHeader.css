@@ -1,0 +1,37 @@
+.c-contentHeader {
+  margin-bottom: calc(var(--spaceUnit) * 3);
+}
+
+.c-contentHeader.js-is-sticky, 
+.c-contentHeader.js-is-stuck {
+  background: white;
+  padding-bottom: calc(var(--spaceUnit) * 2);
+}
+
+.c-contentHeader.js-is-sticky::after,
+.c-contentHeader.js-is-stuck::after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 300;
+  left:0;
+  width: 100%;
+  background: linear-gradient(white, rgba(255,255,255,0));
+  bottom: -4rem;
+  height: 4rem;
+}
+
+.c-contentHeader-title {
+  margin-bottom: calc(var(--spaceUnit) / 4);
+}
+
+
+@media (--portrait) {
+
+  .c-contentHeader {
+    visibility: hidden;
+    height: 0;
+  }
+
+}
+

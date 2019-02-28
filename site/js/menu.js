@@ -23,7 +23,7 @@
       closeIcon.setAttribute('hidden', true)
       openIcon.removeAttribute('hidden')
     }
-    buttonOpen.addEventListener('click', (e) => {
+    const onClick = (e) => {
       menu.classList.toggle(closedClass)
       const isClosed = menu.classList.contains(closedClass) ? false : true
       if (isClosed) {
@@ -32,14 +32,13 @@
         closeMenu()
       }
       e.preventDefault()
-    })
-    menu.addEventListener('blur', (e) => {
-      if (!e.relatedTarget) {
-        closeMenu()
-      } else {
-        openMenu()
-      }
-    })
+    }
+    const onBlur = (e) => {
+      closeMenu()
+    }
+    buttonOpen.addEventListener('mousedown', onClick)
+    buttonOpen.addEventListener('touchstart', onClick)
+    menu.addEventListener('blur', onBlur)
     document.addEventListener('keyup', (event) => {
       if (event.keyCode === 27) {
         closeMenu()

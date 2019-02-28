@@ -6,39 +6,14 @@
   height: var(--headerHeight);
 }
 
-.l-cover-figure {
-  background: black;
-  position: relative;
-}
-
-.l-cover-figure img {
-  display: block;
-  object-fit: cover;
-}
-
-.l-cover-caption {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
-
 @media (--portrait) {
-
-  .l-cover-figure {
-    height: calc(100vh - var(--headerHeight));
-  }
-
-  .l-cover-figure img {
-    height: 100%;
-  }
 
   .l-cover-header {
     padding-left: var(--spaceUnit);
   }
 
   .l-cover-right {
-    padding: var(--spaceUnit);
+    padding: calc(var(--spaceUnit) *1.5);
   }
 
   .l-cover-complementary {
@@ -58,20 +33,28 @@
     height: 100vh;
     width: calc(100vh * 0.666);
   }
-
-  .l-cover-figure img {
-    height: 100vh;
-  }
   
   .l-cover-right {
     height: calc(100vh - var(--headerHeight));
     width: calc(100% - calc(100vh * 0.666));
     overflow-y: auto;
   }
+
+  .l-cover-right::-webkit-scrollbar {
+    width: calc(var(--spaceUnit) / 2);
+  }
+
+  .l-cover-right::-webkit-scrollbar-track {
+      background: white;
+  }
+
+  .l-cover-right::-webkit-scrollbar-thumb {
+    background-color: black;
+  }
   
   .l-cover-header,
   .l-cover-right {
-    padding-left: calc(var(--spaceUnit)* 4);
+    padding-left: calc(var(--spaceUnit) * 4);
   }
 
   .l-cover-content {

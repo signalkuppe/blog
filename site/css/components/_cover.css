@@ -1,0 +1,57 @@
+.c-cover {
+  background: black;
+  position: relative;
+}
+
+.c-cover img {
+  display: block;
+  object-fit: cover;
+}
+
+.c-cover-caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: var(--leadNone);
+  padding: calc(var(--spaceUnit) * 2) 20% calc(var(--spaceUnit) * 2) calc(var(--spaceUnit) * 2);
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  color: white;
+}
+
+.c-cover-title {
+  font-weight: 700;
+  font-size: var(--fontSize5);
+  margin-bottom: var(--spaceUnit);
+}
+
+.c-cover-description {
+  font-size: var(--fontSize3);
+}
+
+.c-cover-date {
+
+}
+
+@media (--portrait) {
+  .c-cover {
+    height: calc(100vh - var(--headerHeight));
+  }
+  .c-cover img {
+    height: 100%;
+  }
+  .c-cover-description {
+    display: none;
+  }
+}
+
+@media (--landscape) {
+  .c-cover img {
+    height: 100vh;
+  }
+  
+  .c-cover-title,
+  .c-cover-date {
+    display: none;
+  }
+}

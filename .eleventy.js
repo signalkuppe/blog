@@ -19,12 +19,18 @@ module.exports = (eleventyConfig) => {
   * Add a universal shortcode for site info vars ({% info 'cloudinaryCloudName' %} -> signalkuppe)
   **/
 
-  eleventyConfig.addNunjucksShortcode('info', function (prop) {
-    return info[prop]
+  eleventyConfig.addNunjucksShortcode('info', (prop) => {
+    try {
+      return info[prop]
+    } catch (err) {
+      console.error(err)
+      return ''
+    }
+    
   })
 
   /*
-  * Formats a date according to the the staorage convention on cloudinary
+  * Formats a date
   **/
 
   eleventyConfig.addFilter('formatDate', (dateString, format) => {
@@ -48,7 +54,7 @@ module.exports = (eleventyConfig) => {
 
   return {
     dir: {
-      input: inputDir, // src files lives in /site
+      input: inputDir, // src files live in /site
       output: outputDir // build to /dist
     }
   }

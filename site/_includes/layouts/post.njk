@@ -1,6 +1,7 @@
 {# Post layout #}
 {% import "macros.njk" as macro %}
 {% set postCoverId %}blog/covers/{{ date | formatDate('DDMMYY') }}{% endset %}
+{% set author %}{% info 'twitter' %}{% endset %}
 {{ macro.docType() }}
 {{ macro.htmlTag() }}
   <head>
@@ -17,22 +18,18 @@
     </header>
     <main class="l-cover-main">
       <div class="l-cover-left">
-        <figure class="l-cover-figure">
-          <img class="" src="{{ macro.coverImage(postCoverId, version, crop)  }}" />
-          <figcaption class="l-cover-caption">
-            {{ macro.coverCaption(title, caption, date)}}
-          </figcaption>
-        </figure>
+        {% call macro.cover(date, title, caption) %}
+        <img class="" src="{{ macro.coverImage(postCoverId, version, crop)  }}" />
+        {% endcall %}
       </div>
       <div id="main" class="l-cover-right">
         <article class="l-cover-content" itemscope itemtype="http://schema.org/Article">
-          <header id="pageHeader">
-            <h1>{{ title }}</h1>
-            <time datetime="{{ date }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
-            <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
-              <span itemprop="name">{% info 'twitter' %}</span>
-            </span>
-          </header>
+          {% call macro.contentHeader(title, hideOnPortrait = true) %}
+          <time datetime="{{ date }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
+            <span itemprop="name">{{ author }}</span>
+          </span>
+          {% endcall %}
           <section itemprop="articleBody">{{ content | safe }}</section>
         </article>
         <aside class="l-cover-complementary">
@@ -42,7 +39,7 @@
     </main>
     <script src="/node_modules/stickybits/dist/stickybits.js"></script>
     <script src="/js/menu.js"></script>
-    <script src="/js/pageHeader.js"></script>
+    <script src="/js/contentHeader.js"></script>
   </body>
 </html>
 
