@@ -17,7 +17,7 @@
   }
 
   .l-cover-complementary {
-    margin-top: calc(var(--spaceUnit) * 2)
+    margin-top: calc(var(--spaceUnit) * 4)
   }
 }
 
@@ -38,6 +38,7 @@
     height: calc(100vh - var(--headerHeight));
     width: calc(100% - calc(100vh * 0.666));
     overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .l-cover-right::-webkit-scrollbar {
@@ -54,18 +55,42 @@
   
   .l-cover-header,
   .l-cover-right {
-    padding-left: calc(var(--spaceUnit) * 4);
+    padding-left: calc(var(--spaceUnit) * 2);
   }
 
-  .l-cover-content {
+  .l-cover-content,
+  .l-cover-complementary {
     margin-top: calc(var(--spaceUnit) * 2);
-    width: 65ch;
+  }
+
+  .l-cover-content, 
+  .l-cover-complementary {
+    max-width: 55ch;
+  }
+
+  .l-cover-footer {
+    clear: both;
   }
 }
 
 @media (--landscapeLarge) {
+  .l-cover-header,
+  .l-cover-right {
+    padding-left: calc(var(--spaceUnit) * 4);
+  }
+
   .l-cover-complementary,
   .l-cover-content {
     float: left;
+    padding-bottom: calc(var(--spaceUnit) * 10);
+  }
+
+  .l-cover-complementary {
+    padding-right: var(--spaceUnit);
+    padding-left: calc(var(--spaceUnit) * 5);
+    width: calc(100% - 55ch);
+    max-width: none;
+    position: sticky;
+    top: 0;
   }
 }

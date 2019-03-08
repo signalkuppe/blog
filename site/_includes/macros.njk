@@ -90,22 +90,22 @@
 # @param {string} activeSection - The active section
 #}
 
-{% macro header(activeSection) %}
+{% macro navigation(activeSection) %}
 {% set siteNameTag = 'p' %}
 {% if activeSection == 'front' %}
 {% set siteNameTag = 'h1' %}
 {% endif %}
-<nav class="c-header">
-  <a href="/" title="Torna alla pagina iniziale" class="c-header-siteNameLink">
-    <{{ siteNameTag }} class="c-header-siteName">{% info 'name' %}</{{ siteNameTag }}>
+<nav class="c-navigation">
+  <a href="/" title="Torna alla pagina iniziale" class="c-navigation-siteNameLink">
+    <{{ siteNameTag }} class="c-navigation-siteName">{% info 'name' %}</{{ siteNameTag }}>
   </a>
-  <button class="c-header-menuButton" id="menu-button" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
+  <button class="c-navigation-menuButton c-button c-button--small" id="menu-button" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
     <span id="menu-openIcon">{% include 'icons/menu.njk' %}</span>
     <span id="menu-closeIcon" hidden>{% include 'icons/close.njk' %}</span>
   </button>
-  <div id="menu" class="c-header-menu is-hidden">
-    <h2 class="c-header-menuTitle">Menu</h2>
-    <ul class="c-header-menuList">
+  <div id="menu" class="c-navigation-menu is-hidden">
+    <h2 class="c-navigation-menuTitle">Menu</h2>
+    <ul class="c-navigation-menuList">
       <li><a href="/" title="Torna alla pagina iniziale">Homepage</a></li>
       <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
       <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
@@ -122,23 +122,40 @@
 # @param {string} version - The image version (to bypass cloudinary's cdn cache)
 #}
 
-{% macro cloudinaryImageUrl(id, transformation, version) %}https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ transformation }}{% if version %}/{{ version }}{% endif %}/{{ id }}{% endmacro %}
+{%- macro cloudinaryImageUrl(id, transformation, version) -%}
+https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ transformation }}{% if version %}/{{ version }}{% endif %}/{{ id }}
+{%- endmacro -%}
+
+
+{# 
+# Cloudinary raw url
+# @param {string} id  - The file id
+#}
+
+{% macro cloudinaryRawUrl(id) %}https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/raw/upload/{{ id }}{% endmacro %}
+
 
 {# 
 # Cover image
 # @param {String} postCoverId  - the cloudinary image id
 # @param {String} version  - the cloudinary image version
 # @param {String} crop - optional: the image crop
+# @param {Boolean} lazyPlaceholder - optional: the placeholder low-res version
 #}
 
-{% macro coverImage(postCoverId, version, crop) %}
-{% set baseTransformation %}w_1280,h_1920,c_crop,f_auto,q_auto{% endset %}
-{% set transformation = baseTransformation %}
-{% if crop %}
-{% set transformation %}{{ baseTransformation }},{{ crop }}{% endset %}
-{% endif %}
+{%- macro coverImage(postCoverId, version, crop, lazyPlaceholder) -%}
+{%- set baseTransformation -%}w_1280,h_1920,c_crop,f_auto{%- endset -%}
+{%- set transformation = baseTransformation -%}
+{% if crop -%}
+{%- set transformation -%}{{ baseTransformation }},{{ crop }}{%- endset -%}
+{%- endif %}
+{%- if lazyPlaceholder -%}
+{%- set transformation -%}{{ transformation }},q_10,e_blur:1000{% endset -%}
+{%- else -%}
+{%- set transformation -%}{{ transformation }},q_auto{%- endset -%}
+{%- endif -%}
 {{ cloudinaryImageUrl(postCoverId, transformation, version) }}
-{% endmacro %}
+{%- endmacro -%}
 
 {# 
 # Cover
@@ -147,7 +164,7 @@
 # @param {String} description  - the caption description
 #}
 
-{% macro cover(date, title, description) %}
+{%- macro cover(date, title, description) -%}
 <figure class="c-cover">
   {{ caller() }}
   <figcaption class="c-cover-caption">
@@ -158,18 +175,150 @@
     <span class="c-cover-description">{{ description }}</span>
   </figcaption>
 </figure>
-{% endmacro %}
+{%- endmacro -%}
 
 
 {# 
 # Page header
 # @param {String} title  - the page title
-# @param {Boolean} hideOnPortrait  - hides the page title on narrows layout (es: wirth cover layout)
 #}
 
-{% macro contentHeader(title, hideOnPortrait) %}
+{% macro contentHeader(title) %}
 <header id="contentHeader" class="c-contentHeader">
-  <h1 class="c-contentHeader-title{% if hideOnPortrait %} c-contentHeader-title--hideOnPortrait{% endif %}">{{ title }}</h1>
+  <h1 class="c-contentHeader-title">{{ title }}</h1>
   {{ caller() }}
 </header>
+{% endmacro %}
+
+{# 
+# Post gps tracks
+# @param {String} postGpx  - the post gpx public_id
+# @param {String} postKml  - the post kml public_id
+#}
+
+{% macro gpsTracks(postKml, postKml) %}
+<ul>
+  <li class="u-mr-1 u-inline-block">
+    <a class="c-button" href="{{ cloudinaryRawUrl(postGpx) }}" title="Scarica la traccia in formato .gpx">{% include 'icons/download.njk' %} Traccia .gpx</a>
+  </li>
+  <li class="u-inline-block">
+    <a class="c-button" href="{{ cloudinaryRawUrl(postKml) }}" title="Scarica la traccia in formato .kml">{% include 'icons/download.njk' %} Traccia .kml</a>
+  </li>
+</ul>
+{% endmacro %}
+
+{# 
+# Post image gallery
+# @param {Array} photos  - an array of photos on cloudinary
+#}
+
+{% macro imageGallery(photos) %}
+<ul class="c-imageGallery">
+  {% for photo in photos  %}
+  <li class="c-imageGallery-item">
+    <a href="{{ cloudinaryImageUrl(photo.public_id) }}" title="{{ photo.title }}">
+      <img 
+        src="{{ cloudinaryImageUrl(photo.public_id, 'w_600,h_600,c_fill,f_auto,q_1,e_blur:1000') }}"
+        data-src="{{ cloudinaryImageUrl(photo.public_id, 'w_600,h_600,c_fill,f_auto,q_auto') }}" 
+        alt="{{ photo.title }}" 
+        class="lazyImg" />
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{# 
+# Page social share
+# @param {String} url  - the page url
+# @param {String} title  - the page title
+# @param {String} description  - the page description
+# @param {String} author  - the page author
+#}
+
+{% macro share(url, title, description, author) %}
+<ul>
+  <li class="u-mr-1 u-inline-block">
+    <a 
+      href="https://www.facebook.com/sharer/sharer.php?u={{ url | urlencode }}" 
+      title="Condividi su Facebook" 
+      target="_blank"
+      rel="noopener"
+      class="c-button c-button--small"
+      onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&quote=' + encodeURIComponent(document.URL)); return false;">
+      {% include 'icons/facebook.njk' %}
+    </a>
+  </li>
+  <li class="u-mr-1 u-inline-block">
+    <a href="https://twitter.com/intent/tweet?source={{ url | urlencode }}&text={{ description| urlencode }}&via={{ author }}" 
+      target="_blank" 
+      rel="noopener"
+      title="Condividi su Twitter" 
+      class="c-button c-button--small"
+      onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;">
+      {% include 'icons/twitter.njk' %}
+    </a>
+  </li>
+  <li class="u-mr-1 u-inline-block">
+    <a href="mailto:?subject={{ title | urlencode }}&body={{ description | urlencode }}" 
+        target="_blank" 
+        rel="noopener"
+        title="Condividi via mail" 
+        class="c-button c-button--small"
+        onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;">
+        {% include 'icons/mail.njk' %}
+    </a>
+  </li>
+  <li class="u-inline-block">
+    <a href="" 
+        title="Stampa" 
+        class="c-button c-button--small"
+        onclick="window.print()">
+        {% include 'icons/print.njk' %}
+    </a>
+  </li>
+</ul>
+{% endmacro %}
+
+{# 
+# Site footer
+#}
+
+{% macro footer() %}
+<footer class="c-footer">
+<span id="currentYear"></span> - <strong>Signalkuppe</strong> | contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</a> | <a href="/info">Info & contatti</a>
+| <a href="{% info 'facebookSite' %}" title="Seguimi su facebook">Facebook</a> | <a href="{% info 'twitterSite' %}" title="Seguimi su facebook">Twitter</a> | <a href="{% info 'instagramSite' %}" title="Seguimi su facebook">Instagram</a>
+<span class="c-footer-topLink"> | {% include 'icons/arrow-up.njk' %}<a href="#top">Torna in cima</a></span>
+</footer>
+{% endmacro %}
+
+{# 
+# Next item in collection
+# @param {Array} collection  - the collection
+# @param {String} pageUrl  - the current page url
+#}
+
+{% macro prevNext(collection, pageUrl ) %}
+{% set currentItemIndex = 0 %}
+{% set countOfItems = collection.length %}
+{% for item in collection %}
+  {% if item.url == pageUrl%}
+  	{% set currentItemIndex = loop.index0 %}
+	{% endif %}
+{% endfor %}
+{% set NextItemIndex = currentItemIndex - 1  %}
+{% set PrevItemIndex = currentItemIndex + 1  %}
+{% set NextItem = collection[NextItemIndex] %}
+{% set PrevItem = collection[PrevItemIndex] %}
+<hr />
+<dl>
+  {% if NextItem %}
+  <dt>Post successivo</dt>
+  <dd><small>{{ NextItem.data.date | formatDate('DD MMMM YYYY') }}</small><br/><a href="{{ NextItem.url | url }}">{{ NextItem.data.title }}</a></dd>
+  {% endif %}
+  {% if PrevItem %}
+  <dt>Post precedente</dt>
+  <dd><small>{{ PrevItem.data.date | formatDate('DD MMMM YYYY') }}</small><br /><a href="{{ PrevItem.url | url }}">{{ PrevItem.data.title }}</a></dd>
+  {% endif %}
+</dl>
 {% endmacro %}

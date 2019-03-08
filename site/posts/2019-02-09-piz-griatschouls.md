@@ -17,7 +17,11 @@ Terzo tentativo stagionale al **Griatschouls:** due volte respinto dal maltempo,
 Partenza gelida a -16°C, ma basta alzarsi di poco per superare **l’inversione termica** e avere caldo. Con un lungo falsopiano mi porto all’inizio del pendio. Il percorso è molto evidente impossibile sbagliare. La giornata è magnifica, poco vento e cielo completamente sereno.
 
 <figure>
-    <img src="https://farm8.staticflickr.com/7895/47197936651_7c4837df99_o.jpg" alt="Scialpinismo al Piz Griatschouls: la partenza da Zuoz" /> 
+    <img 
+        src="https://res.cloudinary.com/signalkuppe/image/upload/w_1280,f_auto,q_10,e_blur:1000/blog/galleries/090219/Alba_a_-15"
+        data-src="https://res.cloudinary.com/signalkuppe/image/upload/w_1280,f_auto,q_auto/blog/galleries/090219/Alba_a_-15"
+        alt="Scialpinismo al Piz Griatschouls: la partenza da Zuoz" 
+        class="lazyImg" /> 
     <figcaption>L’itinerario visto dalla partenza</figcaption>
 </figure>
 
@@ -28,7 +32,11 @@ La persona prima di me è salita a piedi, ma la neve è profonda, meglio salire 
 ## La cresta finale
 
 <figure>
-    <img src="https://farm8.staticflickr.com/7873/32255963817_8141f65628_o.jpg" alt="Scialpinismo al Piz Griatschouls: la cresta finale" /> 
+    <img 
+        src="https://res.cloudinary.com/signalkuppe/image/upload/w_1280,f_auto,q_10,e_blur:1000/blog/galleries/090219/La_cresta_dal_deposito_sci"
+        data-src="https://res.cloudinary.com/signalkuppe/image/upload/w_1280,f_auto,q_auto/blog/galleries/090219/La_cresta_dal_deposito_sci"
+        alt="Scialpinismo al Piz Griatschouls: La cresta finale dal deposito sci" 
+        class="lazyImg" /> 
     <figcaption>La cresta finale dal deposito sci</figcaption>
 </figure>
 

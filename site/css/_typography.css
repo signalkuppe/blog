@@ -9,21 +9,23 @@ body {
 
 :--headings {
   font-weight: 700;
-  line-height: var(--leadNone);
+  line-height: var(--leadNarrow);
 }
 
 h1 {
   font-size: var(--fontSize5);
-  margin-top: 0;
 }
 
 h2 {
-  font-size: var(--fontSize2);
-  margin-top: 0;
+  font-size: var(--fontSize1);
+}
+
+h3 {
+  font-size: var(--fontSize0);
 }
 
 p {
-  margin-bottom: calc(var(--spaceUnit) * 3);
+  margin-bottom: calc(var(--spaceUnit) * 1.5);
 }
 
 h2 {
@@ -31,7 +33,8 @@ h2 {
 }
 
 p + h2 {
-  margin-bottom: var(--spaceUnit)
+  margin-bottom: var(--spaceUnit);
+  margin-top: calc(var(--spaceUnit) * 3);
 }
 
 figure + p,
@@ -47,6 +50,31 @@ img {
 time,
 figcaption {
   color: var(--colorGreyMedium);
+}
+
+figcaption {
+  font-size: var(--fontSizeSmall);
+  font-style: italic;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+small {
+  font-size: var(--fontSizeSmall);
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin-bottom: calc(var(--spaceUnit) * 2);
 }
 
 @media (--mediumType) {

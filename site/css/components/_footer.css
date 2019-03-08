@@ -1,0 +1,24 @@
+.c-footer {
+  font-size: var(--fontSizeSmall);
+  padding: var(--spaceUnit) 0;
+  border-top: 1px solid var(--colorGreyLight);
+  color: var(--colorGreyDark);
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    Courier,
+    monospace;
+}
+
+.c-footer svg {
+  width: 1em;
+  vertical-align: middle;
+}
+
+@media (--landscape) {
+  .c-footer-topLink {
+    display: none;
+  }
+} 

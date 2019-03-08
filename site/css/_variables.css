@@ -1,6 +1,7 @@
 :root {
   /* Typescale: Major third 1.250 */
   --fontSizeRoot: 100%;
+  --fontSizeSmall: 0.75rem;
   --fontSize0: 1rem;
   --fontSize1: 1.25rem;
   --fontSize2: 1.563rem;
@@ -10,13 +11,14 @@
   --fontSize6: 3.815rem;
   --fontSize7: 4.768rem;
   --leadBase: 1.5;
+  --leadNarrow: 1.1;
   --leadNone: 1;
   --spaceUnit: var(--fontSize0);
   --colorPrimary: #ffce00;
   --colorSecondary: #000;
   --colorGreyLighter: hsl(238, 20%, 98%);
   --colorGreyLight: hsl(238, 20%, 96%);
-  --colorGreyMedium: hsl(238, 20%, 80%);
+  --colorGreyMedium: hsl(238, 20%, 60%);
   --colorGreyDark: hsl(238, 20%, 40%);
   --colorGreyDarker: hsl(238, 20%, 10%);
   --headerHeight: calc(var(--fontSize0) * 4);

@@ -4,5 +4,8 @@
   "description": "Blog personale di Matteo Leoni",
   "baseUrl": "https://www.signalkuppe.com",
   "twitter": "@signalkuppe",
-  "cloudinaryCloudName": "signalkuppe"
+  "cloudinaryCloudName": "signalkuppe",
+  "facebookSite": "https://www.facebook.com/signalkuppe",
+  "twitterSite": "https://twitter.com/signalkuppe",
+  "instagramSite": "https://www.instagram.com/signalkuppe"
 }

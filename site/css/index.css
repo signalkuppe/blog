@@ -5,7 +5,12 @@
 @import "_customSelectors.css";
 @import "_utilities.css";
 @import "_typography.css";
+@import "../../node_modules/baguettebox.js/dist/baguetteBox.css";
 @import "layouts/_layoutCover.css";
-@import "components/_header.css";
+@import "components/_button.css";
+@import "components/_navigation.css";
 @import "components/_cover.css";
 @import "components/_contentHeader.css";
+@import "components/_imageGallery.css";
+@import "components/_paceProgress.css";
+@import "components/_footer.css";

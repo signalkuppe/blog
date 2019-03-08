@@ -14,6 +14,11 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'favicons'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'js'))
   eleventyConfig.addPassthroughCopy('node_modules/stickybits/dist/stickybits.js')
+  eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist/baguetteBox.js')
+  eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist/baguetteBox.css')
+  eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')
+  eleventyConfig.addPassthroughCopy('node_modules/pace-progress/pace.js')
+  eleventyConfig.addPassthroughCopy('node_modules/smooth-scroll/dist/smooth-scroll.js')
 
   /*
   * Add a universal shortcode for site info vars ({% info 'cloudinaryCloudName' %} -> signalkuppe)
@@ -41,6 +46,7 @@ module.exports = (eleventyConfig) => {
       return ''
     }
   })
+
 
   /*
   * Add all posts as a collection

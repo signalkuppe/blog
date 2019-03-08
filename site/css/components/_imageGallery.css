@@ -1,0 +1,39 @@
+.c-imageGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-auto-flow: dense;
+  grid-gap: calc(var(--spaceUnit) / 4);
+}
+
+.c-imageGallery-item:first-child {
+  grid-area: 1 / 1 / span 2 / span 2;
+}
+
+.c-imageGallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  will-change: transform;
+  transition: transform 0.2s linear;
+  position: relative;
+  z-index: 1;
+}
+
+.c-imageGallery a:hover img {
+  transform: scale(1.05);
+  z-index: 400;
+  outline: calc(var(--spaceUnit) / 4) solid var(--colorPrimary);
+}
+
+/* lib override */
+
+.baguetteBox-button,
+.baguetteBox-button:focus {
+  background-color: transparent;
+}
+
+#baguetteBox-overlay .full-image figcaption {
+  padding: 1rem;
+  line-height: 1;
+}

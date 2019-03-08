@@ -1,0 +1,31 @@
+.c-button {
+  display: inline-block;
+  padding: calc(var(--spaceUnit) / 2) var(--spaceUnit);
+  color: black;
+  background: white;
+  font-weight: 700;
+  border: 1px solid black;
+  box-shadow: 2px 2px 0 0 black;
+  text-decoration: none;
+  transition: all 0.2s linear;
+  will-change: transform;
+}
+
+.c-button--small {
+  padding: calc(var(--spaceUnit) / 4) calc(var(--spaceUnit) / 2);
+}
+
+.c-button:hover {
+  transform: scale(1.05);
+}
+
+.c-button:active {
+  position: relative;
+  left: -1px;
+  bottom: -1px;
+  background: var(--colorPrimary);
+}
+
+.c-button svg {
+  vertical-align: text-bottom;
+}

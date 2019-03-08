@@ -1,59 +1,55 @@
 
-.c-header {
+.c-navigation {
   height: 100%;
 }
 
-.c-header-siteNameLink {
+.c-navigation-siteNameLink {
   text-decoration: none;
   color: inherit;
 }
 
-.c-header-siteName {
+.c-navigation-siteName {
   font-weight: 700;
   font-size: var(--fontSize1);
   text-transform: uppercase;
   margin: 0;
-  line-height: var(--leadNone);
+  line-height: var(--headerHeight);
 }
 
-.c-header-siteNameLink {
+.c-navigation-siteNameLink {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
 }
 
-.c-header button:active,
-.c-header-siteNameLink:active {
+.c-navigation button:active,
+.c-navigation-siteNameLink:active {
   position: relative;
   top: 1px;
   left: 1px;
 }
 
-.c-header button,
-.c-header-menu {
+.c-navigation button,
+.c-navigation-menu {
   outline: none;
 }
 
-.c-header button {
+.c-navigation button {
   appearance: none;
-  background: white;
-  border: none;
   float: right;
   margin-right: var(--spaceUnit);
   margin-top: calc(var(--headerHeight) / 2 - var(--spaceUnit));
-  border: 1px solid black;
-  box-shadow: 2px 2px 0 0 black;
   position: relative;
   z-index: 200;
 }
 
-.c-header-menu {
+.c-navigation-menu {
   position: fixed;
-  top: calc(var(--headerHeight) / 2 + var(--spaceUnit));
+  top: calc(var(--headerHeight) / 2 + calc(var(--spaceUnit) * 1.5));
   right: var(--spaceUnit);
   width: 12em;
-  background: var(--colorGreyLight);
+  background: white;
   transform: translate3d(0, 0, 0);
   opacity: 1;
   transition: transform 0.2s linear;
@@ -64,38 +60,38 @@
   box-shadow: 2px 2px 0 0 black;
 }
 
-.c-header-menu.is-hidden {
+.c-navigation-menu.is-hidden {
   display: none;
 }
 
-.c-header-menu.is-closed {
+.c-navigation-menu.is-closed {
   transform: translate3d(0, -1em, 0);
   opacity: 0;
   right: -100%;
 }
 
-.c-header-menuTitle {
+.c-navigation-menuTitle {
   @mixin srOnly;
 }
 
-.c-header-menuList {
+.c-navigation-menuList {
   list-style: none;
   padding: 0;
 }
 
-.c-header-menuList a {
+.c-navigation-menuList a {
   display: block;
   color: var(--colorGreyDark);
   text-decoration: none;
 }
 
-.c-header-menuList a.is-active {
+.c-navigation-menuList a.is-active {
   font-weight: 700;
   color: var(--colorGreyDarker);
-  text-decoration: underline;
+  text-decoration: underline var(--colorPrimary);
 }
 
-.c-header-menuList a:hover {
+.c-navigation-menuList a:hover {
   color: var(--colorGreyDarker);
   text-decoration: underline var(--colorPrimary);
 }

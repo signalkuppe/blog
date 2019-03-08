@@ -25,7 +25,9 @@
     "@11ty/eleventy": "^0.7.1",
     "autoprefixer": "^9.4.7",
     "chokidar": "^2.1.0",
+    "cloudinary": "^1.13.2",
     "dayjs": "^1.8.5",
+    "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.1.5",
     "postcss-import": "^12.0.1",
@@ -33,6 +35,10 @@
     "postcss-preset-env": "^6.5.0"
   },
   "dependencies": {
-    "stickybits": "^3.6.1"
+    "baguettebox.js": "^1.11.0",
+    "pace-progress": "^1.0.2",
+    "smooth-scroll": "^16.0.0",
+    "stickybits": "^3.6.4",
+    "vanilla-lazyload": "^11.0.3"
   }
 }

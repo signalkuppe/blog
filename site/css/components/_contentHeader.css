@@ -17,8 +17,8 @@
   left:0;
   width: 100%;
   background: linear-gradient(white, rgba(255,255,255,0));
-  bottom: -4rem;
-  height: 4rem;
+  bottom: -3rem;
+  height: 3rem;
 }
 
 .c-contentHeader-title {
@@ -33,5 +33,15 @@
     height: 0;
   }
 
+  .c-contentHeader.js-is-stuck,
+  .c-contentHeader.js-is-sticky {
+    visibility: visible;
+    height: auto;
+    padding-top: var(--spaceUnit);
+  }
+
+  .c-contentHeader-title {
+    font-size: var(--fontSize2);
+  }
 }
 

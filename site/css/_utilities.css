@@ -1,3 +1,27 @@
 .u-srOnly {
   @mixin srOnly;
 }
+
+.u-inline-block {
+  display: inline-block;
+}
+
+.u-mb-1 {
+  margin-bottom: var(--spaceUnit);
+}
+
+.u-mb-2 {
+  margin-bottom: calc(var(--spaceUnit) * 2);
+}
+
+.u-mb-3 {
+  margin-bottom: calc(var(--spaceUnit) * 3);
+}
+
+.u-mb-4 {
+  margin-bottom: calc(var(--spaceUnit) * 4);
+}
+
+.u-mr-1 {
+  margin-right: var(--spaceUnit);
+}

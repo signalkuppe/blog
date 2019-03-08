@@ -14,9 +14,10 @@
   bottom: 0;
   width: 100%;
   line-height: var(--leadNone);
-  padding: calc(var(--spaceUnit) * 2) 20% calc(var(--spaceUnit) * 2) calc(var(--spaceUnit) * 2);
+  padding: calc(var(--spaceUnit) * 2) 10% calc(var(--spaceUnit) * 2) calc(var(--spaceUnit) * 2);
   background: linear-gradient(transparent, rgba(0,0,0,0.7));
   color: white;
+  font-style: normal;
 }
 
 .c-cover-title {
@@ -29,9 +30,6 @@
   font-size: var(--fontSize3);
 }
 
-.c-cover-date {
-
-}
 
 @media (--portrait) {
   .c-cover {
