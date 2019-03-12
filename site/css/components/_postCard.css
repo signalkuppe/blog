@@ -1,0 +1,65 @@
+.c-postCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 450px;
+  will-change: transform;
+  transition: transform 0.2s linear;
+}
+
+.c-postCard-header {
+  position: relative;
+  min-height: 220px;
+  background: black;
+}
+
+.c-postCard-header img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.c-postCard-info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  width: 100%;
+  padding: 1em;
+}
+
+.c-postCard-info time, 
+.c-postCard-title {
+  color: white;
+  margin: 0;
+}
+
+.c-postCard-body {
+  padding: 1em;
+  border: 1px solid var(--colorGreyMedium);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.c-postCard-body p {
+  flex: 1;
+}
+
+.c-postCard time {
+  font-size: var(--fontSizeSmall);
+}
+
+.c-postCard:hover .c-button {
+  background: var(--colorPrimary);
+}
+
+.c-postCard:active {
+  position: relative;
+  left: -2px;
+  top: 2px;
+}

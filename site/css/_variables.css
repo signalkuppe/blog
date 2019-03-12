@@ -16,11 +16,11 @@
   --spaceUnit: var(--fontSize0);
   --colorPrimary: #ffce00;
   --colorSecondary: #000;
-  --colorGreyLighter: hsl(238, 20%, 98%);
-  --colorGreyLight: hsl(238, 20%, 96%);
-  --colorGreyMedium: hsl(238, 20%, 60%);
-  --colorGreyDark: hsl(238, 20%, 40%);
-  --colorGreyDarker: hsl(238, 20%, 10%);
+  --colorGreyLighter: #fafafa;
+  --colorGreyLight: #eee;
+  --colorGreyMedium: #ccc;
+  --colorGreyDark: #666;
+  --colorGreyDarker: #333;
   --headerHeight: calc(var(--fontSize0) * 4);
 }
 

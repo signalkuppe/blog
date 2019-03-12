@@ -54,7 +54,7 @@
   opacity: 1;
   transition: transform 0.2s linear;
   will-change: transform;
-  z-index: 100;
+  z-index: 100000;
   padding: 1em;
   border: 1px solid black;
   box-shadow: 2px 2px 0 0 black;

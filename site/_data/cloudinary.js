@@ -1,6 +1,7 @@
 /* 
 Grab post images from cloudinary 
 Save a file with all the photos (galleries.json), and use it as a cache
+Then we grab the current post's photos in the post template
 */
 
 var photos = []
@@ -9,7 +10,7 @@ const _ = require('lodash')
 const fs = require('fs')
 const path = require('path')
 const destination = path.join(process.cwd(), 'site', '_data', 'galleries.json')
-const maxResults = 100
+const maxResults = 400
 cloudinary.config({ 
   cloud_name: 'signalkuppe', 
   api_key: process.env.CLOUDINARY_API_KEY, 

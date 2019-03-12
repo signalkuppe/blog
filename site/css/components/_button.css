@@ -12,6 +12,7 @@
 }
 
 .c-button--small {
+  font-size: var(--fontSizeSmall);
   padding: calc(var(--spaceUnit) / 4) calc(var(--spaceUnit) / 2);
 }
 
@@ -20,9 +21,8 @@
 }
 
 .c-button:active {
-  position: relative;
-  left: -1px;
-  bottom: -1px;
+  margin-left: -1px;
+  margin-bottom: -1px;
   background: var(--colorPrimary);
 }
 

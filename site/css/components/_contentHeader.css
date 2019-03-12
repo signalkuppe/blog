@@ -4,6 +4,7 @@
 
 .c-contentHeader.js-is-sticky, 
 .c-contentHeader.js-is-stuck {
+  z-index: 100;
   background: white;
   padding-bottom: calc(var(--spaceUnit) * 2);
 }
@@ -29,8 +30,13 @@
 @media (--portrait) {
 
   .c-contentHeader {
+    margin-top: calc(var(--spaceUnit) * 2);
+  }
+
+  .c-contentHeader--hideOnPortrait {
     visibility: hidden;
     height: 0;
+    margin: 0;
   }
 
   .c-contentHeader.js-is-stuck,

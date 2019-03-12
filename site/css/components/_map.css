@@ -1,0 +1,135 @@
+.c-map {
+  height: calc(100vh - var(--headerHeight));
+  width: 100%;
+  position: relative;
+}
+
+.c-map-marker[style], 
+.c-map-marker img {
+  height: 50px!important;
+  width: 50px!important;
+  display: block;
+}
+
+.c-map-marker[style] {
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+
+.c-map-marker img {
+  border: 4px solid white;
+}
+
+.c-map-marker::after {
+  position: absolute;
+  content: '';
+  display: block;
+  left: 50%;
+  bottom: -10px;
+  transform: translate(-50%, 0);
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid;
+  border-right:10px solid;
+  border-top: 10px solid white;
+}
+
+.c-map-marker::after,
+.c-map-marker img {
+  transition: all 0.2s linear;
+}
+
+.c-map-marker[style]:hover::after {
+  border-top-color: var(--colorPrimary);
+}
+
+.c-map-marker[style]:hover img {
+  border-color: var(--colorPrimary);
+}
+
+.leaflet-popup-content[style] {
+  width: auto!important;
+  background: white!important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0px!important;
+  background: white!important;
+}
+
+.c-map-link {
+  display: block;
+  text-decoration: none;
+  color: inherit!important;
+}
+
+.c-map-popup {
+  display: flex;
+  padding: .15em;
+}
+.c-map-popup img {
+  width: 100px;
+  height: 100px;
+  margin-right: 1em;
+}
+
+.c-map-info {
+  width: 240px;
+}
+
+.c-map-title {
+  font-weight: 700;
+  line-height: 1;
+  font-size: 1.35em;
+  margin-bottom: .25em;
+  min-width: 150px;
+}
+
+.c-map-readmore {
+  margin-top: 1em;
+}
+
+.c-map-scroll,
+.c-map-scroll svg {
+  width: 40px;
+  height: 40px;
+}
+
+.c-map-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  margin-left: -20px;
+  z-index: 1000;
+  animation: upDown 2s infinite;
+}
+
+.c-map-scroll svg {
+  color: white;
+  text-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}
+
+@media (--landscape) {
+  .c-map {
+    height: 100vh;
+  }
+
+  .c-map-scroll {
+    display: none;
+  }
+}
+
+@keyframes upDown {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+      transform: translate(0%, 0);
+  }
+  40% {
+      transform: translate(0%, -30px);
+  }
+  60% {
+      transform: translate(0%, -15px);
+  }
+}

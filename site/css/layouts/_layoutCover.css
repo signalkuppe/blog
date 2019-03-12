@@ -63,9 +63,18 @@
     margin-top: calc(var(--spaceUnit) * 2);
   }
 
-  .l-cover-content, 
+  .l-cover--has-complementary .l-cover-content,
   .l-cover-complementary {
     max-width: 55ch;
+  }
+
+  .l-cover--hasNot-complementary .l-cover-content {
+    padding-right: var(--spaceUnit);
+    width: 100%;
+  }
+
+  .l-cover-content {
+    min-height: calc(100vh - var(--headerHeight));
   }
 
   .l-cover-footer {

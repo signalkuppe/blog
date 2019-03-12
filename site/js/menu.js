@@ -24,6 +24,7 @@
       openIcon.removeAttribute('hidden')
     }
     const onClick = (e) => {
+      console.log('click', e.relatedTarget)
       menu.classList.toggle(closedClass)
       const isClosed = menu.classList.contains(closedClass) ? false : true
       if (isClosed) {
@@ -34,7 +35,9 @@
       e.preventDefault()
     }
     const onBlur = (e) => {
-      closeMenu()
+      if (!e.relatedTarget) {
+        closeMenu()
+      }
     }
     buttonOpen.addEventListener('mousedown', onClick)
     buttonOpen.addEventListener('touchstart', onClick)

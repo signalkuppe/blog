@@ -1,4 +1,5 @@
 {# Post layout, extends cover #}
+{% set complementary = true %}
 {% extends "layouts/_layoutCover.njk" %}
 {% import "macros.njk" as macro %}
 {% set dateSlug %}{{ date | formatDate('DDMMYY') }}{% endset %}
@@ -9,7 +10,7 @@
   {% block head %}
   {{ macro.socialMeta(title, description, postCoverId) }}
   {{ macro.canonical(page.url) }}
-  {{ macro.metaTitle(title, info.slogan) }}
+  {{ macro.metaTitle(title, info.name) }}
   <link rel="prefetch" href="{{ macro.coverImage(postCoverId, version, crop)  }}">
   <link rel="preconnect" href="https://res.cloudinary.com">
   {% endblock %}
@@ -32,7 +33,7 @@
 
     {% block content %}
     <article itemscope itemtype="http://schema.org/Article">
-      {% call macro.contentHeader(title) %}
+      {% call macro.contentHeader(title, hideOnPortrait = true) %}
       <time datetime="{{ date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
       <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
         <span itemprop="name">{{ author }}</span>
