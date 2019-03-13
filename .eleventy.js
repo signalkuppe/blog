@@ -1,4 +1,5 @@
 const path = require('path')
+const log = require(path.join(process.cwd(), 'log'))
 const fs = require('fs')
 const dayjs = require('dayjs')
 const it = require('dayjs/locale/it')
@@ -29,7 +30,7 @@ module.exports = (eleventyConfig) => {
     try {
       return info[prop]
     } catch (err) {
-      console.error(err)
+      log.error(err)
       return ''
     }
   })
@@ -42,7 +43,7 @@ module.exports = (eleventyConfig) => {
     try {
       return dayjs(dateString).locale(it).format(format)
     } catch (err) {
-      console.error(err)
+      log.error(err)
       return ''
     }
   })
@@ -56,7 +57,7 @@ module.exports = (eleventyConfig) => {
       const position = type === 'lat' ? 0 : 1
       return cordsString.split(',')[position].trim()
     } catch (err) {
-      console.error(err)
+      log.error(err)
       return ''
     }
   })
@@ -67,30 +68,34 @@ module.exports = (eleventyConfig) => {
   */
 
   eleventyConfig.addCollection('posts', collection => {
-    const posts = collection.getFilteredByGlob(path.join(inputDir, 'posts', '/*.md')).sort((a, b) => {
-      return b.date - a.date
-    })
-    
-    // write markers in js file (we can minify it at build time)
-    // we use this file as an index for lunr search
-    const markers = posts.map((p) => {
-      const coverId = `blog/covers/${eleventyConfig.javascriptFunctions.formatDate(p.data.date, 'DDMMYY')}`
-      return {
-        lat: eleventyConfig.javascriptFunctions.postLatLong(p.data.map, 'lat'),
-        lng: eleventyConfig.javascriptFunctions.postLatLong(p.data.map, 'long'),
-        title: p.data.title,
-        description: p.data.description,
-        date: eleventyConfig.javascriptFunctions.formatDate(p.data.date, 'DD/MM/YY'),
-        link: p.url,
-        tags: p.data.tags.join(' '),
-        categories: p.data.categories,
-        cover: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center${p.data.version ? '/' + p.data.version : ''}/${coverId}`,
-        marker: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center${p.data.version ? '/' + p.data.version : ''}/${coverId}`,
-      }
-    })
-
-    fs.writeFileSync(path.join(outputDir, 'js', 'markers.js'), `var markers = ${JSON.stringify(markers)}`, 'utf-8')
-    return posts
+    try {
+      const posts = collection.getFilteredByGlob(path.join(inputDir, 'posts', '/*.md')).sort((a, b) => {
+        return b.date - a.date
+      })
+      
+      // write markers in js file (we can minify it at build time)
+      // we use this file as an index for lunr search
+      const markers = posts.map((p) => {
+        const coverId = `blog/covers/${eleventyConfig.javascriptFunctions.formatDate(p.data.date, 'DDMMYY')}`
+        return {
+          lat: eleventyConfig.javascriptFunctions.postLatLong(p.data.map, 'lat'),
+          lng: eleventyConfig.javascriptFunctions.postLatLong(p.data.map, 'long'),
+          title: p.data.title,
+          description: p.data.description,
+          date: eleventyConfig.javascriptFunctions.formatDate(p.data.date, 'DD/MM/YY'),
+          link: p.url,
+          tags: p.data.tags.join(' '),
+          categories: p.data.categories,
+          cover: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center${p.data.version ? '/' + p.data.version : ''}/${coverId}`,
+          marker: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center${p.data.version ? '/' + p.data.version : ''}/${coverId}`,
+        }
+      })
+  
+      fs.writeFileSync(path.join(outputDir, 'js', 'markers.js'), `var markers = ${JSON.stringify(markers)}`, 'utf-8')
+      return posts 
+    } catch (err) {
+      log.error(err)
+    }
   })
 
   return {

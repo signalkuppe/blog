@@ -9,6 +9,7 @@ const cloudinary = require('cloudinary')
 const _ = require('lodash')
 const fs = require('fs')
 const path = require('path')
+const log = require(path.join(process.cwd(), 'log'))
 const destination = path.join(process.cwd(), 'site', '_data', 'galleries.json')
 const maxResults = 400
 cloudinary.config({ 
@@ -22,38 +23,40 @@ module.exports = () => {
     var iteration = 0
     const _searchPhotos = (next) => {
       if (fs.existsSync(destination)) {
-        console.log(`Gallery json already exists, skipping cloudinary photo search`)
+        log.info(`Gallery json already exists, skipping cloudinary photo search`)
         resolve()
       } else {
-        console.log(`Fetching photos from cloudinary`)
+        log.info(`Fetching photos from cloudinary`)
         cloudinary.v2.search
         .expression('folder=blog/galleries/*')
         .max_results(maxResults)
         .next_cursor(next)
-        .execute()
-        .then((result) => {
-          iteration ++
-          photos = _.flatten(_.union(photos, _.map(result.resources, (photo) => { 
-            photo.title = photo.filename.replace(/\_/g, ' ')
-            photo.folder = photo.folder.split('/').pop()
-            return _.pick(photo, 'public_id', 'folder', 'title')
-          })))
-          if (result.next_cursor) {
-            _searchPhotos(result.next_cursor)
+        .execute((err, result) => {
+          if (err) {
+            log.error('Cloudinary api call error' + err)
+            reject(err)
           } else {
-            console.log(`Found ${photos.length} photos with ${iteration} iterations on cloudinary`)
-            fs.writeFile(destination, JSON.stringify(_.groupBy(photos, 'folder')), 'utf8', (err) => {
-              if (err) {
-                reject(err)
-              } else {
-                console.log(`Gallery json written`)
-                resolve()
-              }
-            })
+            iteration ++
+            photos = _.flatten(_.union(photos, _.map(result.resources, (photo) => { 
+              photo.title = photo.filename.replace(/\_/g, ' ')
+              photo.folder = photo.folder.split('/').pop()
+              return _.pick(photo, 'public_id', 'folder', 'title')
+            })))
+            if (result.next_cursor) {
+              _searchPhotos(result.next_cursor)
+            } else {
+              log.info(`Found ${photos.length} photos with ${iteration} iterations on cloudinary`)
+              fs.writeFile(destination, JSON.stringify(_.groupBy(photos, 'folder')), 'utf8', (err) => {
+                if (err) {
+                  log.error('Error writing gallery json file ' + err)
+                  reject(err)
+                } else {
+                  log.success(`Gallery json written`)
+                  resolve()
+                }
+              })
+            }
           }
-        })
-        .catch((err) => {
-          reject(err)
         })
       }
     }

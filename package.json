@@ -24,6 +24,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.7.1",
     "autoprefixer": "^9.4.7",
+    "chalk": "^2.4.2",
     "chokidar": "^2.1.0",
     "cloudinary": "^1.13.2",
     "dayjs": "^1.8.5",

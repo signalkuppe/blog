@@ -40,18 +40,6 @@
     overflow-y: auto;
     overflow-x: hidden;
   }
-
-  .l-cover-right::-webkit-scrollbar {
-    width: calc(var(--spaceUnit) / 2);
-  }
-
-  .l-cover-right::-webkit-scrollbar-track {
-      background: white;
-  }
-
-  .l-cover-right::-webkit-scrollbar-thumb {
-    background-color: black;
-  }
   
   .l-cover-header,
   .l-cover-right {

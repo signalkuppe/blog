@@ -197,7 +197,7 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 # @param {String} postKml  - the post kml public_id
 #}
 
-{% macro gpsTracks(postKml, postKml) %}
+{% macro gpsTracks(postGpx, postKml) %}
 <ul>
   <li class="u-mr-1 u-inline-block">
     <a class="c-button" href="{{ cloudinaryRawUrl(postGpx) }}" title="Scarica la traccia in formato .gpx">{% include 'icons/download.njk' %} Traccia .gpx</a>

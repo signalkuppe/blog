@@ -35,3 +35,7 @@
   color: inherit;
 }
 
+.u-sticky {
+  position: sticky;
+  top: 0;
+}

@@ -5,16 +5,15 @@
 const chokidar = require('chokidar')
 const path = require('path')
 const buildCss = require('./buildCss')
+const log = require(path.join(process.cwd(), 'log'))
 const watcher = chokidar.watch(path.join(process.cwd(), './site/css/**/*.css'), {
   persistent: true
 })
 const watchCss = () => {
   watcher
-    .on('add', (file) => {
-      console.info('watching ' + file)
-    })
-    .on('change', () => {
-      console.info('Recompiling css...')
+    .on('change', (file) => {
+      log.info(file + 'changed')
+      log.info('Recompiling css...')
       buildCss()
     })
 }
