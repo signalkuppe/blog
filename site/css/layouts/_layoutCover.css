@@ -87,7 +87,12 @@
     padding-left: calc(var(--spaceUnit) * 5);
     width: calc(100% - 55ch);
     max-width: none;
-    position: sticky;
-    top: 0;
+  }
+
+  @supports (position: -webkit-sticky) {
+    .l-cover-footer { /* firefox is buggy :( */
+      position: sticky;
+      top: 0;
+    }
   }
 }

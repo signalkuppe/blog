@@ -86,8 +86,7 @@ module.exports = (eleventyConfig) => {
           link: p.url,
           tags: p.data.tags.join(' '),
           categories: p.data.categories,
-          cover: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center${p.data.version ? '/' + p.data.version : ''}/${coverId}`,
-          marker: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center${p.data.version ? '/' + p.data.version : ''}/${coverId}`,
+          cover: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_100,h_100,c_fill,f_auto,q_20,g_center${p.data.version ? '/' + p.data.version : ''}/${coverId}`,
         }
       })
   

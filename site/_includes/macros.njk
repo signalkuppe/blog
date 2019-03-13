@@ -337,8 +337,7 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
     <header class="c-postCard-header">
       <img 
         class="lazyImg"
-        src="{{ cloudinaryImageUrl(cover, 'w_80,h_60,c_fill,f_auto,q_10,e_blur:1000') }}" 
-        data-src="{{ cloudinaryImageUrl(cover, 'w_600,h_400,c_fill,f_auto,q_auto') }}" 
+        data-src="{{ cloudinaryImageUrl(cover, 'w_500,h_333,c_fill,f_auto,q_60') }}" 
         alt="{{ post.data.title }}" />
         <div class="c-postCard-info">
           <time datetime="{{ post.data.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.data.date | formatDate('DD MMMM YYYY') }}</time>

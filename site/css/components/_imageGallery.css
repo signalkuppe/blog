@@ -14,14 +14,12 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  will-change: transform;
-  transition: transform 0.2s linear;
+  transition: outline 0.2s linear;
   position: relative;
   z-index: 1;
 }
 
 .c-imageGallery a:hover img {
-  transform: scale(1.05);
   z-index: 400;
   outline: calc(var(--spaceUnit) / 4) solid var(--colorPrimary);
 }
