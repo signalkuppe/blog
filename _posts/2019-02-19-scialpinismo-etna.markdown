@@ -2,7 +2,7 @@
 layout: post
 title: "Scialpinismo sull’Etna"
 date: 2019-02-19
-description: "Scialpinistica di tre giorni sull’Etna con pernottamento a Nicolosi. Primo giorno al versante sud sulla Montagnola, secondo giorno vetta da Piano Provenzana"
+description: "Scialpinistica di tre giorni sull’Etna con pernottamento a Nicolosi. Primo giorno al versante sud sulla Montagnola. Secondo giorno vetta da Piano Provenzana. Terzo giorno sciata sul canalone dell’osservatorio."
 categories: scialpinismo
 tags: scialpinismo etna sicilia 
 caption: L’Etna dalla Montagnola
@@ -10,7 +10,7 @@ flickr: 72157703875253252
 gps: false
 map: 37.7555995,14.954740
 crop: x_300
----
+---A
 
 Quest’anno è quello buono, si parte per **l’Etna.** Volo da Orio a Catania dove noleggiamo un pulmino. Siamo un bel gruppo, in tutto una ventina. Pernottiamo a **Nicolosi** al Bed & Breakfast *“La Giara”*. Molliamo i bagagli, ci vestiamo e partiamo subito verso il vulcano. Prima meta “La Montagnola”, un cono secondario alto 2780m sul versante sud.
 
