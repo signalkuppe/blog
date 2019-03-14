@@ -62,6 +62,3 @@ DEPENDENCIES
   jekyll (= 3.8.5)
   jekyll-sitemap
   tzinfo-data
-
-BUNDLED WITH
-   1.17.3
