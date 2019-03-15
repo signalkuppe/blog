@@ -14,7 +14,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: outline 0.2s linear;
   position: relative;
   z-index: 1;
 }

@@ -2,6 +2,47 @@
 * Cover layout: fixed aspect ratio left banner and content on the right
 */
 
+@media (--landscape) {
+  .l-cover {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: var(--headerHeight) calc(100vh - var(--headerHeight) - var(--footerHeight)) var(--footerHeight);
+    grid-template-columns: calc(100vh * 0.666) calc(100% - calc(100vh * 0.666) -  calc(var(--spaceUnit) * 4));
+    grid-column-gap: calc(var(--spaceUnit) * 4);
+    grid-template-areas: "cover header"
+                         "cover main"
+                         "cover footer";
+  }
+
+  .l-cover-header {
+    grid-area: header;
+  }
+
+  .l-cover-cover {
+    grid-area: cover;
+  }
+
+  .l-cover-main {
+    grid-area: main;
+    height: calc(100vh - var(--headerHeight) - var(--footerHeight));
+    overflow-y: auto;
+    padding-right: var(--spaceUnit);
+    display: grid;
+    grid-template-columns: 55ch calc(100% - 55ch - var(--spaceUnit) * 5);
+    grid-column-gap: calc(var(--spaceUnit) * 5);
+  }
+
+  .l-cover-complementary {
+    position: sticky;
+    top: 0;
+  }
+
+  .l-cover-footer {
+    grid-area: footer;
+  }
+}
+
+/*
 .l-cover-header {
   height: var(--headerHeight);
 }
@@ -88,11 +129,5 @@
     width: calc(100% - 55ch);
     max-width: none;
   }
-
-  @supports (position: -webkit-sticky) {
-    .l-cover-footer { /* firefox is buggy :( */
-      position: sticky;
-      top: 0;
-    }
-  }
 }
+*/

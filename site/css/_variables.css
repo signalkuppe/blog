@@ -21,6 +21,7 @@
   --colorGreyMedium: #ccc;
   --colorGreyDark: #666;
   --colorGreyDarker: #333;
-  --headerHeight: calc(var(--fontSize0) * 4);
+  --headerHeight: calc(var(--spaceUnit) * 4);
+  --footerHeight: calc(var(--spaceUnit) * 4);
 }
 
