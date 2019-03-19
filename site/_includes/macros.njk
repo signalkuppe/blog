@@ -219,7 +219,6 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
   <li class="c-imageGallery-item">
     <a href="{{ cloudinaryImageUrl(photo.public_id) }}" title="{{ photo.title }}">
       <img 
-        src="{{ cloudinaryImageUrl(photo.public_id, 'w_40,h_40,c_fill,f_auto,q_1,e_blur:1000') }}"
         data-src="{{ cloudinaryImageUrl(photo.public_id, 'w_600,h_600,c_fill,f_auto,q_auto') }}" 
         alt="{{ photo.title }}" 
         class="lazyImg" />
