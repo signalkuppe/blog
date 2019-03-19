@@ -23,12 +23,14 @@
         </div>
         {% if complementary %}
         <div class="l-cover-complementary">
+          <div class="l-cover-complementarySticky">
           {% block complementary %}{% endblock %}
+          </div>
         </div>
         {% endif %}
-      </div>
-      <div class="l-cover-footer">
-        {% block footer %}{% endblock %}
+        <div class="l-cover-footer">
+          {% block footer %}{% endblock %}
+        </div>      
       </div>
     </div>
     {% block scripts %}{% endblock %}

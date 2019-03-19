@@ -1,6 +1,7 @@
 
 .c-navigation {
-  height: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .c-navigation-siteNameLink {
@@ -23,6 +24,10 @@
   height: 100%;
 }
 
+.c-navigation button {
+  align-self: center;
+}
+
 .c-navigation button:active,
 .c-navigation-siteNameLink:active {
   position: relative;
@@ -33,15 +38,6 @@
 .c-navigation button,
 .c-navigation-menu {
   outline: none;
-}
-
-.c-navigation button {
-  appearance: none;
-  float: right;
-  margin-right: var(--spaceUnit);
-  margin-top: calc(var(--headerHeight) / 2 - var(--spaceUnit));
-  position: relative;
-  z-index: 200;
 }
 
 .c-navigation-menu {
