@@ -40,7 +40,6 @@
     "lunr": "^2.3.6",
     "pace-progress": "^1.0.2",
     "smooth-scroll": "^16.0.0",
-    "stickybits": "^3.6.4",
     "vanilla-lazyload": "^11.0.3"
   }
 }

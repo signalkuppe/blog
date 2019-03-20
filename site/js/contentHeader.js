@@ -1,12 +1,30 @@
 (function () {
+  /*
+  * we need to detect when to show the page title in portrait mode
+  * since is hidden unitl the cover goes off the viewport
+  */
   document.addEventListener('DOMContentLoaded', (event) => {
-    var scrollEl = '#main'
-    if (window.matchMedia("(orientation: portrait)").matches) {
-      scrollEl = null // relative to viewport
+    var header = document.querySelector('#contentHeader')
+    var root = null
+    var target = document.querySelector('.c-cover')
+    var stickyClass = 'js-is-sticky'
+    var callback = function (entries, observer) { 
+      entries.forEach( function (entry) {
+        if (!entry.isIntersecting) {
+          header.classList.add(stickyClass)
+        } else {
+          header.classList.remove(stickyClass)
+        }
+      })
     }
-    stickybits('#contentHeader', { // fires position sticky on #pageHeader
-      useStickyClasses: true, // adds a class when the div is sticky
-      scrollEl: scrollEl // check the scroll on main or body (portrait)
-    })
+
+    var options = {
+      root: root,
+      rootMargin: '0px',
+      threshold: 0
+    }
+    
+    var observer = new IntersectionObserver(callback, options);
+    observer.observe(target);
   })
 })()

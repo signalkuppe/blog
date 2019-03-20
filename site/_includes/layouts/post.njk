@@ -39,7 +39,7 @@
         <span itemprop="name">{{ author }}</span>
       </span>
       {% endcall %}
-      <section itemprop="articleBody">{{ content | safe }}</section>
+      <section itemprop="articleBody" id="contentHeader-next">{{ content | safe }}</section>
       <footer>
       {{ macro.prevNext(collections.posts, page.url) }}
       </footer>
@@ -75,7 +75,6 @@
 
     {% block scripts %}
     <script src="/node_modules/pace-progress/pace.js"></script>
-    <script src="/node_modules/stickybits/dist/stickybits.js"></script>
     <script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
     <script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
     <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>

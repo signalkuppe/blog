@@ -14,7 +14,6 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'favicons'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'js'))
-  eleventyConfig.addPassthroughCopy('node_modules/stickybits/dist/stickybits.js')
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist/baguetteBox.js')
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist/baguetteBox.css')
   eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')

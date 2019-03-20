@@ -6,13 +6,12 @@
 @media (--portrait) {
 
   .l-cover-header,
-  .l-cover-main,
-  .l-cover-footer {
+  .l-cover-main {
     padding: 0 var(--spaceUnit);
   }
 
   .l-cover-main {
-    margin-top: calc(var(--spaceUnit) * 4);
+    margin-top: var(--spaceUnit);
   }
 
   .l-cover-footer {
