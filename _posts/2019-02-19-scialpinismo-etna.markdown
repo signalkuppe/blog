@@ -31,7 +31,7 @@ Il giorno successivo è dedicato alla salita alla vetta. Partiamo presto dopo un
 
 Parcheggiamo a **Piano Provenzana** dove partono gli impianti da sci. La giornata purtroppo non è delle migliori, ma ci proviamo lo stesso. Iniziamo risalendo la pista (i gestori non fanno storie) per poi abbandonarla prendendo i pendii sulla destra fino all’arrivo dello skilift.
 
-Non si vede nulla, whiteout totale, ma la sorpresa è dietro l’angolo. Poco dopo infatti il cielo si apre improvvisamente, siamo sopra le nuvole, fantastico. A questo punto decidiamo di andare in vetta. Il **plateau superiore**è molto lungo, sembra non finire mai. Il vento forte e le nuvole creano una bellissima atmosfera degna dell’alta montagna. 
+Non si vede nulla, whiteout totale, ma la sorpresa è dietro l’angolo. Poco dopo infatti il cielo si apre improvvisamente, siamo sopra le nuvole, fantastico. A questo punto decidiamo di andare in vetta. Il **plateau superiore** è molto lungo, sembra non finire mai. Il vento forte e le nuvole creano una bellissima atmosfera degna dell’alta montagna. 
 
 <figure>
     <img src="https://farm8.staticflickr.com/7926/47300258881_6de07e5b38_o.jpg" alt="Scialpinismo sull’Etna: il plateau sommitale con la vetta" /> 
