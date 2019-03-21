@@ -5,7 +5,6 @@
 @import "_customSelectors.css";
 @import "_utilities.css";
 @import "_typography.css";
-@import "../../node_modules/baguettebox.js/dist/baguetteBox.css";
 @import "layouts/_layoutCover.css";
 @import "layouts/_postGrid.css";
 @import "components/_button.css";

@@ -12,7 +12,7 @@ const watcher = chokidar.watch(path.join(process.cwd(), './site/css/**/*.css'), 
 const watchCss = () => {
   watcher
     .on('change', (file) => {
-      log.info(file + 'changed')
+      log.info(`${file} changed`)
       log.info('Recompiling css...')
       buildCss()
     })
