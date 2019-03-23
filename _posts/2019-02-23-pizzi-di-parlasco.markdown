@@ -25,9 +25,9 @@ Qui abbandoniamo il sentiero che prosegue a mezzacosta per prendere una diramazi
     <figcaption>Sulla cresta dei Pizzi di Parlasco</figcaption>
 </figure>
 
-Da qui in poi saliamo per un ripido sentiero, con molte svolte, nel rado bosco per raggiungere prima la miniera abbandonata di manganese a quota 1180m e poi il **Passo del Cavée o Porta di Parlasco** a 1315m. Qui incrociamo il sentiero che proviene da N dal Cainallo. In direzione S iniziamo il nostro percorso di cresta che con vari saliscendi, ripide salite, tratti misti di erba e roccette ci fa scavalcare in successione la Cima del Cavèe, la Cima di Daas con la sua croce e il **Sasso Mottolino** che conquistiamo con l’ausilio di qualche catena.
+Da qui in poi saliamo per un ripido sentiero, con molte svolte, nel rado bosco per raggiungere prima la miniera abbandonata di manganese a quota 1180m e poi il **Passo del Cavée o Porta di Parlasco** a 1315m. Qui incrociamo il sentiero che proviene dal Cainallo. Iniziamo il nostro percorso di cresta che con vari saliscendi, ripide salite, tratti misti di erba e roccette ci fa scavalcare in successione la Cima del Cavèe, la Cima di Daas con la sua croce e il **Sasso Mottolino** che conquistiamo con l’ausilio di qualche catena.
 
-Stiamo quasi sempre sul filo di cresta o sul versante percorrendo un sentiero discretamente visibile e segnalato. Fra la Cima di Daas e il Sasso Mottolino incrociamo il canale di uscita della via **Forrest G.A.M.P.**  difficile percorso di misto realizzato nel febbraio del 2014 da tre bravi alpinisti lecchesi.
+Stiamo quasi sempre sul filo di cresta o sul versante SW percorrendo un sentiero discretamente visibile e segnalato. Fra la Cima di Daas e il Sasso Mottolino incrociamo il canale di uscita della via **Forrest G.A.M.P.**  difficile percorso di misto realizzato nel febbraio del 2014 da tre bravi alpinisti lecchesi.
 
 ## Rientro dal Passo di Agueglio
 
