@@ -1,6 +1,5 @@
 /* 
 Grab post images from cloudinary 
-Save a file with all the photos (galleries.json), and use it as a cache
 Then we grab the current post's photos in the post template
 */
 

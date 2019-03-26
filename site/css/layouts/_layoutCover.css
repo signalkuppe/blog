@@ -47,7 +47,7 @@
     margin-top: calc(var(--spaceUnit) * 2);
   }
 
-  .l-cover-content,
+  .l-cover--has-complementary .l-cover-content,
   .l-cover-complementary {
     max-width: 55ch;
   }
