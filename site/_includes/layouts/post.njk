@@ -2,13 +2,9 @@
 {% set complementary = true %}
 {% extends "layouts/_layoutCover.njk" %}
 {% import "macros.njk" as macro %}
-{% set dateSlug %}{{ date | formatDate('DDMMYY') }}{% endset %}
-{% set postCoverId %}blog/covers/{{ dateSlug }}{% endset %}
-{% set postGpx %}blog/downloads/{{ dateSlug }}.zip{% endset %}
-{% set postKml %}blog/downloads/{{ dateSlug }}.kml{% endset %}
 {% set author %}{% info 'twitter' %}{% endset %}
   {% block head %}
-  {{ macro.socialMeta(title, description, postCoverId) }}
+  {{ macro.socialMeta(title, description, cover.id) }}
   {{ macro.canonical(page.url) }}
   {{ macro.metaTitle(title, info.name) }}
   <link rel="prefetch" href="{{ macro.coverImage(postCoverId, version, crop)  }}">
@@ -24,8 +20,8 @@
     {% block cover %}
     {% call macro.cover(date, title, caption) %}
     <img 
-      src="{{ macro.coverImage(postCoverId, version, crop, lazyPlaceholder = true)  }}"
-      data-src="{{ macro.coverImage(postCoverId, version, crop)  }}" 
+      src="{{ macro.coverImage(cover.id, cover.version, cover.portraitcrop, lazyPlaceholder = true)  }}"
+      data-src="{{ macro.coverImage(cover.id, cover.version, cover.portraitcrop)  }}" 
       alt="{{ caption }}" 
       class="lazyImg" />
     {% endcall %}
@@ -50,13 +46,13 @@
     <aside>
       <div class="u-mb-4">
         <h3 class="u-mb-1">Galleria fotografica</h3>
-        {{ macro.imageGallery(cloudinary.photos[dateSlug]) }}
+        {{ macro.imageGallery(gallery) }}
       </div>
 
       {% if gps %}
       <div class="u-mb-4">
         <h3 class="u-mb-1">Scarica le tracce gps</h3>
-        {{ macro.gpsTracks(postGpx, postKml) }}
+        {{ macro.gpsTracks(gps) }}
       </div>
       {% endif %}
 

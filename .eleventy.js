@@ -2,11 +2,44 @@ const path = require('path')
 const log = require(path.join(process.cwd(), 'log'))
 const fs = require('fs')
 const dayjs = require('dayjs')
+const markdownIt = require('markdown-it')
+const mdCustomBlock = require('markdown-it-custom-block')
 const it = require('dayjs/locale/it')
 const inputDir = 'site'
 const outputDir = 'dist'
 const info = JSON.parse(fs.readFileSync(path.join(inputDir, '_data', 'info.json'), 'utf-8')) // read site config
 module.exports = (eleventyConfig) => {
+
+  /*
+  * Custom markdown block for inline images
+  * @[image]({ "id": "", "title": "", "alt": "" })
+  */
+
+  const markdownLib = markdownIt({ html: true })
+    .use(mdCustomBlock, {
+      image (args) {
+        try {
+          let {id, title, alt } = JSON.parse(args)
+          if (!id || !title || !alt) {
+            log.warn('Missing inline image params')
+          }
+          return `
+            <figure>
+              <img 
+                  src="https://res.cloudinary.com/signalkuppe/image/upload/w_1280,f_auto,q_10,e_blur:1000/${id}"
+                  data-src="https://res.cloudinary.com/signalkuppe/image/upload/w_1280,f_auto,q_auto/${id}"
+                  alt="${alt}" 
+                  class="lazyImg" /> 
+                <figcaption>L${title}</figcaption>
+            </figure>`
+        } catch (err) {
+          log.error(err)
+          return ''
+        }
+      }
+    })
+  
+  eleventyConfig.setLibrary('md', markdownLib);
 
   /*
   * Copy static assest and node libs
@@ -21,6 +54,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('node_modules/smooth-scroll/dist/smooth-scroll.js')
   eleventyConfig.addPassthroughCopy('node_modules/lunr/lunr.js')
 
+
   /*
   * Add a universal shortcode for site info vars ({% info 'cloudinaryCloudName' %} -> signalkuppe)
   **/
@@ -34,6 +68,7 @@ module.exports = (eleventyConfig) => {
     }
   })
 
+
   /*
   * Formats a date
   **/
@@ -41,20 +76,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('formatDate', (dateString, format) => {
     try {
       return dayjs(dateString).locale(it).format(format)
-    } catch (err) {
-      log.error(err)
-      return ''
-    }
-  })
-
-  /*
-  * Post lat/long
-  **/
-
-  eleventyConfig.addFilter('postLatLong', (cordsString, type) => {
-    try {
-      const position = type === 'lat' ? 0 : 1
-      return cordsString.split(',')[position].trim()
     } catch (err) {
       log.error(err)
       return ''
@@ -75,17 +96,16 @@ module.exports = (eleventyConfig) => {
       // write markers in js file (we can minify it at build time)
       // we use this file as an index for lunr search
       const markers = posts.map((p) => {
-        const coverId = `blog/covers/${eleventyConfig.javascriptFunctions.formatDate(p.data.date, 'DDMMYY')}`
         return {
-          lat: eleventyConfig.javascriptFunctions.postLatLong(p.data.map, 'lat'),
-          lng: eleventyConfig.javascriptFunctions.postLatLong(p.data.map, 'long'),
+          lat: p.data.cords.lat,
+          lng: p.data.cords.lng,
           title: p.data.title,
           description: p.data.description,
           date: eleventyConfig.javascriptFunctions.formatDate(p.data.date, 'DD/MM/YY'),
           link: p.url,
-          tags: p.data.tags.join(' '),
-          categories: p.data.categories,
-          cover: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_100,h_100,c_fill,f_auto,q_20,g_center${p.data.version ? '/' + p.data.version : ''}/${coverId}`,
+          tags: p.data.tags,
+          categories: p.data.category,
+          cover: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_100,h_100,c_fill,f_auto,q_20,g_center${p.data.cover.version ? '/' + p.data.cover.version : ''}/${p.data.cover.id}`,
         }
       })
   

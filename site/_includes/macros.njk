@@ -197,14 +197,13 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 # @param {String} postKml  - the post kml public_id
 #}
 
-{% macro gpsTracks(postGpx, postKml) %}
+{% macro gpsTracks(postGpsTracks) %}
 <ul>
+  {% for track in postGpsTracks %}
   <li class="u-mr-1 u-inline-block">
-    <a class="c-button" href="{{ cloudinaryRawUrl(postGpx) }}" title="Scarica la traccia in formato .gpx">{% include 'icons/download.njk' %} Traccia .gpx</a>
+    <a class="c-button" href="{{ cloudinaryRawUrl(track.id) }}" title="Scarica la traccia in formato .{{ track.type }}">{% include 'icons/download.njk' %} Traccia .{{ track.type }}</a>
   </li>
-  <li class="u-inline-block">
-    <a class="c-button" href="{{ cloudinaryRawUrl(postKml) }}" title="Scarica la traccia in formato .kml">{% include 'icons/download.njk' %} Traccia .kml</a>
-  </li>
+  {% endfor %}
 </ul>
 {% endmacro %}
 
@@ -217,9 +216,9 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 <ul class="c-imageGallery">
   {% for photo in photos  %}
   <li class="c-imageGallery-item">
-    <a href="{{ cloudinaryImageUrl(photo.public_id) }}" title="{{ photo.context.caption }}">
+    <a href="{{ cloudinaryImageUrl(photo.id) }}" title="{{ photo.title }}">
       <img 
-        data-src="{{ cloudinaryImageUrl(photo.public_id, 'w_600,h_600,c_fill,f_auto,q_auto') }}" 
+        data-src="{{ cloudinaryImageUrl(photo.id, 'w_600,h_600,c_fill,f_auto,q_auto') }}" 
         alt="{{ photo.alt }}" 
         class="lazyImg" />
     </a>
