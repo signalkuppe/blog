@@ -2,7 +2,7 @@
 layout: post
 title: "Cima Soliva"
 date: 2019-03-23
-description: "Scialpinismo alla Cima Soliva per il Lago di Scais e la Val Vedello con partenza dalla centrale elettrica di Agneda"
+description: "Scialpinismo alla Cima Soliva per il Lago di Scais e la Val Vedello con partenza dalla centrale elettrica nei pressi di Agneda"
 categories: scialpinismo
 tags: soliva agneda vedello orobie scais
 caption: "Il Diavolo di Tenda dalla vetta"
