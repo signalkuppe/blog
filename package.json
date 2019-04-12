@@ -8,7 +8,7 @@
     "watchCss": "node scripts/watchCss",
     "buildCss": "node scripts/buildCss",
     "buildSite": "eleventy",
-    "buildAll": "npm run buildSite & npm run buildCss",
+    "build": "npm-run-all buildCss buildSite",
     "dev": "run-p buildCss serve watchCss"
   },
   "repository": {
