@@ -8,8 +8,9 @@
     "watchCss": "node scripts/watchCss",
     "buildCss": "node scripts/buildCss",
     "buildSite": "npx eleventy",
-    "build": "npm run buildSite",
-    "dev": "run-p buildCss serve watchCss"
+    "build": "npm run buildSite && npm run buildCss",
+    "dev": "run-p buildCss serve watchCss",
+    "debug": "DEBUG=* npx eleventy"
   },
   "repository": {
     "type": "git",
@@ -22,23 +23,25 @@
   },
   "homepage": "https://www.signalkuppe.com",
   "dependencies": {
+    "baguettebox.js": "^1.11.0",
+    "intersection-observer": "^0.5.1",
+    "lunr": "^2.3.6",
+    "pace-progress": "^1.0.2",
+    "smooth-scroll": "^16.0.0",
+    "vanilla-lazyload": "^11.0.3"
+  },
+  "devDependencies": {
     "@11ty/eleventy": "^0.8.2",
     "autoprefixer": "^9.5.1",
-    "baguettebox.js": "^1.11.0",
     "chalk": "^2.4.2",
     "chokidar": "^2.1.5",
     "dayjs": "^1.8.12",
-    "intersection-observer": "^0.5.1",
     "lodash": "^4.17.11",
-    "lunr": "^2.3.6",
     "markdown-it-custom-block": "^0.1.1",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.1.5",
-    "pace-progress": "^1.0.2",
     "postcss-import": "^12.0.1",
     "postcss-mixins": "^6.2.1",
-    "postcss-preset-env": "^6.6.0",
-    "smooth-scroll": "^16.0.0",
-    "vanilla-lazyload": "^11.0.3"
+    "postcss-preset-env": "^6.6.0"
   }
 }
