@@ -5,6 +5,14 @@
 
 @media (--portrait) {
 
+  .l-cover-header {
+    height: var(--headerHeight);
+  }
+
+  .l-cover-cover {
+    height: calc(100vh - var(--headerHeight));
+  }
+
   .l-cover-header,
   .l-cover-main {
     padding: 0 var(--spaceUnit);
@@ -34,7 +42,7 @@
   .l-cover-header {
     grid-area: header;
     padding: 0 var(--spaceUnit) 0 0;
-  }
+  }                
 
   .l-cover-cover {
     grid-area: cover;

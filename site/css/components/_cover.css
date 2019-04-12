@@ -41,9 +41,7 @@
 
 
 @media (--portrait) {
-  .c-cover {
-    height: calc(100vh - var(--headerHeight));
-  }
+  .c-cover,
   .c-cover img {
     height: 100%;
   }
