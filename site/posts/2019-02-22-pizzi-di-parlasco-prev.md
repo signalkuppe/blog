@@ -1,5 +1,5 @@
 ---
-title: Pizzi di Parlasco precedente per un titolo lungo
+title: Pizzi di Parlasco precedente per un’apostrofo lungo
 date: 2019-02-22
 description: "Escursionismo ai Pizzi di Parlasco: salita per la Porta di Parlasco e rientro ad anello per il Passo di Agueglio"
 category: escursionismo
@@ -67,13 +67,13 @@ gallery:
     alt: Il Legnone dalla cresta dei Pizzi di Parlasco
 ---
 
-Continua la scoperta di nuovi itinerari nell’amata **Valsassina** con la bella traversata dei **Pizzi di Parlasco**. L’itinerario si svolge lungo le propaggini settentrionali del gruppo delle **Grigne** e tocca tre cime: la **Cima del Cavèe** 1501m, la **Cima di Dass** 1509m ed il **Sasso Mottolino** 1508m, per poi terminare a Bellano sulla riva del lago di Como. A dispetto della modesta elevazione il percorso si svolge in un ambiente vario, selvaggio e di grande interesse naturalistico e paesaggistico. Consigliatissimo in autunno!
+Continua la scoperta di nuovi itinerari nell’amata **Valsassina** con la bella traversata dei **Pizzi di Parlasco**. L’itinerario si svolge lungo le *propaggini* settentrionali del gruppo delle **Grigne** e tocca tre cime: la **Cima del Cavèe** 1501m, la **Cima di Dass** 1509m ed il **Sasso Mottolino** 1508m, per poi terminare a Bellano sulla riva del lago di Como. A dispetto della modesta elevazione il percorso si svolge in un ambiente vario, selvaggio e di <a href="https://www.google.it">grande interesse naturalistico</a> e paesaggistico. Consigliatissimo in autunno!
 
 @[image]({ "id": "blog/posts/230219/photos/La_croce_non_il_punto_più_alto", "title": "Sulla cresta dei Pizzi di Parlasco", "alt": "La cresta dei Pizzi di Parlasco" })
 
 ## Da Parlasco alla cresta
 
-Festeggio il mio compleanno con una levata mattutina ed assieme a mio papà raggiungiamo il parcheggio posto a lato della chiesa di S. Antonio a **Parlasco**, il paese dipinto. Lasciata l’auto ritorniamo brevemente verso la strada da cui siamo arrivati per imboccare subito una sterrata sulla destra che ci porta in lieve salita ad una cascina isolata. 
+Festeggio il *mio compleanno* con una levata mattutina ed <a href="https://www.google.it">assieme a mio papà</a> raggiungiamo il parcheggio posto a lato della chiesa di S. Antonio a **Parlasco**, il paese dipinto. Lasciata l’auto ritorniamo brevemente verso la strada da cui siamo arrivati per imboccare subito una sterrata sulla destra che ci porta in lieve salita ad una cascina isolata. 
 
 Qui abbandoniamo il sentiero che prosegue a mezzacosta per prendere una diramazione sulla destra che sale ripida nel bosco fino ad incontrare una pista tagliafuoco in prossimità di una sbarra con l’indicazione **sentiero 1**. Il sentiero non è facile da trovare, la traccia gps allegata può aiutarvi.
 

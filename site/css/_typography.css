@@ -61,6 +61,15 @@ time {
   text-transform: uppercase;
 }
 
+a {
+  text-decoration-skip: ink;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration-style: wavy;
+}
+
 strong {
   font-weight: 700;
 }

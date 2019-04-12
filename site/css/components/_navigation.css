@@ -76,18 +76,15 @@
 }
 
 .c-navigation-menuList a {
-  display: block;
-  color: var(--colorGreyDark);
+  display: inline-block;
   text-decoration: none;
 }
 
 .c-navigation-menuList a.is-active {
-  font-weight: 700;
-  color: var(--colorGreyDarker);
-  text-decoration: underline var(--colorPrimary);
+  background: var(--colorPrimary);
+  padding: 0 1em;
 }
 
 .c-navigation-menuList a:hover {
-  color: var(--colorGreyDarker);
   text-decoration: underline var(--colorPrimary);
 }

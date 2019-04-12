@@ -8,7 +8,7 @@
   {{ macro.canonical(page.url) }}
   {{ macro.metaTitle(title, info.name) }}
   <link rel="prefetch" href="{{ macro.coverImage(cover.id, cover.version, cover.crop) }}">
-  <link rel="preconnect" href="https://res.cloudinary.com">
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
   {% endblock %}
   <body>
     {% block header %}
@@ -61,7 +61,7 @@
 
       {{ macro.prevNext(collections.posts, page.url) }}
       
-      <p>Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></strong></p>
+      <p>Vuoi rimanere aggiornato sui nuovi post? <a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></p>
     </aside>
     {% endblock %}
 
