@@ -47,6 +47,7 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'favicons'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'js'))
+  eleventyConfig.addPassthroughCopy(path.join(inputDir, 'css/print.css'))
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist/baguetteBox.js')
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist/baguetteBox.css')
   eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')
@@ -82,6 +83,18 @@ module.exports = (eleventyConfig) => {
     }
   })
 
+  /*
+  * Wraps first char in a span
+  **/
+
+ eleventyConfig.addFilter('wrapFirstChar', (string) => {
+    try {
+      return `<span>${string.slice(0, 1)}</span>${string.slice(1)}`
+    } catch (err) {
+      return ''
+    }
+  })
+
 
   /*
   * Add all posts as a collection
@@ -96,16 +109,18 @@ module.exports = (eleventyConfig) => {
       // write markers in js file (we can minify it at build time)
       // we use this file as an index for lunr search
       const markers = posts.map((p) => {
+        const postDate = eleventyConfig.javascriptFunctions.formatDate(p.data.date, 'DD/MM/YY')
         return {
           lat: p.data.cords.lat,
           lng: p.data.cords.lng,
           title: p.data.title,
           description: p.data.description,
-          date: eleventyConfig.javascriptFunctions.formatDate(p.data.date, 'DD/MM/YY'),
+          date: postDate,
           link: p.url,
           tags: p.data.tags,
           categories: p.data.category,
           cover: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_100,h_100,c_fill,f_auto,q_20,g_center${p.data.cover.version ? '/' + p.data.cover.version : ''}/${p.data.cover.id}`,
+          autocompleteRow: `<a href="${p.url}" data-autocomplete">${postDate} - ${p.data.title}</a>`
         }
       })
   

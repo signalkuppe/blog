@@ -24,7 +24,6 @@
       openIcon.removeAttribute('hidden')
     }
     const onClick = (e) => {
-      console.log('click', e.relatedTarget)
       menu.classList.toggle(closedClass)
       const isClosed = menu.classList.contains(closedClass) ? false : true
       if (isClosed) {
@@ -42,7 +41,7 @@
     buttonOpen.addEventListener('mousedown', onClick)
     buttonOpen.addEventListener('touchstart', onClick)
     menu.addEventListener('blur', onBlur)
-    document.addEventListener('keyup', (event) => {
+    menu.addEventListener('keyup', (event) => {
       if (event.keyCode === 27) {
         closeMenu()
       }

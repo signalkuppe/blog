@@ -1,0 +1,4 @@
+.c-pager {
+  display: flex;
+  justify-content: space-between;
+}

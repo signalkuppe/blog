@@ -7,7 +7,7 @@
   {{ macro.socialMeta(title, description, cover.id) }}
   {{ macro.canonical(page.url) }}
   {{ macro.metaTitle(title, info.name) }}
-  <link rel="prefetch" href="{{ macro.coverImage(postCoverId, version, crop)  }}">
+  <link rel="prefetch" href="{{ macro.coverImage(cover.id, cover.version, cover.crop) }}">
   <link rel="preconnect" href="https://res.cloudinary.com">
   {% endblock %}
   <body>
@@ -20,8 +20,8 @@
     {% block cover %}
     {% call macro.cover(date, title, caption) %}
     <img 
-      src="{{ macro.coverImage(cover.id, cover.version, cover.portraitcrop, lazyPlaceholder = true)  }}"
-      data-src="{{ macro.coverImage(cover.id, cover.version, cover.portraitcrop)  }}" 
+      src="{{ macro.coverImage(cover.id, cover.version, cover.crop, lazyPlaceholder = true)  }}"
+      data-src="{{ macro.coverImage(cover.id, cover.version, cover.crop)  }}" 
       alt="{{ caption }}" 
       class="lazyImg" />
     {% endcall %}
@@ -36,9 +36,6 @@
       </span>
       {% endcall %}
       <section itemprop="articleBody" id="contentHeader-next">{{ content | safe }}</section>
-      <footer>
-      {{ macro.prevNext(collections.posts, page.url) }}
-      </footer>
     </article>
     {% endblock %}
 
@@ -60,7 +57,10 @@
         <h3 class="u-mb-1">Condividi</h3>
         {{ macro.share(page.url, title, description, author) }}
       </div>
+      
 
+      {{ macro.prevNext(collections.posts, page.url) }}
+      
       <p>Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></strong></p>
     </aside>
     {% endblock %}

@@ -1,13 +1,11 @@
 (function () {
   document.addEventListener('DOMContentLoaded', (event) => {
-    var input = document.getElementById('search-input')
-    var resultMsg = document.getElementById('search-results')
-    var resultLength = document.getElementById('search-length')
-    var resultEmojoy = document.getElementById('search-emojoy')
-    var reset = document.getElementById('search-reset')
-    var cards = document.querySelectorAll('.l-postGrid-item')
+    var form = document.getElementById('autocomplete')
+    var input = document.getElementById('autocomplete-input')
+    var reset = document.getElementById('autocomplete-reset')
+    var autocomplete = document.getElementById('autocomplete-results')
     var idx = lunr(function () {
-      this.ref('title')
+      this.ref('autocompleteRow')
       this.field('description')
       this.field('title')
       this.field('tags')
@@ -30,16 +28,6 @@
         if (callNow) func.apply(context, args);
       };
     }
-    var _filterCards = function (titles) {
-      Array.from(cards).forEach(function (card) {
-        var cardKey = card.getAttribute('data-post')
-        if (titles.indexOf(cardKey) === -1) {
-          card.setAttribute('hidden', true)
-        } else {
-          card.removeAttribute('hidden')
-        }
-      })
-    }
     var _search = function (searchKey) {
       // https://lunrjs.com/guides/searching.html (AND)
       var key = searchKey.length ? searchKey 
@@ -51,31 +39,59 @@
                 .join(' ') : ''
       var results = idx.search(key)
       if (searchKey.length) {
-        resultMsg.removeAttribute('hidden')
+        _debounce(_showResults, 250)(results)
       } else {
-        resultMsg.setAttribute('hidden', true)
-      }
-      resultLength.innerText = results.length
-      _filterCards(results.map(value => value['ref']))
-      if (!results.length) {
-        setTimeout(function () {
-          resultEmojoy.removeAttribute('hidden')
-        }, 250)
-      } else {
-        setTimeout(function () {
-          resultEmojoy.setAttribute('hidden', true)
-        }, 250)
+        _hideResults()
       }
     }
-
-    input.addEventListener('keyup', function () {
-      var searchKey = this.value
-      _debounce(_search, 250)(searchKey)
+    var _buildResults = function (results) {
+        var output = '<ul>'
+        if (!results.length) {
+          output += '<li>Nessun risultato 😓</li>'
+        } else {
+          for (var i = 0; i < results.length; i++) {
+            output += '<li>'+ results[i].ref +'</li>'
+          }
+        }
+        output += '</ul>'
+        return output;
+    }
+    var _showResults = function (results) {
+      autocomplete.innerHTML = _buildResults(results)
+      autocomplete.removeAttribute('aria-hidden')
+      autocomplete.classList.remove('js-is-hidden')
+      form.addEventListener('blur', _blur, true)
+    }
+    var _blur = function (e) {
+      if(!e.relatedTarget) {
+        _hideResults()
+      }
+    }
+    var _hideResults = function () {
+      autocomplete.setAttribute('aria-hidden', true)
+      autocomplete.classList.add('js-is-hidden')
+      autocomplete.innerHTML = ''
+      form.removeEventListener('blur', _blur)
+    }
+    var _init = function () {
+      autocomplete.removeAttribute('hidden')
+      form.setAttribute('tabindex','0')
+    }
+    input.addEventListener('keyup', function (event) {
+      if (event.keyCode !== 27) {
+        var searchKey = this.value
+        _debounce(_search, 250)(searchKey)
+      } else {
+        form.reset()
+        _hideResults()
+      }
     })
 
     reset.addEventListener('click', function () {
       _debounce(_search, 250)('')
     })
+    _init()
+    _hideResults()
 
   })
 })()

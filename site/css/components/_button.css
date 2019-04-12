@@ -5,25 +5,31 @@
   background: white;
   font-weight: 700;
   border: 1px solid black;
-  box-shadow: 2px 2px 0 0 black;
+  box-shadow: 3px 3px 0 0 black;
   text-decoration: none;
-  transition: all 0.2s linear;
-  will-change: transform;
+  display: inline-flex;
+  align-self: center;
+  transition: box-shadow 0.2s linear;
 }
+
+.c-button:hover {
+  box-shadow: 5px 5px 0 0 black;
+}
+
 
 .c-button--small {
   font-size: var(--fontSizeSmall);
   padding: calc(var(--spaceUnit) / 4) calc(var(--spaceUnit) / 2);
 }
 
-.c-button:hover {
-  transform: scale(1.05);
-}
-
 .c-button:active {
   background: var(--colorPrimary);
+  position: relative;
+  top: 1px;
+  left: 1px;
 }
 
 .c-button svg {
-  vertical-align: text-bottom;
+  position: relative;
+  top: 0.125em;
 }

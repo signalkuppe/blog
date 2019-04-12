@@ -1,0 +1,47 @@
+.c-autocomplete {
+  position: relative;
+  margin-top: var(--spaceUnit);
+}
+
+.c-autocomplete input[type="text"] {
+  font-family: system-ui;
+  font-size: var(--fontSize2);
+  border: 2px solid black;
+  display: block;
+  width: 100%;
+  height: 3rem;
+  padding: 0 3rem 0 1rem;
+}
+
+.c-autocomplete button { /* reset */
+  position: absolute;
+  right: 1rem;
+  top: 0.75rem;
+  background: transparent;
+  border: 1px solid white;
+  height: 1rem;
+}
+
+.c-autocomplete small { /* help text */
+  color: var(--colorGreyDark);
+}
+
+.c-autocomplete-results {
+  background: white;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  border-top-style: dashed;
+  padding: 1rem;
+  opacity: 1;
+  transition: all 0.2s linear;
+  position: absolute;
+  top: calc(3rem - 2px);
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.c-autocomplete-results.js-is-hidden {
+  opacity: 0;
+}

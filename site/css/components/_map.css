@@ -28,8 +28,8 @@
   transform: translate(-50%, 0);
   width: 0; 
   height: 0; 
-  border-left: 10px solid;
-  border-right:10px solid;
+  border-left: none;
+  border-right: 10px solid transparent;
   border-top: 10px solid white;
 }
 

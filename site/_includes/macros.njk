@@ -82,7 +82,9 @@
 #}
 
 {% macro css() %}
-<link href="/css/index.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|PT+Sans:400,400i,700|PT+Serif:700" rel="stylesheet">
+<link href="/css/index.css" rel="stylesheet" media="screen">
+<link href="/css/print.css" rel="stylesheet" media="print">
 {% endmacro %}
 
 {# 
@@ -169,7 +171,7 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
   {{ caller() }}
   <figcaption class="c-cover-caption">
     {% if date %}
-    <span class="c-cover-date">{{ date | formatDate('DD MMMM YYYY') }}</span>
+    <time datetime="{{ date | formatDate('YYYY-MM-DD') }}" class="c-cover-date">{{ date | formatDate('DD MMMM YYYY') }}</time>
     {% endif %}
     <div class="c-cover-title">{{ title }}</div>
     <span class="c-cover-description">{{ description }}</span>
@@ -186,7 +188,7 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 
 {% macro contentHeader(title, hideOnPortrait) %}
 <header id="contentHeader" class="c-contentHeader{% if hideOnPortrait %} c-contentHeader--hideOnPortrait{% endif %}">
-  <h1 class="c-contentHeader-title">{{ title }}</h1>
+  <h1 class="c-contentHeader-title">{{ title | wrapFirstChar | safe }}</h1>
   {{ caller() }}
 </header>
 {% endmacro %}
@@ -291,6 +293,7 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 </footer>
 {% endmacro %}
 
+
 {# 
 # Prev and next post
 # @param {Array} collection - the post collection
@@ -309,15 +312,14 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 {% set PrevItemIndex = currentItemIndex + 1  %}
 {% set NextItem = collection[NextItemIndex] %}
 {% set PrevItem = collection[PrevItemIndex] %}
-<hr />
 <dl>
   {% if NextItem %}
   <dt>Post successivo</dt>
-  <dd><small>{{ NextItem.data.date | formatDate('DD MMMM YYYY') }}</small><br/><a href="{{ NextItem.url | url }}">{{ NextItem.data.title }}</a></dd>
+  <dd><time datetime="{{ NextItem.data.date | formatDate('YYYY-MM-DD') }}">{{ NextItem.data.date | formatDate('DD MMMM YYYY') }}</time><br/><a href="{{ NextItem.url | url }}">{{ NextItem.data.title }}</a></dd>
   {% endif %}
   {% if PrevItem %}
   <dt>Post precedente</dt>
-  <dd><small>{{ PrevItem.data.date | formatDate('DD MMMM YYYY') }}</small><br /><a href="{{ PrevItem.url | url }}">{{ PrevItem.data.title }}</a></dd>
+  <dd><time datetime="{{ PrevItem.data.date | formatDate('YYYY-MM-DD') }}">{{ PrevItem.data.date | formatDate('DD MMMM YYYY') }}</time><br /><a href="{{ PrevItem.url | url }}">{{ PrevItem.data.title }}</a></dd>
   {% endif %}
 </dl>
 {% endmacro %}
@@ -328,24 +330,23 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 # @param {Object} post - the post data
 #}
 
-{% macro postCard(post) %}
+{% macro card(post) %}
   {% set dateSlug %}{{ post.data.date | formatDate('DDMMYY') }}{% endset %}
-  {% set cover %}blog/covers/{{ dateSlug }}{% endset %}
-  <article class="c-postCard" itemscope itemtype="http://schema.org/Article">
-    <header class="c-postCard-header">
+  <article class="c-card" itemscope itemtype="http://schema.org/Article">
+    <header class="c-card-header">
       <img 
         class="lazyImg"
-        data-src="{{ cloudinaryImageUrl(cover, 'w_500,h_333,c_fill,f_auto,q_60') }}" 
+        data-src="{{ cloudinaryImageUrl(post.data.cover.id, 'w_500,h_333,c_fill,f_auto,q_60') }}" 
         alt="{{ post.data.title }}" />
-        <div class="c-postCard-info">
+        <div class="c-card-info">
           <time datetime="{{ post.data.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.data.date | formatDate('DD MMMM YYYY') }}</time>
-          <h2 class="c-postCard-title">{{ post.data.title }}</h2>
+          <h2 class="c-card-title">{{ post.data.title }}</h2>
         </div>
     </header>
-    <div class="c-postCard-body">
+    <div class="c-card-body">
       <p>{{ post.data.description }}</p>
       <footer>
-        <span title="Leggi il post" class="c-postCard-readMore c-button c-button--small">Leggi tutto</span>
+        <a href="{{ post.url }}" title="Leggi il post" class="c-card-readMore">Leggi tutto</a>
       </footer>
     </div>
   </article>

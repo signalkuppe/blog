@@ -3,11 +3,12 @@ html {
 }
 
 body {
-  font-family: system-ui;
+  font-family: var(--fontText);
   line-height: var(--leadBase);
 }
 
 :--headings {
+  font-family: var(--fontHeadings);
   font-weight: 700;
   line-height: var(--leadNarrow);
 }
@@ -47,14 +48,17 @@ img {
   height: auto;
 }
 
-time,
 figcaption {
-  color: var(--colorGreyMedium);
-}
-
-figcaption {
+  color: var(--colorGreyDark);
   font-size: var(--fontSizeSmall);
   font-style: italic;
+}
+
+time {
+  color: var(--colorGreyDark);
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeSmall);
+  text-transform: uppercase;
 }
 
 strong {

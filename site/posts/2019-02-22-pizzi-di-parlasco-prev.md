@@ -1,6 +1,6 @@
 ---
-title: Pizzi di Parlasco
-date: 2019-02-23
+title: Pizzi di Parlasco precedente per un titolo lungo
+date: 2019-02-22
 description: "Escursionismo ai Pizzi di Parlasco: salita per la Porta di Parlasco e rientro ad anello per il Passo di Agueglio"
 category: escursionismo
 tags: 
@@ -14,10 +14,10 @@ gps:
   - id: blog/posts/230219/downloads/230219.kml
     type: kml
 cords:
-  lat: 46.00912
-  lng: 9.340560
+  lat: 46.10912
+  lng: 9.640560
 cover:
-  id: blog/posts/230219/photos/La_Valsassina_dalla_cresta
+  id: blog/posts/230219/photos/Un_tuffo_su_Taceno
   crop: x_750
 gallery:
   - id: blog/posts/230219/photos/Chiesa_di_Sant_Antonio_abate

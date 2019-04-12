@@ -1,18 +1,19 @@
-.c-postCard {
+.c-card {
   display: flex;
   flex-direction: column;
   height: 100%;
   min-height: 450px;
-  will-change: transform;
-  transition: transform 0.2s linear;
+  border: 1px solid black;
+  box-shadow: 3px 3px 0 0 black;
+  transition: box-shadow 0.2s linear;
 }
 
-.c-postCard-header {
+.c-card-header {
   position: relative;
   min-height: 220px;
 }
 
-.c-postCard-header img {
+.c-card-header img {
   position: absolute;
   left: 0;
   top: 0;
@@ -22,7 +23,7 @@
   height: 100%;
 }
 
-.c-postCard-info {
+.c-card-info {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -31,34 +32,39 @@
   padding: 1em;
 }
 
-.c-postCard-info time, 
-.c-postCard-title {
+.c-card-info time, 
+.c-card-title {
   color: white;
   margin: 0;
 }
 
-.c-postCard-body {
+.c-card-body {
   padding: 1em;
-  border: 1px solid var(--colorGreyMedium);
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.c-postCard-body p {
+.c-card-body p {
   flex: 1;
 }
 
-.c-postCard time {
+.c-card time {
   font-size: var(--fontSizeSmall);
 }
 
-.c-postCard:hover .c-button {
-  background: var(--colorPrimary);
+.c-card-readMore {
+  font-weight: 700;
+  font-style: italic;
+  font-size: var(--fontSizeSmall);
 }
 
-.c-postCard:active {
+.c-card:hover {
+  box-shadow: 5px 5px 0 0 black;
+}
+
+.c-card:active {
   position: relative;
-  left: -2px;
-  top: 2px;
+  left: 1px;
+  top: 1px;
 }

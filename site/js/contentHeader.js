@@ -6,7 +6,7 @@
   document.addEventListener('DOMContentLoaded', (event) => {
     var header = document.querySelector('#contentHeader')
     var root = null
-    var target = document.querySelector('.c-cover')
+    var target = document.querySelector('.l-cover-cover')
     var stickyClass = 'js-is-sticky'
     var callback = function (entries, observer) { 
       entries.forEach( function (entry) {

@@ -15,5 +15,6 @@
 @import "components/_paceProgress.css";
 @import "components/_footer.css";
 @import "components/_map.css";
-@import "components/_postCard.css";
-@import "components/_postSearch.css";
+@import "components/_card.css";
+@import "components/_autocomplete.css";
+@import "components/_pager.css";

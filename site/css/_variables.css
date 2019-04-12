@@ -10,6 +10,9 @@
   --fontSize5: 3.052rem;
   --fontSize6: 3.815rem;
   --fontSize7: 4.768rem;
+  --fontHeadings: 'PT Serif', serif;
+  --fontText: 'PT Sans', sans-serif;
+  --fontCaption: 'PT Sans Caption', sans-serif;
   --leadBase: 1.5;
   --leadNarrow: 1.1;
   --leadNone: 1;

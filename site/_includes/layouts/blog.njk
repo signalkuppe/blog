@@ -1,3 +1,9 @@
+---
+pagination:
+  data: collections.posts
+  size: 1
+---
+
 {# Post layout, extends cover #}
 {% set complementary = false %}
 {% extends "layouts/_layoutCover.njk" %}
@@ -35,22 +41,35 @@
 
     {% block content %}
     {% call macro.contentHeader(title, hideOnPortrait = false) %}
-    <form class="c-postSearch">
-      <label for="search-input" class="u-srOnly">Cerca</label>
-      <input type="text" spellcheck="false" autocomplete="off" id="search-input" name="searchKey" placeholder="Cerca..." />
+    <form class="c-autocomplete" id="autocomplete">
+      <label for="autocomplete-input" class="u-srOnly">Cerca</label>
+      <input type="text" spellcheck="false" autocomplete="off" id="autocomplete-input" name="searchKey" placeholder="Cerca..." />
+      <div class="c-autocomplete-results" id="autocomplete-results" hidden></div>
       <small>ES: “scialpinismo svizzera” (trova tutti i post che contengono entrambe le chiavi di ricerca)</small>
-      <button type="reset" aria-label="Ripristina" id="search-reset">{% include 'icons/close.njk' %}</button>
+      <button type="reset" aria-label="Ripristina" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
     </form>
-    <div role="alert" id="search-results" class="u-mt-1 u-mt-2" hidden>Post trovati: <strong id="search-length"></strong>  <span id="search-emojoy" hidden>😥</span></div>
     {% endcall %}
     <ul class="l-postGrid">
-    {%- for post in collections.posts -%}
+    {%- for post in pagination.items  -%}
       <li class="l-postGrid-item" data-post="{{ post.data.title }}">
         <a href="{{ post.url }}" title="leggi il post" class="u-container-link">
-          {{ macro.postCard(post) }}
+          {{ macro.card(post) }}
         </a>
       </li>
     {%- endfor -%}
+    </ul>
+
+    <ul class="c-pager u-mt-4">
+      {% if pagination.previousPageLink %}
+      <li>
+        <a class="c-button" href="{{ pagination.previousPageLink }}" title="Pagina successiva"> {% include 'icons/chevron-left.njk' %} Precedente</a>
+      </li>
+      {% endif %}
+      {% if pagination.nextPageLink %}
+      <li>
+        <a class="c-button" href="{{ pagination.nextPageLink }}" title="Pagina successiva">Successiva {% include 'icons/chevron-right.njk' %}</a>
+      </li>
+      {% endif %}
     </ul>
     {% endblock %}
 
@@ -58,7 +77,6 @@
     {% block footer %}
     {{ macro.footer() }}
     {% endblock %}
-
     {% block scripts %}
 
     <script src="/node_modules/pace-progress/pace.js"></script>

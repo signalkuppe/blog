@@ -22,7 +22,7 @@
   },
   "homepage": "https://www.signalkuppe.com",
   "devDependencies": {
-    "@11ty/eleventy": "^0.7.1",
+    "@11ty/eleventy": "^0.8.2",
     "autoprefixer": "^9.4.7",
     "chalk": "^2.4.2",
     "chokidar": "^2.1.0",
