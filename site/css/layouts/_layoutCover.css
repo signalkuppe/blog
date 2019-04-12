@@ -10,7 +10,7 @@
   }
 
   .l-cover-cover {
-    height: calc(100vh - var(--headerHeight));
+    height: calc(calc(var(--vh, 1vh) * 100) - var(--headerHeight));
   }
 
   .l-cover-header,
