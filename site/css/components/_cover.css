@@ -8,6 +8,11 @@
   object-fit: cover;
 }
 
+.c-cover,
+.c-cover img {
+  height: 100%;
+}
+
 .c-cover-caption {
   position: absolute;
   left: 0;
@@ -41,20 +46,12 @@
 
 
 @media (--portrait) {
-  .c-cover,
-  .c-cover img {
-    height: 100%;
-  }
   .c-cover-description {
     display: none;
   }
 }
 
-@media (--landscape) {
-  .c-cover img {
-    height: 100vh;
-  }
-  
+@media (--landscape) {  
   .c-cover-title,
   .c-cover-date {
     display: none;

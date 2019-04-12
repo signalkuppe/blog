@@ -10,6 +10,7 @@
   }
 
   .l-cover-cover {
+    height: 100vh;
     height: calc(calc(var(--vh, 1vh) * 100) - var(--headerHeight));
   }
 
@@ -32,8 +33,9 @@
   .l-cover {
     display: grid;
     height: 100vh;
-    grid-template-rows: var(--headerHeight) calc(100vh - var(--headerHeight));
-    grid-template-columns: calc(100vh * 0.666) calc(100% - calc(100vh * 0.666) -  calc(var(--spaceUnit) * 4));
+    height: calc(calc(var(--vh, 1vh) * 100));
+    grid-template-rows: var(--headerHeight) calc(calc(var(--vh, 1vh) * 100) - var(--headerHeight));
+    grid-template-columns: calc(calc(var(--vh, 1vh) * 100) * 0.666) calc(100% - calc(100vh * 0.666) -  calc(var(--spaceUnit) * 4));
     grid-column-gap: calc(var(--spaceUnit) * 4);
     grid-template-areas: "cover header"
                          "cover main"
