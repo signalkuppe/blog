@@ -99,6 +99,6 @@ p,figure {
 }
 
 .u-srOnly,
-.u-hideOnPrint {
+.u-screenOnly {
   display: none;
 }

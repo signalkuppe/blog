@@ -19,6 +19,11 @@
   font-style: normal;
 }
 
+.c-cover-date {
+  display: block;
+  margin-bottom: calc(var(--spaceUnit) * 0.5);
+}
+
 .c-cover-title {
   font-weight: 700;
   font-size: var(--fontSize5);

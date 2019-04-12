@@ -66,8 +66,9 @@ a {
   color: inherit;
 }
 
-a:hover {
-  text-decoration-style: wavy;
+a:not([class]):hover {
+  background: var(--colorPrimary);
+  text-decoration: none;
 }
 
 strong {

@@ -81,10 +81,9 @@
 }
 
 .c-navigation-menuList a.is-active {
-  background: var(--colorPrimary);
-  padding: 0 1em;
+  text-decoration: underline;
 }
 
-.c-navigation-menuList a:hover {
-  text-decoration: underline var(--colorPrimary);
+.c-navigation-menuList a.is-active {
+  font-weight: 700;
 }

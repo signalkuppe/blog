@@ -46,3 +46,7 @@
   text-decoration: none;
   color: inherit;
 }
+
+.u-printOnly {
+  display: none;
+}
