@@ -7,7 +7,7 @@
     "serve": "eleventy --serve",
     "watchCss": "node scripts/watchCss",
     "buildCss": "node scripts/buildCss",
-    "buildSite": "eleventy",
+    "buildSite": "npx eleventy",
     "build": "npm-run-all buildCss buildSite",
     "dev": "run-p buildCss serve watchCss"
   },

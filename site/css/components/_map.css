@@ -1,5 +1,5 @@
 .c-map {
-  height: calc(100vh - var(--headerHeight));
+  height: 100%;
   width: 100%;
   position: relative;
 }
