@@ -28,6 +28,7 @@
     "chalk": "^2.4.2",
     "chokidar": "^2.1.5",
     "dayjs": "^1.8.12",
+    "intersection-observer": "^0.5.1",
     "lodash": "^4.17.11",
     "lunr": "^2.3.6",
     "markdown-it-custom-block": "^0.1.1",

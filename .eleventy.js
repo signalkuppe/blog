@@ -51,9 +51,12 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist/baguetteBox.js')
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist/baguetteBox.css')
   eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')
+  eleventyConfig.addPassthroughCopy('node_modules/intersection-observer/intersection-observer.js')
   eleventyConfig.addPassthroughCopy('node_modules/pace-progress/pace.js')
   eleventyConfig.addPassthroughCopy('node_modules/smooth-scroll/dist/smooth-scroll.js')
   eleventyConfig.addPassthroughCopy('node_modules/lunr/lunr.js')
+
+
 
 
   /*
