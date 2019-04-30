@@ -8,8 +8,8 @@ tags: forni palon mare branca rifugio
 caption: "Il Gran Zebrù dalla cresta"
 flickr: 72157706847625811
 gps: true
-map: 46.416387, 10.600268
-crop: x_950
+map: 46.417137, 10.617812
+crop: x_450
 ---
 
 Ritorno al Palon dopo un tentativo fallito l’anno precedente. Questa volta me la prendo comoda pernottando con Monica al **Rifugio Branca.** Trattamento extra lusso con un’ottima cena, consigliato! Colazione con tutta calma alle sette, ci vestiamo e siamo pronti a partire per le otto. Poche persone sono dirette al Palon, quasi tutte al San Matteo altre al Tresero.
