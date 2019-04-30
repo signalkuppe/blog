@@ -21,11 +21,11 @@ Ritorno al Palon dopo un tentativo fallito l’anno precedente. Questa volta me 
     <figcaption>Il canale per accedere al ghiacciaio</figcaption>
 </figure>
 
-La prima parte si svolge lungo la **morena** del Ghiacciaio dei Forni. Un ultimo pendio ripido (rampanti) ci porta all’attacco del **canalino.** Prendiamo quello di sinistra, il meno ripido. Al termine del canale inizia il ghiacciaio. Dapprima un lungo tratto pianeggiante, poi una rampa ripida e infine un lungo traverso in direzione SE ci porta all’attacco della cresta.
+La prima parte si svolge lungo la **morena** del Ghiacciaio dei Forni. Un ultimo pendio ripido — rampanti — ci porta all’attacco del **canalino.** Prendiamo quello di sinistra, il meno ripido. Al termine del canale inizia il ghiacciaio. Dapprima un lungo tratto pianeggiante, poi una rampa ripida e infine un lungo traverso in direzione SE ci porta all’attacco della cresta.
 
 ## La vetta e la discesa
 
-**Cresta** quasi completamente scoperta, impossibile procedere con gli sci. A piedi (senza ramponi) raggiungiamo l’ampia vetta. La giornata è magnifica, non c’è una nuvola, il panorama è illimitato in tutte le direzioni. 
+**Cresta** quasi completamente scoperta, impossibile procedere con gli sci. A piedi — senza ramponi — raggiungiamo l’ampia vetta. La giornata è magnifica, non c’è una nuvola, il panorama è illimitato in tutte le direzioni. 
 
 Torniamo al **deposito sci** e iniziamo la discesa. La parte alta non è male, più in basso invece pura sopravvivenza. L’esposizione a SW non aiuta la **trasformazione della neve,** ritroviamo una discreta crosta tritata fin quasi al rifugio.
 
