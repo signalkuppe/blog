@@ -34,4 +34,4 @@ Torniamo al **deposito sci** e iniziamo la discesa. La parte alta non è male, p
     <figcaption>Buona neve nella parte alta</figcaption>
 </figure>
 
-In queste condizioni è una gita che si fa per la vetta non per la sciata. Ora ho capito perchè tutti si sono diretti altrove! Non abbiamo avvistato **nessun crepaccio,** solo qualche piccolo seracco aggirabile al cambio di pendenza prima del traverso finale. Nel complesso itinerario da valutare come **MS+**
+In queste condizioni è una gita che si fa per la vetta non per la sciata. Ora ho capito perché tutti si sono diretti altrove! Non abbiamo avvistato **nessun crepaccio,** solo qualche piccolo seracco aggirabile al cambio di pendenza prima del traverso finale. Nel complesso itinerario da valutare come **MS+.**
