@@ -55,7 +55,6 @@
 .c-navigation-menu.is-closed {
   transform: translate3d(0, -1em, 0);
   opacity: 0;
-  right: -100%;
 }
 
 .c-navigation-menuTitle {
