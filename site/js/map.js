@@ -21,11 +21,10 @@
             markerHtml = '<a href="'+marker.link+'" class="c-map-link" title="Leggi il post"><div class="c-map-popup">';
             markerHtml += '<img src="'+marker.cover+'" />'
             markerHtml += '<div class="c-map-info">'
-            markerHtml += '<div class="c-map-title">' + marker.title + '</div>'
             markerHtml += '<div class="c-map-date">'
             markerHtml += marker.date
             markerHtml += '</div>'
-            markerHtml += '<span class="c-map-readmore c-button c-button--small" title="Leggi il post">Leggi</span>'
+            markerHtml += '<div class="c-map-title">' + marker.title + '</div>'
             markerHtml += '</div>'
             markerHtml += '</div>'
         L.marker([marker.lat, marker.lng],{icon: customIcon})

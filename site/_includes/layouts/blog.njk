@@ -43,7 +43,7 @@ pagination:
       <label for="autocomplete-input" class="u-srOnly">Cerca</label>
       <input type="text" spellcheck="false" autocomplete="off" id="autocomplete-input" name="searchKey" placeholder="Cerca..." />
       <div class="c-autocomplete-results" id="autocomplete-results" hidden></div>
-      <small>ES: “scialpinismo svizzera” (trova tutti i post che contengono entrambe le chiavi di ricerca)</small>
+      <div class="c-autocomplete-help">ES: “scialpinismo svizzera” (trova tutti i post che contengono entrambe le chiavi di ricerca)</div>
       <button type="reset" aria-label="Ripristina" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
     </form>
     {% endcall %}
@@ -51,7 +51,7 @@ pagination:
     {%- for post in pagination.items  -%}
       <li class="l-postGrid-item" data-post="{{ post.data.title }}">
         <a href="{{ post.url }}" title="leggi il post" class="u-container-link">
-          {{ macro.card(post) }}
+          {{ macro.cardV2(post) }}
         </a>
       </li>
     {%- endfor -%}

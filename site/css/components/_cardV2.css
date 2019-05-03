@@ -1,0 +1,36 @@
+.c-cardV2 {
+  border-left: 1px solid #eee;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.25s ease-in;
+  border-bottom: 5px solid transparent;
+}
+
+.c-cardV2-image {
+  display: block;
+  object-fit: cover;
+}
+
+.c-cardV2-body {
+  font-size: var(--fontSizeSmall);
+  padding: calc(var(--spaceUnit) * 1.5);
+  flex: 1;
+}
+
+.c-cardV2-header time {
+  font-size: 75%;
+  display: block;
+  margin-bottom: var(--spaceUnit);
+  color: var(--colorGreyMedium);
+}
+
+.c-cardV2-body p {
+  margin-bottom: 0;
+}
+
+.c-cardV2:hover {
+  transform: translateY(-5px);
+  border-bottom: 5px solid var(--colorPrimary);
+}

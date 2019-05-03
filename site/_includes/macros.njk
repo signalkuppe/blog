@@ -352,3 +352,27 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
     </div>
   </article>
 {% endmacro %}
+
+{# 
+# Post card
+# @param {Object} post - the post data
+#}
+
+{% macro cardV2(post) %}
+  {% set dateSlug %}{{ post.data.date | formatDate('DDMMYY') }}{% endset %}
+  <article class="c-cardV2" itemscope itemtype="http://schema.org/Article">
+    <figure class="c-cardV2-image">
+      <img 
+        class="lazyImg"
+        data-src="{{ cloudinaryImageUrl(post.data.cover.id, 'w_500,h_333,c_fill,f_auto,q_60') }}" 
+        alt="{{ post.data.title }}" />
+    </figure>
+    <div class="c-cardV2-body">
+      <header class="c-cardV2-header">
+        <time datetime="{{ post.data.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.data.date | formatDate('DD MMMM YYYY') }}</time>
+        <h2 class="c-cardV2-title">{{ post.data.title }}</h2>
+      </header>
+      <p>{{ post.data.description }}</p>
+    </div>
+  </article>
+{% endmacro %}
