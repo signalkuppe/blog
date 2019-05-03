@@ -43,7 +43,7 @@
 
   .l-cover-header {
     grid-area: header;
-    padding: 0 var(--spaceUnit) 0 0;
+    padding: 0;
   }                
 
   .l-cover-cover {
