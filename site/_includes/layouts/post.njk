@@ -9,6 +9,7 @@
   {{ macro.metaTitle(title, info.name) }}
   <link rel="prefetch" href="{{ macro.coverImage(cover.id, cover.version, cover.crop) }}">
   <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+  <link href="/node_modules/baguettebox.js/dist/baguetteBox.css" rel="stylesheet" media="screen">
   {% endblock %}
   <body>
     {% block header %}
