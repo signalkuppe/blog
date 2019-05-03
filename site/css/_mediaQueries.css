@@ -1,5 +1,3 @@
-@custom-media --mediumType screen and (min-width: 64em); /* 1024px -> 18px base */
-@custom-media --largeType screen and (min-width: 120em); /* 1920px -> 20px base */
 @custom-media --portrait screen and (orientation: portrait);
 @custom-media --landscape screen and (orientation: landscape);
 @custom-media --landscapeLarge screen and (orientation: landscape) and (min-width: 150em); /* 2400 and up */

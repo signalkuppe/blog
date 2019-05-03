@@ -1,6 +1,6 @@
 .c-button {
   display: inline-block;
-  padding: calc(var(--spaceUnit) / 2) var(--spaceUnit);
+  padding: calc(var(--spaceUnit) / 2) calc(var(--spaceUnit) /1.5);
   color: black;
   background: white;
   font-weight: 700;

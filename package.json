@@ -7,10 +7,9 @@
     "serve": "eleventy --serve",
     "watchCss": "node scripts/watchCss",
     "buildCss": "node scripts/buildCss",
-    "buildSite": "npx eleventy",
+    "buildSite": "eleventy",
     "build": "npm run buildSite && npm run buildCss",
-    "dev": "run-p buildCss serve watchCss",
-    "debug": "DEBUG=* npx eleventy"
+    "dev": "run-p buildCss serve watchCss"
   },
   "repository": {
     "type": "git",

@@ -52,7 +52,7 @@
   .c-contentHeader.js-is-sticky {
     visibility: visible;
     height: auto;
-    padding-top: var(--spaceUnit);
+    padding-top: calc(var(--spaceUnit) * 1.5);
   }
 
   .c-contentHeader-title {

@@ -11,12 +11,12 @@
 
   .l-cover-cover {
     height: 100vh;
-    height: calc(calc(var(--vh, 1vh) * 100) - var(--headerHeight));
+    height: calc(calc(var(--vh, 1vh) * 100) - var(--headerHeight)); /* ios status bar fix */
   }
 
   .l-cover-header,
   .l-cover-main {
-    padding: 0 var(--spaceUnit);
+    padding: 0 calc(var(--spaceUnit) * 1.5);
   }
 
   .l-cover-main {
@@ -36,7 +36,7 @@
     height: calc(calc(var(--vh, 1vh) * 100));
     grid-template-rows: var(--headerHeight) calc(calc(var(--vh, 1vh) * 100) - var(--headerHeight));
     grid-template-columns: calc(calc(var(--vh, 1vh) * 100) * 0.666) calc(100% - calc(100vh * 0.666) -  calc(var(--spaceUnit) * 4));
-    grid-column-gap: calc(var(--spaceUnit) * 4);
+    grid-column-gap: calc(var(--spaceUnit) * 3);
     grid-template-areas: "cover header"
                          "cover main"
   }

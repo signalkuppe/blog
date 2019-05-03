@@ -2,11 +2,14 @@
 .c-navigation {
   display: flex;
   justify-content: space-between;
+  height: 100%;
 }
 
 .c-navigation-siteNameLink {
   text-decoration: none;
   color: inherit;
+  display: block;
+  align-self: center;
 }
 
 .c-navigation-siteName {
@@ -14,18 +17,6 @@
   font-size: var(--fontSize1);
   text-transform: uppercase;
   margin: 0;
-  line-height: var(--headerHeight);
-}
-
-.c-navigation-siteNameLink {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.c-navigation button {
-  align-self: center;
 }
 
 .c-navigation button:active,

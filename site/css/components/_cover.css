@@ -11,6 +11,7 @@
 .c-cover,
 .c-cover img {
   height: 100%;
+  width: 100%;
 }
 
 .c-cover-caption {
@@ -19,9 +20,10 @@
   bottom: 0;
   width: 100%;
   line-height: var(--leadNone);
-  padding: calc(var(--spaceUnit) * 3) 10% calc(var(--spaceUnit) * 3) calc(var(--spaceUnit) * 2);
+  padding: 0 10% calc(var(--spaceUnit) * 2) calc(var(--spaceUnit) * 1.5);
   background: linear-gradient(transparent, rgba(0,0,0,0.7));
   font-style: normal;
+  font-family: var(--fontHeadings);
 }
 
 .c-cover-date {
@@ -31,12 +33,11 @@
 
 .c-cover-title {
   font-weight: 700;
-  font-size: var(--fontSize5);
+  font-size: var(--fontSize3);
 }
 
 .c-cover-description {
-  font-size: var(--fontSize3);
-  font-family: var(--fontHeadings);
+  font-size: var(--fontSize2);
 }
 
 .c-cover-caption, 
@@ -55,5 +56,18 @@
   .c-cover-title,
   .c-cover-date {
     display: none;
+  }
+  .c-cover-caption {
+    padding-bottom: calc(var(--spaceUnit) * 3);
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .c-cover-title {
+    font-size: var(--fontSize5);
+  }
+  
+  .c-cover-description {
+    font-size: var(--fontSize3);
   }
 }

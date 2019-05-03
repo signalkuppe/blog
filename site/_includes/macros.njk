@@ -99,7 +99,7 @@
 {% if activeSection == 'front' %}
 {% set siteNameTag = 'h1' %}
 {% endif %}
-<nav class="c-navigation">
+<header class="c-navigation">
   <a href="/" title="Torna alla pagina iniziale" class="c-navigation-siteNameLink">
     <{{ siteNameTag }} class="c-navigation-siteName">{% info 'name' %}</{{ siteNameTag }}>
   </a>
@@ -109,14 +109,16 @@
   </button>
   <div id="menu" class="c-navigation-menu is-hidden">
     <h2 class="c-navigation-menuTitle">Menu</h2>
-    <ul class="c-navigation-menuList">
-      <li><a href="/" title="Torna alla pagina iniziale">Homepage</a></li>
-      <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
-      <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
-      <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
-    </ul>
+    <nav>
+      <ul class="c-navigation-menuList">
+        <li><a href="/" title="Torna alla pagina iniziale">Homepage</a></li>
+        <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
+        <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
+        <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
+      </ul>
+    </nav>
   </div>
-</nav>
+</header>
 {% endmacro %}
 
 {# 
