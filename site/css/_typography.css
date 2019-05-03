@@ -90,15 +90,3 @@ dt {
 dd {
   margin-bottom: calc(var(--spaceUnit) * 2);
 }
-
-@media (--mediumType) {
-  :root {
-    --fontSizeRoot: 112.5%;
-  }
-}
-
-@media (--largeType) {
-  :root {
-    --fontSizeRoot: 125%;
-  }
-}
