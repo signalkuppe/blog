@@ -22,3 +22,8 @@
   z-index: 400;
   outline: calc(var(--spaceUnit) / 4) solid var(--colorPrimary);
 }
+
+body.js-is-galleryOpen,
+body.js-is-galleryOpen .l-cover-main {
+  overflow: hidden;
+}
