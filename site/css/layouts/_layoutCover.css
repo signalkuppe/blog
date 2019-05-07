@@ -14,13 +14,14 @@
     height: calc(calc(var(--vh, 1vh) * 100) - var(--headerHeight)); /* ios status bar fix: --vh var set via js */
   }
 
-  .l-cover-header,
-  .l-cover-main {
-    padding: 0 calc(var(--spaceUnit) * 1.5);
+  .l-cover-header {
+    padding: 0 var(--spaceUnit);
   }
+
 
   .l-cover-main {
     margin-top: var(--spaceUnit);
+    padding: 0 calc(var(--spaceUnit) * 1.5);
   }
 
   .l-cover-footer {
@@ -53,7 +54,6 @@
   .l-cover-main {
     grid-area: main;
     overflow-y: auto;
-    padding-right: var(--spaceUnit);
     margin-top: calc(var(--spaceUnit) * 2);
   }
 

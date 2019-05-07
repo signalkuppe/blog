@@ -8,6 +8,7 @@
 @import "layouts/_layoutCover.css";
 @import "layouts/_postGrid.css";
 @import "components/_button.css";
+@import "components/_iconButton.css";
 @import "components/_navigation.css";
 @import "components/_cover.css";
 @import "components/_contentHeader.css";
@@ -16,6 +17,5 @@
 @import "components/_footer.css";
 @import "components/_map.css";
 @import "components/_card.css";
-@import "components/_cardV2.css";
 @import "components/_autocomplete.css";
 @import "components/_pager.css";

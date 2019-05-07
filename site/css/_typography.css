@@ -57,7 +57,7 @@ figcaption {
 time {
   color: var(--colorGreyDark);
   font-family: var(--fontCaption);
-  font-size: var(--fontSizeSmall);
+  font-size: var(--fontSizeXSmall);
   text-transform: uppercase;
 }
 
@@ -84,9 +84,17 @@ small {
 }
 
 dt {
+  font-family: var(--fontHeadings);
   font-weight: 700;
 }
 
 dd {
   margin-bottom: calc(var(--spaceUnit) * 2);
+}
+
+hr {
+  height: 1px;
+  margin: 0;
+  background: var(--colorGreyMedium);
+  border: none;
 }

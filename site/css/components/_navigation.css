@@ -32,6 +32,12 @@
   outline: none;
 }
 
+.c-navigation button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
 .c-navigation-menu {
   position: absolute;
   top: calc(var(--headerHeight) / 2 + calc(var(--spaceUnit) * 1.5));

@@ -103,7 +103,7 @@
   <a href="/" title="Torna alla pagina iniziale" class="c-navigation-siteNameLink">
     <{{ siteNameTag }} class="c-navigation-siteName">{% info 'name' %}</{{ siteNameTag }}>
   </a>
-  <button class="c-navigation-menuButton c-button c-button--small" id="menu-button" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
+  <button class="c-navigation-menuButton" id="menu-button" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
     <span id="menu-openIcon">{% include 'icons/menu.njk' %}</span>
     <span id="menu-closeIcon" hidden>{% include 'icons/close.njk' %}</span>
   </button>
@@ -206,7 +206,7 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 {% macro gpsTracks(postGpsTracks) %}
 <ul>
   {% for track in postGpsTracks %}
-  <li class="u-mr-1 u-inline-block">
+  <li class="u-mr-05 u-inline-block">
     <a class="c-button" href="{{ cloudinaryRawUrl(track.id) }}" title="Scarica la traccia in formato .{{ track.type }}">{% include 'icons/download.njk' %} Traccia .{{ track.type }}</a>
   </li>
   {% endfor %}
@@ -249,7 +249,7 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
       title="Condividi su Facebook" 
       target="_blank"
       rel="noopener"
-      class="c-button c-button--small"
+      class="c-iconButton"
       onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&quote=' + encodeURIComponent(document.URL)); return false;">
       {% include 'icons/facebook.njk' %}
     </a>
@@ -259,7 +259,7 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
       target="_blank" 
       rel="noopener"
       title="Condividi su Twitter" 
-      class="c-button c-button--small"
+      class="c-iconButton"
       onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;">
       {% include 'icons/twitter.njk' %}
     </a>
@@ -268,8 +268,8 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
     <a href="mailto:?subject={{ title | urlencode }}&body={{ description | urlencode }}" 
         target="_blank" 
         rel="noopener"
-        title="Condividi via mail" 
-        class="c-button c-button--small"
+        title="Condividi via mail"
+        class="c-iconButton"
         onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;">
         {% include 'icons/mail.njk' %}
     </a>
@@ -277,7 +277,7 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
   <li class="u-inline-block">
     <a href="" 
         title="Stampa" 
-        class="c-button c-button--small"
+        class="c-iconButton"
         onclick="window.print()">
         {% include 'icons/print.njk' %}
     </a>
@@ -318,11 +318,11 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 {% set PrevItem = collection[PrevItemIndex] %}
 <dl>
   {% if NextItem %}
-  <dt>Post successivo</dt>
+  <dt class="u-mb-1">Post successivo</dt>
   <dd><time datetime="{{ NextItem.data.date | formatDate('YYYY-MM-DD') }}">{{ NextItem.data.date | formatDate('DD MMMM YYYY') }}</time><br/><a href="{{ NextItem.url | url }}">{{ NextItem.data.title }}</a></dd>
   {% endif %}
   {% if PrevItem %}
-  <dt>Post precedente</dt>
+  <dt class="u-mb-1">Post precedente</dt>
   <dd><time datetime="{{ PrevItem.data.date | formatDate('YYYY-MM-DD') }}">{{ PrevItem.data.date | formatDate('DD MMMM YYYY') }}</time><br /><a href="{{ PrevItem.url | url }}">{{ PrevItem.data.title }}</a></dd>
   {% endif %}
 </dl>
@@ -337,40 +337,16 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 {% macro card(post) %}
   {% set dateSlug %}{{ post.data.date | formatDate('DDMMYY') }}{% endset %}
   <article class="c-card" itemscope itemtype="http://schema.org/Article">
-    <header class="c-card-header">
-      <img 
-        class="lazyImg"
-        data-src="{{ cloudinaryImageUrl(post.data.cover.id, 'w_500,h_333,c_fill,f_auto,q_60') }}" 
-        alt="{{ post.data.title }}" />
-        <div class="c-card-info">
-          <time datetime="{{ post.data.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.data.date | formatDate('DD MMMM YYYY') }}</time>
-          <h2 class="c-card-title">{{ post.data.title }}</h2>
-        </div>
-    </header>
-    <div class="c-card-body">
-      <p>{{ post.data.description }}</p>
-    </div>
-  </article>
-{% endmacro %}
-
-{# 
-# Post card
-# @param {Object} post - the post data
-#}
-
-{% macro cardV2(post) %}
-  {% set dateSlug %}{{ post.data.date | formatDate('DDMMYY') }}{% endset %}
-  <article class="c-cardV2" itemscope itemtype="http://schema.org/Article">
-    <figure class="c-cardV2-image">
+    <figure class="c-card-image">
       <img 
         class="lazyImg"
         data-src="{{ cloudinaryImageUrl(post.data.cover.id, 'w_500,h_333,c_fill,f_auto,q_60') }}" 
         alt="{{ post.data.title }}" />
     </figure>
-    <div class="c-cardV2-body">
-      <header class="c-cardV2-header">
+    <div class="c-card-body">
+      <header class="c-card-header">
         <time datetime="{{ post.data.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.data.date | formatDate('DD MMMM YYYY') }}</time>
-        <h2 class="c-cardV2-title">{{ post.data.title }}</h2>
+        <h2 class="c-card-title">{{ post.data.title }}</h2>
       </header>
       <p>{{ post.data.description }}</p>
     </div>

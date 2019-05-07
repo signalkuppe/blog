@@ -51,7 +51,7 @@ pagination:
     {%- for post in pagination.items  -%}
       <li class="l-postGrid-item" data-post="{{ post.data.title }}">
         <a href="{{ post.url }}" title="leggi il post" class="u-container-link">
-          {{ macro.cardV2(post) }}
+          {{ macro.card(post) }}
         </a>
       </li>
     {%- endfor -%}

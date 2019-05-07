@@ -48,19 +48,22 @@
 
       {% if gps %}
       <div class="u-mb-4">
-        <h3 class="u-mb-1">Scarica le tracce gps</h3>
+        <h3 class="u-mb-2">Scarica le tracce gps</h3>
         {{ macro.gpsTracks(gps) }}
       </div>
       {% endif %}
 
-      <div class="u-mb-4">
+      <div class="u-mb-2">
         <h3 class="u-mb-1">Condividi</h3>
         {{ macro.share(page.url, title, description, author) }}
       </div>
       
+      <hr class="u-mb-2" />
 
       {{ macro.prevNext(collections.posts, page.url) }}
       
+      <hr class="u-mb-2" />
+
       <p>Vuoi rimanere aggiornato sui nuovi post? <a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></p>
     </aside>
     {% endblock %}

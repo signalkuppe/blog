@@ -38,6 +38,10 @@
   margin-top: calc(var(--spaceUnit) * 4);
 }
 
+.u-mr-05 {
+  margin-right: calc(var(--spaceUnit) / 2);
+}
+
 .u-mr-1 {
   margin-right: var(--spaceUnit);
 }
