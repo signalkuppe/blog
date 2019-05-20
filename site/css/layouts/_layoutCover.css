@@ -90,6 +90,7 @@
 
   .l-cover-complementary {
     grid-area: complementary;
+    padding-right: calc(var(--spaceUnit) * 1.5);
   }
 
   .l-cover-footer {
