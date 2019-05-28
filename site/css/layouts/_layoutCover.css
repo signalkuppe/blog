@@ -1,0 +1,104 @@
+/*
+* Cover layout: fixed aspect ratio left banner and content on the right
+*/
+
+
+@media (--portrait) {
+
+  .l-cover-header {
+    height: var(--headerHeight);
+  }
+
+  .l-cover-cover {
+    height: 100vh;
+    height: calc(calc(var(--vh, 1vh) * 100) - var(--headerHeight)); /* ios status bar fix: --vh var set via js */
+  }
+
+  .l-cover-header {
+    padding: 0 var(--spaceUnit);
+  }
+
+
+  .l-cover-main {
+    margin-top: var(--spaceUnit);
+    padding: 0 calc(var(--spaceUnit) * 1.5);
+  }
+
+  .l-cover-footer {
+    margin-top: calc(var(--spaceUnit) * 6)
+  }
+
+}
+
+@media (--landscape) {
+  .l-cover {
+    display: grid;
+    height: calc(calc(var(--vh, 1vh) * 100));
+    grid-template-rows: var(--headerHeight) calc(calc(var(--vh, 1vh) * 100) - var(--headerHeight));
+    grid-template-columns: calc(calc(var(--vh, 1vh) * 100) * 0.666) calc(100% - calc(100vh * 0.666) -  calc(var(--spaceUnit) * 4));
+    grid-column-gap: calc(var(--spaceUnit) * 3);
+    grid-template-areas: "cover header"
+                         "cover main"
+  }
+
+  .l-cover-header {
+    grid-area: header;
+    padding: 0;
+  }                
+
+  .l-cover-cover {
+    grid-area: cover;
+    height: 100vh;
+  }
+
+  .l-cover-main {
+    grid-area: main;
+    overflow-y: auto;
+    margin-top: calc(var(--spaceUnit) * 2);
+  }
+
+  .l-cover--has-complementary .l-cover-content,
+  .l-cover-complementary {
+    max-width: 55ch;
+  }
+
+  .l-cover-complementarySticky {
+    position: sticky;
+    top: 0;
+  }
+
+  .l-cover-footer {
+    margin-top: calc(var(--spaceUnit) * 6);
+  }
+
+}
+
+@media (--landscapeLarge) {
+  /* main subgrid */
+  .l-cover--has-complementary .l-cover-main { 
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: 55ch calc(100% - 55ch - var(--spaceUnit) * 5);
+    grid-column-gap: calc(var(--spaceUnit) * 5);
+    grid-template-areas: "content complementary"
+                         "footer footer";
+  }
+
+  .l-cover-content {
+    grid-area: content;
+  }
+
+  .l-cover-complementary {
+    grid-area: complementary;
+    padding-right: calc(var(--spaceUnit) * 1.5);
+  }
+
+  .l-cover-footer {
+    grid-area: footer;
+  }
+
+  .l-cover--hasNot-complementary .l-cover-content,
+  .l-cover-complementary {
+    max-width: none;
+  }
+}

@@ -1,0 +1,9 @@
+.c-iconButton:hover {
+  color: var(--colorPrimary);
+}
+
+.c-iconButton:active {
+  position: relative;
+  left: 1px;
+  top: 1px;
+}

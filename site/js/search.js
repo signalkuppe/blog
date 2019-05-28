@@ -60,6 +60,7 @@
       autocomplete.innerHTML = _buildResults(results)
       autocomplete.removeAttribute('aria-hidden')
       autocomplete.classList.remove('js-is-hidden')
+      reset.style.display = 'block'
       form.addEventListener('blur', _blur, true)
     }
     var _blur = function (e) {
@@ -74,6 +75,7 @@
       form.removeEventListener('blur', _blur)
     }
     var _init = function () {
+      reset.style.display = 'none'
       autocomplete.removeAttribute('hidden')
       form.setAttribute('tabindex','0')
     }
@@ -88,6 +90,8 @@
     })
 
     reset.addEventListener('click', function () {
+      reset.style.display = 'none'
+      input.focus()
       _debounce(_search, 250)('')
     })
     _init()

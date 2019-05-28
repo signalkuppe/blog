@@ -23,7 +23,7 @@
   "homepage": "https://www.signalkuppe.com",
   "dependencies": {
     "baguettebox.js": "^1.11.0",
-    "intersection-observer": "^0.5.1",
+    "intersection-observer": "^0.6.0",
     "lunr": "^2.3.6",
     "pace-progress": "^1.0.2",
     "smooth-scroll": "^16.0.0",

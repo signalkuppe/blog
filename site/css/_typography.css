@@ -77,9 +77,33 @@ small {
 }
 
 dt {
+  font-family: var(--fontHeadings);
   font-weight: 700;
 }
 
 dd {
   margin-bottom: calc(var(--spaceUnit) * 2);
+}
+
+hr {
+  height: 1px;
+  margin: 0;
+  background: var(--colorGreyMedium);
+  border: none;
+}
+
+::-webkit-scrollbar-track
+{
+  background-color: #fff;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: var(--colorGreyLight);
 }

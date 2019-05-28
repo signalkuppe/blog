@@ -4,11 +4,16 @@
   position: relative;
 }
 
+.leaflet-tile-pane {
+  filter: grayscale(100%);
+}
+
 .c-map-marker[style], 
 .c-map-marker img {
   height: 50px!important;
   width: 50px!important;
   display: block;
+  filter: none;
 }
 
 .c-map-marker[style] {
@@ -54,6 +59,10 @@
 .leaflet-popup-content-wrapper {
   border-radius: 0px!important;
   background: white!important;
+}
+
+.leaflet-popup-tip {
+  display: none;
 }
 
 .c-map-link {
