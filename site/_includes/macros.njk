@@ -84,7 +84,7 @@
 #}
 
 {% macro css() %}
-<link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|PT+Sans:400,400i,700|PT+Serif:700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700,400|PT+Sans:400,400i,700|PT+Serif:700,400&display=swap" rel="stylesheet">
 <link href="/css/index.css" rel="stylesheet" media="screen">
 <link href="/css/print.css" rel="stylesheet" media="print">
 {% endmacro %}
@@ -95,29 +95,25 @@
 #}
 
 {% macro navigation(activeSection) %}
-{% set siteNameTag = 'p' %}
+{% set siteNameTag = 'span' %}
 {% if activeSection == 'front' %}
 {% set siteNameTag = 'h1' %}
 {% endif %}
 <header class="c-navigation">
-  <a href="/" title="Torna alla pagina iniziale" class="c-navigation-siteNameLink">
-    <{{ siteNameTag }} class="c-navigation-siteName">{% info 'name' %}</{{ siteNameTag }}>
-  </a>
-  <button class="c-navigation-menuButton c-button c-button--small" id="menu-button" aria-haspopup="true" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu di navigazione">
-    <span id="menu-openIcon">{% include 'icons/menu.njk' %}</span>
-    <span id="menu-closeIcon" hidden>{% include 'icons/close.njk' %}</span>
-  </button>
-  <div id="menu" class="c-navigation-menu is-hidden">
-    <h2 class="c-navigation-menuTitle">Menu</h2>
-    <nav>
-      <ul class="c-navigation-menuList">
-        <li><a href="/" title="Torna alla pagina iniziale">Homepage</a></li>
-        <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
-        <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
-        <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
-      </ul>
-    </nav>
-  </div>
+  <h2 class="u-srOnly">Menu</h2>
+  <nav>
+    <ul class="c-navigation-menu">
+      <li><a href="/" title="Torna alla pagina iniziale"{% if activeSection == 'front' %} class="is-active"{% endif %}>Home</a></li>
+      <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
+      <li>
+        <a href="/" title="Torna alla pagina iniziale">
+          <{{ siteNameTag }} class="c-navigation-siteName">{% info 'name' %}</{{ siteNameTag }}>
+        </a>
+      </li>
+      <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
+      <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
+    </ul>
+  </nav>
 </header>
 {% endmacro %}
 
@@ -143,24 +139,12 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 
 {# 
 # Cover image
-# @param {String} postCoverId  - the cloudinary image id
-# @param {String} version  - the cloudinary image version
-# @param {String} crop - optional: the image crop
-# @param {Boolean} lazyPlaceholder - optional: the placeholder low-res version
+# @param {String} coverId  - the cloudinary image id
+# @param {String} coverVersion  - the cloudinary image version
 #}
 
-{%- macro coverImage(postCoverId, version, crop, lazyPlaceholder) -%}
-{%- set baseTransformation -%}w_1280,h_1920,c_crop,f_auto{%- endset -%}
-{%- set transformation = baseTransformation -%}
-{% if crop -%}
-{%- set transformation -%}{{ baseTransformation }},{{ crop }}{%- endset -%}
-{%- endif %}
-{%- if lazyPlaceholder -%}
-{%- set transformation -%}{{ transformation }},q_10,e_blur:1000{% endset -%}
-{%- else -%}
-{%- set transformation -%}{{ transformation }},q_auto{%- endset -%}
-{%- endif -%}
-{{ cloudinaryImageUrl(postCoverId, transformation, version) }}
+{%- macro coverImage(coverId, coverVersion) -%}
+{{ cloudinaryImageUrl(coverId, 'w_1920,h_1282,c_fill,f_auto,q_auto', coverVersion) }}
 {%- endmacro -%}
 
 {# 
@@ -219,18 +203,21 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 #}
 
 {% macro imageGallery(photos) %}
-<ul class="c-imageGallery">
-  {% for photo in photos  %}
-  <li class="c-imageGallery-item">
-    <a href="{{ cloudinaryImageUrl(photo.id) }}" title="{{ photo.title }}">
-      <img 
-        data-src="{{ cloudinaryImageUrl(photo.id, 'w_600,h_600,c_fill,f_auto,q_auto') }}" 
-        alt="{{ photo.alt }}" 
-        class="lazyImg" />
-    </a>
-  </li>                                                              
-  {% endfor %}
-</ul>
+<div class="c-imageGallery">
+  <h3 class="c-imageGallery-title">Galleria fotografica</h3>
+  <ul class="c-imageGallery-grid">
+    {% for photo in photos  %}
+    <li class="c-imageGallery-item">
+      <a href="{{ cloudinaryImageUrl(photo.id) }}" title="{{ photo.title }}">
+        <img 
+          data-src="{{ cloudinaryImageUrl(photo.id, 'w_800,c_fill,f_auto,q_auto') }}" 
+          alt="{{ photo.alt }}" 
+          class="lazyImg" />
+      </a>
+    </li>                                                              
+    {% endfor %}
+  </ul>
+</div>
 {% endmacro %}
 
 {# 
@@ -291,9 +278,9 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 
 {% macro footer() %}
 <footer class="c-footer">
-<span id="currentYear"></span> - <strong>Signalkuppe</strong> | contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</a> | <a href="/info">Info & contatti</a>
-| <a href="{% info 'facebookSite' %}" title="Seguimi su facebook">Facebook</a> | <a href="{% info 'twitterSite' %}" title="Seguimi su facebook">Twitter</a> | <a href="{% info 'instagramSite' %}" title="Seguimi su facebook">Instagram</a>
-<span class="c-footer-topLink"> | {% include 'icons/arrow-up.njk' %}<a href="#top">Torna in cima</a></span>
+  <span id="currentYear"></span> - <strong>Signalkuppe</strong> | contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</a> | <a href="/info">Info & contatti</a>
+  | <a href="{% info 'facebookSite' %}" title="Seguimi su facebook">Facebook</a> | <a href="{% info 'twitterSite' %}" title="Seguimi su facebook">Twitter</a> | <a href="{% info 'instagramSite' %}" title="Seguimi su facebook">Instagram</a>
+  <span class="c-footer-topLink"> | {% include 'icons/arrow-up.njk' %}<a href="#top">Torna in cima</a></span>
 </footer>
 {% endmacro %}
 

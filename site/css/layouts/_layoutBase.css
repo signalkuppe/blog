@@ -1,0 +1,9 @@
+.l-base-header {
+  margin:  calc(var(--spaceUnit) * 2) 0 calc(var(--spaceUnit) * 3) 0;
+}
+
+@media (--wide) {
+  .l-base-header {
+    margin:  calc(var(--spaceUnit) * 2) 0 calc(var(--spaceUnit) * 6) 0;
+  }
+}

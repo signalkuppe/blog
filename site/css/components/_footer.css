@@ -3,13 +3,7 @@
   padding: var(--spaceUnit) 0;
   border-top: 1px solid var(--colorGreyLight);
   color: var(--colorGreyDark);
-  font-family:
-    "SFMono-Regular",
-    Consolas,
-    "Liberation Mono",
-    Menlo,
-    Courier,
-    monospace;
+  font-family: var(--fontCaption);
 }
 
 .c-footer svg {

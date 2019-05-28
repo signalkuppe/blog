@@ -7,7 +7,7 @@ tags:
   - valsassina
   - parlasco
   - pizzo
-caption: La Valsassina dalla cresta
+caption: La Valsassina dalla cresta provo una caption molto lunga
 gps:
   - id: blog/posts/230219/downloads/230219.zip
     type: gpx

@@ -1,7 +1,8 @@
 :root {
   /* Typescale: Major third 1.250 */
-  --fontSizeRoot: 125%;
-  --fontSizeSmall: 0.75rem;
+  --fontSizeRoot: 100%;
+  --fontSizeTiny: 0.75rem;
+  --fontSizeSmall: 0.85rem;
   --fontSize0: 1rem;
   --fontSize1: 1.25rem;
   --fontSize2: 1.563rem;
@@ -10,9 +11,9 @@
   --fontSize5: 3.052rem;
   --fontSize6: 3.815rem;
   --fontSize7: 4.768rem;
-  --fontHeadings: 'PT Serif', serif;
-  --fontText: 'PT Sans', sans-serif;
-  --fontCaption: 'PT Sans Caption', sans-serif;
+  --fontSerif: 'PT Serif', serif;
+  --fontSans: 'PT Sans', sans-serif;
+  --fontCaption: 'PT Sans Narrow', sans-serif;
   --leadBase: 1.5;
   --leadNarrow: 1.1;
   --leadNone: 1;
@@ -24,6 +25,12 @@
   --colorGreyMedium: #ccc;
   --colorGreyDark: #666;
   --colorGreyDarker: #333;
-  --headerHeight: calc(var(--spaceUnit) * 4);
+  --containerMaxWidth: 1024px; 
 }
 
+@media (--wide) {
+  :root {
+    --fontSizeRoot: 125%;
+    --containerMaxWidth: 1480px; 
+  }
+}

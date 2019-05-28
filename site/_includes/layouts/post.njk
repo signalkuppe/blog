@@ -1,88 +1,39 @@
-{# Post layout, extends cover #}
-{% set complementary = true %}
-{% extends "layouts/_layoutCover.njk" %}
+{# Post layout, extends base #}
+{% extends "layouts/_layoutBase.njk" %}
+
 {% import "macros.njk" as macro %}
 {% set author %}{% info 'twitter' %}{% endset %}
-  {% block head %}
-  {{ macro.socialMeta(title, description, cover.id) }}
-  {{ macro.canonical(page.url) }}
-  {{ macro.metaTitle(title, info.name) }}
-  <link rel="prefetch" href="{{ macro.coverImage(cover.id, cover.version, cover.crop) }}">
-  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
-  {% endblock %}
-  <body>
-    {% block header %}
-      {{ macro.navigation(activeSection = 'blog') }}
-    {% endblock %}
 
-    {% block cover %}
-    {% call macro.cover(date, title, caption) %}
-    <img 
-      src="{{ macro.coverImage(cover.id, cover.version, cover.crop, lazyPlaceholder = true)  }}"
-      data-src="{{ macro.coverImage(cover.id, cover.version, cover.crop)  }}" 
-      alt="{{ caption }}" 
-      class="lazyImg" />
-    {% endcall %}
-    {% endblock %}
+{% block head %}
+{{ macro.socialMeta(title, description, cover.id) }}
+{{ macro.canonical(page.url) }}
+{{ macro.metaTitle(title, info.name) }}
+<link rel="prefetch" href="{{ macro.coverImage(cover.id, cover.version) }}">
+<link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+{% endblock %}
 
-    {% block content %}
-    <article itemscope itemtype="http://schema.org/Article">
-      {% call macro.contentHeader(title, hideOnPortrait = true) %}
-      <time datetime="{{ date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
-      <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
-        <span itemprop="name">{{ author }}</span>
-      </span>
-      {% endcall %}
-      <section itemprop="articleBody" id="contentHeader-next">{{ content | safe }}</section>
-      <p class="u-printOnly"><strong>Grazie per aver stampato questa pagina, buona gita! 🤟</strong></p>
-    </article>
-    {% endblock %}
+{% block header %}
+  {{ macro.navigation(activeSection = 'blog') }}
+{% endblock %}
 
-    {% block complementary %}
-    <aside>
-      <div class="u-mb-4">
-        <h3 class="u-mb-1">Galleria fotografica</h3>
-        {{ macro.imageGallery(gallery) }}
-      </div>
+{% block content %}
+  {# include another template to use a nested layout for post content #}
+  {% include 'layouts/_post.njk' %}
+{% endblock %}
 
-      {% if gps %}
-      <div class="u-mb-4">
-        <h3 class="u-mb-1">Scarica le tracce gps</h3>
-        {{ macro.gpsTracks(gps) }}
-      </div>
-      {% endif %}
+{% block footer %}
+{{ macro.footer() }}
+{% endblock %}
 
-      <div class="u-mb-4">
-        <h3 class="u-mb-1">Condividi</h3>
-        {{ macro.share(page.url, title, description, author) }}
-      </div>
-      
-
-      {{ macro.prevNext(collections.posts, page.url) }}
-      
-      <p>Vuoi rimanere aggiornato sui nuovi post? <a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></p>
-    </aside>
-    {% endblock %}
-
-    {% block footer %}
-    {{ macro.footer() }}
-    {% endblock %}
-
-    {% block scripts %}
-    <script src="/node_modules/pace-progress/pace.js"></script>
-    <script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
-    <script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
-    <script src="/node_modules/intersection-observer/intersection-observer.js"></script>
-    <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
-    <script src="/js/smoothScroll.js"></script>
-    <script src="/js/currentYear.js"></script>
-    <script src="/js/menu.js"></script>
-    <script src="/js/contentHeader.js"></script>
-    <script src="/js/postGallery.js"></script>
-    <script src="/js/lazyImages.js"></script>
-    <script src="/js/viewportHeightFix.js"></script>
-    {% endblock %}
-    
-  </body>
-</html>
+{% block scripts %}
+<script src="/node_modules/pace-progress/pace.js"></script>
+<script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
+<script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
+<script src="/node_modules/intersection-observer/intersection-observer.js"></script>
+<script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
+<script src="/js/smoothScroll.js"></script>
+<script src="/js/currentYear.js"></script>
+<script src="/js/postGallery.js"></script>
+<script src="/js/lazyImages.js"></script>
+{% endblock %}
 

@@ -61,12 +61,20 @@ body {
   line-height: 1.3;
 }
 
-.l-cover-header,
-.l-cover-cover,
-.l-cover-footer,
-.l-cover-complementary,
-[role="dialog"] {
+.l-base-header,
+.l-base-footer,
+.l-post-aside {
   display: none;
+}
+
+.l-post-content img,
+.l-post-cover img  {
+  max-width: 300px;
+}
+
+.l-post-gallery img  {
+  float:left;
+  width: 150px;
 }
 
 h1,h2,h3,strong {
@@ -101,4 +109,11 @@ p,figure {
 .u-srOnly,
 .u-screenOnly {
   display: none;
+}
+
+.u-printOnly {
+  margin: 48px 0;
+  border: 1px solid black;
+  padding: 5px 10px;
+  text-align: center;
 }

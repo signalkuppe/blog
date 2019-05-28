@@ -1,33 +1,24 @@
 .c-contentHeader {
-  position: sticky;
-  top: 0;
-  padding-bottom: calc(var(--spaceUnit) * 2);
-  margin-bottom: calc(var(--spaceUnit) * 2);
-  background: white;
-  z-index: 1000;
+  text-align:center;
 }
 
-.c-contentHeader::after {
-  content: '';
-  display: block;
-  position: absolute;
-  z-index: 100;
-  left:0;
-  width: 100%;
-  background: linear-gradient(white, rgba(255,255,255,0));
-  bottom: -3rem;
-  height: 3rem;
+.c-contentHeader h2 {
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeSmall);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: var(--spaceUnit);
 }
 
-.c-contentHeader-title {
-  margin-bottom: calc(var(--spaceUnit) / 4);
+.c-contentHeader h1 {
+  margin-bottom: calc(var(--spaceUnit) * 1.5);
 }
 
-.c-contentHeader-title span {
+.c-contentHeader h1 span {
   position: relative;
 }
 
-.c-contentHeader-title span::after {
+.c-contentHeader h1 span::after {
   position: absolute;
   top: 1.1em;
   left: 0;
@@ -37,25 +28,17 @@
   width: 0.75em;
 }
 
-@media (--portrait) {
+.c-contentHeader p {
+  font-size: var(--fontSizeSmall);
+  max-width: 70%;
+  margin: 0 auto calc(var(--spaceUnit) * 2) auto;
+}
 
-  .c-contentHeader {
-    margin-top: calc(var(--spaceUnit) * 2);
-  }
-
-  .c-contentHeader--hideOnPortrait {
-    visibility: hidden;
-    height: 0;
-    margin: 0;
-  }
-
-  .c-contentHeader.js-is-sticky {
-    visibility: visible;
-    height: auto;
-    padding-top: calc(var(--spaceUnit) * 1.5);
-  }
-
-  .c-contentHeader-title {
-    font-size: var(--fontSize3);
-  }
+.c-contentHeader time {
+  display: block;
+  color: var(--colorGreyDark);
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeTiny);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }

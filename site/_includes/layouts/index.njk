@@ -1,0 +1,27 @@
+{# Index layout, extends base #}
+{% extends "layouts/_layoutBase.njk" %}
+
+{% import "macros.njk" as macro %}
+
+{% block head %}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+  <ul>
+    {% for post in collections.posts %}
+    <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block footer %}
+{{ macro.footer() }}
+{% endblock %}
+
+{% block scripts %}
+<script src="/node_modules/pace-progress/pace.js"></script>
+{% endblock %}
+

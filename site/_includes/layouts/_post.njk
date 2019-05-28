@@ -1,0 +1,64 @@
+{# Post content, extends _layoutPost #}
+
+{% extends "layouts/_layoutPost.njk" %}
+{% import "macros.njk" as macro %}
+
+{% block header %}
+  <header class="c-contentHeader">
+    <hgroup>
+      <h2>{{ category }}</h2>
+      <h1 class="c-contentHeader-title">{{ title | wrapFirstChar | safe }}</h1>
+    </hgroup>
+    <p>{{ description }}</p>
+    <time datetime="{{ date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
+      <span itemprop="name">{{ author }}</span>
+    </span>
+  </header>
+{% endblock %}
+
+{% block cover %}
+  <figure class="c-postCover">
+    <img 
+      src="{{ macro.coverImage(cover.id, cover.version) }}"
+      alt="{{ caption }}" 
+      class="lazyImg" />
+    <figcaption class="c-postCover-caption">{{ caption }}</figcaption>
+  </figure>
+{% endblock %}
+
+{% block body %}
+  <section itemprop="articleBody">
+    {{ content | safe }}
+  <p class="u-printOnly">
+    <strong>Grazie per aver stampato questa pagina, buona gita! 🤟</strong>
+  </p>
+  </section>
+{% endblock %}
+
+{% block aside %}
+  <aside>
+    {% if gps %}
+    <div class="u-mb-4">
+      <h3 class="u-mb-1">Scarica le tracce gps</h3>
+      {{ macro.gpsTracks(gps) }}
+    </div>
+    {% endif %}
+    <div class="u-mb-4">
+      <h3 class="u-mb-1">Condividi</h3>
+      {{ macro.share(page.url, title, description, author) }}
+    </div>
+  </aside>
+{% endblock %}
+
+{% block gallery %}
+  {{ macro.imageGallery(gallery) }}
+{% endblock %}
+
+
+{% block footer %}
+  <footer>
+    {{ macro.prevNext(collections.posts, page.url) }}
+    <p>Vuoi rimanere aggiornato sui nuovi post? <a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></p>
+  </footer>
+{% endblock %}

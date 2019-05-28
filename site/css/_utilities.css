@@ -42,6 +42,14 @@
   margin-right: var(--spaceUnit);
 }
 
+.u-pl-4 {
+  padding-left: calc(var(--spaceUnit) * 4);
+}
+
+.u-pb-4 {
+  padding-bottom: calc(var(--spaceUnit) * 4);
+}
+
 .u-container-link {
   text-decoration: none;
   color: inherit;
@@ -49,4 +57,10 @@
 
 .u-printOnly {
   display: none;
+}
+
+.u-container {
+  max-width: var(--containerMaxWidth);
+  padding: 0  calc(var(--spaceUnit) * 2);
+  margin: 0 auto;
 }

@@ -1,19 +1,18 @@
 .c-button {
   display: inline-block;
-  padding: calc(var(--spaceUnit) / 2) calc(var(--spaceUnit) /1.5);
-  color: black;
+  padding: calc(var(--spaceUnit) / 2) calc(var(--spaceUnit) / 1.5);
   background: white;
   font-weight: 700;
-  border: 1px solid black;
-  box-shadow: 3px 3px 0 0 black;
   text-decoration: none;
-  display: inline-flex;
-  align-self: center;
-  transition: box-shadow 0.2s linear;
+  transition: all 0.25s ease-in;
+  border: 1px solid #eee;
+  border-bottom: 5px solid transparent;
+  background: var(--colorGreyLight);
 }
 
 .c-button:hover {
-  box-shadow: 5px 5px 0 0 black;
+  transform: translateY(-5px);
+  border-bottom: 5px solid var(--colorPrimary);
 }
 
 .c-button--small {
@@ -30,5 +29,5 @@
 
 .c-button svg {
   position: relative;
-  top: 0.125em;
+  top: 0.25em;
 }

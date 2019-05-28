@@ -1,6 +1,6 @@
 ---
-layout: "layouts/homepage.njk"
+layout: "layouts/index.njk"
 ogImage: 'blog/info/info'
 ---
 
-<h1>Homnepage!</h1>
+<!-- content in _layouts/index.njk --> 

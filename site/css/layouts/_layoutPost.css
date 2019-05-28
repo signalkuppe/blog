@@ -1,0 +1,47 @@
+/*
+* Nested post layout
+*/
+
+.l-post-header {
+  margin-bottom: calc(var(--spaceUnit) * 3);
+}
+
+.l-post-cover {
+  margin-bottom: calc(var(--spaceUnit) * 3);
+}
+
+.l-post-content {
+  max-width: 65ch;
+  margin: 0 auto;
+}
+
+.l-post-aside {
+  justify-self: center;
+}
+
+.l-post-gallery {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+@media (--wide) {
+  .l-post-header {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: calc(var(--spaceUnit) * 6);
+  }
+
+  .l-post-content {
+    display: grid;
+    grid-template-columns: 60ch 1fr;
+    grid-gap: calc(var(--spaceUnit) * 4);
+    padding:  calc(var(--spaceUnit) * 4);
+    max-width: none;
+    margin: 0;
+  }
+
+  .l-post-cover {
+    margin-bottom: var(--spaceUnit);
+  }
+}

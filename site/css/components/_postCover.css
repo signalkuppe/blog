@@ -1,0 +1,23 @@
+.c-postCover {
+  position: relative;
+}
+
+.c-postCover-caption {
+  font-size: var(--fontSize1);
+  font-family: var(--fontSerif);
+  font-weight: 400;
+  line-height: 1.1;
+  color: white;
+  position: absolute;
+  bottom: var(--spaceUnit);
+  left: var(--spaceUnit);
+  max-width: 80%;
+}
+
+@media (--wide) {
+  .c-postCover-caption {
+    font-size: var(--fontSize2);
+    bottom: calc(var(--spaceUnit) * 2);
+    left: calc(var(--spaceUnit) * 2);
+  }
+}
