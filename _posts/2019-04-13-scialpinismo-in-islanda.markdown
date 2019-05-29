@@ -29,10 +29,10 @@ Facciamo la spesa in un grosso supermercato fuori città prima di dirigerci vers
 **Dalvik** sarà la nostra base per tutti gli itinerari. Alloggiamo negli [Höfði Cottages](https://www.hofdicottages.com) gestiti da un ragazzo italiano trasferitosi in Islanda. Ambiente confortevole e accogliente, vicino agli itinerari più frequentati.
 Il clima è simile a quelle della nostra primavera alpina, con mattinate fresche e pomeriggi caldi.
 
-## La gite
+## Le gite
 
 Il **vento** ovviamente non manca, sulle vette diventa burrascoso. Prima gita dopo Dalvik, nel primo vallone sulla sinistra che si trova andando verso nord.
-Bell’itinerario, si arriva su una vetta con una magnifica vista del fiordo. Discesa su pendii sostenuti con **ottimo firn,** una goduria. La sera c’e spazio per una seconda gita proprio sopra lo skilift di Dalvik.
+Bell’itinerario, si arriva su una vetta con una magnifica vista del fiordo. Discesa su pendii sostenuti con **ottimo firn,** una goduria. La sera c’è spazio per una seconda gita proprio sopra lo skilift di Dalvik.
 
 <figure>
     <img src="https://live.staticflickr.com/65535/33935931358_4ea4c0d335_c.jpg" alt="Scialpinismo in Islanda: Arrivo sulla vetta sopra Dalvik" /> 
@@ -50,7 +50,9 @@ Quarta gita sempre a Ólafsfjörður. Prima di entrare nella galleria per Sigluf
     <figcaption>Una bella gita sopra Ólafsfjörður</figcaption>
 </figure>
 
-Purtroppo devo rinunciare all’ultima, il vento Islandese mi ha messo ko. Al rientro da ogni gita allestivamo **aperitivi** giganteschi, con fiumi di birra e prelibatezze portate direttamente dall’Italia: slinzeghe, taleggio, bresaole e così via. Insomma, ci siamo trattati bene!
+Purtroppo devo rinunciare all’ultima, il vento Islandese mi ha messo ko. 
+
+Al rientro da ogni gita allestivamo **aperitivi** giganteschi, con fiumi di birra e prelibatezze portate direttamente dall’Italia: slinzeghe, taleggio, bresaole e così via. Insomma, ci siamo trattati bene!
 
 ## Tempo di rientrare
 
