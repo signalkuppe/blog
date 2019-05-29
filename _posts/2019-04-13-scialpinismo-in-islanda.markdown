@@ -9,6 +9,7 @@ caption: "A picco su Dalvik"
 flickr: 72157708350348425
 gps: true
 map: 65.972965,-18.538076
+version: v1559156342
 crop: x_250
 ---
 
