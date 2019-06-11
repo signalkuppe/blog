@@ -1,0 +1,36 @@
+/*
+* Nested post layout
+*/
+
+.l-blog-header,
+.l-blog-cover, 
+.l-blog-search {
+  margin-bottom: calc(var(--spaceUnit) * 3);
+}
+
+@media (--wide) {
+
+  .l-blog-header,
+  .l-blog-cover, 
+  .l-blog-search {
+    margin-bottom: calc(var(--spaceUnit) * 6);
+  }
+  
+  .l-blog-header {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .l-blog-search {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }  
+
+  .l-blog-content {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    max-width: 80vw;
+  }
+}

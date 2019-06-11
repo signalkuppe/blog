@@ -23,6 +23,10 @@
   color: var(--colorGreyMedium);
 }
 
+.c-navigation a.is-active {
+  font-style: italic;
+}
+
 .c-navigation-siteName {
   font-family: var(--fontCaption);
   font-weight: 700;

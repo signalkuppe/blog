@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: all 0.25s ease-in;
+  will-change: transform;
+  transition: transform 0.25s ease-in;
   border-bottom: 5px solid transparent;
 }
 
@@ -31,6 +32,6 @@
 }
 
 .c-card:hover {
-  transform: translateY(-5px);
+  transform: translate3d(0, -5px, 0);
   border-bottom: 5px solid var(--colorPrimary);
 }

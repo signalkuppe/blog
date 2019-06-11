@@ -15,7 +15,7 @@ gps:
     type: kml
 cords:
   lat: 46.10912
-  lng: 9.640560
+  lng: 9.440560
 cover:
   id: blog/posts/230219/photos/Un_tuffo_su_Taceno
   crop: x_750

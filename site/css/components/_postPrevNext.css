@@ -1,0 +1,23 @@
+.c-post-prevNext {
+  text-align: center;
+}
+
+.c-post-prevNext li {
+  display: inline-block;
+}
+
+.c-post-prevNext li:nth-child(2) {
+  margin: 0 var(--spaceUnit);
+}
+
+.c-post-prevNext a {
+  text-decoration: none;
+}
+
+.c-post-prevNext a:hover {
+  text-decoration: underline;
+}
+
+.c-post-prevNext svg {
+  vertical-align: text-bottom;
+}

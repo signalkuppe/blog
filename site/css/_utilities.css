@@ -54,6 +54,10 @@
   padding-bottom: calc(var(--spaceUnit) * 4);
 }
 
+.u-text-center {
+  text-align: center;
+}
+
 .u-container-link {
   text-decoration: none;
   color: inherit;

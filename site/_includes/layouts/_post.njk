@@ -53,6 +53,11 @@
 
 {% block gallery %}
   {{ macro.imageGallery(gallery) }}
+  <p class="u-text-center u-mt-4">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></strong></p>
+{% endblock %}
+
+{% block nav %}
+  {{ macro.prevNext(prev, next) }}
 {% endblock %}
 
 

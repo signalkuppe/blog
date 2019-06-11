@@ -7,8 +7,11 @@
 @import "_typography.css";
 @import "layouts/_layoutBase.css";
 @import "layouts/_layoutPost.css";
+@import "layouts/_layoutBlog.css";
+@import "layouts/_layoutPostGrid.css";
 @import "components/_contentHeader.css";
 @import "components/_postCover.css";
+@import "components/_postPrevNext.css";
 @import "components/_button.css";
 @import "components/_iconButton.css";
 @import "components/_navigation.css";

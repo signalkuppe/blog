@@ -1,0 +1,49 @@
+{# Blog list, extends _layoutBlog #}
+
+{% extends "layouts/_layoutBlog.njk" %}
+{% import "macros.njk" as macro %}
+
+{% block header %}
+  <header class="c-contentHeader">
+    <hgroup>
+      <h2>{{ title }}</h2>
+      <h1 class="c-contentHeader-title">{{ title | wrapFirstChar | safe }}</h1>
+    </hgroup>
+    <p>{{ description }}</p>
+  </header>
+{% endblock %}
+
+{% block cover %}
+  <figure id="map" class="c-map">
+  </figure>
+{% endblock %}
+
+{% block search %}
+<form class="c-autocomplete" id="autocomplete">
+  <label for="autocomplete-input" class="u-srOnly">Cerca</label>
+  <input type="text" spellcheck="false" autocomplete="off" id="autocomplete-input" name="searchKey" placeholder="Cerca..." />
+  <div class="c-autocomplete-results" id="autocomplete-results" hidden></div>
+  <div class="c-autocomplete-help">ES: “scialpinismo svizzera” (trova tutti i post che contengono entrambe le chiavi di ricerca)</div>
+  <button type="reset" aria-label="Ripristina" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
+</form>
+{% endblock %}
+
+{% block list %}
+<ul class="l-postGrid">
+{%- for post in pagination.items  -%}
+  <li class="l-postGrid-item" data-post="{{ post.data.title }}">
+    <a href="{{ post.url }}" title="leggi il post" class="u-container-link">
+      {{ macro.card(post) }}
+    </a>
+  </li>
+{%- endfor -%}
+</ul>
+{% endblock %}
+
+
+{% block footer %}
+  <footer>
+    {{ macro.prevNext(collections.posts, page.url) }}
+    <p>Vuoi rimanere aggiornato sui nuovi post? <a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></p>
+  </footer>
+{% endblock %}

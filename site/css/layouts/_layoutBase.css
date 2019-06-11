@@ -2,8 +2,15 @@
   margin:  calc(var(--spaceUnit) * 2) 0 calc(var(--spaceUnit) * 3) 0;
 }
 
+.l-base-footer {
+  margin:  calc(var(--spaceUnit) * 4) 0 calc(var(--spaceUnit) * 1) 0;
+}
+
 @media (--wide) {
   .l-base-header {
     margin:  calc(var(--spaceUnit) * 2) 0 calc(var(--spaceUnit) * 6) 0;
+  }
+  .l-base-footer {
+    margin:  calc(var(--spaceUnit) * 8) 0 calc(var(--spaceUnit) * 1) 0;
   }
 }

@@ -48,8 +48,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'favicons'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'js'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'css/print.css'))
-  eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist/baguetteBox.js')
-  eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist/baguetteBox.css')
+  eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist')
   eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')
   eleventyConfig.addPassthroughCopy('node_modules/intersection-observer/intersection-observer.js')
   eleventyConfig.addPassthroughCopy('node_modules/pace-progress/pace.js')
@@ -105,9 +104,27 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addCollection('posts', collection => {
     try {
-      const posts = collection.getFilteredByGlob(path.join(inputDir, 'posts', '/*.md')).sort((a, b) => {
-        return b.date - a.date
-      })
+      const Posts = collection.getFilteredByGlob(path.join(inputDir, 'posts', '/*.md'))
+      const _prevNextData = (post) => {
+        return {
+          title: post.data.title,
+          url: post.url,
+          date: post.data.date
+        }
+      }
+      const posts = Posts
+        .map((p, i) => { // add prev and next
+          if (Posts[i - 1]) {
+            p.data.prev = _prevNextData(Posts[i - 1])
+          }
+          if (Posts[i + 1]) {
+            p.data.next = _prevNextData(Posts[i + 1])
+          }
+          return p
+        })
+        .sort((a, b) => {
+          return b.date - a.date
+        })
       
       // write markers in js file (we can minify it at build time)
       // we use this file as an index for lunr search

@@ -1,5 +1,5 @@
 ---
-title: Pizzi di Parlasco next
+title: Cima Soliva
 date: 2019-02-25
 description: "Escursionismo ai Pizzi di Parlasco: salita per la Porta di Parlasco e rientro ad anello per il Passo di Agueglio"
 category: escursionismo
@@ -7,7 +7,7 @@ tags:
   - valsassina
   - parlasco
   - pizzo
-caption: La Valsassina dalla cresta provo una caption molto lunga
+caption: Il Diavolo di Tenda dalla vetta
 gps:
   - id: blog/posts/230219/downloads/230219.zip
     type: gpx
@@ -15,9 +15,9 @@ gps:
     type: kml
 cords:
   lat: 46.20912
-  lng: 9.740560
+  lng: 9.840560
 cover:
-  id: blog/posts/230219/photos/Le_nebbie_si_addossano_sul_versante_sud
+  id: blog/covers/230319.jpg
   crop: x_750
 gallery:
   - id: blog/posts/230219/photos/Chiesa_di_Sant_Antonio_abate

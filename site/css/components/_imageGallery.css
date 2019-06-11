@@ -12,7 +12,7 @@
 
 .c-imageGallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 350px));
+  grid-template-columns: repeat(auto-fill, 150px);
   grid-auto-flow: dense;
   grid-gap: var(--spaceUnit);
   justify-content: center;
@@ -25,7 +25,7 @@
   display: block;
   position: relative;
   z-index: 1;
-  border: var(--spaceUnit) solid white;
+  border: 0.5em solid white;
   transition: all 0.2s linear;
 }
 
@@ -34,12 +34,26 @@
 }
 
 @media (--wide) {
+  .c-imageGallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 350px));
+  }  
   .c-imageGallery-item:first-child {
     grid-area: 1 / 1 / span 2 / span 2;
   }
+  .c-imageGallery img {
+    border-width: 1em;
+  }
 }
 
-body.js-is-galleryOpen,
-body.js-is-galleryOpen .l-cover-main {
-  overflow: hidden;
+/* plugin customizations */
+
+.baguetteBox-button {
+  background: none!important;
+}
+
+#baguetteBox-overlay .full-image figcaption {
+  font-family: var(--fontCaption)!important;
+  font-style: normal!important;
+  line-height: 1;
+  padding: 1em 0;
 }

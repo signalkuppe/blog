@@ -2,16 +2,33 @@
   position: relative;
 }
 
+.c-postCover img {
+  display: block;
+}
+
+.c-postCover::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.4));
+  z-index: 10;
+}
+
 .c-postCover-caption {
-  font-size: var(--fontSize1);
+  font-size: var(--fontSizeBase);
   font-family: var(--fontSerif);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.1;
   color: white;
   position: absolute;
   bottom: var(--spaceUnit);
   left: var(--spaceUnit);
   max-width: 80%;
+  z-index: 11;
 }
 
 @media (--wide) {
