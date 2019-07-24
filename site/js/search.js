@@ -3,7 +3,9 @@
     var form = document.getElementById('autocomplete')
     var input = document.getElementById('autocomplete-input')
     var reset = document.getElementById('autocomplete-reset')
+    var search = document.getElementById('autocomplete-search')
     var autocomplete = document.getElementById('autocomplete-results')
+    var i = -1;
     var idx = lunr(function () {
       this.ref('autocompleteRow')
       this.field('description')
@@ -50,50 +52,83 @@
           output += '<li>Nessun risultato 😓</li>'
         } else {
           for (var i = 0; i < results.length; i++) {
-            output += '<li>'+ results[i].ref +'</li>'
+            var url = markers.find(function (m) {
+              return m.autocompleteRow === results[i].ref 
+            }).link
+            output += '<li tabindex="-1" data-dest="' + url + '">'+ results[i].ref +'</li>'
           }
         }
         output += '</ul>'
         return output;
+    }
+    var _blur = function (e) {
+      if(!e.relatedTarget) {
+       _hideResults()
+      }
     }
     var _showResults = function (results) {
       autocomplete.innerHTML = _buildResults(results)
       autocomplete.removeAttribute('aria-hidden')
       autocomplete.classList.remove('js-is-hidden')
       reset.style.display = 'block'
+      search.style.display = 'none'
       form.addEventListener('blur', _blur, true)
-    }
-    var _blur = function (e) {
-      if(!e.relatedTarget) {
-        _hideResults()
-      }
     }
     var _hideResults = function () {
       autocomplete.setAttribute('aria-hidden', true)
       autocomplete.classList.add('js-is-hidden')
       autocomplete.innerHTML = ''
+      reset.style.display = 'none'
+      search.style.display = 'block'
       form.removeEventListener('blur', _blur)
+      i = -1
     }
     var _init = function () {
       reset.style.display = 'none'
       autocomplete.removeAttribute('hidden')
-      form.setAttribute('tabindex','0')
+      form.addEventListener('submit', function (e) {
+        e.preventDefault()
+      })
     }
     input.addEventListener('keyup', function (event) {
-      if (event.keyCode !== 27) {
-        var searchKey = this.value
-        _debounce(_search, 250)(searchKey)
-      } else {
+      var resultRows = Array.from(autocomplete.querySelectorAll('li[data-dest]'))
+      var destination
+      if ((event.keyCode === 40 || event.keyCode === 38 || event.keyCode === 13) && resultRows.length) {
+        if (event.keyCode === 40 && i < resultRows.length - 1) { // down
+          i++
+        }
+        if (event.keyCode === 38 && i > 0) { // up
+          i--
+        }
+        if (resultRows[i]) {
+          resultRows.forEach(function (r) {
+            r.classList.remove('js-is-active')
+          })
+          resultRows[i].classList.add('js-is-active')
+          destination = resultRows[i].getAttribute('data-dest')
+        }
+        if (event.keyCode === 13) {
+          location.href = destination
+        } 
+      }
+      else if (event.keyCode === 27) { // esc
         form.reset()
         _hideResults()
       }
+      else {
+        var searchKey = this.value
+        if (searchKey.length) {
+          _debounce(_search, 250)(searchKey)
+        }
+      }
     })
-
     reset.addEventListener('click', function () {
       reset.style.display = 'none'
+      search.style.display = 'block'
       input.focus()
       _debounce(_search, 250)('')
     })
+    
     _init()
     _hideResults()
 

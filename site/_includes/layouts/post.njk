@@ -7,7 +7,7 @@
 {{ macro.socialMeta(title, description, cover.id) }}
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(title, info.name) }}
-<link rel="preload" href="{{ macro.coverImage(cover.id, cover.version) }}">
+<link rel="preload" href="{{ macro.coverImage(cover.id, cover.version) }}" as="image">
 <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
 <link rel="stylesheet" href="/node_modules/baguettebox.js/dist/baguetteBox.css" crossorigin>
 {% if prev -%}

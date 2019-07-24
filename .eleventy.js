@@ -140,7 +140,7 @@ module.exports = (eleventyConfig) => {
           tags: p.data.tags,
           categories: p.data.category,
           cover: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_100,h_100,c_fill,f_auto,q_20,g_center${p.data.cover.version ? '/' + p.data.cover.version : ''}/${p.data.cover.id}`,
-          autocompleteRow: `${postDate} - <a href="${p.url}" data-autocomplete">${p.data.title}</a>`
+          autocompleteRow: `<span>${postDate}</span> - <a href="${p.url}" data-autocomplete">${p.data.title}</a>`
         }
       })
   

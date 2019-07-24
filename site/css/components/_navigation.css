@@ -3,7 +3,7 @@
   text-transform: uppercase;
   line-height: 1;
   border-bottom: 1px solid var(--colorGreyLight);
-  padding-bottom: calc(var(--spaceUnit) * 1);
+  padding-bottom: 1em;
 }
 
 .c-navigation-menu {
@@ -17,6 +17,7 @@
 .c-navigation a {
   text-decoration: none;
   color: var(--colorGreyDark);
+  display: block;
 }
 
 .c-navigation a:hover {
@@ -24,7 +25,18 @@
 }
 
 .c-navigation a.is-active {
-  font-style: italic;
+  position: relative;
+}
+
+.c-navigation a.is-active::after {
+  position: absolute;
+  display: block;
+  content: '';
+  height: 5px;
+  width: 100%;
+  background: var(--colorGreyMedium);
+  left: 0;
+  top: 2em;
 }
 
 .c-navigation-siteName {
