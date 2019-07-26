@@ -31,6 +31,5 @@
 @media (--wide) {
   :root {
     --fontSizeRoot: 125%;
-    --containerMaxWidth: 1480px; 
   }
 }

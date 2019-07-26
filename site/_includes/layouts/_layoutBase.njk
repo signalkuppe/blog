@@ -10,16 +10,16 @@
   </head>
   <body id="top">
     <a href="#content" class="u-srOnly">Vai al contenuto principale</a>
-    <div class="l-base u-container">
-      <div class="l-base-header">
+    <div class="l-base">
+      <section class="l-base-header">
         {% block header %}{% endblock %}
-      </div>
-      <div id="main" class="l-base-main">
+      </section>
+      <section id="main" class="l-base-main">
         <main>{% block content %}{% endblock %}</main>
-      </div>
-      <div class="l-base-footer">
+      </section>
+      <section class="l-base-footer">
         {% block footer %}{% endblock %}
-      </div>      
+      </section>      
     </div>
     {% block scripts %}{% endblock %}
   </body>

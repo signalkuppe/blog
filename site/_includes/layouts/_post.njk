@@ -4,25 +4,17 @@
 {% import "macros.njk" as macro %}
 
 {% block header %}
-  <header class="c-contentHeader">
-    <hgroup>
-      <h2>{{ category }}</h2>
-      <h1 class="c-contentHeader-title">{{ title | wrapFirstChar | safe }}</h1>
-    </hgroup>
-    <p>{{ description }}</p>
-    <time datetime="{{ date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
-    <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
-      <span itemprop="name">{{ author }}</span>
-    </span>
-  </header>
+  {% call macro.contentHeader(category, title, description) -%}
+  <time datetime="{{ date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
+    <span itemprop="name">{{ author }}</span>
+  </span>
+  {%- endcall %}
 {% endblock %}
 
 {% block cover %}
   <figure class="c-postCover">
-    <img 
-      src="{{ macro.coverImage(cover.id, cover.version) }}"
-      alt="{{ caption }}" 
-      class="lazyImg" />
+    {{ macro.coverImage(cover.id, cover.gravity, caption, cover.version) }}
     <figcaption class="c-postCover-caption">{{ caption }}</figcaption>
   </figure>
 {% endblock %}
@@ -46,24 +38,20 @@
     {% endif %}
     <div class="u-mb-4">
       <h3 class="u-mb-1">Condividi</h3>
-      {{ macro.share(page.url, title, description, author) }}
+      {{ macro.share(page.url, title, description, nickname) }}
     </div>
   </aside>
 {% endblock %}
 
 {% block gallery %}
-  {{ macro.imageGallery(gallery) }}
-  <p class="u-text-center u-mt-4">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></strong></p>
+  {{ macro.masonryGallery(gallery) }}
 {% endblock %}
 
 {% block nav %}
-  {{ macro.prevNext(prev, next) }}
-{% endblock %}
-
-
-{% block footer %}
-  <footer>
-    {{ macro.prevNext(collections.posts, page.url) }}
-    <p>Vuoi rimanere aggiornato sui nuovi post? <a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></p>
-  </footer>
+  {% set prevUrl = prev.url %}
+  {% set prevTitle %}{{ prev.date | formatDate('DD MMMM YYYY') }} - {{ prev.title }}{% endset %}
+  {% set nextUrl = next.url %}
+  {% set nextTitle %}{{ next.date | formatDate('DD MMMM YYYY') }} - {{ next.title }}{% endset %}
+  {{ macro.prevNext(prevUrl, prevTitle, nextUrl, nextTitle) }}
+  <p class="u-text-center u-mt-8">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></strong></p>
 {% endblock %}

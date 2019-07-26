@@ -63,7 +63,9 @@ body {
 
 .l-base-header,
 .l-base-footer,
-.l-post-aside {
+.l-post-aside,
+.l-post-nav,
+.c-contentHeader h2 {
   display: none;
 }
 

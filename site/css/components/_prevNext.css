@@ -1,23 +1,23 @@
-.c-post-prevNext {
+.c-prevNext {
   text-align: center;
 }
 
-.c-post-prevNext li {
+.c-prevNext li {
   display: inline-block;
 }
 
-.c-post-prevNext li:nth-child(2) {
+.c-prevNext li:nth-child(2) {
   margin: 0 var(--spaceUnit);
 }
 
-.c-post-prevNext a {
+.c-prevNext a {
   text-decoration: none;
 }
 
-.c-post-prevNext a:hover {
+.c-prevNext a:hover {
   text-decoration: underline;
 }
 
-.c-post-prevNext svg {
+.c-prevNext svg {
   vertical-align: text-bottom;
 }

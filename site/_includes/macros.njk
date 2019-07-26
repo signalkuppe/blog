@@ -10,8 +10,8 @@
 {% macro socialMeta(title, description, image, twitterCard='summary', ogType='article') %}
 <meta name="description" content="{{ description }}">
 <meta name="twitter:card" content="{{ twitterCard }}" />
-<meta name="twitter:site" content="{% info 'twitter' %}" />
-<meta name="twitter:creator" content="{% info 'twitter' %}" />
+<meta name="twitter:site" content="@{% info 'nickname' %}" />
+<meta name="twitter:creator" content="@{% info 'nickname' %}" />
 <meta property="og:site_name" content="{% info 'name' %}" />
 <meta name="twitter:title" content="{{ title }} "/>
 <meta property="og:title" content="{{ title }}" />
@@ -102,7 +102,7 @@
 <header class="c-navigation">
   <h2 class="u-srOnly">Menu</h2>
   <nav>
-    <ul class="c-navigation-menu">
+    <ol class="c-navigation-menu">
       <li><a href="/" title="Torna alla pagina iniziale"{% if activeSection == 'front' %} class="is-active"{% endif %}>Home</a></li>
       <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
       <li>
@@ -112,7 +112,7 @@
       </li>
       <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
       <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
-    </ul>
+    </ol>
   </nav>
 </header>
 {% endmacro %}
@@ -140,19 +140,26 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 {# 
 # Cover image
 # @param {String} coverId  - the cloudinary image id
-# @param {String} coverVersion  - the cloudinary image version
+# @param {String} coverGravity - the crop gravity https://cloudinary.com/documentation/image_transformations#control_gravity
+# @param {String} coverCaption - the cover caption
+# @param {String} coverVersion - the cloudinary image version
 #}
 
-{%- macro coverImage(coverId, coverVersion) -%}
-{{ cloudinaryImageUrl(coverId, 'w_1920,h_1282,c_fill,f_auto,q_auto', coverVersion) }}
+{%- macro coverImage(coverId, coverGravity, coverCaption, coverVersion) -%}
+{% set mobileTransformation %}ar_3:2,c_fill{% if coverGravity %},g_{{ coverGravity }}{% endif %},f_auto,q_auto{% endset %}
+{% set largeTransformation %}ar_21:9,c_fill{% if coverGravity %},g_{{ coverGravity }}{% endif %},f_auto,q_auto{% endset %}
+<picture>
+  <source srcset="{{ cloudinaryImageUrl(coverId, largeTransformation, coverVersion) }}" media="(min-width: 768px)" />
+  <source srcset="{{ cloudinaryImageUrl(coverId, mobileTransformation, coverVersion) }}" />
+  <img srcset="{{ cloudinaryImageUrl(coverId, mobileTransformation, coverVersion) }}" alt="{{ coverCaption }}" />
+</picture>
 {%- endmacro -%}
 
 
 
 {# 
 # Post gps tracks
-# @param {String} postGpx  - the post gpx public_id
-# @param {String} postKml  - the post kml public_id
+# @param {Array} postGpsTracks - the post gpx tracks
 #}
 
 {% macro gpsTracks(postGpsTracks) %}
@@ -165,27 +172,30 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 </ul>
 {% endmacro %}
 
+
 {# 
-# Post image gallery
+# Masonry image gallery
 # @param {Array} photos  - an array of photos on cloudinary
 #}
 
-{% macro imageGallery(photos) %}
-<div class="c-imageGallery">
-  <h3 class="c-imageGallery-title">Galleria fotografica</h3>
-  <ul class="c-imageGallery-grid">
-    {% for photo in photos  %}
-    <li class="c-imageGallery-item">
-      <a href="{{ cloudinaryImageUrl(photo.id) }}" title="{{ photo.title }}">
-        <img 
-          data-src="{{ cloudinaryImageUrl(photo.id, 'w_800,c_fill,f_auto,q_auto') }}" 
-          alt="{{ photo.alt }}" 
-          class="lazyImg" />
-      </a>
-    </li>                                                              
-    {% endfor %}
-  </ul>
-</div>
+{% macro masonryGallery(photos) %}
+<ul class="c-masonryGallery">
+  <div class="c-masonryGallery-col"></div>
+  <div class="c-masonryGallery-col"></div>
+  <div class="c-masonryGallery-col"></div>
+  <div class="c-masonryGallery-col"></div>
+  <div class="c-masonryGallery-col"></div>
+  {% for photo in photos %}
+  <li class="c-masonryGallery-item">
+    <a href="{{ cloudinaryImageUrl(photo.id) }}" title="{{ photo.title }}">
+      <img 
+        data-src="{{ cloudinaryImageUrl(photo.id, 'w_800,c_fill,f_auto,q_auto') }}" 
+        alt="{{ photo.alt }}" 
+        class="lazyImg" />
+    </a>
+  </li> 
+  {% endfor %}
+</ul>
 {% endmacro %}
 
 {# 
@@ -215,7 +225,7 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
       rel="noopener"
       title="Condividi su Twitter" 
       class="c-iconButton"
-      onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;">
+      onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL))+ ':%20'  +author; return false;">
       {% include 'icons/twitter.njk' %}
     </a>
   </li>
@@ -241,12 +251,28 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 {% endmacro %}
 
 {# 
+# Content header
+#}
+
+{% macro contentHeader(preTitle, title, subTitle) %}
+  <header class="c-contentHeader">
+    <hgroup>
+      <h2>{{ preTitle }}</h2>
+      <h1 class="c-contentHeader-title">{{ title | wrapFirstChar | safe }}</h1>
+    </hgroup>
+    <p>{{ subTitle }}</p>
+    {% if caller %}{{ caller() }}{% endif %}
+  </header>
+{% endmacro %}
+
+
+{# 
 # Site footer
 #}
 
 {% macro footer() %}
 <footer class="c-footer">
-  <span id="currentYear"></span> - <strong>Signalkuppe</strong> | contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</a> | <a href="/info">Info & contatti</a>
+  <span id="js-currentYear"></span> - <strong>Signalkuppe</strong> | contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</a> | <a href="/info">Info & contatti</a>
   | <a href="{% info 'facebookSite' %}" title="Seguimi su facebook">Facebook</a> | <a href="{% info 'twitterSite' %}" title="Seguimi su facebook">Twitter</a> | <a href="{% info 'instagramSite' %}" title="Seguimi su facebook">Instagram</a>
   <span class="c-footer-topLink"> | {% include 'icons/arrow-up.njk' %}<a href="#top">Torna in cima</a></span>
 </footer>
@@ -254,25 +280,27 @@ https://res.cloudinary.com/{% info 'cloudinaryCloudName' %}/image/upload/{{ tran
 
 
 {# 
-# Prev and next post
-# @param {Object} prev - the previous post
-# @param {Object} next - the next post
+# Prev and next
+# @param {Object} prevUrl - the prev post url
+# @param {Object} prevTitle - the prev post title
+# @param {Object} nextUrl - the next post url
+# @param {Object} nextTitle - the next post title
 #}
 
-{% macro prevNext(prev, next ) %}
+{% macro prevNext(prevUrl, prevTitle, nextUrl, nextTitle ) %}
 <nav>
-  <ul class="c-post-prevNext">
-    {% if prev %}
+  <ul class="c-prevNext">
+    {% if prevUrl %}
     <li>
-      <a href="{{ prev.url | url }}" title="{{ prev.date | formatDate('DD MMMM YYYY') }} - {{ prev.title }}">{% include 'icons/chevron-left.njk' %} Precedente</a>
+      <a href="{{ prevUrl }}" title="{{ prevTitle }}">{% include 'icons/chevron-left.njk' %} Precedente</a>
     </li>
     {% endif %}
-    {% if next and prev %}
+    {% if nextUrl and prevUrl %}
     <li aria-hidden="true">|</li>
     {% endif %}
-    {% if next %}
+    {% if nextUrl %}
     <li>
-      <a href="{{ next.url | url }}" title="{{ next.date | formatDate('DD MMMM YYYY') }} - {{ next.title }}">Successivo {% include 'icons/chevron-right.njk' %}</a>
+      <a href="{{ nextUrl }}" title="{{ nextTitle }}">Successivo {% include 'icons/chevron-right.njk' %}</a>
     </li>
     {% endif %}
   </ul>

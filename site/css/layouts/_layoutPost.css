@@ -13,16 +13,12 @@
 .l-post-content {
   max-width: 60ch;
   margin: 0 auto;
+  padding: 0 calc(var(--spaceUnit) * 1.5);
 }
 
 .l-post-aside {
   justify-self: center;
   margin-top: calc(var(--spaceUnit) * 3);
-}
-
-.l-post-gallery {
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
 }
 
 .l-post-nav {
@@ -40,15 +36,16 @@
 
   .l-post-content {
     display: grid;
-    grid-template-columns: 60ch 1fr;
+    grid-template-columns: 60ch 350px;
     grid-gap: calc(var(--spaceUnit) * 4);
     padding:  calc(var(--spaceUnit) * 4);
-    max-width: none;
-    margin: 0;
+    max-width: var(--containerMaxWidth);
+    margin: 0 auto calc(var(--spaceUnit) * 6) auto;
+    padding: 0;
   }
 
   .l-post-cover {
-    margin-bottom: var(--spaceUnit);
+    margin-bottom: calc(var(--spaceUnit) * 6);
   }
 
   .l-post-aside {

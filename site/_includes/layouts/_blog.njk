@@ -4,13 +4,7 @@
 {% import "macros.njk" as macro %}
 
 {% block header %}
-  <header class="c-contentHeader">
-    <hgroup>
-      <h2>{{ intro }}</h2>
-      <h1 class="c-contentHeader-title">{{ title | wrapFirstChar | safe }}</h1>
-    </hgroup>
-    <p>{{ description }}</p>
-  </header>
+  {% call macro.contentHeader(intro, title, description) -%}{%- endcall %}
 {% endblock %}
 
 {% block cover %}
@@ -44,7 +38,6 @@
 
 {% block footer %}
   <footer>
-    {{ macro.prevNext(collections.posts, page.url) }}
-    <p>Vuoi rimanere aggiornato sui nuovi post? <a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></p>
+    <p class="u-text-center u-mt-8">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></strong></p>
   </footer>
 {% endblock %}

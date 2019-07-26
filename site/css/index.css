@@ -11,11 +11,11 @@
 @import "layouts/_layoutPostGrid.css";
 @import "components/_contentHeader.css";
 @import "components/_postCover.css";
-@import "components/_postPrevNext.css";
+@import "components/_prevNext.css";
 @import "components/_button.css";
 @import "components/_iconButton.css";
 @import "components/_navigation.css";
-@import "components/_imageGallery.css";
+@import "components/_masonryGallery.css";
 @import "components/_paceProgress.css";
 @import "components/_footer.css";
 @import "components/_map.css";

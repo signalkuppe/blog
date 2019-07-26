@@ -18,7 +18,8 @@ cords:
   lng: 9.140560
 cover:
   id: blog/posts/230219/photos/La_Valsassina_dalla_cresta
-  crop: x_750
+  crop: x_750,
+  gravity: north
 gallery:
   - id: blog/posts/230219/photos/Chiesa_di_Sant_Antonio_abate
     title: La Chiesa di Sant’Antonio Abate

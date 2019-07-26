@@ -3,9 +3,10 @@
   "slogan": "Parole oltre i 4000m",
   "description": "Blog personale di Matteo Leoni",
   "baseUrl": "https://www.signalkuppe.com",
-  "twitter": "@signalkuppe",
+  "author": "Matteo Leoni",
   "cloudinaryCloudName": "signalkuppe",
   "facebookSite": "https://www.facebook.com/signalkuppe",
   "twitterSite": "https://twitter.com/signalkuppe",
-  "instagramSite": "https://www.instagram.com/signalkuppe"
+  "instagramSite": "https://www.instagram.com/signalkuppe",
+  "nickname": "signalkuppe"
 }

@@ -1,14 +1,17 @@
-<section>
-  <div class="l-blog-header">
+<div class="l-blog">
+  <section class="l-blog-header">
     {% block header %}{% endblock %}
-  </div>
-  <div class="l-blog-cover">
+  </section>
+  <section class="l-blog-cover">
     {% block cover %}{% endblock %}
-  </div>
-  <div class="l-blog-search">
+  </section>
+  <section class="l-blog-search">
     {% block search %}{% endblock %}
-  </div>
-  <div class="l-blog-content">
+  </section>
+  <section class="l-blog-content">
     {% block list %}{% endblock %}
-  </div>
-</section>
+  </section>
+  <section class="l-blog-footer">
+    {% block footer %}{% endblock %}
+  </section>
+</div>

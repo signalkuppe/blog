@@ -1,22 +1,22 @@
 <article itemscope itemtype="http://schema.org/Article">
-  <div class="l-post-header">
+  <section class="l-post-header u-container">
     {% block header %}{% endblock %}
-  </div>
-  <div class="l-post-cover">
+  </section>
+  <section class="l-post-cover">
     {% block cover %}{% endblock %}
-  </div>
-  <div class="l-post-content">
+  </section>
+  <section class="l-post-content ">
     <div class="l-post-body">
       {% block body %}{% endblock %}
     </div>
     <div class="l-post-aside">
       {% block aside %}{% endblock %}
     </div>
-  </div>
-  <div class="l-post-gallery">
+  </section>
+  <section class="l-post-gallery">
     {% block gallery %}{% endblock %}
   </div>
-  <div class="l-post-nav">
+  <section class="l-post-nav">
     {% block nav %}{% endblock %}
-  </div>
+  </section>
 </article>

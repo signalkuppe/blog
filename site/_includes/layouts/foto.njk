@@ -1,29 +1,22 @@
-{# Post layout, extends base #}
+{# Index layout, extends base #}
 {% extends "layouts/_layoutBase.njk" %}
-
 {% import "macros.njk" as macro %}
 
 {% block head %}
-{{ macro.socialMeta(title, description, cover.id) }}
+{{ macro.socialMeta(title, description, ogImage) }}
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(title, info.name) }}
 <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
 <link rel="stylesheet" href="/node_modules/baguettebox.js/dist/baguetteBox.css" crossorigin>
-{% if prev -%}
-<link rel="prefetch" href="{{ prev.url }}" />
-{% endif -%}
-{% if next -%}
-<link rel="prefetch" href="{{ next.url }}" />
-{% endif -%}
 {% endblock %}
 
 {% block header %}
-  {{ macro.navigation(activeSection = 'blog') }}
+  {{ macro.navigation(activeSection = 'foto') }}
 {% endblock %}
 
 {% block content %}
-  {# include another template to use a nested layout for post content #}
-  {% include 'layouts/_post.njk' %}
+{{ macro.contentHeader(intro, title, description) }}
+{{ macro.masonryGallery(photos) }}
 {% endblock %}
 
 {% block footer %}
@@ -31,9 +24,9 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="/node_modules/pace-progress/pace.js"></script>
-<script src="/node_modules/colcade/colcade.js"></script>>
+<script src="/node_modules/colcade/colcade.js"></script>
 <script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
+<script src="/node_modules/pace-progress/pace.js"></script>
 <script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
 <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
 <script src="/js/smoothScroll.js"></script>
@@ -41,4 +34,7 @@
 <script src="/js/lazyImages.js"></script>
 <script src="/js/masonryGallery.js"></script>
 {% endblock %}
+
+
+
 

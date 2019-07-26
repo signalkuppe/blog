@@ -18,7 +18,7 @@ cords:
   lng: 9.840560
 cover:
   id: blog/covers/230319.jpg
-  crop: x_750
+  gravity: north
 gallery:
   - id: blog/posts/230219/photos/Chiesa_di_Sant_Antonio_abate
     title: La Chiesa di Sant’Antonio Abate
@@ -39,6 +39,9 @@ gallery:
     title: Un tuffo su Taceno
     alt: Un tuffo su Taceno dai Pizzi di Parlasco
   - id: blog/posts/230219/photos/Verso_il_Passo_di_Agueglio
+    title: Verso il Passo di Agueglio
+    alt: "Pizzi di Parlasco: verso il Passo di Agueglio"
+  - id: blog/posts/230219/photos/gio
     title: Verso il Passo di Agueglio
     alt: "Pizzi di Parlasco: verso il Passo di Agueglio"
   - id: blog/posts/230219/photos/In_cresta

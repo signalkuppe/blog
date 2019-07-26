@@ -1,5 +1,7 @@
 .c-contentHeader {
   text-align:center;
+  max-width: var(--containerMaxWidth);
+  margin: 0 auto;
 }
 
 .c-contentHeader h2 {
@@ -11,6 +13,7 @@
 }
 
 .c-contentHeader h1 {
+  font-size: var(--fontSize4);
   margin-bottom: calc(var(--spaceUnit) * 1.5);
 }
 
@@ -30,7 +33,7 @@
 
 .c-contentHeader p {
   font-size: var(--fontSizeSmall);
-  max-width: 70%;
+  max-width: 60ch;
   margin: 0 auto calc(var(--spaceUnit) * 2) auto;
 }
 
@@ -41,4 +44,10 @@
   font-size: var(--fontSizeTiny);
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+@media (--wide) {
+  .c-contentHeader h1 {
+    font-size: var(--fontSize5);
+  }
 }

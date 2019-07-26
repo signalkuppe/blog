@@ -48,15 +48,12 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'favicons'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'js'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'css/print.css'))
+  eleventyConfig.addPassthroughCopy('node_modules/colcade/colcade.js')
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist')
   eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')
-  eleventyConfig.addPassthroughCopy('node_modules/intersection-observer/intersection-observer.js')
   eleventyConfig.addPassthroughCopy('node_modules/pace-progress/pace.js')
   eleventyConfig.addPassthroughCopy('node_modules/smooth-scroll/dist/smooth-scroll.js')
   eleventyConfig.addPassthroughCopy('node_modules/lunr/lunr.js')
-
-
-
 
   /*
   * Add a universal shortcode for site info vars ({% info 'cloudinaryCloudName' %} -> signalkuppe)
@@ -120,6 +117,9 @@ module.exports = (eleventyConfig) => {
           if (Posts[i + 1]) {
             p.data.next = _prevNextData(Posts[i + 1])
           }
+          // add other infos
+          p.data.author = info.author
+          p.data.nickname = info.nickname
           return p
         })
         .sort((a, b) => {

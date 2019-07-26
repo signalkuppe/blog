@@ -23,23 +23,24 @@
   "homepage": "https://www.signalkuppe.com",
   "dependencies": {
     "baguettebox.js": "^1.11.0",
+    "colcade": "^0.2.0",
     "lunr": "^2.3.6",
     "pace-progress": "^1.0.2",
-    "smooth-scroll": "^16.0.0",
+    "smooth-scroll": "^16.1.0",
     "vanilla-lazyload": "^11.0.3"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.8.3",
-    "autoprefixer": "^9.5.1",
+    "autoprefixer": "^9.6.1",
     "chalk": "^2.4.2",
-    "chokidar": "^2.1.5",
-    "dayjs": "^1.8.12",
-    "lodash": "^4.17.11",
+    "chokidar": "^2.1.6",
+    "dayjs": "^1.8.15",
+    "lodash": "^4.17.15",
     "markdown-it-custom-block": "^0.1.1",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^4.1.5",
     "postcss-import": "^12.0.1",
-    "postcss-mixins": "^6.2.1",
-    "postcss-preset-env": "^6.6.0"
+    "postcss-mixins": "^6.2.2",
+    "postcss-preset-env": "^6.7.0"
   }
 }
