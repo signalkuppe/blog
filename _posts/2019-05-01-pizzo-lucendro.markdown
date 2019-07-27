@@ -41,4 +41,4 @@ Mi trascino fino alla sella dove tolgo gli sci e inizio la salita. Non servono i
 
 Discesa ovviamente da dimenticare, sembra di **sciare sulla polenta.** La risalita alla **Fibbia** sarà un calvario. Per fortuna si riesce a fare (con un po' di attenzione) tutta sci ai piedi. La discesa finale (di solito bella) ovviamente è un disastro ben peggiore di quella precedente, al limite dello sci nautico. 
 
-Rientro in qualche modo al passo, oggi si tratta di arrivare tutti interi, il divertimento non è previsto. Unica nota positiva della giornata l’incontro con un **ciclista cilena** . Le offro la mia bresaola e iniziamo a parlare. Ha percorso mezza europa da sola in bici, ed ora è diretta in Sardegna per una settimana conclusiva di mare, emozionante!
+Rientro in qualche modo al passo, oggi si tratta di arrivare tutti interi, il divertimento non è previsto. Unica nota positiva della giornata l’incontro con una **ciclista cilena** . Le offro la mia bresaola e iniziamo a parlare. Ha percorso mezza europa da sola in bici, ed ora è diretta in Sardegna per una settimana conclusiva di mare, emozionante!
