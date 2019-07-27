@@ -14,7 +14,7 @@ crop: x_1000
 
 La stagione volge al termine ma la voglia di sciare non cala. Il tempo è incerto sulle Alpi, solo in Val d’Aosta la stabilità regna sovrana. Stefano e Andrea propongono la **Punta Ormelune** in **Valgrisenche.** Ottima idea, è una valle che non ho ancora visitato. Lo sci estivo comporta sveglie improponibili, questa volta scatta un bel ritrovo alle 3:30 al casello di Arluno!
 
-## Partyenza da Grand’Alp
+## Partenza da Grand’Alp
 
 <figure>
     <img src="https://live.staticflickr.com/65535/48359231592_946c883f7a_c.jpg" alt="Scialpinismo alla Punta Ormelune: verso il canalino" /> 
