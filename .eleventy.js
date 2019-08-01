@@ -1,6 +1,5 @@
 const path = require('path')
 const log = require(path.join(process.cwd(), 'log'))
-const fs = require('fs')
 const dayjs = require('dayjs')
 const it = require('dayjs/locale/it')
 const inputDir = 'site'

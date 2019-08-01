@@ -1,19 +1,8 @@
 /**
- * expose environment variables (only ELEVENTY_*) 
+ * expose environment variables
  */
 
-const _ = require('lodash')
-const filterEnvVars = () => {
-  require('dotenv').config()
-  let output = {}
-  _.each(process.env, (value, key) => {
-    if (key.indexOf('ELEVENTY_') !== -1) {
-      output[key] = value
-    }
-  })
-  console.log(output)
-  return output
-}
+require('dotenv').config()
 module.exports = {
-  env: filterEnvVars()
+  ENV: process.env
 }
