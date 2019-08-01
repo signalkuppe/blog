@@ -2,44 +2,11 @@ const path = require('path')
 const log = require(path.join(process.cwd(), 'log'))
 const fs = require('fs')
 const dayjs = require('dayjs')
-const markdownIt = require('markdown-it')
-const mdCustomBlock = require('markdown-it-custom-block')
 const it = require('dayjs/locale/it')
 const inputDir = 'site'
 const outputDir = 'dist'
-const info = JSON.parse(fs.readFileSync(path.join(inputDir, '_data', 'info.json'), 'utf-8')) // read site config
+
 module.exports = (eleventyConfig) => {
-
-  /*
-  * Custom markdown block for inline images
-  * @[image]({ "id": "", "title": "", "alt": "" })
-  */
-
-  const markdownLib = markdownIt({ html: true })
-    .use(mdCustomBlock, {
-      image (args) {
-        try {
-          let {id, title, alt } = JSON.parse(args)
-          if (!id || !title || !alt) {
-            log.warn('Missing inline image params')
-          }
-          return `
-            <figure>
-              <img 
-                  src="https://res.cloudinary.com/signalkuppe/image/upload/w_1280,f_auto,q_10,e_blur:1000/${id}"
-                  data-src="https://res.cloudinary.com/signalkuppe/image/upload/w_1280,f_auto,q_auto/${id}"
-                  alt="${alt}" 
-                  class="lazyImg" /> 
-                <figcaption>L${title}</figcaption>
-            </figure>`
-        } catch (err) {
-          log.error(err)
-          return ''
-        }
-      }
-    })
-  
-  eleventyConfig.setLibrary('md', markdownLib);
 
   /*
   * Copy static assest and node libs
@@ -54,20 +21,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('node_modules/pace-progress/pace.js')
   eleventyConfig.addPassthroughCopy('node_modules/smooth-scroll/dist/smooth-scroll.js')
   eleventyConfig.addPassthroughCopy('node_modules/lunr/lunr.js')
-
-  /*
-  * Add a universal shortcode for site info vars ({% info 'cloudinaryCloudName' %} -> signalkuppe)
-  **/
-
-  eleventyConfig.addNunjucksShortcode('info', (prop) => {
-    try {
-      return info[prop]
-    } catch (err) {
-      log.error(err)
-      return ''
-    }
-  })
-
 
   /*
   * Formats a date
@@ -86,68 +39,11 @@ module.exports = (eleventyConfig) => {
   * Wraps first char in a span
   **/
 
- eleventyConfig.addFilter('wrapFirstChar', (string) => {
+  eleventyConfig.addFilter('wrapFirstChar', (string) => {
     try {
       return `<span>${string.slice(0, 1)}</span>${string.slice(1)}`
     } catch (err) {
       return ''
-    }
-  })
-
-
-  /*
-  * Add all posts as a collection
-  */
-
-  eleventyConfig.addCollection('posts', collection => {
-    try {
-      const Posts = collection.getFilteredByGlob(path.join(inputDir, 'posts', '/*.md'))
-      const _prevNextData = (post) => {
-        return {
-          title: post.data.title,
-          url: post.url,
-          date: post.data.date
-        }
-      }
-      const posts = Posts
-        .map((p, i) => { // add prev and next
-          if (Posts[i - 1]) {
-            p.data.prev = _prevNextData(Posts[i - 1])
-          }
-          if (Posts[i + 1]) {
-            p.data.next = _prevNextData(Posts[i + 1])
-          }
-          // add other infos
-          p.data.author = info.author
-          p.data.nickname = info.nickname
-          return p
-        })
-        .sort((a, b) => {
-          return b.date - a.date
-        })
-      
-      // write markers in js file (we can minify it at build time)
-      // we use this file as an index for lunr search
-      const markers = posts.map((p) => {
-        const postDate = eleventyConfig.javascriptFunctions.formatDate(p.data.date, 'DD/MM/YY')
-        return {
-          lat: p.data.cords.lat,
-          lng: p.data.cords.lng,
-          title: p.data.title,
-          description: p.data.description,
-          date: postDate,
-          link: p.url,
-          tags: p.data.tags,
-          categories: p.data.category,
-          cover: `https://res.cloudinary.com/${info.cloudinaryCloudName}/image/upload/w_100,h_100,c_fill,f_auto,q_20,g_center${p.data.cover.version ? '/' + p.data.cover.version : ''}/${p.data.cover.id}`,
-          autocompleteRow: `<span>${postDate}</span> - <a href="${p.url}" data-autocomplete">${p.data.title}</a>`
-        }
-      })
-  
-      fs.writeFileSync(path.join(outputDir, 'js', 'markers.js'), `var markers = ${JSON.stringify(markers)}`, 'utf-8')
-      return posts 
-    } catch (err) {
-      log.error(err)
     }
   })
 
