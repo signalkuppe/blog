@@ -1,3 +1,36 @@
+---
+ogImage: 'blog/info/info'
+intro: "Blog"
+title: "Archivio dei post"
+description: "L’elenco completo di tutte le relazioni, con la mappa e la ricerca"
+pagination:
+  data: posts
+  size: 10000000
+---
+
+{# Blog layout, extends base #}
+{% extends "layouts/_layoutBase.njk" %}
+
+
+{% block head %}
+{{ macro.socialMeta(title, description, ogImage) }}
+{{ macro.canonical(page.url) }}
+{{ macro.metaTitle(title, ENV.name) }}
+<link rel="preconnect" href="https://assets.ctfassets.net" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <!-- map api -->
+<link rel="stylesheet" 
+      href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+      integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+      crossorigin />
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+        integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+        crossorigin></script>
+{% endblock %}
+
+{% block main %}
+{{ site.env.ELEVENTY_URL }}
 {% for post in posts %}
-  {{ post }}
+{{ post }}
 {% endfor %}
+{% endblock %}

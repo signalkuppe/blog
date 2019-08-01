@@ -4,5 +4,5 @@
 
 require('dotenv').config()
 module.exports = {
-  ENV: process.env
+  env: process.env
 }

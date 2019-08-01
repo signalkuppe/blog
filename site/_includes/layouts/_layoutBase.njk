@@ -1,0 +1,24 @@
+{# Base layout #}
+{% import "macros/macros.njk" as macro %}
+{{ macro.docType() }}
+{{ macro.htmlTag() }}
+  <head>
+    {{ macro.commonMeta() }}
+    {{ macro.favicons() }}
+    {% block head %}{% endblock %}
+    {{ macro.css() }}
+  </head>
+  <body id="top" class="l-base">
+    <a href="#main" class="u-srOnly">Vai al contenuto principale</a>
+    <header class="l-base-header">
+      {% block header %}{% endblock %}
+    </header>
+    <main id="main" class="l-base-main">
+      {% block main %}{% endblock %}
+    </main>
+    <footer class="l-base-footer">
+      {% block footer %}{% endblock %}
+    </footer>      
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
