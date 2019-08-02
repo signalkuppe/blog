@@ -1,0 +1,76 @@
+---
+pagination:
+  data: posts
+  size: 1
+  alias: post
+permalink: "{{ post.computed.permalink }}"
+---
+
+{# Post layout, extends base #}
+{% extends "layouts/_layoutBase.njk" %}
+{% import "macros/macros.njk" as macro with context %}
+
+{# head #}
+{% block head %}
+{% set ogImage %}{{ post.fields.cover.fields.file.url }}?fit=thumb&w=400&h=400&f=center{% endset %}
+{{ macro.socialMeta(post.fields.title, post.fields.description, ogImage) }}
+{{ macro.canonical(page.url) }}
+{{ macro.metaTitle(post.fields.title, env.ELEVENTY_NAME) }}
+<link rel="preconnect" href="https://assets.ctfassets.net" crossorigin>
+{% endblock %}
+
+{# nav #}
+{% block header %}
+  <div class="u-container">
+  {{ macro.navigation(activeSection = 'blog') }}
+  </div>
+{% endblock %}
+
+{% block main %}
+<article itemscope itemtype="http://schema.org/Article">
+  {# post header #}
+  {% call macro.contentHeader(post.fields.category[0], post.fields.title, post.field.description) -%}
+  <time datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
+    <span itemprop="name">{{ env.ELEVENTY_AUTHOR }}</span>
+  </span>
+  {%- endcall %}
+
+  {# post cover #}
+  <figure class="c-post-cover u-section-mt-1">
+    <picture>
+      <!-- 21/9 -->
+      <source srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=3000&h=1280&q=70&f={{ post.fields.coverFocus[0] }}" media="(orientation: landscape)" />
+      <!-- 16/9 -->
+      <source srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=800&f={{ post.fields.coverFocus[0] }}" media="(orientation: portrait)" />
+      <img srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=800&f={{ post.fields.coverFocus[0] }}" alt="{{ post.fields.cover.fields.description  }}" />
+    </picture>
+    <figcaption class="c-post-cover-caption">{{ post.fields.cover.fields.title }}</figcaption>
+  </figure>
+
+  <div class="l-post u-section-mt-1">
+    <div class="l-post-content">
+      <section itemprop="articleBody">
+      {{ post.computed.body | safe }}
+      <p class="u-printOnly"><strong>Grazie per aver stampato questa pagina, buona gita! 🤟</strong></p>
+      </section>
+    </div>
+    <div class="l-post-sidebar">
+   Meta ideale per la quota 2381, per il versante di salita quello S che suppongo senza troppa neve e per la bellezza del paesaggio. La descrizione della salita al più alto e famoso Monte Zucchero parla della Val d’Osura come di una piccola Yosemite. Provare per credere! Naturalmente coinvolgo mio padre che non si tira mai indietro in questi frangenti fatti di tanto dislivello e lunghi percorsi.
+    </div>
+  </div>
+</article>
+{% endblock %}
+
+{% block footer %}
+{{ macro.footer() }}
+{% endblock %}
+
+{% block scripts %}
+<script src="/node_modules/pace-progress/pace.js"></script>
+<script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
+<script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
+<script src="/js/smoothScroll.js"></script>
+<script src="/js/currentYear.js"></script>
+<script src="/js/lazyImages.js"></script>
+{% endblock %}

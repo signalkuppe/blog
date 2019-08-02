@@ -1,0 +1,99 @@
+html {
+  font-size: var(--fontSizeRoot);
+}
+
+body {
+  font-family: var(--fontSans);
+  line-height: var(--leadBase);
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--fontSerif);
+  font-weight: 700;
+  line-height: var(--leadNarrow);
+}
+
+h1 {
+  font-size: var(--fontSize5);
+}
+
+h2 {
+  font-size: var(--fontSize1);
+}
+
+h3 {
+  font-size: var(--fontSize0);
+}
+
+p {
+  margin-bottom: calc(var(--spaceUnit) * 1.5);
+}
+
+h2 {
+  margin-bottom: var(--spaceUnit);
+}
+
+p + h2 {
+  margin-bottom: var(--spaceUnit);
+  margin-top: calc(var(--spaceUnit) * 3);
+}
+
+figure + p,
+figure + h2 {
+  margin-top: calc(var(--spaceUnit) * 2);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration-skip: ink;
+  color: inherit;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+i, em {
+  font-style: italic;
+}
+
+small {
+  font-size: var(--fontSizeSmall);
+}
+
+dt {
+  font-family: var(--fontHeadings);
+  font-weight: 700;
+}
+
+dd {
+  margin-bottom: calc(var(--spaceUnit) * 2);
+}
+
+hr {
+  height: 1px;
+  margin: 0;
+  background: var(--colorGreyMedium);
+  border: none;
+}
+
+/*
+::-webkit-scrollbar-track
+{
+  background-color: #fff;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: var(--colorGreyMedium);
+}*/

@@ -1,5 +1,5 @@
 {# Base layout #}
-{% import "macros/macros.njk" as macro %}
+{% import "macros/macros.njk" as macro with context %}
 {{ macro.docType() }}
 {{ macro.htmlTag() }}
   <head>
@@ -10,13 +10,13 @@
   </head>
   <body id="top" class="l-base">
     <a href="#main" class="u-srOnly">Vai al contenuto principale</a>
-    <header class="l-base-header">
+    <header class="u-section-mb-1 u-section-mt-05">
       {% block header %}{% endblock %}
     </header>
-    <main id="main" class="l-base-main">
+    <main id="main">
       {% block main %}{% endblock %}
     </main>
-    <footer class="l-base-footer">
+    <footer class="u-section-mt-2">
       {% block footer %}{% endblock %}
     </footer>      
     {% block scripts %}{% endblock %}

@@ -1,0 +1,13 @@
+.c-footer {
+  text-align: center;
+  font-size: var(--fontSizeSmall);
+  padding: calc(var(--spaceUnit) * 2 ) 0;
+  border-top: 1px solid var(--colorGreyLight);
+  color: var(--colorGreyDark);
+  font-family: var(--fontCaption);
+}
+
+.c-footer svg {
+  width: 1em;
+  vertical-align: middle;
+}

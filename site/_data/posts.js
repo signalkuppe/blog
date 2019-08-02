@@ -8,9 +8,13 @@
 require('dotenv').config()
 const path = require('path')
 const fs = require('fs')
-const log = require(path.join(process.cwd(), 'log'))
+const log = require(path.join(process.cwd(), 'lib/log'))
+const date = require(path.join(process.cwd(), 'lib/date'))
 const logFile = path.join(process.cwd(), 'posts.json')
+const markerFile = path.join(process.cwd(), 'dist', 'js', 'markers.js')
 const contentful = require('contentful')
+const htmlRenderer = require('@contentful/rich-text-html-renderer') // https://github.com/contentful/rich-text/tree/master/packages/rich-text-html-renderer
+const BLOCKS = require('@contentful/rich-text-types')
 const Client = contentful.createClient({
   space: process.env.ELEVENTY_CONTENTFUL_SPACE,
   accessToken: process.env.ELEVENTY_CONTENTFUL_ACCESSTOKEN
@@ -28,8 +32,62 @@ const getPosts = async (limit, skip) => {
     return result
   } catch (err) {
     log.error('getEntries error', err)
-    process.exit(1)
+    return
   }
+}
+const makePermalink = (post) => {
+  return `/${post.fields.category[0].toLowerCase()}/${date.format(post.fields.date, 'YYYY')}/${date.format(post.fields.date, 'MM')}/${date.format(post.fields.date, 'DD')}/${post.fields.slug}/index.html`
+}
+const transformPosts = (posts) => { // ad some custom prop
+  return posts.map((post, i) => {
+    const options = {
+      renderNode: {
+        'embedded-asset-block': (node) => { // how to render embedded images in rich text
+          return `
+            <figure class="${i % 2 ? 'post-image-odd' : 'post-img-even'}">
+              <img 
+                  data-src="${node.data.target.fields.file.url}?fit=thumb&w=1440"
+                  alt="${node.data.target.fields.description}" 
+                  class="lazyImg" /> 
+                <figcaption>${node.data.target.fields.title}</figcaption>
+            </figure>`
+        }
+      }
+    }
+    const mappedBody = (body) => {
+      return body.content.map((el, i) => {
+        if (el.nodeType === 'embedded-asset-block') {
+          el.data.odd = true
+          if (!el.data.odd) {
+            el.data.odd = false
+          }
+        }
+        return el
+      })
+    }
+    // console.log(mappedBody(post.fields.body))
+    post.computed = {
+      body: htmlRenderer.documentToHtmlString(post.fields.body, options),
+      permalink: makePermalink(post)
+    }
+    return post
+  })
+}
+const makeMarkers = (posts) => { // make markers index, used also in lunr search
+  return posts.map((post) => {
+    return {
+      lat: post.fields.location.lat,
+      lng: post.fields.location.lon,
+      title: post.fields.title,
+      description: post.fields.description,
+      date: date.format(post.fields.date, 'DD/MM/YY'),
+      link: makePermalink(post),
+      tags: post.fields.tags,
+      categories: post.fields.category[0],
+      cover: post.fields.cover.fields.file.url,
+      autocompleteRow: `<span>${date.format(post.fields.date, 'DD/MM/YY')}</span> - <a href="${makePermalink(post)}" data-autocomplete">${post.fields.title}</a>`
+    }
+  })
 }
 
 module.exports = () => {
@@ -48,16 +106,19 @@ module.exports = () => {
           posts = _.union(posts, chunk.items)
           iteration ++
         }
-        log.info(`Found ${posts.length} posts`)
-        fs.writeFileSync(logFile, JSON.stringify(posts), 'UTF-8') // write log file
-        resolve(posts)
+        log.success(`Found ${posts.length} posts`)
+        const computedPosts = transformPosts(posts)
+        const markers = makeMarkers(posts)
+        // fs.writeFileSync(logFile, JSON.stringify(computedPosts), 'utf-8') // write log file
+        fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(markers)}`, 'utf-8')
+        resolve(computedPosts)
       } catch (err) {
-        reject(err)
         log.error('Posts fetch error', err)
+        reject(err)
       }
     } else { // already done
       log.info(`Skipping contentful api call, to grab new posts delete ${logFile}`)
-      resolve(JSON.parse(fs.readFileSync(logFile)))
+      resolve(JSON.parse(fs.readFileSync(logFile))) // read cached file
     }
   })
 }

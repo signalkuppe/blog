@@ -1,5 +1,4 @@
 ---
-ogImage: 'blog/info/info'
 intro: "Blog"
 title: "Archivio dei post"
 description: "L’elenco completo di tutte le relazioni, con la mappa e la ricerca"
@@ -13,9 +12,9 @@ pagination:
 
 
 {% block head %}
-{{ macro.socialMeta(title, description, ogImage) }}
+{{ macro.socialMeta(title, description, env.ELEVENTY_LOGO) }}
 {{ macro.canonical(page.url) }}
-{{ macro.metaTitle(title, ENV.name) }}
+{{ macro.metaTitle(title, env.ELEVENTY_NAME) }}
 <link rel="preconnect" href="https://assets.ctfassets.net" crossorigin>
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <!-- map api -->
@@ -28,9 +27,51 @@ pagination:
         crossorigin></script>
 {% endblock %}
 
+{% block header %}
+  <div class="u-container">
+  {{ macro.navigation(activeSection = 'blog') }}
+  </div>
+{% endblock %}
+
 {% block main %}
-{{ site.env.ELEVENTY_URL }}
-{% for post in posts %}
-{{ post }}
+{# header #}
+{% call macro.contentHeader(intro, title, description) -%}{%- endcall %}
+{# map #}
+ <figure id="map" class="c-map u-section-mt-1  u-section-mb-1"></figure>
+{# search #}
+<form class="c-autocomplete u-container" id="autocomplete">
+  <label for="autocomplete-input" class="u-srOnly">Cerca</label>
+  <input type="text" spellcheck="false" autocomplete="off" id="autocomplete-input" name="searchKey" placeholder="Cerca..." />
+  <div class="c-autocomplete-results" id="autocomplete-results" hidden tabindex="-1"></div>
+  <div class="c-autocomplete-help">ES: “scialpinismo svizzera” (trova tutti i post che contengono entrambe le chiavi di ricerca)</div>
+  <button type="reset" aria-label="Ripristina" class="c-autocomplete-reset" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
+  <button type="submit" aria-label="Cerca" class="c-autocomplete-search" id="autocomplete-search">{% include 'icons/search.njk' %}</button>
+</form>
+{# post grid #}
+<ul class="l-postGrid u-section-mt-1">
+{% for post in pagination.items  %}
+  <li class="l-postGrid-item">
+    <a href="{{ post.computed.permalink }}" title="leggi il post" class="u-container-link">
+      {{ macro.card(post.fields.date, post.fields.title, post.fields.cover.fields.file.url, post.fields.cover.fields.description, post.fields.description) }}
+    </a>
+  </li>
 {% endfor %}
+</ul>
+{% endblock %}
+
+{% block footer %}
+{{ macro.footer() }}
+{% endblock %}
+
+{% block scripts %}
+<script src="/node_modules/pace-progress/pace.js"></script>
+<script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
+<script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
+<script src="/node_modules/lunr/lunr.js"></script>
+<script src="/js/smoothScroll.js"></script>
+<script src="/js/currentYear.js"></script>
+<script src="/js/lazyImages.js"></script>
+<script src="/js/markers.js"></script> <!-- created in _data/posts.js -->
+<script src="/js/map.js"></script>
+<script src="/js/search.js"></script>
 {% endblock %}

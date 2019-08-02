@@ -52,7 +52,16 @@
 <link href="/css/variables.css" rel="stylesheet" media="screen">
 <link href="/css/reset.css" rel="stylesheet" media="screen">
 <link href="/css/utilities.css" rel="stylesheet" media="screen">
-<link href="/css/layout-base.css" rel="stylesheet" media="screen">
+<link href="/css/typography.css" rel="stylesheet" media="screen">
+<link href="/css/layouts/layout-post.css" rel="stylesheet" media="screen">
+<link href="/css/layouts/layout-post-grid.css" rel="stylesheet" media="screen">
+<link href="/css/components/navigation.css" rel="stylesheet" media="screen">
+<link href="/css/components/content-header.css" rel="stylesheet" media="screen">
+<link href="/css/components/card.css" rel="stylesheet" media="screen">
+<link href="/css/components/post.css" rel="stylesheet" media="screen">
+<link href="/css/components/map.css" rel="stylesheet" media="screen">
+<link href="/css/components/autocomplete.css" rel="stylesheet" media="screen">
+<link href="/css/components/footer.css" rel="stylesheet" media="screen">
 <link href="/css/print.css" rel="stylesheet" media="print">
 {% endmacro %}
 
@@ -68,9 +77,9 @@
 {% macro socialMeta(title, description, image, twitterCard='summary', ogType='article') %}
 <meta name="description" content="{{ description }}">
 <meta name="twitter:card" content="{{ twitterCard }}" />
-<meta name="twitter:site" content="@{{ ENV.ELEVENTY_NICKNAME }}" />
-<meta name="twitter:creator" content="@{{ ENV.ELEVENTY_NICKNAME }}" />
-<meta property="og:site_name" content="{{ ENV.ELEVENTY_NAME }}" />
+<meta name="twitter:site" content="@{{ env.ELEVENTY_NICKNAME }}" />
+<meta name="twitter:creator" content="@{{ env.ELEVENTY_NICKNAME }}" />
+<meta property="og:site_name" content="{{ env.ELEVENTY_NAME }}" />
 <meta name="twitter:title" content="{{ title }} "/>
 <meta property="og:title" content="{{ title }}" />
 <meta property="og:type" content="{{ ogType }}" />
@@ -90,4 +99,84 @@
 <link rel="manifest" href="/favicons/manifest.json">
 <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#000000">
 <meta name="theme-color" content="#ffffff">
+{% endmacro %}
+
+
+{# 
+# Site navigation
+# @param {string} activeSection - The active section
+#}
+
+{% macro navigation(activeSection) %}
+{% set siteNameTag = 'span' %}
+{% if activeSection == 'front' %}
+{% set siteNameTag = 'h1' %}
+{% endif %}
+<div class="c-navigation">
+  <h2 class="u-srOnly">Menu</h2>
+  <nav>
+    <ol class="c-navigation-menu">
+      <li><a href="/" title="Torna alla pagina iniziale"{% if activeSection == 'front' %} class="is-active"{% endif %}>Home</a></li>
+      <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
+      <li>
+        <a href="/" title="Torna alla pagina iniziale">
+          <{{ siteNameTag }} class="c-navigation-siteName">{{ env.ELEVENTY_NAME }}</{{ siteNameTag }}>
+        </a>
+      </li>
+      <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
+      <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
+    </ol>
+  </nav>
+</div>
+{% endmacro %}
+
+{# 
+# Site footer
+#}
+
+{% macro footer() %}
+<footer class="c-footer">
+  <span id="js-currentYear"></span> - <strong>Signalkuppe</strong> | contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</a> | <a href="/info">Info & contatti</a>
+  | <a href="{{ env.ELEVENTY_FACEBOOK }}" title="Seguimi su Facebook">Facebook</a> | <a href="{{ env.ELEVENTY_TWITTER }}" title="Seguimi su Twitter">Twitter</a> | <a href="{{ env.ELEVENTY_INSTAGRAM }}" title="Seguimi su Instagram">Instagram</a>
+  <span class="c-footer-topLink"> | {% include 'icons/arrow-up.njk' %}<a href="#top">Torna in cima</a></span>
+</footer>
+{% endmacro %}
+
+{# 
+# Content header
+#}
+
+{% macro contentHeader(preTitle, title, subTitle) %}
+  <header class="c-contentHeader">
+    <hgroup>
+      <h2>{{ preTitle }}</h2>
+      <h1 class="c-contentHeader-title">{{ title | wrapFirstChar | safe }}</h1>
+    </hgroup>
+    <p>{{ subTitle }}</p>
+    {% if caller %}{{ caller() }}{% endif %}
+  </header>
+{% endmacro %}
+
+{# 
+# Card
+# @param {Object} post - the post data
+#}
+
+{% macro card(date, title, imageUrl, imageAlt, description) %}
+  {% set dateSlug %}{{ date | formatDate('DDMMYY') }}{% endset %}
+  <article class="c-card" itemscope itemtype="http://schema.org/Article">
+    <figure class="c-card-image">
+      <img 
+        class="lazyImg"
+        data-src="{{ imageUrl }}?fit=thumb&w=600&h=400&f=center" 
+        alt="{{ imageAlt }}" />
+    </figure>
+    <div class="c-card-body">
+      <header class="c-card-header">
+        <time datetime="{{ date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
+        <h2 class="c-card-title">{{ title }}</h2>
+      </header>
+      <p>{{ description }}</p>
+    </div>
+  </article>
 {% endmacro %}

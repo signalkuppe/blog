@@ -1,8 +1,7 @@
 /**
  * expose environment variables
+ * available with env.VAR
  */
 
 require('dotenv').config()
-module.exports = {
-  env: process.env
-}
+module.exports = process.env

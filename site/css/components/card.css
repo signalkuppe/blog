@@ -1,0 +1,38 @@
+.c-card {
+  border-left: 1px solid var(--colorGreyLight);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  will-change: transform;
+  transition: transform 0.25s ease-in;
+  border-bottom: 5px solid transparent;
+  -webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+}
+
+.c-card-image {
+  display: block;
+  object-fit: cover;
+}
+
+.c-card-body {
+  font-size: var(--fontSizeSmall);
+  padding: calc(var(--spaceUnit) * 1.5);
+  flex: 1;
+}
+
+.c-card-header time {
+  display: block;
+  margin-bottom: var(--spaceUnit);
+  color: var(--colorGreyMedium);
+}
+
+.c-card-body p {
+  margin-bottom: 0;
+}
+
+.c-card:hover {
+  transform: translate3d(0, -5px, 0);
+  border-bottom: 5px solid var(--colorPrimary);
+}

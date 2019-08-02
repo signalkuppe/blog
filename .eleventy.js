@@ -1,11 +1,11 @@
 const path = require('path')
-const log = require(path.join(process.cwd(), 'log'))
-const dayjs = require('dayjs')
-const it = require('dayjs/locale/it')
+const date = require(path.join(process.cwd(), 'lib/date'))
 const inputDir = 'site'
 const outputDir = 'dist'
 
 module.exports = (eleventyConfig) => {
+
+  eleventyConfig.setTemplateFormats('njk', 'css') // include css to watch and reload on css save
 
   /*
   * Copy static assest and node libs
@@ -13,7 +13,7 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'favicons'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'js'))
-  eleventyConfig.addPassthroughCopy(path.join(inputDir, 'css/print.css'))
+  eleventyConfig.addPassthroughCopy(path.join(inputDir, 'css'))
   eleventyConfig.addPassthroughCopy('node_modules/colcade/colcade.js')
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist')
   eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')
@@ -25,14 +25,7 @@ module.exports = (eleventyConfig) => {
   * Formats a date
   **/
 
-  eleventyConfig.addFilter('formatDate', (dateString, format) => {
-    try {
-      return dayjs(dateString).locale(it).format(format)
-    } catch (err) {
-      log.error(err)
-      return ''
-    }
-  })
+  eleventyConfig.addFilter('formatDate', (dateString, format) => date.format(dateString, format))
 
   /*
   * Wraps first char in a span
