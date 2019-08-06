@@ -49,9 +49,11 @@
       observer.observe(target)
     })
 
+    document.querySelector('.c-post').style.overflowX = 'hidden' // prevent horizontal scrollbars for entrances
   
     TweenMax.to(caption, 0, {
       right: '-100%',
+      overflowX: 'hidden'
     })
     TweenMax.to(gpsButtons, 0, {
       opacity: 0,
@@ -64,7 +66,8 @@
     TweenMax.to(sidebarTitle, 0, {
       position: 'relative', 
       right: -50,
-      opacity: 0
+      opacity: 0,
+      overflowX: 'hidden'
     })
     TweenMax.to(postFooter, 0, {
       opacity: 0,

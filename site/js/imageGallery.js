@@ -1,7 +1,5 @@
 (function () {
   document.addEventListener('DOMContentLoaded', (event) => {
-    document.body.style.overflowX = 'hidden' // masonry fix
-    document.body.style.width = '100vw'
     new Colcade( '.c-imageGallery', {
       columns: '.c-imageGallery-col',
       items: '.c-imageGallery-item'
