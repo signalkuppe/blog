@@ -81,6 +81,12 @@ hr {
   border: none;
 }
 
+figcaption {
+  font-size: var(--fontSizeSmall);
+  font-style: italic;
+  color: var(--colorGreyDark);
+}
+
 /*
 ::-webkit-scrollbar-track
 {

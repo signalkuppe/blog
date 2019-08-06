@@ -32,7 +32,7 @@
 .c-contentHeader p {
   font-size: var(--fontSizeSmall);
   max-width: 60ch;
-  margin: 0 auto;
+  margin: 0 auto calc(var(--spaceUnit) * 1.5) auto;
 }
 
 .c-contentHeader time {

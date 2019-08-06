@@ -18,14 +18,11 @@
   text-decoration: none;
   color: var(--colorGreyDark);
   display: block;
+  position: relative;
 }
 
 .c-navigation a:hover {
   color: var(--colorGreyMedium);
-}
-
-.c-navigation a.is-active {
-  position: relative;
 }
 
 .c-navigation a.is-active::after {
@@ -34,7 +31,7 @@
   content: '';
   height: 5px;
   width: 100%;
-  background: var(--colorPrimary);
+  background: var(--colorGreyMedium);
   left: 0;
   top: 2em;
 }

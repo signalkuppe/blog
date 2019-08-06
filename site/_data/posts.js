@@ -25,7 +25,7 @@ const getPosts = async (limit, skip) => {
     include: 1,
     skip: skip,
     limit: limit,
-    order: 'sys.createdAt'
+    order: '-sys.createdAt'
   }
   try {
     let result = await Client.getEntries(query)
@@ -54,21 +54,23 @@ const transformPosts = (posts) => { // ad some custom prop
         }
       }
     }
-    const mappedBody = (body) => {
-      return body.content.map((el, i) => {
-        if (el.nodeType === 'embedded-asset-block') {
-          el.data.odd = true
-          if (!el.data.odd) {
-            el.data.odd = false
-          }
-        }
-        return el
-      })
-    }
-    // console.log(mappedBody(post.fields.body))
     post.computed = {
       body: htmlRenderer.documentToHtmlString(post.fields.body, options),
       permalink: makePermalink(post)
+    }
+    if (posts[i - 1]) { // prev
+      post.computed.prev = {
+        permalink: makePermalink(posts[i - 1]),
+        date: posts[i - 1].fields.date,
+        title: posts[i - 1].fields.title
+      }
+    }
+    if (posts[i + 1]) { // next
+      post.computed.next = {
+        permalink: makePermalink(posts[i + 1]),
+        date: posts[i + 1].fields.date,
+        title: posts[i + 1].fields.title
+      }
     }
     return post
   })
@@ -109,7 +111,7 @@ module.exports = () => {
         log.success(`Found ${posts.length} posts`)
         const computedPosts = transformPosts(posts)
         const markers = makeMarkers(posts)
-        // fs.writeFileSync(logFile, JSON.stringify(computedPosts), 'utf-8') // write log file
+        fs.writeFileSync(logFile, JSON.stringify(computedPosts), 'utf-8') // write log file
         fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(markers)}`, 'utf-8')
         resolve(computedPosts)
       } catch (err) {

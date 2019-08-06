@@ -17,6 +17,7 @@ permalink: "{{ post.computed.permalink }}"
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(post.fields.title, env.ELEVENTY_NAME) }}
 <link rel="preconnect" href="https://assets.ctfassets.net" crossorigin>
+<link rel="stylesheet" href="/node_modules/baguettebox.js/dist/baguetteBox.css">
 {% endblock %}
 
 {# nav #}
@@ -27,38 +28,117 @@ permalink: "{{ post.computed.permalink }}"
 {% endblock %}
 
 {% block main %}
-<article itemscope itemtype="http://schema.org/Article">
+<article itemscope itemtype="http://schema.org/Article" class="c-post">
   {# post header #}
-  {% call macro.contentHeader(post.fields.category[0], post.fields.title, post.field.description) -%}
-  <time datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
-  <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
-    <span itemprop="name">{{ env.ELEVENTY_AUTHOR }}</span>
-  </span>
+  <div class="u-container">
+    {% call macro.contentHeader(post.fields.category[0], post.fields.title, post.fields.description) -%}
+    <time datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
+    <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
+      <span itemprop="name">{{ env.ELEVENTY_AUTHOR }}</span>
+    </span>
+  </div>
   {%- endcall %}
 
   {# post cover #}
-  <figure class="c-post-cover u-section-mt-1">
+  <figure class="c-post-cover js-observe js-observe-caption u-section-mt-1-5">
     <picture>
-      <!-- 21/9 -->
-      <source srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=3000&h=1280&q=70&f={{ post.fields.coverFocus[0] }}" media="(orientation: landscape)" />
-      <!-- 16/9 -->
-      <source srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=800&f={{ post.fields.coverFocus[0] }}" media="(orientation: portrait)" />
-      <img srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=800&f={{ post.fields.coverFocus[0] }}" alt="{{ post.fields.cover.fields.description  }}" />
+      <!-- 21:9 -->
+      <source srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=3000&h=1280&q=70&f={{ post.fields.coverCropFocus[0] }}" media="(orientation: landscape)" />
+      <!-- 4:3 -->
+      <source srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=1080&f={{ post.fields.coverCropFocus[0] }}" media="(orientation: portrait)" />
+      <img srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=1080&f={{ post.fields.coverCropFocus[0] }}" alt="{{ post.fields.cover.fields.description  }}" />
     </picture>
-    <figcaption class="c-post-cover-caption">{{ post.fields.cover.fields.title }}</figcaption>
+    <figcaption class="c-post-cover-caption js-animate-caption">{{ post.fields.cover.fields.title }}</figcaption>
   </figure>
 
-  <div class="l-post u-section-mt-1">
-    <div class="l-post-content">
-      <section itemprop="articleBody">
-      {{ post.computed.body | safe }}
-      <p class="u-printOnly"><strong>Grazie per aver stampato questa pagina, buona gita! 🤟</strong></p>
-      </section>
-    </div>
-    <div class="l-post-sidebar">
-   Meta ideale per la quota 2381, per il versante di salita quello S che suppongo senza troppa neve e per la bellezza del paesaggio. La descrizione della salita al più alto e famoso Monte Zucchero parla della Val d’Osura come di una piccola Yosemite. Provare per credere! Naturalmente coinvolgo mio padre che non si tira mai indietro in questi frangenti fatti di tanto dislivello e lunghi percorsi.
-    </div>
-  </div>
+  {# post layout #}
+  <section class="l-post u-section-mt-1-5">
+    {# content #}
+    <section itemprop="articleBody" class="l-post-content u-section-mb-1">
+    {{ post.computed.body | safe }}
+    <p class="u-printOnly"><strong>Grazie per aver stampato questa pagina, buona gita! 🤟</strong></p>
+    </section>
+    {# /content #}
+    {# sidebar #}
+    <aside class="l-post-sidebar">
+      <div class="c-post-sticky js-observe js-observe-content">
+        {# gps #}
+        {% if post.fields.gpsTracks.length %}
+        <h3 class="js-animate-sidebarTitle u-mb-1">Scarica le tracce</h3>
+        <ul class="c-post-gps u-inline-list">
+          {% for track in post.fields.gpsTracks %}
+          {% set fileName %}{{ post.fields.date | formatDate('DD-MM-YY') }}-{{ post.fields.title | slug }}{% endset %}
+          {% if track.fields.file.contentType === 'application/vnd.google-earth.kml+xml' %}
+          <li>
+            <a class="c-button js-animate-gps" href="{{ track.fields.file.url }}" title="Scarica la traccia .kml per Google Earth" download="{{ fileName }}.kml">{% include 'icons/download.njk' %} Traccia kml</a>
+          </li>
+          {% endif %}
+          {% if track.fields.file.contentType === 'application/octet-stream' %}
+          <li>
+            <a class="c-button js-animate-gps" href="{{ track.fields.file.url }}" title="Scarica la traccia .gpx" download="{{ fileName }}.gpx">{% include 'icons/download.njk' %} Traccia gpx</a>
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {# /gps #}
+        {# social #}
+        <h3 class="js-animate-sidebarTitle u-section-mt-1 u-mb-1">Condividi</h3>
+        <ul class="c-post-share u-inline-list">
+          <li>
+            <a class="js-animate-social" href="https://www.facebook.com/sharer/sharer.php?u=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F" title="Condividi su Facebook" target="_blank" rel="noopener" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&amp;quote=' + encodeURIComponent(document.URL)); return false;">
+              {% include 'icons/facebook.njk' %}
+            </a>
+          </li>
+          <li>
+            <a class="js-animate-social" href="https://twitter.com/intent/tweet?source=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F&amp;text=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio&amp;via=signalkuppe" target="_blank" rel="noopener" title="Condividi su Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL))+ ':%20'  +author; return false;">
+              {% include 'icons/twitter.njk' %}
+            </a>
+          </li>
+          <li>
+            <a class="js-animate-social" href="mailto:?subject=Pizzi%20di%20Parlasco&amp;body=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio" target="_blank" rel="noopener" title="Condividi via mail" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' +  encodeURIComponent(document.URL)); return false;">
+              {% include 'icons/mail.njk' %}
+            </a>
+          </li>
+          <li>
+            <a class="js-animate-social" href="" title="Stampa" onclick="window.print()">
+              {% include 'icons/print.njk' %}
+            </a>
+          </li>
+        </ul>
+        {# /social #}
+      </div>
+    </aside>
+    {# /sidebar #}
+  </section>
+  <!-- /post layout -->
+  {# gallery #}
+  <aside class="u-section-mt-2">
+  {{ macro.imageGallery(post.fields.gallery) }}
+  </aside>
+  {# /gallery #}
+  <footer class="u-section-mt-2 js-observe js-observe-footer js-animate-footer">
+    {# prev-next #}
+    <nav>
+      <ul class="c-postNav">
+        {% if post.computed.prev %}
+        <li>
+          <a href="{{ post.computed.prev.permalink }}" title="{{ post.computed.prev.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.prev.title }}">{% include 'icons/chevron-left.njk' %}Precedente</a>
+        </li>
+        {% endif %}
+        {% if post.computed.prev and post.computed.next %}
+        <li aria-hidden="true">|</li>
+        {% endif %}
+        {% if post.computed.next %}
+        <li>
+          <a href="{{ post.computed.next.permalink }}" title="{{ post.computed.next.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.next.title }}">Successivo{% include 'icons/chevron-right.njk' %}</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    {# /prev-next #}
+    <p class="c-post-newsletter u-section-mt-1">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></strong></p>
+  </footer>
 </article>
 {% endblock %}
 
@@ -67,10 +147,19 @@ permalink: "{{ post.computed.permalink }}"
 {% endblock %}
 
 {% block scripts %}
+<script src="/node_modules/gsap/src/uncompressed/TweenMax.js"></script>
+<script src="/node_modules/colcade/colcade.js"></script>
 <script src="/node_modules/pace-progress/pace.js"></script>
 <script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
 <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
+<script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
+<script src="/js/postAnimations.js"></script>
 <script src="/js/smoothScroll.js"></script>
 <script src="/js/currentYear.js"></script>
 <script src="/js/lazyImages.js"></script>
+<script src="/js/imageGallery.js"></script>
+<script>
+
+
+</script>
 {% endblock %}
