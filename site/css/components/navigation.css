@@ -22,7 +22,7 @@
 }
 
 .c-navigation a:hover {
-  color: var(--colorGreyMedium);
+  color: black;
 }
 
 .c-navigation a.is-active::after {

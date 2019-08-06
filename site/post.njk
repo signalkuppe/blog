@@ -40,13 +40,13 @@ permalink: "{{ post.computed.permalink }}"
   {%- endcall %}
 
   {# post cover #}
-  <figure class="c-post-cover js-observe js-observe-caption u-section-mt-1-5">
+  <figure class="c-post-cover js-observe js-observe-caption u-section-mt-1">
     <picture>
       <!-- 21:9 -->
-      <source srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=3000&h=1280&q=70&f={{ post.fields.coverCropFocus[0] }}" media="(orientation: landscape)" />
+      <source srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=3000&h=1280&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" media="(orientation: landscape)" />
       <!-- 4:3 -->
-      <source srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=1080&f={{ post.fields.coverCropFocus[0] }}" media="(orientation: portrait)" />
-      <img srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=1080&f={{ post.fields.coverCropFocus[0] }}" alt="{{ post.fields.cover.fields.description  }}" />
+      <source srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=1080&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" media="(orientation: portrait)" />
+      <img srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=1080&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" alt="{{ post.fields.cover.fields.description  }}" />
     </picture>
     <figcaption class="c-post-cover-caption js-animate-caption">{{ post.fields.cover.fields.title }}</figcaption>
   </figure>

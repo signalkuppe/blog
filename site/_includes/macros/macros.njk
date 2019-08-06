@@ -192,16 +192,16 @@
 
 {% macro imageGallery(photos) %}
 <ul class="c-imageGallery">
-  <div class="c-imageGallery-col"></div>
-  <div class="c-imageGallery-col"></div>
-  <div class="c-imageGallery-col"></div>
-  <div class="c-imageGallery-col"></div>
-  <div class="c-imageGallery-col"></div>
+  <div class="c-imageGallery-col" aria-hidden="true"></div>
+  <div class="c-imageGallery-col" aria-hidden="true"></div>
+  <div class="c-imageGallery-col" aria-hidden="true"></div>
+  <div class="c-imageGallery-col" aria-hidden="true"></div>
+  <div class="c-imageGallery-col" aria-hidden="true"></div>
   {% for photo in photos %}
   <li class="c-imageGallery-item">
-    <a href="{{ photo.fields.file.url }}?fit=thumb&w=2560" title="{{ photo.fields.title }}">
+    <a href="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" title="{{ photo.fields.title }}">
       <img 
-        data-src="{{ photo.fields.file.url }}?fit=thumb&w=800" 
+        data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
         alt="{{ photo.fields.description }}" 
         class="lazyImg" />
     </a>

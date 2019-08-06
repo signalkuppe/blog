@@ -47,7 +47,7 @@ const transformPosts = (posts) => { // ad some custom prop
           return `
             <figure class="${i % 2 ? 'post-image-odd' : 'post-img-even'}">
               <img 
-                  data-src="${node.data.target.fields.file.url}?fit=thumb&w=1440"
+                  data-src="${node.data.target.fields.file.url}?fit=thumb&w=1440&fm=jpg&fl=progressive"
                   alt="${node.data.target.fields.description}" 
                   class="lazyImg" /> 
                 <figcaption>${node.data.target.fields.title}</figcaption>
