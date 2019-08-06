@@ -8,6 +8,7 @@
 require('dotenv').config()
 const path = require('path')
 const fs = require('fs')
+const mkdirp = require('mkdirp');
 const log = require(path.join(process.cwd(), 'lib/log'))
 const date = require(path.join(process.cwd(), 'lib/date'))
 const logFile = path.join(process.cwd(), 'posts.json')
@@ -112,8 +113,14 @@ module.exports = () => {
         const computedPosts = transformPosts(posts)
         const markers = makeMarkers(posts)
         fs.writeFileSync(logFile, JSON.stringify(computedPosts), 'utf-8') // write log file
-        fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(markers)}`, 'utf-8')
-        resolve(computedPosts)
+        mkdirp(path.join(process.cwd(), 'dist', 'js'), (err) => {
+          if (err) {
+            reject(err)
+          } else {
+            fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(markers)}`, 'utf-8')
+            resolve(computedPosts)
+          }
+        })
       } catch (err) {
         log.error('Posts fetch error', err)
         reject(err)
