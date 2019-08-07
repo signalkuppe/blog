@@ -38,6 +38,14 @@
   margin-left: 1em !important;
 }
 
+.u-justify-center {
+  justify-content: center !important;
+}
+
+.u-flex-wrap {
+  flex-wrap: wrap !important;
+}
+
 .u-srOnly {
   position: absolute !important;
   clip: rect(1px, 1px, 1px, 1px) !important;

@@ -87,6 +87,9 @@ figcaption {
   color: var(--colorGreyDark);
 }
 
+svg {
+  vertical-align: text-bottom;
+}
 /*
 ::-webkit-scrollbar-track
 {

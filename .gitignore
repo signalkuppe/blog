@@ -4,4 +4,4 @@ dist
 node_modules
 _site
 .env
-posts.json
+.cache

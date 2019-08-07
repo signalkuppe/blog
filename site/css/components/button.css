@@ -11,10 +11,6 @@
   transition: all 0.2s ease;
 }
 
-.c-button svg {
-  vertical-align: sub;
-}
-
 .c-button:hover {
   color: black;
   border-color: black;

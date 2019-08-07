@@ -11,11 +11,10 @@ const fs = require('fs')
 const mkdirp = require('mkdirp');
 const log = require(path.join(process.cwd(), 'lib/log'))
 const date = require(path.join(process.cwd(), 'lib/date'))
-const logFile = path.join(process.cwd(), 'posts.json')
+const logFile = path.join(process.cwd(), process.env.ELEVENTY_CACHE_DIR, '_posts.json')
 const markerFile = path.join(process.cwd(), 'dist', 'js', 'markers.js')
 const contentful = require('contentful')
 const htmlRenderer = require('@contentful/rich-text-html-renderer') // https://github.com/contentful/rich-text/tree/master/packages/rich-text-html-renderer
-const BLOCKS = require('@contentful/rich-text-types')
 const Client = contentful.createClient({
   space: process.env.ELEVENTY_CONTENTFUL_SPACE,
   accessToken: process.env.ELEVENTY_CONTENTFUL_ACCESSTOKEN
@@ -26,7 +25,7 @@ const getPosts = async (limit, skip) => {
     include: 1,
     skip: skip,
     limit: limit,
-    order: '-sys.createdAt'
+    order: '-fields.date'
   }
   try {
     let result = await Client.getEntries(query)
@@ -36,8 +35,8 @@ const getPosts = async (limit, skip) => {
     return
   }
 }
-const makePermalink = (post) => {
-  return `/${post.fields.category[0].toLowerCase()}/${date.format(post.fields.date, 'YYYY')}/${date.format(post.fields.date, 'MM')}/${date.format(post.fields.date, 'DD')}/${post.fields.slug}/index.html`
+const makeFullSlug = (slug) => {
+  return `/${slug}.html`
 }
 const transformPosts = (posts) => { // ad some custom prop
   return posts.map((post, i) => {
@@ -56,22 +55,21 @@ const transformPosts = (posts) => { // ad some custom prop
       }
     }
     post.computed = {
+      slug: makeFullSlug(post.fields.slug),
       body: htmlRenderer.documentToHtmlString(post.fields.body, options),
-      permalink: makePermalink(post)
+    }
+    const prevNextData = (post) => {
+      return {
+        slug: makeFullSlug(post.fields.slug),
+        date: post.fields.date,
+        title: post.fields.title
+      }
     }
     if (posts[i - 1]) { // prev
-      post.computed.prev = {
-        permalink: makePermalink(posts[i - 1]),
-        date: posts[i - 1].fields.date,
-        title: posts[i - 1].fields.title
-      }
+      post.computed.prev = prevNextData(posts[i - 1])
     }
     if (posts[i + 1]) { // next
-      post.computed.next = {
-        permalink: makePermalink(posts[i + 1]),
-        date: posts[i + 1].fields.date,
-        title: posts[i + 1].fields.title
-      }
+      post.computed.next = prevNextData(posts[i + 1])
     }
     return post
   })
@@ -84,11 +82,11 @@ const makeMarkers = (posts) => { // make markers index, used also in lunr search
       title: post.fields.title,
       description: post.fields.description,
       date: date.format(post.fields.date, 'DD/MM/YY'),
-      link: makePermalink(post),
+      link: makeFullSlug(post.fields.slug),
       tags: post.fields.tags,
       categories: post.fields.category[0],
-      cover: post.fields.cover.fields.file.url,
-      autocompleteRow: `<span>${date.format(post.fields.date, 'DD/MM/YY')}</span> - <a href="${makePermalink(post)}" data-autocomplete">${post.fields.title}</a>`
+      cover: `${post.fields.cover.fields.file.url}?fit=thumb&w=200&h=200&fm=jpg&fl=progressive&q=70`,
+      autocompleteRow: `<a href="${makeFullSlug(post.fields.slug)}" data-autocomplete"><span>${date.format(post.fields.date, 'DD/MM/YY')}</span> - ${post.fields.title}</a>`
     }
   })
 }
@@ -97,6 +95,8 @@ module.exports = () => {
   return new Promise(async (resolve, reject) => {
     if (!fs.existsSync(logFile)) { // don’t call the api every time
       try {
+        await mkdirp(path.join(process.cwd(), process.env.ELEVENTY_CACHE_DIR))
+        await mkdirp(path.join(process.cwd(), 'dist', 'js'))
         let posts = []
         let iteration = 1
         let skip = 0
@@ -113,20 +113,14 @@ module.exports = () => {
         const computedPosts = transformPosts(posts)
         const markers = makeMarkers(posts)
         fs.writeFileSync(logFile, JSON.stringify(computedPosts), 'utf-8') // write log file
-        mkdirp(path.join(process.cwd(), 'dist', 'js'), (err) => {
-          if (err) {
-            reject(err)
-          } else {
-            fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(markers)}`, 'utf-8')
-            resolve(computedPosts)
-          }
-        })
+        fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(markers)}`, 'utf-8')
+        resolve(computedPosts)
       } catch (err) {
         log.error('Posts fetch error', err)
         reject(err)
       }
     } else { // already done
-      log.info(`Skipping contentful api call, to grab new posts delete ${logFile}`)
+      log.info(`Used cache for POSTS, to grab fresh data delete ${logFile}`)
       resolve(JSON.parse(fs.readFileSync(logFile))) // read cached file
     }
   })

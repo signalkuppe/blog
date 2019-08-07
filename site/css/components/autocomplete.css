@@ -5,47 +5,46 @@
 
 .c-autocomplete input[type="text"] {
   font-size: var(--fontSize2);
-  border: 1px solid var(--colorGreyMedium);
+  border: none;
+  border-bottom: 3px solid var(--colorGreyDark);
   display: block;
   width: 100%;
-  height: 3rem;
-  padding: 0 3rem 0 1rem;
+  padding: 0.5em 2em 0.5em 0.5em;
   -webkit-appearance: none;
 }
 
 .c-autocomplete input[type="text"]:focus,
 .c-autocomplete button:focus {
   outline: none;
-  border-bottom-color: var(--colorPrimary);
-  border-bottom-width: 4px;
 }
 
 .c-autocomplete-reset,
 .c-autocomplete-search { /* reset and search buttons */
   position: absolute;
-  right: 2rem;
-  top: 0.85rem;
-  width: 1rem;
+  right: 1.5em;
+  top: 1.75em;
   background: transparent;
   border: none;
+  padding: 0;
+  -webkit-appearance: none;
 }
 
 .c-autocomplete-help { /* help text */
   font-size: var(--fontSizeSmall);
-  color: var(--colorGreyDark);
-  line-height: 1;
+  color: var(--colorGreyMedium);
+  line-height: 1.4;
   margin-top: 1rem;
 }
 
 .c-autocomplete-results {
   background: white;
   border-style: solid;
-  border-width: 0 1px 1px;
-  border-color: var(--colorGreyMedium);
+  border-width: 3px;
+  border-color: var(--colorGreyDark);
   opacity: 1;
   transition: all 0.2s linear;
   position: absolute;
-  top: calc(3rem - 4px);
+  top: 3.4em;
   left: 0;
   width: 100%;
   z-index: 1000;
@@ -56,12 +55,13 @@
 }
 
 .c-autocomplete-results li {
-  padding: 0.25em 1em;
   color: var(--colorGreyDark);
 }
 
 .c-autocomplete-results li a {
   text-decoration: none;
+  display: block;
+  padding: 0.5em 1em;
 }
 
 .c-autocomplete-results li:not(:last-child) { 
@@ -70,6 +70,6 @@
 
 .c-autocomplete-results li.js-is-active,
 .c-autocomplete-results li:hover {
-  background: palegoldenrod;
+  background: var(--colorGreyLight);
   color: black;
 }

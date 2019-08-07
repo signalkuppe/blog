@@ -28,6 +28,7 @@
 
 .c-post-sticky {
   position: sticky;
+  position: -webkit-sticky;
   top: 1.5em;
 }
 
@@ -45,10 +46,6 @@
 
 .c-postNav a:hover {
   text-decoration: underline;
-}
-
-.c-postNav svg {
-  vertical-align: bottom;
 }
 
 .c-post-newsletter {

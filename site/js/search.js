@@ -49,7 +49,7 @@
     var _buildResults = function (results) {
         var output = '<ul>'
         if (!results.length) {
-          output += '<li>Nessun risultato 😓</li>'
+          output += '<li><a>Nessun risultato 😓</a></li>'
         } else {
           for (var i = 0; i < results.length; i++) {
             var url = markers.find(function (m) {

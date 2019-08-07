@@ -1,0 +1,78 @@
+---
+intro: "Portfolio"
+title: "Portfolio fotografico"
+description: "Una raccolta delle mie foto più belle"
+pagination:
+  data: portfolio
+  size: 20
+---
+
+{# Portfolio layout, extends base #}
+{% extends "layouts/_layoutBase.njk" %}
+
+{% block head %}
+{{ macro.socialMeta(title, description, env.ELEVENTY_LOGO) }}
+{{ macro.canonical(page.url) }}
+{{ macro.metaTitle(title, env.ELEVENTY_NAME) }}
+{% endblock %}
+
+{% block header %}
+  <div class="u-container">
+  {{ macro.navigation(activeSection = 'portfolio') }}
+  </div>
+{% endblock %}
+
+{% block main %}
+{# header #}
+{% call macro.contentHeader(intro, title, description) -%}{%- endcall %}
+
+<div class="u-section-mt-1">
+  <ul class="c-imageGallery">
+    <div class="c-imageGallery-col" aria-hidden="true"></div>
+    <div class="c-imageGallery-col" aria-hidden="true"></div>
+    <div class="c-imageGallery-col" aria-hidden="true"></div>
+    <div class="c-imageGallery-col" aria-hidden="true"></div>
+    <div class="c-imageGallery-col" aria-hidden="true"></div>
+    {% for photo in pagination.items %}
+    <li class="c-imageGallery-item">
+      <a href="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" title="{{ photo.fields.photo.fields.title }}">
+        <img 
+          data-src="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
+          alt="{{ photo.fields.photo.fields.file.description }}" 
+          class="lazyImg" />
+      </a>
+    </li> 
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="u-section-mt-1">
+  <nav>
+    <ul class="u-inline-list u-justify-center">
+      {% if pagination.previousPageHref %}
+      <li><a href="{{ pagination.previousPageHref }}" title="Pagina precedente">{% include 'icons/chevron-left.njk' %}Precedente</a></li>
+      {% endif %}
+      {% if pagination.nextPageHref %}
+      <li><a href="{{ pagination.nextPageHref }}" title="Pagina successiva">Successiva{% include 'icons/chevron-right.njk' %}</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ macro.footer() }}
+{% endblock %}
+
+{% block scripts %}
+<script src="/node_modules/pace-progress/pace.js"></script>
+<script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
+<script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
+<script src="/node_modules/colcade/colcade.js"></script>
+<script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
+<script src="/js/smoothScroll.js"></script>
+<script src="/js/currentYear.js"></script>
+<script src="/js/lazyImages.js"></script>
+<script src="/js/imageGallery.js"></script>
+{% endblock %}
+

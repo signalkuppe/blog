@@ -39,19 +39,21 @@ pagination:
 {# map #}
 <figure id="map" class="c-map u-section-mt-1-5"></figure>
 {# search #}
-<form class="c-autocomplete u-container u-section-mt-1-5" id="autocomplete">
-  <label for="autocomplete-input" class="u-srOnly">Cerca</label>
-  <input type="text" spellcheck="false" autocomplete="off" id="autocomplete-input" name="searchKey" placeholder="Cerca..." />
-  <div class="c-autocomplete-results" id="autocomplete-results" hidden tabindex="-1"></div>
-  <div class="c-autocomplete-help">ES: “scialpinismo svizzera” (trova tutti i post che contengono entrambe le chiavi di ricerca)</div>
-  <button type="reset" aria-label="Ripristina" class="c-autocomplete-reset" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
-  <button type="submit" aria-label="Cerca" class="c-autocomplete-search" id="autocomplete-search">{% include 'icons/search.njk' %}</button>
-</form>
+<div class="u-container">
+  <form class="c-autocomplete u-section-mt-1-5" id="autocomplete">
+    <label for="autocomplete-input" class="u-srOnly">Cerca</label>
+    <input type="text" spellcheck="false" autocomplete="off" id="autocomplete-input" name="searchKey" placeholder="Cerca..." />
+    <div class="c-autocomplete-results" id="autocomplete-results" hidden tabindex="-1"></div>
+    <div class="c-autocomplete-help">ES: “scialpinismo svizzera” (trova tutti i post che contengono entrambe le chiavi di ricerca)</div>
+    <button type="reset" aria-label="Ripristina" class="c-autocomplete-reset" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
+    <button type="submit" aria-label="Cerca" class="c-autocomplete-search" id="autocomplete-search">{% include 'icons/search.njk' %}</button>
+  </form>
+</div>
 {# post grid #}
 <ul class="l-postGrid u-section-mt-1-5">
 {% for post in pagination.items  %}
   <li class="l-postGrid-item">
-    <a href="{{ post.computed.permalink }}" title="leggi il post" class="u-container-link">
+    <a href="{{ post.computed.slug }}" title="leggi il post" class="u-container-link">
       {{ macro.card(post.fields.date, post.fields.title, post.fields.cover.fields.file.url, post.fields.cover.fields.description, post.fields.description) }}
     </a>
   </li>

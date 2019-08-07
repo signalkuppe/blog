@@ -3,7 +3,7 @@ pagination:
   data: posts
   size: 1
   alias: post
-permalink: "{{ post.computed.permalink }}"
+permalink: "{{ post.computed.slug }}"
 ---
 
 {# Post layout, extends base #}
@@ -60,21 +60,21 @@ permalink: "{{ post.computed.permalink }}"
     {# /content #}
     {# sidebar #}
     <aside class="l-post-sidebar">
-      <div class="c-post-sticky js-observe js-observe-content">
+      <div class="c-post-sticky">
         {# gps #}
         {% if post.fields.gpsTracks.length %}
-        <h3 class="js-animate-sidebarTitle u-mb-1">Scarica le tracce</h3>
+        <h3 class="u-mb-1">Scarica le tracce</h3>
         <ul class="c-post-gps u-inline-list">
           {% for track in post.fields.gpsTracks %}
           {% set fileName %}{{ post.fields.date | formatDate('DD-MM-YY') }}-{{ post.fields.title | slug }}{% endset %}
           {% if track.fields.file.contentType === 'application/vnd.google-earth.kml+xml' %}
           <li>
-            <a class="c-button js-animate-gps" href="{{ track.fields.file.url }}" title="Scarica la traccia .kml per Google Earth" download="{{ fileName }}.kml">{% include 'icons/download.njk' %} Traccia kml</a>
+            <a class="c-button" href="{{ track.fields.file.url }}" title="Scarica la traccia .kml per Google Earth" download="{{ fileName }}.kml">{% include 'icons/download.njk' %} Traccia kml</a>
           </li>
           {% endif %}
           {% if track.fields.file.contentType === 'application/octet-stream' %}
           <li>
-            <a class="c-button js-animate-gps" href="{{ track.fields.file.url }}" title="Scarica la traccia .gpx" download="{{ fileName }}.gpx">{% include 'icons/download.njk' %} Traccia gpx</a>
+            <a class="c-button" href="{{ track.fields.file.url }}" title="Scarica la traccia .gpx" download="{{ fileName }}.gpx">{% include 'icons/download.njk' %} Traccia gpx</a>
           </li>
           {% endif %}
           {% endfor %}
@@ -85,22 +85,22 @@ permalink: "{{ post.computed.permalink }}"
         <h3 class="js-animate-sidebarTitle u-section-mt-1 u-mb-1">Condividi</h3>
         <ul class="c-post-share u-inline-list">
           <li>
-            <a class="js-animate-social" href="https://www.facebook.com/sharer/sharer.php?u=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F" title="Condividi su Facebook" target="_blank" rel="noopener" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&amp;quote=' + encodeURIComponent(document.URL)); return false;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F" title="Condividi su Facebook" target="_blank" rel="noopener" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&amp;quote=' + encodeURIComponent(document.URL)); return false;">
               {% include 'icons/facebook.njk' %}
             </a>
           </li>
           <li>
-            <a class="js-animate-social" href="https://twitter.com/intent/tweet?source=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F&amp;text=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio&amp;via=signalkuppe" target="_blank" rel="noopener" title="Condividi su Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL))+ ':%20'  +author; return false;">
+            <a href="https://twitter.com/intent/tweet?source=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F&amp;text=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio&amp;via=signalkuppe" target="_blank" rel="noopener" title="Condividi su Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL))+ ':%20'  +author; return false;">
               {% include 'icons/twitter.njk' %}
             </a>
           </li>
           <li>
-            <a class="js-animate-social" href="mailto:?subject=Pizzi%20di%20Parlasco&amp;body=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio" target="_blank" rel="noopener" title="Condividi via mail" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' +  encodeURIComponent(document.URL)); return false;">
+            <a href="mailto:?subject=Pizzi%20di%20Parlasco&amp;body=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio" target="_blank" rel="noopener" title="Condividi via mail" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' +  encodeURIComponent(document.URL)); return false;">
               {% include 'icons/mail.njk' %}
             </a>
           </li>
           <li>
-            <a class="js-animate-social" href="" title="Stampa" onclick="window.print()">
+            <a href="" title="Stampa" onclick="window.print()">
               {% include 'icons/print.njk' %}
             </a>
           </li>
@@ -113,16 +113,32 @@ permalink: "{{ post.computed.permalink }}"
   <!-- /post layout -->
   {# gallery #}
   <aside class="u-section-mt-2">
-  {{ macro.imageGallery(post.fields.gallery) }}
+    <ul class="c-imageGallery">
+      <div class="c-imageGallery-col" aria-hidden="true"></div>
+      <div class="c-imageGallery-col" aria-hidden="true"></div>
+      <div class="c-imageGallery-col" aria-hidden="true"></div>
+      <div class="c-imageGallery-col" aria-hidden="true"></div>
+      <div class="c-imageGallery-col" aria-hidden="true"></div>
+      {% for photo in post.fields.gallery %}
+      <li class="c-imageGallery-item">
+        <a href="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" title="{{ photo.fields.title }}">
+          <img 
+            data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
+            alt="{{ photo.fields.description }}" 
+            class="lazyImg" />
+        </a>
+      </li> 
+      {% endfor %}
+    </ul>
   </aside>
   {# /gallery #}
-  <footer class="u-section-mt-2 js-observe js-observe-footer js-animate-footer">
+  <footer class="u-section-mt-2">
     {# prev-next #}
-    <nav>
+    <nav class="js-observe js-observe-nav">
       <ul class="c-postNav">
         {% if post.computed.prev %}
         <li>
-          <a href="{{ post.computed.prev.permalink }}" title="{{ post.computed.prev.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.prev.title }}">{% include 'icons/chevron-left.njk' %}Precedente</a>
+          <a class="js-animate-prev" href="{{ post.computed.prev.slug }}" title="{{ post.computed.prev.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.prev.title }}">{% include 'icons/chevron-left.njk' %}Precedente</a>
         </li>
         {% endif %}
         {% if post.computed.prev and post.computed.next %}
@@ -130,7 +146,7 @@ permalink: "{{ post.computed.permalink }}"
         {% endif %}
         {% if post.computed.next %}
         <li>
-          <a href="{{ post.computed.next.permalink }}" title="{{ post.computed.next.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.next.title }}">Successivo{% include 'icons/chevron-right.njk' %}</a>
+          <a class="js-animate-next" href="{{ post.computed.next.slug }}" title="{{ post.computed.next.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.next.title }}">Successivo{% include 'icons/chevron-right.njk' %}</a>
         </li>
         {% endif %}
       </ul>

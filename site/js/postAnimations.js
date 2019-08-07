@@ -4,10 +4,8 @@
   document.addEventListener('DOMContentLoaded', (event) => {
     var observerTargets = document.querySelectorAll('.js-observe')
     var caption = document.querySelector('.js-animate-caption')
-    var sidebarTitle = document.querySelectorAll('.js-animate-sidebarTitle')
-    var gpsButtons = document.querySelectorAll('.js-animate-gps')
-    var socialButtons = document.querySelectorAll('.js-animate-social')
-    var postFooter = document.querySelectorAll('.js-animate-footer')
+    var next = document.querySelector('.js-animate-next')
+    var prev = document.querySelector('.js-animate-prev')
     var options = {
       threshold: 1.0
     }
@@ -20,26 +18,18 @@
             ease: Back.easeOut.config(1)
           })
         }
-        // content
-        if (entry.target.classList.contains('js-observe-content') && entry.isIntersecting) {
-          TweenMax.to(gpsButtons, 0.5, {
-            opacity: 1,
-            transform: 'scale(1)',
-            delay: 0.5
-          })
-          TweenMax.to(socialButtons, 0.5, {
-            opacity: 1,
-            transform: 'scale(1)',
-            delay: 0.5
-          })
-          TweenMax.to(sidebarTitle, 0.5, { right: 0, opacity: 1 })
-        }
-        // footer
-        if (entry.target.classList.contains('js-observe-footer') && entry.isIntersecting) {
-          TweenMax.to(postFooter, 0.5, {
-            opacity: 1,
-            transform: 'scale(1)'
-          })
+        // post nav
+        if (entry.target.classList.contains('js-observe-nav') && entry.isIntersecting && entry.intersectionRatio === 1) {
+          if (next) {
+            var tl = new TimelineLite()
+            tl.to(next, 0.5, { position: 'relative', left: 100 })
+            tl.to(next, 0.1, { left: 0 })
+          }
+          if (prev) {
+            var tl = new TimelineLite()
+            tl.to(prev, 0.5, { position: 'relative', left: -100 })
+            tl.to(prev, 0.1, { left: 0 })
+          }
         }
       })
     }
@@ -48,30 +38,11 @@
       var observer = new IntersectionObserver(callback, options)
       observer.observe(target)
     })
-
-    document.querySelector('.c-post').style.overflowX = 'hidden' // prevent horizontal scrollbars for entrances
   
     TweenMax.to(caption, 0, {
       right: '-100%',
       overflowX: 'hidden'
     })
-    TweenMax.to(gpsButtons, 0, {
-      opacity: 0,
-      transform: 'scale(0)'
-    })
-    TweenMax.to(socialButtons, 0, {
-      opacity: 0,
-      transform: 'scale(0)'
-    })
-    TweenMax.to(sidebarTitle, 0, {
-      position: 'relative', 
-      right: -50,
-      opacity: 0,
-      overflowX: 'hidden'
-    })
-    TweenMax.to(postFooter, 0, {
-      opacity: 0,
-      transform: 'scale(0)'
-    })
+    
   })
 })()

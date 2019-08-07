@@ -1,4 +1,5 @@
 const path = require('path')
+const log = require(path.join(process.cwd(), 'lib/log'))
 const date = require(path.join(process.cwd(), 'lib/date'))
 const inputDir = 'site'
 const outputDir = 'dist'
@@ -36,6 +37,7 @@ module.exports = (eleventyConfig) => {
     try {
       return `<span>${string.slice(0, 1)}</span>${string.slice(1)}`
     } catch (err) {
+      log.warn(`wrapFirstChar filter error: ${err}`)
       return ''
     }
   })

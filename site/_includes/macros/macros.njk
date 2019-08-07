@@ -61,6 +61,7 @@
 <link href="/css/components/content-header.css" rel="stylesheet" media="screen">
 <link href="/css/components/card.css" rel="stylesheet" media="screen">
 <link href="/css/components/post.css" rel="stylesheet" media="screen">
+<link href="/css/components/portfolio.css" rel="stylesheet" media="screen">
 <link href="/css/components/map.css" rel="stylesheet" media="screen">
 <link href="/css/components/autocomplete.css" rel="stylesheet" media="screen">
 <link href="/css/components/image-gallery.css" rel="stylesheet" media="screen">
@@ -126,7 +127,7 @@
           <{{ siteNameTag }} class="c-navigation-siteName">{{ env.ELEVENTY_NAME }}</{{ siteNameTag }}>
         </a>
       </li>
-      <li><a href="/foto" title="Il mio portfolio fotografico">Foto</a></li>
+      <li><a href="/portfolio" title="Il mio portfolio fotografico" {% if activeSection == 'portfolio' %} class="is-active"{% endif %}>Foto</a></li>
       <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
     </ol>
   </nav>
@@ -184,29 +185,4 @@
       <p>{{ description }}</p>
     </div>
   </article>
-{% endmacro %}
-
-{# 
-# Image gallery
-# @param {Array} photos  - an array of photos
-#}
-
-{% macro imageGallery(photos) %}
-<ul class="c-imageGallery">
-  <div class="c-imageGallery-col" aria-hidden="true"></div>
-  <div class="c-imageGallery-col" aria-hidden="true"></div>
-  <div class="c-imageGallery-col" aria-hidden="true"></div>
-  <div class="c-imageGallery-col" aria-hidden="true"></div>
-  <div class="c-imageGallery-col" aria-hidden="true"></div>
-  {% for photo in photos %}
-  <li class="c-imageGallery-item">
-    <a href="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" title="{{ photo.fields.title }}">
-      <img 
-        data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
-        alt="{{ photo.fields.description }}" 
-        class="lazyImg" />
-    </a>
-  </li> 
-  {% endfor %}
-</ul>
 {% endmacro %}
