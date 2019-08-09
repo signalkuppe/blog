@@ -67,6 +67,10 @@
   padding: 0 1.5em !important;
 }
 
+.no-js .u-hide-nojs {
+  display: none;
+}
+
 @media screen and (min-width: 1480px) {
   .u-container {
     padding: 0 !important;

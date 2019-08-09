@@ -9,15 +9,15 @@
     {% block head %}{% endblock %}
     {{ macro.css() }}
   </head>
-  <body id="top" class="l-base">
+  <body id="top" class="l-base{% if bodyClass %} {{ bodyClass }}{% endif %}">
     <a href="#main" class="u-srOnly">Vai al contenuto principale</a>
-    <header class="u-section-mb-1 u-section-mt-0-5">
+    <header class="l-base-header u-section-mb-1 u-section-mt-0-5">
       {% block header %}{% endblock %}
     </header>
     <main id="main">
       {% block main %}{% endblock %}
     </main>
-    <footer class="u-section-mt-2">
+    <footer class="l-base-footer u-section-mt-2">
       {% block footer %}{% endblock %}
     </footer>      
     {% block scripts %}{% endblock %}

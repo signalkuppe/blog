@@ -55,7 +55,7 @@ permalink: "{{ post.computed.slug }}"
     {# content #}
     <section itemprop="articleBody" class="l-post-content u-section-mb-1">
     {{ post.computed.body | safe }}
-    <p class="u-printOnly"><strong>Grazie per aver stampato questa pagina, buona gita! 🤟</strong></p>
+    <p class="u-printOnly c-post-printMessage"><strong>Grazie per aver stampato questa pagina, buona gita! 🤟</strong></p>
     </section>
     {# /content #}
     {# sidebar #}
@@ -99,11 +99,6 @@ permalink: "{{ post.computed.slug }}"
               {% include 'icons/mail.njk' %}
             </a>
           </li>
-          <li>
-            <a href="" title="Stampa" onclick="window.print()">
-              {% include 'icons/print.njk' %}
-            </a>
-          </li>
         </ul>
         {# /social #}
       </div>
@@ -125,20 +120,26 @@ permalink: "{{ post.computed.slug }}"
           <img 
             data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
             alt="{{ photo.fields.description }}" 
-            class="lazyImg" />
+            class="lazyImg u-hide-nojs" />
+          <noscript>
+            <img 
+              src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
+              alt="{{ photo.fields.description }}"  />        
+          </noscript>
         </a>
       </li> 
       {% endfor %}
     </ul>
   </aside>
   {# /gallery #}
-  <footer class="u-section-mt-2">
+  <footer class="c-post-footer u-section-mt-1-5">
+    <p class="u-text-center u-section-mb-1"><a href="" title="Stampa" onclick="window.print()" class="c-button">{% include 'icons/print.njk' %} Stampa questa pagina</a></p>
     {# prev-next #}
     <nav class="js-observe js-observe-nav">
       <ul class="c-postNav">
         {% if post.computed.prev %}
         <li>
-          <a class="js-animate-prev" href="{{ post.computed.prev.slug }}" title="{{ post.computed.prev.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.prev.title }}">{% include 'icons/chevron-left.njk' %}Precedente</a>
+          <a class="js-animate-prev" href="{{ post.computed.prev.slug }}" title="{{ post.computed.prev.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.prev.title }}">{% include 'icons/chevron-left.njk' %}Post precedente</a>
         </li>
         {% endif %}
         {% if post.computed.prev and post.computed.next %}
@@ -146,7 +147,7 @@ permalink: "{{ post.computed.slug }}"
         {% endif %}
         {% if post.computed.next %}
         <li>
-          <a class="js-animate-next" href="{{ post.computed.next.slug }}" title="{{ post.computed.next.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.next.title }}">Successivo{% include 'icons/chevron-right.njk' %}</a>
+          <a class="js-animate-next" href="{{ post.computed.next.slug }}" title="{{ post.computed.next.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.next.title }}">Post successivo{% include 'icons/chevron-right.njk' %}</a>
         </li>
         {% endif %}
       </ul>
@@ -164,7 +165,6 @@ permalink: "{{ post.computed.slug }}"
 {% block scripts %}
 <script src="/node_modules/gsap/src/uncompressed/TweenMax.js"></script>
 <script src="/node_modules/colcade/colcade.js"></script>
-<script src="/node_modules/pace-progress/pace.js"></script>
 <script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
 <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
 <script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
@@ -173,8 +173,4 @@ permalink: "{{ post.computed.slug }}"
 <script src="/js/currentYear.js"></script>
 <script src="/js/lazyImages.js"></script>
 <script src="/js/imageGallery.js"></script>
-<script>
-
-
-</script>
 {% endblock %}

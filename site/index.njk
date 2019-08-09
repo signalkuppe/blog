@@ -1,0 +1,56 @@
+---
+bodyClass: front
+pagination:
+  data: posts
+  size: 1000000000
+---
+
+{# Post layout, extends base #}
+{% extends "layouts/_layoutBase.njk" %}
+{% import "macros/macros.njk" as macro with context %}
+
+{# head #}
+{% block head %}
+{% set ogImage %}{{ post.fields.cover.fields.file.url }}?fit=thumb&w=400&h=400&f=center{% endset %}
+{{ macro.socialMeta(env.ELEVENTY_NAME, env.ELEVENTY_SLOGAN, env.ELEVENTY_LOGO) }}
+{{ macro.canonical(page.url) }}
+{{ macro.metaTitle(env.ELEVENTY_NAME, env.ELEVENTY_SLOGAN) }}
+<link rel="preconnect" href="https://assets.ctfassets.net" crossorigin>
+{% endblock %}
+
+{# nav #}
+
+{% block header %}
+  <div class="u-container">
+  {{ macro.navigation(activeSection = 'front') }}
+  </div>
+{% endblock %}
+
+{% block main %}
+  {% for post in pagination.items  %}
+  {% if loop.index === 1 %}
+  <div class="homeCard">
+    <a href="{{ post.computed.slug }}" title="leggi il post" class="u-container-link">
+      {{ macro.card(post.fields.date, post.fields.title, post.fields.cover.fields.file.url, post.fields.cover.fields.description, post.fields.description) }}
+    </a>
+  </div>
+  {% endif %}
+  {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+<script src="/node_modules/gsap/src/uncompressed/TweenMax.js"></script>
+<script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
+<script src="/js/lazyImages.js"></script>
+<script>
+
+  var card = document.querySelector('.homeCard')
+  var menuToAppend = document.querySelector('.c-navigation-menu li:nth-child(2)')
+  var cords = menuToAppend.getBoundingClientRect()
+  console.log(cords)
+  card.style.position = 'fixed'
+  card.style.left = cords.x + 'px'
+  card.style.top = cords.y + cords.height + 'px'
+  console.log(menuToAppend)
+</script>
+{% endblock %}

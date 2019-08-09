@@ -1,62 +1,50 @@
 .c-navigation {
-  font-size: var(--fontSizeTiny);
+  font-size: var(--fontSizeSmall);
+  font-family: var(--fontCaption);
   text-transform: uppercase;
-  line-height: 1;
-  border-bottom: 1px solid var(--colorGreyLight);
-  padding-bottom: 1em;
 }
 
 .c-navigation-menu {
+  line-height: 1;
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 2em;
   grid-template-columns: repeat(5, auto);
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.c-navigation-logo {
+  margin-right: 2em;
+}
+
+.c-navigation-logo svg {
+  transform: scale(1.5);
 }
 
 .c-navigation a {
   text-decoration: none;
   color: var(--colorGreyDark);
   display: block;
-  position: relative;
 }
 
 .c-navigation a:hover {
   color: black;
 }
 
-.c-navigation a.is-active::after {
-  position: absolute;
-  display: block;
-  content: '';
-  height: 5px;
-  width: 100%;
-  background: var(--colorGreyMedium);
-  left: 0;
-  top: 2em;
+.c-navigation li:not(.c-navigation-logo) a:active {
+  outline: 2px solid var(--colorPrimary);
+  outline-offset: 5px;
+  text-decoration: none;
 }
 
-.c-navigation-siteName {
-  font-family: var(--fontCaption);
-  font-weight: 700;
-  font-size: 150%;
+.c-navigation a.is-active {
   color: black;
-  display: block;
-  margin: 0;
-  will-change: transform;
-  transition: transform 0.2s linear;
+  border-bottom: 2px solid black;
 }
 
-.c-navigation a:hover .c-navigation-siteName {
-  transform: translate3d(0, -0.2rem, 0);
-}
-
-@media screen and (min-width: 768px) {
-  .c-navigation {
-    font-size: var(--fontSizeSmall);
-  }
-
-  .c-navigation-menu {
-    grid-gap: 2rem;
+@media screen and (min-width: 1170px) {
+  .c-navigation-logo svg {
+    transform: scale(1.8);
   }
 }
+

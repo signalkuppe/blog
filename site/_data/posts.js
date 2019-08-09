@@ -65,11 +65,11 @@ const transformPosts = (posts) => { // ad some custom prop
         title: post.fields.title
       }
     }
-    if (posts[i - 1]) { // prev
-      post.computed.prev = prevNextData(posts[i - 1])
+    if (posts[i + 1]) { // prev
+      post.computed.prev = prevNextData(posts[i + 1])
     }
-    if (posts[i + 1]) { // next
-      post.computed.next = prevNextData(posts[i + 1])
+    if (posts[i - 1]) { // next
+      post.computed.next = prevNextData(posts[i - 1])
     }
     return post
   })

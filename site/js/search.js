@@ -111,6 +111,9 @@
           location.href = destination
         } 
       }
+      else if (event.keyCode === 13) { // enter
+        event.preventDefault()
+      }
       else if (event.keyCode === 27) { // esc
         form.reset()
         _hideResults()

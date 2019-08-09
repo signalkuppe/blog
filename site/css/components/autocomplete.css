@@ -10,6 +10,7 @@
   display: block;
   width: 100%;
   padding: 0.5em 2em 0.5em 0.5em;
+  border-radius: 0;
   -webkit-appearance: none;
 }
 

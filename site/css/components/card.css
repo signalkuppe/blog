@@ -8,7 +8,8 @@
   transition: transform 0.25s ease-in;
   border-bottom: 5px solid transparent;
   -webkit-backface-visibility: hidden;
-	-webkit-perspective: 1000;
+  -webkit-perspective: 1000;
+  background: white;
 }
 
 .c-card-image {

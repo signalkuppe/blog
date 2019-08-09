@@ -22,12 +22,12 @@
         if (entry.target.classList.contains('js-observe-nav') && entry.isIntersecting && entry.intersectionRatio === 1) {
           if (next) {
             var tl = new TimelineLite()
-            tl.to(next, 0.5, { position: 'relative', left: 100 })
+            tl.to(next, 0.5, { position: 'relative', left: 100, delay: 1 })
             tl.to(next, 0.1, { left: 0 })
           }
           if (prev) {
             var tl = new TimelineLite()
-            tl.to(prev, 0.5, { position: 'relative', left: -100 })
+            tl.to(prev, 0.5, { position: 'relative', left: -100, delay: 1.6 })
             tl.to(prev, 0.1, { left: 0 })
           }
         }

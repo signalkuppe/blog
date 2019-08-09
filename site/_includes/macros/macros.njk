@@ -8,6 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<script>
+  document.documentElement.className = 'js'
+</script>
 {% endmacro %}
 
 
@@ -22,7 +25,7 @@
 {# 
 # html tag
 #}
-{% macro htmlTag() %}<html lang="it">{% endmacro %}
+{% macro htmlTag() %}<html lang="it" class="no-js">{% endmacro %}
 
 {# 
 # Canonical meta tags
@@ -61,7 +64,6 @@
 <link href="/css/components/content-header.css" rel="stylesheet" media="screen">
 <link href="/css/components/card.css" rel="stylesheet" media="screen">
 <link href="/css/components/post.css" rel="stylesheet" media="screen">
-<link href="/css/components/portfolio.css" rel="stylesheet" media="screen">
 <link href="/css/components/map.css" rel="stylesheet" media="screen">
 <link href="/css/components/autocomplete.css" rel="stylesheet" media="screen">
 <link href="/css/components/image-gallery.css" rel="stylesheet" media="screen">
@@ -120,12 +122,16 @@
   <h2 class="u-srOnly">Menu</h2>
   <nav>
     <ol class="c-navigation-menu">
-      <li><a href="/" title="Torna alla pagina iniziale"{% if activeSection == 'front' %} class="is-active"{% endif %}>Home</a></li>
-      <li><a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a></li>
-      <li>
+      <li class="c-navigation-logo">
         <a href="/" title="Torna alla pagina iniziale">
-          <{{ siteNameTag }} class="c-navigation-siteName">{{ env.ELEVENTY_NAME }}</{{ siteNameTag }}>
+          <{{ siteNameTag }} class="c-navigation-siteName">
+          {% include 'logo.njk' %}
+          </{{ siteNameTag }}>
         </a>
+      </li>
+      <li><a href="/" title="Torna alla pagina iniziale"{% if activeSection == 'front' %} class="is-active"{% endif %}>Home</a></li>
+      <li>
+        <a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a>
       </li>
       <li><a href="/portfolio" title="Il mio portfolio fotografico" {% if activeSection == 'portfolio' %} class="is-active"{% endif %}>Foto</a></li>
       <li><a href="/info" title="Informazioni sull’autore">Info</a></li>
@@ -169,7 +175,6 @@
 #}
 
 {% macro card(date, title, imageUrl, imageAlt, description) %}
-  {% set dateSlug %}{{ date | formatDate('DDMMYY') }}{% endset %}
   <article class="c-card" itemscope itemtype="http://schema.org/Article">
     <figure class="c-card-image">
       <img 

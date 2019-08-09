@@ -18,7 +18,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('node_modules/colcade/colcade.js')
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist')
   eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')
-  eleventyConfig.addPassthroughCopy('node_modules/pace-progress/pace.js')
   eleventyConfig.addPassthroughCopy('node_modules/smooth-scroll/dist/smooth-scroll.js')
   eleventyConfig.addPassthroughCopy('node_modules/lunr/lunr.js')
   eleventyConfig.addPassthroughCopy('node_modules/gsap/src/uncompressed/TweenMax.js')
