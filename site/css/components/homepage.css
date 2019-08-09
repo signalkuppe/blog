@@ -19,7 +19,7 @@
 .c-homepage-time {
   display: block;
   font-size: var(--fontSizeSmall);
-  color: var(--colorGreyMedium);
+  color: var(--colorGreyDark);
   font-family: var(--fontSans);
   margin-bottom: 0.5em;
 }
