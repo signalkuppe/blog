@@ -71,6 +71,10 @@
   display: none;
 }
 
+.u-type-lead {
+  font-size: 1.15em;
+}
+
 @media screen and (min-width: 1480px) {
   .u-container {
     padding: 0 !important;

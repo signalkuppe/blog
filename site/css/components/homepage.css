@@ -1,0 +1,49 @@
+.c-homepage-image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.c-homepage-name {
+  font-size: var(--fontSize3);
+}
+
+.c-homepage-ultimo {
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeSmall);
+  text-transform: uppercase;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.c-homepage-time {
+  display: block;
+  font-size: var(--fontSizeSmall);
+  color: var(--colorGreyMedium);
+  font-family: var(--fontSans);
+  margin-bottom: 0.5em;
+}
+
+.c-homepage-stabiloLink {
+  text-decoration: none;
+  background-image: linear-gradient(var(--colorPrimary), var(--colorPrimary));
+  background-size: 100% 0.5em;
+  background-repeat: no-repeat;
+  background-position: left 0 bottom -40%;
+}
+
+.c-homepage-postTitle {
+  font-size: var(--fontSize1);
+  margin-bottom: 0.5em;
+}
+
+.c-homepage-hr {
+  background: var(--colorGreyLight);
+}
+
+@media screen and (orientation: portrait) {
+  .c-homepage-image {
+    max-height: 40vh;
+    margin-top: 4vh;
+  }
+}

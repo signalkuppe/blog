@@ -1,7 +1,11 @@
 .c-navigation {
-  font-size: var(--fontSizeSmall);
   font-family: var(--fontCaption);
   text-transform: uppercase;
+}
+
+.c-navigation-siteName,
+.c-navigation {
+  font-size: var(--fontSizeSmall);
 }
 
 .c-navigation-menu {
