@@ -17,7 +17,7 @@
     mymap.scrollWheelZoom.disable()
     /* add markers */
     markers.forEach(function(marker){
-        var customIcon = L.divIcon({className: 'c-map-marker', html:'<img title="'+marker.title+'" src="'+marker.cover+'" />'}), // use custom div for icons
+        var customIcon = L.divIcon({className: 'c-map-marker', html:'<img class="lazyImg" title="'+marker.title+'" src="'+marker.cover+'" data-src="'+ marker.placeholder +'" />'}), // use custom div for icons
             markerHtml = '<a href="'+marker.link+'" class="c-map-link" title="Leggi il post"><div class="c-map-popup">';
             markerHtml += '<img src="'+marker.cover+'" />'
             markerHtml += '<div class="c-map-info">'

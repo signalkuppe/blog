@@ -181,7 +181,8 @@
     <figure class="c-card-image">
       <img 
         class="lazyImg"
-        data-src="{{ imageUrl }}?fit=thumb&w=600&h=400&f=center&q=70" 
+        src="{{ env.ELEVENTY_IMAGE_PLACEHOLDER }}?fit=thumb&w=600&h=400&fm=jpg&fl=progressive"
+        data-src="{{ imageUrl }}?fit=thumb&w=600&h=400&f=center&q=70&fl=progressive" 
         alt="{{ imageAlt }}" />
     </figure>
     <div class="c-card-body">

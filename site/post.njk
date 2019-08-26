@@ -128,6 +128,7 @@ permalink: "{{ post.computed.slug }}"
       <li class="c-imageGallery-item">
         <a href="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" title="{{ photo.fields.title }}">
           <img 
+            src="{{ env.ELEVENTY_IMAGE_PLACEHOLDER }}?fit=thumb&w=800&fm=jpg&fl=progressive"
             data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
             alt="{{ photo.fields.description }}" 
             class="lazyImg u-hide-nojs" />

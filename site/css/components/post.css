@@ -12,19 +12,14 @@
   display: block;
 }
 
-.c-post-cover img.lazyImg {
-  transition: filter 0.2s ease-in-out;
-}
-
 .c-post-cover img.lazyImg:not(.loaded) {
   display: block;
   width: 100%;
   filter: blur(10px);
-  transform: scale(1.05);
+  transform: scale(1.025);
   object-fit: cover;
   overflow: hidden;
 }
-
 
 .c-post-cover-caption {
   font-family: var(--fontCaption);

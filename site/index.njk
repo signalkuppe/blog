@@ -27,8 +27,12 @@ pagination:
 <h2 class="c-homepage-name">Benvenuto!</h2>
 <p class="u-type-lead">
 Sono Matteo, <b>sviluppatore web</b> specializzato in responsive Web design. Trasformo idee grafiche in progetti web, con particolare attenzione alle performance e all’architettura css.
-Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vuole essere un semplice diario delle nostre avventure.<br />
-<a href="https://it.wikipedia.org/wiki/Punta_Gnifetti" rel="noopener"><b>Signalkuppe</b></a> — il mio nickname — è il nome in tedesco della Punta Gnifetti.
+</p>
+<p>
+Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vuole essere un semplice diario delle nostre avventure.
+<a href="https://it.wikipedia.org/wiki/Punta_Gnifetti" rel="noopener"><b>Signalkuppe</b></a><em> — il mio nickname — </em>è il nome in tedesco della Punta Gnifetti.
+</p>
+<p>
 <a href="https://signalkuppe.wufoo.com/forms/contatta-signalkuppe/" rel="noopener" class="c-homepage-stabiloLink"><b>Contattatemi</b></a> per parlare di un vostro progetto o semplicemente per fare due chiacchiere.
 </p>
 <hr  class="c-homepage-hr" />
@@ -39,7 +43,7 @@ Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vu
 <article>
   <header>
     <time class="c-homepage-time" datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
-    <h4 class="c-homepage-postTitle"><a href="{{ post.computed.slug }}">{{ post.fields.title }}</a></h4>
+    <h4 class="c-homepage-postTitle"><a href="{{ post.computed.slug }}">{{ post.fields.title }}</a> {% include 'icons/new.njk' %}</h4>
   </header>
   <p>{{ post.fields.description }}</p>
 </article>

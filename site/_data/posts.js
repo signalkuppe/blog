@@ -47,7 +47,7 @@ const transformPosts = (posts) => { // ad some custom prop
             <figure class="${i % 2 ? 'post-image-odd' : 'post-img-even'}">
               <img 
                   data-src="${node.data.target.fields.file.url}?fit=thumb&w=1440&fm=jpg&fl=progressive&q=70"
-                  src="${node.data.target.fields.file.url}?fit=thumb&w=800&fm=jpg&fl=progressive&q=10"
+                  src="${process.env.ELEVENTY_IMAGE_PLACEHOLDER}?fit=thumb&w=800&fm=jpg&fl=progressive"
                   alt="${node.data.target.fields.description}" 
                   class="lazyImg" /> 
                 <figcaption>${node.data.target.fields.title}</figcaption>
@@ -86,6 +86,7 @@ const makeMarkers = (posts) => { // make markers index, used also in lunr search
       link: makeFullSlug(post.fields.slug),
       tags: post.fields.tags,
       categories: post.fields.category[0],
+      placeholder: `${process.env.ELEVENTY_IMAGE_PLACEHOLDER}?fit=thumb&w=200&h=200&fm=jpg&fl=progressive&q=70`,
       cover: `${post.fields.cover.fields.file.url}?fit=thumb&w=200&h=200&fm=jpg&fl=progressive&q=70`,
       autocompleteRow: `<a href="${makeFullSlug(post.fields.slug)}" data-autocomplete"><span>${date.format(post.fields.date, 'DD/MM/YY')}</span> - ${post.fields.title}</a>`
     }

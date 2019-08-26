@@ -37,13 +37,11 @@
   margin-bottom: 0.5em;
 }
 
-.c-homepage-hr {
-  background: var(--colorGreyLight);
+.c-homepage-postTitle svg {
+  height: 1em;
+  color: orangered;
 }
 
-@media screen and (orientation: portrait) {
-  .c-homepage-image {
-    max-height: 40vh;
-    margin-top: 4vh;
-  }
+.c-homepage-hr {
+  background: var(--colorGreyLight);
 }
