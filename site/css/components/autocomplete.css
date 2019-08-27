@@ -6,12 +6,47 @@
 .c-autocomplete input[type="text"] {
   font-size: var(--fontSize2);
   border: none;
-  border-bottom: 3px solid var(--colorGreyDark);
+  /* border-bottom: 3px solid var(--colorGreyDark); */
   display: block;
   width: 100%;
   padding: 0.5em 2em 0.5em 0.5em;
   border-radius: 0;
   -webkit-appearance: none;
+}
+
+/* border bottom */
+
+.c-autocomplete-inputContainer {
+  position: relative;
+}
+
+.c-autocomplete-inputContainer::before,
+.c-autocomplete-inputContainer::after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.c-autocomplete-inputContainer::before { /* not loading */
+  background: var(--colorGreyDark);
+}
+
+.c-autocomplete-inputContainer::after { /* loading */
+  background: var(--colorPrimary);
+  width: 0;
+  z-index: 1001;
+}
+
+.c-autocomplete-inputContainer.js-is-loading::after  { /* loading */
+  animation: expandWidth 0.5s infinite linear alternate-reverse;
+}
+
+@keyframes expandWidth {
+  0% { width: 100%; }
+  100% { width: 0%; }
 }
 
 .c-autocomplete input[type="text"]:focus,
@@ -45,7 +80,7 @@
   opacity: 1;
   transition: all 0.2s linear;
   position: absolute;
-  top: 3.4em;
+  top: 3.3em;
   left: 0;
   width: 100%;
   z-index: 1000;

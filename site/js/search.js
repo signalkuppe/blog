@@ -1,6 +1,7 @@
 (function () {
   document.addEventListener('DOMContentLoaded', (event) => {
     var form = document.getElementById('autocomplete')
+    var inputContainer = document.getElementById('autocomplete-input-container')
     var input = document.getElementById('autocomplete-input')
     var reset = document.getElementById('autocomplete-reset')
     var search = document.getElementById('autocomplete-search')
@@ -41,8 +42,10 @@
                 .join(' ') : ''
       var results = idx.search(key)
       if (searchKey.length) {
-        _debounce(_showResults, 250)(results)
+        _showLoading()
+        _debounce(_showResults, 1000)(results)
       } else {
+        _hideLoading()
         _hideResults()
       }
     }
@@ -66,6 +69,12 @@
        _hideResults()
       }
     }
+    var _showLoading = function () {
+      inputContainer.classList.add('js-is-loading')
+    }
+    var _hideLoading = function () {
+      inputContainer.classList.remove('js-is-loading')
+    }
     var _showResults = function (results) {
       autocomplete.innerHTML = _buildResults(results)
       autocomplete.removeAttribute('aria-hidden')
@@ -73,6 +82,7 @@
       reset.style.display = 'block'
       search.style.display = 'none'
       form.addEventListener('blur', _blur, true)
+      _hideLoading()
     }
     var _hideResults = function () {
       autocomplete.setAttribute('aria-hidden', true)

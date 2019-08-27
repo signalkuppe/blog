@@ -17,7 +17,7 @@
     mymap.scrollWheelZoom.disable()
     /* add markers */
     markers.forEach(function(marker){
-        var customIcon = L.divIcon({className: 'c-map-marker', html:'<img class="lazyImg" title="'+marker.title+'" src="'+marker.cover+'" data-src="'+ marker.placeholder +'" />'}), // use custom div for icons
+        var customIcon = L.divIcon({className: 'c-map-marker', html:'<img class="lazyImg" title="'+marker.title+'" data-src="'+marker.cover+'" src="'+ marker.placeholder +'" />'}), // use custom div for icons
             markerHtml = '<a href="'+marker.link+'" class="c-map-link" title="Leggi il post"><div class="c-map-popup">';
             markerHtml += '<img src="'+marker.cover+'" />'
             markerHtml += '<div class="c-map-info">'
@@ -31,5 +31,7 @@
             .addTo(mymap)
             .bindPopup(markerHtml);
     })
+    var myLazyLoad = new LazyLoad()
+    myLazyLoad.update() // trigger lazyload images for dynamic content
   })
 })()
