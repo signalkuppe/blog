@@ -6,7 +6,7 @@ const outputDir = 'dist'
 
 module.exports = (eleventyConfig) => {
 
-  eleventyConfig.setTemplateFormats('njk', 'css') // include css to watch and reload on css save
+  eleventyConfig.setTemplateFormats('njk', 'css', 'js') // include css and js to watch and reload on save
 
   /*
   * Copy static assest and node libs
@@ -15,6 +15,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'favicons'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'js'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'css'))
+  eleventyConfig.addPassthroughCopy(path.join(inputDir, 'service-worker.js'))
+  eleventyConfig.addPassthroughCopy('node_modules/workbox-sw/build/workbox-sw.js')
   eleventyConfig.addPassthroughCopy('node_modules/colcade/colcade.js')
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist')
   eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')
