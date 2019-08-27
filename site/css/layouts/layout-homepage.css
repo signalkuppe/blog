@@ -18,6 +18,9 @@
 }
 
 @media screen and (orientation: portrait) {
+  .l-homepage-main {
+    margin-top: 4vh;
+  }
   .l-homepage-content {
     margin: 0 1.5em;
   }

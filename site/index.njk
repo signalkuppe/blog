@@ -4,13 +4,13 @@ pagination:
   size: 1000000000
 ---
 
-{# Post layout, extends homepage #}
+{# Index layout, extends homepage #}
 {% extends "layouts/_layoutHomepage.njk" %}
 {% import "macros/macros.njk" as macro with context %}
 
 
 {% block head %}
-{{ macro.socialMeta(env.ELEVENTLY_NAME, env.ELEVENTLY_DESCRIPTION, env.ELEVENTY_LOGO) }}
+{{ macro.socialMeta(env.ELEVENTLY_NAME, env.ELEVENTY_DESCRIPTION, env.ELEVENTY_LOGO) }}
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(env.ELEVENTY_NAME, env.ELEVENTY_SLOGAN) }}
 {% endblock %}
@@ -20,7 +20,7 @@ pagination:
 {% endblock %}
 
 {% block image %}
-<img class="c-homepage-image" src="https://images.ctfassets.net/rotmy72mdop6/AGcSil2jT7UhmU7oDphmX/4f9972b00fd481338648bc5f5003afda/io___gio.jpg?fit=thumb&w=700&h=700&fm=jpg&fl=progressive&q=70" alt="Matteo e Giorgio Leoni" />
+<img class="c-homepage-image" src="/img/homepage.jpg" alt="Matteo e Giorgio Leoni" />
 {% endblock %}
 
 {% block content %}

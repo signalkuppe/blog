@@ -4,7 +4,7 @@
   "description": "Personal blog",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy",
+    "build": "eleventy && node site/service-worker-build.js",
     "serve": "eleventy --serve"
   },
   "repository": {
@@ -35,6 +35,7 @@
     "dayjs": "^1.8.16",
     "dotenv": "^8.1.0",
     "lodash": "^4.17.15",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "workbox-build": "^4.3.1"
   }
 }
