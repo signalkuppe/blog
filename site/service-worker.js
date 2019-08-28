@@ -39,13 +39,13 @@ if (workbox) {
   workbox.routing.registerRoute(
     /.*(?:cloudfront)\.net/,
     new workbox.strategies.StaleWhileRevalidate({
-      cacheName: `${cachePrefix}-css-js-netlify`
+      cacheName: `${cachePrefix}-netlify`
     })
   )
 
   // Use a network only strategy as default
   workbox.routing.setDefaultHandler(
-    new workbox.strategies.StaleWhileRevalidate()
+    new workbox.strategies.NetworkOnly()
   )
 
   // This "catch" handler is triggered when any of the other routes fail to generate a response
