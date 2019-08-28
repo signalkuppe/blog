@@ -45,7 +45,7 @@ if (workbox) {
 
   // Use a network only strategy as default
   workbox.routing.setDefaultHandler(
-    new workbox.strategies.NetworkOnly()
+    new workbox.strategies.StaleWhileRevalidate()
   )
 
   // This "catch" handler is triggered when any of the other routes fail to generate a response
