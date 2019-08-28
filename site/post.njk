@@ -61,7 +61,7 @@ permalink: "{{ post.computed.slug }}"
     {# content #}
     <section itemprop="articleBody" class="l-post-content u-section-mb-1">
     {{ post.computed.body | safe }}
-    <p class="u-printOnly c-post-printMessage"><strong>Grazie per aver stampato questa pagina, buona gita! 🤟</strong></p>
+    <p class="u-printOnly c-post-printMessage" aria-hidden="true"><strong>Grazie per aver stampato questa pagina, buona gita! 🤟</strong></p>
     </section>
     {# /content #}
     {# sidebar #}
@@ -160,7 +160,7 @@ permalink: "{{ post.computed.slug }}"
       </ul>
     </nav>
     {# /prev-next #}
-    <p class="c-post-newsletter u-section-mt-1 aaaa">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH" class="u-highlight-link"><br>Iscriviti alla newsletter</a></strong></p>
+    <p class="c-post-newsletter u-section-mt-1">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH" class="u-highlight-link"><br>Iscriviti alla newsletter</a></strong></p>
   </footer>
 </article>
 {% endblock %}

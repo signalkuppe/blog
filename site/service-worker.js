@@ -3,6 +3,7 @@ importScripts('/node_modules/workbox-sw/build/workbox-sw.js')
 if (workbox) {
   console.log(`Service worker caricato 🎉`)
   const cachePrefix = 'signalkuppe'
+
   workbox.precaching.precacheAndRoute([]) // filled by service-worker-build.js
   workbox.core.setCacheNameDetails({
     prefix: cachePrefix,

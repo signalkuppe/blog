@@ -45,8 +45,9 @@ pagination:
   <button type="reset" aria-label="Ripristina" class="c-autocomplete-reset" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
   <button type="submit" aria-label="Cerca" class="c-autocomplete-search" id="autocomplete-search">{% include 'icons/search.njk' %}</button>
 </form>
+<p class="u-text-center u-section-mt-1"><a href="/feed.xml" class="c-button c-button--iconBaseline">{% include 'icons/feed.njk' %} Feed dei post</a></p>
 {# post grid #}
-<ul class="l-postGrid u-section-mt-1-5">
+<ul class="l-postGrid u-section-mt-1">
 {% for post in pagination.items  %}
   <li class="l-postGrid-item">
     <a href="{{ post.computed.slug }}" title="leggi il post" class="u-container-link">

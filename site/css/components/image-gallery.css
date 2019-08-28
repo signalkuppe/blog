@@ -55,9 +55,6 @@
   .c-imageGallery-col:nth-child(3) {
     display: block;
   }
-  .c-imageGallery a:hover img {
-    filter: grayscale(1);
-  }
   .c-imageGallery a:hover::after {
     opacity: 1;
   }

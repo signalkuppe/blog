@@ -66,6 +66,7 @@ body {
 .l-post-sidebar,
 .c-contentHeader h2,
 .c-post-footer,
+.c-imageGallery,
 #baguetteBox-overlay {
   display: none;
 }
@@ -76,11 +77,6 @@ body {
 
 .c-post img  {
   max-width: 300px;
-}
-
-.c-imageGallery img  {
-  float:left;
-  width: 150px;
 }
 
 h1,h2,h3,strong {

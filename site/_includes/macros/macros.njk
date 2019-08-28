@@ -153,9 +153,16 @@
 
 {% macro footer() %}
 <footer class="c-footer">
-  <span id="js-currentYear"></span> - <strong>Signalkuppe</strong> | contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</a> | <a href="/info">Info & contatti</a>
-  | <a href="{{ env.ELEVENTY_FACEBOOK }}" title="Seguimi su Facebook">Facebook</a> | <a href="{{ env.ELEVENTY_TWITTER }}" title="Seguimi su Twitter">Twitter</a> | <a href="{{ env.ELEVENTY_INSTAGRAM }}" title="Seguimi su Instagram">Instagram</a>
-  <span class="c-footer-topLink"> | {% include 'icons/arrow-up.njk' %}<a href="#top">Torna in cima</a></span>
+  <ul>
+    <li><span id="js-currentYear"></span> - <strong>Signalkuppe</strong></li>
+    <li>Contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</a></li>
+    <li><a href="https://signalkuppe.wufoo.com/forms/contatta-signalkuppe/">Contattami</a></li>
+    <li><a href="{{ env.ELEVENTY_FACEBOOK }}" title="Seguimi su Facebook">Facebook</a></li>
+    <li><a href="{{ env.ELEVENTY_TWITTER }}" title="Seguimi su Twitter">Twitter</a></li>
+    <li><a href="{{ env.ELEVENTY_INSTAGRAM }}" title="Seguimi su Instagram">Instagram</a></li>
+    <li><a href="/feed.xml">Feed</a></li>
+    <li><span class="c-footer-topLink"> {% include 'icons/arrow-up.njk' %}<a href="#top">Torna in cima</a></span></li>
+  </ul>
 </footer>
 {% endmacro %}
 

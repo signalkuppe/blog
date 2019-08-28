@@ -1,5 +1,5 @@
 .c-card {
-  border: 1px solid var(--colorGrey);
+  border: 1px solid var(--colorGreyLight);
   display: flex;
   flex-direction: column;
   height: 100%;

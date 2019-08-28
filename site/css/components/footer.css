@@ -9,7 +9,12 @@
   margin: 0 auto;
 }
 
-.c-footer svg {
-  width: 1em;
-  vertical-align: middle;
+.c-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center
+}
+
+.c-footer li + li  {
+  margin-left: 1em;
 }

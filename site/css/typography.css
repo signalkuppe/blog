@@ -92,3 +92,7 @@ figcaption {
 svg {
   vertical-align: middle;
 }
+
+svg.icon {
+  height: 1em;
+}

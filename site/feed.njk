@@ -1,0 +1,27 @@
+---
+permalink: feed.xml
+pagination:
+  data: posts
+  size: 1000000000
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>{{ env.ELEVENTY_NAME }}</title>
+	<subtitle>{{ env.ELEVENTY_SLOGAN }}</subtitle>
+  <link href="{{ env.ELEVENTY_URL }}/feed.xml" rel="self"/>
+	<link href="{{ env.ELEVENTY_URL }}/blog"/>
+  <id>{{ env.ELEVENTY_URL }}/blog</id>
+	<updated>{{ pagination.items[0].sys.updatedAt  }}</updated>
+	<author>
+		<name>{{ env.ELEVENTY_AUTHOR }}</name>
+	</author>
+  {% for post in pagination.items  %}
+	<entry>
+		<title>{{ post.fields.title }}</title>
+    <id>{{ env.ELEVENTY_URL  }}/{{ post.fields.slug }}</id>
+		<link href="{{ env.ELEVENTY_URL  }}/{{ post.fields.slug }}"/>
+		<updated>{{ post.sys.updatedAt }}</updated>
+		<content type="html">{{ post.fields.description }}</content>
+	</entry>
+  {%- endfor %}
+</feed>

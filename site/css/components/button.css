@@ -8,10 +8,11 @@
   transition: all 0.2s ease;
   font-size: var(--fontSizeSmall);
   font-weight: 700;
+  display: inline-block;
 }
 
 .c-button:hover {
-  border-color: var(--bodyColor);
+  border-color: var(--colorGreyDarker);
 }
 
 .c-button:active {
@@ -22,4 +23,8 @@
 
 .c-button svg {
   height: 1em;
+}
+
+.c-button--iconBaseline svg {
+  vertical-align: baseline;
 }
