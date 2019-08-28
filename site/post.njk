@@ -91,17 +91,17 @@ permalink: "{{ post.computed.slug }}"
         <h3 class="js-animate-sidebarTitle{% if post.fields.gpsTracks.length %} u-section-mt-1{% endif %} u-mb-1">Condividi</h3>
         <ul class="c-post-share u-inline-list">
           <li>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F" title="Condividi su Facebook" target="_blank" rel="noopener" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&amp;quote=' + encodeURIComponent(document.URL)); return false;">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F" title="Condividi su Facebook" aria-label="Condividi su Facebook" target="_blank" rel="noopener" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&amp;quote=' + encodeURIComponent(document.URL)); return false;">
               {% include 'icons/facebook.njk' %}
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/intent/tweet?source=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F&amp;text=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio&amp;via=signalkuppe" target="_blank" rel="noopener" title="Condividi su Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL))+ ':%20'  +author; return false;">
+            <a href="https://twitter.com/intent/tweet?source=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F&amp;text=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio&amp;via=signalkuppe" target="_blank" rel="noopener" title="Condividi su Twitter" aria-label="Condividi su Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL))+ ':%20'  +author; return false;">
               {% include 'icons/twitter.njk' %}
             </a>
           </li>
           <li>
-            <a href="mailto:?subject=Pizzi%20di%20Parlasco&amp;body=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio" target="_blank" rel="noopener" title="Condividi via mail" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' +  encodeURIComponent(document.URL)); return false;">
+            <a href="mailto:?subject=Pizzi%20di%20Parlasco&amp;body=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio" target="_blank" rel="noopener" title="Condividi via mail" aria-label="Condividi via mail" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' +  encodeURIComponent(document.URL)); return false;">
               {% include 'icons/mail.njk' %}
             </a>
           </li>
