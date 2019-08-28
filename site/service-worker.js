@@ -53,7 +53,7 @@ if (workbox) {
     console.log(event)
     switch (event.request.destination) {
       case 'document':
-        return caches.match('offline/index.html')
+        return workbox.precaching.getCacheKeyForURL('offline/index.html')
       default:
         // If we don't have a fallback, just return an error response.
         return Response.error();
