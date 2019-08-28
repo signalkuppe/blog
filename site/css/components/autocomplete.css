@@ -1,6 +1,10 @@
 .c-autocomplete {
   position: relative;
   margin-top: calc(var(--spaceUnit) * 1.5);
+  width: 90%;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .c-autocomplete input[type="text"] {
@@ -8,10 +12,12 @@
   border: none;
   /* border-bottom: 3px solid var(--colorGreyDark); */
   display: block;
+  background: var(--bodyBackgroundColor);
   width: 100%;
   padding: 0.5em 2em 0.5em 0.5em;
   border-radius: 0;
   -webkit-appearance: none;
+  color: var(--bodyColor);
 }
 
 /* border bottom */
@@ -65,6 +71,10 @@
   -webkit-appearance: none;
 }
 
+.c-autocomplete svg {
+  color: var(--bodyColor);
+}
+
 .c-autocomplete-help { /* help text */
   font-size: var(--fontSizeSmall);
   color: var(--colorGreyMedium);
@@ -73,7 +83,7 @@
 }
 
 .c-autocomplete-results {
-  background: white;
+  background: var(--bodyBackgroundColor);
   border-style: solid;
   border-width: 3px;
   border-color: var(--colorGreyDark);
@@ -107,5 +117,5 @@
 .c-autocomplete-results li.js-is-active,
 .c-autocomplete-results li:hover {
   background: var(--colorGreyLight);
-  color: black;
+  color: var(--bodyColor);
 }

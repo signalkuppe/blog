@@ -21,21 +21,17 @@ permalink: "{{ post.computed.slug }}"
 
 {# nav #}
 {% block header %}
-  <div class="u-container">
   {{ macro.navigation(activeSection = 'blog') }}
-  </div>
 {% endblock %}
 
 {% block main %}
 <article itemscope itemtype="http://schema.org/Article" class="c-post">
   {# post header #}
-  <div class="u-container">
-    {% call macro.contentHeader(post.fields.category[0], post.fields.title, post.fields.description) -%}
-    <time datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
-    <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
-      <span itemprop="name">{{ env.ELEVENTY_AUTHOR }}</span>
-    </span>
-  </div>
+  {% call macro.contentHeader(post.fields.category[0], post.fields.title, post.fields.description) -%}
+  <time datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
+  <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
+    <span itemprop="name">{{ env.ELEVENTY_AUTHOR }}</span>
+  </span>
   {%- endcall %}
 
   {# post cover #}
@@ -179,6 +175,7 @@ permalink: "{{ post.computed.slug }}"
 <script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
 <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
 <script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
+<script src="/node_modules/lockr/lockr.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
 <script src="/js/darkMode.js"></script>
 <script src="/js/postAnimations.js"></script>

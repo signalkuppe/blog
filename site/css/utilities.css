@@ -60,13 +60,6 @@
   color: inherit !important;
 }
 
-.u-container {
-  max-width: var(--containerMaxWidth) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding: 0 1.5em !important;
-}
-
 .no-js .u-hide-nojs {
   display: none !important;
 }
@@ -82,12 +75,6 @@
   background-repeat: no-repeat !important;
   background-position: left 0 bottom -60% !important;
   color: inherit !important;
-}
-
-@media screen and (min-width: 1480px) {
-  .u-container {
-    padding: 0 !important;
-  }
 }
 
 @media screen {

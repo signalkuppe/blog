@@ -63,6 +63,7 @@
 <link href="/css/layouts/layout-post.css" rel="stylesheet" media="screen">
 <link href="/css/layouts/layout-post-grid.css" rel="stylesheet" media="screen">
 <link href="/css/components/button.css" rel="stylesheet" media="screen">
+<link href="/css/components/toggle.css" rel="stylesheet" media="screen">
 <link href="/css/components/navigation.css" rel="stylesheet" media="screen">
 <link href="/css/components/content-header.css" rel="stylesheet" media="screen">
 <link href="/css/components/card.css" rel="stylesheet" media="screen">
@@ -136,12 +137,11 @@
           </{{ siteNameTag }}>
         </a>
       </li>
-      <li><a href="/" title="Torna alla pagina iniziale"{% if activeSection == 'front' %} class="is-active"{% endif %}>Home</a></li>
       <li>
         <a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a>
       </li>
       <li><a href="/portfolio" title="Il mio portfolio fotografico" {% if activeSection == 'portfolio' %} class="is-active"{% endif %}>Foto</a></li>
-      <li><label for="toggle" class="c-toggle"><input type="checkbox" id="toggle" /> Dark Mode</label></li>
+      <li><span class="c-toggle"><input type="checkbox" id="toggle" /><label for="toggle">Tema scuro</label></span></li>
     </ol>
   </nav>
 </div>
@@ -153,11 +153,9 @@
 
 {% macro footer() %}
 <footer class="c-footer">
-  <div class="u-container">
-    <span id="js-currentYear"></span> - <strong>Signalkuppe</strong> | contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</a> | <a href="/info">Info & contatti</a>
-    | <a href="{{ env.ELEVENTY_FACEBOOK }}" title="Seguimi su Facebook">Facebook</a> | <a href="{{ env.ELEVENTY_TWITTER }}" title="Seguimi su Twitter">Twitter</a> | <a href="{{ env.ELEVENTY_INSTAGRAM }}" title="Seguimi su Instagram">Instagram</a>
-    <span class="c-footer-topLink"> | {% include 'icons/arrow-up.njk' %}<a href="#top">Torna in cima</a></span>
-  </div>
+  <span id="js-currentYear"></span> - <strong>Signalkuppe</strong> | contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</a> | <a href="/info">Info & contatti</a>
+  | <a href="{{ env.ELEVENTY_FACEBOOK }}" title="Seguimi su Facebook">Facebook</a> | <a href="{{ env.ELEVENTY_TWITTER }}" title="Seguimi su Twitter">Twitter</a> | <a href="{{ env.ELEVENTY_INSTAGRAM }}" title="Seguimi su Instagram">Instagram</a>
+  <span class="c-footer-topLink"> | {% include 'icons/arrow-up.njk' %}<a href="#top">Torna in cima</a></span>
 </footer>
 {% endmacro %}
 

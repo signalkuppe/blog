@@ -16,7 +16,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'js'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'css'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'img'))
-  eleventyConfig.addPassthroughCopy(path.join(inputDir, 'service-worker.js'))
+  eleventyConfig.addPassthroughCopy('node_modules/lockr/lockr.js')
   eleventyConfig.addPassthroughCopy('node_modules/workbox-sw/build/workbox-sw.js')
   eleventyConfig.addPassthroughCopy('node_modules/colcade/colcade.js')
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist')

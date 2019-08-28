@@ -16,7 +16,6 @@
   display: block;
   width: 100%;
   filter: blur(10px);
-  transform: scale(1.025);
   object-fit: cover;
   overflow: hidden;
 }
@@ -80,5 +79,15 @@
 @media screen and (min-width: 768px) {
   .c-post-cover-caption {
     font-size: 1.5vw;
+  }
+}
+
+@supports (initial-letter: 3) or (-webkit-initial-letter: 3) {
+  .c-post p:first-child::first-letter {
+    initial-letter: 3;
+    -webkit-initial-letter: 3;
+    font-family: var(--fontSerif);
+    font-weight: 700;
+    margin: 0 0.5em 0em 0;
   }
 }

@@ -4,6 +4,9 @@
   padding: calc(var(--spaceUnit) * 2 ) 0;
   color: var(--colorGreyDark);
   font-family: var(--fontCaption);
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
 }
 
 .c-footer svg {

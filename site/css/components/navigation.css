@@ -1,6 +1,9 @@
 .c-navigation {
   font-family: var(--fontCaption);
   text-transform: uppercase;
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
 }
 
 .c-navigation-siteName,
@@ -10,11 +13,12 @@
 
 .c-navigation-menu {
   line-height: 1;
-  display: grid;
-  grid-gap: 2em;
-  grid-template-columns: repeat(5, auto);
+  display: flex;
   justify-content: center;
-  align-items: flex-start;
+}
+
+.c-navigation-menu li + li {
+  margin-left: 2em;
 }
 
 .c-navigation-logo {

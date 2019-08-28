@@ -28,27 +28,23 @@ pagination:
 {% endblock %}
 
 {% block header %}
-  <div class="u-container">
   {{ macro.navigation(activeSection = 'blog') }}
-  </div>
 {% endblock %}
 
 {% block main %}
 {# header #}
 {% call macro.contentHeader(intro, title, description) -%}{%- endcall %}
 {# map #}
-<figure id="map" class="c-map u-section-mt-1-5"></figure>
+<figure id="map" class="c-map u-section-mt-1"></figure>
 {# search #}
-<div class="u-container">
-  <form class="c-autocomplete u-section-mt-1-5" id="autocomplete">
-    <label for="autocomplete-input" class="u-srOnly">Cerca</label>
-    <div class="c-autocomplete-inputContainer" id="autocomplete-input-container"><input type="text" spellcheck="false" autocomplete="off" id="autocomplete-input" name="searchKey" placeholder="Cerca..." /></div>
-    <div class="c-autocomplete-results" id="autocomplete-results" hidden tabindex="-1"></div>
-    <div class="c-autocomplete-help">ES: “scialpinismo svizzera” (trova tutti i post che contengono entrambe le chiavi di ricerca)</div>
-    <button type="reset" aria-label="Ripristina" class="c-autocomplete-reset" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
-    <button type="submit" aria-label="Cerca" class="c-autocomplete-search" id="autocomplete-search">{% include 'icons/search.njk' %}</button>
-  </form>
-</div>
+<form class="c-autocomplete u-section-mt-1-5" id="autocomplete">
+  <label for="autocomplete-input" class="u-srOnly">Cerca</label>
+  <div class="c-autocomplete-inputContainer" id="autocomplete-input-container"><input type="text" spellcheck="false" autocomplete="off" id="autocomplete-input" name="searchKey" placeholder="Cerca..." /></div>
+  <div class="c-autocomplete-results" id="autocomplete-results" hidden tabindex="-1"></div>
+  <div class="c-autocomplete-help">ES: “scialpinismo svizzera” (trova tutti i post che contengono entrambe le chiavi di ricerca)</div>
+  <button type="reset" aria-label="Ripristina" class="c-autocomplete-reset" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
+  <button type="submit" aria-label="Cerca" class="c-autocomplete-search" id="autocomplete-search">{% include 'icons/search.njk' %}</button>
+</form>
 {# post grid #}
 <ul class="l-postGrid u-section-mt-1-5">
 {% for post in pagination.items  %}
@@ -68,6 +64,7 @@ pagination:
 {% block scripts %}
 <script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
 <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
+<script src="/node_modules/lockr/lockr.js"></script>
 <script src="/node_modules/lunr/lunr.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
 <script src="/js/darkMode.js"></script>

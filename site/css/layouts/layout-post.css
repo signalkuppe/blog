@@ -7,13 +7,10 @@
 @media screen and (min-width: 1280px) {
   .l-post {
     display: grid;
-    grid-template-columns: 60ch 400px;
+    grid-template-columns: 60ch 1fr;
     grid-gap: calc(var(--spaceUnit) * 4);
-    justify-content: space-between;
+    justify-items: flex-end;
     padding: 0;
-    max-width: 1170px;
-  }
-  .l-post-sidebar {
-    padding-left: calc(var(--spaceUnit) * 2);
+    max-width: 1280px;
   }
 }

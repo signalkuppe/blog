@@ -36,14 +36,14 @@ Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vu
 <a href="https://signalkuppe.wufoo.com/forms/contatta-signalkuppe/" rel="noopener" class="u-highlight-link"><b>Contattatemi</b></a> per parlare di un vostro progetto o semplicemente per fare due chiacchiere.
 </p>
 <hr  class="c-homepage-hr" />
-<h3 class="c-homepage-ultimo">Ultimo post</h3>
+<h3 class="c-homepage-ultimo">Ultimo post 🔥</h3>
 {% for post in pagination.items %}
 {% if loop.index === 1 %}
 
 <article>
   <header>
     <time class="c-homepage-time" datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
-    <h4 class="c-homepage-postTitle"><a href="{{ post.computed.slug }}">{{ post.fields.title }}</a> {% include 'icons/new.njk' %}</h4>
+    <h4 class="c-homepage-postTitle"><a href="{{ post.computed.slug }}">{{ post.fields.title }}</a></h4>
   </header>
   <p>{{ post.fields.description }}</p>
 </article>
@@ -57,6 +57,7 @@ Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vu
 
 {% block scripts %}
 <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
+<script src="/node_modules/lockr/lockr.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
 <script src="/js/darkMode.js"></script>
 <script src="/js/smoothScroll.js"></script>
