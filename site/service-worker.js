@@ -50,6 +50,7 @@ if (workbox) {
 
   // This "catch" handler is triggered when any of the other routes fail to generate a response
   workbox.routing.setCatchHandler(({event}) => {
+    console.log(event)
     switch (event.request.destination) {
       case 'document':
         return caches.match('offline/index.html')
