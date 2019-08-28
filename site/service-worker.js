@@ -43,6 +43,22 @@ if (workbox) {
     })
   )
 
+  // Use a stale-while-revalidate strategy for all other requests.
+  workbox.routing.setDefaultHandler(
+    new workbox.strategies.StaleWhileRevalidate()
+  )
+
+  // This "catch" handler is triggered when any of the other routes fail to generate a response
+  workbox.routing.setCatchHandler(({event}) => {
+    switch (event.request.destination) {
+      case 'document':
+        return caches.match('offline/index.html')
+      default:
+        // If we don't have a fallback, just return an error response.
+        return Response.error();
+    }
+  })
+
 
 } else {
   console.log(`Service worker non caricato 😬`)
