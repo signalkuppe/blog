@@ -43,6 +43,10 @@ if (workbox) {
     })
   )
 
+    // Use a stale-while-revalidate strategy for all other requests.
+  workbox.routing.setDefaultHandler(
+    new workbox.strategies.StaleWhileRevalidate()
+  )
 
   // This "catch" handler is triggered when any of the other routes fail to generate a response
   workbox.routing.setCatchHandler(({ event }) => {
@@ -53,8 +57,7 @@ if (workbox) {
       default:
         return Response.error();
     }
-  });
-
+  })
 
 } else {
   console.log(`Service worker non caricato 😬`)
