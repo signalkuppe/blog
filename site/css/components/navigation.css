@@ -22,17 +22,18 @@
 }
 
 .c-navigation-logo svg {
+  fill: var(--bodyColor);
   transform: scale(1.5);
 }
 
 .c-navigation a {
   text-decoration: none;
-  color: var(--colorGreyDark);
+  color: var(--colorGreyDarker);
   display: block;
 }
 
 .c-navigation a:hover {
-  color: black;
+  color: var(--bodyColor);
 }
 
 .c-navigation li:not(.c-navigation-logo) a:active {
@@ -42,8 +43,8 @@
 }
 
 .c-navigation a.is-active {
-  color: black;
-  border-bottom: 2px solid black;
+  color: var(--bodyColor);
+  border-bottom: 2px solid var(--bodyColor);
 }
 
 @media screen and (min-width: 1170px) {

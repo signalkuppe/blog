@@ -68,11 +68,20 @@
 }
 
 .no-js .u-hide-nojs {
-  display: none;
+  display: none !important;
 }
 
 .u-type-lead {
-  font-size: 1.15em;
+  font-size: 1.15em !important;
+}
+
+.u-highlight-link {
+  text-decoration: none !important;
+  background-image: linear-gradient(var(--colorPrimary), var(--colorPrimary)) !important;
+  background-size: 100% 0.6em !important;
+  background-repeat: no-repeat !important;
+  background-position: left 0 bottom -60% !important;
+  color: inherit !important;
 }
 
 @media screen and (min-width: 1480px) {

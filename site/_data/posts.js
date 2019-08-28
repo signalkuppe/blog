@@ -52,7 +52,10 @@ const transformPosts = (posts) => { // ad some custom prop
                   class="lazyImg" /> 
                 <figcaption>${node.data.target.fields.title}</figcaption>
             </figure>`
-        }
+        },
+        'hyperlink': (node) => { // how to render links in text
+          return `<a class="u-highlight-link" href="${node.data.uri}">${node.content[0].value}</a>`
+        },
       }
     }
     post.computed = {

@@ -26,8 +26,8 @@
   font-weight: 700;
   font-style: normal;
   line-height: 1.1;
-  background: black;
-  color: white;
+  background: var(--bodyBackgroundColor);
+  color: var(--bodyColor);
   position: absolute;
   bottom: 0;
   right: 0;

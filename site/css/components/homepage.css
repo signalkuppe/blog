@@ -24,14 +24,6 @@
   margin-bottom: 0.5em;
 }
 
-.c-homepage-stabiloLink {
-  text-decoration: none;
-  background-image: linear-gradient(var(--colorPrimary), var(--colorPrimary));
-  background-size: 100% 0.5em;
-  background-repeat: no-repeat;
-  background-position: left 0 bottom -40%;
-}
-
 .c-homepage-postTitle {
   font-size: var(--fontSize1);
   margin-bottom: 0.5em;

@@ -5,6 +5,8 @@ html {
 body {
   font-family: var(--fontSans);
   line-height: var(--leadBase);
+  background: var(--bodyBackgroundColor);
+  color: var(--bodyColor);
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -88,5 +90,9 @@ figcaption {
 }
 
 svg {
-  vertical-align: bottom;
+  vertical-align: text-bottom;
+}
+
+.js-darkmode img {
+  filter: brightness(0.75) saturate(0.25);
 }

@@ -1,21 +1,18 @@
 .c-button {
-  color: var(--colorGreyDarker);
-  font-weight: 700;
+  color: var(--bodyColor);
+  background: var(--colorPrimary);
   display: inline-block;
   text-decoration: none;
-  border-width: 2px;
-  border-bottom-width: 4px;
-  border-style: solid;
-  border-color: var(--colorGreyDarker);
-  padding: 0.5em 1em;
+  border: 4px solid var(--colorPrimary);
+  border-radius: 1.5em;
+  padding: 0.2em 1.25em;
   transition: all 0.2s ease;
+  font-size: var(--fontSizeSmall);
+  font-weight: 700;
 }
 
 .c-button:hover {
-  color: black;
-  border-color: black;
-  border-bottom-width: 6px;
-  margin-top: -2px;
+  border-color: var(--bodyColor);
 }
 
 .c-button:active {
