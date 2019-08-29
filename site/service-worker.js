@@ -55,7 +55,7 @@ if (workbox) {
           purgeOnQuotaError: true
         }),
         new workbox.cacheableResponse.Plugin({
-          statuses: [0, 200]
+          statuses: [0, 200] // cache also opaque responses
         })
       ]
     })
