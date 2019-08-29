@@ -1,6 +1,5 @@
 .c-navigation {
   font-family: var(--fontCaption);
-  text-transform: uppercase;
   width: 90%;
   max-width: 1170px;
   margin: 0 auto;
@@ -17,8 +16,12 @@
   justify-content: center;
 }
 
+.c-navigation-menu li:not(.c-navigation-toggle) {
+  text-transform: uppercase;
+}
+
 .c-navigation-menu li + li {
-  margin-left: 2em;
+  margin-left: 1.5em;
 }
 
 .c-navigation-logo {

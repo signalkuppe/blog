@@ -4,10 +4,6 @@
   position: relative;
 }
 
-.leaflet-tile-pane {
-  filter: grayscale(100%);
-}
-
 .c-map-marker[style], 
 .c-map-marker img {
   height: 50px!important;

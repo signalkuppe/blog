@@ -3,8 +3,8 @@ title: "Pagina non disponibile offline"
 description: "peccato!"
 ---
 {% import "macros/macros.njk" as macro with context %}
-{# Blog layout, extends base #}
-{% extends "layouts/_layoutBase.njk" %}
+{# Blog layout, extends courtesy #}
+{% extends "layouts/_layoutCourtesy.njk" %}
 
 
 {% block head %}
@@ -12,19 +12,16 @@ description: "peccato!"
 {% endblock %}
 
 {% block main %}
-<div class="u-text-center">
-  <style>
-    svg {
-      transform: scale(2)
-    }
-    h1 {
-      font-family: var(--fontSans);
-    }
-  </style>
-  <p>{% include 'logo.njk' %}</p>
-  <h1 class="u-section-mt-1">Questa pagina non è disponibile offline 😕</h1>
-  <p class="u-section-mt-0-5 u-section-mb-1">Puoi però <b>salvare un articolo</b> e vederlo anche senza rete</p>
-  <a href="/" class="c-button">Torna alla homepage</a>
+<div class="c-courtesyPage">
+  <header class="c-courtesyPage-logo"><a href="/" aria-label="Torna alla homepage" title="Torna alla homepage">{% include 'logo.njk' %}</a></header>
+  <main>
+    <h1 class="c-courtesyPage-title">Questa pagina non è disponibile offline</h1>
+    <aside class="c-courtesyPage-icon">{% include 'icons/dino-crying.njk' %}</aside>
+    <p>Puoi però <b>salvare un articolo</b> e vederlo anche senza rete</p>
+  </main>
+  <footer>
+    <a href="/" class="c-button">Torna alla homepage</a>
+  </footer>
 </div>
 {% endblock %}
 

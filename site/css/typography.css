@@ -96,3 +96,11 @@ svg {
 svg.icon {
   height: 1em;
 }
+
+::-moz-selection {
+  color: black; background: var(--colorPrimary);
+}
+
+::selection {
+  color: black; background: var(--colorPrimary);
+} 

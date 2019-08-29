@@ -39,7 +39,30 @@ if (workbox) {
   workbox.routing.registerRoute(
     /.*(?:cloudfront)\.net/,
     new workbox.strategies.StaleWhileRevalidate({
-      cacheName: `${cachePrefix}-netlify`
+      cacheName: `${cachePrefix}-netlify-assets`
+    })
+  )
+
+  // all contentful images
+  workbox.routing.registerRoute(
+    new RegExp('^https://images\.ctfassets\.net'),
+    new workbox.strategies.CacheFirst({
+      cacheName: `${cachePrefix}-contentful-images`,
+      plugins: [
+        new workbox.expiration.Plugin({
+          maxEntries: 60,
+          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+          purgeOnQuotaError: true
+        })
+      ]
+    })
+  )
+  
+  // all blog paths
+  workbox.routing.registerRoute(
+    new RegExp('^/[^/]+/[^/]+/[^/]+/[^/]'),
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: `${cachePrefix}-posts`
     })
   )
 
@@ -52,8 +75,7 @@ if (workbox) {
   workbox.routing.setCatchHandler(({ event }) => {
     switch (event.request.destination) {
       case 'document':
-        return caches.match(workbox.precaching.getCacheKeyForURL('offline/index.html'))
-        break;
+        return caches.match(workbox.precaching.getCacheKeyForURL('offline/index.html')) // serve the precached offline page
       default:
         return Response.error();
     }

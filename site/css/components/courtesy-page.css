@@ -1,0 +1,39 @@
+.c-courtesyPage {
+  height: 100vh;
+  width: calc(100% - 1.5em);
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.c-courtesyPage-logo {
+  margin-bottom: 40px;
+}
+
+.c-courtesyPage-logo svg {
+  transform: scale(1.8);
+}
+
+.c-courtesyPage-title {
+  font-family: var(--fontSans);
+  font-size: var(--fontSize4);
+  margin-bottom: 40px;
+}
+
+.c-courtesyPage-icon {
+  margin-bottom: 40px;
+}
+
+.c-courtesyPage-icon svg {
+  max-height: 200px;
+}
+
+@media screen and (min-width: 1170px) {
+  .c-courtesyPage-title {
+    font-size: var(--fontSize6);
+  }
+}

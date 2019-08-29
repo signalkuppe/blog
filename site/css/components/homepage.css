@@ -1,6 +1,7 @@
 .c-homepage-image {
   display: block;
   width: 100%;
+  max-height: 350px;
   object-fit: cover;
 }
 
@@ -36,4 +37,10 @@
 
 .c-homepage-hr {
   background: var(--colorGreyLight);
+}
+
+@media screen and (min-width: 1170px) {
+  .c-homepage-image {
+    max-height: none;
+  }
 }

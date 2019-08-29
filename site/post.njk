@@ -140,7 +140,10 @@ permalink: "{{ post.computed.slug }}"
   </aside>
   {# /gallery #}
   <footer class="c-post-footer u-section-mt-1-5">
-    <p class="u-text-center u-section-mb-1"><a href="" title="Stampa" onclick="window.print()" class="c-button">{% include 'icons/print.njk' %} Stampa questa pagina</a></p>
+    <ul class="u-text-center u-section-mb-1 u-inline-list u-justify-center">
+      <li><a href="" onclick="window.print()" class="c-button">{% include 'icons/print.njk' %} Stampa questa pagina</a></li>
+      <li><a href="" title="Salva la pagina per leggerla anche senza rete" class="c-button" id="js-saveOffline">Salva per leggerlo offline</a></li>
+    </ul>
     {# prev-next #}
     <nav class="js-observe js-observe-nav">
       <ul class="c-postNav">
@@ -177,6 +180,7 @@ permalink: "{{ post.computed.slug }}"
 <script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
 <script src="/node_modules/lockr/lockr.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
+<script src="/js/savePostForOffline.js"></script>
 <script src="/js/darkMode.js"></script>
 <script src="/js/postAnimations.js"></script>
 <script src="/js/smoothScroll.js"></script>
