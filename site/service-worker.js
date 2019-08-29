@@ -45,7 +45,7 @@ if (workbox) {
 
   // all contentful images
   workbox.routing.registerRoute(
-    new RegExp('^https://images\.ctfassets\.net'),
+    /.*(?:ctfassets)\.net/,
     new workbox.strategies.CacheFirst({
       cacheName: `${cachePrefix}-contentful-images`,
       plugins: [
@@ -75,7 +75,7 @@ if (workbox) {
   workbox.routing.setCatchHandler(({ event }) => {
     switch (event.request.destination) {
       case 'document':
-        return caches.match(workbox.precaching.getCacheKeyForURL('offline/index.html')) // serve the precached offline page
+        return caches.match(workbox.precaching.getCacheKeyForURL('offline.html')) // serve the precached offline page
       default:
         return Response.error();
     }
