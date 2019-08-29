@@ -53,6 +53,9 @@ if (workbox) {
           maxEntries: 60,
           maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
           purgeOnQuotaError: true
+        }),
+        new workbox.cacheableResponse.Plugin({
+          statuses: [0, 200]
         })
       ]
     })
@@ -60,7 +63,7 @@ if (workbox) {
   
   // all blog paths
   workbox.routing.registerRoute(
-    new RegExp('^/[^/]+/[^/]+/[^/]+/[^/]'),
+    new RegExp('/[^/]+/[^/]+/[^/]+/[^/]'),
     new workbox.strategies.StaleWhileRevalidate({
       cacheName: `${cachePrefix}-posts`
     })
