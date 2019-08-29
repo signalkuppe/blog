@@ -22,7 +22,7 @@
   left: 0;
   top: 0;
   background: var(--colorGreyLight);
-  border: 0.1em solid var(--colorGrey);
+  border: 0.1em solid var(--colorGreyDark);
   border-radius: 1em;
   box-sizing: border-box;
 }
@@ -56,7 +56,7 @@
   height: 1em;
   position: absolute;
   top: 0em;
-  background: var(--colorGrey);
+  background: var(--colorGreyDark);
   border-radius: 50%;
   transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 } 

@@ -26,5 +26,5 @@
 }
 
 .c-button--iconBaseline svg {
-  vertical-align: baseline;
+  vertical-align: sub;
 }

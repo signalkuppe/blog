@@ -1,6 +1,10 @@
 {
     "name": "Signalkuppe",
     "short_name": "Signalkuppe",
+    "description": "Parole oltre i 4000m",
+    "orientation": "portrait-primary",
+    "dir": "ltr",
+    "lang": "it-IT",
     "icons": [
         {
             "src": "/favicons/android-chrome-192x192.png",
@@ -15,5 +19,6 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "standalone",
+    "start_url": "/"
 }

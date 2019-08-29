@@ -142,7 +142,7 @@ permalink: "{{ post.computed.slug }}"
   <footer class="c-post-footer u-section-mt-1-5">
     <ul class="u-text-center u-section-mb-1 u-inline-list u-justify-center">
       <li><a href="" onclick="window.print()" class="c-button">{% include 'icons/print.njk' %} Stampa questa pagina</a></li>
-      <li><a href="" title="Salva la pagina per leggerla anche senza rete" class="c-button" id="js-saveOffline">Salva per leggerlo offline</a></li>
+      <li><a href="" class="c-button" id="js-promptButton">{% include 'icons/smartphone.njk' %} Installa il sito come app</a></li>
     </ul>
     {# prev-next #}
     <nav class="js-observe js-observe-nav">
@@ -163,7 +163,7 @@ permalink: "{{ post.computed.slug }}"
       </ul>
     </nav>
     {# /prev-next #}
-    <p class="c-post-newsletter u-section-mt-1">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH" class="u-highlight-link"><br>Iscriviti alla newsletter</a></strong></p>
+    <p class="c-post-newsletter u-section-mt-1 u-section-mb-1">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH" class="u-highlight-link"><br>Iscriviti alla newsletter</a></strong></p>
   </footer>
 </article>
 {% endblock %}
@@ -180,7 +180,7 @@ permalink: "{{ post.computed.slug }}"
 <script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
 <script src="/node_modules/lockr/lockr.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
-<script src="/js/savePostForOffline.js"></script>
+<script src="/js/addToHomePrompt.js"></script>
 <script src="/js/darkMode.js"></script>
 <script src="/js/postAnimations.js"></script>
 <script src="/js/smoothScroll.js"></script>
