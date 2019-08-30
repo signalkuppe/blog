@@ -25,6 +25,8 @@
   --colorGreyMedium: #adacac;
   --colorGreyDark: #666;
   --colorGreyDarker: #333;
+  --colorMsgInfo: RoyalBlue;
+  --colorMsgSuccess: SeaGreen;
   --bodyColor: #222;
   --bodyBackgroundColor: white;
 }

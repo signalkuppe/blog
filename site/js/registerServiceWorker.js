@@ -34,7 +34,7 @@ window.addEventListener('beforeinstallprompt', function (event) {
               close: false,
               gravity: 'bottom',
               position: 'right',
-              className: "c-toast--info"
+              className: 'c-toast--info'
             }).showToast()
           } else {
             Toastify({
@@ -43,7 +43,7 @@ window.addEventListener('beforeinstallprompt', function (event) {
               close: false,
               gravity: 'bottom',
               position: 'right',
-              className: "c-toast--success"
+              className: 'c-toast--success'
             }).showToast()
           }
         })
