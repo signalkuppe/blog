@@ -10,8 +10,10 @@ if ('serviceWorker' in navigator) {
 
 var deferredPrompt
 var promptButton = document.getElementById('js-promptButton')
-promptButton.style.display = 'none'
-promptButton.parentElement.style.display = 'none'
+if (promptButton) {
+  promptButton.style.display = 'none'
+  promptButton.parentElement.style.display = 'none'
+}
 
 // prevent default install prompt
 window.addEventListener('beforeinstallprompt', function (event) {
