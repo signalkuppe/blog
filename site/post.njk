@@ -75,12 +75,12 @@ permalink: "{{ post.computed.slug }}"
           {% set fileName %}{{ post.fields.date | formatDate('DD-MM-YY') }}-{{ post.fields.title | slug }}{% endset %}
           {% if track.fields.file.contentType === 'application/vnd.google-earth.kml+xml' %}
           <li>
-            <a class="c-button" href="{{ track.fields.file.url }}" title="Scarica la traccia .kml per Google Earth" download="{{ fileName }}.kml">{% include 'icons/download.njk' %} Traccia kml</a>
+            <a class="c-button" href="{{ track.fields.file.url }}" title="Scarica la traccia .kml per Google Earth" download="{{ fileName }}.kml">{% include 'icons/download.njk' %}Traccia kml</a>
           </li>
           {% endif %}
           {% if track.fields.file.contentType === 'application/octet-stream' or track.fields.file.contentType === 'application/zip'%}
           <li>
-            <a class="c-button" href="{{ track.fields.file.url }}" title="Scarica la traccia .gpx" download="{{ fileName }}.gpx">{% include 'icons/download.njk' %} Traccia gpx</a>
+            <a class="c-button" href="{{ track.fields.file.url }}" title="Scarica la traccia .gpx" download="{{ fileName }}.gpx">{% include 'icons/download.njk' %}Traccia gpx</a>
           </li>
           {% endif %}
           {% endfor %}
@@ -91,17 +91,17 @@ permalink: "{{ post.computed.slug }}"
         <h3 class="js-animate-sidebarTitle{% if post.fields.gpsTracks.length %} u-section-mt-1{% endif %} u-mb-1">Condividi</h3>
         <ul class="c-post-share u-inline-list">
           <li>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F" title="Condividi su Facebook" aria-label="Condividi su Facebook" target="_blank" rel="noopener" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&amp;quote=' + encodeURIComponent(document.URL)); return false;">
+            <a href="" title="Condividi su Facebook" aria-label="Condividi su Facebook" target="_blank" rel="noopener" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&amp;quote=' + encodeURIComponent(document.URL)); return false;">
               {% include 'icons/facebook.njk' %}
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/intent/tweet?source=%2Fescursionismo%2F2019%2F02%2F23%2Fpizzi-di-parlasco%2F&amp;text=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio&amp;via=signalkuppe" target="_blank" rel="noopener" title="Condividi su Twitter" aria-label="Condividi su Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL))+ ':%20'  +author; return false;">
+            <a href="" target="_blank" rel="noopener" title="Condividi su Twitter" aria-label="Condividi su Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL))+ ':%20'  +author; return false;">
               {% include 'icons/twitter.njk' %}
             </a>
           </li>
           <li>
-            <a href="mailto:?subject=Pizzi%20di%20Parlasco&amp;body=Escursionismo%20ai%20Pizzi%20di%20Parlasco%3A%20salita%20per%20la%20Porta%20di%20Parlasco%20e%20rientro%20ad%20anello%20per%20il%20Passo%20di%20Agueglio" target="_blank" rel="noopener" title="Condividi via mail" aria-label="Condividi via mail" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' +  encodeURIComponent(document.URL)); return false;">
+            <a href="" target="_blank" rel="noopener" title="Condividi via mail" aria-label="Condividi via mail" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' +  encodeURIComponent(document.URL)); return false;">
               {% include 'icons/mail.njk' %}
             </a>
           </li>
@@ -124,7 +124,6 @@ permalink: "{{ post.computed.slug }}"
       <li class="c-imageGallery-item">
         <a href="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" title="{{ photo.fields.title }}">
           <img 
-            src="{{ env.ELEVENTY_IMAGE_PLACEHOLDER }}?fit=thumb&w=800&fm=jpg&fl=progressive"
             data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
             alt="{{ photo.fields.description }}" 
             class="lazyImg u-hide-nojs" />
@@ -141,8 +140,8 @@ permalink: "{{ post.computed.slug }}"
   {# /gallery #}
   <footer class="c-post-footer u-section-mt-1-5">
     <ul class="u-text-center u-section-mb-1 u-inline-list u-justify-center">
-      <li><a href="" onclick="window.print()" class="c-button">{% include 'icons/print.njk' %} Stampa questa pagina</a></li>
-      <li><a href="" class="c-button" id="js-promptButton">{% include 'icons/smartphone.njk' %} Installa il sito come app</a></li>
+      <li><a href="" onclick="window.print()" class="c-button">{% include 'icons/print.njk' %}Stampa questa pagina</a></li>
+      <li><a href="" class="c-button" id="js-promptButton">{% include 'icons/smartphone.njk' %}Installa il sito come app</a></li>
     </ul>
     {# prev-next #}
     <nav class="js-observe js-observe-nav">
@@ -181,7 +180,7 @@ permalink: "{{ post.computed.slug }}"
 <script src="/node_modules/lockr/lockr.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
 <script src="/js/addToHomePrompt.js"></script>
-<script src="/js/darkMode.js"></script>
+<script src="/js/theme.js"></script>
 <script src="/js/postAnimations.js"></script>
 <script src="/js/smoothScroll.js"></script>
 <script src="/js/currentYear.js"></script>

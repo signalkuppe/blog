@@ -1,7 +1,7 @@
 (function () {
   document.addEventListener('DOMContentLoaded', (event) => {
     /* Initialize map */
-    var zoom = 6
+    var zoom = 7
     var lat = 45.7929
     var lng =  9.0000
     var mymap = L.map('map',{ renderer: L.canvas() }).setView([lat, lng], zoom);
@@ -19,7 +19,7 @@
     mymap.scrollWheelZoom.disable()
     /* add markers */
     markers.forEach(function(marker){
-        var customIcon = L.divIcon({className: 'c-map-marker', html:'<img class="lazyImg" title="'+marker.title+'" data-src="'+marker.cover+'" src="'+ marker.placeholder +'" />'}), // use custom div for icons
+        var customIcon = L.divIcon({className: 'c-map-marker', html:'<img class="lazyImg" title="'+marker.title+'" data-src="'+marker.cover+'" />'}), // use custom div for icons
             markerHtml = '<a href="'+marker.link+'" class="c-map-link" title="Leggi il post"><div class="c-map-popup">';
             markerHtml += '<img src="'+marker.cover+'" />'
             markerHtml += '<div class="c-map-info">'

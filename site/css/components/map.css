@@ -17,7 +17,7 @@
 }
 
 .c-map-marker img {
-  border: 4px solid white;
+  border: 4px solid var(--colorGreyLighter);
 }
 
 .c-map-marker::after {
@@ -31,7 +31,7 @@
   height: 0; 
   border-left: none;
   border-right: 10px solid transparent;
-  border-top: 10px solid white;
+  border-top: 10px solid var(--colorGreyLighter);
 }
 
 .c-map-marker::after,
@@ -48,13 +48,24 @@
 }
 
 .leaflet-popup-content[style] {
-  width: auto!important;
-  background: white!important;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.leaflet-popup-close-button {
+  color: black !important;
 }
 
 .leaflet-popup-content-wrapper {
-  border-radius: 0px!important;
-  background: white!important;
+  border-radius: 0px !important;
+  background: var(--bodyBackgroundColor) !important;
+  color: var(--colorGreyDarker) !important;
+  padding: 0 2em 0 0!important;
+}
+
+.leaflet-popup-content-wrapper:hover {
+  background: var(--colorPrimary) !important;
+  color: black !important;
 }
 
 .leaflet-popup-tip {
@@ -69,7 +80,6 @@
 
 .c-map-popup {
   display: flex;
-  padding: .15em;
 }
 
 .c-map-popup img {
@@ -79,6 +89,7 @@
 }
 
 .c-map-info {
+  padding-top: 1em;
   width: 240px;
 }
 

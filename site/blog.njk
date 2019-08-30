@@ -45,9 +45,8 @@ pagination:
   <button type="reset" aria-label="Ripristina" class="c-autocomplete-reset" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
   <button type="submit" aria-label="Cerca" class="c-autocomplete-search" id="autocomplete-search">{% include 'icons/search.njk' %}</button>
 </form>
-<p class="u-text-center u-section-mt-1"><a href="/feed.xml" class="c-button c-button--iconBaseline">{% include 'icons/feed.njk' %} Feed dei post</a></p>
 {# post grid #}
-<ul class="l-postGrid u-section-mt-1">
+<ul class="l-postGrid u-section-mt-1-5">
 {% for post in pagination.items  %}
   <li class="l-postGrid-item">
     <a href="{{ post.computed.slug }}" title="leggi il post" class="u-container-link">
@@ -56,6 +55,7 @@ pagination:
   </li>
 {% endfor %}
 </ul>
+<p class="u-text-center u-section-mt-1-5"><a href="/feed.xml" class="c-button c-button--iconBaseline">{% include 'icons/feed.njk' %} Feed dei post</a></p>
 {% endblock %}
 
 {% block footer %}
@@ -68,7 +68,7 @@ pagination:
 <script src="/node_modules/lockr/lockr.js"></script>
 <script src="/node_modules/lunr/lunr.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
-<script src="/js/darkMode.js"></script>
+<script src="/js/theme.js"></script>
 <script src="/js/smoothScroll.js"></script>
 <script src="/js/currentYear.js"></script>
 <script src="/js/lazyImages.js"></script>

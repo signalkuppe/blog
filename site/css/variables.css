@@ -29,7 +29,7 @@
   --bodyBackgroundColor: white;
 }
 
-:root.js-darkmode {
+:root.theme-dark {
   --colorGreyLighter: hsl(223, 10%, 13%);
   --colorGreyLight: hsl(222, 10%, 19%);
   --colorGrey: hsl(224, 4%, 48%);;

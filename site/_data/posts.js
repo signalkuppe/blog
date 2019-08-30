@@ -43,15 +43,23 @@ const transformPosts = (posts) => { // ad some custom prop
     const options = {
       renderNode: {
         'embedded-asset-block': (node) => { // how to render embedded images in rich text
+          const img = `${node.data.target.fields.file.url}?fit=thumb&w=1440&fm=jpg&fl=progressive&q=70`
+          const imgTitle = node.data.target.fields.title
+          const imgAlt = node.data.target.fields.description
           return `
+          <noscript>
+            <img 
+              src="${img}" 
+              alt="${imgAlt}"  />        
+          </noscript>
             <figure class="${i % 2 ? 'post-image-odd' : 'post-img-even'}">
               <img 
-                  data-src="${node.data.target.fields.file.url}?fit=thumb&w=1440&fm=jpg&fl=progressive&q=70"
-                  src="${process.env.ELEVENTY_IMAGE_PLACEHOLDER}?fit=thumb&w=800&fm=jpg&fl=progressive"
-                  alt="${node.data.target.fields.description}" 
+                  data-src="${img}"
+                  alt="${imgAlt}" 
                   class="lazyImg" /> 
-                <figcaption>${node.data.target.fields.title}</figcaption>
-            </figure>`
+                <figcaption>${imgTitle}</figcaption>
+            </figure>
+            `
         },
         'hyperlink': (node) => { // how to render links in text
           return `<a class="u-highlight-link" href="${node.data.uri}">${node.content[0].value}</a>`
@@ -89,7 +97,6 @@ const makeMarkers = (posts) => { // make markers index, used also in lunr search
       link: makeFullSlug(post.fields.slug),
       tags: post.fields.tags,
       categories: post.fields.category[0],
-      placeholder: `${process.env.ELEVENTY_IMAGE_PLACEHOLDER}?fit=thumb&w=200&h=200&fm=jpg&fl=progressive&q=70`,
       cover: `${post.fields.cover.fields.file.url}?fit=thumb&w=200&h=200&fm=jpg&fl=progressive&q=70`,
       autocompleteRow: `<a href="${makeFullSlug(post.fields.slug)}" data-autocomplete"><span>${date.format(post.fields.date, 'DD/MM/YY')}</span> - ${post.fields.title}</a>`
     }

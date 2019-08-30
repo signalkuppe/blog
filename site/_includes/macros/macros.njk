@@ -4,14 +4,14 @@
 
 {% macro commonMeta () %}
 <meta charset="utf-8">
-{% if site.env.ELEVENTY_ENV !== 'production' %}
+{% if env.ELEVENTY_ENV !== 'production' %}
 <meta name="robots" content="noindex">
 {% endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <script>
-  document.documentElement.className = 'js'
+  document.documentElement.classList.remove('no-js').add('js')
 </script>
 {% endmacro %}
 
@@ -27,7 +27,7 @@
 {# 
 # html tag
 #}
-{% macro htmlTag() %}<html lang="it" class="no-js">{% endmacro %}
+{% macro htmlTag() %}<html lang="it" class="no-js{%if env.ELEVENTY_THEME === 'dark' %} theme-dark{% endif %}">{% endmacro %}
 
 {# 
 # Canonical meta tags
@@ -35,7 +35,7 @@
 #}
 
 {% macro canonical(pageUrl) %}
-<link rel="canonical" href="{{ site.env.ELEVENTY_URL }}{{ pageUrl }}">
+<link rel="canonical" href="{{ env.ELEVENTY_URL }}{{ pageUrl }}">
 {% endmacro %}
 
 {# 
@@ -142,7 +142,7 @@
         <a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a>
       </li>
       <li><a href="/portfolio" title="Il mio portfolio fotografico" {% if activeSection == 'portfolio' %} class="is-active"{% endif %}>Foto</a></li>
-      <li class="c-navigation-toggle"><span class="c-toggle"><input type="checkbox" id="toggle" /><label for="toggle">Tema scuro</label></span></li>
+      <li class="c-navigation-toggle"><span class="c-toggle"><input type="checkbox" id="toggle"{% if env.ELEVENTY_THEME === 'dark' %} checked{% endif %} /><label for="toggle">Tema scuro</label></span></li>
     </ol>
   </nav>
 </div>
@@ -192,9 +192,13 @@
     <figure class="c-card-image">
       <img 
         class="lazyImg"
-        src="{{ env.ELEVENTY_IMAGE_PLACEHOLDER }}?fit=thumb&w=600&h=400&fm=jpg&fl=progressive"
         data-src="{{ imageUrl }}?fit=thumb&w=600&h=400&f=center&q=70&fl=progressive" 
         alt="{{ imageAlt }}" />
+      <noscript>
+        <img 
+          src="{{ imageUrl }}?fit=thumb&w=600&h=400&f=center&q=70&fl=progressive" 
+          alt="{{ imageAlt }}"  />        
+      </noscript>
     </figure>
     <div class="c-card-body">
       <header class="c-card-header">

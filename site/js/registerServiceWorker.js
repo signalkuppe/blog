@@ -6,11 +6,12 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
   })
-  var deferredPrompt
-  // prevent default install prompt
-  window.addEventListener('beforeinstallprompt', function (event) {
-    event.preventDefault()
-    deferredPrompt = event
-    return false
-  })
 }
+
+var deferredPrompt
+// prevent default install prompt
+window.addEventListener('beforeinstallprompt', function (event) {
+  deferredPrompt = event
+  event.preventDefault()
+  return false
+})
