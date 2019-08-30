@@ -11,7 +11,7 @@ if ('serviceWorker' in navigator) {
 var deferredPrompt
 // prevent default install prompt
 window.addEventListener('beforeinstallprompt', function (event) {
-  deferredPrompt = event
   event.preventDefault()
-  return false
+  deferredPrompt = event
+  console.log('prompt event', deferredPrompt)
 })
