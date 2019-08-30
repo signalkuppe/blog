@@ -24,6 +24,7 @@
     "lockr": "^0.8.5",
     "lunr": "^2.3.6",
     "smooth-scroll": "^16.1.0",
+    "toastify-js": "^1.6.1",
     "vanilla-lazyload": "^12.0.0",
     "workbox-sw": "^4.3.1"
   },

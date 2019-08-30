@@ -140,7 +140,7 @@ permalink: "{{ post.computed.slug }}"
   {# /gallery #}
   <footer class="c-post-footer u-section-mt-1-5">
     <ul class="u-text-center u-section-mb-1 u-inline-list u-justify-center">
-      <li><a href="" onclick="window.print()" class="c-button">{% include 'icons/print.njk' %}Stampa questa pagina</a></li>
+      <li><a href="" onclick="window.print()" class="c-button">{% include 'icons/print.njk' %}Stampa</a></li>
       <li><a href="" class="c-button" id="js-promptButton">{% include 'icons/smartphone.njk' %}Installa il sito come app</a></li>
     </ul>
     {# prev-next #}
@@ -177,6 +177,7 @@ permalink: "{{ post.computed.slug }}"
 <script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
 <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
 <script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
+<script src="/node_modules/toastify-js/src/toastify.js"></script>
 <script src="/node_modules/lockr/lockr.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
 <script src="/js/theme.js"></script>

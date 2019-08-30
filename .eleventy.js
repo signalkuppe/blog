@@ -17,10 +17,11 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'css'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'img'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'service-worker.js'))
+  eleventyConfig.addPassthroughCopy('node_modules/toastify-js/src') // we need also the css
   eleventyConfig.addPassthroughCopy('node_modules/lockr/lockr.js')
   eleventyConfig.addPassthroughCopy('node_modules/workbox-sw/build/workbox-sw.js')
   eleventyConfig.addPassthroughCopy('node_modules/colcade/colcade.js')
-  eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist')
+  eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist') // we need also the css
   eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')
   eleventyConfig.addPassthroughCopy('node_modules/smooth-scroll/dist/smooth-scroll.js')
   eleventyConfig.addPassthroughCopy('node_modules/lunr/lunr.js')

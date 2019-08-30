@@ -9,27 +9,40 @@ if ('serviceWorker' in navigator) {
 }
 
 var deferredPrompt
+var promptButton = document.getElementById('js-promptButton')
+promptButton.style.display = 'none'
+promptButton.parentElement.style.display = 'none'
+
 // prevent default install prompt
 window.addEventListener('beforeinstallprompt', function (event) {
   event.preventDefault()
   deferredPrompt = event
-  console.log('prompt event prevent', deferredPrompt)
-  var promptButton = document.getElementById('js-promptButton')
-  if (promptButton) {
-    promptButton.style.display = 'none'
-    promptButton.parentElement.style.display = 'none'
-    console.log('addtoHome', deferredPrompt)
+  if (promptButton) { 
     if (deferredPrompt) { // prompt has been requested (registerServiceWorker.js)
       promptButton.style.display = 'block'
       promptButton.parentElement.style.display = 'block'
-      promptButton.addEventListener('click', function(e) {
+      promptButton.addEventListener('click', function(e) { // delegate the prompt to user action
         e.preventDefault()
         deferredPrompt.prompt()
         deferredPrompt.userChoice.then(function(choiceResult) {
           if (choiceResult.outcome === 'dismissed') {
-            alert('buuu!!!')
+            Toastify({
+              text: 'Peccato, ma capisco 😉',
+              duration: 4000,
+              close: false,
+              gravity: 'bottom',
+              position: 'right',
+              className: "c-toast--info"
+            }).showToast()
           } else {
-            alert('yeah!!!')
+            Toastify({
+              text: 'App aggiunta 😎',
+              duration: 4000,
+              close: false,
+              gravity: 'bottom',
+              position: 'right',
+              className: "c-toast--success"
+            }).showToast()
           }
         })
         deferredPrompt = null
@@ -37,3 +50,8 @@ window.addEventListener('beforeinstallprompt', function (event) {
     }
   }
 })
+
+window.addEventListener('appinstalled', (evt) => { // already installed
+  promptButton.style.display = 'none'
+  promptButton.parentElement.style.display = 'none'
+});
