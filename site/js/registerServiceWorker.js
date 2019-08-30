@@ -36,15 +36,6 @@ window.addEventListener('beforeinstallprompt', function (event) {
               position: 'right',
               className: 'c-toast--info'
             }).showToast()
-          } else {
-            Toastify({
-              text: 'App aggiunta 😎',
-              duration: 4000,
-              close: false,
-              gravity: 'bottom',
-              position: 'right',
-              className: 'c-toast--success'
-            }).showToast()
           }
         })
         deferredPrompt = null
@@ -56,4 +47,12 @@ window.addEventListener('beforeinstallprompt', function (event) {
 window.addEventListener('appinstalled', (evt) => { // already installed
   promptButton.style.display = 'none'
   promptButton.parentElement.style.display = 'none'
+  Toastify({
+    text: 'App aggiunta 😎',
+    duration: 4000,
+    close: false,
+    gravity: 'bottom',
+    position: 'right',
+    className: 'c-toast--success'
+  }).showToast()
 });

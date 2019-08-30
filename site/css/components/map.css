@@ -9,7 +9,6 @@
   height: 50px!important;
   width: 50px!important;
   display: block;
-  filter: none;
 }
 
 .c-map-marker[style] {
@@ -45,6 +44,10 @@
 
 .c-map-marker[style]:hover img {
   border-color: var(--colorPrimary);
+}
+
+.c-map:not(.js-is-over) .leaflet-tile-pane {
+  filter: grayscale(1)
 }
 
 .leaflet-popup-content[style] {
