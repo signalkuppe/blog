@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "eleventy && node site/service-worker-build.js",
-    "serve": "eleventy --serve"
+    "dev": "node scripts/emptyCache && eleventy --serve"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "dotenv": "^8.1.0",
     "lodash": "^4.17.15",
     "mkdirp": "^0.5.1",
+    "rimraf": "^3.0.0",
     "workbox-build": "^4.3.1"
   }
 }

@@ -47,7 +47,7 @@
 }
 
 .c-map:not(.js-is-over) .leaflet-tile-pane {
-  filter: grayscale(1)
+  filter: grayscale(1);
 }
 
 .leaflet-popup-content[style] {

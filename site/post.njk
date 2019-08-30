@@ -42,10 +42,10 @@ permalink: "{{ post.computed.slug }}"
         srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=617&q=20&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
         data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=2560&h=1100&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
         media="(orientation: landscape)" />
-      <!-- 4:3 -->
+      <!-- 3:2 -->
       <source 
-        srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=800&h=600&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=20"
-        data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=1080&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=70" 
+        srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=800&h=533&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=20"
+        data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=960&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=70" 
         media="(orientation: portrait)" />
       <img 
         class="lazyImg"
@@ -53,7 +53,7 @@ permalink: "{{ post.computed.slug }}"
     </picture>
     <noscript>
       <img 
-        src="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=617&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=60" 
+        src="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=960&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=60" 
         alt="{{ post.fields.cover.fields.description }}"  />        
     </noscript>
     <figcaption class="c-post-cover-caption js-animate-caption">{{ post.fields.cover.fields.title }}</figcaption>
