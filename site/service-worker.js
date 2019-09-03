@@ -50,16 +50,6 @@ if (workbox) {
     /.*(?:ctfassets)\.net/,
     new workbox.strategies.NetworkFirst({
       cacheName: `${cachePrefix}-contentful-images`,
-      plugins: [
-        new workbox.expiration.Plugin({
-          maxEntries: 60,
-          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-          purgeOnQuotaError: true
-        }),
-        new workbox.cacheableResponse.Plugin({
-          statuses: [0, 200] // cache also opaque responses
-        })
-      ]
     })
   )
   
