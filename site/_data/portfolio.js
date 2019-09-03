@@ -47,7 +47,7 @@ module.exports = () => {
         photos = chunk.items
         while (chunk.total > limit * iteration) {
           skip =  limit * iteration
-          let chunk = await getPosts(limit, skip)
+          let chunk = await getPhotos(limit, skip)
           photos = _.union(photos, chunk.items)
           iteration ++
         }
