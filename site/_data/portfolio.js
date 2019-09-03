@@ -6,7 +6,8 @@
  */
 
 require('dotenv').config()
-const mkdirp = require('mkdirp');
+const _ = require('lodash')
+const mkdirp = require('mkdirp')
 const path = require('path')
 const fs = require('fs')
 const log = require(path.join(process.cwd(), 'lib/log'))
