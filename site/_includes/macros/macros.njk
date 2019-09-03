@@ -138,7 +138,7 @@
       <li class="c-navigation-logo">
         <a href="/" title="Torna alla pagina iniziale" aria-label="Torna alla pagina iniziale">
           <{{ siteNameTag }} class="c-navigation-siteName">
-          {% include 'logo.njk' %}
+          {% include 'logo.njk' %}<span class="u-srOnly">{{ env.ELEVENTY_NAME }}</span>
           </{{ siteNameTag }}>
         </a>
       </li>

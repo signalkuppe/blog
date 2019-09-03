@@ -6,10 +6,11 @@
 }
 
 .c-navigation-menu {
-  line-height: 1;
+  height: 3em;
   display: flex;
   justify-content: center;
   align-items: center;
+  line-height: 1;
 }
 
 .c-navigation-menu li:not(.c-navigation-toggle) {
@@ -20,13 +21,13 @@
   margin-left: 1.5em;
 }
 
-.c-navigation-logo {
-  margin-right: 1.5em;
+.c-navigation-logo svg {
+  height: 3em;
+  fill: var(--bodyColor);
 }
 
-.c-navigation-logo svg {
-  fill: var(--bodyColor);
-  transform: scale(1.5);
+.c-navigation-siteName {
+  font-size: 1em;
 }
 
 .c-navigation a {
@@ -52,7 +53,7 @@
 
 @media screen and (min-width: 1170px) {
   .c-navigation-logo svg {
-    transform: scale(1.8);
+   
   }
 }
 

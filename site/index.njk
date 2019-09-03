@@ -43,7 +43,7 @@ Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vu
 <article>
   <header>
     <time class="c-homepage-time" datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
-    <h4 class="c-homepage-postTitle"><a href="{{ post.computed.slug }}">{{ post.fields.title }}</a></h4>
+    <h4 class="c-homepage-postTitle"><a class="u-highlight-link" href="{{ post.computed.slug }}">{{ post.fields.title }}</a></h4>
   </header>
   <p>{{ post.fields.description }}</p>
 </article>
