@@ -9,6 +9,7 @@
   line-height: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .c-navigation-menu li:not(.c-navigation-toggle) {
