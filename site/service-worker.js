@@ -4,7 +4,7 @@ if (workbox) {
   console.log(`Service worker loaded 🎉`)
 
   const cachePrefix = 'signalkuppe'
-  workbox.skipWaiting()
+  workbox.core.skipWaiting()
   workbox.precaching.precacheAndRoute([]) // filled by service-worker-build.js
   workbox.core.setCacheNameDetails({
     prefix: cachePrefix,
