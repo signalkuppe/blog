@@ -5,6 +5,7 @@ if (workbox) {
 
   const cachePrefix = 'signalkuppe'
   workbox.core.skipWaiting()
+  workbox.core.clientsClaim()
   workbox.precaching.precacheAndRoute([]) // filled by service-worker-build.js
   workbox.core.setCacheNameDetails({
     prefix: cachePrefix,
