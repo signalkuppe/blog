@@ -19,6 +19,8 @@
 
 .c-navigation-menu li + li {
   margin-left: 1.5em;
+  position: relative;
+  top: -6px;
 }
 
 .c-navigation-logo svg {
