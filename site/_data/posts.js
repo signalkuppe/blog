@@ -126,7 +126,7 @@ module.exports = () => {
         const computedPosts = transformPosts(posts)
         const markers = makeMarkers(posts)
         fs.writeFileSync(logFile, JSON.stringify(computedPosts), 'utf-8') // write log file
-        fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(markers)}`, 'utf-8')
+        fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(markers)}`, 'utf-8') // write marker file
         resolve(computedPosts)
       } catch (err) {
         log.error('Posts fetch error', err)
