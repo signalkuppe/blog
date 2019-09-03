@@ -5,11 +5,6 @@
   margin: 0 auto;
 }
 
-.c-navigation-siteName,
-.c-navigation {
-  font-size: var(--fontSizeSmall);
-}
-
 .c-navigation-menu {
   line-height: 1;
   display: flex;
@@ -25,7 +20,7 @@
 }
 
 .c-navigation-logo {
-  margin-right: 2em;
+  margin-right: 1.5em;
 }
 
 .c-navigation-logo svg {
