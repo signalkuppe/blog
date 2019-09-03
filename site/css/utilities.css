@@ -74,7 +74,7 @@
   background-size: 100% 0.6em !important;
   background-repeat: no-repeat !important;
   background-position: left 0 bottom -60% !important;
-  color: inherit !important;
+  color: var(--colorBlack) !important;
 }
 
 .u-highlight-link:hover {
