@@ -1,14 +1,12 @@
 .c-card {
-  border: 1px solid var(--colorGreyLight);
+  border-left: 1px solid var(--colorGreyLight);
+  box-shadow: 0 2px 5px 0 var(--boxShadow);
   display: flex;
   flex-direction: column;
   height: 100%;
   will-change: transform;
   transition: transform 0.25s ease-in;
-  border-bottom: 5px solid var(--colorGreyLight);
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  background: var(--bodyBackgroundColor);
+  border-bottom: 5px solid transparent;
 }
 
 .c-card-image {

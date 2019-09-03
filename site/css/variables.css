@@ -29,6 +29,7 @@
   --colorMsgSuccess: SeaGreen;
   --bodyColor: #222;
   --bodyBackgroundColor: white;
+  --boxShadow: rgba(0,0,0,0.15);
 }
 
 :root.theme-dark {
@@ -40,6 +41,7 @@
   --colorGreyDarker: hsl(220, 9%, 67%);
   --bodyColor: hsl(220, 15%, 81%);
   --bodyBackgroundColor: hsl(220, 13%, 5%);
+  --boxShadow: rgba(255,255,255,0.15);
 }
 
 @media screen and (min-width: 1170px) {

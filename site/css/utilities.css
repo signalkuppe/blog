@@ -77,6 +77,11 @@
   color: inherit !important;
 }
 
+.u-highlight-link:hover {
+  background-color: var(--colorPrimary) !important;
+  color: black !important;
+}
+
 @media screen {
   .u-printOnly {
     display: none !important;
