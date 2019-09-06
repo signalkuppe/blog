@@ -42,4 +42,5 @@
     right: '-100%',
     overflowX: 'hidden'
   })
+
 })()

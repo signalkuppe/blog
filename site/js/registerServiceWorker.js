@@ -1,7 +1,8 @@
 
 
 // Check that service workers are supported
-if ('serviceWorker' in navigator) {
+var env = document.querySelector('html').getAttribute('data-env')
+if ('serviceWorker' in navigator && env !== 'development') {
   // Use the window load event to keep the page load performant
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')

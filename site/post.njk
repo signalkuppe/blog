@@ -17,6 +17,11 @@ permalink: "{{ post.computed.slug }}"
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(post.fields.title, env.ELEVENTY_NAME) }}
 <link rel="preconnect" href="https://assets.ctfassets.net" crossorigin>
+{% if post.computed.gps.hasGpx %}
+<!-- map -->
+<link rel="stylesheet" href="/node_modules/leaflet/dist/leaflet.css" />
+<link rel="stylesheet" href="/node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css">
+{% endif %}
 {% endblock %}
 
 {# nav #}
@@ -35,32 +40,47 @@ permalink: "{{ post.computed.slug }}"
   {%- endcall %}
 
   {# post cover #}
-  <figure class="c-post-cover js-observe js-observe-caption u-section-mt-1">
-    <picture class="u-hide-nojs">
-      <!-- 21:9 -->
-      <source
-        srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=617&q=20&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
-        data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=2560&h=1100&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
-        media="(orientation: landscape)" />
-      <!-- 3:2 -->
-      <source 
-        srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=800&h=533&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=20"
-        data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=960&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=70" 
-        media="(orientation: portrait)" />
-      <img 
-        class="lazyImg"
-        alt="{{ post.fields.cover.fields.description  }}" />
-    </picture>
+  <figure class="c-post-cover js-observe js-observe-caption js-gallery u-section-mt-1"{% if post.computed.gps.hasGpx %} id="js-hasGpx" data-gpx="{{ post.computed.gps.gpx}}"{% endif%}>
+    <a 
+    href="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
+    data-at-768="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&fm=jpg&fl=progressive"
+    data-at-1280="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1920&fm=jpg&fl=progressive"
+    data-at-1920="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive"
+    title="{{ post.fields.cover.fields.title }}"
+    >
+      <picture class="u-hide-nojs">
+        <!-- 21:9 -->
+        <source
+          srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=617&q=20&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
+          data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=2560&h=1100&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
+          media="(orientation: landscape)" />
+        <!-- 3:2 -->
+        <source 
+          srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=800&h=533&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=20"
+          data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=960&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=70" 
+          media="(orientation: portrait)" />
+        <img 
+          class="lazyImg"
+          alt="{{ post.fields.cover.fields.description  }}" />
+      </picture>
+    </a>
+    <figcaption class="c-post-cover-caption js-animate-caption">
+      <span>{{ post.fields.cover.fields.title }}</span>
+    </figcaption>
     <noscript>
       <img 
         src="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=960&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=60" 
         alt="{{ post.fields.cover.fields.description }}"  />        
     </noscript>
-    <figcaption class="c-post-cover-caption js-animate-caption">{{ post.fields.cover.fields.title }}</figcaption>
   </figure>
-
+  {% if post.computed.gps.hasGpx %}
+  <div class="">
+  <span id="js-showButton" style="font-size: 0.85em;display: block;margin-left: 1em;padding-top: 1em;color:#222"><svg xmlns="http://www.w3.org/2000/svg" style="height: 1em;fill:#222;" viewBox="0 0 51.636 51.636"><path d="M51.353.914a.999.999 0 0 0-1.135-.213L.583 23.481a1 1 0 0 0 .252 1.895l22.263 3.731 2.545 21.038a1.002 1.002 0 0 0 1.889.324l24-48.415a1 1 0 0 0-.179-1.14z"></path></svg> Mostra la traccia</span>
+  </div>
+  {% endif %}
   {# post layout #}
   <section class="l-post u-section-mt-1-5">
+
     {# content #}
     <section itemprop="articleBody" class="l-post-content u-section-mb-1">
     {{ post.computed.body | safe }}
@@ -71,22 +91,19 @@ permalink: "{{ post.computed.slug }}"
     <aside class="l-post-sidebar">
       <div class="c-post-sticky">
         {# gps #}
-        {% if post.fields.gpsTracks.length %}
+        {% if post.computed.gps.hasTracks %}
         <h3 class="u-mb-1">Scarica le tracce</h3>
         <ul class="c-post-gps u-inline-list">
-          {% for track in post.fields.gpsTracks %}
-          {% set fileName %}{{ post.fields.date | formatDate('DD-MM-YY') }}-{{ post.fields.title | slug }}{% endset %}
-          {% if track.fields.file.contentType === 'application/vnd.google-earth.kml+xml' %}
+          {% if post.computed.gps.hasKml %}
           <li>
-            <a class="c-button" href="{{ track.fields.file.url }}" title="Scarica la traccia .kml per Google Earth" download="{{ fileName }}.kml">{% include 'icons/download.njk' %}Traccia kml</a>
+            <a class="c-button" href="{{ post.computed.gps.kml }}" title="Scarica la traccia .kml per Google Earth" download="{{ post.fields.title | slug }}.kml">{% include 'icons/download.njk' %}Traccia kml</a>
           </li>
           {% endif %}
-          {% if track.fields.file.contentType === 'application/octet-stream' or track.fields.file.contentType === 'application/zip'%}
+          {% if post.computed.gps.hasGpx %}
           <li>
-            <a class="c-button" href="{{ track.fields.file.url }}" title="Scarica la traccia .gpx" download="{{ fileName }}.gpx">{% include 'icons/download.njk' %}Traccia gpx</a>
+            <a class="c-button" href="{{ post.computed.gps.gpx }}" title="Scarica la traccia .gpx" download="{{ post.fields.title | slug }}.gpx">{% include 'icons/download.njk' %}Traccia gpx</a>
           </li>
           {% endif %}
-          {% endfor %}
         </ul>
         {% endif %}
         {# /gps #}
@@ -117,7 +134,7 @@ permalink: "{{ post.computed.slug }}"
   <!-- /post layout -->
   {# gallery #}
   <aside class="u-section-mt-2">
-    <ul class="c-imageGallery">
+    <ul class="c-imageGallery js-gallery">
       <div class="c-imageGallery-col" aria-hidden="true"></div>
       <div class="c-imageGallery-col" aria-hidden="true"></div>
       <div class="c-imageGallery-col" aria-hidden="true"></div>
@@ -188,6 +205,12 @@ permalink: "{{ post.computed.slug }}"
 <script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
 <script src="/node_modules/toastify-js/src/toastify.js"></script>
 <script src="/node_modules/lockr/lockr.js"></script>
+{% if post.computed.gps.hasGpx %}
+<script src="/node_modules/leaflet/dist/leaflet.js"></script>
+<script src="/node_modules/leaflet-gpx/gpx.js"></script>
+<script src="/node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.js"></script>
+<script src="/js/postGpxTrack.js"></script>
+{% endif %}
 <script src="/js/registerServiceWorker.js"></script>
 <script src="/js/theme.js"></script>
 <script src="/js/postAnimations.js"></script>

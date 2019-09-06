@@ -44,7 +44,8 @@ const transformPosts = (posts) => { // ad some custom prop
     const options = {
       renderNode: {
         'embedded-asset-block': (node) => { // how to render embedded images in rich text
-          const img = `${node.data.target.fields.file.url}?fit=thumb&w=1440&fm=jpg&fl=progressive&q=70`
+          const imgUrl = node.data.target.fields.file.url
+          const img = `${imgUrl}?fit=thumb&w=1440&fm=jpg&fl=progressive&q=70`
           const imgTitle = node.data.target.fields.title
           const imgAlt = node.data.target.fields.description
           return `
@@ -53,23 +54,53 @@ const transformPosts = (posts) => { // ad some custom prop
               src="${img}" 
               alt="${imgAlt}"  />        
           </noscript>
-            <figure class="${i % 2 ? 'post-image-odd' : 'post-img-even'}">
-              <img 
-                  data-src="${img}"
-                  alt="${imgAlt}" 
-                  class="lazyImg" /> 
-                <figcaption>${imgTitle}</figcaption>
-            </figure>
-            `
+          <figure class="c-post-embeddedImage">
+            <a 
+              class="js-gallery"
+              href="${imgUrl}?fit=thumb&w=800&fm=jpg&fl=progressive" 
+              data-at-768="${imgUrl}?fit=thumb&w=1440&fm=jpg&fl=progressive"
+              data-at-1280="${imgUrl}?fit=thumb&w=1920&fm=jpg&fl=progressive"
+              data-at-1920="${imgUrl}?fit=thumb&w=2560&fm=jpg&fl=progressive"
+              title="${imgTitle}"
+            >
+            <img 
+                data-src="${img}"
+                alt="${imgAlt}" 
+                class="lazyImg" /> 
+            </a>
+            <figcaption>${imgTitle}</figcaption>
+          </figure>
+          `
         },
         'hyperlink': (node) => { // how to render links in text
           return `<a class="u-highlight-link" href="${node.data.uri}">${node.content[0].value}</a>`
         },
       }
     }
+    const kmlTrack = (post) => {
+      try {
+        return post.fields.gpsTracks.find((t) => t.fields.file.contentType === 'application/vnd.google-earth.kml+xml')
+      } catch (err) {
+        return false
+      }
+    }
+    const gpxTrack = (post) => {
+      try {
+        return post.fields.gpsTracks.find((t) => t.fields.file.contentType === 'application/octet-stream')
+      } catch (err) {
+        return false
+      }
+    }
     post.computed = {
       slug: makeFullSlug(post.fields.slug),
       body: htmlRenderer.documentToHtmlString(post.fields.body, options),
+      gps: {
+        hasTracks: post.fields.gpsTracks && post.fields.gpsTracks.length,
+        hasKml: kmlTrack(post),
+        hasGpx: gpxTrack(post),
+        kml: kmlTrack(post) ? kmlTrack(post).fields.file.url : false,
+        gpx: gpxTrack(post) ? gpxTrack(post).fields.file.url : false
+      }
     }
     const prevNextData = (post) => {
       return {

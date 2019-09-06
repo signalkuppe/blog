@@ -3,7 +3,7 @@
     columns: '.c-imageGallery-col',
     items: '.c-imageGallery-item'
   })
-  baguetteBox.run('.c-imageGallery', {
+  baguetteBox.run('.js-gallery', {
     filter: /.*[contentful].*/i,
     overlayBackgroundColor: 'rgba(0,0,0,1)',
     afterShow: function () {

@@ -40,6 +40,12 @@ p + h2 {
   margin-top: calc(var(--spaceUnit) * 3);
 }
 
+input,
+select,
+button {
+  font-family: inherit;
+}
+
 figure + p,
 figure + h2 {
   margin-top: calc(var(--spaceUnit) * 2);

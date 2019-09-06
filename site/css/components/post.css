@@ -23,15 +23,55 @@
 .c-post-cover-caption {
   font-family: var(--fontCaption);
   font-weight: 700;
+  font-size: var(--fontSize0);
   font-style: normal;
-  line-height: 1.1;
   background: var(--bodyBackgroundColor);
   color: var(--bodyColor);
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 11;
-  padding: 0.5em 1em;
+  z-index: 1000;
+  display: flex;
+}
+
+.c-post-cover-caption span {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 0.5em;
+}
+
+.c-post-cover-gpxButton {
+  font-size: var(--fontSizeSmall);
+  font-weight: 700;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 0;
+  padding: 0.5em 0.75em;
+  background: var(--colorGreyDarker);
+  color: var(--colorGreyLighter);
+  display: none;
+}
+
+.c-post-cover-gpxButton svg {
+  fill: var(--colorGreyLighter);
+  height: 1em;
+  margin-right: 0.5em;
+}
+
+.c-post-cover-gpxButton:focus {
+  outline: none;
+}
+
+.c-post-embeddedImage figcaption {
+  display: inline-block;
+  padding-right: 0.25em;
+}
+
+.c-post-embeddedImage a:hover + figcaption {
+  background: var(--colorPrimary);
+  color: black;
 }
 
 .c-post-sticky {

@@ -16,15 +16,9 @@ pagination:
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(title, env.ELEVENTY_NAME) }}
 <link rel="preconnect" href="https://assets.ctfassets.net" crossorigin>
-<link rel="preconnect" href="https://unpkg.com" crossorigin>
-  <!-- map api -->
-<link rel="stylesheet" 
-      href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
-      integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
-      crossorigin />
-<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
-        integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
-        crossorigin></script>
+<!-- map -->
+<link rel="stylesheet" href="/node_modules/leaflet/dist/leaflet.css" />
+<link rel="stylesheet" href="/node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css">
 {% endblock %}
 
 {% block header %}
@@ -63,6 +57,8 @@ pagination:
 {% endblock %}
 
 {% block scripts %}
+<script src="/node_modules/leaflet/dist/leaflet.js"></script>
+<script src="/node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.js"></script>
 <script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
 <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
 <script src="/node_modules/lockr/lockr.js"></script>

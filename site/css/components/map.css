@@ -46,7 +46,7 @@
   border-color: var(--colorPrimary);
 }
 
-.c-map:not(.js-is-over) .leaflet-tile-pane {
+.theme-dark .leaflet-tile-pane {
   filter: grayscale(1);
 }
 

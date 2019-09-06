@@ -4,20 +4,12 @@
   var zoom = 7
   var lat = 45.7929
   var lng =  9.0000
-  var mymap = L.map('map',{ renderer: L.canvas() })
+  var mymap = L.map('map',{ 
+    renderer: L.canvas(),
+    gestureHandling: true // depends on https://github.com/elmarquis/Leaflet.GestureHandling
+  })
   var mapdiv = document.getElementById('map')
-  mymap.on('mouseover', (e) => {
-    mapdiv.classList.add('js-is-over')
-  })
-  mymap.on('mouseout', (e) => {
-    mapdiv.classList.remove('js-is-over')
-  })
   mymap.setView([lat, lng], zoom)
-  /* L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic2lnbmFsa3VwcGUiLCJhIjoiY2o4aXQyOGtiMTMxaTJ3bzFjazk3cTlzdSJ9.mg7mk_rts2i6Rq8z0ZbGWw', 
-  {
-      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      id: 'mapbox.streets'
-  }).addTo(mymap); */
   // mappe da thunderforest.com: 150.000 richieste al mese poi bisogna pagare, verificare
   L.tileLayer('https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f890f7037bd243ee9602a36c56fc6dc2', {
     attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',

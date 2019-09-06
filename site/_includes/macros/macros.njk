@@ -14,7 +14,7 @@
   document.documentElement.classList.remove('no-js')
   document.documentElement.classList.add('js')
 </script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CIntersectionObserverEntry%2Cdocument.querySelector%2CElement.prototype.classList"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.prepend%2CIntersectionObserver%2CIntersectionObserverEntry%2Cdocument.querySelector%2CElement.prototype.classList"></script>
 {% endmacro %}
 
 
@@ -29,7 +29,7 @@
 {# 
 # html tag
 #}
-{% macro htmlTag() %}<html lang="it" class="no-js{%if env.ELEVENTY_THEME === 'dark' %} theme-dark{% endif %}">{% endmacro %}
+{% macro htmlTag() %}<html lang="it" class="no-js theme-dark" data-env="{{ env.ELEVENTY_ENV }}">{% endmacro %}
 
 {# 
 # Canonical meta tags
