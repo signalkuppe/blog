@@ -65,7 +65,7 @@ permalink: "{{ post.computed.slug }}"
       </picture>
     </a>
     <figcaption class="c-post-cover-caption js-animate-caption">
-      <span>{{ post.fields.cover.fields.title }}</span>
+      {{ post.fields.cover.fields.title }}
     </figcaption>
     <noscript>
       <img 
@@ -74,12 +74,10 @@ permalink: "{{ post.computed.slug }}"
     </noscript>
   </figure>
   {% if post.computed.gps.hasGpx %}
-  <div class="">
-  <span id="js-showButton" style="font-size: 0.85em;display: block;margin-left: 1em;padding-top: 1em;color:#222"><svg xmlns="http://www.w3.org/2000/svg" style="height: 1em;fill:#222;" viewBox="0 0 51.636 51.636"><path d="M51.353.914a.999.999 0 0 0-1.135-.213L.583 23.481a1 1 0 0 0 .252 1.895l22.263 3.731 2.545 21.038a1.002 1.002 0 0 0 1.889.324l24-48.415a1 1 0 0 0-.179-1.14z"></path></svg> Mostra la traccia</span>
-  </div>
+  <div id="js-gpxButtonContainer" class="c-post-gpxButtonContainer"> </div>
   {% endif %}
   {# post layout #}
-  <section class="l-post u-section-mt-1-5">
+  <section class="l-post u-section-mt-1-25">
 
     {# content #}
     <section itemprop="articleBody" class="l-post-content u-section-mb-1">

@@ -23,7 +23,7 @@
 .c-post-cover-caption {
   font-family: var(--fontCaption);
   font-weight: 700;
-  font-size: var(--fontSize0);
+  font-size: var(--fontSize1);
   font-style: normal;
   background: var(--bodyBackgroundColor);
   color: var(--bodyColor);
@@ -32,46 +32,34 @@
   right: 0;
   z-index: 1000;
   display: flex;
+  padding: 0.25em 0.75em;
 }
 
-.c-post-cover-caption span {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 0 0.5em;
+.c-post-gpxButtonContainer {
+  margin-left: 1em;
+  margin-top: 1em;
 }
 
-.c-post-cover-gpxButton {
+.c-post-gpxButton {
   font-size: var(--fontSizeSmall);
   font-weight: 700;
   appearance: none;
   -webkit-appearance: none;
+  background: var(--bodyBackgroundColor);
+  color: var(--bodyColor);
   border: none;
-  border-radius: 0;
-  padding: 0.5em 0.75em;
-  background: var(--colorGreyDarker);
-  color: var(--colorGreyLighter);
-  display: none;
-}
-
-.c-post-cover-gpxButton svg {
-  fill: var(--colorGreyLighter);
-  height: 1em;
-  margin-right: 0.5em;
-}
-
-.c-post-cover-gpxButton:focus {
+  display: flex;
   outline: none;
 }
 
-.c-post-embeddedImage figcaption {
-  display: inline-block;
-  padding-right: 0.25em;
+.c-post-gpxButton svg {
+  height: 1em;
+  margin-right: 0.5em;
+  fill: var(--bodyColor);
 }
 
 .c-post-embeddedImage a:hover + figcaption {
-  background: var(--colorPrimary);
-  color: black;
+  text-decoration: underline;
 }
 
 .c-post-sticky {
@@ -119,6 +107,12 @@
 @media screen and (min-width: 768px) {
   .c-post-cover-caption {
     font-size: 1.5vw;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .c-post-cover-caption {
+    font-size: 2vw;
   }
 }
 

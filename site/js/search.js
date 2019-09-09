@@ -42,7 +42,7 @@
     var results = idx.search(key)
     if (searchKey.length) {
       _showLoading()
-      _debounce(_showResults, 1000)(results)
+      _debounce(_showResults, 500)(results)
     } else {
       _hideLoading()
       _hideResults()

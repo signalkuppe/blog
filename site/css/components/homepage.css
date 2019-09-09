@@ -3,6 +3,7 @@
   width: 100%;
   max-height: 350px;
   object-fit: cover;
+  filter: grayscale(1) contrast(1.25);
 }
 
 .c-homepage-name {

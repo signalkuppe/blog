@@ -44,6 +44,7 @@ input,
 select,
 button {
   font-family: inherit;
+  font-size: inherit;
 }
 
 figure + p,
