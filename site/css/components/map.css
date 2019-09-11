@@ -16,7 +16,7 @@
 }
 
 .c-map-marker img {
-  border: 4px solid var(--colorGreyLight);
+  border: 4px solid var(--colorGreyLighter);
 }
 
 .c-map-marker::after {

@@ -36,8 +36,8 @@
 }
 
 .c-post-gpxButtonContainer {
-  margin-left: 1em;
-  margin-top: 1em;
+  margin-left: 0.5em;
+  margin-top: 0.5em;
 }
 
 .c-post-gpxButton {
@@ -56,6 +56,7 @@
   height: 1em;
   margin-right: 0.5em;
   fill: var(--bodyColor);
+  vertical-align: middle;
 }
 
 .c-post-embeddedImage a:hover + figcaption {
