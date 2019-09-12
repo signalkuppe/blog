@@ -32,9 +32,11 @@
         className: 'c-toast--error'
       }).showToast()
      } else {
-       fetch(form.getAttribute('action'), {
+       console.log('invio', serialize(form))
+       fetch('/', {
          method: 'POST',
-         data: serialize(form)
+         data: serialize(form),
+         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
         .then(function () {
           Toastify({
