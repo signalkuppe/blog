@@ -29,6 +29,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('node_modules/leaflet/dist')
   eleventyConfig.addPassthroughCopy('node_modules/leaflet-gesture-handling/dist')
   eleventyConfig.addPassthroughCopy('node_modules/leaflet-gpx')
+  eleventyConfig.addPassthroughCopy('node_modules/pristinejs')
 
   /*
   * Formats a date

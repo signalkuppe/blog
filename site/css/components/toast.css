@@ -16,3 +16,8 @@
 .c-toast--success {
   background: var(--colorMsgSuccess);
 }
+
+.c-toast--error {
+  background: var(--colorMsgError);
+}
+

@@ -10,6 +10,7 @@ const path = require('path')
 const fs = require('fs')
 const _ = require('lodash')
 const mkdirp = require('mkdirp');
+const deleteKeyRecursively = require(path.join(process.cwd(), 'lib/deleteKeyRecursively'))
 const log = require(path.join(process.cwd(), 'lib/log'))
 const date = require(path.join(process.cwd(), 'lib/date'))
 const logFile = path.join(process.cwd(), process.env.ELEVENTY_CACHE_DIR, '_posts.json')
@@ -95,11 +96,11 @@ const transformPosts = (posts) => { // ad some custom prop
       slug: makeFullSlug(post.fields.slug),
       body: htmlRenderer.documentToHtmlString(post.fields.body, options),
       gps: {
-        hasTracks: post.fields.gpsTracks && post.fields.gpsTracks.length,
+        hasTracks: _.get(kmlTrack(post), 'fields.gpsTracks'),
         hasKml: kmlTrack(post),
         hasGpx: gpxTrack(post),
-        kml: kmlTrack(post) ? kmlTrack(post).fields.file.url : false,
-        gpx: gpxTrack(post) ? gpxTrack(post).fields.file.url : false
+        kml: _.get(kmlTrack(post), 'fields.file.url'),
+        gpx: _.get(kmlTrack(post), 'fields.file.url')
       }
     }
     const prevNextData = (post) => {
@@ -115,6 +116,10 @@ const transformPosts = (posts) => { // ad some custom prop
     if (posts[i - 1]) { // next
       post.computed.next = prevNextData(posts[i - 1])
     }
+    // free some space
+    delete post.fields.body
+    deleteKeyRecursively(post, 'sys')
+
     return post
   })
 }

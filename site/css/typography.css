@@ -42,9 +42,42 @@ p + h2 {
 
 input,
 select,
-button {
+button,
+textarea {
   font-family: inherit;
   font-size: inherit;
+  background: var(--bodyBackgroundColor);
+  color: var(--bodyColor);
+}
+
+form:not([class]) {
+  padding: 1em;
+}
+
+form:not([class]):focus-within {
+  background: var(--colorGreyLight);
+}
+
+label:not([class]) {
+  display: block;
+  font-weight: 700;
+}
+
+input[type="text"]:not([class]),
+input[type="email"]:not([class]),
+textarea:not([class]) {
+  display: block;
+  width: 100%;
+  padding: 0.5em;
+  border: 2px solid var(--colorGreyLight);
+  
+}
+
+input[type="text"]:not([class]):focus,
+input[type="email"]:not([class]):focus,
+textarea:not([class]):focus {
+  outline: none;
+  border-color: var(--colorPrimary);
 }
 
 figure + p,
