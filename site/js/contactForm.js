@@ -19,7 +19,7 @@
         className: 'c-toast--error'
       }).showToast()
      } else {
-       var data = new FormData(form)
+       var data = new FormData(form).entries()
        console.log('invio', data)
        fetch('/', {
          method: 'POST',
