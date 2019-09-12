@@ -19,11 +19,14 @@
         className: 'c-toast--error'
       }).showToast()
      } else {
-       var data = new FormData(form).entries()
-       console.log('invio', data)
+      const body = new HttpParams()
+                    .set('form-name', 'contact')
+                    .append('email', form.value.email)
+                    .append('message', form.value.message)
+       console.log('invio', body)
        fetch('/', {
          method: 'POST',
-         data: encode({ 'form-name': 'contact', ...data }),
+         body: body,
          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
         .then(function (r) {
