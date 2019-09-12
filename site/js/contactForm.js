@@ -36,7 +36,8 @@
          data: serialize(form),
          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
        })
-        .then(function () {
+        .then(function (r) {
+          console.log('ok', r)
           Toastify({
             text: 'Messaggio ricevuto, grazie! 🙂',
             duration: 4000,
