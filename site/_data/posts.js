@@ -80,14 +80,14 @@ const transformPosts = (posts) => { // ad some custom prop
     }
     const kmlTrack = (post) => {
       try {
-        return post.fields.gpsTracks.find((t) => t.fields.file.contentType === 'application/vnd.google-earth.kml+xml')
+        return post.fields.gpsTracks.find((t) => t.fields.file.fileName.indexOf('.kml') !==-1 )
       } catch (err) {
         return false
       }
     }
     const gpxTrack = (post) => {
       try {
-        return post.fields.gpsTracks.find((t) => t.fields.file.contentType === 'application/octet-stream')
+        return post.fields.gpsTracks.find((t) => t.fields.file.fileName.indexOf('.gpx') !==-1 )
       } catch (err) {
         return false
       }
@@ -96,11 +96,11 @@ const transformPosts = (posts) => { // ad some custom prop
       slug: makeFullSlug(post.fields.slug),
       body: htmlRenderer.documentToHtmlString(post.fields.body, options),
       gps: {
-        hasTracks: _.get(kmlTrack(post), 'fields.gpsTracks'),
-        hasKml: kmlTrack(post),
-        hasGpx: gpxTrack(post),
+        hasTracks: Array.isArray(_.get(post, 'fields.gpsTracks')),
+        hasKml: !!kmlTrack(post),
+        hasGpx: !!gpxTrack(post),
         kml: _.get(kmlTrack(post), 'fields.file.url'),
-        gpx: _.get(kmlTrack(post), 'fields.file.url')
+        gpx: _.get(gpxTrack(post), 'fields.file.url')
       }
     }
     const prevNextData = (post) => {
