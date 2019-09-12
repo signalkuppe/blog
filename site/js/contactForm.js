@@ -1,7 +1,6 @@
 (function () {
   var form = document.getElementById('form')
   var pristine = new Pristine(form)
-  var action = form.getAttribute('action')
   var serialize = function (form) {
     var serialized = [];
     for (var i = 0; i < form.elements.length; i++) {
@@ -33,7 +32,7 @@
         className: 'c-toast--error'
       }).showToast()
      } else {
-       fetch(action, {
+       fetch(form.getAttribute('action'), {
          method: 'POST',
          data: serialize(form)
        })
