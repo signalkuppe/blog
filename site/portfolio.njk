@@ -11,7 +11,8 @@ pagination:
 {% extends "layouts/_layoutBase.njk" %}
 
 {% block head %}
-{{ macro.socialMeta(title, description, env.ELEVENTY_LOGO) }}
+{% set ogImage %}{{ env.ELEVENTY_URL }}{{ env.ELEVENTY_LOGO }}{% endset %}
+{{ macro.socialMeta(title, description, ogImage) }}
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(title, env.ELEVENTY_NAME) }}
 {% endblock %}
