@@ -33,7 +33,10 @@
         className: 'c-toast--error'
       }).showToast()
      } else {
-       fetch(action, serialize(form))
+       fetch(action, {
+         method: 'POST',
+         data: serialize(form)
+       })
         .then(function () {
           Toastify({
             text: 'Messaggio ricevuto, grazie! 🙂',
