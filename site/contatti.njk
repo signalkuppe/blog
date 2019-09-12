@@ -23,10 +23,7 @@ description: "Per parlare di un vostro progetto o di montagna"
 
 
 <section class="u-section-mt-1-5">
-  <form action="/grazie" name="contact" method="POST" netlify-honeypot="bot-field" data-netlify="true" style="max-width: 60ch; margin: 0 auto;" id="form" novalidate>
-    <div class="u-srOnly" aria-hidden="true">
-      <label>Non compilarlo se sei umano <input name="bot-field" /></label>
-    </div>
+  <form action="/grazie" name="contact" method="POST" data-netlify="true" style="max-width: 60ch; margin: 0 auto;" id="form" novalidate>
     <div class="u-mb-2">
       <label for="email">Email</label>
       <input 
@@ -38,7 +35,12 @@ description: "Per parlare di un vostro progetto o di montagna"
     </div>
     <div class="u-mb-2">
       <label for="message">Messaggio</label>
-      <textarea name="message" id="message" rows="10" required spellcheck="false"></textarea>
+      <textarea 
+        name="message" 
+        id="message" 
+        rows="10" 
+        required 
+        spellcheck="false"></textarea>
     </div>
     <div>
       <button type="submit" class="c-button">Invia</button>
