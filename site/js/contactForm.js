@@ -20,7 +20,6 @@
   }
 
   form.addEventListener('submit', function (e) {
-     e.preventDefault()
      var valid = pristine.validate()
      if (!valid) {
       Toastify({
@@ -32,7 +31,6 @@
         className: 'c-toast--error'
       }).showToast()
      } else {
-       console.log('invio', serialize(form))
        fetch(e.target.action, {
          method: 'POST',
          data: serialize(form),
@@ -59,6 +57,7 @@
             className: 'c-toast--error'
           }).showToast()
         })
+      e.preventDefault()
      }
   });
 })()
