@@ -12,7 +12,7 @@ permalink: "{{ post.computed.slug }}"
 
 {# head #}
 {% block head %}
-{% set ogImage %}{{ post.fields.cover.fields.file.url }}?fit=thumb&w=400&h=400&f=center{% endset %}
+{% set ogImage %}https:{{ post.fields.cover.fields.file.url }}?fit=thumb&w=400&h=400&f=center{% endset %}
 {{ macro.socialMeta(post.fields.title, post.fields.description, ogImage) }}
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(post.fields.title, env.ELEVENTY_NAME) }}
