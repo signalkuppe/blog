@@ -33,7 +33,7 @@
       }).showToast()
      } else {
        console.log('invio', serialize(form))
-       fetch('/', {
+       fetch(e.target.action, {
          method: 'POST',
          data: serialize(form),
          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
