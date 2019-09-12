@@ -33,7 +33,6 @@
         className: 'c-toast--error'
       }).showToast()
      } else {
-       console.log(serialize(form))
        fetch(action, serialize(form))
         .then(function () {
           Toastify({
@@ -46,6 +45,7 @@
           }).showToast()
         })
         .catch(function (err) {
+          console.log('form error', err)
           Toastify({
             text: 'Ops, qualcosa è andatto storto 😰',
             duration: 4000,
