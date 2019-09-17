@@ -6,7 +6,6 @@
   var buttonContainer = document.getElementById('js-gpxButtonContainer')
   var mapRendered = false
   var showMap = function (showButton) {
-    console.log(showButton)
     if (!mapRendered) {
       showButton.innerHTML = iconShow + ' Carico la traccia...'
       var mapContainer = document.createElement('div')

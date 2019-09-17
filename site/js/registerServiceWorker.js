@@ -13,7 +13,6 @@ var deferredPrompt
 var promptButton = document.getElementById('js-promptButton')
 if (promptButton) {
   promptButton.style.display = 'none'
-  promptButton.parentElement.style.display = 'none'
 }
 
 // prevent default install prompt
@@ -21,9 +20,8 @@ window.addEventListener('beforeinstallprompt', function (event) {
   event.preventDefault()
   deferredPrompt = event
   if (promptButton) { 
-    if (deferredPrompt) { // prompt has been requested (registerServiceWorker.js)
+    if (deferredPrompt) { // prompt has been requested
       promptButton.style.display = 'block'
-      promptButton.parentElement.style.display = 'block'
       promptButton.addEventListener('click', function(e) { // delegate the prompt to user action
         e.preventDefault()
         deferredPrompt.prompt()
@@ -47,7 +45,6 @@ window.addEventListener('beforeinstallprompt', function (event) {
 
 window.addEventListener('appinstalled', (evt) => { // already installed
   promptButton.style.display = 'none'
-  promptButton.parentElement.style.display = 'none'
   Toastify({
     text: 'App aggiunta 😎',
     duration: 4000,

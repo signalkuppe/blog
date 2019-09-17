@@ -54,13 +54,12 @@ if (workbox) {
   )
   
   // all blog paths
-  /*
   workbox.routing.registerRoute(
     new RegExp('/[^/]+/[^/]+/[^/]+/[^/]'),
     new workbox.strategies.NetworkFirst({
       cacheName: `${cachePrefix}-posts`
     })
-  ) */
+  )
 
   // Use a network only strategy as default
   workbox.routing.setDefaultHandler(

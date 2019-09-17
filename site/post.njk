@@ -40,7 +40,7 @@ permalink: "{{ post.computed.slug }}"
   {%- endcall %}
 
   {# post cover #}
-  <figure class="c-post-cover js-observe js-observe-caption js-gallery u-section-mt-1"{% if post.computed.gps.hasGpx %} id="js-hasGpx" data-gpx="{{ post.computed.gps.gpx}}"{% endif%}>
+  <figure class="c-post-cover js-observe js-observe-caption js-gallery u-section-mt-1"{% if post.computed.gps.hasGpx %} id="js-hasGpx" data-gpx="{{ post.computed.gps.gpx }}"{% endif%}>
     <a 
     href="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
     data-at-768="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&fm=jpg&fl=progressive"
@@ -165,7 +165,7 @@ permalink: "{{ post.computed.slug }}"
   <footer class="c-post-footer u-section-mt-1-5">
     <ul class="u-text-center u-section-mb-1 u-inline-list u-justify-center">
       <li><a href="" onclick="window.print()" class="c-button">{% include 'icons/print.njk' %}Stampa</a></li>
-      <li><a href="" class="c-button" id="js-promptButton">{% include 'icons/smartphone.njk' %}Installa il sito come app</a></li>
+      <li><a href="" class="c-button" id="js-saveOfflineButton">{% include 'icons/save.njk' %}Salva per leggerlo offline</a></li>
     </ul>
     {# prev-next #}
     <nav class="js-observe js-observe-nav">
