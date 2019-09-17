@@ -1,7 +1,8 @@
 .c-toggle {
   display: inline-block;
   position: relative;
-  text-indent: 2.5em;
+  text-indent: 2.25em;
+  color: var(--bodyColor);
 }
 
 .c-toggle input[type="checkbox"] {
@@ -20,9 +21,9 @@
   height: 1em;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 0.25em;
   background: var(--colorGreyLight);
-  border: 0.1em solid var(--colorGreyDark);
+  border: 0.1em solid var(--bodyColor);
   border-radius: 1em;
   box-sizing: border-box;
 }
@@ -35,7 +36,7 @@
   height: 1em;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 0em;
 } 
 
 .c-toggle label::after {
@@ -55,8 +56,8 @@
   width: 1em;
   height: 1em;
   position: absolute;
-  top: 0em;
-  background: var(--colorGreyDark);
+  top: 0.25em;
+  background: var(--bodyColor);
   border-radius: 50%;
   transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 } 

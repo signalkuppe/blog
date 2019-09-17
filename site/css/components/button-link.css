@@ -1,0 +1,12 @@
+.c-button-link {
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  display: inline-block;
+}
+
+.c-button-link svg {
+  height: 1em;
+  vertical-align: middle;
+}

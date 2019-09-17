@@ -13,7 +13,7 @@
   line-height: 1;
 }
 
-.c-navigation-menu li:not(.c-navigation-toggle) {
+.c-navigation-menu li {
   text-transform: uppercase;
 }
 
@@ -51,11 +51,5 @@
 .c-navigation a.is-active {
   color: var(--bodyColor);
   border-bottom: 2px solid var(--bodyColor);
-}
-
-@media screen and (min-width: 1170px) {
-  .c-navigation-logo svg {
-   
-  }
 }
 

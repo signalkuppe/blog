@@ -6,6 +6,15 @@
   margin-bottom: calc(var(--spaceUnit) * 2) !important;
 }
 
+.u-mr-1 {
+  margin-right: 1em !important;
+}
+
+.u-section-mt-0-25 {
+  margin-top: 2vh !important;
+}
+
+
 .u-section-mt-0-5 {
   margin-top: 4vh !important;
 }

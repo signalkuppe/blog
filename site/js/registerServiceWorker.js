@@ -21,7 +21,7 @@ window.addEventListener('beforeinstallprompt', function (event) {
   deferredPrompt = event
   if (promptButton) { 
     if (deferredPrompt) { // prompt has been requested
-      promptButton.style.display = 'block'
+      promptButton.style.display = 'inline-block'
       promptButton.addEventListener('click', function(e) { // delegate the prompt to user action
         e.preventDefault()
         deferredPrompt.prompt()

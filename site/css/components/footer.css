@@ -1,8 +1,6 @@
 .c-footer {
   text-align: center;
-  font-size: var(--fontSizeSmall);
   padding: calc(var(--spaceUnit) * 2 ) 0;
-  color: var(--colorGreyDark);
   font-family: var(--fontCaption);
   width: 90%;
   max-width: 1170px;
@@ -17,4 +15,8 @@
 
 .c-footer li + li  {
   margin-left: 1em;
+}
+
+.c-footer-topLink  {
+  font-size: var(--fontSizeSmall);
 }
