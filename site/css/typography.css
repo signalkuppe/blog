@@ -129,18 +129,6 @@ figcaption {
   color: var(--colorGreyDark);
 }
 
-svg {
-  vertical-align: middle;
-}
-
-svg.icon {
-  height: 1em;
-}
-
-svg.icon-3x {
-  height: 3em;
-}
-
 ::-moz-selection {
   color: black; background: var(--colorPrimary);
 }

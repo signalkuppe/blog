@@ -80,29 +80,27 @@
   margin: 0 var(--spaceUnit);
 }
 
-.c-postNav a:hover {
-  text-decoration: underline;
-}
-
 .c-post-newsletter {
   text-align: center;
   padding: 0.5em 1em;
 }
 
-.c-post-share svg {
-  will-change: transform;
-  transition: transform 0.2s linear;
+.c-post-shareFacebook:hover svg {
+  fill: var(--colorFacebook);
 }
 
-.c-post-share a:hover svg {
-  transform: rotate(10deg);
+.c-post-shareTwitter:hover svg {
+  fill: var(--colorTwitter);
 }
 
-.c-post-share a:active {
-  position: relative;
-  top: 1px;
-  left: 1px;
+.c-post-shareWhatsapp:hover svg {
+  fill: var(--colorWhatsapp);
 }
+
+.c-post-shareEmail:hover svg {
+  fill: var(--colorEmail);
+}
+
 
 @media screen and (min-width: 768px) {
   .c-post-cover-caption {

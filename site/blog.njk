@@ -50,7 +50,7 @@ pagination:
   </li>
 {% endfor %}
 </ul>
-<p class="u-text-center u-section-mt-1-5"><a href="/feed.xml" class="c-button c-button--iconBaseline">{% include 'icons/feed.njk' %} Feed dei post</a></p>
+<p class="u-text-center u-section-mt-1-5"><a href="/feed.xml" class="c-button">{{ macro.icon('feed') }} Feed dei post</a></p>
 {% endblock %}
 
 {% block footer %}

@@ -65,6 +65,7 @@
 <link href="/css/layouts/layout-homepage.css" rel="stylesheet" media="screen">
 <link href="/css/layouts/layout-post.css" rel="stylesheet" media="screen">
 <link href="/css/layouts/layout-post-grid.css" rel="stylesheet" media="screen">
+<link href="/css/components/icon.css" rel="stylesheet" media="screen">
 <link href="/css/components/toast.css" rel="stylesheet" media="screen">
 <link href="/css/components/button.css" rel="stylesheet" media="screen">
 <link href="/css/components/button-link.css" rel="stylesheet" media="screen">
@@ -124,6 +125,17 @@
 
 
 {# 
+# Icon
+#}
+
+{% macro icon(name, append) %}
+  <span class="c-icon{% if append %} c-icon--append{% endif %}" aria-hidden="true">
+    {% include 'icons/' + name + '.njk' %}
+  </span>
+{% endmacro %}
+
+
+{# 
 # Site navigation
 # @param {string} activeSection - The active section
 #}
@@ -160,19 +172,19 @@
 
 {% macro footer() %}
 <footer class="c-footer">
-  <ul>
+  <ul class="c-footer-section">
     <li><span id="js-currentYear"></span> - <strong>Signalkuppe</strong></li>
     <li><a href="{{ env.ELEVENTY_FACEBOOK }}" title="Seguimi su Facebook">Facebook</a></li>
     <li><a href="{{ env.ELEVENTY_TWITTER }}" title="Seguimi su Twitter">Twitter</a></li>
     <li><a href="{{ env.ELEVENTY_INSTAGRAM }}" title="Seguimi su Instagram">Instagram</a></li>
     <li><a href="/feed.xml">Feed</a></li>
   </ul>
-  <div class="u-section-mt-0-25">
+  <section class="c-footer-section"><small>Contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</small></a></section>
+  <section class="c-footer-section">
     <button class="c-button-link u-mr-1" id="js-promptButton">{% include 'icons/smartphone.njk' %} Installa il sito come app</button>
     <span class="c-toggle"><input type="checkbox" id="toggle" /><label for="toggle" class="c-toggle-label">Tema scuro</label></span>
-  </div>
-  <div class="u-section-mt-0-25"><small>Contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</small></a></div>
-  <div class="u-section-mt-0-25"><span class="c-footer-topLink"><a href="#top" class="c-button-link">{% include 'icons/arrow-up.njk' %} Torna in cima</a></span></div>
+  </section>
+  <section class="c-footer-section"><span class="c-footer-topLink"><a href="#top" class="c-button-link">{{ icon('arrow-up') }}Torna in cima</a></span></section>
 </footer>
 {% endmacro %}
 

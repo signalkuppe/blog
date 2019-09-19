@@ -36,6 +36,7 @@ permalink: "{{ post.computed.slug }}"
   <time datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
   <span itemprop="author" itemscope itemtype="http://schema.org/Person"  class="u-srOnly">
     <span itemprop="name">{{ env.ELEVENTY_AUTHOR }}</span>
+    <span itemprop="nickname">{{ env.ELEVENTY_NICKNAME }}</span>
   </span>
   {%- endcall %}
 
@@ -94,12 +95,12 @@ permalink: "{{ post.computed.slug }}"
         <ul class="c-post-gps u-inline-list">
           {% if post.computed.gps.hasKml %}
           <li>
-            <a class="c-button" href="{{ post.computed.gps.kml }}" title="Scarica la traccia .kml per Google Earth" download="{{ post.fields.title | slug }}.kml">{% include 'icons/download.njk' %}Traccia kml</a>
+            <a class="c-button" href="{{ post.computed.gps.kml }}" title="Scarica la traccia .kml per Google Earth" download="{{ post.fields.title | slug }}.kml">{{ macro.icon('download') }}Traccia kml</a>
           </li>
           {% endif %}
           {% if post.computed.gps.hasGpx %}
           <li>
-            <a class="c-button" href="{{ post.computed.gps.gpx }}" title="Scarica la traccia .gpx" download="{{ post.fields.title | slug }}.gpx">{% include 'icons/download.njk' %}Traccia gpx</a>
+            <a class="c-button" href="{{ post.computed.gps.gpx }}" title="Scarica la traccia .gpx" download="{{ post.fields.title | slug }}.gpx">{{ macro.icon('download') }}Traccia gpx</a>
           </li>
           {% endif %}
         </ul>
@@ -107,20 +108,53 @@ permalink: "{{ post.computed.slug }}"
         {# /gps #}
         {# social #}
         <h3 class="js-animate-sidebarTitle{% if post.fields.gpsTracks.length %} u-section-mt-1{% endif %} u-mb-1">Condividi</h3>
-        <ul class="c-post-share u-inline-list">
+        <script>
+          var postTitle = document.querySelector('h1').textContent
+          var url = window.location.href 
+          var author = document.querySelector('[itemprop="nickname"]').textContent
+        </script>
+        <ul class="u-inline-list">
           <li>
-            <a href="" title="Condividi su Facebook" aria-label="Condividi su Facebook" target="_blank" rel="noopener" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&amp;quote=' + encodeURIComponent(document.URL)); return false;">
-              {% include 'icons/facebook.njk' %}
+            <a
+              href="" 
+              class="c-post-shareFacebook" 
+              title="Condividi su Facebook" 
+              aria-label="Condividi su Facebook" 
+              target="_blank" rel="noopener" 
+              onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url) + '&amp;title='+encodeURIComponent(postTitle)); return false;">
+              {{ macro.icon('facebook') }}
             </a>
           </li>
           <li>
-            <a href="" target="_blank" rel="noopener" title="Condividi su Twitter" aria-label="Condividi su Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL))+ ':%20'  +author; return false;">
-              {% include 'icons/twitter.njk' %}
+            <a 
+              href="" 
+              class="c-post-shareTwitter" 
+              target="_blank" rel="noopener" 
+              title="Condividi su Twitter" 
+              aria-label="Condividi su Twitter" 
+              onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(postTitle) + '&amp;url=' + encodeURIComponent(url) + '&amp;via='+encodeURIComponent(author)); return false;">
+              {{ macro.icon('twitter') }}
             </a>
           </li>
           <li>
-            <a href="" target="_blank" rel="noopener" title="Condividi via mail" aria-label="Condividi via mail" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&amp;body=' +  encodeURIComponent(document.URL)); return false;">
-              {% include 'icons/mail.njk' %}
+            <a 
+              class="c-post-shareWhatsapp" 
+              title="Condividi su Whatsapp" 
+              href="whatsapp://send?text={{ env.ELEVENTY_URL }}/{{ post.fields.slug }}" 
+              data-action="share/whatsapp/share">
+              {{ macro.icon('whatsapp') }}
+            </a>
+          </li>
+          <li>
+            <a 
+              href="" 
+              class="c-post-shareEmail" 
+              target="_blank" 
+              rel="noopener" 
+              title="Condividi via mail" 
+              aria-label="Condividi via mail" 
+              onclick="window.open('mailto:?subject=' + encodeURIComponent(postTitle) + '&amp;body=' +  encodeURIComponent(url)); return false;">
+              {{ macro.icon('gmail') }}
             </a>
           </li>
         </ul>
@@ -164,15 +198,15 @@ permalink: "{{ post.computed.slug }}"
   {# /gallery #}
   <footer class="c-post-footer u-section-mt-1-5">
     <ul class="u-text-center u-section-mb-1 u-inline-list u-justify-center">
-      <li><a href="" onclick="window.print()" class="c-button">{% include 'icons/print.njk' %}Stampa</a></li>
-      <li><a href="" class="c-button" id="js-saveOfflineButton">{% include 'icons/save.njk' %}Salva per leggerlo offline</a></li>
+      <li><a href="" onclick="window.print()" class="c-button">{{ macro.icon('print') }}Stampa</a></li>
+      <li><a href="" class="c-button" id="js-saveOfflineButton">{{ macro.icon('save') }}Salva per leggerlo offline</a></li>
     </ul>
     {# prev-next #}
     <nav class="js-observe js-observe-nav">
       <ul class="c-postNav">
         {% if post.computed.prev %}
         <li>
-          <a class="js-animate-prev" href="{{ post.computed.prev.slug }}" title="{{ post.computed.prev.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.prev.title }}">{% include 'icons/chevron-left.njk' %}Post precedente</a>
+          <a class="js-animate-prev c-button-link" href="{{ post.computed.prev.slug }}" title="{{ post.computed.prev.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.prev.title }}" class="c-button-link">{{ macro.icon('previous') }}Post precedente</a>
         </li>
         {% endif %}
         {% if post.computed.prev and post.computed.next %}
@@ -180,7 +214,7 @@ permalink: "{{ post.computed.slug }}"
         {% endif %}
         {% if post.computed.next %}
         <li>
-          <a class="js-animate-next" href="{{ post.computed.next.slug }}" title="{{ post.computed.next.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.next.title }}">Post successivo{% include 'icons/chevron-right.njk' %}</a>
+          <a class="js-animate-next c-button-link" href="{{ post.computed.next.slug }}" title="{{ post.computed.next.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.next.title }}" class="c-button-link">Post successivo{{ macro.icon('next', append=true) }}</a>
         </li>
         {% endif %}
       </ul>

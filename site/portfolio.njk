@@ -59,10 +59,10 @@ pagination:
   <nav>
     <ul class="u-inline-list u-justify-center">
       {% if pagination.previousPageHref %}
-      <li><a href="{{ pagination.previousPageHref }}" title="Pagina precedente">{% include 'icons/chevron-left.njk' %}Precedente</a></li>
+      <li><a href="{{ pagination.previousPageHref }}" title="Pagina precedente" class="c-button-link">{{ macro.icon('previous') }}Precedente</a></li>
       {% endif %}
       {% if pagination.nextPageHref %}
-      <li><a href="{{ pagination.nextPageHref }}" title="Pagina successiva">Successiva{% include 'icons/chevron-right.njk' %}</a></li>
+      <li><a href="{{ pagination.nextPageHref }}" title="Pagina successiva" class="c-button-link">Successiva{{ macro.icon('next', append=true) }}</a></li>
       {% endif %}
     </ul>
   </nav>

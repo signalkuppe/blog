@@ -6,7 +6,8 @@
   display: inline-block;
 }
 
-.c-button-link svg {
-  height: 1em;
-  vertical-align: middle;
+.c-button-link,
+.c-button-link:hover {
+  text-decoration: none;
 }
+

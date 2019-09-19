@@ -3,7 +3,6 @@
   padding: calc(var(--spaceUnit) * 2 ) 0;
   font-family: var(--fontCaption);
   width: 90%;
-  max-width: 1170px;
   margin: 0 auto;
 }
 
@@ -19,4 +18,22 @@
 
 .c-footer-topLink  {
   font-size: var(--fontSizeSmall);
+}
+
+.c-footer-section + .c-footer-section {
+  margin-top: calc(var(--spaceUnit) * 2);
+}
+
+
+@media screen and (min-width: 1440px) {
+  .c-footer {
+    display: flex;
+    justify-content: center;
+  }
+  .c-footer-section + .c-footer-section {
+    margin-top: 0;
+    padding-left: 1em;
+    margin-left: 1em;
+    border-left: 1px solid var(--colorGreyMedium);
+  }
 }
