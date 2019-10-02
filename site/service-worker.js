@@ -7,10 +7,6 @@ if (workbox) {
   workbox.core.clientsClaim()
 
   workbox.precaching.precacheAndRoute([]) // filled by service-worker-build.js
-  workbox.core.setCacheNameDetails({
-    prefix: cachePrefix,
-    precache: 'pre-cache'
-  })
 
   // Use a cache first strategy as default
   workbox.routing.setDefaultHandler(
