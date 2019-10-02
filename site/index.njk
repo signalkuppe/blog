@@ -40,7 +40,7 @@ Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vu
 <h3 class="c-homepage-ultimo">Ultimo post</h3>
 {% for post in pagination.items %}
 {% if loop.index === 1 %}
-
+<!-- test -->
 <article>
   <header>
     <time class="c-homepage-time" datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
