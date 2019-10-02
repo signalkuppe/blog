@@ -16,7 +16,7 @@ if (workbox) {
   // Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
   workbox.routing.registerRoute(
     /^https:\/\/fonts\.googleapis\.com/,
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.StaleWhileRevalidate({
       cacheName: `${cachePrefix}-google-fonts-stylesheets`
     })
   )
@@ -40,26 +40,11 @@ if (workbox) {
   // cache css and js assets minified by netlify
   workbox.routing.registerRoute(
     /.*(?:cloudfront)\.net/,
-    new workbox.strategies.NetworkFirst({
+    new workbox.strategies.StaleWhileRevalidate({
       cacheName: `${cachePrefix}-netlify-assets`
     })
   )
 
-  // all contentful images
-  workbox.routing.registerRoute(
-    /.*(?:ctfassets)\.net/,
-    new workbox.strategies.NetworkFirst({
-      cacheName: `${cachePrefix}-contentful-images`,
-    })
-  )
-  
-  // all blog paths
-  workbox.routing.registerRoute(
-    new RegExp('/[^/]+/[^/]+/[^/]+/[^/]'),
-    new workbox.strategies.NetworkFirst({
-      cacheName: `${cachePrefix}-posts`
-    })
-  )
 
   // Use a network only strategy as default
   workbox.routing.setDefaultHandler(

@@ -20,6 +20,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('node_modules/toastify-js/src') // we need also the css
   eleventyConfig.addPassthroughCopy('node_modules/lockr/lockr.js')
   eleventyConfig.addPassthroughCopy('node_modules/workbox-sw/build/workbox-sw.js')
+  eleventyConfig.addPassthroughCopy('node_modules/workbox-window/build/workbox-window.prod.mjs')
   eleventyConfig.addPassthroughCopy('node_modules/colcade/colcade.js')
   eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist') // we need also the css
   eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')

@@ -1,12 +1,25 @@
 
 
-// Check that service workers are supported
+
+import { Workbox } from '/node_modules/workbox-window/build/workbox-window.prod.mjs'
 var env = document.querySelector('html').getAttribute('data-env')
+
+
 if ('serviceWorker' in navigator && env !== 'development') {
-  // Use the window load event to keep the page load performant
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
+  const wb = new Workbox('/service-worker.js')
+  wb.addEventListener('installed', event => {
+    if (event.isUpdate) {
+      Toastify({
+        text: '<a href="" onclick="window.location.reload(); return false;" style="text-decoration: none; display: block;">✋È disponibile una nuova versione del sito<br /><strong>Clicca qui per aggiornare</strong></a>',
+        duration: 100000,
+        close: false,
+        gravity: 'top',
+        position: 'right',
+        className: 'c-toast--info',
+      }).showToast()
+    }
   })
+  wb.register()
 }
 
 var deferredPrompt
