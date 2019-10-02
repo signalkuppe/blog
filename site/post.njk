@@ -243,11 +243,11 @@ permalink: "{{ post.computed.slug }}"
 <script src="/node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.js"></script>
 <script src="/js/postGpxTrack.js"></script>
 {% endif %}
-<script src="/js/registerServiceWorker.js"></script>
 <script src="/js/theme.js"></script>
 <script src="/js/postAnimations.js"></script>
 <script src="/js/smoothScroll.js"></script>
 <script src="/js/currentYear.js"></script>
 <script src="/js/lazyImages.js"></script>
 <script src="/js/imageGallery.js"></script>
+{{ macro.registerServiceWorker() }}
 {% endblock %}
