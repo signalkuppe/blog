@@ -1,4 +1,4 @@
-importScripts('/node_modules/workbox-sw/build/workbox-sw.js')
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js')
 
 if (workbox) {
   console.log(`Service worker loaded 🎉`)

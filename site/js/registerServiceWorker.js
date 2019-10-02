@@ -1,7 +1,7 @@
 
 
 
-import { Workbox } from '/node_modules/workbox-window/build/workbox-window.prod.mjs'
+import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/4.0.0/workbox-window.prod.mjs'
 var env = document.querySelector('html').getAttribute('data-env')
 
 
