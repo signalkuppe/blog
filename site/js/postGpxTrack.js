@@ -5,25 +5,11 @@
   var coverContainer = document.querySelector('.c-post-cover')
   var buttonContainer = document.getElementById('js-gpxButtonContainer')
   var gpxUrl = document.getElementById('js-gpxButton').getAttribute('href')
-  var mapRendered = false
-  var tileLayer = L.tileLayer('https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f890f7037bd243ee9602a36c56fc6dc2', {
+  var TILELAYER = L.tileLayer('https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f890f7037bd243ee9602a36c56fc6dc2', {
     attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    zoom: 20
+    zoom: 15
   })
-  var getTileUrls = function (map, bounds, tileLayer, zoom) {
-    var min = map.project(bounds.getNorthWest(), zoom).divideBy(256).floor(),
-        max = map.project(bounds.getSouthEast(), zoom).divideBy(256).floor(),
-        urls = [];
-
-    for (var i = min.x; i <= max.x; i++) {
-        for (var j = min.y; j <= max.y; j++) {
-            var coords = new L.Point(i, j);
-            coords.z = zoom;
-            urls.push(tileLayer.getTileUrl(coords));
-        }
-    }
-    return urls;
-  }
+  var mapRendered = false
   var showMap = function (showButton) {
     if (!mapRendered) {
       showButton.innerHTML = iconShow + ' Carico la traccia...'
@@ -43,7 +29,7 @@
         gestureHandling: true // depends on https://github.com/elmarquis/Leaflet.GestureHandling
       })
       // mappe da thunderforest.com: 150.000 richieste al mese poi bisogna pagare, verificare
-      tileLayer.addTo(mymap)
+      TILELAYER.addTo(mymap)
      
       new L.GPX(gpxUrl, {async: true})
           .on('loaded', function (e) {
@@ -59,17 +45,6 @@
             mymap.fitBounds(e.target.getBounds())
             showButton.innerHTML = iconClose + ' Nascondi la traccia'
             mapContainer.style.opacity = 1
-            console.log(getTileUrls(mymap, e.target.getBounds(), tileLayer, 15))
-          })
-          .on('error', function (e) {
-            Toastify({
-              text: 'Ops qualcosa è andato storto 😭',
-              duration: 4000,
-              close: false,
-              gravity: 'top',
-              position: 'right',
-              className: 'c-toast--error'
-            }).showToast()
           })
           .addTo(mymap)
     } else {

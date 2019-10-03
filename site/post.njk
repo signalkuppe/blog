@@ -203,10 +203,9 @@ permalink: "{{ post.computed.slug }}"
     </ul>
   </aside>
   {# /gallery #}
-  <footer class="c-post-footer u-section-mt-1-5">
+  <footer class="c-post-footer u-section-mt-2">
     <ul class="u-text-center u-section-mb-1 u-inline-list u-justify-center">
-      <li><a href="" onclick="window.print()" class="c-button">{{ macro.icon('print') }}Stampa</a></li>
-      <li><a href="" class="c-button" id="js-saveOfflineButton">{{ macro.icon('save') }}Salva per leggerlo offline</a></li>
+      <li><button href="" onclick="window.print()" class="c-button">{{ macro.icon('print') }}Stampa</button></li>
     </ul>
     {# prev-next #}
     <nav class="js-observe js-observe-nav">

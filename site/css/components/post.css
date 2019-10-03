@@ -23,7 +23,6 @@
 .c-post-cover-caption {
   font-family: var(--fontCaption);
   font-weight: 700;
-  font-size: var(--fontSize1);
   font-style: normal;
   background: var(--bodyBackgroundColor);
   color: var(--bodyColor);
@@ -36,7 +35,7 @@
 }
 
 .c-post-gpxButtonContainer {
-  margin-left: 0.25em;
+  margin-left: 0.15em;
   margin-top: 0.5em;
 }
 
@@ -56,6 +55,8 @@
   height: 1em;
   margin-right: 0.5em;
   fill: var(--bodyColor);
+  position: relative;
+  top: 0.125em;
 }
 
 .c-post-embeddedImage a:hover + figcaption {
