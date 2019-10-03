@@ -41,7 +41,7 @@ permalink: "{{ post.computed.slug }}"
   {%- endcall %}
 
   {# post cover #}
-  <figure class="c-post-cover js-observe js-observe-caption js-gallery u-section-mt-1"{% if post.computed.gps.hasGpx %} id="js-hasGpx" data-gpx="{{ post.computed.gps.gpx }}"{% endif%}>
+  <figure class="c-post-cover js-observe js-observe-caption js-gallery u-section-mt-1">
     <a 
     href="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
     data-at-768="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&fm=jpg&fl=progressive"
@@ -50,11 +50,21 @@ permalink: "{{ post.computed.slug }}"
     title="{{ post.fields.cover.fields.title }}"
     >
       <picture class="u-hide-nojs">
-        <!-- 21:9 -->
+        <!-- 21:9 small -->
+        <source
+          srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=617&q=20&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
+          data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1600&h=685&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
+          media="(orientation: landscape) and (max-width: 1679px)" />
+        <!-- 21:9 medium -->
         <source
           srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=617&q=20&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
           data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=2560&h=1100&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
-          media="(orientation: landscape)" />
+          media="(orientation: landscape) and (min-width: 1680px) and (max-width: 2559px)" />
+        <!-- 21:9 large -->
+        <source
+          srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=617&q=20&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
+          data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=3500&h=1500&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
+          media="(orientation: landscape) and (min-width: 2560px)" />
         <!-- 3:2 -->
         <source 
           srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=800&h=533&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive&q=20"
@@ -95,12 +105,12 @@ permalink: "{{ post.computed.slug }}"
         <ul class="c-post-gps u-inline-list">
           {% if post.computed.gps.hasKml %}
           <li>
-            <a class="c-button" href="{{ post.computed.gps.kml }}" title="Scarica la traccia .kml per Google Earth" download="{{ post.fields.title | slug }}.kml">{{ macro.icon('download') }}Traccia kml</a>
+            <a class="c-button" href="{{ post.computed.gps.kml }}" id="js-kmlButton" title="Scarica la traccia .kml per Google Earth" download="{{ post.fields.title | slug }}.kml">{{ macro.icon('download') }}Traccia kml</a>
           </li>
           {% endif %}
           {% if post.computed.gps.hasGpx %}
           <li>
-            <a class="c-button" href="{{ post.computed.gps.gpx }}" title="Scarica la traccia .gpx" download="{{ post.fields.title | slug }}.gpx">{{ macro.icon('download') }}Traccia gpx</a>
+            <a class="c-button" href="{{ post.computed.gps.gpx }}" id="js-gpxButton" title="Scarica la traccia .gpx" download="{{ post.fields.title | slug }}.gpx">{{ macro.icon('download') }}Traccia gpx</a>
           </li>
           {% endif %}
         </ul>
@@ -175,10 +185,7 @@ permalink: "{{ post.computed.slug }}"
       {% for photo in post.fields.gallery %}
       <li class="c-imageGallery-item">
         <a 
-          href="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
-          data-at-768="{{ photo.fields.file.url }}?fit=thumb&w=1440&fm=jpg&fl=progressive"
-          data-at-1280="{{ photo.fields.file.url }}?fit=thumb&w=1920&fm=jpg&fl=progressive"
-          data-at-1920="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive"
+          href="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" 
           title="{{ photo.fields.title }}"
           >
           <img 
@@ -187,7 +194,7 @@ permalink: "{{ post.computed.slug }}"
             class="lazyImg u-hide-nojs" />
           <noscript>
             <img 
-              src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
+              src="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" 
               alt="{{ photo.fields.description }}"  />        
           </noscript>
         </a>

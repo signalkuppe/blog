@@ -1,28 +1,28 @@
 
 (function () {
+  /*
+  * adds missing recources to the cache for offline reading
+  */
   var button = document.getElementById('js-saveOfflineButton')
-  var gpx = document.getElementById('js-hasGpx')
+  var gpxButton = document.getElementById('js-gpxButton')
+  var kmlButton = document.getElementById('js-kmlButton')
+  var galleryLIghtBoxItems = document.querySelectorAll('.c-imageGallery a')
   if ('caches' in window) {
     button.addEventListener('click', function (e) {
       e.preventDefault()
-
+      var pageResources = []
       caches.open('signalkuppe')
         .then(function (cache) {
-          var pageResources = [location.href]
-          document.querySelectorAll('link[rel="stylesheet"]')
-            .forEach(function (link) {
-              pageResources.push(link.getAttribute('href'))
+          if (gpxButton) { // gpx track
+            pageResources.push(gpxButton.getAttribute('href'))
+          }
+          if (kmlButton) { // kml track
+            pageResources.push(kmlButton.getAttribute('href'))
+          }
+          if (galleryLIghtBoxItems.length) { // full size images of the gallery
+            galleryLIghtBoxItems.forEach(function (lightBoxItem) {
+              pageResources.push(lightBoxItem.getAttribute('href'))
             })
-          document.querySelectorAll('script[src]')
-            .forEach(function (script) {
-              pageResources.push(script.getAttribute('src'))
-            })
-          document.querySelectorAll('img[src]')
-            .forEach(function (image) {
-              pageResources.push(image.getAttribute('src'))
-            })
-          if (gpx) {
-            pageResources.push(gpx.getAttribute('data-gpx'))
           }
           cache.addAll(pageResources)
             .then((res) => {
