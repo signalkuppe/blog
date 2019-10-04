@@ -220,6 +220,7 @@ permalink: "{{ post.computed.slug }}"
         {% endif %}
         {% if post.computed.next %}
         <li>
+        <!-- test -->
           <a class="js-animate-next c-button-link" href="{{ post.computed.next.slug }}" title="{{ post.computed.next.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.next.title }}" class="c-button-link">Post successivo{{ macro.icon('next', append=true) }}</a>
         </li>
         {% endif %}

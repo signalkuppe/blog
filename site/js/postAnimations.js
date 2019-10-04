@@ -27,7 +27,6 @@
       }
       // post nav
       if (entry.target.classList.contains('js-observe-nav') && entry.isIntersecting && entry.intersectionRatio === 1) {
-        console.log('nav intersecting!!!')
         if (next) {
           var tl = new TimelineLite()
           tl.to(next, 0.25, { position: 'relative', left: 25, delay: 0 })
