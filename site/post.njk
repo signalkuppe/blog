@@ -212,7 +212,7 @@ permalink: "{{ post.computed.slug }}"
       <ul class="c-postNav">
         {% if post.computed.prev %}
         <li>
-          <a class="js-animate-prev c-button-link" href="{{ post.computed.prev.slug }}" title="{{ post.computed.prev.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.prev.title }}" class="c-button-link">{{ macro.icon('previous') }}Post precedente</a>
+          <a class="js-animate-prev c-button-link" href="{{ post.computed.prev.slug }}" title="{{ post.computed.prev.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.prev.title }}">{{ macro.icon('previous') }}Post precedente</a>
         </li>
         {% endif %}
         {% if post.computed.prev and post.computed.next %}
@@ -220,8 +220,7 @@ permalink: "{{ post.computed.slug }}"
         {% endif %}
         {% if post.computed.next %}
         <li>
-        <!-- test -->
-          <a class="js-animate-next c-button-link" href="{{ post.computed.next.slug }}" title="{{ post.computed.next.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.next.title }}" class="c-button-link">Post successivo{{ macro.icon('next', append=true) }}</a>
+          <a class="js-animate-next c-button-link" href="{{ post.computed.next.slug }}" title="{{ post.computed.next.date | formatDate('YYYY-MM-DD') }} - {{ post.computed.next.title }}">Post successivo{{ macro.icon('next', append=true) }}</a>
         </li>
         {% endif %}
       </ul>
