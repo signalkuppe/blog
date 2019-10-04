@@ -50,17 +50,17 @@ permalink: "{{ post.computed.slug }}"
     title="{{ post.fields.cover.fields.title }}"
     >
       <picture class="u-hide-nojs">
-        <!-- 21:9 small -->
+        <!-- 21:9 medium -->
         <source
           srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=617&q=20&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
-          data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1600&h=685&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
+          data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1920&h=822&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
           media="(orientation: landscape) and (max-width: 1679px)" />
-        <!-- 21:9 medium -->
+        <!-- 21:9 large -->
         <source
           srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=617&q=20&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
           data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=2560&h=1100&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
           media="(orientation: landscape) and (min-width: 1680px) and (max-width: 2559px)" />
-        <!-- 21:9 large -->
+        <!-- 21:9 xlarge -->
         <source
           srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&h=617&q=20&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
           data-srcset="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=3500&h=1500&q=70&f={{ post.fields.coverCropFocus[0] }}&fm=jpg&fl=progressive" 
