@@ -256,7 +256,7 @@
 #}
 
 {% macro oldCard(post) %}
-  <article class="c-card" itemscope itemtype="http://schema.org/Article">
+  <article class="c-card" itemscope itemtype="http://schema.org/Article"  style="position: relative; padding-bottom: 20px;">
     <figure class="c-card-image">
       <img 
         class="lazyImg"
@@ -275,5 +275,18 @@
       </header>
       <p>{{ post.description }}</p>
     </div>
+      <style>
+        .c-card-badge {
+          font-size:0.6em;
+          background: orangered;
+          color: white;
+          padding: 0.15em 0.5em;
+          border-radius: 4px;
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+        }
+      </style>
+      <span class="c-card-badge">Vecchia grafica</span>
   </article>
 {% endmacro %}
