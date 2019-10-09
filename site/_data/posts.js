@@ -162,15 +162,12 @@ module.exports = () => {
         const computedPosts = transformPosts(posts)
         const markers = makeMarkers(posts)
         /* TEMP: add old posts */
-        const oldPosts = require('../_oldPosts/markers')
+        const oldPosts = require('./oldPosts')
           .map((oldPost) => {
             oldPost.autocompleteRow = `<a href="${oldPost.link}.html" data-autocomplete"><span>${oldPost.date}</span> - ${oldPost.title}</a>`
             return oldPost
           })
-          .filter((oldPost) => {
-            return !markers.find((m) => `${oldPost.link}.html` === m.link)
-          })
-        log.warn(`Added ${oldPosts.length} old posts`)
+        log.warn(`Added ${oldPosts.length} old posts, !!! first old post: ${oldPosts[0].title} !!!`)
         const allMarkers = markers.concat(oldPosts)
         fs.writeFileSync(logFile, JSON.stringify(computedPosts), 'utf-8') // write log file
         fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(allMarkers)}`, 'utf-8') // write marker file
