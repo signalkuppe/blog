@@ -264,14 +264,18 @@
     var markers = [
     {% for post in site.posts %}
     {% assign cords = post.map | split: ',' %}
+    {% assign tags = post.tags | split: '' %}
         {
         lat: {{ cords[0] }},
         lng: {{ cords[1] }},
         title: "{{ post.title }}",
         date: "{{ post.date | date: '%d/%m/%y'}}",
-        link: "{{ post.url }}",
+        dateTime: "{{ post.date | date: '%Y-%m-%d'}}",
+        link: "{{ post.url }}.html",
+        tags: {{ tags }},
         cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/{{ post.date| date: '%d%m%y' }}.jpg",
         marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/{{ post.date| date: '%d%m%y' }}.jpg"
+        card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/{{ post.date| date: '%d%m%y' }}.jpg"
         }{% unless forloop.last %},{% endunless %}{% endfor %}
     ];
     
