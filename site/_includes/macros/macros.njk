@@ -255,25 +255,25 @@
 # @param {Object} post - the post data
 #}
 
-{% macro oldCard(date, title) %}
+{% macro oldCard(post) %}
   <article class="c-card" itemscope itemtype="http://schema.org/Article">
     <figure class="c-card-image">
       <img 
         class="lazyImg"
-        data-src="https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/{{ date | replace('/', '') }}.jpg" 
-        alt="{{ title }}" />
+        data-src="{{ post.card }}" 
+        alt="{{ post.tile }}" />
       <noscript>
         <img 
-          src="https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/{{ date | replace('/', '') }}.jpg" 
-          alt="{{ title }}"  />        
+          src="{{ post.card }}" 
+          alt="{{ post.title }}"  />        
       </noscript>
     </figure>
     <div class="c-card-body">
       <header class="c-card-header">
-        <time itemprop="datePublished">{{ date }}</time>
-        <h2 class="c-card-title">{{ title }}</h2>
+        <time datetime="{{ post.datetime }}" itemprop="datePublished">{{ post.dateTim }}</time>
+        <h2 class="c-card-title">{{ post.title }}</h2>
       </header>
-      <p>{{ title }}</p>
+      <p>{{ post.description }}</p>
     </div>
   </article>
 {% endmacro %}

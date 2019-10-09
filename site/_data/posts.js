@@ -164,7 +164,7 @@ module.exports = () => {
         /* TEMP: add old posts */
         const oldPosts = require('./oldPosts')
           .map((oldPost) => {
-            oldPost.autocompleteRow = `<a href="${oldPost.link}.html" data-autocomplete"><span>${oldPost.date}</span> - ${oldPost.title}</a>`
+            oldPost.autocompleteRow = `<a href="${oldPost.link}" data-autocomplete"><span>${oldPost.date}</span> - ${oldPost.title}</a>`
             return oldPost
           })
         log.warn(`Added ${oldPosts.length} old posts, !!! first old post: ${oldPosts[0].title} !!!`)

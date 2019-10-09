@@ -49,8 +49,8 @@ description: "L’elenco completo di tutte le relazioni, con la mappa e la ricer
 {# old posts TEMP!!!!! #}
 {% for oldPost in oldPosts  %}
   <li class="l-postGrid-item">
-    <a href="{{ oldPost.link }}.html" title="leggi il post" class="u-container-link">
-      {{ macro.oldCard(oldPost.date, oldPost.title) }}
+    <a href="{{ oldPost.link }}" title="leggi il post" class="u-container-link">
+      {{ macro.oldCard(oldPost) }}
     </a>
   </li>
 {% endfor %}
