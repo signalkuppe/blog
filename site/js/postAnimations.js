@@ -6,6 +6,8 @@
   var gpxButton = document.querySelector('.js-animate-gpxButton')
   var next = document.querySelector('.js-animate-next')
   var prev = document.querySelector('.js-animate-prev')
+  var offlineMsg = document.querySelector('.js-observe-offlineMsg')
+  var pageIsCached = false
   var options = {
     threshold: 1.0
   }
@@ -38,6 +40,26 @@
           tl.to(prev, 0.5, { left: 0 })
         }
       }
+
+      // offline message: show the offline msg only if we have the current url in cache
+      if (entry.target.classList.contains('js-observe-offlineMsg') && entry.isIntersecting && entry.intersectionRatio === 1) {
+        if ('caches' in window) {
+          const cacheName = 'signalkuppe'
+          const url = window.location.pathname
+          caches.open(cacheName).then(cache => {
+            cache.match(url).then(item => {
+              if (item) {
+                TweenMax.to(offlineMsg, 0.8, {
+                  delay: 0.5,
+                  opacity: 1
+                })
+              } else {
+                offlineMsg.style.display = 'none'
+              }
+            })
+          })
+        }
+      }
     })
   }
 
@@ -55,6 +77,12 @@
     TweenMax.to(gpxButton, 0, {
       transform: 'translateX(-150%)',
       overflowX: 'hidden'
+    })
+  }
+
+  if (offlineMsg) {
+    TweenMax.to(offlineMsg, 0, {
+      opacity: 0
     })
   }
 })()

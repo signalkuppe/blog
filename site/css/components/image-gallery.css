@@ -1,7 +1,5 @@
 .c-imageGallery {
   display: flex;
-  max-width: 100vw;
-  overflow: hidden;
 }
 
 .c-imageGallery-col {

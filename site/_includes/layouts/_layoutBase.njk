@@ -9,7 +9,8 @@
     {{ macro.css() }}
   </head>
   <body id="top" class="l-base">
-    <a href="#main" class="u-srOnly">Vai al contenuto principale</a>
+    {{ macro.skipToMain() }}
+    {{ macro.topMessage() }}
     <header class="l-base-header u-section-mb-1 u-section-mt-0-5">
       {% block header %}{% endblock %}
     </header>

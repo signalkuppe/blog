@@ -1,1 +1,5 @@
-# icons from https://feathericons.com
+# signalkuppe.com
+
+```js
+npm install && npm run dev
+```

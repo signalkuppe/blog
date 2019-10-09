@@ -17,7 +17,7 @@
   width: 100%;
   filter: blur(10px);
   object-fit: cover;
-  overflow: hidden;
+  min-height: 60vh;
 }
 
 .c-post-cover-caption {
@@ -98,6 +98,20 @@
   fill: var(--colorEmail);
 }
 
+.c-post-offlineMsg {
+  font-size: var(--fontSizeSmall);
+  padding: 1em;
+  color: var(--bodyColor);
+  border: 1px solid var(--bodyColor);
+  width: 90%;
+  max-width: 75ch;
+  margin: 0 auto;
+  display: flex;
+}
+
+.c-post-offlineMsg-text {
+  margin-left: 0.5em;
+}
 
 @media screen and (min-width: 768px) {
   .c-post-cover-caption {

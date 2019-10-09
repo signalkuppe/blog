@@ -79,6 +79,7 @@
 <link href="/css/components/image-gallery.css" rel="stylesheet" media="screen">
 <link href="/css/components/footer.css" rel="stylesheet" media="screen">
 <link href="/css/components/homepage.css" rel="stylesheet" media="screen">
+<link href="/css/components/top-message.css" rel="stylesheet" media="screen">
 <link href="/css/components/courtesy-page.css" rel="stylesheet" media="screen">
 <link href="/css/print.css" rel="stylesheet" media="print">
 {% endmacro %}
@@ -132,6 +133,24 @@
   <span class="c-icon{% if append %} c-icon--append{% endif %}" aria-hidden="true">
     {% include 'icons/' + name + '.njk' %}
   </span>
+{% endmacro %}
+
+
+{# 
+# Skip to main content
+#}
+
+{% macro skipToMain() %}
+<a href="#main" class="u-srOnly">Vai al contenuto principale</a>
+{% endmacro %}
+
+
+{# 
+# Under construction msg
+#}
+
+{% macro topMessage() %}
+<div role="alert" class="c-topMessage" id="js-topMessage">Il nuovo sito è ancora in sviluppo. Potresti visualizzare i post più vecchi con la grafica precedente. <button class="c-button-link" id="js-topMessage-close"><b>Non mostrare più{{ macro.icon('close') }}</b></button></div>
 {% endmacro %}
 
 

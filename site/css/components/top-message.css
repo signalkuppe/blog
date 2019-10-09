@@ -1,0 +1,8 @@
+.c-topMessage {
+  font-size: var(--fontSizeTiny);
+  padding: 1em;
+  text-align: center;
+  background: var(--colorPrimary);
+  color: var(--bodyColor);
+  display: none;
+}

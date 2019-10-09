@@ -89,7 +89,6 @@ permalink: "{{ post.computed.slug }}"
   {% endif %}
   {# post layout #}
   <section class="l-post u-section-mt-1-25">
-
     {# content #}
     <section itemprop="articleBody" class="l-post-content u-section-mb-1">
     {{ post.computed.body | safe }}
@@ -226,6 +225,11 @@ permalink: "{{ post.computed.slug }}"
       </ul>
     </nav>
     {# /prev-next #}
+    {# offline msg #}
+    <div class="c-post-offlineMsg u-section-mt-1-25 js-observe js-observe-offlineMsg u-screenOnly" role="alert" id="js-offlineMsg">
+      {{ macro.icon('info') }} <span class="c-post-offlineMsg-text">Lo sapevi che puoi leggere questo post offline? Senza connessione potrai visualizzare il testo, le foto che hai visto e la traccia se l’hai aperta.</span>
+    </div>
+    {# /offline msg #}
     <p class="c-post-newsletter u-section-mt-1 u-section-mb-1">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH" class="u-highlight-link"><br>Iscriviti alla newsletter</a></strong></p>
   </footer>
 </article>
@@ -250,6 +254,7 @@ permalink: "{{ post.computed.slug }}"
 <script src="/node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.js"></script>
 <script src="/js/postGpxTrack.js"></script>
 {% endif %}
+<script src="/js/topMessage.js"></script>
 <script src="/js/theme.js"></script>
 <script src="/js/postAnimations.js"></script>
 <script src="/js/smoothScroll.js"></script>
