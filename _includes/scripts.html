@@ -274,7 +274,7 @@
         link: "{{ post.url }}.html",
         tags: {{ tags }},
         cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/{{ post.date| date: '%d%m%y' }}.jpg",
-        marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/{{ post.date| date: '%d%m%y' }}.jpg"
+        marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/{{ post.date| date: '%d%m%y' }}.jpg",
         card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/{{ post.date| date: '%d%m%y' }}.jpg"
         }{% unless forloop.last %},{% endunless %}{% endfor %}
     ];
