@@ -17,6 +17,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'css'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'img'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'service-worker.js'))
+  eleventyConfig.addPassthroughCopy(path.join(inputDir, '_redirects'))
   eleventyConfig.addPassthroughCopy('node_modules/toastify-js/src') // we need also the css
   eleventyConfig.addPassthroughCopy('node_modules/lockr/lockr.js')
   eleventyConfig.addPassthroughCopy('node_modules/colcade/colcade.js')

@@ -24,4 +24,14 @@ pagination:
 		<content type="html">{{ post.fields.description }}</content>
 	</entry>
   {%- endfor %}
+  {# TEMP!!! #}
+  {% for post in oldPosts  %}
+	<entry>
+		<title>{{ post.title }}</title>
+    <id>{{ env.ELEVENTY_URL  }}/{{ post.link }}</id>
+		<link href="{{ env.ELEVENTY_URL  }}/{{ post.link }}"/>
+		<updated>{{ post.dateTime }}</updated>
+		<content type="html">{{ post.description }}</content>
+	</entry>
+  {%- endfor %}
 </feed>

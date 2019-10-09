@@ -10,7 +10,7 @@ const path = require('path')
 const fs = require('fs')
 const _ = require('lodash')
 const mkdirp = require('mkdirp');
-const deleteKeyRecursively = require(path.join(process.cwd(), 'lib/deleteKeyRecursively'))
+// const deleteKeyRecursively = require(path.join(process.cwd(), 'lib/deleteKeyRecursively'))
 const log = require(path.join(process.cwd(), 'lib/log'))
 const date = require(path.join(process.cwd(), 'lib/date'))
 const logFile = path.join(process.cwd(), process.env.ELEVENTY_CACHE_DIR, '_posts.json')
@@ -118,7 +118,7 @@ const transformPosts = (posts) => { // ad some custom prop
     }
     // free some space
     delete post.fields.body
-    deleteKeyRecursively(post, 'sys')
+    // deleteKeyRecursively(post, 'sys')
 
     return post
   })
