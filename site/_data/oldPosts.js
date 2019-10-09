@@ -5,9 +5,7 @@
  */
 
 
-module.exports = [
-
-  {
+module.exports = [{
   lat: 46.0702728,
   lng: 9.6454059,
   title: "Monte Pedena",
@@ -15,6 +13,7 @@ module.exports = [
   dateTime: "2018-01-20",
   link: "/scialpinismo/2018/01/20/monte-pedena.html",
   tags: ["scialpinismo", "orobie"],
+  description: "Scialpinismo al Monte Pedena con partenza dal Rifugio Alpe Lago e discesa dal vallone nord.",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/200118.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/200118.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/200118.jpg"
@@ -29,6 +28,7 @@ module.exports = [
   dateTime: "2018-01-13",
   link: "/scialpinismo/2018/01/13/piz-belvair.html",
   tags: ["scialpinismo", "engadina"],
+  description: "Scialpinismo in Engadina al Piz Belvair con partenza da Madulain",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/130118.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/130118.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/130118.jpg"
@@ -43,6 +43,7 @@ module.exports = [
   dateTime: "2017-12-31",
   link: "/scialpinismo/2017/12/31/scialpinismo-al-resegone-da-morterone.html",
   tags: ["scialpinismo", "resegone"],
+  description: "Scialpinismo al Resegone con partenza da Morterone per la sorgente Forbesette e il Rifugio Azzoni e discesa lungo la Costa del Palio",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/311217.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/311217.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/311217.jpg"
@@ -57,6 +58,7 @@ module.exports = [
   dateTime: "2017-10-22",
   link: "/escursionismo/2017/10/22/pizzo-proman.html",
   tags: ["valgrande", "ossola"],
+  description: "Relazione della salita al Pizzo Proman con partenza da Colloro per la Colma di Premosello",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/221017.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/221017.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/221017.jpg"
@@ -71,6 +73,7 @@ module.exports = [
   dateTime: "2017-08-16",
   link: "/escursionismo/2017/08/16/piz-de-la-margna.html",
   tags: ["engadina", "svizzera"],
+  description: "Relazione della salita al Piz de la Margna in Engadina dalla località Creista e la Val Fedoz",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/160817.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/160817.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/160817.jpg"
@@ -85,6 +88,7 @@ module.exports = [
   dateTime: "2017-07-20",
   link: "/alpinismo/2017/07/20/elbrus.html",
   tags: ["russia", "viaggi", "caucaso"],
+  description: "Relazione della salita all'Elbrus nel Caucaso dal versante sud per la via normale dagli impianti di Azau (Terskol)",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/200717.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/200717.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/200717.jpg"
@@ -99,6 +103,7 @@ module.exports = [
   dateTime: "2017-06-24",
   link: "/alpinismo/2017/06/24/cima-piazzi.html",
   tags: ["piazzi", "valtellina"],
+  description: "Relazione della salita alla Cima Piazzi per la via normale da Eita e il Passo di Verva",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/240617.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/240617.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/240617.jpg"
@@ -113,6 +118,7 @@ module.exports = [
   dateTime: "2017-06-11",
   link: "/escursionismo/2017/06/11/pizzo-di-vogorno.html",
   tags: ["verzasca", "ticino", "svizzera"],
+  description: "Relazione della salita al Pizzo di Vogorno per la via normale dalla Val Verzasca per l'Alpe Bardughè",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/110617.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/110617.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/110617.jpg"
@@ -127,6 +133,7 @@ module.exports = [
   dateTime: "2017-06-03",
   link: "/escursionismo/2017/06/03/pizzo-scala.html",
   tags: ["valtartano", "orobie", "valtellina"],
+  description: "Relazione della salita al Pizzo Scala per la via normale con partenza dalla località Barbera in Val Tartano (Val Corta)",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/030617.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/030617.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/030617.jpg"
@@ -141,6 +148,7 @@ module.exports = [
   dateTime: "2017-05-27",
   link: "/escursionismo/2017/05/27/pizzo-ragno.html",
   tags: ["valgrande", "loana", "ragno", "ossola"],
+  description: "Relazione della salita al Pizzo Ragno dalla Val Loana per L’Alpe Erta, l’Alpe Al Cedo,  l’Alpe Al Geggio e i laghetti del Geggio",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/270517.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/270517.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/270517.jpg"
@@ -155,6 +163,7 @@ module.exports = [
   dateTime: "2017-05-06",
   link: "/escursionismo/2017/05/06/cima-d-agrella.html",
   tags: ["valsassina", "primaluna", "olino", "agrella"],
+  description: "Relazione della salita alla Cima D’Agrella in Valsassina con partenza da Primaluna e rientro per la Bocchetta di Olino",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/060517.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/060517.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/060517.jpg"
@@ -169,6 +178,7 @@ module.exports = [
   dateTime: "2017-04-17",
   link: "/scialpinismo/2017/04/17/pizzo-cassandra.html",
   tags: ["scialpinismo", "valtellina", "cassandra"],
+  description: "Scialpinismo al Pizzo Cassandra con partenza da Chiareggio per il Rifugio Porro e il Ghiacciaio del Ventina",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/170417.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/170417.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/170417.jpg"
@@ -183,6 +193,7 @@ module.exports = [
   dateTime: "2017-03-12",
   link: "/scialpinismo/2017/03/12/capanna-cristallina.html",
   tags: ["scialpinismo", "svizzera", "ticino", "bedretto"],
+  description: "Scialpinismo alla Capanna Cristallina con partenza da Ossasco. Salita alla Cima di Lago e traversata al Poncione di Valpiana",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/120317.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/120317.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/120317.jpg"
@@ -197,6 +208,7 @@ module.exports = [
   dateTime: "2017-02-18",
   link: "/scialpinismo/2017/02/18/rottalihorn.html",
   tags: ["scialpinismo", "svizzera", "andermatt", "realp"],
+  description: "Scialpinismo al Rottalihorn con partenza da Realp, relazione e traccia gps di salita",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/180217.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/180217.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/180217.jpg"
@@ -211,6 +223,7 @@ module.exports = [
   dateTime: "2017-02-11",
   link: "/scialpinismo/2017/02/11/cima-della-rosetta.html",
   tags: ["scialpinismo", "valgerola", "rosetta"],
+  description: "Scialpinismo alla Cima della Rosetta per il Bar Bianco e discesa per i prati di Mellarolo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/110217.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/110217.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/110217.jpg"
@@ -225,6 +238,7 @@ module.exports = [
   dateTime: "2017-01-15",
   link: "/escursionismo/2017/01/15/madone.html",
   tags: ["ticino", "onsernone", "centovalli"],
+  description: "Salita al Madone in Val Onsernone da Berzone per l'Alpe Sella e Pino",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/150117.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/150117.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/150117.jpg"
@@ -239,6 +253,7 @@ module.exports = [
   dateTime: "2017-01-07",
   link: "/scialpinismo/2017/01/07/monte-rascias.html",
   tags: ["scialpinismo", "vda", "champorcher"],
+  description: "Scialpinismo al Monte Rascias nella valle di Champorcher con partenza da Mont Blanc lungo la strada per il Rifugio Dondena",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/070117.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/070117.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/070117.jpg"
@@ -253,6 +268,7 @@ module.exports = [
   dateTime: "2017-01-06",
   link: "/escursionismo/2017/01/06/piz-camogh%C3%A8.html",
   tags: ["ticino", "prealpi", "luganesi"],
+  description: "Salita al Piz Camoghè dalla Val Colla per il Passo Pozzaiolo e la Bocchetta di Revolte",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/060117.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/060117.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/060117.jpg"
@@ -267,6 +283,7 @@ module.exports = [
   dateTime: "2016-12-30",
   link: "/scialpinismo/2016/12/30/punta-palasina.html",
   tags: ["scialpinismo", "vda", "ayas"],
+  description: "Scialpinismo alla Punta Palasina in Val d’Ayas con partenza da Estoul",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/301216.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/301216.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/301216.jpg"
@@ -281,6 +298,7 @@ module.exports = [
   dateTime: "2016-12-24",
   link: "/scialpinismo/2016/12/24/poncione-di-val-piana.html",
   tags: ["scialpinismo", "ticino", "svizzera"],
+  description: "Scialpinismo al Poncione di Val Piana in Val Bedretto con partenza dalla località All'Acqua lungo la Val Cavagnolo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/241216.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/241216.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/241216.jpg"
@@ -295,6 +313,7 @@ module.exports = [
   dateTime: "2016-12-17",
   link: "/scialpinismo/2016/12/17/spitzhorli.html",
   tags: ["scialpinismo", "sempione", "svizzera"],
+  description: "Scialpinismo allo Spitzhörli dal Passo del Sempione",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/171216.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/171216.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/171216.jpg"
@@ -309,6 +328,7 @@ module.exports = [
   dateTime: "2016-12-11",
   link: "/escursionismo/2016/12/11/gridone.html",
   tags: ["ticino", "gridone", "lago", "maggiore"],
+  description: "Relazione della salita al Gridone con partenza da Mergugno nel comune di Brissago",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/111216.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/111216.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/111216.jpg"
@@ -323,6 +343,7 @@ module.exports = [
   dateTime: "2016-09-16",
   link: "/alpinismo/2016/09/16/piz-platta.html",
   tags: ["rheinwald", "svizzera"],
+  description: "Relazione della salita al Piz Platta per la via normale dalla località Cresta in Val Ferrera",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/160916.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/160916.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/160916.jpg"
@@ -337,6 +358,7 @@ module.exports = [
   dateTime: "2016-08-08",
   link: "/alpinismo/2016/08/08/finsteraarhorn.html",
   tags: ["orbaerland", "svizzera"],
+  description: "Relazione della salita al Finsteraarhorn per la via normale dalla Finsteraarhornhütte",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/080816.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/080816.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/080816.jpg"
@@ -351,6 +373,7 @@ module.exports = [
   dateTime: "2016-07-30",
   link: "/alpinismo/2016/07/30/adamello-via-terzulli.html",
   tags: ["adamello", "ferrata"],
+  description: "Relazione della salita all'Adamello per la via Terzulli con partenza dalla località ponte del guat",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/300716.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/300716.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/300716.jpg"
@@ -365,6 +388,7 @@ module.exports = [
   dateTime: "2016-07-24",
   link: "/escursionismo/2016/07/24/pizzo-di-claro.html",
   tags: ["ticino", "pizzo", "claro"],
+  description: "Via normale al Pizzo di Claro da Arvigo per l'Alp di Stabveder",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/240716.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/240716.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/240716.jpg"
@@ -379,6 +403,7 @@ module.exports = [
   dateTime: "2016-07-16",
   link: "/alpinismo/2016/07/16/galenstock-cresta-nord.html",
   tags: ["furka", "galenstock"],
+  description: "Relazione della salita alla Galenstock per la cresta nord con partenza da Tiefenbach e traversata fino al Belvedere del Ghiacciaio del Rodano.",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/160716.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/160716.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/160716.jpg"
@@ -393,6 +418,7 @@ module.exports = [
   dateTime: "2016-07-09",
   link: "/escursionismo/2016/07/09/piz-ot.html",
   tags: ["engadina", "piz", "ot"],
+  description: "Via normale al Piz Ot con partenza da Samedan (località San Peter) per l'Alpe Muntatsch",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/090716.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/090716.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/090716.jpg"
@@ -407,6 +433,7 @@ module.exports = [
   dateTime: "2016-06-24",
   link: "/alpinismo/2016/06/24/breithorn-dal-sempione.html",
   tags: ["sempione", "breithorn"],
+  description: "Via normale al Breithorn con partenza dal Passo del Sempione per l'Homattugletscher",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/240616.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/240616.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/240616.jpg"
@@ -421,6 +448,7 @@ module.exports = [
   dateTime: "2016-06-19",
   link: "/alpinismo/2016/06/19/tresenta.html",
   tags: ["vda", "gran", "paradiso"],
+  description: "Via normale alla Tresenta con partenza da Pont per il Rifugio Vittorio Emanuele",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/190616.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/190616.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/190616.jpg"
@@ -435,6 +463,7 @@ module.exports = [
   dateTime: "2016-06-03",
   link: "/trail/2016/06/03/traversata-como-bellagio.html",
   tags: ["lago", "como", "bellagio", "triangolo", "lariano"],
+  description: "Traversata da Como a Bellagio lungo la dorsale del Triangolo Lariano",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/030616.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/030616.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/030616.jpg"
@@ -449,6 +478,7 @@ module.exports = [
   dateTime: "2016-04-25",
   link: "/scialpinismo/2016/04/25/pizzo-tresero.html",
   tags: ["scialpinismo", "forni"],
+  description: "Scialpinismo al Pizzo Tresero con partenza dall'Albergo dei Forni",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/250416.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/250416.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/250416.jpg"
@@ -463,6 +493,7 @@ module.exports = [
   dateTime: "2016-04-16",
   link: "/alpinismo/2016/04/16/grabiasca-canale-nord.html",
   tags: ["orobie", "neve", "canale"],
+  description: "Relazione della salita al Monte Grabiasca per il canale nord, con partenza da Carona",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/160416.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/160416.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/160416.jpg"
@@ -477,6 +508,7 @@ module.exports = [
   dateTime: "2016-04-10",
   link: "/alpinismo/2016/04/10/pizzo-camino-canale-nord-ovest.html",
   tags: ["orobie", "neve", "canale"],
+  description: "Relazione della salita al Pizzo Camino con partenza da Schilpario per la variante del canale nord ovest",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/100416.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/100416.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/100416.jpg"
@@ -491,6 +523,7 @@ module.exports = [
   dateTime: "2016-04-02",
   link: "/scialpinismo/2016/04/02/piz-chalchagn.html",
   tags: ["svizzera", "scialpinismo", "engadina"],
+  description: "Scialpinismo al Piz Chalchagn per il versante est con partenza dalla stazione del Morteratsch",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/020416.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/020416.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/020416.jpg"
@@ -505,6 +538,7 @@ module.exports = [
   dateTime: "2016-03-26",
   link: "/scialpinismo/2016/03/26/chilchalphorn.html",
   tags: ["svizzera", "scialpinismo"],
+  description: "Scialpinismo al Chilchalphorn con partenza da Hinterrhein dopo il passo del San Bernardino",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/260316.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/260316.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/260316.jpg"
@@ -519,6 +553,7 @@ module.exports = [
   dateTime: "2016-03-25",
   link: "/alpinismo/2016/03/25/alben-canale-ilaria.html",
   tags: ["orobie", "neve", "canale"],
+  description: "Realazione della salita al Monte Alben per il Canale Ilaria con partenza da Cornalba",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/250316.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/250316.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/250316.jpg"
@@ -533,6 +568,7 @@ module.exports = [
   dateTime: "2016-03-12",
   link: "/scialpinismo/2016/03/12/monte-salmurano.html",
   tags: ["orobie", "neve", "scialpinismo", "valgerola"],
+  description: "Scialpinismo al Monte Salmurano con partenza dal parcheggio di Pescegallo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/120316.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/120316.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/120316.jpg"
@@ -547,6 +583,7 @@ module.exports = [
   dateTime: "2016-03-05",
   link: "/scialpinismo/2016/03/05/scialpinismo-al-san-primo.html",
   tags: ["prealpi", "neve", "scialpinismo"],
+  description: "Scialpinismo al San Primo con partenza dagli impianti e proseguimento lungo la cresta",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/050316.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/050316.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/050316.jpg"
@@ -561,6 +598,7 @@ module.exports = [
   dateTime: "2016-02-21",
   link: "/scialpinismo/2016/02/21/foisc.html",
   tags: ["svizzera", "ticino"],
+  description: "Scialpinismo al Föisc da Brugnasco per le baite del Ce di Fuori",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/210216.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/210216.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/210216.jpg"
@@ -575,6 +613,7 @@ module.exports = [
   dateTime: "2016-01-24",
   link: "/escursionismo/2016/01/24/gradiccioli.html",
   tags: ["svizzera", "ticino"],
+  description: "Salita al Monte Gradiccioli da Mugena per l'Alpe Nisciora, il Passo di Agario e la Cresta Ovest e giro ad anello con rientro dalla cresta est passando dal Monte Ferraro",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/240116.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/240116.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/240116.jpg"
@@ -589,6 +628,7 @@ module.exports = [
   dateTime: "2016-01-10",
   link: "/escursionismo/2016/01/10/monte-brusada.html",
   tags: ["valtellina", "cech"],
+  description: "Salita al Monte Brusada nella Costiera dei Cech dall'Alpe La Piazza per i Prati dell’O",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/100116.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/100116.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/100116.jpg"
@@ -603,6 +643,7 @@ module.exports = [
   dateTime: "2015-12-27",
   link: "/alpinismo/2015/12/27/gran-zebr%C3%B9.html",
   tags: ["valtellina", "stelvio"],
+  description: "Salita al Gran Zebrù con pernottamento nel locale invernale del Rifugio Pizzini",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/271215.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/271215.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/271215.jpg"
@@ -617,6 +658,7 @@ module.exports = [
   dateTime: "2015-12-05",
   link: "/escursionismo/2015/12/05/concatenamento-grignone-pizzo-tre-signori.html",
   tags: ["valsassina"],
+  description: "Concatenamento in giornata del Grignone e del Pizzo Tre Signori, con partenza a arrivo da Pasturo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/051215.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/051215.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/051215.jpg"
@@ -631,6 +673,7 @@ module.exports = [
   dateTime: "2015-11-08",
   link: "/trekking/2015/11/08/strette-del-cas%C3%A8.html",
   tags: ["valgrande"],
+  description: "Trekking in Val Grande con partenza da Cicogna: Pogallo, Strette del Casè, notte alla Bocchetta di Campo e rientro per sentiero Bove e il Pian di Boit",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/081115.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/081115.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/081115.jpg"
@@ -645,6 +688,7 @@ module.exports = [
   dateTime: "2015-10-24",
   link: "/escursionismo/2015/10/24/chuebodenhorn.html",
   tags: ["bedretto", "svizzera"],
+  description: "Relazione della salita al Chuebodenhorn in Val Bedretto con partenza dalla località All'Acqua.",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/241015.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/241015.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/241015.jpg"
@@ -659,6 +703,7 @@ module.exports = [
   dateTime: "2015-10-17",
   link: "/escursionismo/2015/10/17/pizzo-pioltone.html",
   tags: ["bognanco", "pioltone"],
+  description: "Relazione della salita al Pizzo Pioltone in Val Bognanco con partenza da San Bernardo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/171015.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/171015.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/171015.jpg"
@@ -673,6 +718,7 @@ module.exports = [
   dateTime: "2015-10-10",
   link: "/escursionismo/2015/10/10/pizzo-rabbi.html",
   tags: ["bodengo", "rabbi"],
+  description: "Relazione della salita al Pizzo Rabbi dalla la Val Bodengo per la Val Garzelli e l'Alpe Campo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/101015.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/101015.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/101015.jpg"
@@ -687,6 +733,7 @@ module.exports = [
   dateTime: "2015-09-26",
   link: "/alpinismo/2015/09/26/pizzo-galleggione-da-piuro.html",
   tags: ["bregaglia", "galleggione"],
+  description: "Relazione della salita al Pizzo Galleggione con partenza da Piuro per Savogno, Lago dell'Acqua Fraggia e il passo del Turbine",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/260915.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/260915.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/260915.jpg"
@@ -701,6 +748,7 @@ module.exports = [
   dateTime: "2015-09-20",
   link: "/alpinismo/2015/09/20/monte-del-forno.html",
   tags: ["valmalenco", "chiareggio"],
+  description: "Relazione della salita al Monte Del Forno con traccia gps da Chiareggio per il Passo del Forno",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/200915.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/200915.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/200915.jpg"
@@ -715,6 +763,7 @@ module.exports = [
   dateTime: "2015-08-30",
   link: "/escursionismo/2015/08/30/piz-julier.html",
   tags: ["engadina", "svizzera"],
+  description: "Salita al Piz Julier per la via normale dallo Julier Pass e la Fuorcla Albana",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/300815.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/300815.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/300815.jpg"
@@ -729,6 +778,7 @@ module.exports = [
   dateTime: "2015-08-14",
   link: "/escursionismo/2015/08/14/monte-amaro.html",
   tags: ["majella", "appennini"],
+  description: "Escursione sulla vetta principale della Majella, il Monte Amaro, con pernottamento al Bivacco Pelino",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/140815.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/140815.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/140815.jpg"
@@ -743,6 +793,7 @@ module.exports = [
   dateTime: "2015-08-12",
   link: "/alpinismo/2015/08/12/gran-sasso-cresta-ovest.html",
   tags: ["appennini", "abruzzo"],
+  description: "Relazione della salita al Corno Grande del Gran Sasso per la Cresta Ovest o Via Delle Creste con notte in tenda a Campo Imperatore",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/120815.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/120815.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/120815.jpg"
@@ -757,6 +808,7 @@ module.exports = [
   dateTime: "2015-07-30",
   link: "/alpinismo/2015/07/30/illimani.html",
   tags: ["bolivia", "6000", "ande"],
+  description: "Relazione della salita all'Illimani per la via normale dal Nido De Condores",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/300715.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/300715.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/300715.jpg"
@@ -771,6 +823,7 @@ module.exports = [
   dateTime: "2015-07-26",
   link: "/alpinismo/2015/07/26/huayna-potosi.html",
   tags: ["bolivia", "6000", "ande"],
+  description: "Relazione della salita all'Huayna Potosí, un seimila relativamente facile nella Cordillera Real della Boliva",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/260715.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/260715.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/260715.jpg"
@@ -785,6 +838,7 @@ module.exports = [
   dateTime: "2015-06-21",
   link: "/alpinismo/2015/06/21/monte-cevedale.html",
   tags: ["valfurva", "cevedale", "pizzini", "casati"],
+  description: "Relazione della salita con traccia gps Monte Cevedale con partenza dal Rifugio Forni e pernottamento al Casati",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/210615.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/210615.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/210615.jpg"
@@ -799,6 +853,7 @@ module.exports = [
   dateTime: "2015-06-06",
   link: "/alpinismo/2015/06/06/cima-della-bondasca.html",
   tags: ["bondasca", "svizzera", "ghiacciaio"],
+  description: "Relazione della salita con traccia gps del della Cima Della Bondasca per la via normale dal Rifugio Sciora",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/060615.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/060615.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/060615.jpg"
@@ -813,6 +868,7 @@ module.exports = [
   dateTime: "2015-05-23",
   link: "/alpinismo/2015/05/23/cervandone-canale-ferrari.html",
   tags: ["devero", "canale"],
+  description: "Relazione della salita con traccia gps del Cervandone per il Canale Ferrari con partenza dall'Alpe Devero",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/230515.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/230515.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/230515.jpg"
@@ -827,6 +883,7 @@ module.exports = [
   dateTime: "2015-05-02",
   link: "/alpinismo/2015/05/02/pietra-quadra-canale-nord.html",
   tags: ["orobie", "canale"],
+  description: "Relazione della salita con traccia gps del Canale Nord del Pietra Quadra con partenza dalle Baite di Mezzeno",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/020515.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/020515.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/020515.jpg"
@@ -841,6 +898,7 @@ module.exports = [
   dateTime: "2015-04-19",
   link: "/alpinismo/2015/04/19/piz-d-agnel.html",
   tags: ["svizzera", "engadina", "ciaspole"],
+  description: "Relazione della salita con traccia gps del Piz d'Agnel con partenza dallo Julier Pass",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/190415.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/190415.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/190415.jpg"
@@ -855,6 +913,7 @@ module.exports = [
   dateTime: "2015-04-11",
   link: "/alpinismo/2015/04/11/cimone-della-bagozza-canale-nord.html",
   tags: ["orobie", "canale"],
+  description: "Relazione della salita con traccia gps del Cimone della Bagozza per il canale nord con partenza dalla località Fondi in Val di Scalve",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/110415.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/110415.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/110415.jpg"
@@ -869,6 +928,7 @@ module.exports = [
   dateTime: "2015-04-04",
   link: "/alpinismo/2015/04/04/grignone-cresta-piancaformia.html",
   tags: ["grigna", "prealpi"],
+  description: "Relazione della salita al Grignone per la Cresta di Piancaformia in invernale con traccia gps",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/040415.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/040415.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/040415.jpg"
@@ -883,6 +943,7 @@ module.exports = [
   dateTime: "2015-03-28",
   link: "/alpinismo/2015/03/28/piz-grevasalvas.html",
   tags: ["engadina", "svizzera"],
+  description: "Relazione della salita al Piz Grevasalvas da Plaun da Lej con traccia gps",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/280315.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/280315.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/280315.jpg"
@@ -897,6 +958,7 @@ module.exports = [
   dateTime: "2015-03-07",
   link: "/alpinismo/2015/03/07/monte-cabianca-canale-nord.html",
   tags: ["canale", "orobie"],
+  description: "Relazione della salita al canale nord del Monte Cabianca per il Lago di Fregabolgia",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/070315.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/070315.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/070315.jpg"
@@ -911,6 +973,7 @@ module.exports = [
   dateTime: "2015-03-01",
   link: "/escursionismo/2015/03/01/piz-arpiglia.html",
   tags: ["ciaspole", "neve", "engadina"],
+  description: "Salita con le ciaspole al Piz Arpiglia con partenza da Zuoz (località La Resgia)",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/010315.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/010315.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/010315.jpg"
@@ -925,6 +988,7 @@ module.exports = [
   dateTime: "2015-02-28",
   link: "/alpinismo/2015/02/28/pizzo-corzene-canale-del-dito.html",
   tags: ["canale", "orobie"],
+  description: "Salita al Pizzo Corzene dal passo della Presolana per il Canale del Dito",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/280215.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/280215.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/280215.jpg"
@@ -939,6 +1003,7 @@ module.exports = [
   dateTime: "2015-02-22",
   link: "/escursionismo/2015/02/22/ciaspolata-a-starleggia.html",
   tags: ["ciaspole", "neve", "spluga", "valchiavenna"],
+  description: "ciaspolata con partenza da Campodolcino e arrivo a San Sisto passando per Starleggia",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/220215.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/220215.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/220215.jpg"
@@ -953,6 +1018,7 @@ module.exports = [
   dateTime: "2015-01-18",
   link: "/escursionismo/2015/01/18/ciaspolata-alpe-lendine.html",
   tags: ["ciaspole", "neve", "spluga", "valchiavenna"],
+  description: "ciaspolata all'Alpe Lendine con partenza da Olmo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/180115.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/180115.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/180115.jpg"
@@ -967,6 +1033,7 @@ module.exports = [
   dateTime: "2015-01-10",
   link: "/alpinismo/2015/01/10/legnone-canalone-ovest.html",
   tags: ["canalone", "legnone"],
+  description: "Relazione della salita al Canalone Ovest (canale Sovian) del Legnone per il Rifugio Roccoli Lorla e la Ca' de Legn",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/100115.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/100115.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/100115.jpg"
@@ -981,6 +1048,7 @@ module.exports = [
   dateTime: "2015-01-04",
   link: "/alpinismo/2015/01/04/pizzo-tre-signori-invernale-da-ornica.html",
   tags: ["ornica", "invernale", "orobie"],
+  description: "Salita invernale al Pizzo Tre Signori da Ornica per la Val d'Inferno",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/040115.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/040115.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/040115.jpg"
@@ -995,6 +1063,7 @@ module.exports = [
   dateTime: "2015-01-01",
   link: "/alpinismo/2015/01/01/pizzo-di-gino.html",
   tags: ["Cavargna", "Lario"],
+  description: "Salita al Pizzo di Gino da Revolè per i Monti Fous",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/010115.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/010115.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/010115.jpg"
@@ -1009,6 +1078,7 @@ module.exports = [
   dateTime: "2014-12-06",
   link: "/alpinismo/2014/12/06/pizzo-arera-canalino-nord.html",
   tags: ["orobie", "invernale", "canale"],
+  description: "Salita al Pizzo Arera dal canalino nord con partenza dalla Capanna 2000",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/061214.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/061214.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/061214.jpg"
@@ -1023,6 +1093,7 @@ module.exports = [
   dateTime: "2014-11-01",
   link: "/trekking/2014/11/01/trekking-valgrande-scaredi-in-la-piana-vald.html",
   tags: ["dolomiti"],
+  description: "Trekking di due giorni in Valgrande: partenza dalla Val Loana, Alpe Scaredi, e bivacco a In La Piana. Secondo giorno rientro per la Bocchetta di Vald e la Bocchetta di Cavalla",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/011114.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/011114.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/011114.jpg"
@@ -1037,6 +1108,7 @@ module.exports = [
   dateTime: "2014-10-19",
   link: "/escursionismo/2014/10/19/via-lattea-tre-cime-lavaredo.html",
   tags: ["dolomiti"],
+  description: "Escursione fotografica per riprendere la Tre Cime di Lavaredo con dietro la via lattea, consigli e qualche informazione sulla tecnica di ripresa",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/191014.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/191014.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/191014.jpg"
@@ -1051,6 +1123,7 @@ module.exports = [
   dateTime: "2014-10-04",
   link: "/alpinismo/2014/10/04/pizzo-del-diavolo-di-tenda.html",
   tags: ["orobie"],
+  description: "Relazione della salita al Pizzo del Diavolo di Tenda per la via normale dal Rifugio Calvi",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/041014.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/041014.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/041014.jpg"
@@ -1065,6 +1138,7 @@ module.exports = [
   dateTime: "2014-09-27",
   link: "/alpinismo/2014/09/27/piz-kesch-via-normale.html",
   tags: ["svizzera", "engadina"],
+  description: "Relazione della salita alla Piz Kesch per la via normale dalla Chamanna d'Es-Cha per la Porta d'Es-Cha",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/270914.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/270914.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/270914.jpg"
@@ -1079,6 +1153,7 @@ module.exports = [
   dateTime: "2014-08-25",
   link: "/viaggi/2014/08/25/usa-on-the-road.html",
   tags: ["usa"],
+  description: "Viaggio in macchina nell'ovest degli Stati Uniti. Partenza da Los Angeles, e visita dei maggiori parchi nazionali dell'area: Yosemite, Death Valley, Grand Canyon, Bryce Canyon, Zion, Arches, Canyonlands, Grand Teton e Yellowstone",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/250814.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/250814.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/250814.jpg"
@@ -1093,6 +1168,7 @@ module.exports = [
   dateTime: "2014-07-19",
   link: "/alpinismo/2014/07/19/piramide-vincent-cresta-sso.html",
   tags: ["4000m", "rosa", "vda"],
+  description: "Relazione della salita alla Piramide Vincent per la cresta SSO dal Rifugio Mantova",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/190714.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/190714.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/190714.jpg"
@@ -1107,6 +1183,7 @@ module.exports = [
   dateTime: "2014-07-06",
   link: "/alpinismo/2014/07/06/palla-bianca.html",
   tags: ["venosta", "trentino"],
+  description: "Ascesa alla Palla Bianca per la via normale da Glieshof in Val Mazia e la Oberetteshütte",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/060714.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/060714.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/060714.jpg"
@@ -1121,6 +1198,7 @@ module.exports = [
   dateTime: "2014-06-07",
   link: "/escursionismo/2014/06/07/pizzo-melasc.html",
   tags: ["valgerola", "melasc"],
+  description: "Salita al Pizzo Melasc con partenza da Leveggiolo per il Rifugio Trona Soliva",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/070614.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/070614.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/070614.jpg"
@@ -1135,6 +1213,7 @@ module.exports = [
   dateTime: "2014-05-31",
   link: "/alpinismo/2014/05/31/piz-lagrev.html",
   tags: ["engadina", "svizzera"],
+  description: "Relazione della salita al Piz Lagrev, con partenza dallo Julierpass",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/310514.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/310514.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/310514.jpg"
@@ -1149,6 +1228,7 @@ module.exports = [
   dateTime: "2014-05-18",
   link: "/escursionismo/2014/05/18/capanna-como-val-darengo.html",
   tags: ["lario", "livo", "capanna", "como"],
+  description: "Escursione alla Capanna Como per la Val Darengo con partenza dal Crotto Dangri",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/180514.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/180514.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/180514.jpg"
@@ -1163,6 +1243,7 @@ module.exports = [
   dateTime: "2014-05-03",
   link: "/escursionismo/2014/05/03/cima-di-olino.html",
   tags: ["valsassina", "olino", "valvarrone"],
+  description: "Escursione alla Cima d'Olino dall'Alpe Paglio per il Pian delle Betulle e l'Alpe Ortighera",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/030514.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/030514.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/030514.jpg"
@@ -1177,6 +1258,7 @@ module.exports = [
   dateTime: "2014-04-26",
   link: "/ferrata/2014/04/26/ferrata-venticinquennale-corni-di-canzo.html",
   tags: ["ferrata", "corni", "canzo"],
+  description: "Relazione della via ferrata del venticinquennale ai Corni di Canzo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/260414.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/260414.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/260414.jpg"
@@ -1191,6 +1273,7 @@ module.exports = [
   dateTime: "2014-04-06",
   link: "/escursionismo/2014/04/06/monte-barro.html",
   tags: ["barro", "lecco", "brianza"],
+  description: "Escursione fotografica al Monte Barro per ammirare il tramonto sulla Brianza",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/060414.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/060414.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/060414.jpg"
@@ -1205,6 +1288,7 @@ module.exports = [
   dateTime: "2014-03-30",
   link: "/escursionismo/2014/03/30/monte-bregagno.html",
   tags: ["bregagno", "lago", "como"],
+  description: "Salita al Monte Bregagno da Breglia",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/300314.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/300314.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/300314.jpg"
@@ -1219,6 +1303,7 @@ module.exports = [
   dateTime: "2014-03-08",
   link: "/escursionismo/2014/03/08/monte-garzirola-da-dasio.html",
   tags: ["ciaspole", "neve", "cavargna"],
+  description: "Salita al Monte Garzirola da Dasio per il Passo di San Lucio",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/080314.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/080314.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/080314.jpg"
@@ -1233,6 +1318,7 @@ module.exports = [
   dateTime: "2014-02-22",
   link: "/escursionismo/2014/02/22/ciaspolata-montespluga.html",
   tags: ["ciaspole", "neve", "spluga"],
+  description: "ciaspolata a Montespluga con partenza da Madesimo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/220214.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/220214.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/220214.jpg"
@@ -1247,6 +1333,7 @@ module.exports = [
   dateTime: "2014-02-09",
   link: "/escursionismo/2014/02/09/ciaspolata-passo-san-bernardino.html",
   tags: ["ciaspole", "neve", "svizzera", "san", "bernardino"],
+  description: "ciaspolata al Passo del San Bernardino con partenza dal villaggio",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/090214.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/090214.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/090214.jpg"
@@ -1261,6 +1348,7 @@ module.exports = [
   dateTime: "2014-01-01",
   link: "/trekking/2014/01/01/rwenzori-margherita-peak.html",
   tags: ["rwenzori", "world", "africa"],
+  description: "Trekking del Central Circuit Trail al Rwenzori con ascesa alla Punta Margherita (Monte Stanley)",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/010114.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/010114.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/010114.jpg"
@@ -1275,6 +1363,7 @@ module.exports = [
   dateTime: "2013-11-30",
   link: "/alpinismo/2013/11/30/resegone-canalone-comera.html",
   tags: ["resegone", "canalone", "comera", "valsassina", "lecco"],
+  description: "Relazione dell’ascesa invernale al Resegone dal Canalone Comera",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/301113.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/301113.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/301113.jpg"
@@ -1289,6 +1378,7 @@ module.exports = [
   dateTime: "2013-10-12",
   link: "/escursionismo/2013/10/12/lago-cavloc.html",
   tags: ["ciaspole", "lago", "cavloc", "nevicata", "neve", "svizzera", "maloja", "val", "bregaglia", "engadina"],
+  description: "Ciaspolata sotto la neve al Lago Cavloc, con partenza dal Maloja",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/121013.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/121013.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/121013.jpg"
@@ -1303,6 +1393,7 @@ module.exports = [
   dateTime: "2013-09-28",
   link: "/alpinismo/2013/09/28/pizzo-quadro-da-starleggia.html",
   tags: ["pizzo", "quadro", "valle", "spluga", "starleggia", "bivacco", "servizio"],
+  description: "Relazione dell’ascesa invernale al Pizzo Quadro per la via normale con partenza da Starleggia, Valle Spluga",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/280913.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/280913.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/280913.jpg"
@@ -1317,6 +1408,7 @@ module.exports = [
   dateTime: "2013-08-10",
   link: "/alpinismo/2013/08/10/pizzo-emet.html",
   tags: ["pizzo", "emet", "via", "normale", "cresta", "SO", "spluga"],
+  description: "Relazione dell’ascesa al Pizzo Emet per la via normale per la cresta SO",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/100813.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/100813.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/100813.jpg"
@@ -1331,6 +1423,7 @@ module.exports = [
   dateTime: "2013-08-05",
   link: "/alpinismo/2013/08/05/monte-rosa-punta-dufour.html",
   tags: ["punta", "dufour", "via", "normale", "svizzera", "monte", "rosa"],
+  description: "Via normale svizzera alla Punta Dufour dalla Monte Rosa Hütte, Monte Rosa",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/050813.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/050813.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/050813.jpg"
@@ -1345,6 +1438,7 @@ module.exports = [
   dateTime: "2013-07-27",
   link: "/escursionismo/2013/07/27/monte-rotondo.html",
   tags: ["valvarrone", "premana", "monte", "rotondo", "valsassina"],
+  description: "Salita al Monte Rotondo da Premana per l’Alpe Fraina",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/270713.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/270713.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/270713.jpg"
@@ -1359,6 +1453,7 @@ module.exports = [
   dateTime: "2013-07-20",
   link: "/alpinismo/2013/07/20/monte-rosa-punta-giordani.html",
   tags: ["punta", "giordani", "via", "normale", "indren", "monte", "rosa"],
+  description: "Via normale alla Punta Giordani dall’arrivo della funivia di Punta Indren, Monte Rosa",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/200713.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/200713.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/200713.jpg"
@@ -1373,6 +1468,7 @@ module.exports = [
   dateTime: "2013-07-05",
   link: "/alpinismo/2013/07/05/traversata-dei-breithorn.html",
   tags: ["breithorn", "occidentale", "centrale", "monte", "rosa"],
+  description: "Traversata dal Breithorn Occidentale a quello centrale con partenza dal Plateau Rosà",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/050713.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/050713.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/050713.jpg"
@@ -1387,6 +1483,7 @@ module.exports = [
   dateTime: "2013-06-08",
   link: "/alpinismo/2013/06/08/monte-aga.html",
   tags: ["orobie", "brembana"],
+  description: "Relazione della salita al Monte Aga per la via normale da Carona e Rifugio Longo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/080613.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/080613.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/080613.jpg"
@@ -1401,6 +1498,7 @@ module.exports = [
   dateTime: "2013-05-26",
   link: "/escursionismo/2013/05/26/zucco-di-cam-da-introbio.html",
   tags: ["zucco", "cam", "valsassina", "primavera"],
+  description: "salita allo Zucco di Cam con partenza da Introbio e passaggio dalla Bocchetta di Foppabona",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/260513.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/260513.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/260513.jpg"
@@ -1415,6 +1513,7 @@ module.exports = [
   dateTime: "2013-05-11",
   link: "/escursionismo/2013/05/11/monte-due-mani-da-ballabio.html",
   tags: ["monte", "due", "mani", "valsassina", "primavera", "ballabio"],
+  description: "salita al Monte Due Mani con partenza da Ballabio per il Bivacco Emanuela",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/110513.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/110513.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/110513.jpg"
@@ -1429,6 +1528,7 @@ module.exports = [
   dateTime: "2012-11-15",
   link: "/trekking/2012/11/15/trekking-campo-base-everest.html",
   tags: ["world", "Everest", "Khumbu", "Cho-La", "Pass", "Gokyo", "Nepal"],
+  description: "Trekking al campo base dell’Everest con partenza da Lukla, salita al Cho-La Pass e discesa dalla valle di Gokyo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/151112.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/151112.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/151112.jpg"
@@ -1443,6 +1543,7 @@ module.exports = [
   dateTime: "2012-10-14",
   link: "/escursionismo/2012/10/14/monte-legnone-via-normale.html",
   tags: ["autunno", "valvarrone", "monte", "legnone"],
+  description: "salita al Monte Legnone dalla Valvarrone con partenza dal Rifugio Roccoli Lorla",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/141012.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/141012.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/141012.jpg"
@@ -1457,6 +1558,7 @@ module.exports = [
   dateTime: "2012-08-27",
   link: "/alpinismo/2012/08/27/pizzo-bernina-via-normale.html",
   tags: ["pizzo", "bernina", "marinelli", "via", "normale"],
+  description: "Via normale italiana al Pizzo Bernina dal Rifugio Marinelli e Marco e Rosa",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/270812.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/270812.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/270812.jpg"
@@ -1471,6 +1573,7 @@ module.exports = [
   dateTime: "2012-08-19",
   link: "/alpinismo/2012/08/19/pizzo-trona-via-normale-cresta-nord.html",
   tags: ["biandino", "pizzo", "trona"],
+  description: "salita al Pizzo Trona per la via normale dalla cresta nord",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/190812.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/190812.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/190812.jpg"
@@ -1485,6 +1588,7 @@ module.exports = [
   dateTime: "2012-06-02",
   link: "/alpinismo/2012/06/02/pizzo-tambo.html",
   tags: ["spluga", "passo", "tambò", "pizzo"],
+  description: "Salita al Pizzo Tambò per la via normale dal Passo dello Spluga",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/020612.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/020612.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/020612.jpg"
@@ -1499,6 +1603,7 @@ module.exports = [
   dateTime: "2012-05-12",
   link: "/escursionismo/2012/05/12/pizzo-la-scheggia.html",
   tags: ["scheggia", "pizzo", "arvogno", "ossola"],
+  description: "Salita al Pizzo La Scheggia per la via normale da Arvogno passando dall’Alpe Forno",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/120512.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/120512.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/120512.jpg"
@@ -1513,6 +1618,7 @@ module.exports = [
   dateTime: "2012-04-25",
   link: "/alpinismo/2012/04/25/zuccone-campelli.html",
   tags: ["valsassina", "zuccone", "campelli"],
+  description: "Zuccone Campelli per il Canalone dei Camosci in invernale",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/250412.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/250412.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/250412.jpg"
@@ -1527,6 +1633,7 @@ module.exports = [
   dateTime: "2012-04-21",
   link: "/alpinismo/2012/04/21/grignetta-cresta-cermenati.html",
   tags: ["valsassina", "grignetta", "cresta", "cermenati"],
+  description: "Grignetta, via normale per la Cresta Cermenati in condizioni invernali",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/210412.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/210412.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/210412.jpg"
@@ -1541,6 +1648,7 @@ module.exports = [
   dateTime: "2012-03-31",
   link: "/alpinismo/2012/03/31/pizzo-alto-da-premana.html",
   tags: ["valvarrone", "pizzo", "alto", "premana"],
+  description: "salita al Pizzo Alto da Premana per la via normale dall’Alpe di Deleguaccio",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/310312.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/310312.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/310312.jpg"
@@ -1555,6 +1663,7 @@ module.exports = [
   dateTime: "2011-08-24",
   link: "/alpinismo/2011/08/24/monte-basodino-via-normale-da-riale.html",
   tags: ["ossola", "formazza", "basodino"],
+  description: "Salita al Monte Basodino per la via normale dalla Bocchetta di Castel: partenza da Riale e pernottamento al Rifugio Maria Luisa",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/240811.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/240811.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/240811.jpg"
@@ -1569,6 +1678,7 @@ module.exports = [
   dateTime: "2011-07-01",
   link: "/alpinismo/2011/07/01/pizzo-ferre-via-normale-da-montespluga.html",
   tags: ["spluga", "pizzo", "ferrè"],
+  description: "Salita al Pizzo Ferrè per la via normale con partenza da Montespluga pasando per il Bivacco Cecchini",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/010711.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/010711.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/010711.jpg"
@@ -1583,6 +1693,7 @@ module.exports = [
   dateTime: "2011-06-19",
   link: "/alpinismo/2011/06/19/pizzo-di-coca-via-normale-da-valbondione.html",
   tags: ["orobie", "pizzo", "coca", "valseriana"],
+  description: "Salita al Pizzo di Coca: via normale per la Bocchetta del Camoscio con partenza Valbondione",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/190611.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/190611.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/190611.jpg"
@@ -1597,6 +1708,7 @@ module.exports = [
   dateTime: "2011-03-18",
   link: "/escursionismo/2011/03/18/cima-pianchette.html",
   tags: ["ciaspole", "cavargna"],
+  description: "Escursione con le ciaspole sulla Cima Pianchette per il Rifugio Croce di Campo",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/180311.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/180311.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/180311.jpg"
@@ -1611,6 +1723,7 @@ module.exports = [
   dateTime: "2010-07-25",
   link: "/alpinismo/2010/07/25/uja-di-ciamarella-dal-rifugio-gastaldi.html",
   tags: ["uja", "ciamarella", "lanzo", "gastaldi"],
+  description: "Salita all’Uja di Ciamarella per la via normale dal Pian della Mussa per il Rifugio Gastaldi",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/250710.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/250710.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/250710.jpg"
@@ -1625,6 +1738,7 @@ module.exports = [
   dateTime: "2010-07-10",
   link: "/alpinismo/2010/07/10/monte-disgrazia-via-normale.html",
   tags: ["disgrazia", "rifugio", "ponti", "valtellina"],
+  description: "Salita al Monte Disgrazia per la via normale dal Rifugio Ponti",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/100710.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/100710.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/100710.jpg"
@@ -1639,6 +1753,7 @@ module.exports = [
   dateTime: "2009-09-06",
   link: "/alpinismo/2009/09/06/monviso-via-normale.html",
   tags: ["monviso", "quintino", "sella", "pian", "del", "re"],
+  description: "Salita al Monviso per la via normale dal Pian del Re per il Rifugio Quintino Sella",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/060909.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/060909.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/060909.jpg"
@@ -1653,6 +1768,7 @@ module.exports = [
   dateTime: "2009-07-28",
   link: "/alpinismo/2009/07/28/lagginhorn-cresta-ovest.html",
   tags: ["lagginhorn", "vallese", "svizzera", "4000"],
+  description: "Ascesa al Lagginhorn per la via normale dalla cresta ovest. Pernottamento alla Weissmieshutte",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/280709.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/280709.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/280709.jpg"
@@ -1667,6 +1783,7 @@ module.exports = [
   dateTime: "2009-07-27",
   link: "/alpinismo/2009/07/27/allalinhorn-hohlaubgrat.html",
   tags: ["allalinhorn", "hohlaubgrat", "vallese", "svizzera", "4000"],
+  description: "Ascesa all’Allalinhorn per la via Hohlaubgrat. Partenza da Saas Fee e pernottamento alla Britannia Hutte",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/270709.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/270709.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/270709.jpg"
@@ -1681,6 +1798,7 @@ module.exports = [
   dateTime: "2009-06-28",
   link: "/alpinismo/2009/06/28/monte-leone-via-normale.html",
   tags: ["monte", "leone", "svizzera", "sempione"],
+  description: "Ascesa al Monte Leone dal Passo del Sempione. Via normale con partenza dalla capanna Monte Leone per il passo del Breithorn",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/280609.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/280609.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/280609.jpg"
@@ -1695,6 +1813,7 @@ module.exports = [
   dateTime: "2009-06-14",
   link: "/alpinismo/2009/06/14/adula.html",
   tags: ["adula", "ticino", "svizzera"],
+  description: "Salita all’Adula per la via normale dalla Capanna Adula UTOE e Ghiacciaio della Bresciana",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/140609.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/140609.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/140609.jpg"
@@ -1709,6 +1828,7 @@ module.exports = [
   dateTime: "2008-08-31",
   link: "/alpinismo/2008/08/31/dom-de-neige-des-ecrins.html",
   tags: ["ecrins", "francia", "4000m"],
+  description: "Relazione della salita al Dom De Neige Des Ecrins per la via normale da Pre de Madame Carle, il Rifugio del Glacier Blanc e il Rifugio Des Ecrins",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/310808.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/310808.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/310808.jpg"
@@ -1723,6 +1843,7 @@ module.exports = [
   dateTime: "2008-08-18",
   link: "/alpinismo/2008/08/18/pizzo-scalino.html",
   tags: ["scalino", "valtellina", "valmalenco"],
+  description: "Relazione della salita al Pizzo Scalino per la via normale da Campo Moro",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/180808.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/180808.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/180808.jpg"
@@ -1737,6 +1858,7 @@ module.exports = [
   dateTime: "2008-07-27",
   link: "/alpinismo/2008/07/27/rocciamelone.html",
   tags: ["rocciamelone", "susa"],
+  description: "Relazione della salita al Rocciamelone",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/270708.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/270708.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/270708.jpg"
@@ -1751,6 +1873,7 @@ module.exports = [
   dateTime: "2008-06-28",
   link: "/alpinismo/2008/06/28/arbola-blinnenhorn.html",
   tags: ["arbola", "blinnenhorn", "formazza"],
+  description: "Relazione della salita all’Arbola e al Blinnenhorn dal Lago Di Morasco",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/280608.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/280608.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/280608.jpg"
@@ -1765,6 +1888,7 @@ module.exports = [
   dateTime: "2007-09-09",
   link: "/alpinismo/2007/09/09/corno-nero-ludwigshohe.html",
   tags: ["monterosa", "4000m"],
+  description: "Relazione della salita al Corno Nero e alla Ludwigshohe dal Rifugio Gnifetti",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/090907.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/090907.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/090907.jpg"
@@ -1779,6 +1903,7 @@ module.exports = [
   dateTime: "2007-07-26",
   link: "/alpinismo/2007/07/26/weissmies.html",
   tags: ["vallese", "svizzera", "4000m"],
+  description: "Relazione della salita al Weissmies per la via normale dalla Weissmieshutte",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/260707.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/260707.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/260707.jpg"
@@ -1793,6 +1918,7 @@ module.exports = [
   dateTime: "2007-07-01",
   link: "/alpinismo/2007/07/01/bishorn.html",
   tags: ["vallese", "svizzera", "4000m"],
+  description: "Relazione della salita al Bishorn per la via normale da Zinal e Cabane de Tracuit",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/010707.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/010707.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/010707.jpg"
@@ -1807,6 +1933,7 @@ module.exports = [
   dateTime: "2006-08-27",
   link: "/alpinismo/2006/08/27/gran-paradiso.html",
   tags: ["4000m", "gran", "paradiso", "vda"],
+  description: "Relazione della salita al Gran Pardiso per la via normale da Pont per il Rifugio Vittorio Emanuele e il ghiacciaio di Lavenciau",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/270806.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/270806.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/270806.jpg"
@@ -1821,6 +1948,7 @@ module.exports = [
   dateTime: "2005-09-02",
   link: "/alpinismo/2005/09/02/traversata-monte-rosa.html",
   tags: ["4000m", "rosa", "vda"],
+  description: "Relazione della salita al Punta Gnifetti con traverata alla Zumstein e rientro per la Parrot",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/020905.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/020905.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/020905.jpg"
@@ -1835,6 +1963,7 @@ module.exports = [
   dateTime: "2004-08-27",
   link: "/alpinismo/2004/08/27/castore.html",
   tags: ["4000m", "rosa", "vda"],
+  description: "Relazione della salita alla Punta Castore, Monte Rosa",
   cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/270804.jpg",
   marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/270804.jpg",
   card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/270804.jpg"
