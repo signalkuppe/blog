@@ -161,8 +161,19 @@ module.exports = () => {
         log.success(`Found ${posts.length} posts`)
         const computedPosts = transformPosts(posts)
         const markers = makeMarkers(posts)
+        /* TEMP: add old posts */
+        const oldPosts = require('../_oldPosts/markers')
+          .map((oldPost) => {
+            oldPost.autocompleteRow = `<a href="${oldPost.link}.html" data-autocomplete"><span>${oldPost.date}</span> - ${oldPost.title}</a>`
+            return oldPost
+          })
+          .filter((oldPost) => {
+            return !markers.find((m) => `${oldPost.link}.html` === m.link)
+          })
+        log.warn(`Added ${oldPosts.length} old posts`)
+        const allMarkers = markers.concat(oldPosts)
         fs.writeFileSync(logFile, JSON.stringify(computedPosts), 'utf-8') // write log file
-        fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(markers)}`, 'utf-8') // write marker file
+        fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(allMarkers)}`, 'utf-8') // write marker file
         resolve(computedPosts)
       } catch (err) {
         log.error('Posts fetch error', err)

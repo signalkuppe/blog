@@ -9,7 +9,6 @@
   } else {
     topMessage.style.display = 'block'
   }
-
   closeButton.addEventListener('click', function (e) {
     e.preventDefault()
     topMessage.style.display = 'none'
