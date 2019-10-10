@@ -270,7 +270,7 @@
         lng: {{ cords[1] }},
         title: "{{ post.title }}",
         date: "{{ post.date | date: '%d/%m/%y'}}",
-        dateTime: "{{ post.date | date: '%Y-%m-%d'}}",
+        dateTime: "{{ post.date | date_to_xmlschema }}",
         link: "{{ post.url }}.html",
         tags: {{ tags }},
         description: "{{ post.description}}",
