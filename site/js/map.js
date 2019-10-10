@@ -1,12 +1,11 @@
 (function () {
   /* Initialize map */
   
-  var zoom = 7
+  var zoom = 8
   var lat = 45.7929
   var lng =  9.0000
   var mymap = L.map('map',{ 
-    renderer: L.canvas(),
-    gestureHandling: true // depends on https://github.com/elmarquis/Leaflet.GestureHandling
+    renderer: L.canvas()
   })
   var mapdiv = document.getElementById('map')
   mymap.setView([lat, lng], zoom)

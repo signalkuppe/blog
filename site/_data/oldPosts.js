@@ -5,21 +5,7 @@
  */
 
 
-module.exports = [{
-  lat: 46.0702728,
-  lng: 9.6454059,
-  title: "Monte Pedena",
-  date: "20/01/18",
-  dateTime: "2018-01-20",
-  link: "/scialpinismo/2018/01/20/monte-pedena.html",
-  tags: ["scialpinismo", "orobie"],
-  description: "Scialpinismo al Monte Pedena con partenza dal Rifugio Alpe Lago e discesa dal vallone nord.",
-  cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/200118.jpg",
-  marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/200118.jpg",
-  card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/200118.jpg"
-  },
-
-
+module.exports = [
   {
   lat: 46.6121874,
   lng: 9.9186814,

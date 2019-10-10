@@ -27,7 +27,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy('node_modules/lunr/lunr.js')
   eleventyConfig.addPassthroughCopy('node_modules/gsap/src/uncompressed/TweenMax.js')
   eleventyConfig.addPassthroughCopy('node_modules/leaflet/dist')
-  eleventyConfig.addPassthroughCopy('node_modules/leaflet-gesture-handling/dist')
   eleventyConfig.addPassthroughCopy('node_modules/leaflet-gpx')
   eleventyConfig.addPassthroughCopy('node_modules/pristinejs')
 

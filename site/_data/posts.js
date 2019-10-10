@@ -132,7 +132,7 @@ const makeMarkers = (posts) => { // make markers index, used also in lunr search
       description: post.fields.description,
       date: date.format(post.fields.date, 'DD/MM/YY'),
       link: makeFullSlug(post.fields.slug),
-      tags: post.fields.tags,
+      tags: post.fields.tags.join(' '),
       categories: post.fields.category[0],
       cover: `${post.fields.cover.fields.file.url}?fit=thumb&w=200&h=200&fm=jpg&fl=progressive&q=70`,
       autocompleteRow: `<a href="${makeFullSlug(post.fields.slug)}" data-autocomplete"><span>${date.format(post.fields.date, 'DD/MM/YY')}</span> - ${post.fields.title}</a>`
@@ -164,6 +164,7 @@ module.exports = () => {
         /* TEMP: add old posts */
         const oldPosts = require('./oldPosts')
           .map((oldPost) => {
+            oldPost.tags = oldPost.tags.join(' ')
             oldPost.autocompleteRow = `<a href="${oldPost.link}" data-autocomplete"><span>${oldPost.date}</span> - ${oldPost.title}</a>`
             return oldPost
           })

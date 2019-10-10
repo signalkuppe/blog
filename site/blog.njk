@@ -31,7 +31,9 @@ description: "L’elenco completo di tutte le relazioni, con la mappa e la ricer
 {# search #}
 <form class="c-autocomplete u-section-mt-1-5" id="autocomplete">
   <label for="autocomplete-input" class="u-srOnly">Cerca</label>
-  <div class="c-autocomplete-inputContainer" id="autocomplete-input-container"><input type="text" spellcheck="false" autocomplete="off" id="autocomplete-input" name="searchKey" placeholder="Cerca..." /></div>
+  <div class="c-autocomplete-inputContainer" id="autocomplete-input-container">
+    <input type="text" spellcheck="false" autocomplete="off" id="autocomplete-input" name="searchKey" placeholder="Cerca..." />
+  </div>
   <div class="c-autocomplete-results" id="autocomplete-results" hidden tabindex="-1"></div>
   <div class="c-autocomplete-help">ES: “scialpinismo svizzera” (trova tutti i post che contengono entrambe le chiavi di ricerca)</div>
   <button type="reset" aria-label="Ripristina" class="c-autocomplete-reset" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
@@ -64,9 +66,9 @@ description: "L’elenco completo di tutte le relazioni, con la mappa e la ricer
 
 {% block scripts %}
 <script src="/node_modules/leaflet/dist/leaflet.js"></script>
-<script src="/node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.js"></script>
 <script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
 <script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
+<script src="/node_modules/toastify-js/src/toastify.js"></script>
 <script src="/node_modules/lockr/lockr.js"></script>
 <script src="/node_modules/lunr/lunr.js"></script>
 <script src="/js/registerServiceWorker.js"></script>

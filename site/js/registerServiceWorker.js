@@ -1,5 +1,5 @@
 var env = document.querySelector('html').getAttribute('data-env')
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && env !== 'development') {
   navigator.serviceWorker.register('/service-worker.js');
 }
 
