@@ -20,7 +20,7 @@ permalink: /sitemap.xml
   </url>
   {% for post in posts  %}
   <url>
-    <loc>{{ env.ELEVENTY_URL  }}/{{ post.fields.slug }}</loc>
+    <loc>{{ env.ELEVENTY_URL  }}/{{ post.fields.slug | urlencode }}</loc>
     <lastmod>{{ post.sys.updatedAt }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -29,7 +29,7 @@ permalink: /sitemap.xml
   {# TEMP!!! #}
   {% for post in oldPosts  %}
   <url>
-    <loc>{{ env.ELEVENTY_URL  }}/{{ post.link }}</loc>
+    <loc>{{ env.ELEVENTY_URL  }}/{{ post.link | urlencode }}</loc>
     <lastmod>{{ post.dateTime }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
