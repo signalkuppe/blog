@@ -9,6 +9,13 @@
   border-bottom: 5px solid transparent;
 }
 
+.c-card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
 .c-card-image {
   display: block;
   object-fit: cover;
