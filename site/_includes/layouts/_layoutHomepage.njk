@@ -1,0 +1,26 @@
+{# Base layout #}
+{% import "macros/macros.njk" as macro with context %}
+{{ macro.docType() }}
+{{ macro.htmlTag() }}
+  <head>
+    {{ macro.commonMeta() }}
+    {{ macro.favicons() }}
+    {% block head %}{% endblock %}
+    {{ macro.css() }}
+  </head>
+  <body id="top" class="l-homepage">
+    {{ macro.skipToMain() }}
+    {{ macro.topMessage() }}
+    <header class="l-homepage-header u-section-mt-0-5">
+      {% block header %}{% endblock %}
+    </header>
+    <main id="main" class="l-homepage-main">
+      <aside class="l-homepage-image">{% block image %}{% endblock %}</aside>
+      <section class="l-homepage-content">{% block content %}{% endblock %}</section>
+    </main>
+    <footer class="l-homepage-footer">
+      {% block footer %}{% endblock %}
+    </footer>      
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

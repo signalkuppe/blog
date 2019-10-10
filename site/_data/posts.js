@@ -1,0 +1,185 @@
+/**
+ * Grab posts from contentful
+ * and store them in the posts collection
+ * we only call the api one time, to avoid rate limit issues
+ * The first time a log file is created 
+ */
+
+require('dotenv').config()
+const path = require('path')
+const fs = require('fs')
+const _ = require('lodash')
+const mkdirp = require('mkdirp')
+// const deleteKeyRecursively = require(path.join(process.cwd(), 'lib/deleteKeyRecursively'))
+const log = require(path.join(process.cwd(), 'lib/log'))
+const date = require(path.join(process.cwd(), 'lib/date'))
+const logFile = path.join(process.cwd(), process.env.ELEVENTY_CACHE_DIR, '_posts.json')
+const markerFile = path.join(process.cwd(), 'dist', 'js', 'markers.js')
+const contentful = require('contentful')
+const htmlRenderer = require('@contentful/rich-text-html-renderer') // https://github.com/contentful/rich-text/tree/master/packages/rich-text-html-renderer
+const Client = contentful.createClient({
+  space: process.env.ELEVENTY_CONTENTFUL_SPACE,
+  accessToken: process.env.ELEVENTY_CONTENTFUL_ACCESSTOKEN
+})
+const getPosts = async (limit, skip) => {
+  let query = {
+    content_type: 'post',
+    include: 1,
+    skip: skip,
+    limit: limit,
+    order: '-fields.date'
+  }
+  try {
+    let result = await Client.getEntries(query)
+    return result
+  } catch (err) {
+    log.error('getEntries error', err)
+    return
+  }
+}
+const makeFullSlug = (slug) => {
+  return `/${slug}.html`
+}
+const transformPosts = (posts) => { // ad some custom prop
+  return posts.map((post, i) => {
+    const options = {
+      renderNode: {
+        'embedded-asset-block': (node) => { // how to render embedded images in rich text
+          const imgUrl = node.data.target.fields.file.url
+          const img = `${imgUrl}?fit=thumb&w=1440&fm=jpg&fl=progressive&q=70`
+          const imgTitle = node.data.target.fields.title
+          const imgAlt = node.data.target.fields.description
+          return `
+          <noscript>
+            <img 
+              src="${img}" 
+              alt="${imgAlt}"  />        
+          </noscript>
+          <figure class="c-post-embeddedImage">
+            <a 
+              class="js-gallery"
+              href="${imgUrl}?fit=thumb&w=800&fm=jpg&fl=progressive" 
+              data-at-768="${imgUrl}?fit=thumb&w=1440&fm=jpg&fl=progressive"
+              data-at-1280="${imgUrl}?fit=thumb&w=1920&fm=jpg&fl=progressive"
+              data-at-1920="${imgUrl}?fit=thumb&w=2560&fm=jpg&fl=progressive"
+              title="${imgTitle}"
+            >
+            <img 
+                data-src="${img}"
+                alt="${imgAlt}" 
+                class="lazyImg" /> 
+            </a>
+            <figcaption>${imgTitle}</figcaption>
+          </figure>
+          `
+        },
+        'hyperlink': (node) => { // how to render links in text
+          return `<a class="u-highlight-link" href="${node.data.uri}">${node.content[0].value}</a>`
+        },
+      }
+    }
+    const kmlTrack = (post) => {
+      try {
+        return post.fields.gpsTracks.find((t) => t.fields.file.fileName.indexOf('.kml') !==-1 )
+      } catch (err) {
+        return false
+      }
+    }
+    const gpxTrack = (post) => {
+      try {
+        return post.fields.gpsTracks.find((t) => t.fields.file.fileName.indexOf('.gpx') !==-1 )
+      } catch (err) {
+        return false
+      }
+    }
+    post.computed = {
+      slug: makeFullSlug(post.fields.slug),
+      body: htmlRenderer.documentToHtmlString(post.fields.body, options),
+      gps: {
+        hasTracks: Array.isArray(_.get(post, 'fields.gpsTracks')),
+        hasKml: !!kmlTrack(post),
+        hasGpx: !!gpxTrack(post),
+        kml: _.get(kmlTrack(post), 'fields.file.url'),
+        gpx: _.get(gpxTrack(post), 'fields.file.url')
+      }
+    }
+    const prevNextData = (post) => {
+      return {
+        slug: makeFullSlug(post.fields.slug),
+        date: post.fields.date,
+        title: post.fields.title
+      }
+    }
+    if (posts[i + 1]) { // prev
+      post.computed.prev = prevNextData(posts[i + 1])
+    }
+    if (posts[i - 1]) { // next
+      post.computed.next = prevNextData(posts[i - 1])
+    }
+    // free some space
+    delete post.fields.body
+    // deleteKeyRecursively(post, 'sys')
+
+    return post
+  })
+}
+const makeMarkers = (posts) => { // make markers index, used also in lunr search
+  return posts.map((post) => {
+    return {
+      lat: post.fields.location.lat,
+      lng: post.fields.location.lon,
+      title: post.fields.title,
+      description: post.fields.description,
+      date: date.format(post.fields.date, 'DD/MM/YY'),
+      link: makeFullSlug(post.fields.slug),
+      tags: post.fields.tags.join(' '),
+      categories: post.fields.category[0],
+      cover: `${post.fields.cover.fields.file.url}?fit=thumb&w=200&h=200&fm=jpg&fl=progressive&q=70`,
+      autocompleteRow: `<a href="${makeFullSlug(post.fields.slug)}" data-autocomplete"><span>${date.format(post.fields.date, 'DD/MM/YY')}</span> - ${post.fields.title}</a>`
+    }
+  })
+}
+
+module.exports = () => {
+  return new Promise(async (resolve, reject) => {
+    if (!fs.existsSync(logFile)) { // don’t call the api every time
+      try {
+        await mkdirp(path.join(process.cwd(), process.env.ELEVENTY_CACHE_DIR))
+        await mkdirp(path.join(process.cwd(), 'dist', 'js'))
+        let posts = []
+        let iteration = 1
+        let skip = 0
+        let limit = 20
+        let chunk = await getPosts(limit, skip)
+        posts = chunk.items
+        while (chunk.total > limit * iteration) {
+          skip =  limit * iteration
+          let chunk = await getPosts(limit, skip)
+          posts = _.union(posts, chunk.items)
+          iteration ++
+        }
+        log.success(`Found ${posts.length} posts`)
+        const computedPosts = transformPosts(posts)
+        const markers = makeMarkers(posts)
+        /* TEMP: add old posts */
+        const oldPosts = require('./oldPosts')
+          .map((oldPost) => {
+            oldPost.tags = oldPost.tags.join(' ')
+            oldPost.autocompleteRow = `<a href="${oldPost.link}" data-autocomplete"><span>${oldPost.date}</span> - ${oldPost.title}</a>`
+            return oldPost
+          })
+        log.warn(`Added ${oldPosts.length} old posts, !!! first old post: ${oldPosts[0].title} !!!`)
+        const allMarkers = markers.concat(oldPosts)
+        fs.writeFileSync(logFile, JSON.stringify(computedPosts), 'utf-8') // write log file
+        fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(allMarkers)}`, 'utf-8') // write marker file
+        resolve(computedPosts)
+      } catch (err) {
+        log.error('Posts fetch error', err)
+        reject(err)
+      }
+    } else { // already done
+      log.info(`Used cache for POSTS, to grab fresh data delete ${logFile}`)
+      resolve(JSON.parse(fs.readFileSync(logFile))) // read cached file
+    }
+  })
+}

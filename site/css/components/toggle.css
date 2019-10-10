@@ -1,0 +1,68 @@
+.c-toggle {
+  display: inline-block;
+  position: relative;
+  text-indent: 2.25em;
+  color: var(--bodyColor);
+}
+
+.c-toggle input[type="checkbox"] {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+.c-toggle::before {
+  content: '';
+  display: block;
+  width: 2em;
+  height: 1em;
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  background: var(--colorGreyLight);
+  border: 0.1em solid var(--bodyColor);
+  border-radius: 1em;
+  box-sizing: border-box;
+}
+
+
+.c-toggle label::after,
+.c-toggle label::before {
+  content: '';
+  display: block;
+  height: 1em;
+  position: absolute;
+  left: 0;
+  top: 0em;
+} 
+
+.c-toggle label::after {
+  width: 2em;
+  background: transparent;
+}
+
+.c-toggle.js-not-ready::before,
+.c-toggle.js-not-ready label::before {
+  display: none;
+}
+
+.c-toggle label::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: 0.25em;
+  background: var(--bodyColor);
+  border-radius: 50%;
+  transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+} 
+
+.c-toggle input[type="checkbox"]:checked + label::before {
+  transform: translateX(1.1em);
+  background: var(--colorPrimary);
+}

@@ -1,0 +1,136 @@
+.c-post h3 {
+  font-family: var(--fontCaption);
+  text-transform: uppercase;
+}
+
+.c-post-cover {
+  position: relative;
+  overflow: hidden;
+}
+
+.c-post-cover img {
+  display: block;
+}
+
+.c-post-cover img.lazyImg:not(.loaded) {
+  display: block;
+  width: 100%;
+  filter: blur(10px);
+  object-fit: cover;
+  min-height: 60vh;
+}
+
+.c-post-cover-caption {
+  font-family: var(--fontCaption);
+  font-weight: 700;
+  font-style: normal;
+  background: var(--bodyBackgroundColor);
+  color: var(--bodyColor);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  padding: 0.25em 0.75em;
+}
+
+.c-post-gpxButtonContainer {
+  margin-left: 0.15em;
+  margin-top: 0.5em;
+}
+
+.c-post-gpxButton {
+  font-size: var(--fontSizeSmall);
+  font-weight: 700;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--bodyBackgroundColor);
+  color: var(--bodyColor);
+  border: none;
+  display: flex;
+  outline: none;
+}
+
+.c-post-gpxButton svg {
+  height: 1em;
+  margin-right: 0.5em;
+  fill: var(--bodyColor);
+  position: relative;
+  top: 0.15em;
+}
+
+.c-post-sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 1.5em;
+}
+
+.c-postNav {
+  text-align: center;
+}
+
+.c-postNav li {
+  display: inline-block;
+}
+
+.c-postNav li:nth-child(2) {
+  margin: 0 var(--spaceUnit);
+}
+
+.c-post-newsletter {
+  text-align: center;
+  padding: 0.5em 1em;
+}
+
+.c-post-shareFacebook:hover svg {
+  fill: var(--colorFacebook);
+}
+
+.c-post-shareTwitter:hover svg {
+  fill: var(--colorTwitter);
+}
+
+.c-post-shareWhatsapp:hover svg {
+  fill: var(--colorWhatsapp);
+}
+
+.c-post-shareEmail:hover svg {
+  fill: var(--colorEmail);
+}
+
+.c-post-offlineMsg {
+  font-size: var(--fontSizeSmall);
+  padding: 1em;
+  color: var(--bodyColor);
+  border: 1px solid var(--bodyColor);
+  width: 90%;
+  max-width: 75ch;
+  margin: 0 auto;
+  display: flex;
+}
+
+.c-post-offlineMsg-text {
+  margin-left: 0.5em;
+}
+
+@media screen and (min-width: 768px) {
+  .c-post-cover-caption {
+    font-size: var(--fontSize2)
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .c-post-cover-caption {
+    font-size: var(--fontSize4);
+  }
+}
+
+@supports (initial-letter: 3) or (-webkit-initial-letter: 3) {
+  .c-post p:first-child::first-letter {
+    initial-letter: 3;
+    -webkit-initial-letter: 3;
+    font-family: var(--fontSerif);
+    font-weight: 700;
+    margin: 0 0.5em 0em 0;
+  }
+}

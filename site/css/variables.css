@@ -1,0 +1,58 @@
+:root {
+  /* Typescale: Major third 1.250 */
+  --fontSizeRoot: 100%;
+  --fontSizeTiny: 0.75rem;
+  --fontSizeSmall: 0.85rem;
+  --fontSize0: 1rem;
+  --fontSize1: 1.25rem;
+  --fontSize2: 1.563rem;
+  --fontSize3: 1.953rem;
+  --fontSize4: 2.441rem;
+  --fontSize5: 3.052rem;
+  --fontSize6: 3.815rem;
+  --fontSize7: 4.768rem;
+  --fontSerif: 'PT Serif', serif;
+  --fontSans: 'PT Sans', sans-serif;
+  --fontCaption: 'PT Sans Narrow', sans-serif;
+  --leadBase: 1.5;
+  --leadNarrow: 1.1;
+  --leadNone: 1;
+  --spaceUnit: var(--fontSize0);
+  --colorPrimary: #ffcc00;
+  --colorGreyLighter: #fafafa;
+  --colorGreyLight: #eee;
+  --colorGrey: #ccc;
+  --colorGreyMedium: #adacac;
+  --colorGreyDark: #666;
+  --colorGreyDarker: #333;
+  --colorBlack: #000;
+  --colorMsgInfo: RoyalBlue;
+  --colorMsgSuccess: SeaGreen;
+  --colorMsgError: Crimson;
+  --colorFacebook: #3b5999;
+  --colorTwitter: #55acee;
+  --colorWhatsapp: #25D366;
+  --colorEmail: #B23121;
+  --bodyColor: #222;
+  --bodyBackgroundColor: white;
+  --boxShadow: rgba(0,0,0,0.15);
+}
+
+:root.theme-dark {
+  --colorGreyLighter: hsl(223, 10%, 13%);
+  --colorGreyLight: hsl(222, 10%, 19%);
+  --colorGrey: hsl(224, 4%, 48%);;
+  --colorGreyMedium: hsl(228, 4%, 52%);
+  --colorGreyDark: hsl(222, 6%, 59%);
+  --colorGreyDarker: hsl(220, 9%, 67%);
+  --colorBlack: #fff;
+  --bodyColor: hsl(220, 15%, 81%);
+  --bodyBackgroundColor: hsl(220, 13%, 5%);
+  --boxShadow: rgba(255,255,255,0.15);
+}
+
+@media screen and (min-width: 1170px) {
+  :root {
+    --fontSizeRoot: 135%;
+  }
+}

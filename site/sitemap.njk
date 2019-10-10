@@ -1,0 +1,38 @@
+---
+permalink: /sitemap.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ env.ELEVENTY_URL  }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>{{ env.ELEVENTY_URL  }}/blog</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>{{ env.ELEVENTY_URL  }}/portfolio</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1</priority>
+  </url>
+  {% for post in posts  %}
+  <url>
+    <loc>{{ env.ELEVENTY_URL  }}/{{ post.fields.slug | urlencode }}</loc>
+    <lastmod>{{ post.sys.updatedAt }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  {%- endfor %}
+  {# TEMP!!! #}
+  {% for post in oldPosts  %}
+  <url>
+    <loc>{{ env.ELEVENTY_URL  }}/{{ post.link | urlencode }}</loc>
+    <lastmod>{{ post.dateTime }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  {%- endfor %}
+  </urlset>

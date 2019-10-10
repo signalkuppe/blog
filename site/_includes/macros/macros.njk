@@ -1,0 +1,302 @@
+{# 
+# Common meta tags
+#}
+
+{% macro commonMeta () %}
+<meta charset="utf-8">
+<!--  _                   _ _                                                
+  ___(_) __ _ _ __   __ _| | | ___   _ _ __  _ __   ___   ___ ___  _ __ ___  
+ / __| |/ _` | '_ \ / _` | | |/ / | | | '_ \| '_ \ / _ \ / __/ _ \| '_ ` _ \ 
+ \__ \ | (_| | | | | (_| | |   <| |_| | |_) | |_) |  __/| (_| (_) | | | | | |
+ |___/_|\__, |_| |_|\__,_|_|_|\_\\__,_| .__/| .__/ \___(_)___\___/|_| |_| |_|
+        |___/                         |_|   |_|       
+                               
+  made with ❤️ and https://www.11ty.io/
+-->
+{% if env.ELEVENTY_ENV !== 'production' %}
+<meta name="robots" content="noindex">
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<script>
+  document.documentElement.classList.remove('no-js')
+  document.documentElement.classList.add('js')
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.prepend%2CIntersectionObserver%2CIntersectionObserverEntry%2Cdocument.querySelector%2CElement.prototype.classList%2Cfetch"></script>
+{% endmacro %}
+
+
+{# 
+# Document type
+#}
+
+{% macro docType() %}
+<!doctype html>
+{% endmacro %}
+
+{# 
+# html tag
+#}
+{% macro htmlTag() %}<html lang="it" class="no-js" data-env="{{ env.ELEVENTY_ENV }}">{% endmacro %}
+
+{# 
+# Canonical meta tags
+# @param {string} url - The page ulr
+#}
+
+{% macro canonical(pageUrl) %}
+<link rel="canonical" href="{{ env.ELEVENTY_URL }}{{ pageUrl }}">
+{% endmacro %}
+
+{# 
+# Meta title
+# @param {string} title - The title
+# @param {string} slogan - The slogan adter the pipe
+#}
+
+{% macro metaTitle(title, slogan) %}
+<title>{{ title }} | {{ slogan }}</title>
+{% endmacro %}
+
+{# 
+# Site css file
+#}
+
+{% macro css() %}
+<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700,400|PT+Sans:400,400i,700|PT+Serif:700&display=swap&subset=latin" rel="stylesheet">
+<link href="/css/lib/leaflet.css" rel="stylesheet" media="screen">
+<link href="/css/lib/baguetteBox.css"  rel="stylesheet"  media="screen">
+<link href="/css/lib/toastify.css" rel="stylesheet" media="screen">
+<link href="/css/variables.css" rel="stylesheet" media="screen">
+<link href="/css/reset.css" rel="stylesheet" media="screen">
+<link href="/css/utilities.css" rel="stylesheet" media="screen">
+<link href="/css/typography.css" rel="stylesheet" media="screen">
+<link href="/css/layouts/layout-homepage.css" rel="stylesheet" media="screen">
+<link href="/css/layouts/layout-post.css" rel="stylesheet" media="screen">
+<link href="/css/layouts/layout-post-grid.css" rel="stylesheet" media="screen">
+<link href="/css/components/icon.css" rel="stylesheet" media="screen">
+<link href="/css/components/toast.css" rel="stylesheet" media="screen">
+<link href="/css/components/button.css" rel="stylesheet" media="screen">
+<link href="/css/components/button-link.css" rel="stylesheet" media="screen">
+<link href="/css/components/toggle.css" rel="stylesheet" media="screen">
+<link href="/css/components/navigation.css" rel="stylesheet" media="screen">
+<link href="/css/components/content-header.css" rel="stylesheet" media="screen">
+<link href="/css/components/card.css" rel="stylesheet" media="screen">
+<link href="/css/components/post.css" rel="stylesheet" media="screen">
+<link href="/css/components/map.css" rel="stylesheet" media="screen">
+<link href="/css/components/autocomplete.css" rel="stylesheet" media="screen">
+<link href="/css/components/image-gallery.css" rel="stylesheet" media="screen">
+<link href="/css/components/footer.css" rel="stylesheet" media="screen">
+<link href="/css/components/homepage.css" rel="stylesheet" media="screen">
+<link href="/css/components/top-message.css" rel="stylesheet" media="screen">
+<link href="/css/components/courtesy-page.css" rel="stylesheet" media="screen">
+<link href="/css/print.css" rel="stylesheet" media="print">
+{% endmacro %}
+
+{# 
+# Social media meta tags
+# @param {string} title  - The page title
+# @param {string} description  - The page description
+# @param {string} image  - The page cloudinary image id
+# @param {string} twitterCard  - The type of twitter card (default = summary)
+# @param {string} ogType - The open graph type (default = article)
+#}
+
+{% macro socialMeta(title, description, image, twitterCard='summary', ogType='article') %}
+<meta name="description" content="{{ description }}">
+<meta name="twitter:card" content="{{ twitterCard }}" />
+<meta name="twitter:site" content="@{{ env.ELEVENTY_NICKNAME }}" />
+<meta name="twitter:creator" content="@{{ env.ELEVENTY_NICKNAME }}" />
+<meta name="twitter:image" content="{{ image }}" />
+<meta name="twitter:title" content="{{ title }}"/>
+<meta property="og:site_name" content="{{ env.ELEVENTY_NAME }}" />
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:type" content="{{ ogType }}" />
+<meta property="og:image" content="{{ image }}" />
+<meta property="og:description" content="{{ description }}" />
+{% endmacro %}
+
+
+{# 
+# favicons
+#}
+
+{% macro favicons() %}
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+<link rel="manifest" href="/favicons/site.webmanifest">
+<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#000000">
+<link rel="shortcut icon" href="/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#ffcc00">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+{% endmacro %}
+
+
+{# 
+# Icon
+#}
+
+{% macro icon(name, append) %}
+  <span class="c-icon{% if append %} c-icon--append{% endif %}" aria-hidden="true">
+    {% include 'icons/' + name + '.njk' %}
+  </span>
+{% endmacro %}
+
+
+{# 
+# Skip to main content
+#}
+
+{% macro skipToMain() %}
+<a href="#main" class="u-srOnly">Vai al contenuto principale</a>
+{% endmacro %}
+
+
+{# 
+# Under construction msg
+#}
+
+{% macro topMessage() %}
+<div role="alert" class="c-topMessage" id="js-topMessage">Il nuovo sito è ancora in sviluppo. Potresti visualizzare i post più vecchi con la grafica precedente. <button class="c-button-link" id="js-topMessage-close"><b>Non mostrare più{{ macro.icon('close') }}</b></button></div>
+{% endmacro %}
+
+
+{# 
+# Site navigation
+# @param {string} activeSection - The active section
+#}
+
+{% macro navigation(activeSection) %}
+{% set siteNameTag = 'span' %}
+{% if activeSection == 'front' %}
+{% set siteNameTag = 'h1' %}
+{% endif %}
+<div class="c-navigation">
+  <h2 class="u-srOnly">Menu</h2>
+  <nav>
+    <ol class="c-navigation-menu">
+      <li class="c-navigation-logo">
+        <a href="/" title="Torna alla pagina iniziale" aria-label="Torna alla pagina iniziale">
+          <{{ siteNameTag }} class="c-navigation-siteName">
+          {% include 'logo.njk' %}<span class="u-srOnly">{{ env.ELEVENTY_NAME }}</span>
+          </{{ siteNameTag }}>
+        </a>
+      </li>
+      <li>
+        <a href="/blog" title="Elenco completo dei post"{% if activeSection == 'blog' %} class="is-active"{% endif %}>Blog</a>
+      </li>
+      <li><a href="/portfolio" title="Il mio portfolio fotografico" {% if activeSection == 'portfolio' %} class="is-active"{% endif %}>Foto</a></li>
+      <li><a href="/contatti" title="Inviami un messaggio" {% if activeSection == 'contatti' %} class="is-active"{% endif %}>Contatti</a></li>
+    </ol>
+  </nav>
+</div>
+{% endmacro %}
+
+{# 
+# Site footer
+#}
+
+{% macro footer() %}
+<footer class="c-footer">
+  <ul class="c-footer-section">
+    <li><span id="js-currentYear"></span> - <strong>Signalkuppe</strong></li>
+    <li><a href="{{ env.ELEVENTY_FACEBOOK }}" title="Seguimi su Facebook">Facebook</a></li>
+    <li><a href="{{ env.ELEVENTY_TWITTER }}" title="Seguimi su Twitter">Twitter</a></li>
+    <li><a href="{{ env.ELEVENTY_INSTAGRAM }}" title="Seguimi su Instagram">Instagram</a></li>
+    <li><a href="/feed.xml">Feed</a></li>
+  </ul>
+  <section class="c-footer-section"><small>Contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</small></a></section>
+  <section class="c-footer-section">
+    <button class="c-button-link u-mr-1" id="js-promptButton">{{ icon('smartphone') }}Installa il sito come app</button>
+    <span class="c-toggle"><input type="checkbox" id="toggle" /><label for="toggle" class="c-toggle-label">Tema scuro</label></span>
+  </section>
+  <section class="c-footer-section"><span class="c-footer-topLink"><a href="#top" class="c-button-link">{{ icon('arrow-up') }}Torna in cima</a></span></section>
+</footer>
+{% endmacro %}
+
+{# 
+# Content header
+#}
+
+{% macro contentHeader(preTitle, title, subTitle) %}
+  <header class="c-contentHeader">
+    <hgroup>
+      <h2>{{ preTitle }}</h2>
+      <h1 class="c-contentHeader-title">{{ title | wrapFirstChar | safe }}</h1>
+    </hgroup>
+    <p>{{ subTitle }}</p>
+    {% if caller %}{{ caller() }}{% endif %}
+  </header>
+{% endmacro %}
+
+{# 
+# Card
+#}
+
+{% macro card(date, title, imageUrl, imageAlt, description) %}
+  <article class="c-card" itemscope itemtype="http://schema.org/Article">
+    <figure class="c-card-image">
+      <img 
+        class="lazyImg"
+        data-src="{{ imageUrl }}?fit=thumb&w=600&h=400&f=center&q=70&fl=progressive" 
+        alt="{{ imageAlt }}" />
+      <noscript>
+        <img 
+          src="{{ imageUrl }}?fit=thumb&w=600&h=400&f=center&q=70&fl=progressive" 
+          alt="{{ imageAlt }}"  />        
+      </noscript>
+    </figure>
+    <div class="c-card-body">
+      <header class="c-card-header">
+        <time datetime="{{ date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ date | formatDate('DD MMMM YYYY') }}</time>
+        <h2 class="c-card-title">{{ title }}</h2>
+      </header>
+      <p>{{ description }}</p>
+    </div>
+  </article>
+{% endmacro %}
+
+
+{# 
+# TEMP old card
+# @param {Object} post - the post data
+#}
+
+{% macro oldCard(post) %}
+  <article class="c-card" itemscope itemtype="http://schema.org/Article"  style="position: relative; padding-bottom: 20px;">
+    <figure class="c-card-image">
+      <img 
+        class="lazyImg"
+        data-src="{{ post.card }}" 
+        alt="{{ post.tile }}" />
+      <noscript>
+        <img 
+          src="{{ post.card }}" 
+          alt="{{ post.title }}"  />        
+      </noscript>
+    </figure>
+    <div class="c-card-body">
+      <header class="c-card-header">
+        <time datetime="{{ post.datetime }}" itemprop="datePublished">{{ post.dateTim }}</time>
+        <h2 class="c-card-title">{{ post.title }}</h2>
+      </header>
+      <p>{{ post.description }}</p>
+    </div>
+      <style>
+        .c-card-badge {
+          font-size:0.6em;
+          background: orangered;
+          color: white;
+          padding: 0.15em 0.5em;
+          border-radius: 4px;
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+        }
+      </style>
+      <span class="c-card-badge">Vecchia grafica</span>
+  </article>
+{% endmacro %}

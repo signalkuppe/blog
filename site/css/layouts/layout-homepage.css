@@ -1,0 +1,27 @@
+.l-homepage-content {
+  max-width: 60ch;
+  padding-top: 6vh;
+}
+
+.l-homepage-footer {
+  margin-top: 8vh;
+}
+
+@media screen and (orientation: landscape) {
+  .l-homepage-main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 4em;
+    justify-content: flex-start;
+    margin-top: 8vh;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .l-homepage-main {
+    margin-top: 4vh;
+  }
+  .l-homepage-content {
+    margin: 0 1.5em;
+  }
+}

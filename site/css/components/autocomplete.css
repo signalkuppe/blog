@@ -1,0 +1,121 @@
+.c-autocomplete {
+  position: relative;
+  margin-top: calc(var(--spaceUnit) * 1.5);
+  width: 90%;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c-autocomplete input[type="text"] {
+  font-size: var(--fontSize2);
+  border: none;
+  /* border-bottom: 3px solid var(--colorGreyDark); */
+  display: block;
+  background: var(--bodyBackgroundColor);
+  width: 100%;
+  padding: 0.5em 2em 0.5em 0.5em;
+  border-radius: 0;
+  -webkit-appearance: none;
+  color: var(--bodyColor);
+}
+
+/* border bottom */
+
+.c-autocomplete-inputContainer {
+  position: relative;
+}
+
+.c-autocomplete-inputContainer::before,
+.c-autocomplete-inputContainer::after {
+  content: '';
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.c-autocomplete-inputContainer::before { /* not loading */
+  background: var(--colorGreyDark);
+}
+
+.c-autocomplete-inputContainer::after { /* loading */
+  background: var(--colorPrimary);
+  width: 0;
+  z-index: 1001;
+}
+
+.c-autocomplete-inputContainer.js-is-loading::after  { /* loading */
+  animation: expandWidth 0.5s infinite linear alternate-reverse;
+}
+
+@keyframes expandWidth {
+  0% { width: 100%; }
+  100% { width: 0%; }
+}
+
+.c-autocomplete input[type="text"]:focus,
+.c-autocomplete button:focus {
+  outline: none;
+}
+
+.c-autocomplete-reset,
+.c-autocomplete-search { /* reset and search buttons */
+  position: absolute;
+  right: 1.5em;
+  top: 1.75em;
+  background: transparent;
+  border: none;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+.c-autocomplete svg {
+  color: var(--bodyColor);
+}
+
+.c-autocomplete-help { /* help text */
+  font-size: var(--fontSizeSmall);
+  color: var(--colorGreyMedium);
+  line-height: 1.4;
+  margin-top: 1rem;
+}
+
+.c-autocomplete-results {
+  background: var(--bodyBackgroundColor);
+  border-style: solid;
+  border-width: 3px;
+  border-color: var(--colorGreyDark);
+  opacity: 1;
+  transition: all 0.2s linear;
+  position: absolute;
+  top: 3.3em;
+  left: 0;
+  width: 100%;
+  z-index: 100000;
+}
+
+.c-autocomplete-results.js-is-hidden {
+  opacity: 0;
+}
+
+.c-autocomplete-results li {
+  color: var(--colorGreyDark);
+}
+
+.c-autocomplete-results li a {
+  text-decoration: none;
+  display: block;
+  padding: 0.5em 1em;
+}
+
+.c-autocomplete-results li:not(:last-child) { 
+  border-bottom: 1px solid var(--colorGreyLight);
+}
+
+.c-autocomplete-results li.js-is-active,
+.c-autocomplete-results li:hover {
+  background: var(--colorGreyLight);
+  color: var(--bodyColor);
+}

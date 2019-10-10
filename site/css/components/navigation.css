@@ -1,0 +1,55 @@
+.c-navigation {
+  font-family: var(--fontCaption);
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.c-navigation-menu {
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+
+.c-navigation-menu li {
+  text-transform: uppercase;
+}
+
+.c-navigation-menu li + li {
+  margin-left: 1.5em;
+  position: relative;
+  top: -6px;
+}
+
+.c-navigation-logo svg {
+  height: 3em;
+  fill: var(--bodyColor);
+}
+
+.c-navigation-siteName {
+  font-size: 1em;
+}
+
+.c-navigation a {
+  text-decoration: none;
+  color: var(--colorGreyDarker);
+  display: block;
+}
+
+.c-navigation a:hover {
+  color: var(--bodyColor);
+}
+
+.c-navigation li:not(.c-navigation-logo) a:active {
+  outline: 2px solid var(--colorPrimary);
+  outline-offset: 5px;
+  text-decoration: none;
+}
+
+.c-navigation a.is-active {
+  color: var(--bodyColor);
+  border-bottom: 2px solid var(--bodyColor);
+}
+

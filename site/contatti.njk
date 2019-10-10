@@ -1,0 +1,80 @@
+---
+intro: "Contatti"
+title: "Inviami un messaggio"
+description: "Per parlare di un vostro progetto o di montagna"
+---
+{% import "macros/macros.njk" as macro with context %}
+{# Portfolio layout, extends base #}
+{% extends "layouts/_layoutBase.njk" %}
+
+{% block head %}
+{{ macro.socialMeta(title, description, env.ELEVENTY_LOGO) }}
+{{ macro.canonical(page.url) }}
+{{ macro.metaTitle(title, env.ELEVENTY_NAME) }}
+{% endblock %}
+
+{% block header %}
+  {{ macro.navigation(activeSection = 'contatti') }}
+{% endblock %}
+
+{% block main %}
+{# header #}
+{% call macro.contentHeader(intro, title, description) -%}{%- endcall %}
+
+
+<section class="u-section-mt-1-5">
+  <form 
+    action="/grazie" 
+    name="contact" 
+    method="POST" 
+    data-netlify="true" 
+    netlify-honeypot="bot-field"
+    style="max-width: 60ch; margin: 0 auto;" 
+    id="form" 
+    novalidate>
+    <div class="u-srOnly">
+      <label>Non compilarlo se sei umano: <input name="bot-field" /></label>
+    </div>
+    <div class="u-mb-2">
+      <label for="email">Email</label>
+      <input 
+        type="email" 
+        name="email" 
+        id="email" 
+        required 
+        autocomplete="off" />
+    </div>
+    <div class="u-mb-2">
+      <label for="message">Messaggio</label>
+      <textarea 
+        name="message" 
+        id="message" 
+        rows="10" 
+        required 
+        spellcheck="false"></textarea>
+    </div>
+    <div>
+      <button type="submit" class="c-button">Invia</button>
+    </div>
+  </form>
+</section>
+
+{% endblock %}
+
+{% block footer %}
+{{ macro.footer() }}
+{% endblock %}
+
+{% block scripts %}
+<script src="/js/lib/lazyload.js"></script>
+<script src="/js/lib/smooth-scroll.js"></script>
+<script src="/js/lib/lockr.js"></script>
+<script src="/js/lib/pristine.js"></script>
+<script src="/js/lib/toastify.js"></script>
+<script src="/js/registerServiceWorker.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/smoothScroll.js"></script>
+<script src="/js/currentYear.js"></script>
+<script src="/js/contactForm.js"></script>
+{% endblock %}
+

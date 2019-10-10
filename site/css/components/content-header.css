@@ -1,0 +1,55 @@
+.c-contentHeader {
+  text-align:center;
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.c-contentHeader h2 {
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeSmall);
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: var(--spaceUnit);
+}
+
+.c-contentHeader h1 {
+  font-size: var(--fontSize4);
+  margin-bottom: calc(var(--spaceUnit) * 1.5);
+}
+
+.c-contentHeader h1 span {
+  position: relative;
+}
+
+.c-contentHeader h1 span::after {
+  position: absolute;
+  top: 1.1em;
+  left: 0;
+  content: '';
+  height: .1em;
+  background: var(--colorPrimary);
+  width: 0.75em;
+}
+
+.c-contentHeader p {
+  font-size: var(--fontSizeSmall);
+  width: 90%;
+  max-width: 60ch;
+  margin: 0 auto calc(var(--spaceUnit) * 1.5) auto;
+}
+
+.c-contentHeader time {
+  display: block;
+  color: var(--colorGreyDark);
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeTiny);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 1480px) {
+  .c-contentHeader h1 {
+    font-size: var(--fontSize5);
+  }
+}

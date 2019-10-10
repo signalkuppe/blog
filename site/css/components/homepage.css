@@ -1,0 +1,47 @@
+.c-homepage-image {
+  display: block;
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.25);
+}
+
+.c-homepage-name {
+  font-size: var(--fontSize3);
+}
+
+.c-homepage-ultimo {
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeSmall);
+  text-transform: uppercase;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.c-homepage-time {
+  display: block;
+  font-size: var(--fontSizeSmall);
+  color: var(--colorGreyDark);
+  font-family: var(--fontSans);
+  margin-bottom: 0.5em;
+}
+
+.c-homepage-postTitle {
+  font-size: var(--fontSize1);
+  margin-bottom: 0.5em;
+}
+
+.c-homepage-postTitle svg {
+  height: 1em;
+  color: orangered;
+}
+
+.c-homepage-hr {
+  background: var(--colorGreyLight);
+}
+
+@media screen and (min-width: 1170px) {
+  .c-homepage-image {
+    max-height: none;
+  }
+}
