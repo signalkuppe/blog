@@ -119,7 +119,7 @@
   }
 }
 
-@media screen and (min-width: 1680px) {
+@media screen and (min-width: 1920px) {
   .c-post-cover-caption {
     font-size: var(--fontSize4);
   }

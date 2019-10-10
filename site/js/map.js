@@ -1,7 +1,7 @@
 (function () {
   /* Initialize map */
   
-  var zoom = 8
+  var zoom = 7
   var lat = 45.7929
   var lng =  9.0000
   var mymap = L.map('map',{ 
