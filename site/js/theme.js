@@ -4,7 +4,7 @@
   var darkClass = 'theme-dark'
   var notReadyClass = 'js-not-ready'
   toggle.classList.add(notReadyClass)
-  var ls = Lockr.get('signalkuppe')
+  var ls = Lockr.get('signalkuppe-new')
   if (ls) {
     if (ls.darkTheme === true) {
       document.documentElement.classList.add(darkClass)
@@ -23,9 +23,9 @@
   input.addEventListener('change', function (e) {
     document.documentElement.classList.toggle(darkClass)
     if (e.target.checked) {
-      Lockr.set('signalkuppe', { darkTheme: true })
+      Lockr.set('signalkuppe-new', { darkTheme: true })
     } else {
-      Lockr.set('signalkuppe', { darkTheme: false })
+      Lockr.set('signalkuppe-new', { darkTheme: false })
     }
   })
 })()
