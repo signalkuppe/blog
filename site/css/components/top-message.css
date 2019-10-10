@@ -3,6 +3,6 @@
   padding: 1em;
   text-align: center;
   background: var(--colorPrimary);
-  color: var(--bodyColor);
+  color: black;
   display: none;
 }

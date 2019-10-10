@@ -11,43 +11,8 @@
   display: block;
 }
 
-.c-map-marker[style] {
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
-}
-
-.c-map-marker img {
-  border: 4px solid var(--colorGreyLighter);
-}
-
-.c-map-marker::after {
-  position: absolute;
-  content: '';
-  display: block;
-  left: 50%;
-  bottom: -10px;
-  transform: translate(-50%, 0);
-  width: 0; 
-  height: 0; 
-  border-left: none;
-  border-right: 10px solid transparent;
-  border-top: 10px solid var(--colorGreyLighter);
-}
-
-.c-map-marker::after,
-.c-map-marker img {
-  transition: all 0.2s linear;
-}
-
-.c-map-marker[style]:hover::after {
-  border-top-color: var(--colorPrimary);
-}
-
-.c-map-marker[style]:hover img {
-  border-color: var(--colorPrimary);
-}
-
 .theme-dark .leaflet-tile-pane {
-  filter: grayscale(1);
+  filter: grayscale(0.5);
 }
 
 .leaflet-popup-content[style] {

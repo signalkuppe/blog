@@ -57,7 +57,7 @@
       if (!results.length) {
         output += '<li><a>Nessun risultato 😓</a></li>'
       } else {
-        for (var i = 0; i < maxResults; i++) {
+        for (var i = 0; i < (results.length > maxResults ? maxResults : results.length); i++) {
           var url = markers.find(function (m) {
             return m.autocompleteRow === results[i].ref 
           }).link
@@ -86,16 +86,6 @@
     search.style.display = 'none'
     form.addEventListener('blur', _blur, true)
     _hideLoading()
-    if (results.length > maxResults) {
-      Toastify({
-        text: 'Sto mostrando i primi <b>' + maxResults + ' risultati</b> di ' + results.length + ' totali',
-        duration: 4000,
-        close: false,
-        gravity: 'top',
-        position: 'right',
-        className: 'c-toast--info'
-      }).showToast()
-    }
   }
   var _hideResults = function () {
     autocomplete.setAttribute('aria-hidden', true)
@@ -110,7 +100,9 @@
     reset.style.display = 'none'
     autocomplete.removeAttribute('hidden')
     form.addEventListener('submit', function (e) {
+      console.log('!')
       e.preventDefault()
+      return false
     })
   }
   input.addEventListener('keyup', function (event) {

@@ -47,7 +47,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   background: var(--bodyBackgroundColor);
-  color: var(--bodyColor);
+  color: inherit;
 }
 
 form:not([class]) {
