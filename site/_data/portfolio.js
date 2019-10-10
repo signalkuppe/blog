@@ -10,7 +10,6 @@ const _ = require('lodash')
 const mkdirp = require('mkdirp')
 const path = require('path')
 const fs = require('fs')
-const deleteKeyRecursively = require(path.join(process.cwd(), 'lib/deleteKeyRecursively'))
 const log = require(path.join(process.cwd(), 'lib/log'))
 const logFile = path.join(process.cwd(), process.env.ELEVENTY_CACHE_DIR, '_portoflio.json')
 const contentful = require('contentful')
@@ -52,13 +51,9 @@ module.exports = () => {
           photos = _.union(photos, chunk.items)
           iteration ++
         }
-        const parsedPhotos = _.map((photos), (photo) => {
-          deleteKeyRecursively(photo, 'sys')
-          return photo
-        })
         log.success(`Found ${photos.length} photos`)
-        fs.writeFileSync(logFile, JSON.stringify(parsedPhotos), 'utf-8') // write log file
-        resolve(parsedPhotos)
+        fs.writeFileSync(logFile, JSON.stringify(photos), 'utf-8') // write log file
+        resolve(photos)
 
       } catch (err) {
         log.error('Photos fetch error', err)
