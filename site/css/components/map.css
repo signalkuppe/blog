@@ -12,7 +12,7 @@
 }
 
 .theme-dark .leaflet-tile-pane {
-  filter: grayscale(0.5);
+  filter: grayscale(0.7);
 }
 
 .leaflet-popup-content[style] {
