@@ -17,10 +17,6 @@ permalink: "{{ post.computed.slug }}"
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(post.fields.title, env.ELEVENTY_NAME) }}
 <link rel="preconnect" href="https://assets.ctfassets.net" crossorigin>
-{% if post.computed.gps.hasGpx %}
-<!-- map -->
-<link rel="stylesheet" href="/node_modules/leaflet/dist/leaflet.css" />
-{% endif %}
 {% endblock %}
 
 {# nav #}
@@ -239,17 +235,17 @@ permalink: "{{ post.computed.slug }}"
 {% endblock %}
 
 {% block scripts %}
-<script src="/node_modules/gsap/src/uncompressed/TweenMax.js"></script>
-<script src="/node_modules/colcade/colcade.js"></script>
-<script src="/node_modules/vanilla-lazyload/dist/lazyload.js"></script>
-<script src="/node_modules/smooth-scroll/dist/smooth-scroll.js"></script>
-<script src="/node_modules/baguettebox.js/dist/baguetteBox.js"></script>
-<script src="/node_modules/toastify-js/src/toastify.js"></script>
-<script src="/node_modules/lockr/lockr.js"></script>
+<script src="/js/lib/TweenMax.js"></script>
+<script src="/js/lib/colcade.js"></script>
+<script src="/js/lib/lazyload.js"></script>
+<script src="/js/lib/smooth-scroll.js"></script>
+<script src="/js/lib/baguetteBox.js"></script>
+<script src="/js/lib/toastify.js"></script>
+<script src="/js/lib/lockr.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
 {% if post.computed.gps.hasGpx %}
-<script src="/node_modules/leaflet/dist/leaflet.js"></script>
-<script src="/node_modules/leaflet-gpx/gpx.js"></script>
+<script src="/js/lib/leaflet.js"></script>
+<script src="/js/lib/gpx.js"></script>
 <script src="/js/postGpxTrack.js"></script>
 {% endif %}
 <script src="/js/topMessage.js"></script>

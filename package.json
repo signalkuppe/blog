@@ -31,7 +31,7 @@
     "vanilla-lazyload": "^12.1.0"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.8.3",
+    "@11ty/eleventy": "^0.9.0",
     "@contentful/rich-text-html-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^13.4.0",
     "chalk": "^2.4.2",

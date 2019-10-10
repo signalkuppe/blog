@@ -6,6 +6,7 @@ const outputDir = 'dist'
 
 module.exports = (eleventyConfig) => {
 
+
   eleventyConfig.setTemplateFormats('njk', 'css', 'js') // include css and js to watch and reload on save
 
   /*
@@ -18,18 +19,21 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'img'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, 'service-worker.js'))
   eleventyConfig.addPassthroughCopy(path.join(inputDir, '_redirects'))
-  eleventyConfig.addPassthroughCopy('node_modules/toastify-js/src') // we need also the css
-  eleventyConfig.addPassthroughCopy('node_modules/lockr/lockr.js')
-  eleventyConfig.addPassthroughCopy('node_modules/colcade/colcade.js')
-  eleventyConfig.addPassthroughCopy('node_modules/baguettebox.js/dist') // we need also the css
-  eleventyConfig.addPassthroughCopy('node_modules/vanilla-lazyload/dist/lazyload.js')
-  eleventyConfig.addPassthroughCopy('node_modules/smooth-scroll/dist/smooth-scroll.js')
-  eleventyConfig.addPassthroughCopy('node_modules/lunr/lunr.js')
-  eleventyConfig.addPassthroughCopy('node_modules/gsap/src/uncompressed/TweenMax.js')
-  eleventyConfig.addPassthroughCopy('node_modules/leaflet/dist')
-  eleventyConfig.addPassthroughCopy('node_modules/leaflet-gpx')
-  eleventyConfig.addPassthroughCopy('node_modules/pristinejs')
-
+  eleventyConfig.addPassthroughCopy({ 'node_modules/toastify-js/src/*.css' : 'css/lib' })
+  eleventyConfig.addPassthroughCopy({ 'node_modules/toastify-js/src/*.js' : 'js/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/lockr/*.js' : 'js/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/colcade/*.js' : 'js/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/baguettebox.js/dist/*.css' : 'css/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/baguettebox.js/dist/*.js' : 'js/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/vanilla-lazyload/dist/*.js' : 'js/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/smooth-scroll/dist/*.js' : 'js/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/lunr/*.js' : 'js/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/gsap/src/uncompressed/*.js' : 'js/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/leaflet/dist/*.js' : 'js/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/leaflet/dist/*.css' : 'css/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/leaflet-gpx/*.js' : 'js/lib' }) 
+  eleventyConfig.addPassthroughCopy({ 'node_modules/pristinejs/dist/*.js' : 'js/lib' })
+  
   /*
   * Formats a date
   **/

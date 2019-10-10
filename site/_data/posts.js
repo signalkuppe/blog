@@ -9,7 +9,7 @@ require('dotenv').config()
 const path = require('path')
 const fs = require('fs')
 const _ = require('lodash')
-const mkdirp = require('mkdirp');
+const mkdirp = require('mkdirp')
 // const deleteKeyRecursively = require(path.join(process.cwd(), 'lib/deleteKeyRecursively'))
 const log = require(path.join(process.cwd(), 'lib/log'))
 const date = require(path.join(process.cwd(), 'lib/date'))
