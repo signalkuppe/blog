@@ -72,6 +72,10 @@
   text-align: center !important;
 }
 
+.u-text-decoration-none {
+  text-decoration: none !important;
+}
+
 .u-container-link {
   text-decoration: inherit !important;
   color: inherit !important;

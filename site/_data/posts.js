@@ -135,7 +135,7 @@ const makeMarkers = (posts) => { // make markers index, used also in lunr search
       tags: post.fields.tags.join(' '),
       categories: post.fields.category[0],
       cover: `${post.fields.cover.fields.file.url}?fit=thumb&w=200&h=200&fm=jpg&fl=progressive&q=70`,
-      autocompleteRow: `<a href="${makeFullSlug(post.fields.slug)}" data-autocomplete"><span>${date.format(post.fields.date, 'DD/MM/YY')}</span> - ${post.fields.title}</a>`
+      autocompleteRow: `<a href="${makeFullSlug(post.fields.slug)}" data-autocomplete">${post.fields.title}</a>`
     }
   })
 }
@@ -165,7 +165,7 @@ module.exports = () => {
         const oldPosts = require('./oldPosts')
           .map((oldPost) => {
             oldPost.tags = oldPost.tags.join(' ')
-            oldPost.autocompleteRow = `<a href="${oldPost.link}" data-autocomplete"><span>${oldPost.date}</span> - ${oldPost.title}</a>`
+            oldPost.autocompleteRow = `<a href="${oldPost.link}" data-autocomplete">${oldPost.title}</a>`
             return oldPost
           })
         log.warn(`Added ${oldPosts.length} old posts, !!! first old post: ${oldPosts[0].title} !!!`)

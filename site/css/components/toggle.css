@@ -28,7 +28,6 @@
   box-sizing: border-box;
 }
 
-
 .c-toggle label::after,
 .c-toggle label::before {
   content: '';
@@ -53,12 +52,13 @@
   content: '';
   display: block;
   height: 100%;
-  width: 1em;
-  height: 1em;
+  width: 0.8em;
+  height: 0.8em;
   position: absolute;
   top: 0.25em;
   background: var(--bodyColor);
   border-radius: 50%;
+  border: 0.1em solid var(--bodyColor);
   transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
 } 
 

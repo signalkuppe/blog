@@ -1,9 +1,3 @@
----
-pagination:
-  data: posts
-  size: 1000000000
----
-
 {# Index layout, extends homepage #}
 {% extends "layouts/_layoutHomepage.njk" %}
 {% import "macros/macros.njk" as macro with context %}
@@ -27,7 +21,7 @@ pagination:
 {% block content %}
 <h2 class="c-homepage-name">Benvenuto!</h2>
 <p class="u-type-lead">
-Sono Matteo, <b>sviluppatore web</b> specializzato in responsive Web design. Trasformo idee grafiche in progetti web, con particolare attenzione alle performance e all’architettura css.
+Sono Matteo, <b>sviluppatore web</b> specializzato in javascript e css. Trasformo un design in un’applicazione web, con particolare attenzione alle performance.
 </p>
 <p>
 Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vuole essere un semplice diario delle nostre avventure.
@@ -38,7 +32,7 @@ Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vu
 </p>
 <hr  class="c-homepage-hr" />
 <h3 class="c-homepage-ultimo">Ultimo post</h3>
-{% for post in pagination.items %}
+{% for post in posts %}
 {% if loop.index === 1 %}
 <!-- test -->
 <article>
