@@ -38,7 +38,7 @@
 {# 
 # html tag
 #}
-{% macro htmlTag() %}<html lang="it" class="no-js" data-env="{{ env.ELEVENTY_ENV }}">{% endmacro %}
+{% macro htmlTag() %}<html lang="it" class="no-js theme-dark" data-env="{{ env.ELEVENTY_ENV }}" data-localstorage-version="{{ env.ELEVENTY_LOCALSTORAGE_VERSION}}">{% endmacro %}
 
 {# 
 # Canonical meta tags
@@ -211,7 +211,7 @@
   <section class="c-footer-section"><small>Contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</small></a></section>
   <section class="c-footer-section">
     <button class="c-button-link u-mr-1" id="js-promptButton">{{ icon('smartphone') }}Installa il sito come app</button>
-    <span class="c-toggle"><input type="checkbox" id="toggle" /><label for="toggle" class="c-toggle-label">Tema scuro</label></span>
+    <span class="c-toggle"><input type="checkbox" id="toggle" /><label for="toggle" class="c-toggle-label">Tema chiaro</label></span>
   </section>
   <section class="c-footer-section"><span class="c-footer-topLink"><a href="#top" class="c-button-link">{{ icon('arrow-up') }}Torna in cima</a></span></section>
 </footer>
