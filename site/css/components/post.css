@@ -59,6 +59,17 @@
   top: 0.15em;
 }
 
+.c-post-infoBoxGpx {
+  font-family: var(--fontCaption);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 10000;
+  padding: 0.25em 0.75em;
+  background: var(--bodyBackgroundColor);
+  color: var(--bodyColor);
+}
+
 .c-post-sticky {
   position: sticky;
   position: -webkit-sticky;

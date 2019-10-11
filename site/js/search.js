@@ -6,7 +6,6 @@
   var search = document.getElementById('autocomplete-search')
   var autocomplete = document.getElementById('autocomplete-results')
   var i = -1;
-  var maxResults = 8
   var idx = lunr(function () {
     this.ref('autocompleteRow')
     this.field('description')
@@ -57,7 +56,7 @@
       if (!results.length) {
         output += '<li><a>Nessun risultato 😓</a></li>'
       } else {
-        for (var i = 0; i < (results.length > maxResults ? maxResults : results.length); i++) {
+        for (var i = 0; i < results.length; i++) {
           var url = markers.find(function (m) {
             return m.autocompleteRow === results[i].ref 
           }).link
@@ -100,7 +99,6 @@
     reset.style.display = 'none'
     autocomplete.removeAttribute('hidden')
     form.addEventListener('submit', function (e) {
-      console.log('!')
       e.preventDefault()
       return false
     })

@@ -10,7 +10,9 @@
     zoom: 15
   })
   var mapRendered = false
-  var showMap = function (showButton) {
+  var showMap = function () {
+    var showButton = document.getElementById('js-showButton')
+    var infoBoxGpx = document.getElementById('js-infoBoxGpx')
     if (!mapRendered) {
       showButton.innerHTML = iconShow + ' Carico la traccia...'
       var mapContainer = document.createElement('div')
@@ -33,6 +35,7 @@
      
       new L.GPX(gpxUrl, {async: true})
           .on('loaded', function (e) {
+            createInfoBox(e)
             Toastify({
               text: 'Traccia caricata 👍',
               duration: 4000,
@@ -43,20 +46,24 @@
             }).showToast()
             mapRendered = true
             mymap.fitBounds(e.target.getBounds())
-            showButton.innerHTML = iconClose + ' Nascondi la traccia'
+            showButton.innerHTML = iconClose + 'Nascondi la traccia'
             mapContainer.style.opacity = 1
           })
           .addTo(mymap)
     } else {
       var map = document.getElementById('map')
       map.style.opacity = 1
+      infoBoxGpx.style.opacity = 1
       showButton.innerHTML = iconClose + ' Nascondi la traccia'
     }
   }
-  var hideMap = function (showButton) {
+  var hideMap = function () {
+    var showButton = document.getElementById('js-showButton')
+    var infoBoxGpx = document.getElementById('js-infoBoxGpx')
     showButton.innerHTML = iconShow + ' Mostra la traccia'
     var map = document.getElementById('map')
     map.style.opacity = 0
+    infoBoxGpx.style.opacity = 0
   }
   var createButton = function () {
     var showButton = document.createElement('button')
@@ -67,12 +74,22 @@
     showButton.addEventListener('click', function (e) {
       showButton.classList.toggle('js-is-open')
       if (showButton.classList.contains('js-is-open')) {
-        showMap(showButton)
+        showMap()
       } else {
-        hideMap(showButton)
+        hideMap()
       }
       e.stopPropagation()
     })
   }
+  var createInfoBox = function (gpxEvent) {
+    var distance = Math.round(gpxEvent.target.get_distance() / 1000)
+    var gain = Math.round(gpxEvent.target.get_elevation_gain())
+    var infoBoxGpx = document.createElement('div')
+    infoBoxGpx.setAttribute('id', 'js-infoBoxGpx')
+    infoBoxGpx.classList.add('c-post-infoBoxGpx')
+    infoBoxGpx.innerHTML = 'Distanza: <strong>' + distance + 'km</strong> | dislivello: <strong>' + gain + 'm</strong>'
+    coverContainer.prepend(infoBoxGpx)
+  }
+
   createButton()
 })()
