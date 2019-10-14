@@ -8,21 +8,6 @@
 module.exports = [
 
   {
-  lat: 46.6121874,
-  lng: 9.9186814,
-  title: "Piz Belvair",
-  date: "13/01/18",
-  dateTime: "2018-01-13T00:00:00+01:00",
-  link: "/scialpinismo/2018/01/13/piz-belvair.html",
-  tags: ["scialpinismo", "engadina"],
-  description: "Scialpinismo in Engadina al Piz Belvair con partenza da Madulain",
-  cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/130118.jpg",
-  marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/130118.jpg",
-  card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/130118.jpg"
-  },
-
-
-  {
   lat: 45.873103,
   lng: 9.481666,
   title: "Scialpinismo al Resegone da Morterone",
