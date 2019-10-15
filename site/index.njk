@@ -1,10 +1,9 @@
 {# Index layout, extends homepage #}
 {% extends "layouts/_layoutHomepage.njk" %}
 {% import "macros/macros.njk" as macro with context %}
-
+{% set ogImage %}{{ env.ELEVENTY_URL }}/img/matteo-giorgio-leoni.jpg{% endset %}
 
 {% block head %}
-{% set ogImage %}{{ env.ELEVENTY_URL }}{{ env.ELEVENTY_LOGO }}{% endset %}
 {{ macro.socialMeta(env.ELEVENTY_NAME, env.ELEVENTY_DESCRIPTION, ogImage, ogType='website') }}
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(env.ELEVENTY_NAME, env.ELEVENTY_SLOGAN) }}
@@ -15,7 +14,7 @@
 {% endblock %}
 
 {% block image %}
-<img class="c-homepage-image" src="/img/matteo-giorgio-leoni.jpg" alt="Matteo e Giorgio Leoni" />
+<img class="c-homepage-image" src="{{ ogImage }}" alt="Matteo e Giorgio Leoni" />
 {% endblock %}
 
 {% block content %}
