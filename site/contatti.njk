@@ -8,7 +8,7 @@ description: "Per parlare di un vostro progetto o di montagna"
 {% extends "layouts/_layoutBase.njk" %}
 
 {% block head %}
-{{ macro.socialMeta(title, description, env.ELEVENTY_LOGO) }}
+{{ macro.socialMeta(title, description, env.ELEVENTY_LOGO, ogType='website') }}
 {{ macro.canonical(page.url) }}
 {{ macro.metaTitle(title, env.ELEVENTY_NAME) }}
 {% endblock %}
