@@ -11,7 +11,7 @@ description: "L’elenco completo di tutte le relazioni, con la mappa e la ricer
 {% block head %}
 {% set ogImage %}{{ env.ELEVENTY_URL }}{{ env.ELEVENTY_LOGO }}{% endset %}
 {{ macro.socialMeta(title, description, ogImage, ogType='website')}}
-{{ macro.canonical(page.url) }}
+{{ macro.canonical() }}
 {{ macro.metaTitle(title, env.ELEVENTY_NAME) }}
 <link rel="preconnect" href="https://assets.ctfassets.net" crossorigin>
 <link rel="preconnect" href="https://tile.thunderforest.com" crossorigin>

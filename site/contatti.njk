@@ -9,7 +9,7 @@ description: "Per parlare di un vostro progetto o di montagna"
 
 {% block head %}
 {{ macro.socialMeta(title, description, env.ELEVENTY_LOGO, ogType='website') }}
-{{ macro.canonical(page.url) }}
+{{ macro.canonical() }}
 {{ macro.metaTitle(title, env.ELEVENTY_NAME) }}
 {% endblock %}
 

@@ -45,8 +45,10 @@
 # @param {string} url - The page ulr
 #}
 
-{% macro canonical(pageUrl) %}
-<link rel="canonical" href="{{ env.ELEVENTY_URL }}{{ pageUrl }}">
+{% macro canonicalUrl() %}{{ env.ELEVENTY_URL }}{{ page.url | replace('.html', '')}}{% endmacro %}
+
+{% macro canonical() %}
+<link rel="canonical" href="{{ canonicalUrl() }}">
 {% endmacro %}
 
 {# 
@@ -115,6 +117,7 @@
 <meta property="og:type" content="{{ ogType }}" />
 <meta property="og:image" content="{{ image }}" />
 <meta property="og:description" content="{{ description }}" />
+<meta property="og:url" content="{{ canonicalUrl() }}" />
 {% endmacro %}
 
 

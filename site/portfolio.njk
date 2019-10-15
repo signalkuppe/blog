@@ -13,7 +13,7 @@ pagination:
 {% block head %}
 {% set ogImage %}{{ env.ELEVENTY_URL }}{{ env.ELEVENTY_LOGO }}{% endset %}
 {{ macro.socialMeta(title, description, ogImage, ogType='website') }}
-{{ macro.canonical(page.url) }}
+{{ macro.canonical() }}
 {{ macro.metaTitle(title, env.ELEVENTY_NAME) }}
 {% endblock %}
 

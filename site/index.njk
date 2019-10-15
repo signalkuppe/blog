@@ -5,7 +5,7 @@
 
 {% block head %}
 {{ macro.socialMeta(env.ELEVENTY_NAME, env.ELEVENTY_DESCRIPTION, ogImage, ogType='website') }}
-{{ macro.canonical(page.url) }}
+{{ macro.canonical() }}
 {{ macro.metaTitle(env.ELEVENTY_NAME, env.ELEVENTY_SLOGAN) }}
 {% endblock %}
 
