@@ -39,7 +39,7 @@
 }
 
 :root.theme-dark {
-  --colorGreyLighter: hsl(223, 10%, 13%);
+  --colorGreyLighter: hsl(220, 7%, 8%);
   --colorGreyLight: hsl(222, 10%, 19%);
   --colorGrey: hsl(224, 4%, 48%);;
   --colorGreyMedium: hsl(228, 4%, 52%);

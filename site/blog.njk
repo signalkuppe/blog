@@ -41,7 +41,7 @@ description: "L’elenco completo di tutte le relazioni, con la mappa e la ricer
 <ul class="l-postGrid u-section-mt-1-5">
 {% for post in posts  %}
   <li class="l-postGrid-item">
-    <a href="{{ post.computed.slug }}" title="leggi il post" class="u-container-link">
+    <a href="{{ post.computed.slug }}" title="Leggi la relazione" class="u-container-link">
       {{ macro.card(post.fields.date, post.fields.title, post.fields.cover.fields.file.url, post.fields.cover.fields.description, post.fields.description) }}
     </a>
   </li>
@@ -49,7 +49,7 @@ description: "L’elenco completo di tutte le relazioni, con la mappa e la ricer
 {# old posts TEMP!!!!! #}
 {% for oldPost in oldPosts  %}
   <li class="l-postGrid-item">
-    <a href="{{ oldPost.link }}" title="leggi il post" class="u-container-link">
+    <a href="{{ oldPost.link }}" title="Leggi la relazione" class="u-container-link">
       {{ macro.oldCard(oldPost) }}
     </a>
   </li>
