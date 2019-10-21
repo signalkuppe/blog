@@ -43,12 +43,12 @@ pagination:
         title="{{ photo.fields.photo.fields.title }}">
         <img 
           data-src="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
-          alt="{{ photo.fields.photo.fields.file.description }}" 
+          alt="{{ photo.fields.photo.fields.title  }}" 
           class="lazyImg" />
         <noscript>
           <img 
             src="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
-            alt="{{ photo.fields.photo.fields.file.description }}"  />        
+            alt="{{ photo.fields.photo.fields.title }}"  />        
         </noscript>
       </a>
     </li> 
