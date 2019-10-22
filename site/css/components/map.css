@@ -40,6 +40,11 @@
   display: none;
 }
 
+/* hide post gpx pin shadow */
+.leaflet-shadow-pane {
+  display: none ! important;
+}
+
 .c-map-link {
   display: block;
   text-decoration: none;

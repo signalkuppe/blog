@@ -63,3 +63,9 @@
     display: block;
   }
 }
+
+/* lib overrides */
+
+#baguetteBox-slider figcaption {
+  font-style: normal;
+}

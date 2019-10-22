@@ -7,7 +7,6 @@
     filter: /.*[contentful].*/i,
     overlayBackgroundColor: 'rgba(0,0,0,1)',
     noScrollbars: true,
-    fullScreen: true,
     afterShow: function () {
       document.body.style.overflow = 'hidden'
     },
