@@ -142,6 +142,7 @@
     -webkit-initial-letter: 3;
     font-family: var(--fontSerif);
     font-weight: 700;
+    color: var(--colorBlack);
     margin: 0 0.5em 0em 0;
   }
 }
