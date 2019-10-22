@@ -33,16 +33,22 @@
       // mappe da thunderforest.com: 150.000 richieste al mese poi bisogna pagare, verificare
       TILELAYER.addTo(mymap)
      
-      new L.GPX(gpxUrl, {async: true})
+      new L.GPX(gpxUrl, {
+        async: true,
+        marker_options: {
+          startIconUrl: '/img/marker.svg',
+          endIconUrl: '/img/marker.svg'
+        }
+      })
           .on('loaded', function (e) {
             createInfoBox(e)
             Toastify({
               text: 'Traccia caricata 👍',
               duration: 4000,
               close: false,
-              gravity: 'top',
+              gravity: 'bottom',
               position: 'right',
-              className: 'c-toast--success'
+              className: 'c-toast--info'
             }).showToast()
             mapRendered = true
             mymap.fitBounds(e.target.getBounds())
