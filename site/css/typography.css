@@ -99,6 +99,11 @@ b, strong {
   font-weight: 700;
 }
 
+:root.theme-dark b, 
+:root.theme-dark strong {
+  color: var(--colorBlack);
+}
+
 i, em {
   font-style: italic;
 }
