@@ -6,3 +6,7 @@
   color: black;
   display: none;
 }
+
+.c-topMessage b {
+  color: black;
+}

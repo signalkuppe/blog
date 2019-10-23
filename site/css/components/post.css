@@ -51,10 +51,13 @@
   outline: none;
 }
 
+.c-post-gpxButton:hover {
+  color: var(--colorBlack);
+}
+
 .c-post-gpxButton svg {
   height: 1em;
   margin-right: 0.5em;
-  fill: var(--bodyColor);
   position: relative;
   top: 0.15em;
 }
@@ -93,19 +96,23 @@
   padding: 0.5em 1em;
 }
 
-.c-post-shareFacebook:hover svg {
+.c-post-share {
+  font-size: var(--fontSize2);
+}
+
+.c-post-share--facebook:hover svg {
   fill: var(--colorFacebook);
 }
 
-.c-post-shareTwitter:hover svg {
+.c-post-share--twitter:hover svg {
   fill: var(--colorTwitter);
 }
 
-.c-post-shareWhatsapp:hover svg {
+.c-post-share--whatsapp:hover svg {
   fill: var(--colorWhatsapp);
 }
 
-.c-post-shareEmail:hover svg {
+.c-post-share--email:hover svg {
   fill: var(--colorEmail);
 }
 

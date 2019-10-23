@@ -13,6 +13,7 @@ h1,h2,h3,h4,h5,h6 {
   font-family: var(--fontSerif);
   font-weight: 700;
   line-height: var(--leadNarrow);
+  color: var(--colorBlack);
 }
 
 h1 {
@@ -97,10 +98,6 @@ a {
 
 b, strong {
   font-weight: 700;
-}
-
-:root.theme-dark b, 
-:root.theme-dark strong {
   color: var(--colorBlack);
 }
 

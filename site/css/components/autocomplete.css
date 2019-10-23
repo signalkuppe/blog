@@ -34,7 +34,7 @@
 }
 
 .c-autocomplete-inputContainer::before { /* not loading */
-  background: var(--colorGreyDark);
+  background: var(--colorBlack);
 }
 
 .c-autocomplete-inputContainer::after { /* loading */
@@ -69,7 +69,7 @@
 }
 
 .c-autocomplete svg {
-  color: var(--bodyColor);
+  color: var(--colorBlack);
 }
 
 .c-autocomplete-help { /* help text */

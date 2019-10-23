@@ -8,9 +8,11 @@
     overlayBackgroundColor: 'rgba(0,0,0,1)',
     noScrollbars: true,
     afterShow: function () {
+      document.body.style.height = '100vh'
       document.body.style.overflow = 'hidden'
     },
     afterHide: function () {
+      document.body.style.height = 'auto'
       document.body.style.overflow = 'visible'
     }
   })

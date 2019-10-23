@@ -35,9 +35,13 @@
 }
 
 .c-card-header time {
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeTiny);
+  color: var(--colorGreyDark);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   display: block;
   margin-bottom: var(--spaceUnit);
-  color: var(--colorGreyMedium);
 }
 
 .c-card-body p {

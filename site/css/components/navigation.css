@@ -48,8 +48,13 @@
   text-decoration: none;
 }
 
-.c-navigation a.is-active {
-  color: var(--bodyColor);
-  border-bottom: 2px solid var(--bodyColor);
+.c-navigation li:not(.c-navigation-logo) a.is-active {
+  color: var(--colorBlack);
+  border-bottom: 2px solid var(--colorBlack);
+}
+
+.c-navigation li.c-navigation-logo a.is-active svg,
+.c-navigation li.c-navigation-logo a:hover svg {
+  fill: var(--colorBlack);
 }
 
