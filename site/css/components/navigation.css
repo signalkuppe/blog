@@ -39,7 +39,7 @@
 }
 
 .c-navigation a:hover {
-  color: var(--bodyColor);
+  color: var(--colorBlack);
 }
 
 .c-navigation li:not(.c-navigation-logo) a:active {

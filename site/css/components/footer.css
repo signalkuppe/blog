@@ -12,6 +12,10 @@
   justify-content: center
 }
 
+.c-footer a:hover {
+  color: var(--colorBlack);
+}
+
 .c-footer li + li  {
   margin-left: 1em;
 }

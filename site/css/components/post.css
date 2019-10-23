@@ -73,6 +73,20 @@
   color: var(--bodyColor);
 }
 
+.c-post-embeddedImage img {
+  border-bottom: 6px solid transparent;
+  transition: transform 0.2s ease-in-out;
+}
+
+.c-post-embeddedImage img:hover {
+  border-bottom-color: var(--colorPrimary);
+  transform: translateY(-4px);
+}
+
+.c-post-embeddedImage figcaption {
+  margin-top: -6px;
+}
+
 .c-post-sticky {
   position: sticky;
   position: -webkit-sticky;

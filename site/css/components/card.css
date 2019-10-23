@@ -36,7 +36,7 @@
 
 .c-card-header time {
   font-family: var(--fontCaption);
-  font-size: var(--fontSizeTiny);
+  font-size: var(--fontSizeMicro);
   color: var(--colorGreyDark);
   letter-spacing: 0.2em;
   text-transform: uppercase;

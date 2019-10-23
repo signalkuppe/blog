@@ -1,6 +1,7 @@
 :root {
   /* Typescale: Major third 1.250 */
   --fontSizeRoot: 100%;
+  --fontSizeMicro: 0.64rem;
   --fontSizeTiny: 0.75rem;
   --fontSizeSmall: 0.85rem;
   --fontSize0: 1rem;

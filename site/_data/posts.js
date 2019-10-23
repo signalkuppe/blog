@@ -59,7 +59,7 @@ const transformPosts = (posts) => { // ad some custom prop
               data-at-768="${imgUrl}?fit=thumb&w=1440&fm=jpg&fl=progressive"
               data-at-1280="${imgUrl}?fit=thumb&w=1920&fm=jpg&fl=progressive"
               data-at-1920="${imgUrl}?fit=thumb&w=2560&fm=jpg&fl=progressive"
-              title="${imgTitle}"
+              title="Ingrandisci la foto"
             >
             <img 
                 data-src="${img}"

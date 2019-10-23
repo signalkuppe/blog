@@ -18,11 +18,13 @@
 }
 
 .c-homepage-time {
-  display: block;
-  font-size: var(--fontSizeSmall);
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeMicro);
   color: var(--colorGreyDark);
-  font-family: var(--fontSans);
-  margin-bottom: 0.5em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--spaceUnit);
 }
 
 .c-homepage-postTitle {
