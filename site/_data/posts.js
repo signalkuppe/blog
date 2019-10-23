@@ -10,11 +10,8 @@ const path = require('path')
 const fs = require('fs')
 const _ = require('lodash')
 const mkdirp = require('mkdirp')
-// const deleteKeyRecursively = require(path.join(process.cwd(), 'lib/deleteKeyRecursively'))
 const log = require(path.join(process.cwd(), 'lib/log'))
-const date = require(path.join(process.cwd(), 'lib/date'))
 const logFile = path.join(process.cwd(), process.env.ELEVENTY_CACHE_DIR, '_posts.json')
-const markerFile = path.join(process.cwd(), 'dist', 'js', 'markers.js')
 const contentful = require('contentful')
 const htmlRenderer = require('@contentful/rich-text-html-renderer') // https://github.com/contentful/rich-text/tree/master/packages/rich-text-html-renderer
 const Client = contentful.createClient({
@@ -118,27 +115,11 @@ const transformPosts = (posts) => { // ad some custom prop
     }
     // free some space
     delete post.fields.body
-    // deleteKeyRecursively(post, 'sys')
-
+    
     return post
   })
 }
-const makeMarkers = (posts) => { // make markers index, used also in lunr search
-  return posts.map((post) => {
-    return {
-      lat: post.fields.location.lat,
-      lng: post.fields.location.lon,
-      title: post.fields.title,
-      description: post.fields.description,
-      date: date.format(post.fields.date, 'DD/MM/YY'),
-      link: makeFullSlug(post.fields.slug),
-      tags: post.fields.tags.join(' '),
-      categories: post.fields.category[0],
-      cover: `${post.fields.cover.fields.file.url}?fit=thumb&w=200&h=200&fm=jpg&fl=progressive&q=70`,
-      autocompleteRow: `<a href="${makeFullSlug(post.fields.slug)}" data-autocomplete">${post.fields.title}</a>`
-    }
-  })
-}
+
 
 module.exports = () => {
   return new Promise(async (resolve, reject) => {
@@ -160,18 +141,10 @@ module.exports = () => {
         }
         log.success(`Found ${posts.length} posts`)
         const computedPosts = transformPosts(posts)
-        const markers = makeMarkers(posts)
-        /* TEMP: add old posts */
+        /* TEMP: old posts warning */
         const oldPosts = require('./oldPosts')
-          .map((oldPost) => {
-            oldPost.tags = oldPost.tags.join(' ')
-            oldPost.autocompleteRow = `<a href="${oldPost.link}" data-autocomplete">${oldPost.title}</a>`
-            return oldPost
-          })
         log.warn(`Added ${oldPosts.length} old posts, !!! first old post: ${oldPosts[0].title} !!!`)
-        const allMarkers = markers.concat(oldPosts)
         fs.writeFileSync(logFile, JSON.stringify(computedPosts), 'utf-8') // write log file
-        fs.writeFileSync(markerFile, `var markers = ${JSON.stringify(allMarkers)}`, 'utf-8') // write marker file
         resolve(computedPosts)
       } catch (err) {
         log.error('Posts fetch error', err)

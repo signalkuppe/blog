@@ -121,7 +121,7 @@ permalink: "{{ post.computed.slug }}"
           <li>
             <a
               href="" 
-              class="c-post-shareFacebook" 
+              class="c-post-share c-post-share--facebook" 
               title="Condividi su Facebook" 
               aria-label="Condividi su Facebook" 
               target="_blank" rel="noopener" 
@@ -132,7 +132,7 @@ permalink: "{{ post.computed.slug }}"
           <li>
             <a 
               href="" 
-              class="c-post-shareTwitter" 
+              class="c-post-share c-post-share--twitter" 
               target="_blank" rel="noopener" 
               title="Condividi su Twitter" 
               aria-label="Condividi su Twitter" 
@@ -142,7 +142,7 @@ permalink: "{{ post.computed.slug }}"
           </li>
           <li>
             <a 
-              class="c-post-shareWhatsapp" 
+              class="c-post-share c-post-share--whatsapp" 
               title="Condividi su Whatsapp" 
               href="whatsapp://send?text={{ env.ELEVENTY_URL }}/{{ post.fields.slug }}" 
               aria-label="Condividi su Whatsapp" 
@@ -153,7 +153,7 @@ permalink: "{{ post.computed.slug }}"
           <li>
             <a 
               href="" 
-              class="c-post-shareEmail" 
+              class="c-post-share c-post-share--email" 
               target="_blank" 
               rel="noopener" 
               title="Condividi via mail" 
