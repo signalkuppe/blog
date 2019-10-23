@@ -46,9 +46,9 @@
               text: 'Traccia caricata 👍',
               duration: 4000,
               close: false,
-              gravity: 'bottom',
-              position: 'right',
-              className: 'c-toast--info'
+              gravity: 'top',
+              position: 'left',
+              className: 'c-toast--success'
             }).showToast()
             mapRendered = true
             mymap.fitBounds(e.target.getBounds())
