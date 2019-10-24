@@ -8,21 +8,6 @@
 module.exports = [
 
   {
-  lat: 46.024533,
-  lng: 8.395104,
-  title: "Pizzo Proman",
-  date: "22/10/17",
-  dateTime: "2017-10-22T00:00:00+02:00",
-  link: "/escursionismo/2017/10/22/pizzo-proman.html",
-  tags: ["valgrande", "ossola"],
-  description: "Relazione della salita al Pizzo Proman con partenza da Colloro per la Colma di Premosello",
-  cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/221017.jpg",
-  marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/221017.jpg",
-  card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/221017.jpg"
-  },
-
-
-  {
   lat: 46.382020,
   lng: 9.730063,
   title: "Piz de la Margna",
