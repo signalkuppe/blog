@@ -11,28 +11,13 @@ const fs = require('fs')
 const _ = require('lodash')
 const mkdirp = require('mkdirp')
 const log = require(path.join(process.cwd(), 'lib/log'))
+const contentfulClient = require(path.join(process.cwd(), 'lib/contentfulClient'))
 const logFile = path.join(process.cwd(), process.env.ELEVENTY_CACHE_DIR, '_posts.json')
-const contentful = require('contentful')
 const htmlRenderer = require('@contentful/rich-text-html-renderer') // https://github.com/contentful/rich-text/tree/master/packages/rich-text-html-renderer
-const Client = contentful.createClient({
-  space: process.env.ELEVENTY_CONTENTFUL_SPACE,
-  accessToken: process.env.ELEVENTY_CONTENTFUL_ACCESSTOKEN
-})
-const getPosts = async (limit, skip) => {
-  let query = {
-    content_type: 'post',
-    include: 1,
-    skip: skip,
-    limit: limit,
-    order: '-fields.date'
-  }
-  try {
-    let result = await Client.getEntries(query)
-    return result
-  } catch (err) {
-    log.error('getEntries error', err)
-    return
-  }
+const postQuery = {
+  content_type: 'post',
+  include: 1,
+  order: '-fields.date'
 }
 const makeFullSlug = (slug) => {
   return `/${slug}.html`
@@ -120,26 +105,13 @@ const transformPosts = (posts) => { // ad some custom prop
   })
 }
 
-
 module.exports = () => {
   return new Promise(async (resolve, reject) => {
     if (!fs.existsSync(logFile)) { // don’t call the api every time
       try {
         await mkdirp(path.join(process.cwd(), process.env.ELEVENTY_CACHE_DIR))
         await mkdirp(path.join(process.cwd(), 'dist', 'js'))
-        let posts = []
-        let iteration = 1
-        let skip = 0
-        let limit = 20
-        let chunk = await getPosts(limit, skip)
-        posts = chunk.items
-        while (chunk.total > limit * iteration) {
-          skip =  limit * iteration
-          let chunk = await getPosts(limit, skip)
-          posts = _.union(posts, chunk.items)
-          iteration ++
-        }
-        log.success(`Found ${posts.length} posts`)
+        let posts = await contentfulClient.getEntries(postQuery)
         const computedPosts = transformPosts(posts)
         /* TEMP: old posts warning */
         const oldPosts = require('./oldPosts')

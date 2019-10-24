@@ -105,6 +105,10 @@
   margin: 0 var(--spaceUnit);
 }
 
+.c-postNav a:hover {
+  color: var(--colorBlack);
+}
+
 .c-post-newsletter {
   text-align: center;
   padding: 0.5em 1em;
