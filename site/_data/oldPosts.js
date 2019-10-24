@@ -8,21 +8,6 @@
 module.exports = [
 
   {
-  lat: 45.873103,
-  lng: 9.481666,
-  title: "Scialpinismo al Resegone da Morterone",
-  date: "31/12/17",
-  dateTime: "2017-12-31T00:00:00+01:00",
-  link: "/scialpinismo/2017/12/31/scialpinismo-al-resegone-da-morterone.html",
-  tags: ["scialpinismo", "resegone"],
-  description: "Scialpinismo al Resegone con partenza da Morterone per la sorgente Forbesette e il Rifugio Azzoni e discesa lungo la Costa del Palio",
-  cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/311217.jpg",
-  marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/311217.jpg",
-  card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/311217.jpg"
-  },
-
-
-  {
   lat: 46.024533,
   lng: 8.395104,
   title: "Pizzo Proman",
