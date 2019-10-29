@@ -6,20 +6,6 @@
 
 
 module.exports = [
-  {
-  lat: 43.352829,
-  lng: 42.438810,
-  title: "Elbrus",
-  date: "20/07/17",
-  dateTime: "2017-07-20T00:00:00+02:00",
-  link: "/alpinismo/2017/07/20/elbrus.html",
-  tags: ["russia", "viaggi", "caucaso"],
-  description: "Relazione della salita all'Elbrus nel Caucaso dal versante sud per la via normale dagli impianti di Azau (Terskol)",
-  cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/200717.jpg",
-  marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/200717.jpg",
-  card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/200717.jpg"
-  },
-
 
   {
   lat: 46.416747,
