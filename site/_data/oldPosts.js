@@ -6,22 +6,6 @@
 
 
 module.exports = [
-
-  {
-  lat: 46.382020,
-  lng: 9.730063,
-  title: "Piz de la Margna",
-  date: "16/08/17",
-  dateTime: "2017-08-16T00:00:00+02:00",
-  link: "/escursionismo/2017/08/16/piz-de-la-margna.html",
-  tags: ["engadina", "svizzera"],
-  description: "Relazione della salita al Piz de la Margna in Engadina dalla località Creista e la Val Fedoz",
-  cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/160817.jpg",
-  marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/160817.jpg",
-  card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/160817.jpg"
-  },
-
-
   {
   lat: 43.352829,
   lng: 42.438810,
