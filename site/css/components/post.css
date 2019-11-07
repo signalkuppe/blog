@@ -74,12 +74,10 @@
 }
 
 .c-post-embeddedImage img {
-  border-bottom: 6px solid transparent;
   transition: transform 0.2s ease-in-out;
 }
 
 .c-post-embeddedImage img:hover {
-  border-bottom-color: var(--colorPrimary);
   transform: translateY(-4px);
 }
 

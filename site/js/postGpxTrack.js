@@ -69,6 +69,7 @@
     showButton.innerHTML = iconShow + ' Mostra la traccia'
     var map = document.getElementById('map')
     map.style.opacity = 0
+    map.style.pointerEvents = 'none'
     infoBoxGpx.style.opacity = 0
   }
   var createButton = function () {

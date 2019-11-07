@@ -66,6 +66,9 @@
 
 /* lib overrides */
 
-#baguetteBox-slider figcaption {
+#baguetteBox-overlay .full-image figcaption {
+  font-size: var(--fontSize0);
   font-style: normal;
+  font-family: var(--fontCaption);
 }
+
