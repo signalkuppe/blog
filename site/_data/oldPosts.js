@@ -8,21 +8,6 @@
 module.exports = [
 
   {
-  lat: 46.239602,
-  lng: 8.893131,
-  title: "Pizzo di Vogorno",
-  date: "11/06/17",
-  dateTime: "2017-06-11T00:00:00+02:00",
-  link: "/escursionismo/2017/06/11/pizzo-di-vogorno.html",
-  tags: ["verzasca", "ticino", "svizzera"],
-  description: "Relazione della salita al Pizzo di Vogorno per la via normale dalla Val Verzasca per l'Alpe Bardughè",
-  cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/110617.jpg",
-  marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/110617.jpg",
-  card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/110617.jpg"
-  },
-
-
-  {
   lat: 46.068060,
   lng: 9.702299,
   title: "Pizzo Scala",
