@@ -7,20 +7,6 @@
 
 module.exports = [
 
-  {
-  lat: 46.068060,
-  lng: 9.702299,
-  title: "Pizzo Scala",
-  date: "03/06/17",
-  dateTime: "2017-06-03T00:00:00+02:00",
-  link: "/escursionismo/2017/06/03/pizzo-scala.html",
-  tags: ["valtartano", "orobie", "valtellina"],
-  description: "Relazione della salita al Pizzo Scala per la via normale con partenza dalla località Barbera in Val Tartano (Val Corta)",
-  cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/030617.jpg",
-  marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/030617.jpg",
-  card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/030617.jpg"
-  },
-
 
   {
   lat: 46.101366,
