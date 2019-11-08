@@ -59,6 +59,7 @@
     } else {
       var map = document.getElementById('map')
       map.style.opacity = 1
+      map.style.pointerEvents = 'auto'
       infoBoxGpx.style.opacity = 1
       showButton.innerHTML = iconClose + ' Nascondi la traccia'
     }
