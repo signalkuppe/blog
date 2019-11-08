@@ -37,6 +37,9 @@ description: "L’elenco completo di tutte le relazioni, con la mappa e la ricer
   <button type="reset" aria-label="Ripristina" class="c-autocomplete-reset" id="autocomplete-reset">{% include 'icons/close.njk' %}</button>
   <button type="submit" aria-label="Cerca" class="c-autocomplete-search" id="autocomplete-search">{% include 'icons/search.njk' %}</button>
 </form>
+
+<p class="u-text-center u-section-mt-1-5"><a href="/feed.xml" class="c-button">{{ macro.icon('feed') }} Feed dei post</a></p>
+
 {# post grid #}
 <ul class="l-postGrid u-section-mt-1-5">
 {% for post in posts  %}
@@ -55,7 +58,6 @@ description: "L’elenco completo di tutte le relazioni, con la mappa e la ricer
   </li>
 {% endfor %}
 </ul>
-<p class="u-text-center u-section-mt-1-5"><a href="/feed.xml" class="c-button">{{ macro.icon('feed') }} Feed dei post</a></p>
 {% endblock %}
 
 {% block footer %}

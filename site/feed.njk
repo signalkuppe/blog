@@ -15,13 +15,16 @@ pagination:
 	<author>
 		<name>{{ env.ELEVENTY_AUTHOR }}</name>
 	</author>
+  <icon>{{ env.ELEVENTY_URL }}/favicons/favicon.ico</icon>
+  <logo>{{ env.ELEVENTY_URL }}/{{ env.ELEVENTY_LOGO }}</logo>
   {% for post in pagination.items  %}
 	<entry>
 		<title>{{ post.fields.title }}</title>
     <id>{{ env.ELEVENTY_URL  }}/{{ post.fields.slug }}</id>
 		<link href="{{ env.ELEVENTY_URL  }}/{{ post.fields.slug | urlencode }}"/>
-		<updated>{{ post.sys.updatedAt }}</updated>
-		<content type="html">{{ post.fields.description }}</content>
+		<updated>{{ post.fields.date }}</updated>
+    <author>{{ env.ELEVENTY_AUTHOR }}</author>
+		<summary>{{ post.fields.description }}</summary>
 	</entry>
   {%- endfor %}
   {# TEMP!!! #}
@@ -31,7 +34,8 @@ pagination:
     <id>{{ env.ELEVENTY_URL  }}/{{ post.link | urlencode }}</id>
 		<link href="{{ env.ELEVENTY_URL  }}/{{ post.link }}"/>
 		<updated>{{ post.dateTime }}</updated>
-		<content type="html">{{ post.description }}</content>
+    <author>{{ env.ELEVENTY_AUTHOR }}</author>
+		<summary>{{ post.description }}</summary>
 	</entry>
   {%- endfor %}
 </feed>
