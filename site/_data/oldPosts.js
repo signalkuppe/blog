@@ -9,21 +9,6 @@ module.exports = [
 
 
   {
-  lat: 46.101366,
-  lng: 8.422228,
-  title: "Pizzo Ragno",
-  date: "27/05/17",
-  dateTime: "2017-05-27T00:00:00+02:00",
-  link: "/escursionismo/2017/05/27/pizzo-ragno.html",
-  tags: ["valgrande", "loana", "ragno", "ossola"],
-  description: "Relazione della salita al Pizzo Ragno dalla Val Loana per L’Alpe Erta, l’Alpe Al Cedo,  l’Alpe Al Geggio e i laghetti del Geggio",
-  cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/270517.jpg",
-  marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/270517.jpg",
-  card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/270517.jpg"
-  },
-
-
-  {
   lat: 46.000927,
   lng: 9.450459,
   title: "Cima D’Agrella",
