@@ -9,21 +9,6 @@ module.exports = [
 
 
   {
-  lat: 46.000927,
-  lng: 9.450459,
-  title: "Cima D’Agrella",
-  date: "06/05/17",
-  dateTime: "2017-05-06T00:00:00+02:00",
-  link: "/escursionismo/2017/05/06/cima-d-agrella.html",
-  tags: ["valsassina", "primaluna", "olino", "agrella"],
-  description: "Relazione della salita alla Cima D’Agrella in Valsassina con partenza da Primaluna e rientro per la Bocchetta di Olino",
-  cover: "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/060517.jpg",
-  marker: "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/060517.jpg",
-  card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/060517.jpg"
-  },
-
-
-  {
   lat: 46.261812,
   lng: 9.775647,
   title: "Pizzo Cassandra",
