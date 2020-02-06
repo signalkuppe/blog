@@ -12,9 +12,9 @@
   --fontSize5: 3.052rem;
   --fontSize6: 3.815rem;
   --fontSize7: 4.768rem;
-  --fontSerif: 'PT Serif', serif;
-  --fontSans: 'PT Sans', sans-serif;
-  --fontCaption: 'PT Sans Narrow', sans-serif;
+  --fontSerif: "PT Serif", serif;
+  --fontSans: "PT Sans", sans-serif;
+  --fontCaption: "PT Sans Narrow", sans-serif;
   --leadBase: 1.5;
   --leadNarrow: 1.1;
   --leadNone: 1;
@@ -32,24 +32,24 @@
   --colorMsgError: Crimson;
   --colorFacebook: #3b5999;
   --colorTwitter: #55acee;
-  --colorWhatsapp: #25D366;
-  --colorEmail: #B23121;
+  --colorWhatsapp: #25d366;
+  --colorEmail: #b23121;
   --bodyColor: #222;
   --bodyBackgroundColor: white;
-  --boxShadow: rgba(0,0,0,0.15);
+  --boxShadow: rgba(0, 0, 0, 0.15);
 }
 
 :root.theme-dark {
   --colorGreyLighter: hsl(220, 7%, 8%);
   --colorGreyLight: hsl(222, 10%, 19%);
-  --colorGrey: hsl(224, 4%, 48%);;
+  --colorGrey: hsl(224, 4%, 48%);
   --colorGreyMedium: hsl(228, 4%, 52%);
   --colorGreyDark: hsl(222, 6%, 59%);
   --colorGreyDarker: hsl(220, 9%, 67%);
   --colorBlack: #fff;
   --bodyColor: hsl(220, 15%, 81%);
   --bodyBackgroundColor: hsl(220, 13%, 5%);
-  --boxShadow: rgba(255,255,255,0.15);
+  --boxShadow: rgba(255, 255, 255, 0.15);
 }
 
 @media screen and (min-width: 1170px) {

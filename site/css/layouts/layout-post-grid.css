@@ -1,6 +1,6 @@
 .l-postGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 335px));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 320px));
   justify-content: center;
   grid-gap: calc(var(--spaceUnit) * 1.5);
   margin-left: calc(var(--spaceUnit) * 1.5);

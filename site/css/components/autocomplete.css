@@ -74,6 +74,8 @@
   border: none;
   padding: 0;
   -webkit-appearance: none;
+  width: 1em;
+  height: 1em;
 }
 
 .c-autocomplete svg {
