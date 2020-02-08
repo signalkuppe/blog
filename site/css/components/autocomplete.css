@@ -3,7 +3,7 @@
   top: 0;
   background: var(--bodyBackgroundColor);
   box-shadow: 0 15px 15px 2px var(--bodyBackgroundColor);
-  padding: calc(var(--spaceUnit) * 4) 0;
+  padding: 4vh 0;
   margin-top: calc(var(--spaceUnit) * 2);
   z-index: 1000;
 }
@@ -97,6 +97,7 @@
   color: var(--colorGreyMedium);
   line-height: 1.4;
   margin-top: 1rem;
+  display: none;
 }
 
 .c-autocomplete-results {
@@ -137,4 +138,10 @@
 .c-autocomplete-results li:hover {
   background: var(--colorPrimary);
   color: black;
+}
+
+@media (min-width: 1024px) {
+  .c-autocomplete-help {
+    display: block;
+  }
 }

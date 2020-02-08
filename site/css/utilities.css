@@ -14,7 +14,6 @@
   margin-top: 2vh !important;
 }
 
-
 .u-section-mt-0-5 {
   margin-top: 4vh !important;
 }
@@ -89,9 +88,20 @@
   font-size: 1.15em !important;
 }
 
+.u-pr-1 {
+  padding-right: var(--spaceUnit) !important;
+}
+
+.u-pl-1 {
+  padding-left: var(--spaceUnit) !important;
+}
+
 .u-highlight-link {
   text-decoration: none !important;
-  background-image: linear-gradient(var(--colorPrimary), var(--colorPrimary)) !important;
+  background-image: linear-gradient(
+    var(--colorPrimary),
+    var(--colorPrimary)
+  ) !important;
   background-size: 100% 0.6em !important;
   background-repeat: no-repeat !important;
   background-position: left 0 bottom -60% !important;
