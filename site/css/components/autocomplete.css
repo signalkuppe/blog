@@ -1,9 +1,5 @@
 .c-autocomplete {
-  position: sticky;
-  top: 0;
-  background: var(--bodyBackgroundColor);
-  box-shadow: 0 15px 15px 2px var(--bodyBackgroundColor);
-  padding: 4vh 0;
+  padding: 6vh 0;
   margin-top: calc(var(--spaceUnit) * 2);
   z-index: 1000;
 }
@@ -22,7 +18,7 @@
   display: block;
   background: var(--bodyBackgroundColor);
   width: 100%;
-  padding: 0.5em 2em 0.5em 0.5em;
+  padding: 0.5em 2em 0.5em 0em;
   border-radius: 0;
   -webkit-appearance: none;
   color: var(--bodyColor);
@@ -77,14 +73,14 @@
 .c-autocomplete-search {
   /* reset and search buttons */
   position: absolute;
-  right: 1.5em;
-  top: 1.5em;
+  right: 0;
+  top: 1em;
   background: transparent;
   border: none;
   padding: 0;
   -webkit-appearance: none;
-  width: 1em;
-  height: 1em;
+  width: 1.25em;
+  height: 1.25em;
 }
 
 .c-autocomplete svg {
@@ -93,7 +89,7 @@
 
 .c-autocomplete-help {
   /* help text */
-  font-size: var(--fontSizeSmall);
+  font-size: var(--fontSizeTiny);
   color: var(--colorGreyMedium);
   line-height: 1.4;
   margin-top: 1rem;
