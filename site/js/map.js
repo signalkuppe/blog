@@ -24,7 +24,12 @@
   markers.forEach(function(marker) {
     var customIcon = L.divIcon({
         className: "c-map-marker",
-        html: '<img title="' + marker.title + '" src="/img/marker.svg" />'
+        html:
+          '<img title="' +
+          marker.title +
+          '" src="/img/marker-' +
+          marker.category +
+          '.svg" />'
       }), // use custom div for icons
       markerHtml =
         '<a href="' +

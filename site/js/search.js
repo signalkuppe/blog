@@ -12,7 +12,7 @@
     this.field("description");
     this.field("title");
     this.field("tags");
-    this.field("categories");
+    this.field("category");
     // disable stemming, only exact words
     this.pipeline.remove(lunr.stemmer);
     this.searchPipeline.remove(lunr.stemmer);
