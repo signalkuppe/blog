@@ -1,6 +1,6 @@
 .c-footer {
   text-align: center;
-  padding: calc(var(--spaceUnit) * 2 ) 0;
+  padding: calc(var(--spaceUnit) * 2) 0;
   font-family: var(--fontCaption);
   width: 90%;
   margin: 0 auto;
@@ -9,18 +9,18 @@
 .c-footer ul {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center
+  justify-content: center;
 }
 
 .c-footer a:hover {
   color: var(--colorBlack);
 }
 
-.c-footer li + li  {
+.c-footer li + li {
   margin-left: 1em;
 }
 
-.c-footer-topLink  {
+.c-footer-topLink {
   font-size: var(--fontSizeSmall);
 }
 
@@ -28,8 +28,7 @@
   margin-top: calc(var(--spaceUnit) * 2);
 }
 
-
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1680px) {
   .c-footer {
     display: flex;
     justify-content: center;
