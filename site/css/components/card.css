@@ -9,7 +9,7 @@
 .c-card-title {
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
@@ -21,6 +21,7 @@
 .c-card-body {
   font-size: var(--fontSizeSmall);
   padding: calc(var(--spaceUnit) * 1.5);
+  background: var(--colorGreyLighter);
   border-color: var(--colorGreyLight);
   border-left-style: solid;
   border-right-style: solid;
@@ -28,10 +29,6 @@
   border-width: 1px;
   flex: 1;
   position: relative;
-}
-
-.theme-dark .c-card-body {
-  background: var(--colorGreyLighter);
 }
 
 .c-card-header time {
@@ -48,7 +45,7 @@
   margin-bottom: 0;
   display: -webkit-box;
   -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
@@ -57,7 +54,7 @@
 }
 
 .c-card:hover .c-card-body:before {
-  content: '';
+  content: "";
   height: 5px;
   width: calc(100% + 2px);
   background: var(--colorPrimary);

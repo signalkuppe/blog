@@ -23,10 +23,8 @@
     "gsap": "^3.2.4",
     "leaflet": "^1.6.0",
     "leaflet-gpx": "^1.5.0",
-    "lockr": "^0.8.5",
     "lunr": "^2.3.8",
     "pristinejs": "^0.1.6",
-    "smooth-scroll": "^16.1.2",
     "toastify-js": "^1.7.0",
     "vanilla-lazyload": "^13.0.0"
   },

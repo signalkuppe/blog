@@ -11,8 +11,8 @@
   display: block;
 }
 
-.theme-dark .leaflet-tile-pane {
-  filter: grayscale(1) contrast(80%);
+.leaflet-tile-pane {
+  filter: grayscale(1);
 }
 
 .leaflet-popup-content[style] {

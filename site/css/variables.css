@@ -20,26 +20,13 @@
   --leadNone: 1;
   --spaceUnit: var(--fontSize0);
   --colorPrimary: #ffcc00;
-  --colorGreyLighter: #fafafa;
-  --colorGreyLight: #eee;
-  --colorGrey: #ccc;
-  --colorGreyMedium: #adacac;
-  --colorGreyDark: #666;
-  --colorGreyDarker: #333;
-  --colorBlack: #000;
-  --colorMsgInfo: RoyalBlue;
+  --colorMsgInfo: rgb(17, 17, 17);
   --colorMsgSuccess: SeaGreen;
   --colorMsgError: Crimson;
   --colorFacebook: #3b5999;
   --colorTwitter: #55acee;
   --colorWhatsapp: #25d366;
   --colorEmail: #b23121;
-  --bodyColor: #222;
-  --bodyBackgroundColor: white;
-  --boxShadow: rgba(0, 0, 0, 0.15);
-}
-
-:root.theme-dark {
   --colorGreyLighter: hsl(220, 7%, 8%);
   --colorGreyLight: hsl(222, 10%, 19%);
   --colorGrey: hsl(224, 4%, 48%);
@@ -54,6 +41,6 @@
 
 @media screen and (min-width: 1170px) {
   :root {
-    --fontSizeRoot: 135%;
+    --fontSizeRoot: 125%;
   }
 }

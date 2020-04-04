@@ -1,5 +1,63 @@
+/* pt-serif-700 - latin */
+@font-face {
+  font-family: "PT Serif";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("PT Serif Bold"), local("PTSerif-Bold"),
+    url("/fonts/pt-serif-v11-latin-700.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
+/* pt-sans-regular - latin */
+@font-face {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("PT Sans"), local("PTSans-Regular"),
+    url("/fonts/pt-sans-v11-latin-regular.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* pt-sans-italic - latin */
+@font-face {
+  font-family: "PT Sans";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local("PT Sans Italic"), local("PTSans-Italic"),
+    url("/fonts/pt-sans-v11-latin-italic.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* pt-sans-700 - latin */
+@font-face {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("PT Sans Bold"), local("PTSans-Bold"),
+    url("/fonts/pt-sans-v11-latin-700.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
+/* pt-sans-narrow-regular - latin */
+@font-face {
+  font-family: "PT Sans Narrow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("PT Sans Narrow"), local("PTSans-Narrow"),
+    url("/fonts/pt-sans-narrow-v11-latin-regular.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* pt-sans-narrow-700 - latin */
+@font-face {
+  font-family: "PT Sans Narrow";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("PT Sans Narrow Bold"), local("PTSans-NarrowBold"),
+    url("/fonts/pt-sans-narrow-v11-latin-700.woff2") format("woff2"); /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
 html {
   font-size: var(--fontSizeRoot);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -9,7 +67,12 @@ body {
   color: var(--bodyColor);
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--fontSerif);
   font-weight: 700;
   line-height: var(--leadNarrow);
@@ -71,7 +134,6 @@ textarea:not([class]) {
   width: 100%;
   padding: 0.5em;
   border: 2px solid var(--colorGreyLight);
-  
 }
 
 input[type="text"]:not([class]):focus,
@@ -96,12 +158,14 @@ a {
   color: inherit;
 }
 
-b, strong {
+b,
+strong {
   font-weight: 700;
   color: var(--colorBlack);
 }
 
-i, em {
+i,
+em {
   font-style: italic;
 }
 
@@ -132,9 +196,11 @@ figcaption {
 }
 
 ::-moz-selection {
-  color: black; background: var(--colorPrimary);
+  color: black;
+  background: var(--colorPrimary);
 }
 
 ::selection {
-  color: black; background: var(--colorPrimary);
-} 
+  color: black;
+  background: var(--colorPrimary);
+}

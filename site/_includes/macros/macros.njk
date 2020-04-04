@@ -23,12 +23,11 @@
 {% endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
 <script>
   document.documentElement.classList.remove('no-js')
   document.documentElement.classList.add('js')
 </script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.prepend%2CIntersectionObserver%2CIntersectionObserverEntry%2Cdocument.querySelector%2CElement.prototype.classList%2Cfetch"></script>
 {% endmacro %}
 
 
@@ -43,7 +42,7 @@
 {# 
 # html tag
 #}
-{% macro htmlTag() %}<html lang="it" class="no-js theme-dark" data-env="{{ env.ELEVENTY_ENV }}" data-localstorage-version="{{ env.ELEVENTY_LOCALSTORAGE_VERSION}}">{% endmacro %}
+{% macro htmlTag() %}<html lang="it" class="no-js" data-env="{{ env.ELEVENTY_ENV }}" data-localstorage-version="{{ env.ELEVENTY_LOCALSTORAGE_VERSION}}">{% endmacro %}
 
 {# 
 # Canonical meta tags
@@ -71,7 +70,6 @@
 #}
 
 {% macro css() %}
-<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700,400|PT+Sans:400,400i,700|PT+Serif:700&display=swap&subset=latin" rel="stylesheet">
 <link href="/css/lib/leaflet.css" rel="stylesheet" media="screen">
 <link href="/css/lib/baguetteBox.css"  rel="stylesheet"  media="screen">
 <link href="/css/lib/toastify.css" rel="stylesheet" media="screen">
@@ -86,7 +84,6 @@
 <link href="/css/components/toast.css" rel="stylesheet" media="screen">
 <link href="/css/components/button.css" rel="stylesheet" media="screen">
 <link href="/css/components/button-link.css" rel="stylesheet" media="screen">
-<link href="/css/components/toggle.css" rel="stylesheet" media="screen">
 <link href="/css/components/navigation.css" rel="stylesheet" media="screen">
 <link href="/css/components/content-header.css" rel="stylesheet" media="screen">
 <link href="/css/components/card.css" rel="stylesheet" media="screen">
@@ -164,15 +161,6 @@
 
 
 {# 
-# Under construction msg
-#}
-
-{% macro topMessage() %}
-<div role="alert" class="c-topMessage" id="js-topMessage">Il nuovo sito è ancora in sviluppo. Potresti visualizzare i post più vecchi con la grafica precedente. <button class="c-button-link" id="js-topMessage-close"><b>Non mostrare più{{ macro.icon('close') }}</b></button></div>
-{% endmacro %}
-
-
-{# 
 # Site navigation
 # @param {string} activeSection - The active section
 #}
@@ -218,9 +206,8 @@
     <li><a href="/feed.xml" title="Iscriviti al mio Feed">Feed</a></li>
   </ul>
   <section class="c-footer-section"><small>Contenuti pubblicati sotto licenza <a href="https://choosealicense.com/licenses/agpl-3.0/" title="Leggi la licenza" target="_blank" rel="noopener">GNU AGPLv3</small></a></section>
-  <section class="c-footer-section">
+  <section class="c-footer-section" id="js-promptButton-container">
     <button class="c-button-link u-mr-1" id="js-promptButton">{{ icon('smartphone') }}Installa il sito come app</button>
-    <span class="c-toggle"><input type="checkbox" id="toggle" /><label for="toggle" class="c-toggle-label">Tema chiaro</label></span>
   </section>
   <section class="c-footer-section"><span class="c-footer-topLink"><a href="#top" class="c-button-link">{{ icon('arrow-up') }}Torna in cima</a></span></section>
 </footer>
