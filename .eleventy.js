@@ -14,6 +14,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(path.join(inputDir, "favicons"));
   eleventyConfig.addPassthroughCopy(path.join(inputDir, "js"));
   eleventyConfig.addPassthroughCopy(path.join(inputDir, "css"));
+  eleventyConfig.addPassthroughCopy(path.join(inputDir, "fonts"));
   eleventyConfig.addPassthroughCopy(path.join(inputDir, "img"));
   eleventyConfig.addPassthroughCopy(path.join(inputDir, "service-worker.js"));
   eleventyConfig.addPassthroughCopy(path.join(inputDir, "_redirects"));
