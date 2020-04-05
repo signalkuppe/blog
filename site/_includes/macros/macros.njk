@@ -70,33 +70,40 @@
 # Site css file
 #}
 
-{% macro css() %}
-<link href="/css/lib/leaflet.css" rel="stylesheet" media="screen">
-<link href="/css/lib/baguetteBox.css"  rel="stylesheet"  media="screen">
-<link href="/css/lib/toastify.css" rel="stylesheet" media="screen">
-<link href="/css/variables.css" rel="stylesheet" media="screen">
-<link href="/css/reset.css" rel="stylesheet" media="screen">
-<link href="/css/utilities.css" rel="stylesheet" media="screen">
-<link href="/css/typography.css" rel="stylesheet" media="screen">
-<link href="/css/layouts/layout-homepage.css" rel="stylesheet" media="screen">
-<link href="/css/layouts/layout-post.css" rel="stylesheet" media="screen">
-<link href="/css/layouts/layout-post-grid.css" rel="stylesheet" media="screen">
-<link href="/css/components/icon.css" rel="stylesheet" media="screen">
-<link href="/css/components/toast.css" rel="stylesheet" media="screen">
-<link href="/css/components/button.css" rel="stylesheet" media="screen">
-<link href="/css/components/button-link.css" rel="stylesheet" media="screen">
-<link href="/css/components/navigation.css" rel="stylesheet" media="screen">
-<link href="/css/components/content-header.css" rel="stylesheet" media="screen">
-<link href="/css/components/card.css" rel="stylesheet" media="screen">
-<link href="/css/components/post.css" rel="stylesheet" media="screen">
-<link href="/css/components/map.css" rel="stylesheet" media="screen">
-<link href="/css/components/autocomplete.css" rel="stylesheet" media="screen">
-<link href="/css/components/image-gallery.css" rel="stylesheet" media="screen">
-<link href="/css/components/footer.css" rel="stylesheet" media="screen">
-<link href="/css/components/homepage.css" rel="stylesheet" media="screen">
-<link href="/css/components/courtesy-page.css" rel="stylesheet" media="screen">
-<link href="/css/print.css" rel="stylesheet" media="print">
+{% macro inlineCss() %}
+  {% set css %}
+    {% include "css/lib/leaflet.css" %}
+    {% include "css/lib/baguetteBox.css" %}
+    {% include "css/lib/toastify.css" %}
+    {% include "css/variables.css" %}
+    {% include "css/reset.css" %}
+    {% include "css/utilities.css" %}
+    {% include "css/typography.css" %}
+    {% include "css/layouts/layout-homepage.css" %}
+    {% include "css/layouts/layout-post.css" %}
+    {% include "css/layouts/layout-post-grid.css" %}
+    {% include "css/components/icon.css" %}
+    {% include "css/components/toast.css" %}
+    {% include "css/components/button.css" %}
+    {% include "css/components/button-link.css" %}
+    {% include "css/components/navigation.css" %}
+    {% include "css/components/content-header.css" %}
+    {% include "css/components/card.css" %}
+    {% include "css/components/post.css" %}
+    {% include "css/components/map.css" %}
+    {% include "css/components/autocomplete.css" %}
+    {% include "css/components/image-gallery.css" %}
+    {% include "css/components/footer.css" %}
+    {% include "css/components/homepage.css" %}
+    {% include "css/components/courtesy-page.css" %}
+    {% include "css/print.css" %}
+  {% endset %}
+  <style>
+  {{ css | cssmin | safe }}
+  </style>
 {% endmacro %}
+
+
 
 {# 
 # Social media meta tags

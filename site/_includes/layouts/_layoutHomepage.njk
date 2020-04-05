@@ -6,7 +6,9 @@
     {{ macro.commonMeta() }}
     {{ macro.favicons() }}
     {% block head %}{% endblock %}
-    {{ macro.css() }}
+    {% block css %}
+    {{ macro.inlineCss() }}
+    {% endblock %}
   </head>
   <body id="top" class="l-homepage">
     {{ macro.skipToMain() }}

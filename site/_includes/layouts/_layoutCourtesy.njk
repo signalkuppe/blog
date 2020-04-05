@@ -5,7 +5,9 @@
   <head>
     {{ macro.favicons() }}
     {% block head %}{% endblock %}
-    {{ macro.css() }}
+    {% block css %}
+    {{ macro.inlineCss() }}
+    {% endblock %}
   </head>
   <body class="l-courtesy">
     {% block main %}{% endblock %}   
