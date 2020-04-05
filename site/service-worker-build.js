@@ -14,7 +14,7 @@ const buildSW = () => {
       swDest: path.join(process.cwd(), "dist", "service-worker.js"),
       globDirectory: path.join(process.cwd(), "dist"),
       globIgnores: ["css/**", "js/**", "node_modules/**"], // we use dynamic cache for these
-      globPatterns: ["favicons/*", "img/*", "offline.html", "fonts/*"], // we precache the offile page
+      globPatterns: ["favicons/*", "img/*", "offline.html", "fonts/*"], // what we precache
     })
     .then(({ count, size, warnings }) => {
       log.info(`Service worker: ${count} files will be precached`);

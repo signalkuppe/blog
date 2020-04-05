@@ -4,7 +4,7 @@
   "description": "Personal blog",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy && node site/service-worker-build.js && node scripts/copyOldPosts",
+    "build": "eleventy && node site/service-worker-build.js && node scripts/copyOldPosts && node/scripts/inlineCriticalCss",
     "dev": "node scripts/emptyCache && eleventy --serve"
   },
   "repository": {
@@ -34,9 +34,11 @@
     "@contentful/rich-text-types": "^13.4.0",
     "chalk": "^2.4.2",
     "contentful": "^7.14.0",
+    "critical": "^2.0.0-23",
     "dayjs": "^1.8.23",
     "dotenv": "^8.2.0",
     "fs-extra": "^8.1.0",
+    "glob": "^7.1.6",
     "lodash": "^4.17.15",
     "mkdirp": "^0.5.3",
     "rimraf": "^3.0.2",
