@@ -19,6 +19,7 @@ glob(
           const { css, html, uncritical } = await critical.generate({
             inline: true,
             base: "dist",
+            minify: true,
             src: file,
             width: 1300,
             height: 900,
