@@ -4,7 +4,7 @@
   "description": "Personal blog",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy && node site/service-worker-build.js && node scripts/copyOldPosts && node scripts/inlineCriticalCss",
+    "build": "eleventy && node site/service-worker-build.js && node scripts/copyOldPosts",
     "dev": "node scripts/emptyCache && eleventy --serve"
   },
   "repository": {
