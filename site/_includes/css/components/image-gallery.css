@@ -1,0 +1,74 @@
+.c-imageGallery {
+  display: flex;
+}
+
+.c-imageGallery-col {
+  flex-grow: 1;
+}
+
+.c-imageGallery img {
+  object-fit: cover;
+  display: block;
+}
+
+
+.c-imageGallery a {
+  display: block;
+  position: relative;
+}
+
+.c-imageGallery a::after {
+  display: block;
+  content: '+';
+  color: white;
+  font-size: 3em;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  text-align: center;
+  border: 5px solid white;
+  border-radius: 50%;
+  z-index: 100;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+
+.c-imageGallery-col:nth-child(2),
+.c-imageGallery-col:nth-child(3),
+.c-imageGallery-col:nth-child(4){
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .c-imageGallery-col:nth-child(2) {
+    display: block;
+  }
+}
+
+@media (min-width: 1080px) {
+  .c-imageGallery-col:nth-child(3) {
+    display: block;
+  }
+  .c-imageGallery a:hover::after {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1680px) {
+  .c-imageGallery-col:nth-child(4) {
+    display: block;
+  }
+}
+
+/* lib overrides */
+
+#baguetteBox-overlay .full-image figcaption {
+  font-size: var(--fontSize0);
+  font-style: normal;
+  font-family: var(--fontCaption);
+}
+

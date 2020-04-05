@@ -1,0 +1,43 @@
+.c-homepage-image {
+  display: block;
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+}
+
+.c-homepage-name {
+  font-size: var(--fontSize3);
+}
+
+.c-homepage-ultimo {
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeSmall);
+  text-transform: uppercase;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.c-homepage-time {
+  font-family: var(--fontCaption);
+  font-size: var(--fontSizeMicro);
+  color: var(--colorGreyDark);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--spaceUnit);
+}
+
+.c-homepage-postTitle {
+  font-size: var(--fontSize1);
+  margin-bottom: 0.5em;
+}
+
+.c-homepage-hr {
+  background: var(--colorGreyLight);
+}
+
+@media screen and (min-width: 1170px) {
+  .c-homepage-image {
+    max-height: none;
+  }
+}
