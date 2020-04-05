@@ -6,7 +6,7 @@ const log = require(path.join(process.cwd(), "lib/log"));
 let i = 0;
 // options is optional
 glob(
-  "**/*.html",
+  "index.html",
   {
     cwd: path.join(process.cwd(), "dist"),
   },
