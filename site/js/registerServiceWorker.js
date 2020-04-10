@@ -1,4 +1,3 @@
-/*
 var env = document.querySelector("html").getAttribute("data-env");
 if ("serviceWorker" in navigator && env !== "development") {
   console.log("service worker supported");
@@ -58,4 +57,3 @@ if ("serviceWorker" in navigator && env !== "development") {
 } else {
   console.log("service worker not supported");
 }
-*/
