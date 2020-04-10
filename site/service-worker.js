@@ -18,7 +18,6 @@ if (workbox) {
 
   // This "catch" handler is triggered when any of the other routes fail to generate a response
   workbox.routing.setCatchHandler(({ event }) => {
-    if (event.request.cache === "only-if-cached") return;
     switch (event.request.destination) {
       case "document":
         return caches.match(

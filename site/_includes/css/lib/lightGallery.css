@@ -901,7 +901,7 @@ body:not(.lg-from-hash)
 }
 .lg-outer .lg-img-wrap {
   position: absolute;
-  padding: 0 5px;
+  padding: 0;
   left: 0;
   right: 0;
   top: 0;
