@@ -3,9 +3,9 @@
     columns: ".c-imageGallery-col",
     items: ".c-imageGallery-item"
   });
-  baguetteBox.run(".js-gallery", {
-    filter: /.*[contentful].*/i,
-    overlayBackgroundColor: "rgba(0,0,0,1)",
-    noScrollbars: true
+
+  lightGallery(document.getElementById("gallery"), {
+    selector: ".c-imageGallery-item a",
+    fullScreen: true
   });
 })();

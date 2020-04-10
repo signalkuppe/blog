@@ -1,7 +1,8 @@
 .c-footer {
   text-align: center;
-  padding: calc(var(--spaceUnit) * 2) 0;
+  padding: calc(var(--spaceUnit) * 2) 0 calc(var(--spaceUnit) * 4) 0;
   font-family: var(--fontCaption);
+  font-size: var(--fontSizeSmall);
   width: 90%;
   margin: 0 auto;
 }
@@ -20,12 +21,12 @@
   margin-left: 1em;
 }
 
-.c-footer-topLink {
-  font-size: var(--fontSizeSmall);
-}
-
 .c-footer-section + .c-footer-section {
   margin-top: calc(var(--spaceUnit) * 2);
+}
+
+.c-footer-feedLink {
+  text-decoration: none;
 }
 
 @media screen and (min-width: 1680px) {

@@ -26,9 +26,6 @@ module.exports = (eleventyConfig) => {
     "node_modules/colcade/*.js": "js/lib",
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/baguettebox.js/dist/*.js": "js/lib",
-  });
-  eleventyConfig.addPassthroughCopy({
     "node_modules/vanilla-lazyload/dist/*.js": "js/lib",
   });
   eleventyConfig.addPassthroughCopy({
@@ -46,7 +43,12 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy({
     "node_modules/pristinejs/dist/*.js": "js/lib",
   });
-
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/lightgallery.js/dist/js/*.js": "js/lib",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/lg-fullscreen.js/dist/*.js": "js/lib",
+  });
   /*
    * Minifies an inline css
    **/
