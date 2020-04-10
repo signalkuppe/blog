@@ -5,9 +5,6 @@
   });
 
   lightGallery(document.getElementById("gallery"), {
-    selector: ".c-imageGallery-item a",
-    showAfterLoad: true,
-    fullScreen: true,
-    appendSubHtmlTo: ".lg-item"
+    selector: ".c-imageGallery-item a"
   });
 })();
