@@ -46,11 +46,13 @@ const transformPosts = posts => {
               src="${img}" 
               alt="${imgAlt}"  />        
           </noscript>
-          <figure class="c-post-embeddedImage c-post-image">
+          <figure class="c-post-embeddedImage">
             <a 
-              href="${imgUrl}?fit=thumb&w=3000&fm=jpg&fl=progressive" 
-              data-download-url="${imgUrl}"
-              data-responsive="${imgUrl}?fit=thumb&w=1280&fm=jpg&fl=progressive 1024, ${imgUrl}?fit=thumb&w=2000&fm=jpg&fl=progressive 1920"
+              class="js-gallery"
+              href="${imgUrl}?fit=thumb&w=800&fm=jpg&fl=progressive" 
+              data-at-768="${imgUrl}?fit=thumb&w=1440&fm=jpg&fl=progressive"
+              data-at-1280="${imgUrl}?fit=thumb&w=1920&fm=jpg&fl=progressive"
+              data-at-1920="${imgUrl}?fit=thumb&w=2560&fm=jpg&fl=progressive"
               title="${imgTitle}"
             >
             <img 

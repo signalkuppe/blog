@@ -36,12 +36,13 @@ permalink: "{{ post.computed.slug }}"
   {%- endcall %}
 
   {# post cover #}
-  <figure class="c-post-cover c-post-image js-observe js-observe-caption u-section-mt-1">
+  <figure class="c-post-cover js-observe js-observe-caption js-gallery u-section-mt-1">
     <a 
-    href="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=3000&fm=jpg&fl=progressive"
+    href="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
+    data-at-768="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1440&fm=jpg&fl=progressive"
+    data-at-1280="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1920&fm=jpg&fl=progressive"
+    data-at-1920="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive"
     title="{{ post.fields.cover.fields.title }}"
-    data-download-url="{{ post.fields.cover.file.url }}"
-    data-responsive="{{ post.fields.cover.fields.file.url }}?fit=thumb&w=1280&fm=jpg&fl=progressive 1024, {{ post.fields.cover.fields.file.url  }}?fit=thumb&w=2000&fm=jpg&fl=progressive 1920"
     >
       <picture class="u-hide-nojs">
         <!-- 21:9 medium -->
@@ -170,7 +171,7 @@ permalink: "{{ post.computed.slug }}"
   <!-- /post layout -->
   {# gallery #}
   <aside class="u-section-mt-2">
-    <ul class="c-imageGallery" id="gallery">
+    <ul class="c-imageGallery js-gallery">
       <div class="c-imageGallery-col" aria-hidden="true"></div>
       <div class="c-imageGallery-col" aria-hidden="true"></div>
       <div class="c-imageGallery-col" aria-hidden="true"></div>
@@ -179,10 +180,12 @@ permalink: "{{ post.computed.slug }}"
       {% for photo in post.fields.gallery %}
       <li class="c-imageGallery-item">
         <a 
-          href="{{ photo.fields.file.url }}?fit=thumb&w=3000&fm=jpg&fl=progressive"
+          href="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive"
+          data-at-700="{{ photo.fields.file.url }}?fit=thumb&w=1440&fm=jpg&fl=progressive"
+          data-at-1200="{{ photo.fields.file.url }}?fit=thumb&w=1920&fm=jpg&fl=progressive"
+          data-at-1900="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive"
+          data-at-2500="{{ photo.fields.file.url }}?fit=thumb&w=3500&fm=jpg&fl=progressive"
           title="{{ photo.fields.title }}"
-          data-download-url="{{ photo.fields.file.url }}"
-          data-responsive="{{ photo.fields.file.url }}?fit=thumb&w=1280&fm=jpg&fl=progressive 1024, {{ photo.fields.file.url }}?fit=thumb&w=2000&fm=jpg&fl=progressive 1920"
           >
           <img 
             data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
@@ -240,8 +243,7 @@ permalink: "{{ post.computed.slug }}"
 <script src="/js/lib/gsap.js"></script>
 <script src="/js/lib/colcade.js"></script>
 <script src="/js/lib/lazyload.js"></script>
-<script src="/js/lib/lightGallery.js"></script>
-<script src="/js/lib/lg-fullscreen.js"></script>
+<script src="/js/lib/baguetteBox.js"></script>
 <script src="/js/lib/toastify.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
 {% if post.computed.gps.hasGpx %}
@@ -253,5 +255,4 @@ permalink: "{{ post.computed.slug }}"
 <script src="/js/currentYear.js"></script>
 <script src="/js/lazyImages.js"></script>
 <script src="/js/imageGallery.js"></script>
-<script src="/js/postEmbeddedImagesGallery.js"></script>
 {% endblock %}

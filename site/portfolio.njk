@@ -27,7 +27,7 @@ pagination:
 
 
 <div class="u-section-mt-1-5">
-  <ul class="c-imageGallery" id="gallery">
+  <ul class="c-imageGallery js-gallery">
     <div class="c-imageGallery-col" aria-hidden="true"></div>
     <div class="c-imageGallery-col" aria-hidden="true"></div>
     <div class="c-imageGallery-col" aria-hidden="true"></div>
@@ -35,23 +35,24 @@ pagination:
     <div class="c-imageGallery-col" aria-hidden="true"></div>
     {% for photo in pagination.items %}
     <li class="c-imageGallery-item">
-        <a 
-          href="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=3000&fm=jpg&fl=progressive"
-          title="{{ photo.fields.photo.fields.title }}"
-          data-download-url="{{ photo.fields.photo.fields.file.url }}"
-          data-responsive="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=1280&fm=jpg&fl=progressive 1024, {{ photo.fields.photo.fields.file.url }}?fit=thumb&w=2000&fm=jpg&fl=progressive 1920"
-          >
+      <a 
+        href="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive"
+        data-at-700="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=1440&fm=jpg&fl=progressive"
+        data-at-1200="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=1920&fm=jpg&fl=progressive"
+        data-at-1900="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive"
+        data-at-2500="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=3500&fm=jpg&fl=progressive"
+        title="{{ photo.fields.photo.fields.title }}">
         <img 
           data-src="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
           alt="{{ photo.fields.photo.fields.title  }}" 
-          class="lazyImg u-hide-nojs" />
+          class="lazyImg" />
         <noscript>
           <img 
             src="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
             alt="{{ photo.fields.photo.fields.title }}"  />        
         </noscript>
       </a>
-    </li> 
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -83,8 +84,7 @@ pagination:
 {% block scripts %}
 <script src="/js/lib/lazyload.js"></script>
 <script src="/js/lib/colcade.js"></script>
-<script src="/js/lib/lightGallery.js"></script>
-<script src="/js/lib/lg-fullscreen.js"></script>
+<script src="/js/lib/baguetteBox.js"></script>
 <script src="/js/lib/toastify.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
 <script src="/js/currentYear.js"></script>

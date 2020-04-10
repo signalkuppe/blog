@@ -1,7 +1,7 @@
 /*!
  * baguetteBox.js
  * @author  feimosi
- * @version 1.11.0
+ * @version 1.11.1
  * @url https://github.com/feimosi/baguetteBox.js
  */
 #baguetteBox-overlay {
@@ -56,7 +56,9 @@
   color: #ccc;
   background-color: #000;
   background-color: rgba(0, 0, 0, 0.6);
-  font-family: sans-serif;
+  font-size: var(--fontSize0);
+  font-style: normal;
+  font-family: var(--fontCaption);
 }
 #baguetteBox-overlay .full-image:before {
   content: "";

@@ -5,7 +5,7 @@ const date = require(path.join(process.cwd(), "lib/date"));
 const inputDir = "site";
 const outputDir = "dist";
 
-module.exports = (eleventyConfig) => {
+module.exports = eleventyConfig => {
   eleventyConfig.setTemplateFormats("njk", "css", "js"); // include css and js to watch and reload on save
 
   /*
@@ -20,40 +20,40 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy(path.join(inputDir, "service-worker.js"));
   eleventyConfig.addPassthroughCopy(path.join(inputDir, "_redirects"));
   eleventyConfig.addPassthroughCopy({
-    "node_modules/toastify-js/src/*.js": "js/lib",
+    "node_modules/toastify-js/src/*.js": "js/lib"
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/colcade/*.js": "js/lib",
+    "node_modules/colcade/*.js": "js/lib"
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/vanilla-lazyload/dist/*.js": "js/lib",
+    "node_modules/baguettebox.js/dist/*.css": "css/lib"
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/lunr/*.js": "js/lib",
+    "node_modules/baguettebox.js/dist/*.js": "js/lib"
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/gsap/dist/*.js": "js/lib",
+    "node_modules/vanilla-lazyload/dist/*.js": "js/lib"
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/leaflet/dist/*.js": "js/lib",
+    "node_modules/lunr/*.js": "js/lib"
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/leaflet-gpx/*.js": "js/lib",
+    "node_modules/gsap/dist/*.js": "js/lib"
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/pristinejs/dist/*.js": "js/lib",
+    "node_modules/leaflet/dist/*.js": "js/lib"
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/lightgallery.js/dist/js/*.js": "js/lib",
+    "node_modules/leaflet-gpx/*.js": "js/lib"
   });
   eleventyConfig.addPassthroughCopy({
-    "node_modules/lg-fullscreen.js/dist/*.js": "js/lib",
+    "node_modules/pristinejs/dist/*.js": "js/lib"
   });
   /*
    * Minifies an inline css
    **/
 
-  eleventyConfig.addFilter("cssmin", function (code) {
+  eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
 
@@ -69,7 +69,7 @@ module.exports = (eleventyConfig) => {
    * Wraps first char in a span
    **/
 
-  eleventyConfig.addFilter("wrapFirstChar", (string) => {
+  eleventyConfig.addFilter("wrapFirstChar", string => {
     try {
       return `<span>${string.slice(0, 1)}</span>${string.slice(1)}`;
     } catch (err) {
@@ -81,7 +81,7 @@ module.exports = (eleventyConfig) => {
   return {
     dir: {
       input: inputDir, // src files live in /site
-      output: outputDir, // build to /dist
-    },
+      output: outputDir // build to /dist
+    }
   };
 };
