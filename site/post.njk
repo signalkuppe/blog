@@ -179,10 +179,10 @@ permalink: "{{ post.computed.slug }}"
       {% for photo in post.fields.gallery %}
       <li class="c-imageGallery-item">
         <a 
-          href="https:{{ photo.fields.file.url }}?fit=thumb&w=3000&fm=jpg"
+          href="{{ photo.fields.file.url }}?fit=thumb&w=3000&fm=jpg&fl=progressive"
           title="{{ photo.fields.title }}"
           data-download-url="{{ photo.fields.file.url }}"
-          data-responsive="https:{{ photo.fields.file.url }}?fit=thumb&w=1280&fm=jpg 1024, https:{{ photo.fields.file.url }}?fit=thumb&w=2000&fm=jpg 1920"
+          data-responsive="{{ photo.fields.file.url }}?fit=thumb&w=1280&fm=jpg&fl=progressive 1024, {{ photo.fields.file.url }}?fit=thumb&w=2000&fm=jpg&fl=progressive 1920"
           >
           <img 
             data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
