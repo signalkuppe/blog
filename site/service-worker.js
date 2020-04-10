@@ -27,3 +27,6 @@ if (workbox) {
         return Response.error();
     }
   });
+} else {
+  console.log("failed to load service wroker");
+}
