@@ -6,7 +6,8 @@
 
   lightGallery(document.getElementById("gallery"), {
     selector: ".c-imageGallery-item a",
-    showAfterLoad: false,
-    fullScreen: true
+    showAfterLoad: true,
+    fullScreen: true,
+    appendSubHtmlTo: ".lg-item"
   });
 })();
