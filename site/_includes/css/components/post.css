@@ -14,10 +14,9 @@
 
 .c-post-cover img.lazyImg:not(.loaded) {
   display: block;
-  width: 100%;
+  width: 100vw;
   filter: blur(10px);
   object-fit: cover;
-  min-height: 60vh;
 }
 
 .c-post-cover-caption {
@@ -32,6 +31,7 @@
   z-index: 1000;
   display: flex;
   padding: 0.25em 0.75em;
+  clip-path: polygon(2.5% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .c-post-gpxButtonContainer {
@@ -55,6 +55,20 @@
   color: var(--colorBlack);
 }
 
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.c-post-gpxButton svg {
+  animation: none;
+}
+
+.c-post-gpxButton.js-is-loading svg {
+  animation: rotate 0.5s linear infinite;
+}
+
 .c-post-gpxButton svg {
   height: 1em;
   margin-right: 0.5em;
@@ -71,6 +85,7 @@
   padding: 0.25em 0.75em;
   background: var(--bodyBackgroundColor);
   color: var(--bodyColor);
+  clip-path: polygon(2.5% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .c-post-embeddedImage img {

@@ -49,7 +49,7 @@
   white-space: normal;
   color: var(--colorBlack);
   background-color: #000;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.3);
   font-size: var(--fontSize0);
   font-style: normal;
   font-family: var(--fontCaption);
@@ -170,22 +170,22 @@
   top: 20px;
   right: 2%;
   right: calc(2% + 6px);
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 }
 
 .baguetteBox-button#download-button {
   top: 20px;
   right: calc(2% + 50px);
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
 }
 
 .baguetteBox-button svg {
   position: absolute;
   left: 0;
   top: 0;
-  fill: rgb(160, 160, 160);
+  fill: var(--colorBlack);
 }
 
 .baguetteBox-spinner {
