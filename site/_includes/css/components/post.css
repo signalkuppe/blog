@@ -8,13 +8,20 @@
   overflow: hidden;
 }
 
+.c-post-cover a {
+  display: block;
+}
+
 .c-post-cover img {
   display: block;
+  object-fit: cover;
+  width: 100vw;
 }
 
 .c-post-cover img.lazyImg:not(.loaded) {
   display: block;
   width: 100vw;
+  height: 100%;
   filter: blur(10px);
   object-fit: cover;
 }
@@ -31,7 +38,7 @@
   z-index: 1000;
   display: flex;
   padding: 0.25em 0.75em;
-  clip-path: polygon(2.5% 0, 100% 0%, 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(2.5% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .c-post-gpxButtonContainer {
@@ -44,6 +51,7 @@
   font-weight: 700;
   appearance: none;
   -webkit-appearance: none;
+  outline: none;
   background: var(--bodyBackgroundColor);
   color: var(--bodyColor);
   border: none;
@@ -85,7 +93,7 @@
   padding: 0.25em 0.75em;
   background: var(--bodyBackgroundColor);
   color: var(--bodyColor);
-  clip-path: polygon(2.5% 0, 100% 0%, 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(2.5% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .c-post-embeddedImage img {
