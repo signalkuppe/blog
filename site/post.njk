@@ -67,6 +67,7 @@ permalink: "{{ post.computed.slug }}"
           media="(orientation: portrait)" />
         <img 
           class="lazyImg"
+          id="post-cover"
           alt="{{ post.fields.cover.fields.description  }}" />
       </picture>
     </a>
@@ -171,7 +172,11 @@ permalink: "{{ post.computed.slug }}"
   <!-- /post layout -->
   {# gallery #}
   <aside class="u-section-mt-2">
-    <ul class="c-imageGallery js-gallery">
+    <div aria-hidden="true" class="c-imageGallery-loading">
+        Carico la gallery
+        <span class="c-imageGallery-loader"><span class="c-imageGallery-loaderInner"></span></span>
+    </div>
+    <ul class="c-imageGallery c-post-imageGallery js-gallery">
       <div class="c-imageGallery-col" aria-hidden="true"></div>
       <div class="c-imageGallery-col" aria-hidden="true"></div>
       <div class="c-imageGallery-col" aria-hidden="true"></div>
@@ -191,7 +196,7 @@ permalink: "{{ post.computed.slug }}"
           <img 
             data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
             alt="{{ photo.fields.description }}" 
-            class="lazyImg u-hide-nojs" />
+            class="lazyImg u-hide-nojs js-gallery-img" />
           <noscript>
             <img 
               src="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" 

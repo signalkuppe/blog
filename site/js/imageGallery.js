@@ -3,6 +3,21 @@
     columns: ".c-imageGallery-col",
     items: ".c-imageGallery-item"
   });
+  var imagesLoaded = 0;
+  var images = Array.from(document.querySelectorAll(".js-gallery-img"));
+  var galleryContainer = document.querySelector(".c-post-imageGallery");
+  var galleryLoading = document.querySelector(".c-imageGallery-loading");
+  galleryContainer.style.opacity = 0;
+  images.forEach(function(img) {
+    img.onload = function() {
+      console.log("loaded", imagesLoaded);
+      imagesLoaded++;
+      if (imagesLoaded === images.length) {
+        galleryContainer.style.opacity = 1;
+        galleryLoading.style.display = "none";
+      }
+    };
+  });
 
   baguetteBox.run(".js-gallery", {
     filter: /.*[contentful].*/i,

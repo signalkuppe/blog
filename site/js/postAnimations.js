@@ -1,6 +1,8 @@
 // https://greensock.com/docs/TweenMax
 
 (function() {
+  var coverImage = document.getElementById("post-cover");
+  var coverLoaded = false;
   var observerTargets = document.querySelectorAll(".js-observe");
   var caption = document.querySelector(".js-animate-caption");
   var gpxButton = document.querySelector(".js-animate-gpxButton");
@@ -10,26 +12,23 @@
   var options = {
     threshold: 1.0
   };
+  coverImage.onload = function() {
+    // cover caption
+    coverLoaded = true;
+    gsap.to(caption, 0.75, {
+      right: "0",
+      ease: Back.easeOut.config(1)
+    });
+    if (gpxButton) {
+      gsap.to(gpxButton, 0.25, {
+        delay: 1,
+        transform: "translateX(0%)",
+        ease: Back.easeOut.config(1)
+      });
+    }
+  };
   var callback = function(entries) {
     entries.forEach(entry => {
-      // cover caption
-      if (
-        entry.target.classList.contains("js-observe-caption") &&
-        entry.isIntersecting &&
-        entry.intersectionRatio === 1
-      ) {
-        gsap.to(caption, 0.75, {
-          right: "0",
-          ease: Back.easeOut.config(1)
-        });
-        if (gpxButton) {
-          gsap.to(gpxButton, 0.25, {
-            delay: 1,
-            transform: "translateX(0%)",
-            ease: Back.easeOut.config(1)
-          });
-        }
-      }
       // post nav
       if (
         entry.target.classList.contains("js-observe-nav") &&

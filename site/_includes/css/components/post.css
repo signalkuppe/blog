@@ -14,7 +14,6 @@
 
 .c-post-cover img {
   display: block;
-  object-fit: cover;
   width: 100vw;
 }
 
@@ -37,8 +36,8 @@
   right: 0;
   z-index: 1000;
   display: flex;
-  padding: 0.25em 0.75em;
-  -webkit-clip-path: polygon(2.5% 0, 100% 0%, 100% 100%, 0% 100%);
+  padding: 0.25em 0.75em 0.25em 1em;
+  -webkit-clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .c-post-gpxButtonContainer {
@@ -90,10 +89,10 @@
   bottom: 0;
   right: 0;
   z-index: 10000;
-  padding: 0.25em 0.75em;
+  padding: 0.25em 0.75em 0.25em 1em;
   background: var(--bodyBackgroundColor);
   color: var(--bodyColor);
-  -webkit-clip-path: polygon(2.5% 0, 100% 0%, 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .c-post-embeddedImage img {
