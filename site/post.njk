@@ -172,7 +172,7 @@ permalink: "{{ post.computed.slug }}"
   <!-- /post layout -->
   {# gallery #}
   <aside class="u-section-mt-2">
-    <div aria-hidden="true" class="c-imageGallery-loading">
+    <div aria-hidden="true" class="c-imageGallery-loading js-observe js-observe-gallery">
         Carico la gallery
         <span class="c-imageGallery-loader"><span class="c-imageGallery-loaderInner"></span></span>
     </div>
@@ -196,7 +196,7 @@ permalink: "{{ post.computed.slug }}"
           <img 
             data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
             alt="{{ photo.fields.description }}" 
-            class="lazyImg u-hide-nojs js-gallery-img" />
+            class="u-hide-nojs js-gallery-img" />
           <noscript>
             <img 
               src="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" 

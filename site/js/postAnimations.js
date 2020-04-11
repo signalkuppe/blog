@@ -2,10 +2,10 @@
 
 (function() {
   var coverImage = document.getElementById("post-cover");
-  var coverLoaded = false;
   var observerTargets = document.querySelectorAll(".js-observe");
   var caption = document.querySelector(".js-animate-caption");
   var gpxButton = document.querySelector(".js-animate-gpxButton");
+  var images = Array.from(document.querySelectorAll(".js-gallery-img"));
   var next = document.querySelector(".js-animate-next");
   var prev = document.querySelector(".js-animate-prev");
   var offlineMsg = document.querySelector(".js-observe-offlineMsg");
@@ -14,7 +14,6 @@
   };
   coverImage.onload = function() {
     // cover caption
-    coverLoaded = true;
     gsap.to(caption, 0.75, {
       right: "0",
       ease: Back.easeOut.config(1)
@@ -29,20 +28,38 @@
   };
   var callback = function(entries) {
     entries.forEach(entry => {
-      // post nav
+      // gallery
+      if (
+        entry.target.classList.contains("js-observe-gallery") &&
+        entry.isIntersecting &&
+        entry.intersectionRatio === 1
+      ) {
+        images.forEach(function(img) {
+          img.setAttribute("src", img.getAttribute("data-src"));
+        });
+      }
       if (
         entry.target.classList.contains("js-observe-nav") &&
         entry.isIntersecting &&
         entry.intersectionRatio === 1
       ) {
+        // post nav
         if (next) {
           var tl = new gsap.timeline();
-          tl.to(next, 0.25, { position: "relative", left: 25, delay: 0 });
+          tl.to(next, 0.25, {
+            position: "relative",
+            left: 25,
+            delay: 0
+          });
           tl.to(next, 0.5, { left: 0 });
         }
         if (prev) {
           var tl = new gsap.timeline();
-          tl.to(prev, 0.25, { position: "relative", left: -25, delay: 0.75 });
+          tl.to(prev, 0.25, {
+            position: "relative",
+            left: -25,
+            delay: 0.75
+          });
           tl.to(prev, 0.5, { left: 0 });
         }
       }
