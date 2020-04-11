@@ -13,7 +13,7 @@
 }
 
 .c-button:hover {
-  border-color: var(--colorGreyDarker);
+  border-color: var(--colorBlack);
 }
 
 .c-button:active {

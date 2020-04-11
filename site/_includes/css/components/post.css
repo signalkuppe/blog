@@ -103,8 +103,20 @@
   margin: 0 var(--spaceUnit);
 }
 
-.c-postNav a:hover {
+.c-postNav a {
   color: var(--colorBlack);
+}
+
+.c-postNav svg {
+  transition: 0.2s transform cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.c-postNav li:first-child a:hover svg {
+  transform: translate3d(-0.25em, 0, 0);
+}
+
+.c-postNav li:last-child a:hover svg {
+  transform: translate3d(0.25em, 0, 0);
 }
 
 .c-post-newsletter {
@@ -114,6 +126,9 @@
 
 .c-post-share {
   font-size: var(--fontSize2);
+  color: var(--colorBlack);
+  display: inline-block;
+  transition: 0.2s linear;
 }
 
 .c-post-share--facebook:hover svg {
@@ -149,7 +164,7 @@
 
 @media screen and (min-width: 768px) {
   .c-post-cover-caption {
-    font-size: var(--fontSize2)
+    font-size: var(--fontSize2);
   }
 }
 

@@ -186,10 +186,12 @@ permalink: "{{ post.computed.slug }}"
           data-at-1900="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive"
           data-at-2500="{{ photo.fields.file.url }}?fit=thumb&w=3500&fm=jpg&fl=progressive"
           title="{{ photo.fields.title }}"
+          data-download="{{ photo.fields.file.url }}"
           >
           <img 
             data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
             alt="{{ photo.fields.description }}" 
+            data-test="a"
             class="lazyImg u-hide-nojs" />
           <noscript>
             <img 
@@ -230,7 +232,7 @@ permalink: "{{ post.computed.slug }}"
       {{ macro.icon('info') }} <span class="c-post-offlineMsg-text">Lo sapevi che puoi leggere questo post offline? Senza connessione potrai visualizzare il testo, le foto che hai visto e la traccia se l’hai aperta.</span>
     </div>
     {# /offline msg #}
-    <p class="c-post-newsletter u-section-mt-1 u-section-mb-1">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH" class="u-highlight-link"><br>Iscriviti alla newsletter</a></strong></p>
+    <p class="c-post-newsletter u-section-mt-1 u-section-mb-1">Vuoi rimanere aggiornato sui nuovi post? <strong><a href="http://eepurl.com/dgiWQH"><br>Iscriviti alla newsletter</a></strong></p>
   </footer>
 </article>
 {% endblock %}

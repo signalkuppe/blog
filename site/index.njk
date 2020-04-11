@@ -23,10 +23,10 @@
 Sono un <b>front-end developer</b>. Trasformo un design in un’applicazione web, con particolare attenzione alle performance e all’architettura css.
 <p>
 Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vuole essere un semplice diario delle nostre avventure.
-<a href="https://it.wikipedia.org/wiki/Punta_Gnifetti" rel="noopener" class="u-highlight-link"><b>Signalkuppe</b></a><em> <br />— il mio nickname — </em>è il nome in tedesco della Punta Gnifetti.
+<a href="https://it.wikipedia.org/wiki/Punta_Gnifetti" rel="noopener">Signalkuppe</a><em> <br />— il mio nickname — </em>è il nome in tedesco della Punta Gnifetti.
 </p>
 <p>
-<a href="/contatti" rel="noopener" class="u-highlight-link"><b>Contattatemi</b></a> per parlare di un vostro progetto o di montagna.
+<a href="/contatti" rel="noopener">Contattatemi</a> per parlare di un vostro progetto o di montagna.
 </p>
 <hr  class="c-homepage-hr" />
 <h3 class="c-homepage-ultimo">Ultima relazione</h3>
@@ -36,7 +36,7 @@ Quando non lavoro di solito mi trovate in montagna con mio papà. Questo blog vu
 <article>
   <header>
     <time class="c-homepage-time" datetime="{{ post.fields.date | formatDate('YYYY-MM-DD') }}" itemprop="datePublished">{{ post.fields.date | formatDate('DD MMMM YYYY') }}</time>
-    <h4 class="c-homepage-postTitle"><a class="u-highlight-link" href="{{ post.computed.slug }}">{{ post.fields.title }}</a></h4>
+    <h4 class="c-homepage-postTitle"><a href="{{ post.computed.slug }}">{{ post.fields.title }}</a></h4>
   </header>
   <p>{{ post.fields.description }}</p>
 </article>

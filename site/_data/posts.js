@@ -66,7 +66,7 @@ const transformPosts = posts => {
         },
         hyperlink: node => {
           // how to render links in text
-          return `<a class="u-highlight-link" href="${node.data.uri}">${node.content[0].value}</a>`;
+          return `<a href="${node.data.uri}">${node.content[0].value}</a>`;
         }
         /*"unordered-list": node => {
           // how to render lists

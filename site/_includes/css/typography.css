@@ -153,9 +153,17 @@ img {
   height: auto;
 }
 
-a {
-  text-decoration-skip: ink;
-  color: inherit;
+a:not([class]) {
+  color: var(--colorBlack);
+  display: inline-block;
+  text-underline-position: under;
+  text-decoration-color: var(--colorPrimary);
+  transition: color 0.2s linear;
+  text-decoration-thickness: 0.2rem;
+}
+
+a:not([class]):hover {
+  color: var(--colorPrimary);
 }
 
 b,

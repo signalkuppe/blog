@@ -4,7 +4,7 @@ title: "Portfolio fotografico"
 description: "Una raccolta delle mie foto più belle"
 pagination:
   data: portfolio
-  size: 90
+  size: 32
 ---
 {% import "macros/macros.njk" as macro with context %}
 {# Portfolio layout, extends base #}
@@ -15,6 +15,7 @@ pagination:
 {{ macro.socialMeta(title, description, ogImage, ogType='website') }}
 {{ macro.canonical() }}
 {{ macro.metaTitle(title, env.ELEVENTY_NAME) }}
+<link rel="preconnect" href="https://assets.ctfassets.net" crossorigin>
 {% endblock %}
 
 {% block header %}
@@ -24,7 +25,6 @@ pagination:
 {% block main %}
 {# header #}
 {% call macro.contentHeader(intro, title, description) -%}{%- endcall %}
-
 
 <div class="u-section-mt-1-5">
   <ul class="c-imageGallery js-gallery">
@@ -57,12 +57,15 @@ pagination:
   </ul>
 </div>
 
-<div class="u-section-mt-1">
+<div class="u-section-mt-2">
   <nav>
-    <ul class="u-inline-list u-justify-center">
+    <ul class="c-portfolioNav">
       {% if pagination.previousPageHref %}
       <li><a href="{{ pagination.previousPageHref }}" title="Pagina precedente" class="c-button-link">{{ macro.icon('previous') }}Precedente</a></li>
       {% endif %}
+       {% if pagination.previousPageHref and pagination.nextPageHref %}
+        <li aria-hidden="true">|</li>
+        {% endif %}
       {% if pagination.nextPageHref %}
       <li><a href="{{ pagination.nextPageHref }}" title="Pagina successiva" class="c-button-link">Successiva{{ macro.icon('next', append=true) }}</a></li>
       {% endif %}
@@ -70,7 +73,7 @@ pagination:
   </nav>
 </div>
 
-<div class="u-section-mt-1 u-text-center u-pr-1 u-pl-1">
+<div class="u-section-mt-2 u-text-center u-pr-1 u-pl-1">
   {{ macro.icon('info') }} Il portfolio è in costruzione, nel frattempo <a href="https://www.flickr.com/photos/signalkuppe/albums/72157601900626726" rel="noopener" target="_blank">potete trovare tutte le foto qui</a>
 </div>
 {% endblock %}

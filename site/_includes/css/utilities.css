@@ -96,23 +96,6 @@
   padding-left: var(--spaceUnit) !important;
 }
 
-.u-highlight-link {
-  text-decoration: none !important;
-  background-image: linear-gradient(
-    var(--colorPrimary),
-    var(--colorPrimary)
-  ) !important;
-  background-size: 100% 0.6em !important;
-  background-repeat: no-repeat !important;
-  background-position: left 0 bottom -60% !important;
-  color: var(--colorBlack) !important;
-}
-
-.u-highlight-link:hover {
-  background-color: var(--colorPrimary) !important;
-  color: black !important;
-}
-
 @media screen {
   .u-printOnly {
     display: none !important;
