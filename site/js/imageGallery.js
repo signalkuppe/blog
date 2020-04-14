@@ -10,7 +10,6 @@
   galleryContainer.style.opacity = 0;
   images.forEach(function(img) {
     img.onload = function() {
-      console.log("loaded", imagesLoaded);
       imagesLoaded++;
       if (imagesLoaded === images.length) {
         galleryContainer.style.opacity = 1;
