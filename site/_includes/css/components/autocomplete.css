@@ -126,16 +126,12 @@
   padding: 0.5em 1em;
 }
 
-.c-autocomplete-results li a:hover {
-  color: black;
-}
-
 .c-autocomplete-results li:not(:last-child) {
   border-bottom: 1px solid var(--colorGreyLight);
 }
 
-.c-autocomplete-results li.js-is-active,
-.c-autocomplete-results li:hover {
+.c-autocomplete-results li.js-is-active a,
+.c-autocomplete-results li:hover a {
   background: var(--colorPrimary);
   color: black;
 }
