@@ -126,6 +126,10 @@
   padding: 0.5em 1em;
 }
 
+.c-autocomplete-results li a:hover {
+  color: black;
+}
+
 .c-autocomplete-results li:not(:last-child) {
   border-bottom: 1px solid var(--colorGreyLight);
 }
