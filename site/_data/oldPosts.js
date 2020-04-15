@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.47184,
-    lng: 8.526242,
-    title: "Capanna Cristallina",
-    date: "12/03/17",
-    dateTime: "2017-03-12T00:00:00+01:00",
-    link: "/scialpinismo/2017/03/12/capanna-cristallina.html",
-    tags: ["scialpinismo", "svizzera", "ticino", "bedretto"],
-    description:
-      "Scialpinismo alla Capanna Cristallina con partenza da Ossasco. Salita alla Cima di Lago e traversata al Poncione di Valpiana",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/120317.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/120317.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/120317.jpg",
-  },
-
-  {
     lat: 46.542484,
     lng: 8.465807,
     title: "Rottalihorn",
