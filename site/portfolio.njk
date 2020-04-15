@@ -27,6 +27,10 @@ pagination:
 {% call macro.contentHeader(intro, title, description) -%}{%- endcall %}
 
 <div class="u-section-mt-1-5">
+    <div aria-hidden="true" class="c-imageGallery-loading js-observe js-observe-gallery">
+        Carico la gallery
+        <span class="c-imageGallery-loader"><span class="c-imageGallery-loaderInner"></span></span>
+    </div>
   <ul class="c-imageGallery js-gallery">
     <div class="c-imageGallery-col" aria-hidden="true"></div>
     <div class="c-imageGallery-col" aria-hidden="true"></div>
@@ -44,8 +48,9 @@ pagination:
         title="{{ photo.fields.photo.fields.title }}">
         <img 
           data-src="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
-          alt="{{ photo.fields.photo.fields.title  }}" 
-          class="lazyImg" />
+          alt="{{ photo.fields.photo.fields.title }}" 
+          class="js-gallery-img"
+         />
         <noscript>
           <img 
             src="{{ photo.fields.photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
@@ -85,13 +90,11 @@ pagination:
 {% endblock %}
 
 {% block scripts %}
-<script src="/js/lib/lazyload.js"></script>
 <script src="/js/lib/colcade.js"></script>
 <script src="/js/lib/baguetteBox.js"></script>
 <script src="/js/lib/toastify.js"></script>
 <script src="/js/registerServiceWorker.js"></script>
 <script src="/js/currentYear.js"></script>
-<script src="/js/lazyImages.js"></script>
 <script src="/js/imageGallery.js"></script>
 {% endblock %}
 

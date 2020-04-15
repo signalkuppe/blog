@@ -131,7 +131,8 @@
 }
 
 .c-autocomplete-results li.js-is-active a,
-.c-autocomplete-results li:hover a {
+.c-autocomplete-results li:hover a,
+.c-autocomplete-results li a:active {
   background: var(--colorPrimary);
   color: black;
 }
