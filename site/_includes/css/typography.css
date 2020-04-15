@@ -164,6 +164,7 @@ a:not([class]) {
 
 a:not([class]):hover {
   color: var(--colorPrimary);
+  cursor: pointer;
 }
 
 b,

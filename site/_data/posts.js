@@ -24,17 +24,17 @@ const htmlRenderer = require("@contentful/rich-text-html-renderer"); // https://
 const postQuery = {
   content_type: "post",
   include: 1,
-  order: "-fields.date"
+  order: "-fields.date",
 };
-const makeFullSlug = slug => {
+const makeFullSlug = (slug) => {
   return `/${slug}.html`;
 };
-const transformPosts = posts => {
+const transformPosts = (posts) => {
   // ad some custom prop
   return posts.map((post, i) => {
     const options = {
       renderNode: {
-        "embedded-asset-block": node => {
+        "embedded-asset-block": (node) => {
           // how to render embedded images in rich text
           const imgUrl = node.data.target.fields.file.url;
           const img = `${imgUrl}?fit=thumb&w=1440&fm=jpg&fl=progressive&q=70`;
@@ -58,37 +58,39 @@ const transformPosts = posts => {
             <img 
                 data-src="${img}"
                 alt="${imgAlt}" 
-                class="lazyImg" /> 
+                class="lazyImg"
+                width="1440"
+                height="960" /> 
             </a>
             <figcaption>${imgTitle}</figcaption>
           </figure>
           `;
         },
-        hyperlink: node => {
+        hyperlink: (node) => {
           // how to render links in text
           return `<a href="${node.data.uri}">${node.content[0].value}</a>`;
-        }
+        },
         /*"unordered-list": node => {
           // how to render lists
           return `<ul class="u-nicelist">${node.content.map(
             item => `<li>${htmlRenderer.documentToHtmlString(item)}<li>`
           )}`;
         } */
-      }
+      },
     };
-    const kmlTrack = post => {
+    const kmlTrack = (post) => {
       try {
         return post.fields.gpsTracks.find(
-          t => t.fields.file.fileName.indexOf(".kml") !== -1
+          (t) => t.fields.file.fileName.indexOf(".kml") !== -1
         );
       } catch (err) {
         return false;
       }
     };
-    const gpxTrack = post => {
+    const gpxTrack = (post) => {
       try {
         return post.fields.gpsTracks.find(
-          t => t.fields.file.fileName.indexOf(".gpx") !== -1
+          (t) => t.fields.file.fileName.indexOf(".gpx") !== -1
         );
       } catch (err) {
         return false;
@@ -102,14 +104,14 @@ const transformPosts = posts => {
         hasKml: !!kmlTrack(post),
         hasGpx: !!gpxTrack(post),
         kml: _.get(kmlTrack(post), "fields.file.url"),
-        gpx: _.get(gpxTrack(post), "fields.file.url")
-      }
+        gpx: _.get(gpxTrack(post), "fields.file.url"),
+      },
     };
-    const prevNextData = post => {
+    const prevNextData = (post) => {
       return {
         slug: makeFullSlug(post.fields.slug),
         date: post.fields.date,
-        title: post.fields.title
+        title: post.fields.title,
       };
     };
     if (posts[i + 1]) {

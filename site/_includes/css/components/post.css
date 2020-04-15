@@ -6,6 +6,7 @@
 .c-post-cover {
   position: relative;
   overflow: hidden;
+  background: var(--colorGreyLighter);
 }
 
 .c-post-cover a {
@@ -36,6 +37,7 @@
   z-index: 1000;
   display: flex;
   padding: 0.25em 0.75em 0.25em 1em;
+  -webkit-clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
   clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
@@ -91,10 +93,14 @@
   padding: 0.25em 0.75em 0.25em 1em;
   background: var(--bodyBackgroundColor);
   color: var(--bodyColor);
+  -webkit-clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
   clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
 }
 
 .c-post-embeddedImage img {
+  width: 100%;
+  height: auto;
+  background: var(--colorGreyLighter);
   transition: transform 0.2s ease-in-out;
 }
 
