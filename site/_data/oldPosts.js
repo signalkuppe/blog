@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.542484,
-    lng: 8.465807,
-    title: "Rottalihorn",
-    date: "18/02/17",
-    dateTime: "2017-02-18T00:00:00+01:00",
-    link: "/scialpinismo/2017/02/18/rottalihorn.html",
-    tags: ["scialpinismo", "svizzera", "andermatt", "realp"],
-    description:
-      "Scialpinismo al Rottalihorn con partenza da Realp, relazione e traccia gps di salita",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/180217.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/180217.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/180217.jpg",
-  },
-
-  {
     lat: 46.090496,
     lng: 9.517864,
     title: "Cima della Rosetta",
