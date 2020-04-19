@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 45.600072,
-    lng: 7.531926,
-    title: "Monte Rascias",
-    date: "07/01/17",
-    dateTime: "2017-01-07T00:00:00+01:00",
-    link: "/scialpinismo/2017/01/07/monte-rascias.html",
-    tags: ["scialpinismo", "vda", "champorcher"],
-    description:
-      "Scialpinismo al Monte Rascias nella valle di Champorcher con partenza da Mont Blanc lungo la strada per il Rifugio Dondena",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/070117.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/070117.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/070117.jpg",
-  },
-
-  {
     lat: 46.134799,
     lng: 9.064008,
     title: "Piz Camoghè",
