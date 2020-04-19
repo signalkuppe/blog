@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.233637,
-    lng: 8.658746,
-    title: "Madone",
-    date: "15/01/17",
-    dateTime: "2017-01-15T00:00:00+01:00",
-    link: "/escursionismo/2017/01/15/madone.html",
-    tags: ["ticino", "onsernone", "centovalli"],
-    description:
-      "Salita al Madone in Val Onsernone da Berzone per l'Alpe Sella e Pino",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/150117.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/150117.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/150117.jpg",
-  },
-
-  {
     lat: 45.600072,
     lng: 7.531926,
     title: "Monte Rascias",
