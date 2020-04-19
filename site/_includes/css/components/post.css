@@ -39,6 +39,7 @@
   padding: 0.25em 0.75em 0.25em 1em;
   -webkit-clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
   clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
+  white-space: nowrap;
 }
 
 .c-post-gpxButtonContainer {
