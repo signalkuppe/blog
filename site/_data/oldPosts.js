@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.134799,
-    lng: 9.064008,
-    title: "Piz Camoghè",
-    date: "06/01/17",
-    dateTime: "2017-01-06T00:00:00+01:00",
-    link: "/escursionismo/2017/01/06/piz-camogh%C3%A8.html",
-    tags: ["ticino", "prealpi", "luganesi"],
-    description:
-      "Salita al Piz Camoghè dalla Val Colla per il Passo Pozzaiolo e la Bocchetta di Revolte",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/060117.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/060117.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/060117.jpg",
-  },
-
-  {
     lat: 45.793807,
     lng: 7.767076,
     title: "Punta Palasina",
