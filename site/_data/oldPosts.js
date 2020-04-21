@@ -6,42 +6,6 @@
 
 module.exports = [
   {
-    lat: 45.793807,
-    lng: 7.767076,
-    title: "Punta Palasina",
-    date: "30/12/16",
-    dateTime: "2016-12-30T00:00:00+01:00",
-    link: "/scialpinismo/2016/12/30/punta-palasina.html",
-    tags: ["scialpinismo", "vda", "ayas"],
-    description:
-      "Scialpinismo alla Punta Palasina in Val d’Ayas con partenza da Estoul",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/301216.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/301216.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/301216.jpg",
-  },
-
-  {
-    lat: 46.472922,
-    lng: 8.501198,
-    title: "Poncione di Val Piana",
-    date: "24/12/16",
-    dateTime: "2016-12-24T00:00:00+01:00",
-    link: "/scialpinismo/2016/12/24/poncione-di-val-piana.html",
-    tags: ["scialpinismo", "ticino", "svizzera"],
-    description:
-      "Scialpinismo al Poncione di Val Piana in Val Bedretto con partenza dalla località All'Acqua lungo la Val Cavagnolo",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/241216.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/241216.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/241216.jpg",
-  },
-
-  {
     lat: 46.261656,
     lng: 7.98286,
     title: "Spitzhörli",
