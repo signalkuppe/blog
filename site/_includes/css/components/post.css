@@ -15,6 +15,7 @@
 
 .c-post-cover img {
   width: 100vw;
+  display: block;
 }
 
 .c-post-cover img.lazyImg:not(.loaded) {
