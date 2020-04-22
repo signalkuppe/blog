@@ -6,23 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.261656,
-    lng: 7.98286,
-    title: "Spitzhörli",
-    date: "17/12/16",
-    dateTime: "2016-12-17T00:00:00+01:00",
-    link: "/scialpinismo/2016/12/17/spitzhorli.html",
-    tags: ["scialpinismo", "sempione", "svizzera"],
-    description: "Scialpinismo allo Spitzhörli dal Passo del Sempione",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/171216.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/171216.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/171216.jpg",
-  },
-
-  {
     lat: 46.123332,
     lng: 8.648039,
     title: "Gridone",
