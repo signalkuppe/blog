@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.123332,
-    lng: 8.648039,
-    title: "Gridone",
-    date: "11/12/16",
-    dateTime: "2016-12-11T00:00:00+01:00",
-    link: "/escursionismo/2016/12/11/gridone.html",
-    tags: ["ticino", "gridone", "lago", "maggiore"],
-    description:
-      "Relazione della salita al Gridone con partenza da Mergugno nel comune di Brissago",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/111216.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/111216.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/111216.jpg",
-  },
-
-  {
     lat: 46.486924,
     lng: 9.561716,
     title: "Piz Platta",
