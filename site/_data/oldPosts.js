@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.486924,
-    lng: 9.561716,
-    title: "Piz Platta",
-    date: "16/09/16",
-    dateTime: "2016-09-16T00:00:00+02:00",
-    link: "/alpinismo/2016/09/16/piz-platta.html",
-    tags: ["rheinwald", "svizzera"],
-    description:
-      "Relazione della salita al Piz Platta per la via normale dalla località Cresta in Val Ferrera",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/160916.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/160916.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/160916.jpg",
-  },
-
-  {
     lat: 46.537387,
     lng: 8.1261,
     title: "Finsteraarhorn",
