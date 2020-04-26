@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.537387,
-    lng: 8.1261,
-    title: "Finsteraarhorn",
-    date: "08/08/16",
-    dateTime: "2016-08-08T00:00:00+02:00",
-    link: "/alpinismo/2016/08/08/finsteraarhorn.html",
-    tags: ["orbaerland", "svizzera"],
-    description:
-      "Relazione della salita al Finsteraarhorn per la via normale dalla Finsteraarhornhütte",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/080816.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/080816.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/080816.jpg",
-  },
-
-  {
     lat: 46.155611,
     lng: 10.496098,
     title: "Adamello Via Terzulli",
