@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.29605,
-    lng: 9.055655,
-    title: "Pizzo di Claro",
-    date: "24/07/16",
-    dateTime: "2016-07-24T00:00:00+02:00",
-    link: "/escursionismo/2016/07/24/pizzo-di-claro.html",
-    tags: ["ticino", "pizzo", "claro"],
-    description:
-      "Via normale al Pizzo di Claro da Arvigo per l'Alp di Stabveder",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/240716.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/240716.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/240716.jpg",
-  },
-
-  {
     lat: 46.612472,
     lng: 8.416844,
     title: "Galenstock Cresta Nord",

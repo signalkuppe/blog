@@ -96,10 +96,15 @@
     {% include "css/components/footer.css" %}
     {% include "css/components/homepage.css" %}
     {% include "css/components/courtesy-page.css" %}
-    {% include "css/print.css" %}
   {% endset %}
-  <style>
+  {% set cssPrint %}
+  {% include "css/print.css" %}
+  {% endset %}
+  <style media="screen">
   {{ css | cssmin | safe }}
+  </style>
+  <style media="print">
+  {{ cssPrint | cssmin | safe }}
   </style>
 {% endmacro %}
 

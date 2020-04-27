@@ -149,7 +149,8 @@
   .c-contentHeader h2,
   .c-post-footer,
   .c-imageGallery,
-  #baguetteBox-overlay {
+  #baguetteBox-overlay,
+  .c-post-cover {
     display: none;
   }
 
@@ -159,6 +160,7 @@
 
   .c-post img {
     max-width: 300px;
+    height: auto;
   }
 
   h1,
