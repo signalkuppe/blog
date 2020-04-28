@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.612472,
-    lng: 8.416844,
-    title: "Galenstock Cresta Nord",
-    date: "16/07/16",
-    dateTime: "2016-07-16T00:00:00+02:00",
-    link: "/alpinismo/2016/07/16/galenstock-cresta-nord.html",
-    tags: ["furka", "galenstock"],
-    description:
-      "Relazione della salita alla Galenstock per la cresta nord con partenza da Tiefenbach e traversata fino al Belvedere del Ghiacciaio del Rodano.",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/160716.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/160716.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/160716.jpg",
-  },
-
-  {
     lat: 46.54322,
     lng: 9.810104,
     title: "Piz Ot",
