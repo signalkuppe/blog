@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.54322,
-    lng: 9.810104,
-    title: "Piz Ot",
-    date: "09/07/16",
-    dateTime: "2016-07-09T00:00:00+02:00",
-    link: "/escursionismo/2016/07/09/piz-ot.html",
-    tags: ["engadina", "piz", "ot"],
-    description:
-      "Via normale al Piz Ot con partenza da Samedan (località San Peter) per l'Alpe Muntatsch",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/090716.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/090716.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/090716.jpg",
-  },
-
-  {
     lat: 46.238511,
     lng: 8.083833,
     title: "Breithorn dal Sempione",
