@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.238511,
-    lng: 8.083833,
-    title: "Breithorn dal Sempione",
-    date: "24/06/16",
-    dateTime: "2016-06-24T00:00:00+02:00",
-    link: "/alpinismo/2016/06/24/breithorn-dal-sempione.html",
-    tags: ["sempione", "breithorn"],
-    description:
-      "Via normale al Breithorn con partenza dal Passo del Sempione per l'Homattugletscher",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/240616.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/240616.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/240616.jpg",
-  },
-
-  {
     lat: 45.499278,
     lng: 7.264112,
     title: "Tresenta",
