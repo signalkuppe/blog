@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 45.499278,
-    lng: 7.264112,
-    title: "Tresenta",
-    date: "19/06/16",
-    dateTime: "2016-06-19T00:00:00+02:00",
-    link: "/alpinismo/2016/06/19/tresenta.html",
-    tags: ["vda", "gran", "paradiso"],
-    description:
-      "Via normale alla Tresenta con partenza da Pont per il Rifugio Vittorio Emanuele",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/190616.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/190616.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/190616.jpg",
-  },
-
-  {
     lat: 45.9856,
     lng: 9.260654,
     title: "Da Como a Bellagio lungo la dorsale",
