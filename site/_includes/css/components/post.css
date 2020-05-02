@@ -95,8 +95,8 @@
   padding: 0.25em 0.75em 0.25em 1em;
   background: var(--bodyBackgroundColor);
   color: var(--bodyColor);
-  -webkit-clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
-  clip-path: polygon(5% 0, 100% 0%, 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(5% 0, 100% 0%, 100% 101%, 0% 101%);
+  clip-path: polygon(5% 0, 100% 0%, 100% 101%, 0% 101%);
 }
 
 .c-post-embeddedImage img {
