@@ -1,11 +1,11 @@
-(function() {
+(function () {
   /* Initialize map */
 
   var zoom = 7;
   var lat = 45.7929;
   var lng = 9.0;
   var mymap = L.map("map", {
-    renderer: L.canvas()
+    renderer: L.canvas(),
   });
   var mapdiv = document.getElementById("map");
   mymap.setView([lat, lng], zoom);
@@ -16,12 +16,13 @@
       attribution:
         '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       apikey: "f890f7037bd243ee9602a36c56fc6dc2",
-      maxZoom: 22
+      maxZoom: 22,
     }
   ).addTo(mymap);
   mymap.scrollWheelZoom.disable();
+  mymap.addControl(new L.Control.Fullscreen());
   /* add markers */
-  markers.forEach(function(marker) {
+  markers.forEach(function (marker) {
     var customIcon = L.divIcon({
         className: "c-map-marker",
         html:
@@ -29,7 +30,7 @@
           marker.title +
           '" src="/img/marker-' +
           marker.category +
-          '.svg" />'
+          '.svg" />',
       }), // use custom div for icons
       markerHtml =
         '<a href="' +

@@ -1,4 +1,4 @@
-(function() {
+(function () {
   var iconShow =
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.636 51.636" fill="currentColor"><path d="M51.353.914a.999.999 0 0 0-1.135-.213L.583 23.481a1 1 0 0 0 .252 1.895l22.263 3.731 2.545 21.038a1.002 1.002 0 0 0 1.889.324l24-48.415a1 1 0 0 0-.179-1.14z"/></svg>';
   var iconClose =
@@ -11,11 +11,11 @@
     {
       attribution:
         '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      zoom: 15
+      zoom: 15,
     }
   );
   var mapRendered = false;
-  var showMap = function() {
+  var showMap = function () {
     var showButton = document.getElementById("js-showButton");
     var infoBoxGpx = document.getElementById("js-infoBoxGpx");
     if (!mapRendered) {
@@ -36,8 +36,9 @@
       var mymap = L.map("map", {
         renderer: L.canvas(),
         attributionControl: false,
-        gestureHandling: true // depends on https://github.com/elmarquis/Leaflet.GestureHandling
+        gestureHandling: true, // depends on https://github.com/elmarquis/Leaflet.GestureHandling
       });
+      mymap.addControl(new L.Control.Fullscreen());
       // mappe da thunderforest.com: 150.000 richieste al mese poi bisogna pagare, verificare
       TILELAYER.addTo(mymap);
 
@@ -45,10 +46,10 @@
         async: true,
         marker_options: {
           startIconUrl: "/img/marker.svg",
-          endIconUrl: "/img/marker.svg"
-        }
+          endIconUrl: "/img/marker.svg",
+        },
       })
-        .on("loaded", function(e) {
+        .on("loaded", function (e) {
           createInfoBox(e);
           Toastify({
             text: "Traccia caricata 👍",
@@ -56,7 +57,7 @@
             close: false,
             gravity: "top",
             position: "left",
-            className: "c-toast--success"
+            className: "c-toast--success",
           }).showToast();
           mapRendered = true;
           mymap.fitBounds(e.target.getBounds());
@@ -73,7 +74,7 @@
       showButton.innerHTML = iconClose + " Nascondi la traccia";
     }
   };
-  var hideMap = function() {
+  var hideMap = function () {
     var showButton = document.getElementById("js-showButton");
     var infoBoxGpx = document.getElementById("js-infoBoxGpx");
     showButton.innerHTML = iconShow + " Mostra la traccia";
@@ -82,13 +83,13 @@
     map.style.pointerEvents = "none";
     infoBoxGpx.style.opacity = 0;
   };
-  var createButton = function() {
+  var createButton = function () {
     var showButton = document.createElement("button");
     showButton.innerHTML = iconShow + "Mostra la traccia";
     showButton.setAttribute("id", "js-showButton");
     showButton.classList.add("c-post-gpxButton", "js-animate-gpxButton");
     buttonContainer.prepend(showButton);
-    showButton.addEventListener("click", function(e) {
+    showButton.addEventListener("click", function (e) {
       showButton.classList.toggle("js-is-open");
       if (showButton.classList.contains("js-is-open")) {
         showMap();
@@ -98,7 +99,7 @@
       e.stopPropagation();
     });
   };
-  var createInfoBox = function(gpxEvent) {
+  var createInfoBox = function (gpxEvent) {
     var distance = Math.round(gpxEvent.target.get_distance() / 1000);
     var gain = Math.round(gpxEvent.target.get_elevation_gain());
     var infoBoxGpx = document.createElement("div");
