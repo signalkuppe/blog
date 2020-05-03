@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 45.9856,
-    lng: 9.260654,
-    title: "Da Como a Bellagio lungo la dorsale",
-    date: "03/06/16",
-    dateTime: "2016-06-03T00:00:00+02:00",
-    link: "/trail/2016/06/03/traversata-como-bellagio.html",
-    tags: ["lago", "como", "bellagio", "triangolo", "lariano"],
-    description:
-      "Traversata da Como a Bellagio lungo la dorsale del Triangolo Lariano",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/030616.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/030616.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/030616.jpg",
-  },
-
-  {
     lat: 46.39046,
     lng: 10.543183,
     title: "Pizzo Tresero",
