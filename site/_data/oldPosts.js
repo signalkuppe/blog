@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.39046,
-    lng: 10.543183,
-    title: "Pizzo Tresero",
-    date: "25/04/16",
-    dateTime: "2016-04-25T00:00:00+02:00",
-    link: "/scialpinismo/2016/04/25/pizzo-tresero.html",
-    tags: ["scialpinismo", "forni"],
-    description:
-      "Scialpinismo al Pizzo Tresero con partenza dall'Albergo dei Forni",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/250416.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/250416.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/250416.jpg",
-  },
-
-  {
     lat: 46.033545,
     lng: 9.903612,
     title: "Grabiasca Canale Nord",
