@@ -23,9 +23,11 @@ description: "L’elenco completo di tutte le relazioni, con la mappa e la ricer
 
 {% block main %}
 {# header #}
+<div class="u-section-mb-1">
 {% call macro.contentHeader(intro, title, description) -%}{%- endcall %}
+</div>
 {# map #}
-<figure id="map" class="c-map u-section-mt-1"></figure>
+<figure id="map" class="c-map"></figure>
 {# search #}
 <section class="c-autocomplete">
   <form class="c-autocomplete-form" id="autocomplete">

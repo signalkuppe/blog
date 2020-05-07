@@ -39,6 +39,17 @@
         gestureHandling: true, // depends on https://github.com/elmarquis/Leaflet.GestureHandling
       });
       mymap.addControl(new L.Control.Fullscreen());
+      mymap.on("fullscreenchange", function () {
+        var infoBoxGpx = document.getElementById("js-infoBoxGpx");
+        if (mymap.isFullscreen()) {
+          console.log("entered fullscreen");
+
+          infoBoxGpx.style.display = "none";
+        } else {
+          console.log("exited fullscreen");
+          infoBoxGpx.style.display = "block";
+        }
+      });
       // mappe da thunderforest.com: 150.000 richieste al mese poi bisogna pagare, verificare
       TILELAYER.addTo(mymap);
 
