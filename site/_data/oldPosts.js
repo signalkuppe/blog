@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.033545,
-    lng: 9.903612,
-    title: "Grabiasca Canale Nord",
-    date: "16/04/16",
-    dateTime: "2016-04-16T00:00:00+02:00",
-    link: "/alpinismo/2016/04/16/grabiasca-canale-nord.html",
-    tags: ["orobie", "neve", "canale"],
-    description:
-      "Relazione della salita al Monte Grabiasca per il canale nord, con partenza da Carona",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/160416.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/160416.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/160416.jpg",
-  },
-
-  {
     lat: 45.981778,
     lng: 10.177607,
     title: "Pizzo Camino Canale Nord Ovest",
