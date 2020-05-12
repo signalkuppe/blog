@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.451396,
-    lng: 9.905903,
-    title: "Piz Chalchagn",
-    date: "02/04/16",
-    dateTime: "2016-04-02T00:00:00+02:00",
-    link: "/scialpinismo/2016/04/02/piz-chalchagn.html",
-    tags: ["svizzera", "scialpinismo", "engadina"],
-    description:
-      "Scialpinismo al Piz Chalchagn per il versante est con partenza dalla stazione del Morteratsch",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/020416.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/020416.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/020416.jpg",
-  },
-
-  {
     lat: 46.533161,
     lng: 9.154197,
     title: "Chilchalphorn",
