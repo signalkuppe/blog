@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.533161,
-    lng: 9.154197,
-    title: "Chilchalphorn",
-    date: "26/03/16",
-    dateTime: "2016-03-26T00:00:00+01:00",
-    link: "/scialpinismo/2016/03/26/chilchalphorn.html",
-    tags: ["svizzera", "scialpinismo"],
-    description:
-      "Scialpinismo al Chilchalphorn con partenza da Hinterrhein dopo il passo del San Bernardino",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/260316.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/260316.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/260316.jpg",
-  },
-
-  {
     lat: 45.862094,
     lng: 9.782112,
     title: "Alben Canale Ilaria",
