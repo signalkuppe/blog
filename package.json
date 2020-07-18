@@ -39,7 +39,7 @@
     "dayjs": "^1.8.23",
     "dotenv": "^8.2.0",
     "fs-extra": "^8.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mkdirp": "^0.5.3",
     "rimraf": "^3.0.2",
     "workbox-build": "^4.3.1"
