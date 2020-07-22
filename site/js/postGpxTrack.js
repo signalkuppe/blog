@@ -42,11 +42,8 @@
       mymap.on("fullscreenchange", function () {
         var infoBoxGpx = document.getElementById("js-infoBoxGpx");
         if (mymap.isFullscreen()) {
-          console.log("entered fullscreen");
-
           infoBoxGpx.style.display = "none";
         } else {
-          console.log("exited fullscreen");
           infoBoxGpx.style.display = "block";
         }
       });

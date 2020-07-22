@@ -142,11 +142,10 @@
         });
       }
       if (event.keyCode === 13) {
-        location.href = destination;
+        if (destination) {
+          location.href = destination;
+        }
       }
-    } else if (event.keyCode === 13) {
-      // enter
-      event.preventDefault();
     } else if (event.keyCode === 27) {
       // esc
       form.reset();
