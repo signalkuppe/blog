@@ -32,43 +32,64 @@ const makeFullSlug = (slug) => {
 const transformPosts = (posts) => {
   // ad some custom prop
   return posts.map((post, i) => {
-    const options = {
-      renderNode: {
-        "embedded-asset-block": (node) => {
-          // how to render embedded images in rich text
-          const imgUrl = node.data.target.fields.file.url;
-          const img = `${imgUrl}?fit=thumb&w=1440&fm=jpg&fl=progressive&q=70`;
-          const imgTitle = node.data.target.fields.title;
-          const imgAlt = node.data.target.fields.description;
-          return `
-          <noscript>
+    const renderInlineAsset = (node) => {
+      const imgUrl = node.data.target.fields.file.url;
+      const img = `${imgUrl}?fit=thumb&w=1440&fm=jpg&fl=progressive&q=70`;
+      const imgTitle = node.data.target.fields.title;
+      const imgAlt = node.data.target.fields.description;
+
+      return `
+          ${
+            node.nodeType === "embedded-asset-block"
+              ? `<noscript>
             <img 
               src="${img}" 
               alt="${imgAlt}"  />        
           </noscript>
-          <figure class="c-post-embeddedImage">
+          <figure class="c-post-embeddedImage">`
+              : ""
+          }
             <a 
-              class="js-gallery"
+              class="js-gallery${
+                node.nodeType === "asset-hyperlink" ? ` textLink` : ``
+              }"
               href="${imgUrl}?fit=thumb&w=800&fm=jpg&fl=progressive" 
               data-at-768="${imgUrl}?fit=thumb&w=1440&fm=jpg&fl=progressive"
               data-at-1280="${imgUrl}?fit=thumb&w=1920&fm=jpg&fl=progressive"
               data-at-1920="${imgUrl}?fit=thumb&w=2560&fm=jpg&fl=progressive"
               title="${imgTitle}"
             >
-            <img 
+            ${
+              node.nodeType === "embedded-asset-block"
+                ? `<img 
                 data-src="${img}"
                 alt="${imgAlt}" 
                 class="lazyImg"
                 width="1440"
-                height="960" /> 
+                height="960" />`
+                : node.content[0].value
+            }
             </a>
+               ${
+                 node.nodeType === "embedded-asset-block"
+                   ? `
             <figcaption>${imgTitle}</figcaption>
-          </figure>
+          </figure>`
+                   : ``
+               }
           `;
+    };
+    const options = {
+      renderNode: {
+        "embedded-asset-block": (node) => {
+          return renderInlineAsset(node);
         },
         hyperlink: (node) => {
           // how to render links in text
           return `<a href="${node.data.uri}">${node.content[0].value}</a>`;
+        },
+        "asset-hyperlink": (node) => {
+          return renderInlineAsset(node);
         },
         /*"unordered-list": node => {
           // how to render lists
