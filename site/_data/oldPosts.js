@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 45.862094,
-    lng: 9.782112,
-    title: "Alben Canale Ilaria",
-    date: "25/03/16",
-    dateTime: "2016-03-25T00:00:00+01:00",
-    link: "/alpinismo/2016/03/25/alben-canale-ilaria.html",
-    tags: ["orobie", "neve", "canale"],
-    description:
-      "Realazione della salita al Monte Alben per il Canale Ilaria con partenza da Cornalba",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/250316.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/250316.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/250316.jpg",
-  },
-
-  {
     lat: 46.023725,
     lng: 9.580256,
     title: "Monte Salmurano",
