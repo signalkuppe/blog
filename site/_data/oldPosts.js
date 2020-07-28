@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 45.915326,
-    lng: 9.210242,
-    title: "Scialpinismo al San Primo",
-    date: "05/03/16",
-    dateTime: "2016-03-05T00:00:00+01:00",
-    link: "/scialpinismo/2016/03/05/scialpinismo-al-san-primo.html",
-    tags: ["prealpi", "neve", "scialpinismo"],
-    description:
-      "Scialpinismo al San Primo con partenza dagli impianti e proseguimento lungo la cresta",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/050316.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/050316.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/050316.jpg",
-  },
-
-  {
     lat: 46.533045,
     lng: 8.667993,
     title: "Föisc",
