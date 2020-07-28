@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.023725,
-    lng: 9.580256,
-    title: "Monte Salmurano",
-    date: "12/03/16",
-    dateTime: "2016-03-12T00:00:00+01:00",
-    link: "/scialpinismo/2016/03/12/monte-salmurano.html",
-    tags: ["orobie", "neve", "scialpinismo", "valgerola"],
-    description:
-      "Scialpinismo al Monte Salmurano con partenza dal parcheggio di Pescegallo",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/120316.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/120316.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/120316.jpg",
-  },
-
-  {
     lat: 45.915326,
     lng: 9.210242,
     title: "Scialpinismo al San Primo",
