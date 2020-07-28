@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.533045,
-    lng: 8.667993,
-    title: "Föisc",
-    date: "21/02/16",
-    dateTime: "2016-02-21T00:00:00+01:00",
-    link: "/scialpinismo/2016/02/21/foisc.html",
-    tags: ["svizzera", "ticino"],
-    description:
-      "Scialpinismo al Föisc da Brugnasco per le baite del Ce di Fuori",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/210216.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/210216.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/210216.jpg",
-  },
-
-  {
     lat: 46.084104,
     lng: 8.865848,
     title: "Gradiccioli",
