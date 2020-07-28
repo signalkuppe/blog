@@ -197,12 +197,12 @@ permalink: "{{ post.computed.slug }}"
           >
           <img 
             data-src="{{ photo.fields.file.url }}?fit=thumb&w=800&fm=jpg&fl=progressive" 
-            alt="{{ photo.fields.description }}" 
+            alt="{{ photo.fields.description or photo.fields.title }}" 
             class="u-hide-nojs js-gallery-img" />
           <noscript>
             <img 
               src="{{ photo.fields.file.url }}?fit=thumb&w=2560&fm=jpg&fl=progressive" 
-              alt="{{ photo.fields.description }}"  />        
+              alt="{{ photo.fields.description or photo.fields.title }}"  />        
           </noscript>
         </a>
       </li> 

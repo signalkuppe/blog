@@ -44,7 +44,7 @@ const transformPosts = (posts) => {
               ? `<noscript>
             <img 
               src="${img}" 
-              alt="${imgAlt}"  />        
+              alt="${imgAlt || imgTitle}"  />        
           </noscript>
           <figure class="c-post-embeddedImage">`
               : ""
@@ -63,7 +63,7 @@ const transformPosts = (posts) => {
               node.nodeType === "embedded-asset-block"
                 ? `<img 
                 data-src="${img}"
-                alt="${imgAlt}" 
+                alt="${imgAlt || imgTitle}" 
                 class="lazyImg"
                 width="1440"
                 height="960" />`
