@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.084104,
-    lng: 8.865848,
-    title: "Gradiccioli",
-    date: "24/01/16",
-    dateTime: "2016-01-24T00:00:00+01:00",
-    link: "/escursionismo/2016/01/24/gradiccioli.html",
-    tags: ["svizzera", "ticino"],
-    description:
-      "Salita al Monte Gradiccioli da Mugena per l'Alpe Nisciora, il Passo di Agario e la Cresta Ovest e giro ad anello con rientro dalla cresta est passando dal Monte Ferraro",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/240116.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/240116.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/240116.jpg",
-  },
-
-  {
     lat: 46.18227,
     lng: 9.497366,
     title: "Monte Brusada",
