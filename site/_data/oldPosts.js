@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.478507,
-    lng: 10.568534,
-    title: "Gran Zebrù",
-    date: "27/12/15",
-    dateTime: "2015-12-27T00:00:00+01:00",
-    link: "/alpinismo/2015/12/27/gran-zebr%C3%B9.html",
-    tags: ["valtellina", "stelvio"],
-    description:
-      "Salita al Gran Zebrù con pernottamento nel locale invernale del Rifugio Pizzini",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/271215.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/271215.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/271215.jpg",
-  },
-
-  {
     lat: 45.959489,
     lng: 9.449062,
     title: "Concatenamento di Grignone e Pizzo Tre Signori",
