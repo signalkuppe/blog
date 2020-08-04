@@ -6,25 +6,6 @@
 
 module.exports = [
   {
-    lat: 45.959489,
-    lng: 9.449062,
-    title: "Concatenamento di Grignone e Pizzo Tre Signori",
-    date: "05/12/15",
-    dateTime: "2015-12-05T00:00:00+01:00",
-    link:
-      "/escursionismo/2015/12/05/concatenamento-grignone-pizzo-tre-signori.html",
-    tags: ["valsassina"],
-    description:
-      "Concatenamento in giornata del Grignone e del Pizzo Tre Signori, con partenza a arrivo da Pasturo",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/051215.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/051215.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/051215.jpg",
-  },
-
-  {
     lat: 46.047314,
     lng: 8.459631,
     title: "Strette del Casè",
