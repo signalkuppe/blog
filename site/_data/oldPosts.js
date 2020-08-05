@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.047314,
-    lng: 8.459631,
-    title: "Strette del Casè",
-    date: "08/11/15",
-    dateTime: "2015-11-08T00:00:00+01:00",
-    link: "/trekking/2015/11/08/strette-del-cas%C3%A8.html",
-    tags: ["valgrande"],
-    description:
-      "Trekking in Val Grande con partenza da Cicogna: Pogallo, Strette del Casè, notte alla Bocchetta di Campo e rientro per sentiero Bove e il Pian di Boit",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/081115.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/081115.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/081115.jpg",
-  },
-
-  {
     lat: 46.508073,
     lng: 8.453025,
     title: "Chuebodenhorn",
