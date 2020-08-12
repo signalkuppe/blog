@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.508073,
-    lng: 8.453025,
-    title: "Chuebodenhorn",
-    date: "24/10/15",
-    dateTime: "2015-10-24T00:00:00+02:00",
-    link: "/escursionismo/2015/10/24/chuebodenhorn.html",
-    tags: ["bedretto", "svizzera"],
-    description:
-      "Relazione della salita al Chuebodenhorn in Val Bedretto con partenza dalla località All'Acqua.",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/241015.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/241015.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/241015.jpg",
-  },
-
-  {
     lat: 46.174801,
     lng: 8.15968,
     title: "Pizzo Pioltone",
