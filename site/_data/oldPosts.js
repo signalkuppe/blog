@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.174801,
-    lng: 8.15968,
-    title: "Pizzo Pioltone",
-    date: "17/10/15",
-    dateTime: "2015-10-17T00:00:00+02:00",
-    link: "/escursionismo/2015/10/17/pizzo-pioltone.html",
-    tags: ["bognanco", "pioltone"],
-    description:
-      "Relazione della salita al Pizzo Pioltone in Val Bognanco con partenza da San Bernardo",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/171015.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/171015.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/171015.jpg",
-  },
-
-  {
     lat: 46.237078,
     lng: 9.310095,
     title: "Pizzo Rabbi",
