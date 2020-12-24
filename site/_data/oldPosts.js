@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.237078,
-    lng: 9.310095,
-    title: "Pizzo Rabbi",
-    date: "10/10/15",
-    dateTime: "2015-10-10T00:00:00+02:00",
-    link: "/escursionismo/2015/10/10/pizzo-rabbi.html",
-    tags: ["bodengo", "rabbi"],
-    description:
-      "Relazione della salita al Pizzo Rabbi dalla la Val Bodengo per la Val Garzelli e l'Alpe Campo",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/101015.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/101015.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/101015.jpg",
-  },
-
-  {
     lat: 46.366779,
     lng: 9.487727,
     title: "Pizzo Galleggione da Piuro",
