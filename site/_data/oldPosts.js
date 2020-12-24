@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.366779,
-    lng: 9.487727,
-    title: "Pizzo Galleggione da Piuro",
-    date: "26/09/15",
-    dateTime: "2015-09-26T00:00:00+02:00",
-    link: "/alpinismo/2015/09/26/pizzo-galleggione-da-piuro.html",
-    tags: ["bregaglia", "galleggione"],
-    description:
-      "Relazione della salita al Pizzo Galleggione con partenza da Piuro per Savogno, Lago dell'Acqua Fraggia e il passo del Turbine",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/260915.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/260915.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/260915.jpg",
-  },
-
-  {
     lat: 46.338247,
     lng: 9.724761,
     title: "Monte Del Forno",
