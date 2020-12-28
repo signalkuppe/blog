@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.338247,
-    lng: 9.724761,
-    title: "Monte Del Forno",
-    date: "20/09/15",
-    dateTime: "2015-09-20T00:00:00+02:00",
-    link: "/alpinismo/2015/09/20/monte-del-forno.html",
-    tags: ["valmalenco", "chiareggio"],
-    description:
-      "Relazione della salita al Monte Del Forno con traccia gps da Chiareggio per il Passo del Forno",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/200915.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/200915.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/200915.jpg",
-  },
-
-  {
     lat: 46.490873,
     lng: 9.759857,
     title: "Piz Julier",
