@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 42.086237,
-    lng: 14.086469,
-    title: "Monte Amaro",
-    date: "14/08/15",
-    dateTime: "2015-08-14T00:00:00+02:00",
-    link: "/escursionismo/2015/08/14/monte-amaro.html",
-    tags: ["majella", "appennini"],
-    description:
-      "Escursione sulla vetta principale della Majella, il Monte Amaro, con pernottamento al Bivacco Pelino",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/140815.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/140815.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/140815.jpg",
-  },
-
-  {
     lat: 42.469052,
     lng: 13.566049,
     title: "Gran Sasso",
