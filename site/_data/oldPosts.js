@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.490873,
-    lng: 9.759857,
-    title: "Piz Julier",
-    date: "30/08/15",
-    dateTime: "2015-08-30T00:00:00+02:00",
-    link: "/escursionismo/2015/08/30/piz-julier.html",
-    tags: ["engadina", "svizzera"],
-    description:
-      "Salita al Piz Julier per la via normale dallo Julier Pass e la Fuorcla Albana",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/300815.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/300815.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/300815.jpg",
-  },
-
-  {
     lat: 42.086237,
     lng: 14.086469,
     title: "Monte Amaro",
