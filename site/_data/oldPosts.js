@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 42.469052,
-    lng: 13.566049,
-    title: "Gran Sasso",
-    date: "12/08/15",
-    dateTime: "2015-08-12T00:00:00+02:00",
-    link: "/alpinismo/2015/08/12/gran-sasso-cresta-ovest.html",
-    tags: ["appennini", "abruzzo"],
-    description:
-      "Relazione della salita al Corno Grande del Gran Sasso per la Cresta Ovest o Via Delle Creste con notte in tenda a Campo Imperatore",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/120815.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/120815.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/120815.jpg",
-  },
-
-  {
     lat: -16.655115,
     lng: -67.78356,
     title: "Illimani",
