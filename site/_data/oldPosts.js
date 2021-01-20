@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: -16.655115,
-    lng: -67.78356,
-    title: "Illimani",
-    date: "30/07/15",
-    dateTime: "2015-07-30T00:00:00+02:00",
-    link: "/alpinismo/2015/07/30/illimani.html",
-    tags: ["bolivia", "6000", "ande"],
-    description:
-      "Relazione della salita all'Illimani per la via normale dal Nido De Condores",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/300715.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/300715.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/300715.jpg",
-  },
-
-  {
     lat: -16.262467,
     lng: -68.154008,
     title: "Huayna Potosí",
