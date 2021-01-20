@@ -21,7 +21,7 @@
     "baguettebox.js": "^1.11.1",
     "clean-css": "^4.2.3",
     "colcade": "^0.2.0",
-    "gsap": "^3.4.2",
+    "gsap": "^3.6.0",
     "leaflet": "^1.6.0",
     "leaflet-fullscreen": "^1.0.2",
     "leaflet-gpx": "^1.5.0",
