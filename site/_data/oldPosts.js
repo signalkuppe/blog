@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: -16.262467,
-    lng: -68.154008,
-    title: "Huayna Potosí",
-    date: "26/07/15",
-    dateTime: "2015-07-26T00:00:00+02:00",
-    link: "/alpinismo/2015/07/26/huayna-potosi.html",
-    tags: ["bolivia", "6000", "ande"],
-    description:
-      "Relazione della salita all'Huayna Potosí, un seimila relativamente facile nella Cordillera Real della Boliva",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/260715.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/260715.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/260715.jpg",
-  },
-
-  {
     lat: 46.443882,
     lng: 10.616753,
     title: "Monte Cevedale",
