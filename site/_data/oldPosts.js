@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.443882,
-    lng: 10.616753,
-    title: "Monte Cevedale",
-    date: "21/06/15",
-    dateTime: "2015-06-21T00:00:00+02:00",
-    link: "/alpinismo/2015/06/21/monte-cevedale.html",
-    tags: ["valfurva", "cevedale", "pizzini", "casati"],
-    description:
-      "Relazione della salita con traccia gps Monte Cevedale con partenza dal Rifugio Forni e pernottamento al Casati",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/210615.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/210615.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/210615.jpg",
-  },
-
-  {
     lat: 46.287785,
     lng: 9.6218,
     title: "Cima Della Bondasca",
