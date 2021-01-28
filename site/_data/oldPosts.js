@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.324012,
-    lng: 8.223103,
-    title: "Cervandone Canale Ferrari",
-    date: "23/05/15",
-    dateTime: "2015-05-23T00:00:00+02:00",
-    link: "/alpinismo/2015/05/23/cervandone-canale-ferrari.html",
-    tags: ["devero", "canale"],
-    description:
-      "Relazione della salita con traccia gps del Cervandone per il Canale Ferrari con partenza dall'Alpe Devero",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/230515.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/230515.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/230515.jpg",
-  },
-
-  {
     lat: 45.976268,
     lng: 9.791037,
     title: "Pietra Quadra Canale Nord",
