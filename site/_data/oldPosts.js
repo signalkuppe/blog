@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.51147,
-    lng: 9.702302,
-    title: "Piz D'Agnel",
-    date: "19/04/15",
-    dateTime: "2015-04-19T00:00:00+02:00",
-    link: "/alpinismo/2015/04/19/piz-d-agnel.html",
-    tags: ["svizzera", "engadina", "ciaspole"],
-    description:
-      "Relazione della salita con traccia gps del Piz d'Agnel con partenza dallo Julier Pass",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/190415.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/190415.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/190415.jpg",
-  },
-
-  {
     lat: 46.01128,
     lng: 10.250561,
     title: "Cimone della Bagozza Canale Nord",
