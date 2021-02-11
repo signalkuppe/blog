@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.01128,
-    lng: 10.250561,
-    title: "Cimone della Bagozza Canale Nord",
-    date: "11/04/15",
-    dateTime: "2015-04-11T00:00:00+02:00",
-    link: "/alpinismo/2015/04/11/cimone-della-bagozza-canale-nord.html",
-    tags: ["orobie", "canale"],
-    description:
-      "Relazione della salita con traccia gps del Cimone della Bagozza per il canale nord con partenza dalla località Fondi in Val di Scalve",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/110415.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/110415.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/110415.jpg",
-  },
-
-  {
     lat: 45.953228,
     lng: 9.387552,
     title: "Grigna Settentrionale per la cresta di Piancaformia",
