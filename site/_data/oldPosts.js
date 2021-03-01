@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 45.953228,
-    lng: 9.387552,
-    title: "Grigna Settentrionale per la cresta di Piancaformia",
-    date: "04/04/15",
-    dateTime: "2015-04-04T00:00:00+02:00",
-    link: "/alpinismo/2015/04/04/grignone-cresta-piancaformia.html",
-    tags: ["grigna", "prealpi"],
-    description:
-      "Relazione della salita al Grignone per la Cresta di Piancaformia in invernale con traccia gps",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/040415.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/040415.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/040415.jpg",
-  },
-
-  {
     lat: 46.422937,
     lng: 9.674344,
     title: "Piz Grevasalvas",
