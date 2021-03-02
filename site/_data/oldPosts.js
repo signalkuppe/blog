@@ -6,24 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.422937,
-    lng: 9.674344,
-    title: "Piz Grevasalvas",
-    date: "28/03/15",
-    dateTime: "2015-03-28T00:00:00+01:00",
-    link: "/alpinismo/2015/03/28/piz-grevasalvas.html",
-    tags: ["engadina", "svizzera"],
-    description:
-      "Relazione della salita al Piz Grevasalvas da Plaun da Lej con traccia gps",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/280315.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/280315.jpg",
-    card:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/280315.jpg",
-  },
-
-  {
     lat: 46.010234,
     lng: 9.866726,
     title: "Monte Cabianca Canale Nord",
