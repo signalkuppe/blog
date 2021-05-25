@@ -33,7 +33,7 @@
 
 .leaflet-popup-content-wrapper:hover,
 .leaflet-popup-close-button:hover {
-  color: white !important;
+  /*color: white !important;*/
 }
 
 .leaflet-popup:hover img {
