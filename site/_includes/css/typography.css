@@ -119,7 +119,7 @@ form:not([class]) {
 }
 
 form:not([class]):focus-within {
-  background: var(--colorGreyLight);
+  background: var(--colorGreyLighter);
 }
 
 label:not([class]) {

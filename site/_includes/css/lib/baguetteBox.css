@@ -47,7 +47,7 @@
   text-align: center;
   line-height: 3;
   white-space: normal;
-  color: var(--colorBlack);
+  color: #fff;
   background-color: #000;
   background-color: rgba(0, 0, 0, 0.3);
   font-size: var(--fontSize0);

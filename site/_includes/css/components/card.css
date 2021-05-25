@@ -16,13 +16,14 @@
 .c-card-image img {
   display: block;
   object-fit: cover;
+  border-bottom: 1px solid var(--colorGreyLighter);
 }
 
 .c-card-body {
   font-size: var(--fontSizeSmall);
   padding: calc(var(--spaceUnit) * 1.5);
-  background: var(--colorGreyLighter);
-  border-color: var(--colorGreyLight);
+  background: #fafafa;
+  border-color: var(--colorGreyLighter);
   border-left-style: solid;
   border-right-style: solid;
   border-bottom-style: solid;

@@ -51,7 +51,8 @@
 
 .c-navigation li:not(.c-navigation-logo) a.is-active {
   color: var(--colorBlack);
-  border-bottom: 2px solid var(--colorBlack);
+  border-bottom: 4px solid var(--colorPrimary);
+  font-weight: 700;
 }
 
 .c-navigation li.c-navigation-logo a:hover svg {

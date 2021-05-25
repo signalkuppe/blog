@@ -27,15 +27,15 @@
   --colorTwitter: #55acee;
   --colorWhatsapp: #25d366;
   --colorEmail: #b23121;
-  --colorGreyLighter: hsl(220, 7%, 8%);
-  --colorGreyLight: hsl(222, 10%, 19%);
+  --colorGreyLighter: hsl(220, 9%, 90%);
+  --colorGreyLight: hsl(222, 6%, 59%);
   --colorGrey: hsl(224, 4%, 48%);
   --colorGreyMedium: hsl(228, 4%, 52%);
-  --colorGreyDark: hsl(222, 6%, 59%);
-  --colorGreyDarker: hsl(220, 9%, 67%);
-  --colorBlack: #fff;
-  --bodyColor: hsl(220, 15%, 81%);
-  --bodyBackgroundColor: hsl(220, 13%, 5%);
+  --colorGreyDark: hsl(222, 10%, 19%);
+  --colorGreyDarker: hsl(220, 7%, 8%);
+  --colorBlack: #000;
+  --bodyColor: #222;
+  --bodyBackgroundColor: white;
   --boxShadow: rgba(255, 255, 255, 0.15);
 }
 
