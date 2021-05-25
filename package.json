@@ -35,7 +35,7 @@
     "@contentful/rich-text-html-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^13.4.0",
     "chalk": "^2.4.2",
-    "contentful": "^7.14.6",
+    "contentful": "^8.3.6",
     "dayjs": "^1.8.30",
     "dotenv": "^8.2.0",
     "fs-extra": "^8.1.0",
