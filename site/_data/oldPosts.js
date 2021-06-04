@@ -6,23 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.414302,
-    lng: 9.330768,
-    title: "Ciaspolata a Starleggia",
-    date: "22/02/15",
-    dateTime: "2015-02-22T00:00:00+01:00",
-    link: "/escursionismo/2015/02/22/ciaspolata-a-starleggia.html",
-    tags: ["ciaspole", "neve", "spluga", "valchiavenna"],
-    description:
-      "ciaspolata con partenza da Campodolcino e arrivo a San Sisto passando per Starleggia",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/220215.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/220215.jpg",
-    card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/220215.jpg",
-  },
-
-  {
     lat: 46.337222,
     lng: 9.314014,
     title: "Ciaspolata all'Alpe Lendine",
