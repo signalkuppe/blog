@@ -6,23 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.093084,
-    lng: 9.410982,
-    title: "Legnone Canalone Ovest",
-    date: "10/01/15",
-    dateTime: "2015-01-10T00:00:00+01:00",
-    link: "/alpinismo/2015/01/10/legnone-canalone-ovest.html",
-    tags: ["canalone", "legnone"],
-    description:
-      "Relazione della salita al Canalone Ovest (canale Sovian) del Legnone per il Rifugio Roccoli Lorla e la Ca' de Legn",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/100115.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/100115.jpg",
-    card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/100115.jpg",
-  },
-
-  {
     lat: 46.011437,
     lng: 9.527897,
     title: "Invernale al Pizzo Tre Signori da Ornica",
