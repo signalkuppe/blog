@@ -6,23 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.011437,
-    lng: 9.527897,
-    title: "Invernale al Pizzo Tre Signori da Ornica",
-    date: "04/01/15",
-    dateTime: "2015-01-04T00:00:00+01:00",
-    link: "/alpinismo/2015/01/04/pizzo-tre-signori-invernale-da-ornica.html",
-    tags: ["ornica", "invernale", "orobie"],
-    description:
-      "Salita invernale al Pizzo Tre Signori da Ornica per la Val d'Inferno",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/040115.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/040115.jpg",
-    card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/040115.jpg",
-  },
-
-  {
     lat: 46.123541,
     lng: 9.145072,
     title: "Pizzo di Gino",
