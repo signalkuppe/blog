@@ -6,23 +6,6 @@
 
 module.exports = [
   {
-    lat: 45.934556,
-    lng: 9.816293,
-    title: "Pizzo Arera per il canalino nord",
-    date: "06/12/14",
-    dateTime: "2014-12-06T00:00:00+01:00",
-    link: "/alpinismo/2014/12/06/pizzo-arera-canalino-nord.html",
-    tags: ["orobie", "invernale", "canale"],
-    description:
-      "Salita al Pizzo Arera dal canalino nord con partenza dalla Capanna 2000",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/061214.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/061214.jpg",
-    card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/061214.jpg",
-  },
-
-  {
     lat: 46.056043,
     lng: 8.419452,
     title: "Trekking in Valgrande: Scaredi, In La Piana, Bocchetta di Vald",
