@@ -1,12 +1,7 @@
 {
   "name": "blog",
-  "version": "1.0.0",
   "description": "Personal blog",
-  "main": "index.js",
-  "scripts": {
-    "build": "eleventy && node site/service-worker-build.js && node scripts/copyOldPosts",
-    "dev": "node scripts/emptyCache && eleventy --serve"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/signalkuppe/blog.git"
@@ -17,31 +12,9 @@
     "url": "https://github.com/signalkuppe/blog/issues"
   },
   "homepage": "https://www.signalkuppe.com",
-  "dependencies": {
-    "baguettebox.js": "^1.11.1",
-    "clean-css": "^4.2.3",
-    "colcade": "^0.2.0",
-    "gsap": "^3.4.2",
-    "leaflet": "^1.6.0",
-    "leaflet-fullscreen": "^1.0.2",
-    "leaflet-gpx": "^1.5.0",
-    "lunr": "^2.3.8",
-    "pristinejs": "^0.1.6",
-    "toastify-js": "^1.8.0",
-    "vanilla-lazyload": "^13.0.0"
-  },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "@contentful/rich-text-html-renderer": "^13.4.0",
-    "@contentful/rich-text-types": "^13.4.0",
-    "chalk": "^2.4.2",
-    "contentful": "^8.3.6",
-    "dayjs": "^1.8.30",
-    "dotenv": "^8.2.0",
-    "fs-extra": "^8.1.0",
-    "lodash": "^4.17.19",
-    "mkdirp": "^0.5.5",
-    "rimraf": "^3.0.2",
-    "workbox-build": "^4.3.1"
+    "@contentful/rich-text-html-renderer": "^14.1.2",
+    "contentful": "^8.4.0",
+    "pequeno": "^0.0.12"
   }
 }
