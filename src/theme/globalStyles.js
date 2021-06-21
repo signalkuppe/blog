@@ -1,23 +1,65 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { vars, getVar } from './';
+import { vars, getVar, device } from './';
 
 const rootVars = css`
     ${vars}
 `;
 
 const GlobalStyles = createGlobalStyle`
+
+  @font-face {
+    font-family: "Roboto Flex";
+	  src: url('/fonts/roboto-flex.woff2') format('woff2 supports variations'),
+		   url('/fonts/roboto-flex.woff2') format('woff2-variations');
+  font-weight: 100 1000;
+	font-stretch: 25% 151%;
+  }
+
+  @font-face {
+    font-family:  ${getVar('--font-family-cursive')};
+    font-display: swap;
+    src: url('/fonts/sriracha.woff2') format('woff2');
+  }
+
   :root {
     ${rootVars};
+    font-size: 100%;
+  }
+
+  @media ${device.desktop} {
+    :root {
     font-size: 112.5%;
+    }
+    
+  }
+
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+  }
+
+  body {
+    font-family:  ${getVar('--font-family-base')};
+    color: ${getVar('--color-text')};
+    background: ${getVar('--color-background')};
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-family: "Roboto Flex", sans-serif;
+    font-variation-settings: 'wdth' 50, 'slnt' 0, 'GRAD' 0, 'wght': 500;
   }
 
   main {
     display: block;
   }
-  h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-  }
+
   hr {
     box-sizing: content-box; /* 1 */
     height: 0; /* 1 */
@@ -42,7 +84,13 @@ const GlobalStyles = createGlobalStyle`
   }
   b,
   strong {
-    font-weight: bolder;
+    font-weight: 700;
+    color:${getVar('--color-text-light-accent')};
+  }
+  i,
+  em {
+    font-family:  ${getVar('--font-family-cursive')};
+    color:  ${getVar('--color-text-light-accent')};
   }
   code,
   kbd,
@@ -162,32 +210,6 @@ const GlobalStyles = createGlobalStyle`
   }
   [hidden] {
     display: none;
-  }
-
-  @font-face {
-    font-family: 'mauerbutlerstencil';
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
-    src: url('/fonts/ButlerStencil-ExtraBold.woff2') format('woff2');
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    line-height: 1.15; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
-  }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    line-height: 1.4;
-    color: ${getVar('--color-text')};
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    margin: 0;
   }
 `;
 

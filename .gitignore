@@ -1,7 +1,5 @@
-dist
 .DS_Store
 .gitignore
 node_modules
-_site
-.env
 .cache
+.site
