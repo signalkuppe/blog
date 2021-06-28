@@ -1,18 +1,35 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const StyledA = styled.a`
+export const defaultStyles = css`
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    :hover {
+        box-shadow: ${(props) => {
+            if (!props.noUnderline) {
+                let color = `var(--color-secondary)`;
+                if (props.inherit) {
+                    color = `currentColor`;
+                }
+                return `0px 2px 0px ${color};`;
+            } else {
+                return 'none';
+            }
+        }};
+        transition: box-shadow 100ms ease 0s;
+    }
+`;
+
+const StyledLink = styled.a`
+    ${defaultStyles};
     ${(props) =>
-        props.underline &&
+        props.inherit &&
         css`
-            text-decoration: underline;
+            color: inherit;
         `}
 `;
 
-export default function List({ underline, children, ...props }) {
-    return (
-        <StyledA underline={underline} {...props}>
-            {children}
-        </StyledA>
-    );
+export default function Link({ ...props }) {
+    return <StyledLink {...props} />;
 }

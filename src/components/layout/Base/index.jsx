@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainMenu from '../../common/MainMenu';
+import Header from '../../common/Header';
 import GlobalStyles from '../../../theme/globalStyles';
-import { getVar } from '../../../theme';
+import Container from '../Container';
 
-const Container = styled.div`
-    padding: 1.5em;
-    max-width: ${getVar('--container-width')};
-    margin: 0 auto;
+const HeaderContainer = styled.header`
+    height: var(--header-height);
+    outline: 1px solid yellow;
 `;
 
 export default function BaseLayout({ route, head, children }) {
@@ -16,13 +15,13 @@ export default function BaseLayout({ route, head, children }) {
             {head}
             <body>
                 <GlobalStyles />
-                <Container>
-                    <header>
-                        <MainMenu route={route} />
-                    </header>
-                    <main>{children}</main>
-                    <footer>footer</footer>
-                </Container>
+                <HeaderContainer>
+                    <Header route={route} />
+                </HeaderContainer>
+                <main>
+                    <Container>{children}</Container>
+                </main>
+                <footer>footer</footer>
             </body>
         </html>
     );

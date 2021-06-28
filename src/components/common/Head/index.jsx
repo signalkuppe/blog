@@ -1,7 +1,7 @@
 import React from 'react';
 import { Script } from 'pequeno';
-import vars from '../../../vars';
 import client from './index.client.js';
+import vars from '../../../vars';
 
 export default function Head({
     title,

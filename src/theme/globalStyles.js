@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { vars, getVar, device } from './';
+import { vars, device } from './';
+import { defaultStyles as linkDefaultStyles } from '../components/ui/Link';
 
 const rootVars = css`
     ${vars}
@@ -11,12 +12,12 @@ const GlobalStyles = createGlobalStyle`
     font-family: "Roboto Flex";
 	  src: url('/fonts/roboto-flex.woff2') format('woff2 supports variations'),
 		   url('/fonts/roboto-flex.woff2') format('woff2-variations');
-  font-weight: 100 1000;
-	font-stretch: 25% 151%;
+    font-weight: 1 999;
+    font-stretch: 25% 150%;
   }
 
   @font-face {
-    font-family:  ${getVar('--font-family-cursive')};
+    font-family: 'Sriracha';
     font-display: swap;
     src: url('/fonts/sriracha.woff2') format('woff2');
   }
@@ -28,11 +29,9 @@ const GlobalStyles = createGlobalStyle`
 
   @media ${device.desktop} {
     :root {
-    font-size: 112.5%;
+      font-size: 112.5%;
     }
-    
   }
-
 
   * {
     box-sizing: border-box;
@@ -44,16 +43,60 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family:  ${getVar('--font-family-base')};
-    color: ${getVar('--color-text')};
-    background: ${getVar('--color-background')};
+    font-family: var(--font-family-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-background);
     margin: 0;
     padding: 0;
   }
 
+  :is(h1,h2,h3,h4,h5,h6) {
+    font-weight: 900;
+    font-stretch: 50%;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-light-accent);
+  }
+
   h1 {
-    font-family: "Roboto Flex", sans-serif;
-    font-variation-settings: 'wdth' 50, 'slnt' 0, 'GRAD' 0, 'wght': 500;
+    font-size: var(--font-size-xxx-large);
+  }
+
+  h2 {
+    font-size: var(--font-size-x-large);
+    
+  }
+
+  h2 + p {
+    margin-top: 0;
+  }
+
+  a {
+    ${linkDefaultStyles};
+  }
+
+  b,
+  strong {
+    font-weight: 700;
+    color: var(--color-text-light-accent);
+  }
+  
+  i,
+  em {
+    font-family:  var(--font-family-cursive);
+    color: var(--color-primary);
+  }
+
+  *:focus {
+    transition: transform 0.3s ease;
+    transform: scale(1.1);
+    outline: none;
+  }
+
+  ::selection {
+    background: var(--color-primary);
+    color: black;
   }
 
   main {
@@ -72,25 +115,11 @@ const GlobalStyles = createGlobalStyle`
     font-family: monospace, monospace; /* 1 */
     font-size: 1em; /* 2 */
   }
-  a {
-    background-color: transparent;
-    color: ${getVar('--color-primary')};
-    text-decoration: none;
-  }
+
   abbr[title] {
     border-bottom: none; /* 1 */
     text-decoration: underline; /* 2 */
     text-decoration: underline dotted; /* 2 */
-  }
-  b,
-  strong {
-    font-weight: 700;
-    color:${getVar('--color-text-light-accent')};
-  }
-  i,
-  em {
-    font-family:  ${getVar('--font-family-cursive')};
-    color:  ${getVar('--color-text-light-accent')};
   }
   code,
   kbd,

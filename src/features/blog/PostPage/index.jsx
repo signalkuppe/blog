@@ -3,7 +3,7 @@ import vars from '../../../vars';
 import BaseLayout from '../../../components/layout/Base';
 import Head from '../../../components/common/Head';
 import List from '../../../components/ui/List';
-import Link from '../../../components/ui/Link';
+import PostHero from '../PostHero';
 import PostCover from '../PostCover';
 
 export default function PostPage({ post, pagination, route }) {
@@ -14,20 +14,21 @@ export default function PostPage({ post, pagination, route }) {
                 <Head
                     title={post.title}
                     slogan={vars.siteName}
-                    description="An awesome meta description"
+                    description={post.description}
                 />
             }
         >
+            <PostHero post={post} />
             <PostCover cover={post.cover} />
             <List reset inline>
                 {pagination.prev && (
                     <li>
-                        <Link href={pagination.prev}>&laquo; Prev</Link>
+                        <a href={pagination.prev}>&laquo; Prev</a>
                     </li>
                 )}
                 {pagination.next && (
                     <li>
-                        <Link href={pagination.next}>Next &raquo;</Link>
+                        <a href={pagination.next}>Next &raquo;</a>
                     </li>
                 )}
             </List>

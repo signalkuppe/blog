@@ -1,7 +1,11 @@
+import { css } from 'styled-components';
+
 export const vars = {
     '--color-background': '#11131A',
     '--color-background-light': '#2C344A',
-    '--color-accent': '#F4BF3A',
+    '--color-background-dark': '#1D1F26',
+    '--color-primary': '#F4BF3A',
+    '--color-secondary': '#4790F9',
     '--color-text': '#CACDD6',
     '--color-text-light-accent': '#FFFFFF',
     '--color-text-dark-accent': '#AAAAAA',
@@ -9,43 +13,53 @@ export const vars = {
     '--font-family-cursive': "'Sriracha', sans-serif",
     '--font-size-xx-small': '0.5rem',
     '--font-size-x-small': '0.75rem',
-    '--font-size--small': '0.85rem',
-    '--font-size--base': '1rem',
-    '--font-size--large': '1.5rem',
-    '--font-size--x-large': '2rem',
-    '--font-size--xx-large': '3rem',
-    '--font-size--xxx-large': '4rem',
+    '--font-size-small': '0.85rem',
+    '--font-size-base': '1rem',
+    '--font-size-medium': '1.25rem',
+    '--font-size-large': '1.5rem',
+    '--font-size-x-large': '2rem',
+    '--font-size-xx-large': '3rem',
+    '--font-size-xxx-large': '4rem',
     '--space-unit': '1.5rem',
-    '--container-width': '1388px',
-};
-
-export const getVar = function (v) {
-    return `var(${v})`;
+    '--header-height': '6rem',
+    '--logo-width': '9rem',
+    '--container-max-width': '62rem', // 1170 - 1.5rem * 2
+    '--container-offset': 'calc(var(--logo-width) + var(--space-unit))',
 };
 
 export const device = {
-    mobile: `screen and (max-width: 767px)`,
-    mobileAndTablet: `screen and (max-width: 1377px)`,
-    onlyTablet: `screen and (min-width: 768px) and (max-width: 1377px)`,
-    atLeastTablet: `screen and (min-width: 768px)`,
-    desktop: `screen and (min-width: 1388px)`,
+    mobile: `screen and (max-width: 47.9375rem)`, // <= 767px
+    mobileAndTablet: `screen and (max-width: 85.3125rem)`, // <= 1365
+    onlyTablet: `screen and (min-width: 48rem) and (max-width: 85.3125rem)`, // >= 768px <= 1365px
+    atLeastTablet: `screen and (min-width: 48rem)`, // >= 768px
+    desktop: `screen and (min-width: 85.3125rem)`, // >= 1366px
 };
+
+export const visuallyHidden = css`
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+`;
 
 export const propsToFontSize = (props) => {
     if (props.xxs) {
-        return getVar('--font-size-xx-small');
+        return 'var(--font-size-xx-small)';
     } else if (props.xs) {
-        return getVar('--font-size-x-small');
+        return 'var(--font-size-x-small)';
     } else if (props.s) {
-        return getVar('--font-size--small');
+        return 'var(--font-size-small)';
     } else if (props.l) {
-        return getVar('--font-size-large');
+        return 'var(--font-size-large)';
     } else if (props.xl) {
-        return getVar('--font-size-x-large');
+        return 'var(--font-size-x-large)';
     } else if (props.xxl) {
-        return getVar('--font-size-xx-large');
+        return 'var(--font-size-xx-large)';
     } else if (props.xxxl) {
-        return getVar('--font-size-xxx-large');
+        return 'var(--font-size-xxx-large)';
     } else {
         return 'inherit';
     }

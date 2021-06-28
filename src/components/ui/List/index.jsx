@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { getVar } from '../../../theme';
 
 const StyledList = styled.ul`
     ${(props) =>
@@ -34,9 +33,9 @@ export default function List({
 }) {
     if (gap) {
         if (typeof gap === 'boolean') {
-            gap = getVar('--space-unit');
+            gap = 'var(--space-unit)';
         } else if (typeof gap === 'number') {
-            gap = `calc(${getVar('--space-unit')} * ${gap})`;
+            gap = `calc(var(--space-unit) * ${gap})`;
         } else {
             gap = 0;
         }
