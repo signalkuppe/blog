@@ -6,23 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.056043,
-    lng: 8.419452,
-    title: "Trekking in Valgrande: Scaredi, In La Piana, Bocchetta di Vald",
-    date: "01/11/14",
-    dateTime: "2014-11-01T00:00:00+01:00",
-    link: "/trekking/2014/11/01/trekking-valgrande-scaredi-in-la-piana-vald.html",
-    tags: ["dolomiti"],
-    description:
-      "Trekking di due giorni in Valgrande: partenza dalla Val Loana, Alpe Scaredi, e bivacco a In La Piana. Secondo giorno rientro per la Bocchetta di Vald e la Bocchetta di Cavalla",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/011114.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/011114.jpg",
-    card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/011114.jpg",
-  },
-
-  {
     lat: 46.636877,
     lng: 12.310618,
     title: "Le Tre Cime di Lavaredo e la Via Lattea",
