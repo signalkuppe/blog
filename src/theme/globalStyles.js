@@ -45,6 +45,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: var(--font-family-base);
     line-height: 1.6;
+    letter-spacing: 0.02em;
     color: var(--color-text);
     background: var(--color-background);
     margin: 0;
@@ -54,8 +55,9 @@ const GlobalStyles = createGlobalStyle`
   :is(h1,h2,h3,h4,h5,h6) {
     font-weight: 900;
     font-stretch: 50%;
-    line-height: 1.2;
+    line-height: 1.1;
     margin-bottom: 0.5rem;
+    letter-spacing: 0;
     color: var(--color-text-light-accent);
   }
 
@@ -89,9 +91,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   *:focus {
-    transition: transform 0.3s ease;
-    transform: scale(1.1);
-    outline: none;
+
   }
 
   ::selection {

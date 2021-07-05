@@ -2,8 +2,7 @@ import { css } from 'styled-components';
 
 export const vars = {
     '--color-background': '#11131A',
-    '--color-background-light': '#2C344A',
-    '--color-background-dark': '#1D1F26',
+    '--color-background-light': '#1D1F26',
     '--color-primary': '#F4BF3A',
     '--color-secondary': '#4790F9',
     '--color-text': '#CACDD6',
@@ -23,8 +22,9 @@ export const vars = {
     '--space-unit': '1.5rem',
     '--header-height': '6rem',
     '--logo-width': '9rem',
-    '--container-max-width': '62rem', // 1170 - 1.5rem * 2
+    '--container-max-width': '80rem',
     '--container-offset': 'calc(var(--logo-width) + var(--space-unit))',
+    '--z-index-menu': '1000',
 };
 
 export const device = {

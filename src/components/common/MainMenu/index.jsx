@@ -4,7 +4,6 @@ import { Script } from 'pequeno';
 import { visuallyHidden } from '../../../theme';
 import vars from '../../../vars';
 import Icon from '../../ui/Icon';
-import Menu from '../../ui/Menu';
 import List from '../../ui/List';
 import Link from '../../ui/Link';
 import VerticalSpace from '../../ui/VerticalSpace';
@@ -14,10 +13,12 @@ import Facebook from '../../ui/Icon/icons/Facebook.svg';
 import Twitter from '../../ui/Icon/icons/Twitter.svg';
 import Instagram from '../../ui/Icon/icons/Instagram.svg';
 import Github from '../../ui/Icon/icons/Github.svg';
+import NavigationLinks from '../NavigationLinks';
 import client from './index.client';
 
 const StyledButton = styled.button`
     appearance: none;
+    touch-action: manipulation;
     background: transparent;
     border: none;
     color: var(--color-text-accent);
@@ -44,19 +45,23 @@ const Panel = styled.nav`
     position: fixed;
     right: 0;
     top: 0;
+    z-index: var(--z-index-menu);
     will-change: transform;
     transform: translate3d(100%, 0, 0);
     visibility: hidden;
-    width: 100vw;
     height: 100vh;
-    max-width: 20rem;
-    background: var(--color-background-dark);
+    width: 100vw;
+    max-width: 21rem;
+    background: var(--color-background-light);
     padding: 0 var(--space-unit);
-    filter: drop-shadow(-5px 0px 15px var(--color-background));
-    transition: transform 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    filter: drop-shadow(-5px 0px 20px rgba(0, 0, 0, 0.35));
+
     &.js-is-open {
         visibility: visible;
         transform: translate3d(0, 0, 0);
+    }
+    @media screen and (prefers-reduced-motion: no-preference) {
+        transition: transform 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
 `;
 
@@ -67,8 +72,8 @@ const PanelHeader = styled.header`
     padding-top: var(--space-unit);
 `;
 
-const StyledMenu = styled(Menu)`
-    height: calc(100vh - 16rem);
+const StyledNavigationLinks = styled(NavigationLinks)`
+    height: calc(100% - 16rem);
 `;
 
 const PanelFooter = styled.footer`
@@ -120,7 +125,7 @@ export default function MainMenu({ route }) {
                             <Icon icon={CloseIcon} l />
                         </StyledButton>
                     </PanelHeader>
-                    <StyledMenu links={links} active={1} />
+                    <StyledNavigationLinks links={links} active={1} />
                     <PanelFooter>
                         <span id="js-year"></span> -{' '}
                         <FooterLink inherit href={vars.websiteUrl}>
@@ -183,7 +188,16 @@ export default function MainMenu({ route }) {
                     </PanelFooter>
                 </Panel>
             </MenuContainer>
-            <Script>{client}</Script>
+            <Script
+                libs={[
+                    {
+                        where: 'body',
+                        tag: '<script src="/js/utils.js" />',
+                    },
+                ]}
+            >
+                {client}
+            </Script>
         </>
     );
 }

@@ -2,11 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Header from '../../common/Header';
 import GlobalStyles from '../../../theme/globalStyles';
-import Container from '../Container';
 
 const HeaderContainer = styled.header`
     height: var(--header-height);
-    outline: 1px solid yellow;
 `;
 
 export default function BaseLayout({ route, head, children }) {
@@ -18,9 +16,7 @@ export default function BaseLayout({ route, head, children }) {
                 <HeaderContainer>
                     <Header route={route} />
                 </HeaderContainer>
-                <main>
-                    <Container>{children}</Container>
-                </main>
+                <main>{children}</main>
                 <footer>footer</footer>
             </body>
         </html>

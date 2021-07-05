@@ -9,12 +9,12 @@ export default function (Component) {
             display: block;
             width: 1.125em;
             height: 0.125em;
-            max-width: 3rem;
+            max-width: 4rem;
             min-height: 0.2rem;
             background: var(--color-primary);
             position: absolute;
             left: 0;
-            bottom: 0;
+            bottom: -0.1em;
         }
     `;
     return function withFiletto({ ...props }) {

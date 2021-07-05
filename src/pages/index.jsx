@@ -57,6 +57,11 @@ export default function HomePage({ route }) {
                 dignissimos saepe doloremque impedit numquam cum, beatae
                 veritatis.
             </p>
+            <p>
+                quia adipisci voluptates nulla ullam fugiat voluptatem
+                dignissimos saepe doloremque impedit numquam cum, beatae
+                veritatis.{' '}
+            </p>
         </BaseLayout>
     );
 }

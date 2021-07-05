@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import withFiletto from '../../hoc/withFiletto';
-import List from '../List';
-import Link from '../Link';
+import List from '../../ui/List';
+import Link from '../../ui/Link';
 
 const StyledUl = styled(List)`
     display: flex;
@@ -30,7 +30,7 @@ const StyledLink = styled(Link)`
     }
 `;
 
-export default function Menu({ links, active, ...props }) {
+export default function NavigationLinks({ links, active, ...props }) {
     const renderLink = function (index, link) {
         if (index === active) {
             return (

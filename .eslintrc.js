@@ -31,4 +31,8 @@ module.exports = {
             },
         },
     },
+    globals: {
+        debounce: 'readonly',
+        IS_SAFARI: 'readonly',
+    },
 };

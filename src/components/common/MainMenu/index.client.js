@@ -52,10 +52,21 @@ function closeMenu() {
     }, 1);
 }
 
-openButton.addEventListener('click', function (e) {
+// fix ios vh
+
+function onResize() {
+    menuPanel.style.height = `${window.innerHeight}px`;
+}
+
+if (IS_SAFARI) {
+    onResize();
+    window.addEventListener('resize', debounce(onResize, 250));
+}
+
+openButton.addEventListener('click', function () {
     openMenu();
 });
 
-closeButton.addEventListener('click', function (e) {
+closeButton.addEventListener('click', function () {
     closeMenu();
 });

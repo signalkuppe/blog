@@ -6,13 +6,11 @@ const postQuery = {
     order: '-fields.date',
     limit: 1,
 };
-module.exports = () => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            let posts = await contentfulClient.getEntries(postQuery);
-            resolve(normalizePosts(posts));
-        } catch (err) {
-            reject(err);
-        }
+module.exports = async () => {
+    return new Promise((resolve, reject) => {
+        contentfulClient
+            .getEntries(postQuery)
+            .then((posts) => resolve(normalizePosts(posts)))
+            .catch((err) => reject(err));
     });
 };
