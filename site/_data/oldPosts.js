@@ -6,40 +6,6 @@
 
 module.exports = [
   {
-    lat: 46.636877,
-    lng: 12.310618,
-    title: "Le Tre Cime di Lavaredo e la Via Lattea",
-    date: "19/10/14",
-    dateTime: "2014-10-19T00:00:00+02:00",
-    link: "/escursionismo/2014/10/19/via-lattea-tre-cime-lavaredo.html",
-    tags: ["dolomiti"],
-    description:
-      "Escursione fotografica per riprendere la Tre Cime di Lavaredo con dietro la via lattea, consigli e qualche informazione sulla tecnica di ripresa",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/191014.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/191014.jpg",
-    card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/191014.jpg",
-  },
-
-  {
-    lat: 46.046035,
-    lng: 9.908043,
-    title: "Pizzo del Diavolo di Tenda",
-    date: "04/10/14",
-    dateTime: "2014-10-04T00:00:00+02:00",
-    link: "/alpinismo/2014/10/04/pizzo-del-diavolo-di-tenda.html",
-    tags: ["orobie"],
-    description:
-      "Relazione della salita al Pizzo del Diavolo di Tenda per la via normale dal Rifugio Calvi",
-    cover:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_150,h_150,c_fill,f_auto,q_50,g_center/blog/covers/041014.jpg",
-    marker:
-      "https://res.cloudinary.com/signalkuppe/image/upload/w_40,h_40,c_fill,f_auto,q_30,g_center/blog/covers/041014.jpg",
-    card: "https://res.cloudinary.com/signalkuppe/image/upload/w_600,h_400,c_fill,f_auto,q_70,g_center/blog/covers/041014.jpg",
-  },
-
-  {
     lat: 46.62128,
     lng: 9.872826,
     title: "Piz Kesch 3414m",
