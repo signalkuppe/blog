@@ -3,7 +3,7 @@ const caption = document.getElementById('js-postCover-caption');
 const image = document.getElementById('js-postCover-img');
 const loader = document.getElementById('js-postCover-loader');
 
-if (!image.naturalWidth) {
+if (!image.complete || !image.naturalWidth) {
     loader.style.display = 'block';
     image.style.visibility = 'hidden';
     image.style.opacity = 0;

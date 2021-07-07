@@ -45,6 +45,14 @@ export const visuallyHidden = css`
     width: 1px;
 `;
 
+export const hideScrollbar = css`
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+`;
+
 export const propsToFontSize = (props) => {
     if (props.xxs) {
         return 'var(--font-size-xx-small)';
