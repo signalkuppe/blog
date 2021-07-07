@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
+import { device } from '../../../theme';
 
 const loader = keyframes`
   0% {
@@ -61,7 +62,7 @@ const LoaderContainer = styled.div`
     position: relative;
     border: 4px solid var(--color-primary);
     top: 50%;
-    @media screen and (prefers-reduced-motion: no-preference) {
+    @media ${device.noReduceMotion} {
         animation: ${loader} 4s infinite ease;
     }
 `;
@@ -71,7 +72,7 @@ const LoaderInner = styled.div`
     display: inline-block;
     width: 100%;
     background-color: var(--color-primary);
-    @media screen and (prefers-reduced-motion: no-preference) {
+    @media ${device.noReduceMotion} {
         animation: ${loaderInner} 3s infinite ease-in;
     }
 `;

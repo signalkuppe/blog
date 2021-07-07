@@ -33,6 +33,7 @@ export const device = {
     onlyTablet: `screen and (min-width: 48rem) and (max-width: 85.3125rem)`, // >= 768px <= 1365px
     atLeastTablet: `screen and (min-width: 48rem)`, // >= 768px
     desktop: `screen and (min-width: 85.3125rem)`, // >= 1366px
+    noReduceMotion: `screen and (prefers-reduced-motion: no-preference)`,
 };
 
 export const visuallyHidden = css`

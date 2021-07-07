@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Script } from 'pequeno';
-import { visuallyHidden } from '../../../theme';
+import { visuallyHidden, device } from '../../../theme';
 import vars from '../../../vars';
 import Icon from '../../ui/Icon';
 import List from '../../ui/List';
@@ -60,7 +60,7 @@ const Panel = styled.nav`
         visibility: visible;
         transform: translate3d(0, 0, 0);
     }
-    @media screen and (prefers-reduced-motion: no-preference) {
+    @media ${device.noReduceMotion} {
         transition: transform 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
 `;

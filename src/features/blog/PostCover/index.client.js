@@ -3,6 +3,13 @@ const caption = document.getElementById('js-postCover-caption');
 const image = document.getElementById('js-postCover-img');
 const loader = document.getElementById('js-postCover-loader');
 
+function imageLoaded() {
+    container.classList.add('js-is-loaded');
+    caption.classList.add('js-is-loaded');
+    const event = new CustomEvent('cover-loaded', { bubbles: true });
+    container.dispatchEvent(event);
+}
+
 if (!image.complete || !image.naturalWidth) {
     loader.style.display = 'block';
     image.style.visibility = 'hidden';
@@ -14,13 +21,11 @@ if (!image.complete || !image.naturalWidth) {
 
             setTimeout(() => {
                 image.style.opacity = 1;
-                container.classList.add('js-is-loaded');
-                caption.classList.add('js-is-loaded');
+                imageLoaded();
             }, 100);
         }
     };
 } else {
     // we retrieved it from cache
-    container.classList.add('js-is-loaded');
-    caption.classList.add('js-is-loaded');
+    imageLoaded();
 }

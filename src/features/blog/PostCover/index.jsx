@@ -1,6 +1,7 @@
 import React from 'react';
 import { Script } from 'pequeno';
 import styled from 'styled-components';
+import { device } from '../../../theme';
 import Loader from '../../../components/ui/Loader';
 import client from './index.client';
 
@@ -16,7 +17,7 @@ const StyledFigure = styled.figure`
         display: block;
         object-fit: cover;
         position: relative;
-        @media screen and (prefers-reduced-motion: no-preference) {
+        @media ${device.noReduceMotion} {
             transition: opacity 0.3s linear;
         }
     }
@@ -56,7 +57,7 @@ const StyledFigcaption = styled.figcaption`
     will-change: transform;
     transform: translateX(100%);
     &.js-is-loaded {
-        @media screen and (prefers-reduced-motion: no-preference) {
+        @media ${device.noReduceMotion} {
             transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
         transform: translateX(0%);

@@ -10,7 +10,7 @@ import client from './index.client';
 const MenuContainer = styled.nav`
     background: var(--color-background-light);
     width: 100vw;
-    overflow-x: auto;
+    overflow-x: scroll;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
@@ -18,6 +18,9 @@ const MenuContainer = styled.nav`
     top: 0;
     filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.25));
     ${hideScrollbar};
+    @media ${device.noReduceMotion} {
+        transition: opacity 0.2s linear;
+    }
 `;
 
 const List = styled.ul`
@@ -25,17 +28,22 @@ const List = styled.ul`
     padding: 0;
     list-style: none;
     display: flex;
-    flex-wrap: nowrap;
+    @media ${device.mobile} {
+        flex-wrap: nowrap;
+    }
 `;
 const ListItem = styled.li`
-    width: 100vw;
-    white-space: nowrap;
-    flex-grow: 1;
-    flex-shrink: 0;
+    @media ${device.mobileAndTablet} {
+        scroll-snap-align: start;
+        flex-wrap: nowrap;
+        width: 100vw;
+        white-space: nowrap;
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
 `;
 
 const MenuLink = styled(Link)`
-    scroll-snap-align: start;
     font-stretch: 50%;
     font-weight: 400;
     display: inline-block;
@@ -82,7 +90,7 @@ export default function PostMenu({ post }) {
     ];
     return (
         <>
-            <MenuContainer>
+            <MenuContainer className="js-postMenu">
                 <Container>
                     <List>
                         {menuLinks.map((item, i) => (
@@ -91,9 +99,9 @@ export default function PostMenu({ post }) {
                                     href={item.href}
                                     inherit
                                     noUnderline
-                                    className="js-menuLink"
+                                    className="js-postMenuLink"
                                 >
-                                    <MenuLinkText className="js-menuText">
+                                    <MenuLinkText className="js-postMenuLinkText">
                                         {item.text}
                                     </MenuLinkText>
                                 </MenuLink>

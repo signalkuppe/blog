@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { Script } from 'pequeno';
+import { device } from '../../../theme';
 import Container from '../../../components/layout/Container';
 import MouseIcon from '../../../components/ui/Icon/icons/Mouse.svg';
 import DownIcon from '../../../components/ui/Icon/icons/ChevronDown.svg';
@@ -86,7 +87,7 @@ const ScrollHint = styled.span`
     display: inline-flex;
     flex-direction: column;
     margin-top: 5vmax;
-    @media screen and (prefers-reduced-motion: no-preference) {
+    @media ${device.noReduceMotion} {
         animation: ${ShakeY} 1s linear;
         animation-delay: 1s;
     }
