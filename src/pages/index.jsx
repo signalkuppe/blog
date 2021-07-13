@@ -5,7 +5,7 @@ import Head from '../components/common/Head';
 
 export const permalink = '/index.html';
 
-export default function HomePage({ route }) {
+export default function HomePage({ route, posts }) {
     return (
         <BaseLayout
             route={route}
@@ -62,6 +62,13 @@ export default function HomePage({ route }) {
                 dignissimos saepe doloremque impedit numquam cum, beatae
                 veritatis.{' '}
             </p>
+            <ul>
+                {posts.map((post, i) => (
+                    <li key={i}>
+                        <a href={post.slug}>{post.title}</a>
+                    </li>
+                ))}
+            </ul>
         </BaseLayout>
     );
 }

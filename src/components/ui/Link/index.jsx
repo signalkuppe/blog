@@ -27,6 +27,8 @@ const StyledLink = styled.a`
         props.inherit &&
         css`
             color: inherit;
+            font-size: inherit;
+            font-weight: inherit;
         `}
 `;
 

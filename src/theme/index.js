@@ -27,6 +27,21 @@ export const vars = {
     '--z-index-menu': '1000',
 };
 
+export const headingsStyles = css`
+    font-weight: 900;
+    font-stretch: 50%;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0;
+    color: var(--color-text-light-accent);
+`;
+
+export const headingsSize = {
+    h1: 'var(--font-size-xxx-large)',
+    h2: 'var(--font-size-x-large)',
+    h3: 'var(--font-size-large)',
+};
+
 export const device = {
     mobile: `screen and (max-width: 47.9375rem)`, // <= 767px
     mobileAndTablet: `screen and (max-width: 85.3125rem)`, // <= 1365

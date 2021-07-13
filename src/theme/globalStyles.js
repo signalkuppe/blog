@@ -1,5 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { vars, device } from './';
+import { vars, device, headingsStyles, headingsSize } from './';
 import { defaultStyles as linkDefaultStyles } from '../components/ui/Link';
 
 const rootVars = css`
@@ -38,14 +38,16 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html {
-    line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
+    @media ${device.noReduceMotion} {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
     font-family: var(--font-family-base);
-    line-height: 1.6;
-    letter-spacing: 0.02em;
+    line-height: 1.7;
+    letter-spacing: 0.025em;
     color: var(--color-text);
     background: var(--color-background);
     margin: 0;
@@ -53,25 +55,28 @@ const GlobalStyles = createGlobalStyle`
   }
 
   :is(h1,h2,h3,h4,h5,h6) {
-    font-weight: 900;
-    font-stretch: 50%;
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-    letter-spacing: 0;
-    color: var(--color-text-light-accent);
+    ${headingsStyles};
   }
 
   h1 {
-    font-size: var(--font-size-xxx-large);
+    font-size: ${headingsSize.h1};
   }
 
   h2 {
-    font-size: var(--font-size-x-large);
-    
+    font-size: ${headingsSize.h2};
   }
 
-  h2 + p {
-    margin-top: 0;
+  h3 {
+    font-size: ${headingsSize.h3};
+  }
+
+  p {
+    margin-bottom: calc(var(--space-unit) * 1.5);
+  }
+
+  p + h3,
+  img + p {
+    margin-top: calc(var(--space-unit) * 2);
   }
 
   a {

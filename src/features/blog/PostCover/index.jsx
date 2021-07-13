@@ -48,11 +48,12 @@ const StyledFigcaption = styled.figcaption`
         calc(2vh + 2vw)
     );
     font-weight: 800;
+    line-height: 1.1;
     color: var(--color-text-light-accent);
     position: absolute;
     right: 0;
     bottom: 0;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem var(--space-unit);
     z-index: 100;
     will-change: transform;
     transform: translateX(100%);

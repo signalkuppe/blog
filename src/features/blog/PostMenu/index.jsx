@@ -9,15 +9,9 @@ import client from './index.client';
 
 const MenuContainer = styled.nav`
     background: var(--color-background-light);
-    width: 100vw;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
     position: sticky;
     top: 0;
     filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.25));
-    ${hideScrollbar};
     @media ${device.noReduceMotion} {
         transition: opacity 0.2s linear;
     }
@@ -28,18 +22,26 @@ const List = styled.ul`
     padding: 0;
     list-style: none;
     display: flex;
-    @media ${device.mobile} {
+    flex-direction: row;
+    @media ${device.mobileAndTablet} {
         flex-wrap: nowrap;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        ${hideScrollbar};
+    }
+    @media ${device.desktop} {
+        > * + * {
+            margin-left: calc(var(--space-unit) * 2);
+        }
     }
 `;
 const ListItem = styled.li`
     @media ${device.mobileAndTablet} {
-        scroll-snap-align: start;
-        flex-wrap: nowrap;
-        width: 100vw;
+        scroll-snap-align: end;
         white-space: nowrap;
-        flex-grow: 1;
         flex-shrink: 0;
+        width: 100%;
     }
 `;
 
@@ -49,7 +51,7 @@ const MenuLink = styled(Link)`
     display: inline-block;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
-    padding: 1em 1.5rem;
+    padding: 1.5rem 0;
     :hover {
         color: var(--color-text-light-accent);
         ${(props) =>
@@ -92,7 +94,7 @@ export default function PostMenu({ post }) {
         <>
             <MenuContainer className="js-postMenu">
                 <Container>
-                    <List>
+                    <List className="js-postMenu-list">
                         {menuLinks.map((item, i) => (
                             <ListItem key={i}>
                                 <MenuLink

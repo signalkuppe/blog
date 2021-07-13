@@ -7,7 +7,9 @@ function imageLoaded() {
     container.classList.add('js-is-loaded');
     caption.classList.add('js-is-loaded');
     const event = new CustomEvent('cover-loaded', { bubbles: true });
-    container.dispatchEvent(event);
+    setTimeout(() => {
+        container.dispatchEvent(event);
+    });
 }
 
 if (!image.complete || !image.naturalWidth) {
