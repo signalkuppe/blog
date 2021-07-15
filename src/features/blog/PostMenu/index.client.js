@@ -1,43 +1,49 @@
 const menu = document.querySelector('.js-postMenu');
-const sections = document.querySelectorAll('.js-postSection');
-const linkTexts = document.querySelectorAll('.js-postMenuLinkText');
 const scrollableList = document.querySelector('.js-postMenu-list');
-const sectionsObserver = new IntersectionObserver(sectionCallback, {
-    threshold: 0.75,
-});
+const activeLink = function (entry) {
+    return document.querySelector(
+        `.js-postMenuLink[href="#${entry.querySelector('a').id}"]`,
+    );
+};
+const activeLinkText = function (entry) {
+    return activeLink(entry).querySelector('.js-postMenuLinkText');
+};
+const setActiveLinktext = function (el) {
+    el.classList.add('js-is-active');
+};
+const unsetActiveLinktext = function (el) {
+    el.classList.remove('js-is-active');
+};
+const scroller = scrollama();
 
-function sectionCallback(entries) {
-    entries.forEach(function (entry) {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-            const activeLink = document.querySelector(
-                `.js-postMenuLink[href="#${
-                    entry.target.querySelector('a').name
-                }"]`,
-            );
+scroller
+    .setup({
+        step: '.js-postSection',
+    })
+    .onStepEnter(({ element }) => {
+        // { element, index, direction }
+        setActiveLinktext(activeLinkText(element));
 
-            console.log(entry);
-
-            Array.from(linkTexts).forEach(function (text) {
-                text.classList.remove('js-is-active');
-            });
-
-            activeLink
-                .querySelector('.js-postMenuLinkText')
-                .classList.add('js-is-active');
-
-            console.log(activeLink);
-
-            scrollableList.scrollLeft = activeLink.closest('li').offsetLeft;
+        setTimeout(function () {
+            scrollableList.scrollLeft = activeLink(element).offsetLeft - 24;
+        }, 100);
+    })
+    .onStepExit(({ element, direction }) => {
+        // { element, index, direction }
+        const step = element.getAttribute('data-step');
+        if (step === 'relazione' && direction === 'up') {
+            return;
         }
+        unsetActiveLinktext(activeLinkText(element));
     });
-}
 
-Array.from(sections).forEach(function (section) {
-    sectionsObserver.observe(section);
-});
+window.addEventListener('resize', scroller.resize);
 
 menu.style.opacity = 0;
 
 document.addEventListener('cover-loaded', function () {
     menu.style.opacity = 1;
+    document
+        .getElementById('js-postMenuLinkText-relazione')
+        .classList.add('js-is-active');
 });

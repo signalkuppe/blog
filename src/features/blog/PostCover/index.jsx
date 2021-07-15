@@ -31,8 +31,8 @@ const StyledFigure = styled.figure`
         height: 100%;
         background: linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0) 80%,
-            rgba(0, 0, 0, 0.8) 100%
+            rgba(0, 0, 0, 0) 70%,
+            rgba(0, 0, 0, 0.85) 100%
         );
         z-index: 10;
     }
@@ -42,18 +42,14 @@ const StyledFigcaption = styled.figcaption`
     font-family: var(--cont-family-base);
     font-stretch: 50%;
     font-style: normal;
-    font-size: clamp(
-        var(--font-size-small),
-        var(--font-size-xx-large),
-        calc(2vh + 2vw)
-    );
+    font-size: clamp(var(--font-size-small), var(--font-size-xxx-large), 3vmax);
     font-weight: 800;
     line-height: 1.1;
     color: var(--color-text-light-accent);
     position: absolute;
     right: 0;
     bottom: 0;
-    padding: 0.5rem var(--space-unit);
+    padding: 1.5vmax var(--space-unit);
     z-index: 100;
     will-change: transform;
     transform: translateX(100%);
@@ -113,6 +109,7 @@ export default function PostCover({ cover }) {
                         src={url}
                         alt={alt}
                         decoding="async"
+                        loading="lazy"
                         width="1600"
                         height="1066"
                         id="js-postCover-img"

@@ -22,6 +22,12 @@ const GlobalStyles = createGlobalStyle`
     src: url('/fonts/sriracha.woff2') format('woff2');
   }
 
+  @font-face {
+    font-family: 'Playfair Display';
+    font-display: swap;
+    src: url('/fonts/PlayfairDisplay-Bold.woff2') format('woff2');
+  }
+
   :root {
     ${rootVars};
     font-size: 100%;
@@ -77,6 +83,10 @@ const GlobalStyles = createGlobalStyle`
   p + h3,
   img + p {
     margin-top: calc(var(--space-unit) * 2);
+  }
+
+  h3 + img  {
+    margin-top: calc(var(--space-unit) * 0.25);
   }
 
   a {

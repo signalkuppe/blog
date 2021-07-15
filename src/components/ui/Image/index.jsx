@@ -1,11 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const StyledImage = styled.img`
+export const imgStyles = css`
     max-width: 100%;
     height: auto;
     display: block;
     aspect-ratio: attr(width) / attr(height);
+`;
+
+const StyledImage = styled.img`
+    ${imgStyles}
 `;
 
 export default function Image({ ...props }) {

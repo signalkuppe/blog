@@ -48,10 +48,10 @@ const ListItem = styled.li`
 const MenuLink = styled(Link)`
     font-stretch: 50%;
     font-weight: 400;
-    display: inline-block;
+    display: block;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
-    padding: 1.5rem 0;
+    padding: calc(var(--space-unit) / 2) 0;
     :hover {
         color: var(--color-text-light-accent);
         ${(props) =>
@@ -61,6 +61,7 @@ const MenuLink = styled(Link)`
             `}
     }
     @media ${device.desktop} {
+        padding: var(--space-unit) 0;
         font-size: var(--font-size-medium);
     }
 `;
@@ -71,40 +72,25 @@ const MenuLinkText = styled.span`
     }
 `;
 
-export default function PostMenu({ post }) {
-    const menuLinks = [
-        {
-            href: '#relazione',
-            text: 'Relazione',
-        },
-        {
-            href: '#foto',
-            text: 'Galleria fotografica',
-        },
-        {
-            href: '#mappa',
-            text: 'Mappa e tracce',
-        },
-        {
-            href: '#condividi',
-            text: 'Stampa e condividi',
-        },
-    ];
+export default function PostMenu({ sections }) {
     return (
         <>
             <MenuContainer className="js-postMenu">
                 <Container>
                     <List className="js-postMenu-list">
-                        {menuLinks.map((item, i) => (
+                        {sections.map((section, i) => (
                             <ListItem key={i}>
                                 <MenuLink
-                                    href={item.href}
+                                    href={`#${section.id}`}
                                     inherit
                                     noUnderline
                                     className="js-postMenuLink"
                                 >
-                                    <MenuLinkText className="js-postMenuLinkText">
-                                        {item.text}
+                                    <MenuLinkText
+                                        className="js-postMenuLinkText"
+                                        id={`js-postMenuLinkText-${section.id}`}
+                                    >
+                                        {section.title}
                                     </MenuLinkText>
                                 </MenuLink>
                             </ListItem>
@@ -112,7 +98,16 @@ export default function PostMenu({ post }) {
                     </List>
                 </Container>
             </MenuContainer>
-            <Script>{client}</Script>
+            <Script
+                libs={[
+                    {
+                        where: 'body',
+                        tag: '<script src="/libs/scrollama.js" />',
+                    },
+                ]}
+            >
+                {client}
+            </Script>
         </>
     );
 }

@@ -5,7 +5,7 @@ import Head from '../../../components/common/Head';
 import List from '../../../components/ui/List';
 import PostHero from '../PostHero';
 import PostCover from '../PostCover';
-import PostContent from '../PostContent';
+import PostSections from '../PostSections';
 
 export default function PostPage({ post, pagination, route }) {
     return (
@@ -21,7 +21,7 @@ export default function PostPage({ post, pagination, route }) {
         >
             <PostHero post={post} />
             <PostCover cover={post.cover} />
-            <PostContent post={post} />
+            <PostSections post={post} />
             <List reset inline>
                 {pagination.prev && (
                     <li>

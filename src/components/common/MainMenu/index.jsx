@@ -65,7 +65,7 @@ const Panel = styled.nav`
     }
 `;
 
-const PanelHeader = styled.header`
+const PanelHeader = styled.div`
     display: flex;
     justify-content: flex-end;
     height: 8rem;
@@ -76,7 +76,7 @@ const StyledNavigationLinks = styled(NavigationLinks)`
     height: calc(100% - 16rem);
 `;
 
-const PanelFooter = styled.footer`
+const PanelFooter = styled.div`
     font-size: var(--font-size-x-small);
     height: 8rem;
 `;

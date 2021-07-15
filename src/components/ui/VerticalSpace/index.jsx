@@ -8,5 +8,5 @@ const StyledVerticalSpace = styled.div`
 `;
 
 export default function VerticalSpace({ size, ...props }) {
-    return <StyledVerticalSpace aria-hidden="true" size={size} {...props} />;
+    return <StyledVerticalSpace aria-hidden="true" $size={size} {...props} />;
 }
