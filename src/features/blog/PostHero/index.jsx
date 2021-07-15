@@ -74,8 +74,6 @@ const Category = styled.span`
 `;
 
 const StyledPostCategoryIcon = styled(PostCategoryIcon)`
-    width: var(--font-size-x-large);
-    height: var(--font-size-x-large);
     transform: translateX(-0.1em);
 `;
 
