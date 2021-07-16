@@ -5,7 +5,7 @@ import { imgStyles } from '../../../components/ui/Image';
 
 const PostBody = styled.section`
     p:first-child:first-letter {
-        font-family: var(--font-family-serif);
+        font-family: var(--font-family-cursive);
         font-size: var(--font-size-xxxx-large);
         color: var(--color-text-light-accent);
         float: left;
@@ -22,15 +22,16 @@ const PostBodyStyles = createGlobalStyle`
     */
     .postImage {
         margin-bottom: calc(var(--space-unit) * 1.5);
+        background: var(--color-background-light);
         img {
           ${imgStyles};
         }
         figcaption {
           font-family:  var(--font-family-cursive);
-          font-size: var(--font-size-small);
-          font-weight:400;
-          font-stretch: 50%;
+          font-style: normal;
+          color: var(--color-text-light-accent);
           padding-top: 0.5em;
+          background: var(--color-background);
         }
     }
 `;

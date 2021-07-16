@@ -23,9 +23,9 @@ const GlobalStyles = createGlobalStyle`
   }
 
   @font-face {
-    font-family: 'Playfair Display';
+    font-family: 'Lobster';
     font-display: swap;
-    src: url('/fonts/PlayfairDisplay-Bold.woff2') format('woff2');
+    src: url('/fonts/lobster.woff2') format('woff2');
   }
 
   :root {
@@ -53,7 +53,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: var(--font-family-base);
     line-height: 1.7;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.015em;
     color: var(--color-text);
     background: var(--color-background);
     margin: 0;

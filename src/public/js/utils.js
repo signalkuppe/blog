@@ -1,3 +1,7 @@
+/**
+ * General utilities used in all 
+*/
+
 // eslint-disable-next-line no-unused-vars
 const debounce = (callback, wait) => {
   let timeoutId = null;

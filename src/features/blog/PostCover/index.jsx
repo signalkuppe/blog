@@ -39,11 +39,9 @@ const StyledFigure = styled.figure`
 `;
 
 const StyledFigcaption = styled.figcaption`
-    font-family: var(--cont-family-base);
-    font-stretch: 50%;
+    font-family: var(--font-family-cursive);
     font-style: normal;
     font-size: clamp(var(--font-size-small), var(--font-size-xxx-large), 3vmax);
-    font-weight: 800;
     line-height: 1.1;
     color: var(--color-text-light-accent);
     position: absolute;

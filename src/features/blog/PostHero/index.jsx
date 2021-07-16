@@ -53,7 +53,6 @@ const Hero = styled.div`
 `;
 
 const HeroSpacer = styled.div`
-    margin-top: calc(var(--header-height) * -0.5);
     margin-left: var(--font-size-x-large);
     margin-right: calc(var(--space-unit) * 1.5);
 `;
@@ -69,11 +68,13 @@ const Category = styled.span`
     display: block;
     font-size: clamp(var(--font-size-medium), var(--font-size-x-large), 2vmax);
     font-weight: 700;
-    margin-left: calc(var(--font-size-x-large) * -1);
+    margin-left: -1em;
     margin-bottom: var(--space-unit);
 `;
 
 const StyledPostCategoryIcon = styled(PostCategoryIcon)`
+    width: 1em;
+    height: 1em;
     transform: translateX(-0.1em);
 `;
 

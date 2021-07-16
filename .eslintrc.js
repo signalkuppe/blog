@@ -35,5 +35,6 @@ module.exports = {
         debounce: 'readonly',
         IS_SAFARI: 'readonly',
         scrollama: 'readonly',
+        GLightbox: 'readonly',
     },
 };

@@ -24,8 +24,8 @@ const StyledButton = styled.button`
     color: var(--color-text-accent);
     line-height: 1;
     padding: 0;
-    width: 2.5rem;
-    height: 2.5rem;
+    display: block;
+    height: 1em;
     :hover,
     :active {
         color: var(--color-text-light-accent);
@@ -68,8 +68,8 @@ const Panel = styled.nav`
 const PanelHeader = styled.div`
     display: flex;
     justify-content: flex-end;
-    height: 8rem;
-    padding-top: var(--space-unit);
+    align-items: center;
+    height: var(--header-height);
 `;
 
 const StyledNavigationLinks = styled(NavigationLinks)`

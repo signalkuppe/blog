@@ -6,39 +6,65 @@ import Image from '../../../components/ui/Image';
 import Link from '../../../components/ui/Link';
 import { device } from '../../../theme';
 import client from './index.client';
+import GalleryPluginStyleOverrides from './GalleryPluginStyleOverrides';
 
 const Wrapper = styled.section``;
 const StyledList = styled(List)`
     display: grid;
-    grid-gap: var(--space-unit);
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    @media ${device.mobileAndTablet} {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-gap: calc(var(--space-unit) / 1.5);
+    grid-template-columns: repeat(auto-fit, 70px);
+    @media ${device.desktop} {
+        grid-template-columns: repeat(auto-fit, 120px);
     }
 `;
 
 const StyledListItem = styled.li`
     background: var(--color-background-light);
-    width: 150px;
-    height: 150px;
     aspect-ratio: 1/1;
-    @media ${device.mobileAndTablet} {
-        width: 80px;
-        height: 80px;
+    width: 70px;
+    height: 70px;
+    @media ${device.desktop} {
+        width: 120px;
+        height: 120px;
     }
 `;
+
+/**
+ * Library css overrides
+ */
 
 export default function PostGallery({ gallery }) {
     const imgThumbUrl = function (url, format) {
         return `${url}?w=300&h=300&fm=${format}&fit=thumb&q=80`;
     };
+    // TO DO: use webp, when the plugin will support responsive image natively
+    // we set sizes from js
+    const enlargmentSmall = function (url) {
+        return `${url}?w=1024&fm=jpg&q=80&fl=progressive`;
+    };
+    const enlargmentMedium = function (url) {
+        return `${url}?w=1920&fm=jpg&q=80&fl=progressive`;
+    };
+    const enlargmentLarge = function (url) {
+        return `${url}?w=3000&fm=jpg&q=80&fl=progressive`;
+    };
     return (
         <>
+            <GalleryPluginStyleOverrides />
             <Wrapper>
                 <StyledList reset id="js-postGallery">
                     {gallery.map((item, i) => (
                         <StyledListItem key={i}>
-                            <Link href={item.url}>
+                            <Link
+                                href={item.src}
+                                data-type="image"
+                                data-href-small={enlargmentSmall(item.src)}
+                                data-href-medium={enlargmentMedium(item.src)}
+                                data-href-large={enlargmentLarge(item.src)}
+                                className="js-galleryItem"
+                                data-gallery="gallery1"
+                                data-glightbox={`title: ${item.title}`}
+                            >
                                 <picture>
                                     <source
                                         srcSet={imgThumbUrl(item.src, 'webp')}
@@ -54,7 +80,6 @@ export default function PostGallery({ gallery }) {
                                         width={item.width}
                                         height={item.height}
                                         loading="lazy"
-                                        className="js-postGallery-item"
                                     />
                                 </picture>
                             </Link>
@@ -66,11 +91,11 @@ export default function PostGallery({ gallery }) {
                 libs={[
                     {
                         where: 'body',
-                        tag: '<script src="/libs/lightgallery.js" />',
+                        tag: '<script src="/libs/glightbox.js" />',
                     },
                     {
                         where: 'head',
-                        tag: '<link rel="stylesheet" href="/libs/lightgallery.css" />',
+                        tag: '<link rel="stylesheet" href="/libs/glightbox.css" />',
                     },
                 ]}
             >

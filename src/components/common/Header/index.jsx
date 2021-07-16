@@ -15,14 +15,10 @@ const HeaderContainer = styled.div`
 `;
 
 const StyledH1 = styled.h1`
+    font-size: var(--font-size-x-large);
     color: var(--color-text-light-accent);
     width: var(--logo-width);
     margin: 0;
-    transform: translateY(0.27rem);
-`;
-
-const LogoText = styled.span`
-    ${visuallyHidden}
 `;
 
 const LogoLink = styled(Link)`
@@ -40,7 +36,6 @@ export default function Header({ route }) {
                     href={vars.websiteUrl}
                     title="Torna alla homepage"
                 >
-                    <LogoText>{vars.siteName}</LogoText>
                     <Logo />
                 </LogoLink>
             </StyledH1>
