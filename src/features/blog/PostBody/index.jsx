@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { Html } from 'pequeno';
 import { imgStyles } from '../../../components/ui/Image';
 
-const PostBody = styled.div`
+const PostBody = styled.section`
     p:first-child:first-letter {
         font-family: var(--font-family-serif);
         font-size: var(--font-size-xxxx-large);

@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import PostMenu from '../PostMenu';
 import PostBody from '../PostBody';
+import PostGallery from '../PostGallery';
 import Container from '../../../components/layout/Container';
 import Link from '../../../components/ui/Link';
 import LoremIpsum from '../../../components/ui/LoremIpsum';
@@ -12,6 +13,7 @@ const StyledContainer = styled(Container)`
 `;
 
 const PostSectionTitle = styled.h2`
+    margin-bottom: var(--space-unit);
     ${(props) =>
         props.hide &&
         css`
@@ -30,7 +32,7 @@ const PostSection = styled.section`
 `;
 
 export default function PostSections({ post }) {
-    const { body } = post;
+    const { body, gallery } = post;
     const sections = [
         {
             id: 'relazione',
@@ -40,7 +42,7 @@ export default function PostSections({ post }) {
         {
             id: 'foto',
             title: 'Galleria fotografica',
-            content: <LoremIpsum times={3} />,
+            content: <PostGallery gallery={gallery} />,
         },
         {
             id: 'mappa',

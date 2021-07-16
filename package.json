@@ -25,6 +25,7 @@
     "pequeno": "^0.0.17"
   },
   "dependencies": {
+    "lightgallery": "^2.1.8",
     "scrollama": "^2.2.2"
   }
 }
