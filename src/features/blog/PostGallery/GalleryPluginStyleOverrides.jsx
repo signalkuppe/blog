@@ -33,6 +33,9 @@ export default createGlobalStyle`
         padding: var(--space-unit)!important;
         @media ${device.desktop} {
             padding-left: 0!important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
     }
     .goverlay {
@@ -44,5 +47,14 @@ export default createGlobalStyle`
 
     .glightbox-clean .gclose {
         background: none!important;
+    }
+
+    // download link, added via js
+    .js-postGallery-downloadLink {
+        font-size: var(--font-size-small)!important;
+        line-height: 1;
+        @media ${device.mobileAndTablet} {
+            display: none;
+        }
     }
 `;

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import PostMenu from '../PostMenu';
 import PostBody from '../PostBody';
 import PostGallery from '../PostGallery';
+import PostGps from '../PostGps';
 import Container from '../../../components/layout/Container';
 import Link from '../../../components/ui/Link';
 import LoremIpsum from '../../../components/ui/LoremIpsum';
@@ -32,7 +33,7 @@ const PostSection = styled.section`
 `;
 
 export default function PostSections({ post }) {
-    const { body, gallery } = post;
+    const { body, gallery, gps } = post;
     const sections = [
         {
             id: 'relazione',
@@ -47,7 +48,7 @@ export default function PostSections({ post }) {
         {
             id: 'mappa',
             title: 'Mappa e tracce',
-            content: <LoremIpsum times={3} />,
+            content: gps.hasTracks ? <PostGps gps={gps} /> : null,
         },
         {
             id: 'condividi',
@@ -59,24 +60,26 @@ export default function PostSections({ post }) {
         <>
             <PostMenu sections={sections} />
             <StyledContainer>
-                {sections.map((section, i) => (
-                    <PostSection
-                        key={i}
-                        className="js-postSection"
-                        data-step={section.id}
-                    >
-                        <PostSectionTitle hide={section.id === 'relazione'}>
-                            <PostSectionTitleLink
-                                inherit
-                                noUnderline
-                                id={section.id}
-                            >
-                                {section.title}
-                            </PostSectionTitleLink>
-                        </PostSectionTitle>
-                        {section.content}
-                    </PostSection>
-                ))}
+                {sections.map((section, i) =>
+                    section.content ? (
+                        <PostSection
+                            key={i}
+                            className="js-postSection"
+                            data-step={section.id}
+                        >
+                            <PostSectionTitle hide={section.id === 'relazione'}>
+                                <PostSectionTitleLink
+                                    inherit
+                                    noUnderline
+                                    id={section.id}
+                                >
+                                    {section.title}
+                                </PostSectionTitleLink>
+                            </PostSectionTitle>
+                            {section.content}
+                        </PostSection>
+                    ) : null,
+                )}
             </StyledContainer>
         </>
     );

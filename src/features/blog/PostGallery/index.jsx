@@ -27,6 +27,18 @@ const StyledListItem = styled.li`
         width: 120px;
         height: 120px;
     }
+    a {
+        img {
+            border-bottom: 4px solid transparent;
+        }
+        :hover {
+            img {
+                transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+                border-bottom-color: var(--color-primary);
+                transform: scale(1.05);
+            }
+        }
+    }
 `;
 
 /**
@@ -48,15 +60,24 @@ export default function PostGallery({ gallery }) {
     const enlargmentLarge = function (url) {
         return `${url}?w=3000&fm=jpg&q=80&fl=progressive`;
     };
+
+    const gallerySrcs = gallery.map((img) => img.src);
+
     return (
         <>
             <GalleryPluginStyleOverrides />
             <Wrapper>
-                <StyledList reset id="js-postGallery">
+                <StyledList
+                    reset
+                    id="js-postGallery"
+                    data-images={JSON.stringify(gallerySrcs)} // list of download links (used in js)
+                >
                     {gallery.map((item, i) => (
                         <StyledListItem key={i}>
                             <Link
                                 href={item.src}
+                                title={item.title}
+                                inherit
                                 data-type="image"
                                 data-href-small={enlargmentSmall(item.src)}
                                 data-href-medium={enlargmentMedium(item.src)}

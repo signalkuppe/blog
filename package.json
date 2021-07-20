@@ -26,6 +26,12 @@
   },
   "dependencies": {
     "glightbox": "^3.0.9",
+    "install": "^0.13.0",
+    "leaflet": "^1.7.1",
+    "leaflet-fullscreen": "^1.0.2",
+    "leaflet-gesture-handling": "^1.2.1",
+    "leaflet-gpx": "^1.5.2",
+    "npm": "^7.20.0",
     "scrollama": "^2.2.2"
   }
 }

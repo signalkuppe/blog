@@ -36,5 +36,6 @@ module.exports = {
         IS_SAFARI: 'readonly',
         scrollama: 'readonly',
         GLightbox: 'readonly',
+        L: 'readonly',
     },
 };
