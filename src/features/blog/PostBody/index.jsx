@@ -1,9 +1,11 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Html } from 'pequeno';
+import Container from '../../../components/layout/Container';
 import { imgStyles } from '../../../components/ui/Image';
 
-const PostBody = styled.section`
+const PostBody = styled.div`
+    max-width: 70ch;
     p:first-child:first-letter {
         font-family: var(--font-family-cursive);
         font-size: var(--font-size-xxxx-large);
@@ -38,9 +40,11 @@ const PostBodyStyles = createGlobalStyle`
 
 export default function PostContent({ body }) {
     return (
-        <PostBody>
-            <PostBodyStyles />
-            <Html>{body}</Html>
-        </PostBody>
+        <Container as="section">
+            <PostBody>
+                <PostBodyStyles />
+                <Html>{body}</Html>
+            </PostBody>
+        </Container>
     );
 }

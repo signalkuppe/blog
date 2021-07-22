@@ -18,5 +18,6 @@ module.exports = {
             'libs/leaflet-gesture-handling.js',
         'node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.css':
             'libs/leaflet-gesture-handling.css',
+        'node_modules/chart.js/dist/chart.js': 'libs/chart.js',
     },
 };

@@ -40,7 +40,7 @@ const ShakeY = keyframes`
 `;
 
 const commonMetaStyles = css`
-    font-stretch: 50%;
+    font-stretch: var(--headings-font-stretch);
     text-transform: uppercase;
     color: var(--color-text-dark-accent);
 `;

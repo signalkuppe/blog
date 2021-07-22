@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Script } from 'pequeno';
+import Container from '../../../components/layout/Container';
 import List from '../../../components/ui/List';
 import Image from '../../../components/ui/Image';
 import Link from '../../../components/ui/Link';
@@ -8,7 +9,9 @@ import { device } from '../../../theme';
 import client from './index.client';
 import GalleryPluginStyleOverrides from './GalleryPluginStyleOverrides';
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+    max-width: 70ch;
+`;
 const StyledList = styled(List)`
     display: grid;
     grid-gap: calc(var(--space-unit) / 1.5);
@@ -64,7 +67,7 @@ export default function PostGallery({ gallery }) {
     const gallerySrcs = gallery.map((img) => img.src);
 
     return (
-        <>
+        <Container as="section">
             <GalleryPluginStyleOverrides />
             <Wrapper>
                 <StyledList
@@ -122,6 +125,6 @@ export default function PostGallery({ gallery }) {
             >
                 {client}
             </Script>
-        </>
+        </Container>
     );
 }

@@ -22,10 +22,16 @@ scroller
     })
     .onStepEnter(({ element }) => {
         // { element, index, direction }
+        const event = new CustomEvent('post-section-reached', {
+            bubbles: true,
+            detail: { section: element.getAttribute('data-step') },
+        });
+
         setActiveLinktext(activeLinkText(element));
 
         setTimeout(function () {
             scrollableList.scrollLeft = activeLink(element).offsetLeft - 24;
+            element.dispatchEvent(event);
         }, 100);
     })
     .onStepExit(({ element, direction }) => {

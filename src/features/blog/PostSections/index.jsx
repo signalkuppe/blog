@@ -8,7 +8,7 @@ import Container from '../../../components/layout/Container';
 import Link from '../../../components/ui/Link';
 import LoremIpsum from '../../../components/ui/LoremIpsum';
 
-const StyledContainer = styled(Container)`
+const Wrapper = styled.div`
     margin-top: calc(var(--space-unit) * 2);
     margin-bottom: calc(var(--space-unit) * 4);
 `;
@@ -29,7 +29,6 @@ const PostSectionTitleLink = styled(Link)`
 
 const PostSection = styled.section`
     margin-bottom: calc(var(--space-unit) * 6);
-    max-width: 70ch;
 `;
 
 export default function PostSections({ post }) {
@@ -59,7 +58,7 @@ export default function PostSections({ post }) {
     return (
         <>
             <PostMenu sections={sections} />
-            <StyledContainer>
+            <Wrapper>
                 {sections.map((section, i) =>
                     section.content ? (
                         <PostSection
@@ -67,20 +66,24 @@ export default function PostSections({ post }) {
                             className="js-postSection"
                             data-step={section.id}
                         >
-                            <PostSectionTitle hide={section.id === 'relazione'}>
-                                <PostSectionTitleLink
-                                    inherit
-                                    noUnderline
-                                    id={section.id}
+                            <Container>
+                                <PostSectionTitle
+                                    hide={section.id === 'relazione'}
                                 >
-                                    {section.title}
-                                </PostSectionTitleLink>
-                            </PostSectionTitle>
+                                    <PostSectionTitleLink
+                                        inherit
+                                        noUnderline
+                                        id={section.id}
+                                    >
+                                        {section.title}
+                                    </PostSectionTitleLink>
+                                </PostSectionTitle>
+                            </Container>
                             {section.content}
                         </PostSection>
                     ) : null,
                 )}
-            </StyledContainer>
+            </Wrapper>
         </>
     );
 }

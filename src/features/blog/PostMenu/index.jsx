@@ -11,6 +11,7 @@ const MenuContainer = styled.nav`
     background: var(--color-background-light);
     position: sticky;
     top: 0;
+    z-index: 1000000;
     filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.25));
     @media ${device.noReduceMotion} {
         transition: opacity 0.2s linear;
@@ -46,7 +47,7 @@ const ListItem = styled.li`
 `;
 
 const MenuLink = styled(Link)`
-    font-stretch: 50%;
+    font-stretch: var(--headings-font-stretch);
     font-weight: 400;
     display: block;
     color: ${(props) =>
@@ -78,23 +79,25 @@ export default function PostMenu({ sections }) {
             <MenuContainer className="js-postMenu">
                 <Container>
                     <List className="js-postMenu-list">
-                        {sections.map((section, i) => (
-                            <ListItem key={i}>
-                                <MenuLink
-                                    href={`#${section.id}`}
-                                    inherit
-                                    noUnderline
-                                    className="js-postMenuLink"
-                                >
-                                    <MenuLinkText
-                                        className="js-postMenuLinkText"
-                                        id={`js-postMenuLinkText-${section.id}`}
+                        {sections.map((section, i) =>
+                            section.content ? (
+                                <ListItem key={i}>
+                                    <MenuLink
+                                        href={`#${section.id}`}
+                                        inherit
+                                        noUnderline
+                                        className="js-postMenuLink"
                                     >
-                                        {section.title}
-                                    </MenuLinkText>
-                                </MenuLink>
-                            </ListItem>
-                        ))}
+                                        <MenuLinkText
+                                            className="js-postMenuLinkText"
+                                            id={`js-postMenuLinkText-${section.id}`}
+                                        >
+                                            {section.title}
+                                        </MenuLinkText>
+                                    </MenuLink>
+                                </ListItem>
+                            ) : null,
+                        )}
                     </List>
                 </Container>
             </MenuContainer>

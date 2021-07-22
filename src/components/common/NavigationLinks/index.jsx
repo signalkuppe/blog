@@ -14,7 +14,7 @@ const StyledUl = styled(List)`
 const StyledLi = styled.li``;
 const StyledLink = styled(Link)`
     font-size: var(--font-size-medium);
-    font-stretch: 50%;
+    font-stretch: var(--headings-font-stretch);
     font-weight: 400;
     display: inline-block;
     color: ${(props) =>
