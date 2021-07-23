@@ -1,7 +1,5 @@
 const hero = document.getElementById('js-postHero');
-const headerHeight = getComputedStyle(
-    document.documentElement,
-).getPropertyValue('--header-height');
+const headerHeight = getCssVar('--header-height');
 
 let windowWidth = window.innerWidth;
 function onResize() {

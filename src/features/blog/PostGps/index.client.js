@@ -1,6 +1,8 @@
 const map = document.getElementById('map');
-const dislivello = document.getElementById('js-postGps-dislivello');
-const distanza = document.getElementById('js-postGps-distanza');
+const minEl = document.getElementById('js-postGps-min');
+const maxEl = document.getElementById('js-postGps-max');
+const gainEl = document.getElementById('js-postGps-gain');
+const distanceEl = document.getElementById('js-postGps-distance');
 let loaded;
 
 function decimateArray(arr, passes = 1, fidelity = 2) {
@@ -14,13 +16,7 @@ function decimateArray(arr, passes = 1, fidelity = 2) {
 
 const showMap = function () {
     const gpxUrl = map.getAttribute('data-gpx');
-    let mapContainer = document.createElement('div');
-    mapContainer.setAttribute('id', 'map');
-    mapContainer.style.position = 'absolute';
-    mapContainer.style.left = 0;
-    mapContainer.style.top = 0;
-    mapContainer.style.zIndex = 1001; // over caption
-    mapContainer.style.opacity = 0;
+
     let mymap = L.map('map', {
         renderer: L.canvas(),
         attributionControl: false,
@@ -37,6 +33,7 @@ const showMap = function () {
         },
     );
     TILELAYER.addTo(mymap);
+
     new L.GPX(gpxUrl, {
         async: true,
         marker_options: {
@@ -44,27 +41,37 @@ const showMap = function () {
             endIconUrl: '/img/markers/end.svg',
             shadowUrl: null,
         },
+        polyline_options: {
+            color: getCssVar('--color-secondary'),
+            opacity: 1,
+            weight: 3,
+            lineCap: 'round',
+        },
     })
         .on('loaded', function (e) {
             mymap.fitBounds(e.target.getBounds());
-            mapContainer.style.opacity = 1;
-            const dislivelloValue = Math.round(e.target.get_elevation_gain());
-            const distanzaValue = Math.round(e.target.get_distance() / 1000);
-            animateValue(dislivello, 0, dislivelloValue, 1500);
-            animateValue(distanza, 0, distanzaValue, 1500);
+            const gain = Math.round(e.target.get_elevation_gain());
+            const distance = Math.round(e.target.get_distance() / 1000);
+            const min = Math.round(e.target.get_elevation_min());
+            const max = Math.round(e.target.get_elevation_max());
+            animateValue(gainEl, 0, gain, 1500);
+            animateValue(distanceEl, 0, distance, 1500);
+            animateValue(minEl, 0, min, 1500);
+            animateValue(maxEl, 0, max, 1500);
             loaded = true;
             const rawElevationData = e.target.get_elevation_data();
-            console.log(rawElevationData);
             const elevationData = decimateArray(
                 rawElevationData.map((data, i) => ({
                     y: data[1],
                     x: data[0].toFixed(1),
                 })),
                 1,
-                10,
+                rawElevationData.length < 2000 ? 1 : 10,
             );
 
-            drawChart(elevationData);
+            setTimeout(() => {
+                drawChart(elevationData);
+            }, 300);
         })
         .addTo(mymap);
 };
@@ -75,22 +82,46 @@ const drawChart = function (elevationData) {
         datasets: [
             {
                 label: '',
-                borderColor: getComputedStyle(
-                    document.documentElement,
-                ).getPropertyValue('--color-primary'),
-                borderWidth: 1,
-                borderJoinStyle: 'round',
+                cubicInterpolationMode: 'monotone',
+                borderColor: getCssVar('--color-primary'),
+                borderWidth: 4,
                 data: elevationData,
-                line: {
-                    borderWidth: 1,
-                },
+                pointRadius: 0,
+                borderJoinStyle: 'bevel',
             },
         ],
     };
+
     const config = {
         type: 'line',
         data,
-        options: {},
+        options: {
+            responsive: true,
+            plugins: {
+                legend: false,
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: '(Km)',
+                        color: getCssVar('--color-text-dark-accent'),
+                    },
+                },
+                y: {
+                    type: 'linear',
+                    grid: {
+                        color: getCssVar('--color-background-light'),
+                    },
+                    ticks: {
+                        // Include a dollar sign in the ticks
+                        callback: function (value, index, values) {
+                            return `${value}m`;
+                        },
+                    },
+                },
+            },
+        },
     };
 
     var myChart = new Chart(document.getElementById('postChart'), config);

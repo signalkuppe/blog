@@ -6,7 +6,7 @@ import { imgStyles } from '../../../components/ui/Image';
 
 const PostBody = styled.div`
     max-width: 70ch;
-    p:first-child:first-letter {
+    > p:first-of-type:first-letter {
         font-family: var(--font-family-cursive);
         font-size: var(--font-size-xxxx-large);
         color: var(--color-text-light-accent);

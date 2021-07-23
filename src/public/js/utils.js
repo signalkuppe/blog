@@ -34,3 +34,8 @@ function times  (n, func = i => i) {
   return Array.from({ length: n }).map((_, i) => func(i))
 }
 
+function getCssVar (varString) {
+  return getComputedStyle(
+                    document.documentElement,
+                ).getPropertyValue(varString)
+}

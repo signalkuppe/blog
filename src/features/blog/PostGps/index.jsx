@@ -11,11 +11,19 @@ const MapContainer = styled.div`
     background: var(--color-background-light);
 `;
 
+const WidthWrapper = styled.div`
+    max-width: var(--container-max-width);
+`;
+
 const MapInfos = styled.div`
     margin-top: calc(var(--space-unit) * 2);
-    display: flex;
-    > * + * {
-        margin-left: calc(var(--space-unit) * 4);
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-gap: var(--space-unit);
+    @media ${device.atLeastTablet} {
+        font-size: var(--font-size-medium);
+        justify-items: center;
     }
 `;
 
@@ -40,30 +48,51 @@ const InfoBox = styled.dl`
     }
 `;
 
-const Chart = styled.div``;
+const Chart = styled.div`
+    margin-top: calc(var(--space-unit) * 4);
+    margin-bottom: calc(var(--space-unit) * 2);
+`;
 
 export default function PostGps({ gps }) {
     return (
         <>
             <MapContainer id="map" data-gpx={gps.gpx} />
             <Container>
-                <MapInfos>
-                    <InfoBox>
-                        <dt>Dislivello</dt>
-                        <dd aria-live="polite">
-                            <span id="js-postGps-dislivello">0</span>m
-                        </dd>
-                    </InfoBox>
-                    <InfoBox>
-                        <dt>Distanza</dt>
-                        <dd aria-live="polite">
-                            <span id="js-postGps-distanza">0</span>km
-                        </dd>
-                    </InfoBox>
-                </MapInfos>
-                <Chart>
-                    <canvas id="postChart"></canvas>
-                </Chart>
+                <WidthWrapper>
+                    <MapInfos>
+                        <InfoBox>
+                            <dt>Quota minima</dt>
+                            <dd aria-live="polite">
+                                <span id="js-postGps-min">0</span>m
+                            </dd>
+                        </InfoBox>
+                        <InfoBox>
+                            <dt>Quota massima</dt>
+                            <dd aria-live="polite">
+                                <span id="js-postGps-max">0</span>m
+                            </dd>
+                        </InfoBox>
+                        <InfoBox>
+                            <dt>Dislivello</dt>
+                            <dd aria-live="polite">
+                                <span id="js-postGps-gain">0</span>m
+                            </dd>
+                        </InfoBox>
+                        <InfoBox>
+                            <dt>Distanza</dt>
+                            <dd aria-live="polite">
+                                <span id="js-postGps-distance">0</span>km
+                            </dd>
+                        </InfoBox>
+                    </MapInfos>
+                    <Chart>
+                        <canvas id="postChart"></canvas>
+                    </Chart>
+                    <p>
+                        NB: La rilevazione gps potrebbe non essere sempre
+                        precisa e riportare valori errati
+                    </p>
+                </WidthWrapper>
             </Container>
             <Script
                 libs={[
@@ -80,6 +109,10 @@ export default function PostGps({ gps }) {
                         tag: '<link rel="stylesheet" href="/libs/leaflet-gesture-handling.css" />',
                     },
                     {
+                        where: 'head',
+                        tag: '<link rel="stylesheet" href="/libs/leaflet-elevation.css" />',
+                    },
+                    {
                         where: 'body',
                         tag: '<script src="/libs/leaflet.js"></script>',
                     },
@@ -94,6 +127,10 @@ export default function PostGps({ gps }) {
                     {
                         where: 'body',
                         tag: '<script src="/libs/leaflet-gesture-handling.js"></script>',
+                    },
+                    {
+                        where: 'body',
+                        tag: '<script src="/libs/gpxparser.js"></script>',
                     },
                     {
                         where: 'body',

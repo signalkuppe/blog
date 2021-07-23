@@ -36,6 +36,7 @@ module.exports = {
         IS_SAFARI: 'readonly',
         animateValue: 'readOnly',
         times: 'readOnly',
+        getCssVar: 'readOnly',
         scrollama: 'readonly',
         GLightbox: 'readonly',
         L: 'readonly',
