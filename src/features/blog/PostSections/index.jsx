@@ -4,9 +4,9 @@ import PostMenu from '../PostMenu';
 import PostBody from '../PostBody';
 import PostGallery from '../PostGallery';
 import PostGps from '../PostGps';
+import PostShare from '../PostShare';
 import Container from '../../../components/layout/Container';
 import Link from '../../../components/ui/Link';
-import LoremIpsum from '../../../components/ui/LoremIpsum';
 
 const Wrapper = styled.div`
     margin-top: calc(var(--space-unit) * 2);
@@ -32,27 +32,27 @@ const PostSection = styled.section`
 `;
 
 export default function PostSections({ post }) {
-    const { body, gallery, gps } = post;
+    const { gps } = post;
     const sections = [
         {
             id: 'relazione',
             title: 'Relazione',
-            content: <PostBody body={body} />,
+            content: <PostBody post={post} />,
         },
         {
             id: 'foto',
             title: 'Galleria fotografica',
-            content: <PostGallery gallery={gallery} />,
+            content: <PostGallery post={post} />,
         },
         {
             id: 'mappa',
             title: 'Mappa e tracce',
-            content: gps.hasTracks ? <PostGps gps={gps} /> : null,
+            content: gps.hasTracks ? <PostGps post={post} /> : null,
         },
         {
             id: 'condividi',
             title: 'Stampa e condividi',
-            content: <LoremIpsum times={3} />,
+            content: <PostShare post={post} />,
         },
     ];
     return (
@@ -66,7 +66,7 @@ export default function PostSections({ post }) {
                             className="js-postSection"
                             data-step={section.id}
                         >
-                            <Container>
+                            <Container as="header">
                                 <PostSectionTitle
                                     hide={section.id === 'relazione'}
                                 >

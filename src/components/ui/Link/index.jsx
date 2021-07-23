@@ -5,7 +5,8 @@ export const defaultStyles = css`
     color: var(--color-secondary);
     text-decoration: none;
     font-weight: 500;
-    :hover {
+    :not([role='button']):hover {
+        // button component with href
         box-shadow: ${(props) => {
             if (!props.noUnderline) {
                 let color = `var(--color-secondary)`;

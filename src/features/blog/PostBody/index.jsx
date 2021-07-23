@@ -38,7 +38,8 @@ const PostBodyStyles = createGlobalStyle`
     }
 `;
 
-export default function PostContent({ body }) {
+export default function PostContent({ post }) {
+    const { body } = post;
     return (
         <Container as="section">
             <PostBody>

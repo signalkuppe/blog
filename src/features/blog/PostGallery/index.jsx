@@ -48,7 +48,8 @@ const StyledListItem = styled.li`
  * Library css overrides
  */
 
-export default function PostGallery({ gallery }) {
+export default function PostGallery({ post }) {
+    const { gallery } = post;
     const imgThumbUrl = function (url, format) {
         return `${url}?w=300&h=300&fm=${format}&fit=thumb&q=80`;
     };

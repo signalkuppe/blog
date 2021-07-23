@@ -2,6 +2,9 @@ import React from 'react';
 import { Script } from 'pequeno';
 import styled from 'styled-components';
 import Container from '../../../components/layout/Container';
+import Button from '../../../components/ui/Button';
+import Icon from '../../../components/ui/Icon';
+import DownloadIcon from '../../../components/ui/Icon/icons/DownloadFile.svg';
 import { device } from '../../../theme';
 import client from './index.client';
 
@@ -18,7 +21,6 @@ const WidthWrapper = styled.div`
 const MapInfos = styled.div`
     margin-top: calc(var(--space-unit) * 2);
     display: grid;
-
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     grid-gap: var(--space-unit);
     @media ${device.atLeastTablet} {
@@ -48,12 +50,26 @@ const InfoBox = styled.dl`
     }
 `;
 
-const Chart = styled.div`
+const Chart = styled.figure`
     margin-top: calc(var(--space-unit) * 4);
     margin-bottom: calc(var(--space-unit) * 2);
 `;
 
-export default function PostGps({ gps }) {
+const Buttons = styled.footer`
+    margin-top: calc(var(--space-unit) * 4);
+    margin-bottom: calc(var(--space-unit) * 2);
+    > * + * {
+        margin-left: var(--space-unit);
+    }
+`;
+
+const Disclaimer = styled.p`
+    font-size: var(--font-size-small);
+    color: var(--color-text-dark-accent);
+`;
+
+export default function PostGps({ post }) {
+    const { gps } = post;
     return (
         <>
             <MapContainer id="map" data-gpx={gps.gpx} />
@@ -88,10 +104,26 @@ export default function PostGps({ gps }) {
                     <Chart>
                         <canvas id="postChart"></canvas>
                     </Chart>
-                    <p>
+
+                    <Buttons>
+                        {gps.gpx && (
+                            <Button href={gps.gpx} as="a" download>
+                                <Icon icon={DownloadIcon} left middle l />
+                                Traccia .gpx
+                            </Button>
+                        )}
+                        {gps.kml && (
+                            <Button href={gps.kml} as="a" download>
+                                <Icon icon={DownloadIcon} left middle l />
+                                Traccia .kml
+                            </Button>
+                        )}
+                    </Buttons>
+
+                    <Disclaimer>
                         NB: La rilevazione gps potrebbe non essere sempre
                         precisa e riportare valori errati
-                    </p>
+                    </Disclaimer>
                 </WidthWrapper>
             </Container>
             <Script
