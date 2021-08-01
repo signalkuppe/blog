@@ -50,17 +50,27 @@ const Hero = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @media print {
+        height: auto;
+        display: block;
+    }
 `;
 
 const HeroSpacer = styled.div`
     margin-left: var(--font-size-x-large);
     margin-right: calc(var(--space-unit) * 1.5);
+    @media print {
+        margin: 0;
+    }
 `;
 
 const Date = styled.time`
     ${commonMetaStyles};
     font-size: clamp(var(--font-size-small), var(--font-size-base), 2vmax);
     display: block;
+    @media print {
+        display: none;
+    }
 `;
 
 const Category = styled.span`
@@ -70,6 +80,9 @@ const Category = styled.span`
     font-weight: 700;
     margin-left: -1em;
     margin-bottom: var(--space-unit);
+    @media print {
+        display: none;
+    }
 `;
 
 const StyledPostCategoryIcon = styled(PostCategoryIcon)`
@@ -89,6 +102,9 @@ const ScrollHint = styled.span`
     @media ${device.noReduceMotion} {
         animation: ${ShakeY} 1s linear;
         animation-delay: 1s;
+    }
+    @media print {
+        display: none;
     }
 `;
 

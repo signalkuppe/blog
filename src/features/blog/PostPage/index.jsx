@@ -2,10 +2,10 @@ import React from 'react';
 import vars from '../../../vars';
 import BaseLayout from '../../../components/layout/Base';
 import Head from '../../../components/common/Head';
-import List from '../../../components/ui/List';
 import PostHero from '../PostHero';
 import PostCover from '../PostCover';
 import PostSections from '../PostSections';
+import PostPrevNext from '../PostPrevNext';
 
 export default function PostPage({ post, pagination, route }) {
     return (
@@ -22,18 +22,7 @@ export default function PostPage({ post, pagination, route }) {
             <PostHero post={post} />
             <PostCover cover={post.cover} />
             <PostSections post={post} />
-            <List reset inline>
-                {pagination.prev && (
-                    <li>
-                        <a href={pagination.prev}>&laquo; Prev</a>
-                    </li>
-                )}
-                {pagination.next && (
-                    <li>
-                        <a href={pagination.next}>Next &raquo;</a>
-                    </li>
-                )}
-            </List>
+            <PostPrevNext pagination={pagination} />
         </BaseLayout>
     );
 }

@@ -54,11 +54,6 @@ const showMap = function () {
             const distance = Math.round(e.target.get_distance() / 1000);
             const min = Math.round(e.target.get_elevation_min());
             const max = Math.round(e.target.get_elevation_max());
-            animateValue(gainEl, 0, gain, 1500);
-            animateValue(distanceEl, 0, distance, 1500);
-            animateValue(minEl, 0, min, 1500);
-            animateValue(maxEl, 0, max, 1500);
-            loaded = true;
             const rawElevationData = e.target.get_elevation_data();
             const elevationData = decimateArray(
                 rawElevationData.map((data, i) => ({
@@ -70,8 +65,13 @@ const showMap = function () {
             );
 
             setTimeout(() => {
+                animateValue(gainEl, 0, gain, 1500);
+                animateValue(distanceEl, 0, distance, 1500);
+                animateValue(minEl, 0, min, 1500);
+                animateValue(maxEl, 0, max, 1500);
+                loaded = true;
                 drawChart(elevationData);
-            }, 300);
+            }, 1000);
         })
         .addTo(mymap);
 };

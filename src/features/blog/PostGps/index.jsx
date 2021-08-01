@@ -23,10 +23,6 @@ const MapInfos = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     grid-gap: var(--space-unit);
-    @media ${device.atLeastTablet} {
-        font-size: var(--font-size-medium);
-        justify-items: center;
-    }
 `;
 
 const InfoBox = styled.dl`
@@ -53,6 +49,10 @@ const InfoBox = styled.dl`
 const Chart = styled.figure`
     margin-top: calc(var(--space-unit) * 4);
     margin-bottom: calc(var(--space-unit) * 2);
+    canvas {
+        width: var(--container-max-width);
+        aspect-ratio: attr(width) / attr(height);
+    }
 `;
 
 const Buttons = styled.footer`

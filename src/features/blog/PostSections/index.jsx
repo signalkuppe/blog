@@ -11,6 +11,10 @@ import Link from '../../../components/ui/Link';
 const Wrapper = styled.div`
     margin-top: calc(var(--space-unit) * 2);
     margin-bottom: calc(var(--space-unit) * 4);
+    @media print {
+        margin: 0;
+        max-width: 21cm;
+    }
 `;
 
 const PostSectionTitle = styled.h2`
@@ -19,6 +23,9 @@ const PostSectionTitle = styled.h2`
         props.hide &&
         css`
             opacity: 0;
+            @media print {
+                display: none;
+            }
         `}
 `;
 
@@ -29,6 +36,14 @@ const PostSectionTitleLink = styled(Link)`
 
 const PostSection = styled.section`
     margin-bottom: calc(var(--space-unit) * 6);
+
+    ${(props) =>
+        props.id !== 'relazione' &&
+        css`
+            @media print {
+                display: none;
+            }
+        `}
 `;
 
 export default function PostSections({ post }) {
@@ -64,6 +79,7 @@ export default function PostSections({ post }) {
                         <PostSection
                             key={i}
                             className="js-postSection"
+                            id={section.id}
                             data-step={section.id}
                         >
                             <Container as="header">

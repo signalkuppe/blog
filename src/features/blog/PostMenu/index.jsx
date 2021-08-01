@@ -16,6 +16,9 @@ const MenuContainer = styled.nav`
     @media ${device.noReduceMotion} {
         transition: opacity 0.2s linear;
     }
+    @media print {
+        display: none;
+    }
 `;
 
 const List = styled.ul`

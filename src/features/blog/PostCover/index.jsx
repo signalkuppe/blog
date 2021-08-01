@@ -36,6 +36,9 @@ const StyledFigure = styled.figure`
         );
         z-index: 10;
     }
+    @media print {
+        display: none;
+    }
 `;
 
 const StyledFigcaption = styled.figcaption`

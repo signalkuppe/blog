@@ -6,4 +6,5 @@ module.exports = {
     instagram: 'https://www.instagram.com/signalkuppe/',
     twitter: 'https://twitter.com/signalkuppe',
     github: 'https://github.com/signalkuppe',
+    twitterAuthor: '@signalkuppe',
 };

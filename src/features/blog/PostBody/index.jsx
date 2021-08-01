@@ -6,15 +6,17 @@ import { imgStyles } from '../../../components/ui/Image';
 
 const PostBody = styled.div`
     max-width: 70ch;
-    > p:first-of-type:first-letter {
-        font-family: var(--font-family-cursive);
-        font-size: var(--font-size-xxxx-large);
-        color: var(--color-text-light-accent);
-        float: left;
-        line-height: 0.7em;
-        padding-top: 4px;
-        padding-right: 0.2em;
-        padding-left: 0;
+    @media screen {
+        > p:first-of-type:first-letter {
+            font-family: var(--font-family-cursive);
+            font-size: var(--font-size-xxxx-large);
+            color: var(--color-text-light-accent);
+            float: left;
+            line-height: 0.7em;
+            padding-top: 4px;
+            padding-right: 0.2em;
+            padding-left: 0;
+        }
     }
 `;
 

@@ -12,6 +12,10 @@ const HeaderContainer = styled.div`
     align-items: center;
     padding: 0 var(--space-unit);
     height: 100%;
+    @media print {
+        display: none;
+        padding: 0;
+    }
 `;
 
 const StyledH1 = styled.h1`

@@ -46,6 +46,7 @@ export default function List({
             reset={reset}
             gap={gap}
             as={ordered ? 'ol' : 'ul'}
+            role={reset ? 'list' : null}
             {...props}
         >
             {children}

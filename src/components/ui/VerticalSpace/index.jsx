@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledVerticalSpace = styled.div`
     margin-top: ${(props) => {
-        return 'calc(' + (props.size || 1) + ' * ' + 'var(--space-unit)' + ')';
+        return 'calc(' + (props.$size || 1) + ' * ' + 'var(--space-unit)' + ')';
     }};
 `;
 

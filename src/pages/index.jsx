@@ -2,10 +2,13 @@ import React from 'react';
 import vars from '../vars';
 import BaseLayout from '../components/layout/Base';
 import Head from '../components/common/Head';
+import PostCard from '../features/blog/PostCard';
 
 export const permalink = '/index.html';
 
 export default function HomePage({ route, posts }) {
+    const firstPost = posts[0];
+
     return (
         <BaseLayout
             route={route}
@@ -17,6 +20,7 @@ export default function HomePage({ route, posts }) {
                 />
             }
         >
+            <PostCard post={firstPost} />
             <h1>{vars.siteName}</h1>
             <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
