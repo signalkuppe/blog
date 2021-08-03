@@ -5,7 +5,6 @@ import Head from '../../../components/common/Head';
 import PostHero from '../PostHero';
 import PostCover from '../PostCover';
 import PostSections from '../PostSections';
-import PostPrevNext from '../PostPrevNext';
 
 export default function PostPage({ post, pagination, route }) {
     return (
@@ -22,7 +21,6 @@ export default function PostPage({ post, pagination, route }) {
             <PostHero post={post} />
             <PostCover cover={post.cover} />
             <PostSections post={post} />
-            <PostPrevNext pagination={pagination} />
         </BaseLayout>
     );
 }

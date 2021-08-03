@@ -7,7 +7,7 @@ import PostCard from '../features/blog/PostCard';
 export const permalink = '/index.html';
 
 export default function HomePage({ route, posts }) {
-    const firstPost = posts[0];
+    const post = posts[1];
 
     return (
         <BaseLayout
@@ -20,7 +20,7 @@ export default function HomePage({ route, posts }) {
                 />
             }
         >
-            <PostCard post={firstPost} />
+            <PostCard post={post} />
             <h1>{vars.siteName}</h1>
             <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.

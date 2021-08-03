@@ -76,14 +76,14 @@ export default function PostShare({ post }) {
                         </li>
                     ))}
                 </List>
-                <VerticalSpace size={2} />
+                <VerticalSpace size={3} />
                 <Button className="js-postShare-print">
                     <Icon icon={PrintIcon} l middle left />
                     Stampa
                 </Button>
-                <VerticalSpace size={2} />
+                <VerticalSpace size={3} />
                 <p>
-                    Vuoi rimanere aggiornato sui nuovi post?{' '}
+                    Vuoi rimanere aggiornato sui nuovi post? <br />
                     <a href="http://eepurl.com/dgiWQH">
                         Iscriviti alla newsletter
                     </a>
