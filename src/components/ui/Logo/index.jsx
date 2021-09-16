@@ -1,11 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import vars from '../../../vars';
+import LogoSvg from './logo.svg';
 
-const Logotext = styled.span`
-    font-family: var(--font-family-cursive);
-`;
-
-export default function Logo() {
-    return <Logotext>{vars.siteName}</Logotext>;
+export default function Logo({ ...props }) {
+    return <LogoSvg {...props} />;
 }

@@ -42,9 +42,14 @@ const StyledFigure = styled.figure`
 `;
 
 const StyledFigcaption = styled.figcaption`
-    font-family: var(--font-family-cursive);
     font-style: normal;
-    font-size: clamp(var(--font-size-small), var(--font-size-xxx-large), 3vmax);
+    font-size: clamp(
+        var(--font-size-x-small),
+        var(--font-size-xxx-large),
+        3vmax
+    );
+    font-weight: 900;
+    font-stretch: extra-condensed;
     line-height: 1.1;
     color: var(--color-text-light-accent);
     position: absolute;

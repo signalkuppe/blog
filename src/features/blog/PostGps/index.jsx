@@ -50,7 +50,7 @@ const Chart = styled.figure`
     margin-top: calc(var(--space-unit) * 4);
     margin-bottom: calc(var(--space-unit) * 2);
     canvas {
-        width: var(--container-max-width);
+        max-width: var(--container-max-width);
         aspect-ratio: attr(width) / attr(height);
     }
 `;

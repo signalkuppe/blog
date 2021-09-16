@@ -34,13 +34,13 @@ export default function NavigationLinks({ links, active, ...props }) {
     const renderLink = function (index, link) {
         if (index === active) {
             return (
-                <LinkWithFiletto active href={link.href}>
+                <LinkWithFiletto active noUnderline href={link.href}>
                     {link.text}
                 </LinkWithFiletto>
             );
         } else {
             return (
-                <StyledLink inherit href={link.href}>
+                <StyledLink noUnderline href={link.href}>
                     {link.text}
                 </StyledLink>
             );

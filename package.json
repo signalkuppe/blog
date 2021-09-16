@@ -2,7 +2,7 @@
   "name": "blog",
   "description": "Personal blog",
   "scripts": {
-    "dev": "npx pequeno --serve"
+    "dev": "npx pequeno --serve --clean"
   },
   "repository": {
     "type": "git",

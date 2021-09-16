@@ -8,12 +8,13 @@ const PostBody = styled.div`
     max-width: 70ch;
     @media screen {
         > p:first-of-type:first-letter {
-            font-family: var(--font-family-cursive);
             font-size: var(--font-size-xxxx-large);
+            font-weight: 900;
+            font-stretch: extra-condensed;
             color: var(--color-text-light-accent);
             float: left;
             line-height: 0.7em;
-            padding-top: 4px;
+            padding-top: 10px;
             padding-right: 0.2em;
             padding-left: 0;
         }

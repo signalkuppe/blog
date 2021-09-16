@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { visuallyHidden, device } from '../../../theme';
 import PostMenu from '../PostMenu';
 import PostBody from '../PostBody';
 import PostGallery from '../PostGallery';
@@ -11,9 +12,14 @@ import Link from '../../../components/ui/Link';
 const Wrapper = styled.div`
     margin-top: calc(var(--space-unit) * 2);
     margin-bottom: calc(var(--space-unit) * 4);
+    width: 100vw;
+    overflow: hidden;
     @media print {
         margin: 0;
         max-width: 21cm;
+    }
+    @media ${device.desktop} {
+        margin-top: calc(var(--space-unit) * 4);
     }
 `;
 
@@ -22,7 +28,7 @@ const PostSectionTitle = styled.h2`
     ${(props) =>
         props.hide &&
         css`
-            opacity: 0;
+            ${visuallyHidden};
             @media print {
                 display: none;
             }
@@ -36,7 +42,6 @@ const PostSectionTitleLink = styled(Link)`
 
 const PostSection = styled.section`
     margin-bottom: calc(var(--space-unit) * 6);
-
     ${(props) =>
         props.id !== 'relazione' &&
         css`

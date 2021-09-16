@@ -12,7 +12,7 @@ export const vars = {
     '--color-twitter': '#1da1f2',
     '--color-whatsapp': '#25d366',
     '--font-family-base': "'Roboto Flex', sans-serif",
-    '--font-family-cursive': "'Lobster', cursive",
+    '--font-family-cursive': "'Sriracha', cursive",
     '--font-size-xx-small': '0.5rem',
     '--font-size-x-small': '0.75rem',
     '--font-size-small': '0.85rem',

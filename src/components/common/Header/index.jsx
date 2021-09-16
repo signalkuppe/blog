@@ -12,17 +12,20 @@ const HeaderContainer = styled.div`
     align-items: center;
     padding: 0 var(--space-unit);
     height: 100%;
-    @media print {
-        display: none;
-        padding: 0;
-    }
 `;
 
 const StyledH1 = styled.h1`
     font-size: var(--font-size-x-large);
-    color: var(--color-text-light-accent);
     width: var(--logo-width);
     margin: 0;
+`;
+
+const StyledLogo = styled(Logo)`
+    fill: var(--color-text-light-accent);
+`;
+
+const LogoText = styled.span`
+    ${visuallyHidden}
 `;
 
 const LogoLink = styled(Link)`
@@ -40,7 +43,8 @@ export default function Header({ route }) {
                     href={vars.websiteUrl}
                     title="Torna alla homepage"
                 >
-                    <Logo />
+                    <StyledLogo />
+                    <LogoText>{vars.siteName}</LogoText>
                 </LogoLink>
             </StyledH1>
             <MainMenu route={route} />

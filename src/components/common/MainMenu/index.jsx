@@ -25,9 +25,8 @@ const StyledButton = styled.button`
     line-height: 1;
     padding: 0;
     display: block;
-    height: 1em;
-    :hover,
-    :active {
+    margin-top: var(--space-unit);
+    :hover {
         color: var(--color-text-light-accent);
     }
     :active {
@@ -39,12 +38,16 @@ const StyledButtonText = styled.span`
     ${visuallyHidden}
 `;
 
-const MenuContainer = styled.div``;
+const MenuContainer = styled.div`
+    align-self: flex-start;
+`;
 
 const Panel = styled.nav`
     position: fixed;
     right: 0;
     top: 0;
+    display: flex;
+    flex-direction: column;
     z-index: var(--z-index-menu);
     will-change: transform;
     transform: translate3d(100%, 0, 0);
@@ -55,7 +58,6 @@ const Panel = styled.nav`
     background: var(--color-background-light);
     padding: 0 var(--space-unit);
     filter: drop-shadow(-5px 0px 20px rgba(0, 0, 0, 0.35));
-
     &.js-is-open {
         visibility: visible;
         transform: translate3d(0, 0, 0);
@@ -69,11 +71,11 @@ const PanelHeader = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: var(--header-height);
 `;
 
 const StyledNavigationLinks = styled(NavigationLinks)`
-    height: calc(100% - 16rem);
+    flex: 1;
+    padding-top: calc(var(--space-unit) * 2);
 `;
 
 const PanelFooter = styled.div`
@@ -146,7 +148,7 @@ export default function MainMenu({ route }) {
                         <List reset inline gap={0.5}>
                             <li>
                                 <FooterLink
-                                    inherit
+                                    noUnderline
                                     href={vars.facebook}
                                     title="Seguimi su Facebook"
                                 >
@@ -155,7 +157,6 @@ export default function MainMenu({ route }) {
                             </li>
                             <li>
                                 <FooterLink
-                                    inherit
                                     noUnderline
                                     href={vars.twitter}
                                     title="Seguimi su Twitter"
@@ -165,7 +166,6 @@ export default function MainMenu({ route }) {
                             </li>
                             <li>
                                 <FooterLink
-                                    inherit
                                     noUnderline
                                     href={vars.instagram}
                                     title="Seguimi su Instagram"
@@ -175,7 +175,6 @@ export default function MainMenu({ route }) {
                             </li>
                             <li>
                                 <FooterLink
-                                    inherit
                                     noUnderline
                                     href={vars.github}
                                     title="La mia pagina su Github"

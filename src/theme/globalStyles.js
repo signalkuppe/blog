@@ -17,17 +17,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
   @font-face {
-    font-family: 'Sriracha';
+    font-family: "Sriracha";
+    src: url('/fonts/Sriracha-Regular.woff2') format('woff2');
     font-display: swap;
-    src: url('/fonts/sriracha.woff2') format('woff2');
-  }
 
-  @font-face {
-    font-family: 'Lobster';
-    font-display: swap;
-    src: url('/fonts/lobster.woff2') format('woff2');
   }
-
+  
   :root {
     ${rootVars};
     font-size: 100%;
