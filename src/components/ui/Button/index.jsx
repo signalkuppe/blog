@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { device } from '../../../theme';
 
 const StyledButton = styled.button`
     font-weight: 500;
@@ -29,6 +30,9 @@ const StyledButton = styled.button`
     :active {
         box-shadow: var(--color-text-light-accent) 0.1em 0.1em 0 0;
         transform: translate(2px, 2px);
+    }
+    @media ${device.noReduceMotion} {
+        transition: background-color 0.2s ease-in-out;
     }
 `;
 

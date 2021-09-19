@@ -19,7 +19,7 @@ export default function BaseLayout({ route, head, children }) {
                     <Header route={route} />
                 </HeaderContainer>
                 <main>{children}</main>
-                <footer>footer</footer>
+                <footer></footer>
             </body>
         </html>
     );

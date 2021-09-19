@@ -11,8 +11,8 @@ const MenuContainer = styled.nav`
     background: var(--color-background-light);
     position: sticky;
     top: 0;
-    z-index: 1000000;
-    filter: drop-shadow(0px 20px 10px rgba(0, 0, 0, 0.25));
+    z-index: var(--z-index-sticky-elements);
+    filter: drop-shadow(0px 20px 10px var(--drop-shadow-color));
     @media ${device.noReduceMotion} {
         transition: opacity 0.2s linear;
     }

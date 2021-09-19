@@ -6,7 +6,7 @@ import PostHero from '../PostHero';
 import PostCover from '../PostCover';
 import PostSections from '../PostSections';
 
-export default function PostPage({ post, pagination, route }) {
+export default function PostPage({ post, route }) {
     return (
         <BaseLayout
             route={route}

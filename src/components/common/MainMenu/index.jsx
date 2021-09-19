@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { findIndex } from 'lodash';
 import { Script } from 'pequeno';
 import { visuallyHidden, device } from '../../../theme';
 import vars from '../../../vars';
@@ -26,6 +27,7 @@ const StyledButton = styled.button`
     padding: 0;
     display: block;
     margin-top: var(--space-unit);
+    cursor: pointer;
     :hover {
         color: var(--color-text-light-accent);
     }
@@ -57,7 +59,7 @@ const Panel = styled.nav`
     max-width: 21rem;
     background: var(--color-background-light);
     padding: 0 var(--space-unit);
-    filter: drop-shadow(-5px 0px 20px rgba(0, 0, 0, 0.35));
+    filter: drop-shadow(-5px 0px 20px var(--drop-shadow-color));
     &.js-is-open {
         visibility: visible;
         transform: translate3d(0, 0, 0);
@@ -97,7 +99,7 @@ export default function MainMenu({ route }) {
         {
             href: '/blog/index.html',
             text: 'Blog',
-            active: route.name === 'posts' || route.name === 'post-item',
+            active: route.name === 'blog' || route.name === 'post-item',
         },
         {
             href: '/portfolio/index.html',
@@ -110,6 +112,8 @@ export default function MainMenu({ route }) {
             active: route.name === 'contact',
         },
     ];
+
+    const activeLinkIndex = findIndex(links, (l) => l.active);
     return (
         <>
             <MenuContainer>
@@ -127,7 +131,10 @@ export default function MainMenu({ route }) {
                             <Icon icon={CloseIcon} l />
                         </StyledButton>
                     </PanelHeader>
-                    <StyledNavigationLinks links={links} active={1} />
+                    <StyledNavigationLinks
+                        links={links}
+                        active={activeLinkIndex}
+                    />
                     <PanelFooter>
                         <span id="js-year"></span> -{' '}
                         <FooterLink inherit href={vars.websiteUrl}>

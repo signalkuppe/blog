@@ -38,16 +38,22 @@ const PostSectionTitle = styled.h2`
 const PostSectionTitleLink = styled(Link)`
     padding-top: calc(var(--space-unit) * 6);
     margin-top: calc(var(--space-unit) * -6);
+    scroll-margin-top: 120px;
 `;
 
 const PostSection = styled.section`
-    margin-bottom: calc(var(--space-unit) * 6);
+    padding-bottom: calc(var(--space-unit) * 6);
     ${(props) =>
         props.id !== 'relazione' &&
         css`
             @media print {
                 display: none;
             }
+        `}
+    ${(props) =>
+        props.id === 'condividi' &&
+        css`
+            min-height: 20rem;
         `}
 `;
 

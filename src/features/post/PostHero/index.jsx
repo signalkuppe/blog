@@ -57,8 +57,14 @@ const Hero = styled.div`
 `;
 
 const HeroSpacer = styled.div`
-    margin-left: var(--font-size-x-large);
+    margin-left: var(--space-unit);
     margin-right: calc(var(--space-unit) * 1.5);
+    @media ${device.largeDesktop} {
+        margin-right: calc(var(--space-unit) * 4);
+    }
+    @media ${device.largeDesktop} {
+        margin-left: var(--logo-width);
+    }
     @media print {
         margin: 0;
     }

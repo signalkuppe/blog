@@ -48,7 +48,7 @@ const InfoBox = styled.dl`
 
 const Chart = styled.figure`
     margin-top: calc(var(--space-unit) * 4);
-    margin-bottom: calc(var(--space-unit) * 2);
+    margin-bottom: calc(var(--space-unit) * 2);    
     canvas {
         max-width: var(--container-max-width);
         aspect-ratio: attr(width) / attr(height);

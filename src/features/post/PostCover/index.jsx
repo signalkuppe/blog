@@ -34,7 +34,7 @@ const StyledFigure = styled.figure`
             rgba(0, 0, 0, 0) 70%,
             rgba(0, 0, 0, 0.85) 100%
         );
-        z-index: 10;
+        z-index: var(--z-index-post-cover);
     }
     @media print {
         display: none;
@@ -56,7 +56,7 @@ const StyledFigcaption = styled.figcaption`
     right: 0;
     bottom: 0;
     padding: 1.5vmax var(--space-unit);
-    z-index: 100;
+    z-index: var(--z-index-post-cover-caption);
     will-change: transform;
     transform: translateX(100%);
     &.js-is-loaded {

@@ -18,9 +18,14 @@ const GlobalStyles = createGlobalStyle`
 
   @font-face {
     font-family: "Sriracha";
-    src: url('/fonts/Sriracha-Regular.woff2') format('woff2');
+    src: url('/fonts/sriracha-regular.woff2') format('woff2');
     font-display: swap;
+  }
 
+  @font-face {
+    font-family: "Yeseva One";
+    src: url('/fonts/yeseva-regular.woff2') format('woff2');
+    font-display: swap;
   }
   
   :root {
@@ -40,6 +45,7 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     -webkit-text-size-adjust: 100%; /* 2 */
+    scroll-padding-top: calc(var(--space-unit) * 4);
     @media ${device.noReduceMotion} {
       scroll-behavior: smooth;
     }

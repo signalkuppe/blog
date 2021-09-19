@@ -30,6 +30,8 @@ const StyledLink = styled(Link)`
     }
 `;
 
+const LinkWithFiletto = withFiletto(StyledLink);
+
 export default function NavigationLinks({ links, active, ...props }) {
     const renderLink = function (index, link) {
         if (index === active) {
@@ -54,5 +56,3 @@ export default function NavigationLinks({ links, active, ...props }) {
         </StyledUl>
     );
 }
-
-const LinkWithFiletto = withFiletto(StyledLink);

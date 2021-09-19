@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { visuallyHidden } from '../../../theme';
+import styled, { css } from 'styled-components';
+import { visuallyHidden, device } from '../../../theme';
 import Logo from '../../ui/Logo';
 import Link from '../../ui/Link';
 import vars from '../../../vars';
@@ -14,14 +14,24 @@ const HeaderContainer = styled.div`
     height: 100%;
 `;
 
-const StyledH1 = styled.h1`
-    font-size: var(--font-size-x-large);
+const logostyles = css`
     width: var(--logo-width);
     margin: 0;
 `;
 
+const H1LogoContainer = styled.h1`
+    ${logostyles};
+`;
+
+const PlainLogoContainer = styled.div`
+    ${logostyles};
+`;
+
 const StyledLogo = styled(Logo)`
     fill: var(--color-text-light-accent);
+    :hover {
+        filter: drop-shadow(-5px 0px 20px var(--color-text));
+    }
 `;
 
 const LogoText = styled.span`
@@ -34,19 +44,29 @@ const LogoLink = styled(Link)`
 `;
 
 export default function Header({ route }) {
+    const isFronPage = route.name === 'index';
+    let logo;
+    const logoLink = (
+        <LogoLink
+            inherit
+            noUnderline
+            href={vars.websiteUrl}
+            title="Torna alla homepage"
+        >
+            <StyledLogo />
+            <LogoText>{vars.siteName}</LogoText>
+        </LogoLink>
+    );
+
+    if (isFronPage) {
+        logo = <H1LogoContainer>{logoLink}</H1LogoContainer>;
+    } else {
+        logo = <PlainLogoContainer>{logoLink}</PlainLogoContainer>;
+    }
+
     return (
         <HeaderContainer>
-            <StyledH1>
-                <LogoLink
-                    inherit
-                    noUnderline
-                    href={vars.websiteUrl}
-                    title="Torna alla homepage"
-                >
-                    <StyledLogo />
-                    <LogoText>{vars.siteName}</LogoText>
-                </LogoLink>
-            </StyledH1>
+            {logo}
             <MainMenu route={route} />
         </HeaderContainer>
     );

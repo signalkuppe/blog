@@ -6,6 +6,9 @@ import { device } from '../../../theme';
  */
 
 export default createGlobalStyle`
+    .glightbox-container {
+        z-index: var(--z-index-sticky-overlay)!important;
+    }
     .glightbox-clean .gslide-description {
         background: none!important;
     }

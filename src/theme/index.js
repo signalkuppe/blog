@@ -13,6 +13,7 @@ export const vars = {
     '--color-whatsapp': '#25d366',
     '--font-family-base': "'Roboto Flex', sans-serif",
     '--font-family-cursive': "'Sriracha', cursive",
+    '--font-family-drop-cap': "'Yeseva One', cursive",
     '--font-size-xx-small': '0.5rem',
     '--font-size-x-small': '0.75rem',
     '--font-size-small': '0.85rem',
@@ -29,7 +30,12 @@ export const vars = {
     '--logo-width': '9rem',
     '--container-max-width': '80rem',
     '--container-offset': 'calc(var(--logo-width) + var(--space-unit))',
+    '--z-index-post-cover': '10',
+    '--z-index-post-cover-caption': '100',
     '--z-index-menu': '1000',
+    '--z-index-sticky-elements': '100000',
+    '--z-index-overlay': '1000000',
+    '--drop-shadow-color': 'rgba(0, 0, 0, 0.35)',
 };
 
 export const headingsStyles = css`
@@ -53,6 +59,7 @@ export const device = {
     onlyTablet: `screen and (min-width: 48rem) and (max-width: 85.3125rem)`, // >= 768px <= 1365px
     atLeastTablet: `screen and (min-width: 48rem)`, // >= 768px
     desktop: `screen and (min-width: 85.3125rem)`, // >= 1366px
+    largeDesktop: `screen and (min-width: 120rem)`, // >= 1920px
     noReduceMotion: `screen and (prefers-reduced-motion: no-preference)`,
 };
 
