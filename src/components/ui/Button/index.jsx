@@ -10,7 +10,8 @@ const StyledButton = styled.button`
     box-shadow: var(--color-text-light-accent) 0.2em 0.2em 0 0;
     color: var(--color-background);
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 0 var(--font-size-base);
     line-height: calc(var(--font-size-base) * 3.2);
     text-align: center;

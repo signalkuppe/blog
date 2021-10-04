@@ -2,7 +2,8 @@
   "name": "blog",
   "description": "Personal blog",
   "scripts": {
-    "dev": "npx pequeno --serve --clean"
+    "dev": "npx pequeno --serve --clean",
+    "build": "npx pequeno --clean"
   },
   "repository": {
     "type": "git",
@@ -24,9 +25,10 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
-    "pequeno": "0.0.23"
+    "pequeno": "0.0.24"
   },
   "dependencies": {
+    "async": "^3.2.1",
     "chart.js": "^3.4.1",
     "glightbox": "^3.0.9",
     "leaflet": "^1.7.1",

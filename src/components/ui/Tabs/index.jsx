@@ -12,11 +12,11 @@ const StyledLink = styled(Link)`
     font-size: var(--font-size-medium);
     font-stretch: var(--headings-font-stretch);
     font-weight: 400;
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 0.8em 1.6em;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
-    background: var(--color-background-light);
     border-bottom: 0.25em solid transparent;
     ${(props) =>
         props.active &&
@@ -43,6 +43,7 @@ export default function Tabs({ items, active, ...props }) {
                         href={item.href}
                         active={i === active}
                     >
+                        {item.textLeft}
                         {item.text}
                     </StyledLink>
                 </StyledLi>

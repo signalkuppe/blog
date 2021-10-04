@@ -1,18 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
 import vars from '../../../vars';
-import { visuallyHidden } from '../../../theme';
 import BaseLayout from '../../../components/layout/Base';
 import Head from '../../../components/common/Head';
 import BlogPageTitle from '../BlogPageTitle';
 import BlogMap from '../BlogMap';
+import BlogTabs from '../BlogTabs';
 
-const PageTitle = styled.h1`
-    ${visuallyHidden}
-`;
-
-export default function BlogPage({ post, route }) {
-    const title = 'Blog';
+export default function BlogPage({ posts, category, categories, route }) {
+    let title = 'Blog';
+    if (category) {
+        title = category;
+    }
     return (
         <BaseLayout
             route={route}
@@ -21,11 +19,31 @@ export default function BlogPage({ post, route }) {
                     title={title}
                     slogan={vars.siteName}
                     description="L’elenco completo di tutte le relazioni, con la mappa e la ricerca"
+                    extraLinks={
+                        <>
+                            <link
+                                rel="preconnect"
+                                href="https://assets.ctfassets.net"
+                                crossOrigin={true}
+                            />
+                            <link
+                                rel="preconnect"
+                                href="https://tile.thunderforest.com"
+                                crossOrigin={true}
+                            />
+                        </>
+                    }
                 />
             }
         >
             <BlogPageTitle title={title} />
+            <BlogTabs category={category} categories={categories} />
             <BlogMap />
+            <ul>
+                {posts.map((post, i) => (
+                    <li key={i}>{post.title}</li>
+                ))}
+            </ul>
         </BaseLayout>
     );
 }

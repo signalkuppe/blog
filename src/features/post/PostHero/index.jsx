@@ -81,7 +81,8 @@ const Date = styled.time`
 
 const Category = styled.span`
     ${commonMetaStyles};
-    display: block;
+    display: flex;
+    align-items: center;
     font-size: clamp(var(--font-size-medium), var(--font-size-x-large), 2vmax);
     font-weight: 700;
     margin-left: -1em;
@@ -92,9 +93,7 @@ const Category = styled.span`
 `;
 
 const StyledPostCategoryIcon = styled(PostCategoryIcon)`
-    width: 1em;
-    height: 1em;
-    transform: translateX(-0.1em);
+    transform: translateX(-0.2em);
 `;
 
 const Description = styled.p`

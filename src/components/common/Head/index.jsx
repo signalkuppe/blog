@@ -10,6 +10,8 @@ export default function Head({
     url,
     ogImage,
     twitterCardImage,
+    extraLinks,
+    extraMetas,
 }) {
     let titleTag = `${title || '-title-'} | ${slogan || '-slogan-'}`;
     ogImage = ogImage || `${vars.websiteUrl}/img/social/og-image.png`;
@@ -72,6 +74,7 @@ export default function Head({
                 href="/img/favicons/safari-pinned-tab.svg"
                 color="#009fe3"
             />
+            {extraLinks}
             <meta name="msapplication-TileColor" content="#ffffff" />
             <meta name="theme-color" content="#ffffff" />
             <meta name="generator" content="pequeno" />
@@ -80,6 +83,7 @@ export default function Head({
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:image" content={twitterCardImage} />
             <meta name="og:image" content={ogImage} />
+            {extraMetas}
             <Script inline>{client}</Script>
         </head>
     );

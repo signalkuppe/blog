@@ -48,7 +48,7 @@ const InfoBox = styled.dl`
 
 const Chart = styled.figure`
     margin-top: calc(var(--space-unit) * 4);
-    margin-bottom: calc(var(--space-unit) * 2);    
+    margin-bottom: calc(var(--space-unit) * 2);
     canvas {
         max-width: var(--container-max-width);
         aspect-ratio: attr(width) / attr(height);
@@ -108,13 +108,13 @@ export default function PostGps({ post }) {
                     <Buttons>
                         {gps.gpx && (
                             <Button href={gps.gpx} as="a" download>
-                                <Icon icon={DownloadIcon} left middle l />
+                                <Icon icon={DownloadIcon} left l />
                                 Traccia .gpx
                             </Button>
                         )}
                         {gps.kml && (
                             <Button href={gps.kml} as="a" download>
-                                <Icon icon={DownloadIcon} left middle l />
+                                <Icon icon={DownloadIcon} left l />
                                 Traccia .kml
                             </Button>
                         )}

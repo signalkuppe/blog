@@ -1,0 +1,35 @@
+import React from 'react';
+import { map, uniq } from 'lodash';
+import BlogPage from '../features/blog/BlogPage';
+
+export const paginate = {
+    data: 'posts',
+    size: 100000,
+    groupBy: 'category',
+};
+
+export const categoryPermalink = function (page, group) {
+    group = group.toLowerCase();
+    if (page === 1) {
+        return `/blog/${group}/index.html`;
+    } else {
+        return `/blog/${group}/${page}/index.html`;
+    }
+};
+
+export const permalink = function (data) {
+    const { page, group } = data.pagination;
+    return categoryPermalink(page, group);
+};
+
+export default function BlogByCategory({ route, pagination, posts }) {
+    const categories = uniq(map(posts, 'category'));
+    return (
+        <BlogPage
+            route={route}
+            posts={pagination.items}
+            category={pagination.group}
+            categories={categories}
+        />
+    );
+}

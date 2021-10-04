@@ -15,6 +15,20 @@ export default function PostPage({ post, route }) {
                     title={post.title}
                     slogan={vars.siteName}
                     description={post.description}
+                    extraLinks={
+                        <>
+                            <link
+                                rel="preconnect"
+                                href="https://assets.ctfassets.net"
+                                crossOrigin={true}
+                            />
+                            <link
+                                rel="preconnect"
+                                href="https://tile.thunderforest.com"
+                                crossOrigin={true}
+                            />
+                        </>
+                    }
                 />
             }
         >

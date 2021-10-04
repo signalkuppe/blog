@@ -4,8 +4,8 @@ import { propsToFontSize } from '../../../theme';
 
 const Wrapper = styled.span`
     font-size: ${propsToFontSize};
-    margin-right: ${(props) => (props.left ? '0.5em' : '0px')};
-    margin-left: ${(props) => (props.right ? '0.5em' : '0px')};
+    margin-right: ${(props) => (props.left ? '0.25em' : '0px')};
+    margin-left: ${(props) => (props.right ? '0.25em' : '0px')};
     color: ${(props) => {
         if (props.primary) {
             return props.theme.colors.primary;
@@ -14,25 +14,6 @@ const Wrapper = styled.span`
         }
     }};
     display: inline-flex;
-    vertical-align: ${(props) => {
-        if (props.middle) {
-            return 'middle';
-        } else if (props.bottom) {
-            return 'bottom';
-        } else if (props.baseline) {
-            return 'baseline';
-        } else if (props.top) {
-            return 'top';
-        } else if (props.sub) {
-            return 'sub';
-        } else if (props.textTop) {
-            return 'text-top';
-        } else if (props.textBottom) {
-            return 'text-bottom';
-        } else {
-            return 'inherit';
-        }
-    }};
     svg {
         display: inline-block;
         font-size: inherit;
