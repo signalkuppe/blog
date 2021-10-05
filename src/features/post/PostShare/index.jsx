@@ -8,10 +8,10 @@ import Link from '../../../components/ui/Link';
 import List from '../../../components/ui/List';
 import Button from '../../../components/ui/Button';
 import VerticalSpace from '../../../components/ui/VerticalSpace';
-import Facebook from '../../../components/ui/Icon/icons/Facebook.svg';
-import Twitter from '../../../components/ui/Icon/icons/Twitter.svg';
-import Whatsapp from '../../../components/ui/Icon/icons/Whatsapp.svg';
-import PrintIcon from '../../../components/ui/Icon/icons/Print.svg';
+import Facebook from '../../../public/icons/Facebook.svg';
+import Twitter from '../../../public/icons/Twitter.svg';
+import Whatsapp from '../../../public/icons/Whatsapp.svg';
+import PrintIcon from '../../../public/icons/Print.svg';
 import client from './index.client.js';
 
 const StyledSocialLink = styled(Link)`

@@ -20,12 +20,12 @@ export default function PostPage({ post, route }) {
                             <link
                                 rel="preconnect"
                                 href="https://assets.ctfassets.net"
-                                crossOrigin={true}
+                                crossOrigin="true"
                             />
                             <link
                                 rel="preconnect"
                                 href="https://tile.thunderforest.com"
-                                crossOrigin={true}
+                                crossOrigin="true"
                             />
                         </>
                     }

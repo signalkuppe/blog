@@ -13,8 +13,6 @@ const debounce = (callback, wait) => {
   };
 }
 
-// eslint-disable-next-line no-unused-vars
-const IS_SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 // eslint-disable-next-line no-unused-vars
 function animateValue(obj, start, end, duration) {

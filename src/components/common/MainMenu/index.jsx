@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { findIndex } from 'lodash';
 import { Script } from 'pequeno';
 import { visuallyHidden, device } from '../../../theme';
@@ -8,12 +8,12 @@ import Icon from '../../ui/Icon';
 import List from '../../ui/List';
 import Link from '../../ui/Link';
 import VerticalSpace from '../../ui/VerticalSpace';
-import HamburgerIcon from '../../ui/Icon/icons/Hamburger.svg';
-import CloseIcon from '../../ui/Icon/icons/Cross.svg';
-import Facebook from '../../ui/Icon/icons/Facebook.svg';
-import Twitter from '../../ui/Icon/icons/Twitter.svg';
-import Instagram from '../../ui/Icon/icons/Instagram.svg';
-import Github from '../../ui/Icon/icons/Github.svg';
+import HamburgerIcon from '../../../public/icons/Hamburger.svg';
+import CloseIcon from '../../../public/icons/Cross.svg';
+import Facebook from '../../../public/icons/Facebook.svg';
+import Twitter from '../../../public/icons/Twitter.svg';
+import Instagram from '../../../public/icons/Instagram.svg';
+import Github from '../../../public/icons/Github.svg';
 import NavigationLinks from '../NavigationLinks';
 import client from './index.client';
 
@@ -26,22 +26,23 @@ const StyledButton = styled.button`
     line-height: 1;
     padding: 0;
     display: block;
-    margin-top: var(--space-unit);
     cursor: pointer;
+    align-self: flex-start;
     :hover {
         color: var(--color-text-light-accent);
     }
     :active {
         transform: translate(0.1em, 0.1em);
     }
+    ${(props) =>
+        props.inPanel &&
+        css`
+            margin-top: var(--space-unit);
+        `}
 `;
 
 const StyledButtonText = styled.span`
     ${visuallyHidden}
-`;
-
-const MenuContainer = styled.div`
-    align-self: flex-start;
 `;
 
 const Panel = styled.nav`
@@ -116,84 +117,77 @@ export default function MainMenu({ route }) {
     const activeLinkIndex = findIndex(links, (l) => l.active);
     return (
         <>
-            <MenuContainer>
-                <StyledButton aria-expanded="false" id="js-mainMenu-openButton">
-                    <StyledButtonText>Apri il menu</StyledButtonText>
-                    <Icon icon={HamburgerIcon} l />
-                </StyledButton>
-                <Panel
-                    aria-label="Navigazione principale"
-                    id="js-mainMenu-panel"
-                >
-                    <PanelHeader>
-                        <StyledButton id="js-mainMenu-closeButton">
-                            <StyledButtonText>Chiudi il menu</StyledButtonText>
-                            <Icon icon={CloseIcon} l />
-                        </StyledButton>
-                    </PanelHeader>
-                    <StyledNavigationLinks
-                        links={links}
-                        active={activeLinkIndex}
-                    />
-                    <PanelFooter>
-                        <span id="js-year"></span> -{' '}
-                        <FooterLink inherit href={vars.websiteUrl}>
-                            signalkuppe.com
-                        </FooterLink>
-                        <VerticalSpace size={0.25} />
-                        Contenuti pubblicati sotto licenza{' '}
-                        <FooterLink
-                            inherit
-                            href="https://choosealicense.com/licenses/agpl-3.0/"
-                            title="Leggi la licenza"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            GNU AGPLv3
-                        </FooterLink>
-                        <VerticalSpace size={1.25} />
-                        <List reset inline gap={0.5}>
-                            <li>
-                                <FooterLink
-                                    noUnderline
-                                    href={vars.facebook}
-                                    title="Seguimi su Facebook"
-                                >
-                                    <Icon icon={Facebook} />
-                                </FooterLink>
-                            </li>
-                            <li>
-                                <FooterLink
-                                    noUnderline
-                                    href={vars.twitter}
-                                    title="Seguimi su Twitter"
-                                >
-                                    <Icon icon={Twitter} />
-                                </FooterLink>
-                            </li>
-                            <li>
-                                <FooterLink
-                                    noUnderline
-                                    href={vars.instagram}
-                                    title="Seguimi su Instagram"
-                                >
-                                    <Icon icon={Instagram} />
-                                </FooterLink>
-                            </li>
-                            <li>
-                                <FooterLink
-                                    noUnderline
-                                    href={vars.github}
-                                    title="La mia pagina su Github"
-                                    id="js-lastFocusableElement"
-                                >
-                                    <Icon icon={Github} />
-                                </FooterLink>
-                            </li>
-                        </List>
-                    </PanelFooter>
-                </Panel>
-            </MenuContainer>
+            <StyledButton aria-expanded="false" id="js-mainMenu-openButton">
+                <StyledButtonText>Apri il menu</StyledButtonText>
+                <Icon icon={HamburgerIcon} l />
+            </StyledButton>
+            <Panel aria-label="Navigazione principale" id="js-mainMenu-panel">
+                <PanelHeader>
+                    <StyledButton inPanel id="js-mainMenu-closeButton">
+                        <StyledButtonText>Chiudi il menu</StyledButtonText>
+                        <Icon icon={CloseIcon} l />
+                    </StyledButton>
+                </PanelHeader>
+                <StyledNavigationLinks links={links} active={activeLinkIndex} />
+                <PanelFooter>
+                    <span id="js-year"></span> -{' '}
+                    <FooterLink inherit href={vars.websiteUrl}>
+                        signalkuppe.com
+                    </FooterLink>
+                    <VerticalSpace size={0.25} />
+                    Contenuti pubblicati sotto licenza{' '}
+                    <FooterLink
+                        inherit
+                        href="https://choosealicense.com/licenses/agpl-3.0/"
+                        title="Leggi la licenza"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        GNU AGPLv3
+                    </FooterLink>
+                    <VerticalSpace size={1.25} />
+                    <List reset inline gap={0.5}>
+                        <li>
+                            <FooterLink
+                                noUnderline
+                                href={vars.facebook}
+                                title="Seguimi su Facebook"
+                            >
+                                <Icon icon={Facebook} />
+                            </FooterLink>
+                        </li>
+                        <li>
+                            <FooterLink
+                                noUnderline
+                                href={vars.twitter}
+                                title="Seguimi su Twitter"
+                            >
+                                <Icon icon={Twitter} />
+                            </FooterLink>
+                        </li>
+                        <li>
+                            <FooterLink
+                                noUnderline
+                                href={vars.instagram}
+                                title="Seguimi su Instagram"
+                            >
+                                <Icon icon={Instagram} />
+                            </FooterLink>
+                        </li>
+                        <li>
+                            <FooterLink
+                                noUnderline
+                                href={vars.github}
+                                title="La mia pagina su Github"
+                                id="js-lastFocusableElement"
+                            >
+                                <Icon icon={Github} />
+                            </FooterLink>
+                        </li>
+                    </List>
+                </PanelFooter>
+            </Panel>
+
             <Script
                 libs={[
                     {

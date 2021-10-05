@@ -58,10 +58,8 @@ function onResize() {
     menuPanel.style.height = `${window.innerHeight}px`;
 }
 
-if (IS_SAFARI) {
-    onResize();
-    window.addEventListener('resize', debounce(onResize, 250));
-}
+onResize();
+window.addEventListener('resize', debounce(onResize, 250));
 
 openButton.addEventListener('click', function () {
     openMenu();

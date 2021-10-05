@@ -10,13 +10,13 @@ const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 var(--space-unit);
-    height: 100%;
+    padding: var(--space-unit);
 `;
 
 const logostyles = css`
     width: var(--logo-width);
     margin: 0;
+    transform: translateY(-0.6rem);
 `;
 
 const H1LogoContainer = styled.h1`
@@ -65,7 +65,7 @@ export default function Header({ route }) {
     }
 
     return (
-        <HeaderContainer>
+        <HeaderContainer id="js-header">
             {logo}
             <MainMenu route={route} />
         </HeaderContainer>

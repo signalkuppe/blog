@@ -1,4 +1,4 @@
-const map = document.getElementById('map');
+const map = document.getElementById('js-map');
 const minEl = document.getElementById('js-postGps-min');
 const maxEl = document.getElementById('js-postGps-max');
 const gainEl = document.getElementById('js-postGps-gain');
@@ -17,7 +17,7 @@ function decimateArray(arr, passes = 1, fidelity = 2) {
 const showMap = function () {
     const gpxUrl = map.getAttribute('data-gpx');
 
-    let mymap = L.map('map', {
+    let mymap = L.map('js-map', {
         renderer: L.canvas(),
         attributionControl: false,
         gestureHandling: true, // depends on https://github.com/elmarquis/Leaflet.GestureHandling

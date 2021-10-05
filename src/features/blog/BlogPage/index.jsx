@@ -24,12 +24,12 @@ export default function BlogPage({ posts, category, categories, route }) {
                             <link
                                 rel="preconnect"
                                 href="https://assets.ctfassets.net"
-                                crossOrigin={true}
+                                crossOrigin="true"
                             />
                             <link
                                 rel="preconnect"
                                 href="https://tile.thunderforest.com"
-                                crossOrigin={true}
+                                crossOrigin="true"
                             />
                         </>
                     }
@@ -38,7 +38,7 @@ export default function BlogPage({ posts, category, categories, route }) {
         >
             <BlogPageTitle title={title} />
             <BlogTabs category={category} categories={categories} />
-            <BlogMap />
+            <BlogMap category={category} />
             <ul>
                 {posts.map((post, i) => (
                     <li key={i}>{post.title}</li>

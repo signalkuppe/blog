@@ -1,7 +1,8 @@
 const hero = document.getElementById('js-postHero');
-const headerHeight = getCssVar('--header-height');
+const header = document.getElementById('js-header');
 
-let windowWidth = window.innerWidth;
+const windowWidth = window.innerWidth;
+const headerHeight = header.getBoundingClientRect().height;
 
 function onResize() {
     // ios fix
@@ -12,11 +13,8 @@ function onResize() {
 }
 
 function setHeroSize() {
-    hero.style.height = `calc(${window.outerHeight}px - ${headerHeight})`;
+    hero.style.height = `${window.outerHeight - headerHeight}px`;
 }
 
-if (IS_SAFARI) {
-    console.log(window);
-    setHeroSize();
-    window.addEventListener('resize', debounce(onResize, 250));
-}
+setHeroSize();
+window.addEventListener('resize', debounce(onResize, 250));

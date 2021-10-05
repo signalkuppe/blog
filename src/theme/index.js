@@ -26,7 +26,6 @@ export const vars = {
     '--font-size-xxxx-large': '5rem',
     '--headings-font-stretch': '50%',
     '--space-unit': '1.5rem',
-    '--header-height': '6rem',
     '--logo-width': '9rem',
     '--container-max-width': '80rem',
     '--container-offset': 'calc(var(--logo-width) + var(--space-unit))',
@@ -80,6 +79,15 @@ export const hideScrollbar = css`
     -ms-overflow-style: none;
     scrollbar-width: none;
 `;
+
+export const lineClamp = (lines = 1) => {
+    return css`
+        display: -webkit-box;
+        -webkit-line-clamp: ${lines};
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    `;
+};
 
 export const propsToFontSize = (props) => {
     if (props.xxs) {

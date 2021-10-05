@@ -3,8 +3,8 @@ import styled, { css, keyframes } from 'styled-components';
 import { Script } from 'pequeno';
 import { device } from '../../../theme';
 import Container from '../../../components/layout/Container';
-import MouseIcon from '../../../components/ui/Icon/icons/Mouse.svg';
-import DownIcon from '../../../components/ui/Icon/icons/ChevronDown.svg';
+import MouseIcon from '../../../public/icons/Mouse.svg';
+import DownIcon from '../../../public/icons/ChevronDown.svg';
 import PageTitle from '../../../components/ui/PageTitle';
 import PostCategoryIcon from '../PostCategoryIcon';
 import client from './index.client';
@@ -46,7 +46,7 @@ const commonMetaStyles = css`
 `;
 
 const Hero = styled.div`
-    height: calc(100vh - var(--header-height));
+    height: 100vh; /** fixed in js for ios */
     display: flex;
     flex-direction: column;
     justify-content: center;

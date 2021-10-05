@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Container from '../../../components/layout/Container';
 import Button from '../../../components/ui/Button';
 import Icon from '../../../components/ui/Icon';
-import DownloadIcon from '../../../components/ui/Icon/icons/DownloadFile.svg';
+import DownloadIcon from '../../../public/icons/DownloadFile.svg';
 import { device } from '../../../theme';
 import client from './index.client';
 
@@ -72,7 +72,7 @@ export default function PostGps({ post }) {
     const { gps } = post;
     return (
         <>
-            <MapContainer id="map" data-gpx={gps.gpx} />
+            <MapContainer id="js-map" data-gpx={gps.gpx} />
             <Container>
                 <WidthWrapper>
                     <MapInfos>
@@ -141,10 +141,6 @@ export default function PostGps({ post }) {
                         tag: '<link rel="stylesheet" href="/libs/leaflet-gesture-handling.css" />',
                     },
                     {
-                        where: 'head',
-                        tag: '<link rel="stylesheet" href="/libs/leaflet-elevation.css" />',
-                    },
-                    {
                         where: 'body',
                         tag: '<script src="/libs/leaflet.js"></script>',
                     },
@@ -159,10 +155,6 @@ export default function PostGps({ post }) {
                     {
                         where: 'body',
                         tag: '<script src="/libs/leaflet-gesture-handling.js"></script>',
-                    },
-                    {
-                        where: 'body',
-                        tag: '<script src="/libs/gpxparser.js"></script>',
                     },
                     {
                         where: 'body',
