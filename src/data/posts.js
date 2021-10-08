@@ -1,6 +1,7 @@
 const contentfulClient = require('../../lib/contentfulClient');
 const normalizePosts = require('../../lib/normalizePosts');
 const writeMapJson = require('../../lib/writeMapJson');
+const writeSearchJson = require('../../lib/writeSearchJson');
 const postQuery = {
     content_type: 'post',
     include: 1,
@@ -14,6 +15,7 @@ module.exports = async (pequeno) => {
             .then((posts) => {
                 const normalizedPosts = normalizePosts(posts);
                 writeMapJson(normalizedPosts, pequeno);
+                writeSearchJson(normalizedPosts, pequeno);
                 resolve(normalizedPosts);
             })
             .catch((err) => reject(err));

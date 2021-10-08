@@ -22,5 +22,6 @@ export default function PostCategoryIcon({ category, ...props }) {
     } else if (category === 'Viaggi') {
         icon = Viaggi;
     }
+
     return <Icon icon={icon} {...props} />;
 }

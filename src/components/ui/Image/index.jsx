@@ -6,6 +6,10 @@ export const imgStyles = css`
     height: auto;
     display: block;
     aspect-ratio: attr(width) / attr(height);
+    text-indent: -9999px;
+    :-moz-loading {
+        visibility: hidden;
+    }
 `;
 
 const StyledImage = styled.img`

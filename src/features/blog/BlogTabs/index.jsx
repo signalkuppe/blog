@@ -5,7 +5,7 @@ import List from '../../../components/ui/List';
 import Link from '../../../components/ui/Link';
 import PostCategoryIcon from '../../post/PostCategoryIcon';
 import { categoryPermalink } from '../../../pages/blog-by-category';
-import { permalink as blogPermalink } from '../../../pages/blog';
+import { blogPermalink } from '../../../pages/blog';
 
 const StyledList = styled(List)`
     display: flex;
@@ -58,13 +58,15 @@ const TabText = styled.span`
                 ${visuallyHidden};
             }
         `}
+
+    transition: all linear 0.1s;
 `;
 
 export default function BlogTabs({ categories, category }) {
     const tabs = [
         {
-            text: 'Tutto',
-            href: blogPermalink,
+            text: 'Tutte',
+            href: blogPermalink(1),
             title: 'Tutte le relazioni',
         },
         ...categories.map((cat) => ({

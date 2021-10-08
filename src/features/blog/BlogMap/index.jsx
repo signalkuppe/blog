@@ -4,7 +4,7 @@ import { Script } from 'pequeno';
 import client from './index.client';
 import MapStyles from './MapStyles';
 
-const MapContainer = styled.div`
+const MapContainer = styled.figure`
     height: 500px;
     width: 100vw;
     background: var(--color-background-light);

@@ -19,5 +19,9 @@ module.exports = {
         'node_modules/leaflet-gesture-handling/dist/leaflet-gesture-handling.css':
             'libs/leaflet-gesture-handling.css',
         'node_modules/chart.js/dist/chart.js': 'libs/chart.js',
+        'node_modules/@tarekraafat/autocomplete.js/dist/autoComplete.js':
+            'libs/autoComplete.js',
+        'node_modules/@tarekraafat/autocomplete.js/dist/css/autoComplete.css':
+            'libs/autoComplete.css',
     },
 };

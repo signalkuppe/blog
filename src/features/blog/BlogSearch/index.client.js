@@ -1,0 +1,39 @@
+const activeCategory = document
+    .getElementById('js-search')
+    .getAttribute('data-category');
+
+fetch('/_data/map-points.json')
+    .then((response) => response.json())
+    .then((data) => {
+        const filteredItems = data.filter((m) =>
+            activeCategory ? m.category === activeCategory : true,
+        );
+        new autoComplete({
+            placeHolder: `Cerca${
+                !activeCategory ? '' : ` in ${activeCategory}`
+            }...`,
+            selector: '#js-autocomplete',
+            data: {
+                src: filteredItems,
+                keys: ['title'],
+            },
+            resultItem: {
+                highlight: {
+                    render: true,
+                },
+            },
+        });
+
+        document
+            .querySelector('#js-autocomplete')
+            .addEventListener('selection', function (event) {
+                location.href = event.detail.selection.value.permalink;
+            });
+
+        const wrapper = document.querySelector('.autoComplete_wrapper');
+        const IconWrapper = document.createElement('div');
+        IconWrapper.classList.add('autocomplete-search-icon');
+        const searchicon = `<svg viewBox="0 0 88 88" aria-hidden="true" focusable="false" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.997 0C14.845 0 0 14.844 0 32.997s14.845 32.998 32.997 32.998c6.919 0 13.336-2.17 18.655-5.844l26.092 26.092a6.018 6.018 0 0 0 8.499 0 5.98 5.98 0 0 0 0-8.468L60.15 51.683c3.676-5.32 5.844-11.766 5.844-18.686C65.995 14.844 51.15 0 32.997 0Zm0 11.999a20.908 20.908 0 0 1 20.999 20.998 20.908 20.908 0 0 1-20.999 20.999A20.908 20.908 0 0 1 12 32.997 20.908 20.908 0 0 1 32.997 12Z" fill="currentColor"/></svg>`;
+        IconWrapper.innerHTML = searchicon;
+        wrapper.append(IconWrapper);
+    });

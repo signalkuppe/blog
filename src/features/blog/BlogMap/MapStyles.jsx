@@ -1,7 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 import { lineClamp } from '../../../theme';
 
+/**
+ * map plugin ovverides
+ */
+
 export default MapStyles = createGlobalStyle` 
+    .leaflet-control-attribution {
+    
+    }
     .leaflet-container {
         font-family: inherit!important;
         font-size: inherit!important;

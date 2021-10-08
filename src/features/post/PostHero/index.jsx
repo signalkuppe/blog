@@ -118,8 +118,8 @@ const StyledMouseIcon = styled(MouseIcon)`
 `;
 
 const StyledDownIcon = styled(DownIcon)`
-    height: 1em;
     margin-top: 0.25em;
+    transform: scale(0.8);
 `;
 
 export default function PostHero({ post }) {

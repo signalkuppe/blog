@@ -25,9 +25,10 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
-    "pequeno": "0.0.25"
+    "pequeno": "0.0.26"
   },
   "dependencies": {
+    "@tarekraafat/autocomplete.js": "^10.2.6",
     "chart.js": "^3.4.1",
     "glightbox": "^3.0.9",
     "leaflet": "^1.7.1",

@@ -4,7 +4,7 @@ import BlogPage from '../features/blog/BlogPage';
 
 export const paginate = {
     data: 'posts',
-    size: 100000,
+    size: 10,
     groupBy: 'category',
 };
 
@@ -30,6 +30,7 @@ export default function BlogByCategory({ route, pagination, posts }) {
             posts={pagination.items}
             category={pagination.group}
             categories={categories}
+            pagination={pagination}
         />
     );
 }

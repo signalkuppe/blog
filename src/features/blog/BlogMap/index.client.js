@@ -16,12 +16,13 @@ function setMapHeight() {
 }
 
 setMapHeight();
-window.addEventListener('resize', debounce(setMapHeight, 250));
+window.addEventListener('resize', debounce(setMapHeight, 350));
 
 const showmap = function (markers) {
     const mymap = L.map('js-map', {
         renderer: L.canvas(),
         tap: false,
+        attributionControl: false,
     });
 
     mymap.setView([lat, lng], zoom);
@@ -49,11 +50,11 @@ const showmap = function (markers) {
         const popupHtml = `
             <a class="map-popup" href="${marker.permalink}" role="button" title="Leggi la relazione">
                 <div class="map-popup-image">
-                    <img src="${marker.cover.url}?w=200&h=200&fm=webp&fit=thumb&q=80&f=center" alt="${marker.cover.alt}" width="200" height="200" />
+                    <img src="${marker.cover.url}?w=300&h=300&fm=webp&fit=thumb&q=80&f=center" alt="${marker.cover.alt}" width="300" height="300" loading="lazy"/>
                 </div>
                 <div class="map-popup-info">
                      <div class="map-popup-date">
-                        ${marker.date}
+                        ${marker.dateShort}
                      </div>
                     <div class="map-popup-title">
                         ${marker.title}
