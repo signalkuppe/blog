@@ -1,6 +1,4 @@
 import React from 'react';
-import { Script } from 'pequeno';
-import client from './index.client.js';
 import vars from '../../../vars';
 
 export default function Head({
@@ -84,7 +82,6 @@ export default function Head({
             <meta name="twitter:image" content={twitterCardImage} />
             <meta name="og:image" content={ogImage} />
             {extraMetas}
-            <Script inline>{client}</Script>
         </head>
     );
 }

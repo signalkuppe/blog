@@ -2,7 +2,9 @@
   "name": "blog",
   "description": "Personal blog",
   "scripts": {
-    "dev": "npx pequeno --serve --clean",
+    "dev": "npx pequeno --serve --noAfterBuild --noProcessHtml",
+    "dev-blog": "npx pequeno --serve --page=blog.jsx --path=/blog/index.html --noAfterBuild --noProcessHtml",
+    "dev-post": "npx pequeno --serve --page=post-item.jsx --path=/escursionismo/2021/10/17/pizzo-gandaiole/index.html --noAfterBuild --noProcessHtml",
     "build": "npx pequeno --clean"
   },
   "repository": {
@@ -25,7 +27,8 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
-    "pequeno": "0.0.26"
+    "pequeno": "0.1.0-beta.3",
+    "sitemap": "^7.0.0"
   },
   "dependencies": {
     "@tarekraafat/autocomplete.js": "^10.2.6",
@@ -35,6 +38,7 @@
     "leaflet-fullscreen": "^1.0.2",
     "leaflet-gesture-handling": "^1.2.1",
     "leaflet-gpx": "^1.5.2",
-    "scrollama": "^2.2.2"
+    "scrollama": "^2.2.2",
+    "tippy.js": "^6.3.2"
   }
 }

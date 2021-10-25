@@ -7,7 +7,7 @@ const PostGridList = styled(List)`
     display: flex;
     flex-direction: column;
     > * + * {
-        margin-top: calc(var(--space-unit) * 6);
+        margin-top: calc(var(--space-unit) * 3);
     }
 `;
 

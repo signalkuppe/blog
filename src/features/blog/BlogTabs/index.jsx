@@ -10,20 +10,28 @@ import { blogPermalink } from '../../../pages/blog';
 const StyledList = styled(List)`
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
     background: var(--color-background-light);
+    height: 100%;
+    padding: 0 var(--space-unit);
 `;
-const StyledLi = styled.li``;
+const StyledLi = styled.li`
+    height: 100%;
+`;
 const StyledLink = styled(Link)`
     font-stretch: var(--headings-font-stretch);
     font-weight: 400;
     display: flex;
-    padding: clamp(0.8em, 1.5vmax, 1.4em) 2vmax;
+    align-items: center;
+    height: 100%;
+    padding: 0 2em;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
     @media ${device.atLeastTablet} {
         font-size: var(--font-size-medium);
+    }
+    :first-child {
+        padding-left: 0;
     }
 `;
 

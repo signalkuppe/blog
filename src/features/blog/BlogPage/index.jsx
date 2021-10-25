@@ -1,25 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import { visuallyHidden } from '../../../theme';
 import vars from '../../../vars';
 import BaseLayout from '../../../components/layout/Base';
-import Container from '../../../components/layout/Container';
 import Head from '../../../components/common/Head';
-import withFiletto from '../../../components/hoc/withFiletto';
 import Pager from '../../../components/ui/Pager';
-import BlogPageTitle from '../BlogPageTitle';
+import Bloglayout from '../Bloglayout';
 import BlogMap from '../BlogMap';
 import BlogTabs from '../BlogTabs';
 import BlogSearch from '../BlogSearch';
 import BlogPostList from '../BlogPostList';
 import VerticalSpace from '../../../components/ui/VerticalSpace';
 
-const StyledTitle = withFiletto(
-    styled.h2`
-        margin: calc(var(--space-unit) * 6) 0;
-        font-size: var(--font-size-x-large);
-    `,
-    {},
-);
+const StyledPageTitle = styled.h1`
+    ${visuallyHidden}
+`;
 
 export default function BlogPage({
     posts,
@@ -57,20 +52,21 @@ export default function BlogPage({
                 />
             }
         >
-            <BlogPageTitle title={title} />
-            <BlogTabs category={category} categories={categories} />
-            <BlogMap category={category} />
-            <BlogSearch category={category} />
-            <Container>
-                <StyledTitle>
-                    {category || 'Tutte le relazioni'}
-                    {pagination.page > 1 ? `, pagina ${pagination.page}` : ''}
-                </StyledTitle>
-                <BlogPostList posts={posts} />
-                <VerticalSpace size={6} />
-                <Pager pagination={pagination} />
-                <VerticalSpace size={6} />
-            </Container>
+            <Bloglayout
+                topBar={
+                    <BlogTabs category={category} categories={categories} />
+                }
+                content={
+                    <>
+                        <StyledPageTitle>{title}</StyledPageTitle>
+                        <BlogPostList posts={posts} />
+                        <VerticalSpace size={4} />
+                        <Pager pagination={pagination} />
+                    </>
+                }
+                map={<BlogMap category={category} />}
+                search={<BlogSearch category={category} />}
+            />
         </BaseLayout>
     );
 }

@@ -5,9 +5,12 @@ import client from './index.client';
 import MapStyles from './MapStyles';
 
 const MapContainer = styled.figure`
-    height: 500px;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     background: var(--color-background-light);
+    &.js-is-searching {
+        filter: grayscale(1);
+    }
 `;
 
 export default function BlogMap({ category }) {

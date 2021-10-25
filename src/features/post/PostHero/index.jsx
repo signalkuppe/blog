@@ -1,13 +1,11 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import { Script } from 'pequeno';
 import { device } from '../../../theme';
 import Container from '../../../components/layout/Container';
 import MouseIcon from '../../../public/icons/Mouse.svg';
 import DownIcon from '../../../public/icons/ChevronDown.svg';
 import PageTitle from '../../../components/ui/PageTitle';
 import PostCategoryIcon from '../PostCategoryIcon';
-import client from './index.client';
 
 const ShakeY = keyframes`
   from,
@@ -46,7 +44,7 @@ const commonMetaStyles = css`
 `;
 
 const Hero = styled.div`
-    height: 100vh; /** fixed in js for ios */
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -103,6 +101,7 @@ const Description = styled.p`
 const ScrollHint = styled.span`
     display: inline-flex;
     flex-direction: column;
+    align-items: center;
     margin-top: 5vmax;
     @media ${device.noReduceMotion} {
         animation: ${ShakeY} 1s linear;
@@ -120,13 +119,14 @@ const StyledMouseIcon = styled(MouseIcon)`
 const StyledDownIcon = styled(DownIcon)`
     margin-top: 0.25em;
     transform: scale(0.8);
+    width: 1.5em;
 `;
 
 export default function PostHero({ post }) {
     const { title, date, dateTime, category, description } = post;
     return (
-        <Container as="header">
-            <Hero id="js-postHero">
+        <Hero>
+            <Container as="header">
                 <HeroSpacer>
                     <Date dateTime={dateTime}>{date}</Date>
                     <Category>
@@ -140,17 +140,7 @@ export default function PostHero({ post }) {
                         <StyledDownIcon />
                     </ScrollHint>
                 </HeroSpacer>
-            </Hero>
-            <Script
-                libs={[
-                    {
-                        where: 'body',
-                        tag: '<script src="/js/utils.js" />',
-                    },
-                ]}
-            >
-                {client}
-            </Script>
-        </Container>
+            </Container>
+        </Hero>
     );
 }

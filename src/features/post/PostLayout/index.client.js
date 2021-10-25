@@ -1,4 +1,4 @@
-const hero = document.getElementById('js-postHero');
+const hero = document.getElementById('js-postLayout-hero');
 const header = document.getElementById('js-header');
 
 const windowWidth = window.innerWidth;
@@ -13,8 +13,10 @@ function onResize() {
 }
 
 function setHeroSize() {
-    hero.style.height = `${window.outerHeight - headerHeight}px`;
+    hero.style.height = `${window.innerHeight - headerHeight}px`;
 }
 
-setHeroSize();
-window.addEventListener('resize', debounce(onResize, 250));
+if (IS_IOS) {
+    setHeroSize();
+    window.addEventListener('resize', debounce(onResize, 250));
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import vars from '../../../vars';
 import BaseLayout from '../../../components/layout/Base';
 import Head from '../../../components/common/Head';
+import PostLayout from '../PostLayout';
 import PostHero from '../PostHero';
 import PostCover from '../PostCover';
 import PostSections from '../PostSections';
@@ -32,9 +33,15 @@ export default function PostPage({ post, route }) {
                 />
             }
         >
-            <PostHero post={post} />
-            <PostCover cover={post.cover} />
-            <PostSections post={post} />
+            <PostLayout
+                hero={<PostHero post={post} />}
+                content={
+                    <>
+                        <PostCover cover={post.cover} />
+                        <PostSections post={post} />
+                    </>
+                }
+            />
         </BaseLayout>
     );
 }

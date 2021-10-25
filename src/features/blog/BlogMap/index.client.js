@@ -7,22 +7,12 @@ const lat = 45.7929;
 const lng = 9.0;
 const activeCategory = mapDiv.getAttribute('data-category');
 
-function setMapHeight() {
-    mapDiv.style.height = `${
-        window.innerHeight -
-        tabs.getBoundingClientRect().height -
-        header.getBoundingClientRect().height
-    }px`;
-}
-
-setMapHeight();
-window.addEventListener('resize', debounce(setMapHeight, 350));
-
 const showmap = function (markers) {
     const mymap = L.map('js-map', {
         renderer: L.canvas(),
         tap: false,
         attributionControl: false,
+        zoomControl: false,
     });
 
     mymap.setView([lat, lng], zoom);
@@ -36,13 +26,18 @@ const showmap = function (markers) {
             maxZoom: 22,
         },
     ).addTo(mymap);
+    L.control
+        .zoom({
+            position: 'topright',
+        })
+        .addTo(mymap);
     mymap.scrollWheelZoom.disable();
-    mymap.addControl(new L.Control.Fullscreen());
+    mymap.addControl(new L.Control.Fullscreen({ position: 'topright' }));
     /* add markers */
     markers.forEach(function (marker) {
         const customIcon = L.divIcon({
             html: `
-            <div class="map-marker">
+            <div class="map-marker map-marker-${marker.id}" data-lat="${marker.coordinates.lat}" data-lon="${marker.coordinates.lon}">
                 <img src="/icons/${marker.category}.svg" aria-label="${marker.title}" alt="" />
             </div>`,
         }); // use custom div for icons
@@ -68,6 +63,44 @@ const showmap = function (markers) {
         })
             .addTo(mymap)
             .bindPopup(popupHtml);
+    });
+
+    // hover effects
+
+    const posts = document.querySelectorAll('.js-post');
+    const markerList = document.querySelectorAll('.map-marker');
+    const markerContainersList = document.querySelectorAll(
+        '.leaflet-marker-icon',
+    );
+
+    Array.from(posts).forEach((post) => {
+        post.addEventListener('mouseenter', function (e) {
+            const selectedMarker = [...markerList].find((e) => {
+                const id = post.id.split('-').pop();
+                return e.classList.contains(`map-marker-${id}`);
+            });
+            selectedMarker
+                .closest('.leaflet-marker-icon')
+                .classList.add('js-is-selected');
+            const selectedMarkerLat = +selectedMarker.getAttribute('data-lat');
+            const selectedMarkerLon = +selectedMarker.getAttribute('data-lon');
+
+            if (
+                !mymap
+                    .getBounds()
+                    .contains(
+                        new L.LatLng(selectedMarkerLat, selectedMarkerLon),
+                    )
+            ) {
+                mymap.panTo(new L.LatLng(selectedMarkerLat, selectedMarkerLon));
+            }
+        });
+
+        post.addEventListener('mouseleave', function (e) {
+            [...markerContainersList].forEach((e) =>
+                e.classList.remove('js-is-selected'),
+            );
+        });
     });
 };
 

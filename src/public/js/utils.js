@@ -3,6 +3,9 @@
 */
 
 // eslint-disable-next-line no-unused-vars
+const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+// eslint-disable-next-line no-unused-vars
 const debounce = (callback, wait) => {
   let timeoutId = null;
   return (...args) => {
@@ -12,6 +15,16 @@ const debounce = (callback, wait) => {
     }, wait);
   };
 }
+
+// eslint-disable-next-line no-unused-vars
+const uniqBy = function (prop) {
+    if (prop)
+        return (ele, i, arr) =>
+            arr
+                .map((ele) => ele[prop])
+                .indexOf(ele[prop]) === i;
+    else return (ele, i, arr) => arr.indexOf(ele) === i;
+};
 
 
 // eslint-disable-next-line no-unused-vars

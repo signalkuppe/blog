@@ -10,13 +10,14 @@ const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-unit);
+    padding: 0 var(--space-unit);
+    height: var(--header-height);
 `;
 
 const logostyles = css`
     width: var(--logo-width);
     margin: 0;
-    transform: translateY(-0.6rem);
+    transform: translateY(0.2rem);
 `;
 
 const H1LogoContainer = styled.h1`

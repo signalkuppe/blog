@@ -27,18 +27,13 @@ const StyledButton = styled.button`
     padding: 0;
     display: block;
     cursor: pointer;
-    align-self: flex-start;
+    outline: none;
     :hover {
         color: var(--color-text-light-accent);
     }
     :active {
         transform: translate(0.1em, 0.1em);
     }
-    ${(props) =>
-        props.inPanel &&
-        css`
-            margin-top: var(--space-unit);
-        `}
 `;
 
 const StyledButtonText = styled.span`
@@ -74,6 +69,7 @@ const PanelHeader = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    height: var(--header-height);
 `;
 
 const StyledNavigationLinks = styled(NavigationLinks)`
@@ -99,8 +95,11 @@ export default function MainMenu({ route }) {
         },
         {
             href: '/blog/index.html',
-            text: 'Blog',
-            active: route.name === 'blog' || route.name === 'post-item',
+            text: 'Relazioni',
+            active:
+                route.name === 'blog' ||
+                route.name === 'post-item' ||
+                route.name === 'blog-by-category',
         },
         {
             href: '/portfolio/index.html',

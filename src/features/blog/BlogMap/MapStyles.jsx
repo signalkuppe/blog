@@ -6,22 +6,22 @@ import { lineClamp } from '../../../theme';
  */
 
 export default MapStyles = createGlobalStyle` 
-    .leaflet-control-attribution {
-    
-    }
     .leaflet-container {
         font-family: inherit!important;
         font-size: inherit!important;
     }
-    .leaflet-div-icon {
+    .leaflet-marker-icon {
         background: none!important; /** library default marker div */
         border: none!important;
         width: 2.25em!important;
         height: 2.25em!important;
         color: inherit!important;
+        &.js-is-selected {
+            z-index: var(--z-index-map-selected-marker)!important;
+        }
     }
     .map-marker { /** my custom marker */
-        background: var(--color-primary)!important;
+        background: var(--color-background)!important;
         display: flex!important;
         align-items: center!important;
         justify-content: center!important;
@@ -39,12 +39,14 @@ export default MapStyles = createGlobalStyle`
         img {
             width: 1em!important;
             height: 1em!important;
+            filter: invert(1);
         }
-        :hover {
-            background: var(--color-secondary)!important;
+        :hover,
+        .js-is-selected & {
+            background: var(--color-primary)!important;
             transform: scale(1.15);
             img {
-                filter: invert(1);
+                filter: invert(0);
             }
             
         }
