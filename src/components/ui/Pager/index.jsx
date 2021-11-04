@@ -38,46 +38,44 @@ const Test = styled.div`
     color: yellow;
 `;
 
-export default function Pager({ pagination }) {
+export default function Pager({ pagination, ...props }) {
     const { next, prev, pages, page, total } = pagination;
     if (!pages) {
         return null;
     } else {
         return (
-            <>
-                <StyledList reset>
-                    {prev && (
-                        <StyledLi>
-                            <StyledLink
-                                href={prev}
-                                noUnderline
-                                inherit
-                                title="Pagina precedente"
-                            >
-                                <Icon icon={LeftIcon} />
-                            </StyledLink>
-                        </StyledLi>
-                    )}
+            <StyledList reset {...props}>
+                {prev && (
                     <StyledLi>
-                        <span>Pagina</span>
-                        <strong>{page}</strong>
-                        <span>di</span>
-                        <span>{total}</span>
+                        <StyledLink
+                            href={prev}
+                            noUnderline
+                            inherit
+                            title="Pagina precedente"
+                        >
+                            <Icon icon={LeftIcon} />
+                        </StyledLink>
                     </StyledLi>
-                    {next && (
-                        <StyledLi>
-                            <StyledLink
-                                href={next}
-                                noUnderline
-                                inherit
-                                title="Pagina successiva"
-                            >
-                                <Icon icon={RightIcon} />
-                            </StyledLink>
-                        </StyledLi>
-                    )}
-                </StyledList>
-            </>
+                )}
+                <StyledLi>
+                    <span>Pagina</span>
+                    <strong>{page}</strong>
+                    <span>di</span>
+                    <span>{total}</span>
+                </StyledLi>
+                {next && (
+                    <StyledLi>
+                        <StyledLink
+                            href={next}
+                            noUnderline
+                            inherit
+                            title="Pagina successiva"
+                        >
+                            <Icon icon={RightIcon} />
+                        </StyledLink>
+                    </StyledLi>
+                )}
+            </StyledList>
         );
     }
 }

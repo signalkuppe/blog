@@ -1,9 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import withFiletto from '../../hoc/withFiletto';
 
 const StyledH1 = styled.h1`
-    font-size: clamp(var(--font-size-xx-large), 100rem, calc(4vh + 3vw));
+    ${(props) =>
+        !props.small &&
+        css`
+            font-size: clamp(
+                var(--font-size-xx-large),
+                100rem,
+                calc(4vh + 3vw)
+            );
+        `}
+    ${(props) =>
+        props.small &&
+        css`
+            font-size: clamp(var(--font-size-x-large), 100rem, calc(2vh + 2vw));
+        `}
     margin: 0;
 `;
 

@@ -48,6 +48,5 @@ lightbox.on('slide_changed', (s) => {
     link.target = '_blank';
     link.rel = 'noopener';
     link.classList.add('js-postGallery-downloadLink');
-
     currentSlide.slide.querySelector('h4').after(link);
 });

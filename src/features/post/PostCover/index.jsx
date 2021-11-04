@@ -77,9 +77,9 @@ const LoaderIndicator = styled.div`
 `;
 
 export default function PostCover({ cover }) {
-    const { alt, title, url, focus } = cover;
+    const { alt, title, src, focus } = cover;
     const imgUrl = function (width, format) {
-        return `${url}?w=${width}&h=${Math.round(
+        return `${src}?w=${width}&h=${Math.round(
             width / 1.5,
         )}&fm=${format}&fit=thumb&q=80&f=${focus}`;
     };
@@ -112,7 +112,7 @@ export default function PostCover({ cover }) {
                       (max-width: 768px) 100vw,
                       (max-width: 1387px) 100vw,
                       (min-width: 1388px) 100vw"
-                        src={url}
+                        src={src}
                         alt={alt}
                         decoding="async"
                         loading="lazy"

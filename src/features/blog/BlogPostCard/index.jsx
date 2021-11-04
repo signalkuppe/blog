@@ -86,13 +86,14 @@ export default function BlogPostCard({ post }) {
         <WrapperLink
             href={post.permalink}
             inherit
+            reset
             noUnderline
             id={`js-post-${post.id}`}
             className="js-post"
         >
             <ImageWrapper>
                 <StyledImage
-                    src={`${post.cover.url}?w=300&h=300&fm=webp&fit=thumb&q=80&f=center`}
+                    src={`${post.cover.src}?w=300&h=300&fm=webp&fit=thumb&q=80&f=center`}
                     alt={post.cover.alt}
                     width="300"
                     height="300"

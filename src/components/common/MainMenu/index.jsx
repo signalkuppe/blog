@@ -28,6 +28,7 @@ const StyledButton = styled.button`
     display: block;
     cursor: pointer;
     outline: none;
+    width: var(--space-unit);
     :hover {
         color: var(--color-text-light-accent);
     }
