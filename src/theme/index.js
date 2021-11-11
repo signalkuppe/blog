@@ -1,5 +1,9 @@
 import { css } from 'styled-components';
 
+// consider this themes
+
+// https://coolors.co/cfdbd5-e8eddf-f5cb5c-242423-333533
+
 export const vars = {
     '--color-background': '#11131A',
     '--color-background-light': '#1D1F26',
@@ -11,6 +15,7 @@ export const vars = {
     '--color-facebook': '#1877f2',
     '--color-twitter': '#1da1f2',
     '--color-whatsapp': '#25d366',
+    '--color-error': 'crimson',
     '--font-family-base': "'Roboto Flex', sans-serif",
     '--font-family-cursive': "'Sriracha', cursive",
     '--font-family-drop-cap': "'Yeseva One', cursive",

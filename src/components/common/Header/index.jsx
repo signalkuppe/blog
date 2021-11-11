@@ -30,8 +30,10 @@ const PlainLogoContainer = styled.div`
 
 const StyledLogo = styled(Logo)`
     fill: var(--color-text-light-accent);
+    will-change: transform;
+    transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
     :hover {
-        filter: drop-shadow(-5px 0px 20px var(--color-text));
+        transform: rotate(-2.5deg);
     }
 `;
 

@@ -45,6 +45,7 @@ const PhotoDate = styled.time`
 export default function PortfolioPhotos({ photos }) {
     const images = photos.map((photo) => ({
         ...photo.image,
+        // extra item at the bottom of each image
         children: (
             <PhotoCaption>
                 <PhotoDate dateTime={photo.dateTime}>{photo.date}</PhotoDate>

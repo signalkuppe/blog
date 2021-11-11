@@ -110,7 +110,7 @@ export default function MainMenu({ route }) {
         {
             href: '/contatti/index.html',
             text: 'Contatti',
-            active: route.name === 'contact',
+            active: route.name === 'contatti',
         },
     ];
 

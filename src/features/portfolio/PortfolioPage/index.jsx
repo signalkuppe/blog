@@ -40,7 +40,7 @@ export default function PortfolioPage({ route, pagination }) {
                 <Head
                     title={title}
                     slogan={vars.siteName}
-                    description="Una raccolta delle mie foto più belle"
+                    description="Una raccolta delle foto che mi piacciono di più"
                     extraLinks={
                         <>
                             <link
@@ -58,7 +58,9 @@ export default function PortfolioPage({ route, pagination }) {
                     {title}
                 </StyledPageTitle>
                 {pagination.page === 1 && (
-                    <Intro>Una raccolta delle mie foto più belle</Intro>
+                    <Intro>
+                        Una raccolta delle foto che mi piacciono di più
+                    </Intro>
                 )}
                 <PortfolioPhotos photos={photos} />
                 <StyledPager pagination={pagination} />
