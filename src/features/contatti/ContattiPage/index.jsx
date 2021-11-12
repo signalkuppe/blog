@@ -1,23 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import vars from '../../../vars';
-import { device } from '../../../theme';
-import Container from '../../../components/layout/Container';
 import PageTitle from '../../../components/ui/PageTitle';
 import BaseLayout from '../../../components/layout/Base';
+import DefaultPageLayout from '../../../components/layout/DefaultPageLayout';
 import Head from '../../../components/common/Head';
 import ContattiForm from '../ContattiForm';
 
-const StyledPageTitle = styled(PageTitle)`
-    margin-top: calc(var(--space-unit) * 1.5);
-    margin-bottom: calc(var(--space-unit) * 2);
-    @media ${device.desktop} {
-        margin-top: calc(var(--space-unit) * 2.5);
-    }
-`;
-
-const Intro = styled.p`
-    margin-bottom: calc(var(--space-unit) * 2);
+const Description = styled.p`
+    margin: 0;
 `;
 
 export default function PortfolioPage({ route }) {
@@ -35,11 +26,12 @@ export default function PortfolioPage({ route }) {
                 />
             }
         >
-            <Container fullWidth>
-                <StyledPageTitle small>{title}</StyledPageTitle>
-                <Intro>{description}</Intro>
+            <DefaultPageLayout
+                title={<PageTitle small>{title}</PageTitle>}
+                description={<Description>{description}</Description>}
+            >
                 <ContattiForm />
-            </Container>
+            </DefaultPageLayout>
         </BaseLayout>
     );
 }

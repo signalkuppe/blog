@@ -50,7 +50,7 @@ const ListItem = styled.li`
 `;
 
 const MenuLink = styled(Link)`
-    font-stretch: var(--headings-font-stretch);
+    font-stretch: var(--narrow-font-stretch);
     font-weight: 400;
     display: block;
     color: ${(props) =>

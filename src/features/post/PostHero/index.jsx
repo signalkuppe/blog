@@ -38,7 +38,7 @@ const ShakeY = keyframes`
 `;
 
 const commonMetaStyles = css`
-    font-stretch: var(--headings-font-stretch);
+    font-stretch: var(--narrow-font-stretch);
     text-transform: uppercase;
     color: var(--color-text-dark-accent);
 `;

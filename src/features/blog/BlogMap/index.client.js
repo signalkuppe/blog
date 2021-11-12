@@ -45,7 +45,7 @@ const showmap = function (markers) {
         const popupHtml = `
             <a class="map-popup" href="${marker.permalink}" role="button" title="Leggi la relazione">
                 <div class="map-popup-image">
-                    <img src="${marker.cover.url}?w=300&h=300&fm=webp&fit=thumb&q=80&f=center" alt="${marker.cover.alt}" width="300" height="300" loading="lazy"/>
+                    <img src="${marker.cover.src}?w=300&h=300&fm=webp&fit=thumb&q=80&f=center" alt="${marker.cover.alt}" width="300" height="300" loading="lazy"/>
                 </div>
                 <div class="map-popup-info">
                      <div class="map-popup-date">

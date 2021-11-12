@@ -32,10 +32,11 @@ export default AutocompletStyles = createGlobalStyle`
     .autoComplete_wrapper > input {
       height: 3rem!important;
       width: 100%!important;
-      color: var(--color-text)!important;
-      border: 0.2em solid var(--color-text)!important;
       background-image:none!important;
-      background-color: var(--color-background)!important;
+      border: var(--inputs-border)!important;
+      background-color: var(--inputs-background)!important;
+      color: var(--inputs-color)!important;
+      border-radius: var(--inputs-border-radius)!important;
     }
 
     .autoComplete_wrapper > input:focus {
@@ -60,7 +61,7 @@ export default AutocompletStyles = createGlobalStyle`
           0 16px 16px hsl(0deg 0% 0% / 0.075)!important
       ;
       z-index: var(--z-index-autocomplete)!important;
-      border: 0.2em solid var(--color-text-light-accent)!important;
+      border: var(--inputs-border)!important;
       max-height: 50vh!important;
     }
 

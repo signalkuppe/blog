@@ -1,38 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import vars from '../../../vars';
-import { device } from '../../../theme';
-import Container from '../../../components/layout/Container';
 import PageTitle from '../../../components/ui/PageTitle';
 import Pager from '../../../components/ui/Pager';
 import BaseLayout from '../../../components/layout/Base';
+import DefaultPageLayout from '../../../components/layout/DefaultPageLayout';
 import Head from '../../../components/common/Head';
 import PortfolioPhotos from '../PortfolioPhotos';
-
-const StyledPageTitle = styled(PageTitle)`
-    margin-top: calc(var(--space-unit) * 1.5);
-    margin-bottom: calc(
-        var(--space-unit) * ${(props) => (props.firstPage ? 1 : 2)}
-    );
-    @media ${device.desktop} {
-        margin-top: calc(var(--space-unit) * 2.5);
-    }
-`;
-const Intro = styled.p`
-    margin-bottom: calc(var(--space-unit) * 2);
-`;
 
 const StyledPager = styled(Pager)`
     margin-top: calc(var(--space-unit) * 2);
     margin-bottom: calc(var(--space-unit) * 4);
 `;
 
+const Description = styled.p`
+    margin: 0;
+`;
+
 export default function PortfolioPage({ route, pagination }) {
     let title = 'Portfolio';
+    let description = 'Una raccolta delle foto che mi piacciono di più';
     if (pagination.page > 1) {
         title = `Portfolio / ${pagination.page}`;
     }
     const photos = pagination.items;
+    const firstPage = pagination.page === 1;
+
     return (
         <BaseLayout
             route={route}
@@ -40,7 +33,7 @@ export default function PortfolioPage({ route, pagination }) {
                 <Head
                     title={title}
                     slogan={vars.siteName}
-                    description="Una raccolta delle foto che mi piacciono di più"
+                    description={description}
                     extraLinks={
                         <>
                             <link
@@ -53,18 +46,15 @@ export default function PortfolioPage({ route, pagination }) {
                 />
             }
         >
-            <Container fullWidth>
-                <StyledPageTitle small firstPage={pagination.page === 1}>
-                    {title}
-                </StyledPageTitle>
-                {pagination.page === 1 && (
-                    <Intro>
-                        Una raccolta delle foto che mi piacciono di più
-                    </Intro>
-                )}
+            <DefaultPageLayout
+                title={<PageTitle small>{title}</PageTitle>}
+                description={
+                    firstPage ? <Description>{description}</Description> : null
+                }
+            >
                 <PortfolioPhotos photos={photos} />
                 <StyledPager pagination={pagination} />
-            </Container>
+            </DefaultPageLayout>
         </BaseLayout>
     );
 }

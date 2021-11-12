@@ -29,13 +29,7 @@ export default MapStyles = createGlobalStyle`
         height: 100%!important;
         border-radius: 50%!important;
         border: 2px solid white!important;
-        box-shadow:
-            0 1px 1px hsl(0deg 0% 0% / 0.075),
-            0 2px 2px hsl(0deg 0% 0% / 0.075),
-            0 4px 4px hsl(0deg 0% 0% / 0.075),
-            0 8px 8px hsl(0deg 0% 0% / 0.075),
-            0 16px 16px hsl(0deg 0% 0% / 0.075)
-        ;
+        box-shadow:-5px 0px 5px var(--drop-shadow-color)!important;
         img {
             width: 1em!important;
             height: 1em!important;
@@ -55,13 +49,8 @@ export default MapStyles = createGlobalStyle`
     .leaflet-popup-content-wrapper { /** library default popup div */
         background: white!important;
         border-radius: 0px!important;
-        box-shadow:
-            0 1px 1px hsl(0deg 0% 0% / 0.075),
-            0 2px 2px hsl(0deg 0% 0% / 0.075),
-            0 4px 4px hsl(0deg 0% 0% / 0.075),
-            0 8px 8px hsl(0deg 0% 0% / 0.075),
-            0 16px 16px hsl(0deg 0% 0% / 0.075)!important
-        ;
+        box-shadow: none!important;
+        filter: drop-shadow(-5px 0px 20px var(--drop-shadow-color));
     }
 
     .leaflet-popup-content[style] {
@@ -77,6 +66,7 @@ export default MapStyles = createGlobalStyle`
         display: flex;
         color: inherit!important;
         text-decoration: none!important;
+        box-shadow: none!important;
     }
 
     .map-popup-image { 
@@ -100,13 +90,13 @@ export default MapStyles = createGlobalStyle`
 
    .map-popup-date { 
         text-transform: uppercase;
-        font-stretch: var(--headings-font-stretch);
+        font-stretch: var(--narrow-font-stretch);
         font-size: var(--font-size-x-small);
         margin-bottom: 0.25em;
     }
 
    .map-popup-title { 
-        font-stretch: var(--headings-font-stretch);
+        font-stretch: var(--narrow-font-stretch);
         font-weight: 700;
         line-height: 1.2;
         ${lineClamp(3)};

@@ -38,7 +38,7 @@ const PhotoDate = styled.time`
     display: block;
     text-transform: uppercase;
     font-size: var(--font-size-x-small);
-    font-stretch: 50%;
+    font-stretch: var(--narrow-font-stretch);
     font-weight: 500;
 `;
 

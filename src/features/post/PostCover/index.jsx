@@ -49,7 +49,7 @@ const StyledFigcaption = styled.figcaption`
         3vmax
     );
     font-weight: 900;
-    font-stretch: extra-condensed;
+    font-stretch: var(--extra-narrow-font-stretch);
     line-height: 1.1;
     color: var(--color-text-light-accent);
     position: absolute;

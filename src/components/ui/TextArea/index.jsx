@@ -10,14 +10,15 @@ const StyledLabel = styled.label`
     display: block;
     font-weight: 500;
     margin-bottom: 0.5em;
+    padding-left: 25px;
 `;
 const StyledTextArea = styled.textarea`
-    border: 4px solid var(--color-text);
-    appareance: none;
-    background: var(--color-background);
-    padding: 1em;
-    color: var(--color-text);
-    border-radius: 15px;
+    border: var(--inputs-border);
+
+    background: var(--inputs-background);
+    padding: var(--inputs-padding);
+    color: var(--inputs-color);
+    border-radius: var(--inputs-border-radius);
     :focus {
         border-color: var(--color-primary);
         outline: transparent;

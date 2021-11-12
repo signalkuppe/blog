@@ -29,7 +29,14 @@ export const vars = {
     '--font-size-xx-large': '3rem',
     '--font-size-xxx-large': '4rem',
     '--font-size-xxxx-large': '5rem',
-    '--headings-font-stretch': '50%',
+    '--narrow-font-stretch': 'condensed',
+    '--extra-narrow-font-stretch': 'extra-condensed',
+    '--inputs-border': '4px solid var(--color-text)',
+    '--inputs-background': 'var(--color-background)',
+    '--inputs-color': 'var(--color-text)',
+    '--inputs-padding': '1em',
+    '--inputs-border-radius': '35px',
+    '--inputs-focused-border-color': 'var(--color-primary)',
     '--space-unit': '1.5rem',
     '--logo-width': '9rem',
     '--container-max-width': '80rem',
@@ -49,7 +56,7 @@ export const vars = {
 
 export const headingsStyles = css`
     font-weight: 900;
-    font-stretch: var(--headings-font-stretch);
+    font-stretch: var(--narrow-font-stretch);
     line-height: 1.1;
     margin-bottom: 0.5rem;
     letter-spacing: 0;

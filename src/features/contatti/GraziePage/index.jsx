@@ -1,11 +1,10 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import vars from '../../../vars';
-import { device } from '../../../theme';
-import Container from '../../../components/layout/Container';
 import PageTitle from '../../../components/ui/PageTitle';
 import Link from '../../../components/ui/Link';
 import BaseLayout from '../../../components/layout/Base';
+import DefaultPageLayout from '../../../components/layout/DefaultPageLayout';
 import Head from '../../../components/common/Head';
 
 const backInLeft = keyframes`
@@ -33,11 +32,6 @@ const fadeInUp = keyframes`
 `;
 
 const StyledPageTitle = styled(PageTitle)`
-    margin-top: calc(var(--space-unit) * 1.5);
-    margin-bottom: calc(var(--space-unit) * 2);
-    @media ${device.desktop} {
-        margin-top: calc(var(--space-unit) * 2.5);
-    }
     animation: 0.65s ${backInLeft} ease-out;
 `;
 
@@ -49,6 +43,7 @@ const Text = styled.div`
 
 const Intro = styled.p`
     margin-bottom: calc(var(--space-unit) * 0.5);
+    margin-top: calc(var(--space-unit) * 2);
 `;
 
 export default function GraziePage({ route }) {
@@ -65,13 +60,19 @@ export default function GraziePage({ route }) {
                 />
             }
         >
-            <Container fullWidth>
-                <StyledPageTitle small>Messaggio ricevuto!</StyledPageTitle>
-                <Text>
-                    <Intro>Cercherò di risponderti il prima possibile 🙂</Intro>
-                    <Link href="/">Torna alla homepage</Link>
-                </Text>
-            </Container>
+            <DefaultPageLayout
+                title={
+                    <StyledPageTitle small>Messaggio ricevuto!</StyledPageTitle>
+                }
+                description={
+                    <Text>
+                        <Intro>
+                            Cercherò di risponderti il prima possibile 🙂
+                        </Intro>
+                        <Link href="/">Torna alla homepage</Link>
+                    </Text>
+                }
+            />
         </BaseLayout>
     );
 }

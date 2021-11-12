@@ -27,7 +27,7 @@ const MapInfos = styled.div`
 
 const InfoBox = styled.dl`
     dt {
-        font-stretch: var(--headings-font-stretch);
+        font-stretch: var(--narrow-font-stretch);
         color: var(--color-text-light-accent);
         @media ${device.desktop} {
             font-size: var(--font-size-medium);

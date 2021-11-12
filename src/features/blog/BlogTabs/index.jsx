@@ -19,7 +19,7 @@ const StyledLi = styled.li`
     height: 100%;
 `;
 const StyledLink = styled(Link)`
-    font-stretch: var(--headings-font-stretch);
+    font-stretch: var(--narrow-font-stretch);
     font-weight: 400;
     display: flex;
     align-items: center;
