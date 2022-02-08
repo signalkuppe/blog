@@ -8,6 +8,7 @@
     "dev-portfolio": "npx pequeno --serve --page=portfolio --data=portfolio --noAfterBuild --noProcessHtml",
     "dev-contatti": "npx pequeno --serve --page=contatti --noData --noAfterBuild --noProcessHtml",
     "dev-grazie": "npx pequeno --serve --page=grazie --noData --noAfterBuild --noProcessHtml --noCopy --noPublicCopy",
+    "dev-index": "npx pequeno --serve --page=index --data=posts --noAfterBuild --noProcessHtml --noCopy --noPublicCopy",
     "build": "npx pequeno --clean",
     "build-verbose": "npx pequeno --clean --verbose"
   },
@@ -31,7 +32,7 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
-    "pequeno": "0.1.0-beta.7",
+    "pequeno": "0.1.2",
     "sitemap": "^7.0.0"
   },
   "dependencies": {

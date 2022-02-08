@@ -77,6 +77,8 @@ export const device = {
     desktop: `screen and (min-width: 85.3125rem)`, // >= 1366px
     largeDesktop: `screen and (min-width: 120rem)`, // >= 1920px
     noReduceMotion: `screen and (prefers-reduced-motion: no-preference)`,
+    portrait: `screen and (orientation: portrait)`,
+    landscape: `screen and (orientation: landscape)`,
 };
 
 export const visuallyHidden = css`
