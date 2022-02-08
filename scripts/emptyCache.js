@@ -1,8 +1,9 @@
-require('dotenv').config()
-const rimraf = require('rimraf')
-const path = require('path')
-const log = require(path.join(process.cwd(), 'lib/log'))
+require("dotenv").config();
+const fs = require("fs-extra");
+const path = require("path");
+const log = require(path.join(process.cwd(), "lib/log"));
 
-rimraf(process.env.ELEVENTY_CACHE_DIR, () => { 
-  log.success(`Cache deleted`)
-})
+fs.remove(process.env.ELEVENTY_CACHE_DIR, (err) => {
+  if (err) return;
+  log.success(`Cache deleted`);
+});
