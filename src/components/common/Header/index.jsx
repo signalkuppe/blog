@@ -12,16 +12,6 @@ const HeaderContainer = styled.div`
     align-items: center;
     padding: 0 var(--space-unit);
     height: var(--header-height);
-    &.js-is-sticky {
-        // eg: in the homepage
-        background: var(--color-background);
-        z-index: calc(var(--z-index-menu) - 1);
-        box-shadow: 0 1px 1px var(--drop-shadow-color),
-            0 2px 2px var(--drop-shadow-color),
-            0 4px 4px var(--drop-shadow-color),
-            0 8px 8px var(--drop-shadow-color),
-            0 16px 16px var(--drop-shadow-color);
-    }
 `;
 
 const logostyles = css`

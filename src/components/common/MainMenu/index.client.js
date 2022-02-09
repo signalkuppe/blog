@@ -1,7 +1,10 @@
 // set year
-document.getElementById('js-year').innerText = new Date().getFullYear();
+// document.getElementById('js-year').innerText = new Date().getFullYear();
 
 // slide menu logics
+
+// mobileMediaQuery added in index.jsx via vars
+const mq = window.matchMedia(mobileMediaQuery);
 const openButton = document.getElementById('js-mainMenu-openButton');
 const closeButton = document.getElementById('js-mainMenu-closeButton');
 const menuPanel = document.getElementById('js-mainMenu-panel');
@@ -54,17 +57,25 @@ function closeMenu() {
 
 // fix ios vh
 
-function onResize() {
-    menuPanel.style.height = `${window.innerHeight}px`;
-}
-
-onResize();
-window.addEventListener('resize', debounce(onResize, 250));
-
 openButton.addEventListener('click', function () {
     openMenu();
 });
 
 closeButton.addEventListener('click', function () {
     closeMenu();
+});
+
+const handleMq = (mq) => {
+    if (mq.matches) {
+        openButton.setAttribute('aria-expanded', false);
+        menuPanel.style.height = `${window.innerHeight}px`;
+    } else {
+        openButton.removeAttribute('aria-expanded');
+        menuPanel.style.height = `auto`;
+    }
+};
+
+handleMq(mq);
+mq.addEventListener('change', (event) => {
+    handleMq(event.target);
 });
