@@ -2,13 +2,12 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Container from '../../../components/layout/Container';
 import PhotoGallery from '../../../components/ui/PhotoGallery';
-import List from '../../../components/ui/List';
 import { device } from '../../../theme';
 
 const Wrapper = styled.div`
     max-width: 70ch;
 `;
-const StyledList = styled(List)`
+const StyledList = styled.ul`
     display: grid;
     grid-gap: calc(var(--space-unit) / 1.5);
     grid-template-columns: repeat(auto-fit, 70px);

@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import vars from '../../../vars';
 import PageTitle from '../../../components/ui/PageTitle';
-import Link from '../../../components/ui/Link';
 import BaseLayout from '../../../components/layout/Base';
 import DefaultPageLayout from '../../../components/layout/DefaultPageLayout';
 import Head from '../../../components/common/Head';
@@ -69,7 +68,7 @@ export default function GraziePage({ route }) {
                         <Intro>
                             Cercherò di risponderti il prima possibile 🙂
                         </Intro>
-                        <Link href="/">Torna alla homepage</Link>
+                        <a href="/">Torna alla homepage</a>
                     </Text>
                 }
             />

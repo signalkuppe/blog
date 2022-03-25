@@ -1,8 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { headingsStyles } from '../../../theme';
 import withFiletto from '../../hoc/withFiletto';
 
 const StyledH1 = styled.h1`
+    ${headingsStyles}
     ${(props) =>
         !props.small &&
         css`
@@ -15,12 +17,12 @@ const StyledH1 = styled.h1`
     ${(props) =>
         props.small &&
         css`
-            font-size: clamp(var(--font-size-x-large), 100rem, calc(2vh + 2vw));
+            font-size: clamp(var(--font-size-x-large), 100rem, calc(3vh + 2vw));
         `}
     margin: 0;
 `;
 
-export default function VerticalSpace({ children, ...props }) {
+export default function PageTitle({ children, ...props }) {
     return <H1WithFiletto {...props}>{children}</H1WithFiletto>;
 }
 

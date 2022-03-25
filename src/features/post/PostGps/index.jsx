@@ -12,6 +12,9 @@ const MapContainer = styled.div`
     height: 50vmax;
     width: 100vw;
     background: var(--color-background-light);
+    .leaflet-tile-pane {
+        filter: grayscale(1);
+    }
 `;
 
 const WidthWrapper = styled.div`

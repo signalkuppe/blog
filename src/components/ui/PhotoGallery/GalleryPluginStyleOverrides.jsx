@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { device } from '../../../theme';
+import { device, linksStyles } from '../../../theme';
 
 /**
  * Library css overrides
@@ -56,6 +56,7 @@ export default createGlobalStyle`
     .js-postGallery-downloadLink {
         font-size: var(--font-size-small)!important;
         line-height: 1;
+        ${linksStyles};
         @media ${device.mobileAndTablet} {
             display: none;
         }

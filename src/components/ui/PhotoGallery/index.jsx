@@ -1,19 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Script } from 'pequeno';
-import List from '../../../components/ui/List';
 import Image from '../../../components/ui/Image';
-import Link from '../../../components/ui/Link';
 import client from './index.client';
 import GalleryPluginStyleOverrides from './GalleryPluginStyleOverrides';
 
-const DefaultWrapperElement = styled(List)``;
+const DefaultWrapperElement = styled.ul``;
 const DefaultItemElement = styled.li``;
 const StyledImage = styled(Image)`
     background: var(--color-background-light);
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
     display: block;
 `;
 
@@ -115,7 +113,6 @@ export default function PostGallery({
         <>
             <GalleryPluginStyleOverrides />
             <WrapperElement
-                reset
                 id="js-postGallery"
                 data-images={JSON.stringify(PhotoUrls)} // list of download links (used in js)
             >
@@ -124,8 +121,6 @@ export default function PostGallery({
                         <StyledLink
                             href={photo.src}
                             title={photo.title}
-                            inherit
-                            reset
                             data-type="image"
                             data-href-small={enlargmentSmall(photo.src)}
                             data-href-medium={enlargmentMedium(photo.src)}

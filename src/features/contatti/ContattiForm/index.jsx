@@ -11,7 +11,7 @@ const HoneyPot = styled.div`
 `;
 
 const StyledForm = styled.form`
-    border-radius: 15px;
+    border-radius: var(--border-radius);
     max-width: 85ch;
     padding: var(--space-unit);
     background: var(--color-background-light);

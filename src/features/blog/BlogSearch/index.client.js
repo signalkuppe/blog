@@ -31,7 +31,6 @@ fetch('/_data/map-points.json')
                     render: true,
                 },
                 element: (item, data) => {
-                    console.log(data);
                     // Modify Results Item Style
                     item.innerHTML = `
                         <div class="autocomplete-top-row">

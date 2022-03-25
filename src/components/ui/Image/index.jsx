@@ -10,6 +10,7 @@ export const imgStyles = css`
     :-moz-loading {
         visibility: hidden;
     }
+    background: var(--color-background-light);
 `;
 
 const StyledImage = styled.img`

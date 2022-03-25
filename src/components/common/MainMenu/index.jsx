@@ -102,21 +102,24 @@ export default function MainMenu({ route }) {
         },
         {
             href: '/contatti/index.html',
-            text: 'Contatti',
-            active: route.name === 'contatti',
+            text: 'Info & Contatti',
+            active: route.name === 'contatti' || route.name === 'grazie',
         },
     ];
 
     const activeLinkIndex = findIndex(links, (l) => l.active);
     return (
         <>
-            <StyledButton id="js-mainMenu-openButton">
+            <StyledButton
+                id="js-mainMenu-openButton"
+                aria-controls="js-mainMenu-panel"
+            >
                 <StyledButtonText>Apri il menu</StyledButtonText>
                 <Icon icon={HamburgerIcon} l />
             </StyledButton>
-            <Panel aria-label="Navigazione principale" id="js-mainMenu-panel">
+            <Panel id="js-mainMenu-panel">
                 <PanelHeader>
-                    <StyledButton inPanel id="js-mainMenu-closeButton">
+                    <StyledButton id="js-mainMenu-closeButton">
                         <StyledButtonText>Chiudi il menu</StyledButtonText>
                         <Icon icon={CloseIcon} l />
                     </StyledButton>

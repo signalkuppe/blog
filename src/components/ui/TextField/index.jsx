@@ -17,7 +17,7 @@ const StyledTextField = styled.input`
     background: var(--inputs-background);
     padding: var(--inputs-padding);
     color: var(--inputs-color);
-    border-radius: var(--inputs-border-radius);
+    border-radius: var(--border-radius);
     :focus {
         border-color: var(--inputs-focused-border-color);
         outline: transparent;

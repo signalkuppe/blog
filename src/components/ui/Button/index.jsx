@@ -4,16 +4,14 @@ import { device } from '../../../theme';
 
 const StyledButton = styled.button`
     font-weight: 500;
-    background-color: var(--color-primary);
-    border: 2px solid var(--color-text-light-accent);
-    border-radius: 30px;
-    box-shadow: var(--color-text-light-accent) 0.2em 0.2em 0 0;
-    color: var(--color-background);
+    background-color: var(--color-button-background);
+    border-radius: var(--border-radius);
+    border: none;
+    color: var(--color-button-color);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    padding: 0 var(--font-size-base);
-    line-height: calc(var(--font-size-base) * 3.2);
+    padding: 0.5em 1em;
     text-align: center;
     -webkit-text-decoration: none;
     text-decoration: none;
@@ -24,16 +22,10 @@ const StyledButton = styled.button`
     -webkit-user-select: none;
     touch-action: manipulation;
     :hover {
-        background-color: var(--color-secondary);
-        color: var(--color-text-light-accent);
-        box-shadow: var(--color-text-light-accent) 0.2em 0.2em 0 0;
+        transform: translate(-1px, -1px);
     }
     :active {
-        box-shadow: var(--color-text-light-accent) 0.1em 0.1em 0 0;
-        transform: translate(2px, 2px);
-    }
-    @media ${device.noReduceMotion} {
-        transition: background-color 0.2s ease-in-out;
+        transform: translate(1px, 1px);
     }
 `;
 

@@ -1,32 +1,32 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { device } from '../../../theme';
 import withFiletto from '../../hoc/withFiletto';
-import List from '../../ui/List';
-import Link from '../../ui/Link';
 
-const StyledUl = styled(List)`
+const StyledUl = styled.ul`
     display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     gap: calc(var(--space-unit) * 1.5);
     @media ${device.mobile} {
         flex-direction: column;
     }
 `;
-const StyledLi = styled.li``;
-const StyledLink = styled(Link)`
+const StyledLi = styled.li`
+    margin: 0;
+`;
+const StyledLink = styled.a`
     font-size: var(--font-size-medium);
     font-stretch: var(--narrow-font-stretch);
     font-weight: 400;
     display: inline-block;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
+    box-shadow: none;
     :hover {
         color: var(--color-text-light-accent);
-        ${(props) =>
-            props.active &&
-            css`
-                box-shadow: none;
-            `}
+        box-shadow: none;
     }
     @media ${device.desktop} {
         flex-direction: column;
@@ -44,7 +44,6 @@ export default function NavigationLinks({ links, active, ...props }) {
             return (
                 <LinkWithFiletto
                     active
-                    noUnderline
                     href={link.href}
                     id={last ? lastId : null}
                 >
@@ -53,18 +52,14 @@ export default function NavigationLinks({ links, active, ...props }) {
             );
         } else {
             return (
-                <StyledLink
-                    noUnderline
-                    href={link.href}
-                    id={last ? lastId : null}
-                >
+                <StyledLink href={link.href} id={last ? lastId : null}>
                     {link.text}
                 </StyledLink>
             );
         }
     };
     return (
-        <StyledUl reset {...props}>
+        <StyledUl {...props}>
             {links.map((link, i) => (
                 <StyledLi key={i}>{renderLink(i, link)}</StyledLi>
             ))}

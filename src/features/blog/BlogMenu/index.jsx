@@ -1,30 +1,35 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import withFiletto from '../../../components/hoc/withFiletto';
 import { device, visuallyHidden } from '../../../theme';
-import List from '../../../components/ui/List';
-import Link from '../../../components/ui/Link';
 import PostCategoryIcon from '../../post/PostCategoryIcon';
 import { categoryPermalink } from '../../../pages/blog-by-category';
 import { blogPermalink } from '../../../pages/blog';
 
-const StyledList = styled(List)`
+const StyledList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    list-style: none;
     background: var(--color-background-light);
     height: 100%;
-    padding: 0 var(--space-unit);
+    gap: 0.2em;
+    padding-left: var(--space-unit);
+    @media ${device.atLeastTablet} {
+        gap: var(--space-unit);
+    }
 `;
 const StyledLi = styled.li`
     height: 100%;
+    margin: 0;
 `;
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
     font-stretch: var(--narrow-font-stretch);
     font-weight: 400;
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 2em;
+    padding: 0 1.5em;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
     @media ${device.atLeastTablet} {
@@ -33,9 +38,12 @@ const StyledLink = styled(Link)`
     :first-child {
         padding-left: 0;
     }
+    :hover {
+        color: var(--color-text-light-accent);
+    }
 `;
 
-const TabIcon = styled.span`
+const LinkIcon = styled.span`
     display: flex;
     align-items: center;
     @media ${device.mobileAndTablet} {
@@ -46,19 +54,7 @@ const TabIcon = styled.span`
             `};
     }
 `;
-const TabText = styled.span`
-    ${(props) =>
-        props.active &&
-        css`
-            box-shadow: 0px 0.2em 0px var(--color-primary);
-        `}
-    :hover {
-        ${(props) =>
-            !props.active &&
-            css`
-                box-shadow: 0px 0.2em 0px var(--color-secondary);
-            `}
-    }
+const LinkText = styled.span`
     ${(props) =>
         !props.first &&
         css`
@@ -66,11 +62,11 @@ const TabText = styled.span`
                 ${visuallyHidden};
             }
         `}
-
-    transition: all linear 0.1s;
 `;
 
-export default function BlogTabs({ categories, category }) {
+const WithFilettoLinkText = withFiletto(LinkText);
+
+export default function BlogMenu({ categories, category }) {
     const tabs = [
         {
             text: 'Tutte',
@@ -88,22 +84,31 @@ export default function BlogTabs({ categories, category }) {
     const active = category ? categories.indexOf(category) + 1 : 0;
 
     return (
-        <StyledList reset id="js-blogTabs" {...props}>
-            {tabs.map((tab, i) => (
-                <StyledLi key={i}>
-                    <StyledLink
-                        noUnderline
-                        href={tab.href}
-                        active={i === active}
-                        title={tab.title}
-                    >
-                        <TabIcon active={i === active}>{tab.icon}</TabIcon>
-                        <TabText first={i === 0} active={i === active}>
+        <StyledList id="js-blogTabs" {...props}>
+            {tabs.map((tab, i) => {
+                let linkText = <LinkText first={i === 0}>{tab.text}</LinkText>;
+                if (i === active) {
+                    linkText = (
+                        <WithFilettoLinkText first={i === 0}>
                             {tab.text}
-                        </TabText>
-                    </StyledLink>
-                </StyledLi>
-            ))}
+                        </WithFilettoLinkText>
+                    );
+                }
+                return (
+                    <StyledLi key={i}>
+                        <StyledLink
+                            href={tab.href}
+                            active={i === active}
+                            title={tab.title}
+                        >
+                            <LinkIcon active={i === active}>
+                                {tab.icon}
+                            </LinkIcon>
+                            {linkText}
+                        </StyledLink>
+                    </StyledLi>
+                );
+            })}
         </StyledList>
     );
 }

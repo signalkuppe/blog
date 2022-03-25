@@ -1,15 +1,19 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { device, lineClamp } from '../../../theme';
+import styled from 'styled-components';
+import {
+    device,
+    headingsSize,
+    headingsStyles,
+    linksStyles,
+} from '../../../theme';
 import Image from '../../../components/ui/Image';
-import Link from '../../../components/ui/Link';
 import PostCategoryIcon from '../../post/PostCategoryIcon';
 
-const WrapperLink = styled(Link)`
+const WrapperLink = styled.a`
     display: flex;
+    color: inherit;
     :hover img {
         transform: rotate(-5deg);
-        border-color: var(--color-primary);
     }
 `;
 const ImageWrapper = styled.figure`
@@ -60,8 +64,9 @@ const PostDate = styled.div`
 `;
 
 const PostTitle = styled.h3`
+    ${headingsStyles};
+    font-size: ${headingsSize.h2};
     margin: 0;
-    font-size: var(--font-size-x-large);
     margin-bottom: calc(var(--space-unit) / 2);
     @media ${device.mobile} {
         font-size: var(--font-size-large);
@@ -76,18 +81,16 @@ const PostAbstract = styled.p`
     }
 `;
 
-const PostLink = styled(Link)`
+const PostLink = styled.a`
     display: inline-block;
     margin-top: calc(var(--space-unit) / 2);
+    ${linksStyles};
 `;
 
 export default function BlogPostCard({ post }) {
     return (
         <WrapperLink
             href={post.permalink}
-            inherit
-            reset
-            noUnderline
             id={`js-post-${post.id}`}
             className="js-post"
         >

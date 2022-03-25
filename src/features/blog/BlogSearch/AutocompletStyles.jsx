@@ -36,7 +36,7 @@ export default AutocompletStyles = createGlobalStyle`
       border: var(--inputs-border)!important;
       background-color: var(--inputs-background)!important;
       color: var(--inputs-color)!important;
-      border-radius: var(--inputs-border-radius)!important;
+      border-radius: var(--border-radius)!important;
     }
 
     .autoComplete_wrapper > input:focus {

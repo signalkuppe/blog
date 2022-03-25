@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Header from '../../common/Header';
 import GlobalStyles from '../../../theme/globalStyles';
 import PrintStyles from '../../../theme/printStyles';
-import { device } from '../../../theme';
+import { device, hideScrollbar } from '../../../theme';
 
 const imgeUrl = `https://images.ctfassets.net/rotmy72mdop6/5tfH7ff8Kj3mCSJkTMMAhv/f04ede83d01849cfcab5eac37af15c9d/alpinismo-pizzo-tremogge-selfie.jpg`;
 const mobileBackgroundImage = `${imgeUrl}?w=1024&h=682&fl=progressive&fm=jpg&q=80`;
@@ -63,6 +63,8 @@ const HomePageGridContent = styled.main`
         height: calc(100vh - var(--header-height));
         overflow-y: auto;
         max-width: 90ch;
+        padding-top: calc(var(--space-unit) * 2);
+        ${hideScrollbar};
     }
 `;
 

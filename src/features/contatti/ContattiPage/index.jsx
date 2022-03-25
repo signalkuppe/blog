@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Script } from 'pequeno';
 import vars from '../../../vars';
 import PageTitle from '../../../components/ui/PageTitle';
 import BaseLayout from '../../../components/layout/Base';
 import DefaultPageLayout from '../../../components/layout/DefaultPageLayout';
 import Head from '../../../components/common/Head';
-import List from '../../../components/ui/List';
-import Link from '../../../components/ui/Link';
 import Icon from '../../../components/ui/Icon';
 import VerticalSpace from '../../../components/ui/VerticalSpace';
 import Facebook from '../../../public/icons/Facebook.svg';
@@ -14,21 +13,25 @@ import Twitter from '../../../public/icons/Twitter.svg';
 import Instagram from '../../../public/icons/Instagram.svg';
 import Github from '../../../public/icons/Github.svg';
 import ContattiForm from '../ContattiForm';
+import client from './index.client';
 
 const Description = styled.p`
     margin: 0;
 `;
 
-const PanelFooter = styled.div`
-    font-size: var(--font-size-x-small);
-    height: 8rem;
+const StyledUl = styled.ul`
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--space-unit);
+    list-style: none;
 `;
 
-const FooterLink = styled(Link)`
+const StyledLink = styled.a`
     color: var(--color-text-light-accent);
 `;
 
-export default function PortfolioPage({ route }) {
+export default function ContattiPage({ route }) {
     let title = 'Inviami un messaggio';
     let description =
         'Inviami un messaggio per parlare di un vostro progetto o di montagna';
@@ -49,64 +52,69 @@ export default function PortfolioPage({ route }) {
             >
                 <ContattiForm />
 
-                <PanelFooter>
+                <div>
+                    <VerticalSpace size={2} />
+                    <span>Seguimi su</span>
+                    <VerticalSpace size={0.5} />
+                    <StyledUl>
+                        <li>
+                            <StyledLink
+                                href={vars.facebook}
+                                title="Seguimi su Facebook"
+                            >
+                                <Icon icon={Facebook} xl />
+                            </StyledLink>
+                        </li>
+                        <li>
+                            <StyledLink
+                                href={vars.twitter}
+                                title="Seguimi su Twitter"
+                            >
+                                <Icon icon={Twitter} xl />
+                            </StyledLink>
+                        </li>
+                        <li>
+                            <StyledLink
+                                href={vars.instagram}
+                                title="Seguimi su Instagram"
+                            >
+                                <Icon icon={Instagram} xl />
+                            </StyledLink>
+                        </li>
+                        <li>
+                            <StyledLink
+                                href={vars.github}
+                                title="La mia pagina su Github"
+                                id="js-lastFocusableElement"
+                            >
+                                <Icon icon={Github} xl />
+                            </StyledLink>
+                        </li>
+                    </StyledUl>
+                    <VerticalSpace size={2} />
+                    <p>
+                        Questo sito è stato realizzato con{' '}
+                        <a href="https://github.com/signalkuppe/pequeno">
+                            Pequeño
+                        </a>
+                    </p>
+                    <VerticalSpace size={2} />
                     <span id="js-year"></span> -{' '}
-                    <FooterLink inherit href={vars.websiteUrl}>
+                    <StyledLink href={vars.websiteUrl}>
                         signalkuppe.com
-                    </FooterLink>
-                    <VerticalSpace size={0.25} />
-                    Contenuti pubblicati sotto licenza{' '}
-                    <FooterLink
-                        inherit
+                    </StyledLink>
+                    , contenuti pubblicati sotto licenza{' '}
+                    <StyledLink
                         href="https://choosealicense.com/licenses/agpl-3.0/"
                         title="Leggi la licenza"
                         target="_blank"
                         rel="noreferrer"
                     >
                         GNU AGPLv3
-                    </FooterLink>
-                    <VerticalSpace size={1.25} />
-                    <List reset inline gap={0.5}>
-                        <li>
-                            <FooterLink
-                                noUnderline
-                                href={vars.facebook}
-                                title="Seguimi su Facebook"
-                            >
-                                <Icon icon={Facebook} />
-                            </FooterLink>
-                        </li>
-                        <li>
-                            <FooterLink
-                                noUnderline
-                                href={vars.twitter}
-                                title="Seguimi su Twitter"
-                            >
-                                <Icon icon={Twitter} />
-                            </FooterLink>
-                        </li>
-                        <li>
-                            <FooterLink
-                                noUnderline
-                                href={vars.instagram}
-                                title="Seguimi su Instagram"
-                            >
-                                <Icon icon={Instagram} />
-                            </FooterLink>
-                        </li>
-                        <li>
-                            <FooterLink
-                                noUnderline
-                                href={vars.github}
-                                title="La mia pagina su Github"
-                                id="js-lastFocusableElement"
-                            >
-                                <Icon icon={Github} />
-                            </FooterLink>
-                        </li>
-                    </List>
-                </PanelFooter>
+                    </StyledLink>
+                </div>
             </DefaultPageLayout>
+            <Script>{client}</Script>
         </BaseLayout>
     );
 }

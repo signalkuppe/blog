@@ -42,7 +42,7 @@ const showMap = function () {
             shadowUrl: null,
         },
         polyline_options: {
-            color: getCssVar('--color-secondary'),
+            color: getCssVar('--color-links'),
             opacity: 1,
             weight: 3,
             lineCap: 'round',
@@ -61,7 +61,7 @@ const showMap = function () {
                     x: data[0].toFixed(1),
                 })),
                 1,
-                rawElevationData.length < 2000 ? 1 : 10,
+                rawElevationData.length < 2000 ? 1 : 50,
             );
 
             setTimeout(() => {
@@ -87,7 +87,8 @@ const drawChart = function (elevationData) {
                 borderWidth: 4,
                 data: elevationData,
                 pointRadius: 0,
-                borderJoinStyle: 'bevel',
+                tension: 1,
+                borderJoinStyle: 'miter',
             },
         ],
     };
@@ -95,6 +96,7 @@ const drawChart = function (elevationData) {
     const config = {
         type: 'line',
         data,
+
         options: {
             responsive: true,
             plugins: {
@@ -102,11 +104,18 @@ const drawChart = function (elevationData) {
             },
             scales: {
                 x: {
+                    type: 'linear',
                     title: {
                         display: true,
                         text: '(Km)',
                         color: getCssVar('--color-text-dark-accent'),
                     },
+                    max: Math.floor(elevationData[elevationData.length - 1].x),
+                    min: 0,
+                    grid: {
+                        color: getCssVar('--color-background-light'),
+                    },
+                    borderColor: 'red',
                 },
                 y: {
                     type: 'linear',
@@ -124,7 +133,7 @@ const drawChart = function (elevationData) {
         },
     };
 
-    var myChart = new Chart(document.getElementById('postChart'), config);
+    new Chart(document.getElementById('postChart'), config);
 };
 
 document.addEventListener('post-section-reached', function (event) {

@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "npx pequeno --serve --noAfterBuild --noProcessHtml",
     "dev-blog": "npx pequeno --serve --page=blog --path=/blog/index.html --data=posts --noAfterBuild --noProcessHtml",
-    "dev-post": "npx pequeno --serve --page=post-item --path=/escursionismo/2021/10/17/pizzo-gandaiole/index.html --data=posts --noAfterBuild --noProcessHtml",
+    "dev-post": "npx pequeno --serve --page=post-item --path=/scialpinismo/2022/03/20/monte-sissone-dal-passo-del-maloja/index.html --data=posts --noAfterBuild --noProcessHtml",
     "dev-portfolio": "npx pequeno --serve --page=portfolio --data=portfolio --noAfterBuild --noProcessHtml",
     "dev-contatti": "npx pequeno --serve --page=contatti --noData --noAfterBuild --noProcessHtml",
     "dev-grazie": "npx pequeno --serve --page=grazie --noData --noAfterBuild --noProcessHtml --noCopy --noPublicCopy",
@@ -38,7 +38,7 @@
   "dependencies": {
     "@tarekraafat/autocomplete.js": "^10.2.6",
     "chart.js": "^3.4.1",
-    "glightbox": "^3.1.0",
+    "glightbox": "^3.2.0",
     "leaflet": "^1.7.1",
     "leaflet-fullscreen": "^1.0.2",
     "leaflet-gesture-handling": "^1.2.1",

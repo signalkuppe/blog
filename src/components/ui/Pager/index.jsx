@@ -1,14 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import List from '../../../components/ui/List';
-import Link from '../../../components/ui/Link';
 import Icon from '../../../components/ui/Icon';
 import FirstIcon from '../../../public/icons/DoubleChevronLeft.svg';
 import LeftIcon from '../../../public/icons/ChevronLeft.svg';
 import RightIcon from '../../../public/icons/ChevronRight.svg';
 import LastIcon from '../../../public/icons/DoubleChevronRight.svg';
 
-const StyledList = styled(List)`
+const StyledList = styled.ul`
     display: flex;
     align-items: center;
 `;
@@ -35,14 +33,16 @@ const Page = styled.div`
     }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
     display: flex;
     align-items: center;
     padding: 0.25em;
-    border: 4px solid var(--color-secondary);
+    color: var(--color-text);
+    border: 4px solid var(--color-text);
     border-radius: 8px;
     &:hover {
-        background: var(--color-secondary);
+        border-color: var(--color-text-light-accent);
+        color: var(--color-text-light-accent);
     }
 `;
 
@@ -54,26 +54,16 @@ export default function Pager({ pagination, ...props }) {
         return null;
     } else {
         return (
-            <StyledList reset {...props}>
+            <StyledList {...props}>
                 {prev && (
                     <>
                         <StyledLi firstPage>
-                            <StyledLink
-                                href={firstPage}
-                                noUnderline
-                                inherit
-                                title="Prima pagina"
-                            >
+                            <StyledLink href={firstPage} title="Prima pagina">
                                 <Icon icon={FirstIcon} />
                             </StyledLink>
                         </StyledLi>
                         <StyledLi>
-                            <StyledLink
-                                href={prev}
-                                noUnderline
-                                inherit
-                                title="Pagina precedente"
-                            >
+                            <StyledLink href={prev} title="Pagina precedente">
                                 <Icon icon={LeftIcon} />
                             </StyledLink>
                         </StyledLi>
@@ -90,22 +80,12 @@ export default function Pager({ pagination, ...props }) {
                 {next && (
                     <>
                         <StyledLi>
-                            <StyledLink
-                                href={next}
-                                noUnderline
-                                inherit
-                                title="Pagina successiva"
-                            >
+                            <StyledLink href={next} title="Pagina successiva">
                                 <Icon icon={RightIcon} />
                             </StyledLink>
                         </StyledLi>
                         <StyledLi lastPage>
-                            <StyledLink
-                                href={lastPage}
-                                noUnderline
-                                inherit
-                                title="Ultima pagina"
-                            >
+                            <StyledLink href={lastPage} title="Ultima pagina">
                                 <Icon icon={LastIcon} />
                             </StyledLink>
                         </StyledLi>

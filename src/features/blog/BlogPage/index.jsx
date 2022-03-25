@@ -7,7 +7,7 @@ import Head from '../../../components/common/Head';
 import Pager from '../../../components/ui/Pager';
 import Bloglayout from '../Bloglayout';
 import BlogMap from '../BlogMap';
-import BlogTabs from '../BlogTabs';
+import BlogMenu from '../BlogMenu';
 import BlogSearch from '../BlogSearch';
 import BlogPostList from '../BlogPostList';
 import VerticalSpace from '../../../components/ui/VerticalSpace';
@@ -54,7 +54,7 @@ export default function BlogPage({
         >
             <Bloglayout
                 topBar={
-                    <BlogTabs category={category} categories={categories} />
+                    <BlogMenu category={category} categories={categories} />
                 }
                 content={
                     <>

@@ -8,9 +8,6 @@ const MapContainer = styled.figure`
     height: 100%;
     width: 100%;
     background: var(--color-background-light);
-    &.js-is-searching {
-        filter: grayscale(1);
-    }
 `;
 
 export default function BlogMap({ category }) {

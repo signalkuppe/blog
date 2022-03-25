@@ -1,8 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { visuallyHidden, device } from '../../../theme';
+import { visuallyHidden } from '../../../theme';
 import Logo from '../../ui/Logo';
-import Link from '../../ui/Link';
 import vars from '../../../vars';
 import MainMenu from '../MainMenu';
 
@@ -41,7 +40,7 @@ const LogoText = styled.span`
     ${visuallyHidden}
 `;
 
-const LogoLink = styled(Link)`
+const LogoLink = styled.a`
     display: grid;
     place-items: center;
 `;
@@ -50,12 +49,7 @@ export default function Header({ route, ...props }) {
     const isFronPage = route.name === 'index';
     let logo;
     const logoLink = (
-        <LogoLink
-            inherit
-            noUnderline
-            href={vars.websiteUrl}
-            title="Torna alla homepage"
-        >
+        <LogoLink href={vars.websiteUrl} title="Torna alla homepage">
             <StyledLogo />
             <LogoText>{vars.siteName}</LogoText>
         </LogoLink>

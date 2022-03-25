@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Script } from 'pequeno';
-import Link from '../../../components/ui/Link';
 import Icon from '../../../components/ui/Icon';
 import MarkerIcon from '../../../public/icons/Marker.svg';
 import { device } from '../../../theme';
@@ -32,7 +31,7 @@ const SearchContainer = styled.div`
 
 const StyledIcon = styled(Icon)``;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
     padding: calc(var(--space-unit) / 2);
     padding-right: 0;
     @media ${device.desktop} {
@@ -63,7 +62,7 @@ export default function BlogSearch({ category }) {
                         tabIndex="1"
                     />
 
-                    <StyledLink href="#js-map" inherit noUnderline>
+                    <StyledLink href="#js-map">
                         <StyledIcon icon={MarkerIcon} l id="js-map-tooltip" />
                     </StyledLink>
                 </SearchContainer>

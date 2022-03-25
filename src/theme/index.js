@@ -4,14 +4,39 @@ import { css } from 'styled-components';
 
 // https://coolors.co/cfdbd5-e8eddf-f5cb5c-242423-333533
 
-export const vars = {
-    '--color-background': '#11131A',
+/**
+ * 
+ *   
+ *  '--color-background': '#11131A',
     '--color-background-light': '#1D1F26',
     '--color-primary': '#F4BF3A',
     '--color-secondary': '#4790F9',
     '--color-text': '#CACDD6',
     '--color-text-light-accent': '#FFFFFF',
     '--color-text-dark-accent': '#AAAAAA',
+
+
+
+        '--color-background': '#191919',
+    '--color-background-light': '#242423',
+    '--color-primary': '#F5CB5C',
+    '--color-secondary': '#e05780',
+    '--color-text': '#CACDD6',
+    '--color-text-light-accent': '#FFFFFF',
+    '--color-text-dark-accent': '#AAAAAA',
+ */
+
+export const vars = {
+    '--color-background': '#191919',
+    '--color-background-light': '#242423',
+    '--color-primary': '#F5CB5C',
+    '--color-secondary': '#2196f3',
+    '--color-text': '#CACDD6',
+    '--color-text-light-accent': '#FFFFFF',
+    '--color-text-dark-accent': '#AAAAAA',
+    '--color-links': 'var(--color-secondary)',
+    '--color-button-background': 'var(--color-primary)',
+    '--color-button-color': '#000',
     '--color-facebook': '#1877f2',
     '--color-twitter': '#1da1f2',
     '--color-whatsapp': '#25d366',
@@ -35,15 +60,15 @@ export const vars = {
     '--inputs-background': 'var(--color-background)',
     '--inputs-color': 'var(--color-text)',
     '--inputs-padding': '1em',
-    '--inputs-border-radius': '35px',
     '--inputs-focused-border-color': 'var(--color-primary)',
+    '--border-radius': '0px',
     '--space-unit': '1.5rem',
     '--logo-width': '9rem',
     '--container-max-width': '80rem',
     '--container-offset': 'calc(var(--logo-width) + var(--space-unit))',
     '--header-height': 'clamp(5em, 10vw, 6em)',
     '--blog-tabs-height': 'clamp(4em, 10vw, 5em)',
-    '--blog-search-height': '8em',
+    '--blog-search-height': '10em',
     '--z-index-menu': '10000',
     '--z-index-map': '100',
     '--z-index-map-selected-marker': '10000',
@@ -68,6 +93,16 @@ export const headingsSize = {
     h2: 'var(--font-size-x-large)',
     h3: 'var(--font-size-large)',
 };
+
+export const linksStyles = css`
+    color: var(--color-links);
+    font-weight: 500;
+    :hover {
+        text-decoration: underline;
+        text-decoration-thickness: 3px;
+        text-underline-offset: 0.1em;
+    }
+`;
 
 export const device = {
     mobile: `screen and (max-width: 47.9375rem)`, // <= 767px

@@ -1,6 +1,3 @@
-// set year
-// document.getElementById('js-year').innerText = new Date().getFullYear();
-
 // slide menu logics
 
 // mobileMediaQuery added in index.jsx via vars
@@ -67,10 +64,11 @@ closeButton.addEventListener('click', function () {
 
 const handleMq = (mq) => {
     if (mq.matches) {
+        openButton.style.display = 'block';
         openButton.setAttribute('aria-expanded', false);
         menuPanel.style.height = `${window.innerHeight}px`;
     } else {
-        openButton.removeAttribute('aria-expanded');
+        openButton.style.display = 'none';
         menuPanel.style.height = `auto`;
     }
 };

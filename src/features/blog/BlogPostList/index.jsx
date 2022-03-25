@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import BlogPostCard from '../BlogPostCard';
-import List from '../../../components/ui/List';
 
-const PostGridList = styled(List)`
+const PostGridList = styled.ul`
     display: flex;
     flex-direction: column;
     > * + * {
@@ -13,7 +12,7 @@ const PostGridList = styled(List)`
 
 export default function BlogPostList({ posts }) {
     return (
-        <PostGridList reset>
+        <PostGridList>
             {posts.map((post, i) => (
                 <li key={i}>
                     <BlogPostCard post={post} />

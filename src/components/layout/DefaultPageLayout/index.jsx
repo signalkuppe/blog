@@ -18,6 +18,10 @@ const Header = styled.div`
     margin-bottom: calc(var(--space-unit) * 2.5);
 `;
 
+const Content = styled.div`
+    padding-bottom: calc(var(--space-unit) * 4);
+`;
+
 /*
  * default internal layout for simple pages like contatti, grazie, portfolio
  * menages only the spaces between title, description and children slots
@@ -30,7 +34,7 @@ export default function DefaultPageLayout({ title, description, children }) {
                 <Title>{title}</Title>
                 {description && <Description>{description}</Description>}
             </Header>
-            {children}
+            <Content>{children}</Content>
         </Container>
     );
 }

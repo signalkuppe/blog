@@ -4,7 +4,6 @@ import { Script } from 'pequeno';
 import { device, hideScrollbar } from '../../../theme';
 import { styles } from '../../../components/hoc/withFiletto';
 import Container from '../../../components/layout/Container';
-import Link from '../../../components/ui/Link';
 import client from './index.client';
 
 const MenuContainer = styled.nav`
@@ -12,9 +11,10 @@ const MenuContainer = styled.nav`
     position: sticky;
     top: 0;
     z-index: var(--z-index-post-menu);
+    /*
     box-shadow: 0 1px 1px var(--drop-shadow-color),
         0 2px 2px var(--drop-shadow-color), 0 4px 4px var(--drop-shadow-color),
-        0 8px 8px var(--drop-shadow-color), 0 16px 16px var(--drop-shadow-color);
+        0 8px 8px var(--drop-shadow-color), 0 16px 16px var(--drop-shadow-color); */
     @media ${device.noReduceMotion} {
         transition: opacity 0.2s linear;
     }
@@ -43,6 +43,7 @@ const List = styled.ul`
     }
 `;
 const ListItem = styled.li`
+    margin-bottom: 0;
     @media ${device.mobileAndTablet} {
         scroll-snap-align: end;
         white-space: nowrap;
@@ -51,7 +52,7 @@ const ListItem = styled.li`
     }
 `;
 
-const MenuLink = styled(Link)`
+const MenuLink = styled.a`
     font-stretch: var(--narrow-font-stretch);
     font-weight: 400;
     display: block;
@@ -75,6 +76,7 @@ const MenuLink = styled(Link)`
 const MenuLinkText = styled.span`
     &.js-is-active {
         ${styles}
+        color: var(--color-text-light-accent);
     }
 `;
 
@@ -89,8 +91,6 @@ export default function PostMenu({ sections }) {
                                 <ListItem key={i}>
                                     <MenuLink
                                         href={`#${section.id}`}
-                                        inherit
-                                        noUnderline
                                         className="js-postMenuLink"
                                     >
                                         <MenuLinkText

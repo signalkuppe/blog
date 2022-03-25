@@ -6,6 +6,10 @@ import { lineClamp } from '../../../theme';
  */
 
 export default MapStyles = createGlobalStyle` 
+
+    .leaflet-tile-pane {
+        filter: grayscale(1);
+    }
     .leaflet-container {
         font-family: inherit!important;
         font-size: inherit!important;

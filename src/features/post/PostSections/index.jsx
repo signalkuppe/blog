@@ -1,13 +1,17 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { visuallyHidden, device } from '../../../theme';
+import {
+    visuallyHidden,
+    device,
+    headingsStyles,
+    headingsSize,
+} from '../../../theme';
 import PostMenu from '../PostMenu';
 import PostBody from '../PostBody';
 import PostGallery from '../PostGallery';
 import PostGps from '../PostGps';
 import PostShare from '../PostShare';
 import Container from '../../../components/layout/Container';
-import Link from '../../../components/ui/Link';
 
 const Wrapper = styled.div`
     margin-top: calc(var(--space-unit) * 2);
@@ -24,6 +28,8 @@ const Wrapper = styled.div`
 `;
 
 const PostSectionTitle = styled.h2`
+    ${headingsStyles};
+    font-size: ${headingsSize.h2};
     margin-bottom: var(--space-unit);
     ${(props) =>
         props.hide &&
@@ -35,7 +41,7 @@ const PostSectionTitle = styled.h2`
         `}
 `;
 
-const PostSectionTitleLink = styled(Link)`
+const PostSectionTitleLink = styled.a`
     padding-top: calc(var(--space-unit) * 6);
     margin-top: calc(var(--space-unit) * -6);
     scroll-margin-top: 120px;
@@ -97,11 +103,7 @@ export default function PostSections({ post }) {
                                 <PostSectionTitle
                                     hide={section.id === 'relazione'}
                                 >
-                                    <PostSectionTitleLink
-                                        inherit
-                                        noUnderline
-                                        id={section.id}
-                                    >
+                                    <PostSectionTitleLink id={section.id}>
                                         {section.title}
                                     </PostSectionTitleLink>
                                 </PostSectionTitle>

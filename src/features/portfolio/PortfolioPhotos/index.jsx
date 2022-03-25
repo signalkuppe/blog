@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { device } from '../../../theme';
 import PhotoGallery from '../../../components/ui/PhotoGallery';
-import List from '../../../components/ui/List';
 
-const StyledList = styled(List)`
+const StyledList = styled.ul`
     @media ${device.onlyTablet} {
         columns: 2;
         column-gap: 2em;
