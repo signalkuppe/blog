@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Script } from 'pequeno';
 import vars from '../../../vars';
+import { linksStyles } from '../../../theme';
 import PageTitle from '../../../components/ui/PageTitle';
 import BaseLayout from '../../../components/layout/Base';
 import DefaultPageLayout from '../../../components/layout/DefaultPageLayout';
@@ -27,8 +28,13 @@ const StyledUl = styled.ul`
     list-style: none;
 `;
 
-const StyledLink = styled.a`
+const WhiteLink = styled.a`
+    font-weight: 500;
     color: var(--color-text-light-accent);
+`;
+
+const RegularLink = styled.a`
+    ${linksStyles}
 `;
 
 export default function ContattiPage({ route }) {
@@ -58,60 +64,60 @@ export default function ContattiPage({ route }) {
                     <VerticalSpace size={0.5} />
                     <StyledUl>
                         <li>
-                            <StyledLink
+                            <WhiteLink
                                 href={vars.facebook}
                                 title="Seguimi su Facebook"
                             >
                                 <Icon icon={Facebook} xl />
-                            </StyledLink>
+                            </WhiteLink>
                         </li>
                         <li>
-                            <StyledLink
+                            <WhiteLink
                                 href={vars.twitter}
                                 title="Seguimi su Twitter"
                             >
                                 <Icon icon={Twitter} xl />
-                            </StyledLink>
+                            </WhiteLink>
                         </li>
                         <li>
-                            <StyledLink
+                            <WhiteLink
                                 href={vars.instagram}
                                 title="Seguimi su Instagram"
                             >
                                 <Icon icon={Instagram} xl />
-                            </StyledLink>
+                            </WhiteLink>
                         </li>
                         <li>
-                            <StyledLink
+                            <WhiteLink
                                 href={vars.github}
                                 title="La mia pagina su Github"
                                 id="js-lastFocusableElement"
                             >
                                 <Icon icon={Github} xl />
-                            </StyledLink>
+                            </WhiteLink>
                         </li>
                     </StyledUl>
                     <VerticalSpace size={2} />
                     <p>
                         Questo sito è stato realizzato con{' '}
-                        <a href="https://github.com/signalkuppe/pequeno">
+                        <RegularLink href="https://github.com/signalkuppe/pequeno">
                             Pequeño
-                        </a>
+                        </RegularLink>
                     </p>
                     <VerticalSpace size={2} />
                     <span id="js-year"></span> -{' '}
-                    <StyledLink href={vars.websiteUrl}>
+                    <WhiteLink href={vars.websiteUrl}>
                         signalkuppe.com
-                    </StyledLink>
+                    </WhiteLink>
                     , contenuti pubblicati sotto licenza{' '}
-                    <StyledLink
+                    <WhiteLink
                         href="https://choosealicense.com/licenses/agpl-3.0/"
                         title="Leggi la licenza"
                         target="_blank"
                         rel="noreferrer"
                     >
                         GNU AGPLv3
-                    </StyledLink>
+                    </WhiteLink>
                 </div>
             </DefaultPageLayout>
             <Script>{client}</Script>

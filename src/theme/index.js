@@ -4,39 +4,23 @@ import { css } from 'styled-components';
 
 // https://coolors.co/cfdbd5-e8eddf-f5cb5c-242423-333533
 
-/**
- * 
- *   
- *  '--color-background': '#11131A',
-    '--color-background-light': '#1D1F26',
-    '--color-primary': '#F4BF3A',
-    '--color-secondary': '#4790F9',
-    '--color-text': '#CACDD6',
-    '--color-text-light-accent': '#FFFFFF',
-    '--color-text-dark-accent': '#AAAAAA',
-
-
-
-        '--color-background': '#191919',
-    '--color-background-light': '#242423',
-    '--color-primary': '#F5CB5C',
-    '--color-secondary': '#e05780',
-    '--color-text': '#CACDD6',
-    '--color-text-light-accent': '#FFFFFF',
-    '--color-text-dark-accent': '#AAAAAA',
- */
-
 export const vars = {
-    '--color-background': '#191919',
-    '--color-background-light': '#242423',
-    '--color-primary': '#F5CB5C',
-    '--color-secondary': '#2196f3',
+    '--color-background': '#110F16',
+    '--color-background-light': '#19171a',
+    '--color-primary': '#e9322e',
+    '--color-secondary': '#FBA456',
     '--color-text': '#CACDD6',
     '--color-text-light-accent': '#FFFFFF',
     '--color-text-dark-accent': '#AAAAAA',
     '--color-links': 'var(--color-secondary)',
-    '--color-button-background': 'var(--color-primary)',
+    '--color-button-background': 'var(--color-secondary)',
     '--color-button-color': '#000',
+    '--color-map-active-marker-background': 'var(--color-primary)',
+    '--color-map-active-marker-color': '#ffff',
+    '--color-map-track': 'var(--color-primary)',
+    '--color-lightbox-background': '#000',
+    '--color-lightbox-color': 'rgba(255, 255, 255, 0.8)',
+    '--color-lightbox-overlay': 'rgba(0,0,0,0.5)',
     '--color-facebook': '#1877f2',
     '--color-twitter': '#1da1f2',
     '--color-whatsapp': '#25d366',
@@ -66,7 +50,7 @@ export const vars = {
     '--logo-width': '9rem',
     '--container-max-width': '80rem',
     '--container-offset': 'calc(var(--logo-width) + var(--space-unit))',
-    '--header-height': 'clamp(5em, 10vw, 6em)',
+    '--header-height': '7rem',
     '--blog-tabs-height': 'clamp(4em, 10vw, 5em)',
     '--blog-search-height': '10em',
     '--z-index-menu': '10000',
@@ -102,6 +86,18 @@ export const linksStyles = css`
         text-decoration-thickness: 3px;
         text-underline-offset: 0.1em;
     }
+`;
+
+export const imagesStyles = css`
+    max-width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: attr(width) / attr(height);
+    text-indent: -9999px;
+    :-moz-loading {
+        visibility: hidden;
+    }
+    background: var(--color-background-light);
 `;
 
 export const device = {

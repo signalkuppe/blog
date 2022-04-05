@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { device } from '../../../theme';
-import PhotoGallery from '../../../components/ui/PhotoGallery';
+import {
+    device,
+    headingsStyles,
+    headingsSize,
+    imagesStyles,
+} from '../../../theme';
+import { portfolioPhotoLink } from '../../../pages/portfolio-photo';
 
 const StyledList = styled.ul`
     @media ${device.onlyTablet} {
@@ -16,48 +21,76 @@ const StyledList = styled.ul`
         columns: 4;
         column-gap: 2em;
     }
+    margin-top: -2em;
 `;
 
 const Photo = styled.li`
-    display: inline-block;
     column-break-inside: avoid;
-    margin-bottom: 2em;
-    background: var(--color-background-light);
+    display: block;
+    transition: 0.2s ease-in-out;
+    transition-property: transform, color;
+    padding-top: 2em;
+    :hover {
+        transform: translateY(-0.25em);
+        h2 {
+            color: var(--color-text-light-accent);
+        }
+    }
 `;
 const PhotoCaption = styled.div`
     padding: 1em 1em;
+    background: var(--color-background-light);
 `;
 const PhotoTitle = styled.h2`
-    display: block;
-    font-size: var(--font-size-medium);
-    color: var(--color-text-light-accent);
+    ${headingsStyles};
+    font-size: ${headingsSize.h3};
+    color: var(--color-text);
     margin: 0;
 `;
 const PhotoDate = styled.time`
     display: block;
     text-transform: uppercase;
+    color: var(--color-text-dark-accent);
     font-size: var(--font-size-x-small);
     font-stretch: var(--narrow-font-stretch);
     font-weight: 500;
 `;
 
+const StyledImage = styled.img`
+    ${imagesStyles};
+`;
+
 export default function PortfolioPhotos({ photos }) {
-    const images = photos.map((photo) => ({
-        ...photo.image,
-        // extra item at the bottom of each image
-        children: (
-            <PhotoCaption>
-                <PhotoDate dateTime={photo.dateTime}>{photo.date}</PhotoDate>
-                <PhotoTitle>{photo.image.title}</PhotoTitle>
-            </PhotoCaption>
-        ),
-    }));
     return (
-        <PhotoGallery
-            photos={images}
-            WrapperElement={StyledList}
-            ItemElement={Photo}
-            thumbFormat={{ width: 1024, height: '' }}
-        />
+        <StyledList>
+            {photos.map((photo, i) => {
+                const enlargmentSmall = `${photo.src}?w=640&fm=webp&q=80`;
+                const enlargmentLarge = `${photo.src}?w=1024&fm=webp&q=80`;
+                return (
+                    <Photo key={i}>
+                        <a href={portfolioPhotoLink(photo)} title={photo.title}>
+                            <picture>
+                                <source
+                                    media="(min-width: 1680px)"
+                                    srcSet={enlargmentLarge}
+                                />
+                                <StyledImage
+                                    src={enlargmentSmall}
+                                    alt={photo.alt || photo.title}
+                                    height={photo.height}
+                                    width={photo.width}
+                                />
+                            </picture>
+                            <PhotoCaption>
+                                <PhotoDate dateTime={photo.dateTime}>
+                                    {photo.date}
+                                </PhotoDate>
+                                <PhotoTitle>{photo.title}</PhotoTitle>
+                            </PhotoCaption>
+                        </a>
+                    </Photo>
+                );
+            })}
+        </StyledList>
     );
 }

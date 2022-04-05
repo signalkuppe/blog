@@ -42,7 +42,7 @@ const showMap = function () {
             shadowUrl: null,
         },
         polyline_options: {
-            color: getCssVar('--color-links'),
+            color: getCssVar('--color-map-track'),
             opacity: 1,
             weight: 3,
             lineCap: 'round',
@@ -56,12 +56,12 @@ const showMap = function () {
             const max = Math.round(e.target.get_elevation_max());
             const rawElevationData = e.target.get_elevation_data();
             const elevationData = decimateArray(
-                rawElevationData.map((data, i) => ({
+                rawElevationData.map((data) => ({
                     y: data[1],
                     x: data[0].toFixed(1),
                 })),
                 1,
-                rawElevationData.length < 2000 ? 1 : 50,
+                rawElevationData.length < 2000 ? 2 : 20,
             );
 
             setTimeout(() => {
@@ -82,13 +82,10 @@ const drawChart = function (elevationData) {
         datasets: [
             {
                 label: '',
-                cubicInterpolationMode: 'monotone',
-                borderColor: getCssVar('--color-primary'),
+                borderColor: getCssVar('--color-map-track'),
                 borderWidth: 4,
                 data: elevationData,
-                pointRadius: 0,
-                tension: 1,
-                borderJoinStyle: 'miter',
+                pointRadius: 1,
             },
         ],
     };
@@ -96,7 +93,6 @@ const drawChart = function (elevationData) {
     const config = {
         type: 'line',
         data,
-
         options: {
             responsive: true,
             plugins: {
@@ -111,11 +107,10 @@ const drawChart = function (elevationData) {
                         color: getCssVar('--color-text-dark-accent'),
                     },
                     max: Math.floor(elevationData[elevationData.length - 1].x),
-                    min: 0,
+                    min: Math.floor(elevationData[0].x),
                     grid: {
                         color: getCssVar('--color-background-light'),
                     },
-                    borderColor: 'red',
                 },
                 y: {
                     type: 'linear',
@@ -124,7 +119,7 @@ const drawChart = function (elevationData) {
                     },
                     ticks: {
                         // Include a dollar sign in the ticks
-                        callback: function (value, index, values) {
+                        callback: function (value) {
                             return `${value}m`;
                         },
                     },

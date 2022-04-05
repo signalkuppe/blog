@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import vars from '../../../vars';
+import { linksStyles } from '../../../theme';
 import PageTitle from '../../../components/ui/PageTitle';
 import BaseLayout from '../../../components/layout/Base';
 import DefaultPageLayout from '../../../components/layout/DefaultPageLayout';
@@ -45,6 +46,10 @@ const Intro = styled.p`
     margin-top: calc(var(--space-unit) * 2);
 `;
 
+const RegularLink = styled.a`
+    ${linksStyles}
+`;
+
 export default function GraziePage({ route }) {
     let title = 'Grazie!';
     let description = 'Grazie per avermi contattato';
@@ -68,7 +73,7 @@ export default function GraziePage({ route }) {
                         <Intro>
                             Cercherò di risponderti il prima possibile 🙂
                         </Intro>
-                        <a href="/">Torna alla homepage</a>
+                        <RegularLink href="/">Torna alla homepage</RegularLink>
                     </Text>
                 }
             />

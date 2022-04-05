@@ -6,9 +6,13 @@ export const paginate = {
     size: 1,
 };
 
+export const postLink = function (post) {
+    return `/${post.slug}/index.html`;
+};
+
 export const permalink = function (data) {
     const post = data.pagination.items[0];
-    return `/${post.slug}/index.html`;
+    return postLink(post);
 };
 
 export default function PostItem({ pagination, route }) {

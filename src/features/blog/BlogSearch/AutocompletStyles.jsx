@@ -58,12 +58,12 @@ export default AutocompletStyles = createGlobalStyle`
             0 4px 4px var(--drop-shadow-color),
             0 8px 8px var(--drop-shadow-color),
             0 16px 16px var(--drop-shadow-color)!important;
-    }
-      ;
       z-index: var(--z-index-autocomplete)!important;
       border: var(--inputs-border)!important;
       max-height: 50vh!important;
+      border-radius: var(--border-radius)!important;
     }
+
 
     .autoComplete_wrapper > ul > li {
       color: var(--color-text)!important;

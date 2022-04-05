@@ -29,7 +29,9 @@ const SearchContainer = styled.div`
     align-items: center;
 `;
 
-const StyledIcon = styled(Icon)``;
+const StyledIcon = styled(Icon)`
+    color: var(--color-links);
+`;
 
 const StyledLink = styled.a`
     padding: calc(var(--space-unit) / 2);

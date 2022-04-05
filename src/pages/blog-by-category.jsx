@@ -8,8 +8,9 @@ export const paginate = {
     groupBy: 'category',
 };
 
-export const categoryPermalink = function (page, group) {
+export const categoryLink = function (page, group) {
     group = group.toLowerCase();
+    page = page || 1;
     if (page === 1) {
         return `/blog/${group}/index.html`;
     } else {
@@ -19,7 +20,7 @@ export const categoryPermalink = function (page, group) {
 
 export const permalink = function (data) {
     const { page, group } = data.pagination;
-    return categoryPermalink(page, group);
+    return categoryLink(page, group);
 };
 
 export default function BlogByCategory({ route, pagination, posts }) {

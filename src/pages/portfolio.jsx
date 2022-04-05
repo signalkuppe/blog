@@ -1,12 +1,15 @@
 import React from 'react';
 import PortfolioPage from '../features/portfolio/PortfolioPage';
 
+export const portfolioPaginationSize = 16;
+
 export const paginate = {
     data: 'portfolio',
-    size: 16,
+    size: portfolioPaginationSize,
 };
 
-export const portfolioPermalink = function (page) {
+export const portfolioLink = function (page) {
+    page = page || 1;
     if (page === 1) {
         return `/portfolio/index.html`;
     } else {
@@ -16,7 +19,7 @@ export const portfolioPermalink = function (page) {
 
 export const permalink = function (data) {
     const { page } = data.pagination;
-    return portfolioPermalink(page);
+    return portfolioLink(page);
 };
 
 export default function Portfolio({ route, pagination }) {

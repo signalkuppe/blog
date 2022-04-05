@@ -4,13 +4,16 @@
   "scripts": {
     "dev": "npx pequeno --serve --noAfterBuild --noProcessHtml",
     "dev-blog": "npx pequeno --serve --page=blog --path=/blog/index.html --data=posts --noAfterBuild --noProcessHtml",
-    "dev-post": "npx pequeno --serve --page=post-item --path=/scialpinismo/2022/03/20/monte-sissone-dal-passo-del-maloja/index.html --data=posts --noAfterBuild --noProcessHtml",
+    "dev-post": "npx pequeno --serve --page=post-item --path=/scialpinismo/2022/03/03/norvegia-lofoten/index.html --data=posts --noAfterBuild --noProcessHtml",
+    "dev-post-photo": "npx pequeno --serve --page=post-photo --path=/scialpinismo/2022/03/03/norvegia-lofoten/tramonto-a-svolvaer-avoelpimvfl0i39stnahp/index.html --data=posts --noAfterBuild --noProcessHtml",
     "dev-portfolio": "npx pequeno --serve --page=portfolio --data=portfolio --noAfterBuild --noProcessHtml",
+    "dev-portfolio-photo": "npx pequeno --serve --page=portfolio-photo --path=/portfolio/il-disgrazia-dalla-vetta-del-pizzo-scalino-3s1iwswsae0qwwek4bdv9j/index.html --data=portfolio --noAfterBuild --noProcessHtml",
     "dev-contatti": "npx pequeno --serve --page=contatti --noData --noAfterBuild --noProcessHtml",
     "dev-grazie": "npx pequeno --serve --page=grazie --noData --noAfterBuild --noProcessHtml --noCopy --noPublicCopy",
     "dev-index": "npx pequeno --serve --page=index --data=posts --noAfterBuild --noProcessHtml --noCopy --noPublicCopy",
     "build": "npx pequeno --clean",
-    "build-verbose": "npx pequeno --clean --verbose"
+    "build-verbose": "npx pequeno --clean --verbose",
+    "lint": "npx eslint ."
   },
   "repository": {
     "type": "git",
@@ -32,18 +35,18 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
-    "pequeno": "0.1.2",
-    "sitemap": "^7.0.0"
+    "pequeno": "0.1.3",
+    "sitemap": "^7.0.0",
+    "slug": "^5.3.0"
   },
   "dependencies": {
     "@tarekraafat/autocomplete.js": "^10.2.6",
     "chart.js": "^3.4.1",
-    "glightbox": "^3.2.0",
     "leaflet": "^1.7.1",
     "leaflet-fullscreen": "^1.0.2",
     "leaflet-gesture-handling": "^1.2.1",
     "leaflet-gpx": "^1.5.2",
-    "scrollama": "^2.2.2",
+    "scrollama": "^3.1.0",
     "tippy.js": "^6.3.2"
   }
 }

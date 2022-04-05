@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const contentfulClient = require('../../lib/contentfulClient');
 const normalizePosts = require('../../lib/normalizePosts');
 const writeMapJson = require('../../lib/writeMapJson');
@@ -7,6 +8,7 @@ const postQuery = {
     order: '-fields.date',
     limit: 1,
 };
+
 module.exports = async () => {
     return new Promise((resolve, reject) => {
         contentfulClient
@@ -18,4 +20,8 @@ module.exports = async () => {
             })
             .catch((err) => reject(err));
     });
+};
+
+module.exports.postPhotos = (posts) => {
+    return _.flatten(_.map(posts, 'gallery'));
 };

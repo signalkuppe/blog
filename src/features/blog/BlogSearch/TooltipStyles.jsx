@@ -6,12 +6,12 @@ import { device } from '../../../theme';
  */
 export default TooltipStyles = createGlobalStyle` 
   .tippy-box {
-    background: var(--color-secondary)!important;
+    background: var(--color-links)!important;
     @media ${device.desktop} {
       display: none!important;
     }
   }
   .tippy-arrow {
-    color: var(--color-secondary)!important;
+    color: var(--color-links)!important;
   }
 `;

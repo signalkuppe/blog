@@ -30,9 +30,9 @@ const PlainLogoContainer = styled.div`
 const StyledLogo = styled(Logo)`
     fill: var(--color-text-light-accent);
     will-change: transform;
-    transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: transform 0.2s ease-in;
     :hover {
-        transform: rotate(-2.5deg);
+        transform: translateY(-0.15em);
     }
 `;
 
@@ -49,7 +49,7 @@ export default function Header({ route, ...props }) {
     const isFronPage = route.name === 'index';
     let logo;
     const logoLink = (
-        <LogoLink href={vars.websiteUrl} title="Torna alla homepage">
+        <LogoLink href="/" title="Torna alla homepage">
             <StyledLogo />
             <LogoText>{vars.siteName}</LogoText>
         </LogoLink>

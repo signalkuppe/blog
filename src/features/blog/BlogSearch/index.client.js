@@ -116,7 +116,7 @@ fetch('/_data/map-points.json')
 
 const tooltip = tippy('#js-map-tooltip', {
     content: 'Mostra sulla mappa',
-    placement: 'top',
+    placement: 'bottom',
     trigger: 'manual',
 })[0];
 

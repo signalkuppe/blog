@@ -1,94 +1,80 @@
 import React from 'react';
 import styled from 'styled-components';
 import { findIndex } from 'lodash';
-import { Script } from 'pequeno';
-import { visuallyHidden, device } from '../../../theme';
-import Icon from '../../ui/Icon';
-import HamburgerIcon from '../../../public/icons/Hamburger.svg';
-import CloseIcon from '../../../public/icons/Cross.svg';
-import NavigationLinks from '../NavigationLinks';
-import client from './index.client';
+import { device } from '../../../theme';
+import withFiletto from '../../hoc/withFiletto';
+import { blogLink } from '../../../pages/blog';
+import { portfolioLink } from '../../../pages/portfolio';
+import { permalink as contattiLink } from '../../../pages/contatti';
 
-const StyledButton = styled.button`
-    appearance: none;
-    touch-action: manipulation;
-    background: transparent;
-    border: none;
-    color: var(--color-text-accent);
-    line-height: 1;
+const StyledUl = styled.ul`
+    display: flex;
+    list-style: none;
+    margin: 0;
     padding: 0;
-    display: block;
-    cursor: pointer;
-    outline: none;
-    width: var(--space-unit);
+    gap: calc(var(--space-unit) * 1.5);
+    @media ${device.mobile} {
+        flex-direction: column;
+        gap: 0.1em;
+        text-align: right;
+    }
+`;
+const StyledLi = styled.li`
+    margin: 0;
+`;
+const StyledLink = styled.a`
+    font-stretch: var(--narrow-font-stretch);
+    font-weight: 500;
+    display: inline-block;
+    color: ${(props) =>
+        props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
+    transition: color 0.2s ease-in;
     :hover {
         color: var(--color-text-light-accent);
     }
-    :active {
-        transform: translate(0.1em, 0.1em);
-    }
     @media ${device.atLeastTablet} {
-        display: none;
+        font-size: var(--font-size-medium);
     }
 `;
 
-const StyledButtonText = styled.span`
-    ${visuallyHidden}
-`;
+const LinkWithFiletto = withFiletto(StyledLink);
 
-const Panel = styled.nav`
-    @media ${device.mobile} {
-        position: fixed;
-        right: 0;
-        top: 0;
-        display: flex;
-        flex-direction: column;
-        z-index: var(--z-index-menu);
-        will-change: transform;
-        transform: translate3d(100%, 0, 0);
-        visibility: hidden;
-        height: 100vh;
-        width: 100vw;
-        max-width: 12rem;
-        background: var(--color-background-light);
-        padding: 0 var(--space-unit);
-        filter: drop-shadow(-5px 0px 20px var(--drop-shadow-color));
-        &.js-is-open {
-            visibility: visible;
-            transform: translate3d(0, 0, 0);
+function NavigationLinks({ links, active, ...props }) {
+    const renderLink = function (index, link) {
+        const last = index === links.length - 1;
+        const lastId = 'js-lastFocusableElement';
+
+        if (index === active) {
+            return (
+                <LinkWithFiletto
+                    active
+                    href={link.href}
+                    id={last ? lastId : null}
+                >
+                    {link.text}
+                </LinkWithFiletto>
+            );
+        } else {
+            return (
+                <StyledLink href={link.href} id={last ? lastId : null}>
+                    {link.text}
+                </StyledLink>
+            );
         }
-        @media ${device.noReduceMotion} {
-            transition: transform 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
-        }
-    }
-`;
-
-const PanelHeader = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: var(--header-height);
-    @media ${device.atLeastTablet} {
-        display: none;
-    }
-`;
-
-const StyledNavigationLinks = styled(NavigationLinks)`
-    flex: 1;
-    @media ${device.mobile} {
-        padding-top: calc(var(--space-unit) * 2);
-    }
-`;
+    };
+    return (
+        <StyledUl {...props}>
+            {links.map((link, i) => (
+                <StyledLi key={i}>{renderLink(i, link)}</StyledLi>
+            ))}
+        </StyledUl>
+    );
+}
 
 export default function MainMenu({ route }) {
     const links = [
         {
-            href: '/index.html',
-            text: 'Home',
-            active: route.name === 'index',
-        },
-        {
-            href: '/blog/index.html',
+            href: blogLink(),
             text: 'Relazioni',
             active:
                 route.name === 'blog' ||
@@ -96,53 +82,17 @@ export default function MainMenu({ route }) {
                 route.name === 'blog-by-category',
         },
         {
-            href: '/portfolio/index.html',
+            href: portfolioLink(),
             text: 'Portfolio',
             active: route.name === 'portfolio',
         },
         {
-            href: '/contatti/index.html',
+            href: contattiLink,
             text: 'Info & Contatti',
             active: route.name === 'contatti' || route.name === 'grazie',
         },
     ];
 
     const activeLinkIndex = findIndex(links, (l) => l.active);
-    return (
-        <>
-            <StyledButton
-                id="js-mainMenu-openButton"
-                aria-controls="js-mainMenu-panel"
-            >
-                <StyledButtonText>Apri il menu</StyledButtonText>
-                <Icon icon={HamburgerIcon} l />
-            </StyledButton>
-            <Panel id="js-mainMenu-panel">
-                <PanelHeader>
-                    <StyledButton id="js-mainMenu-closeButton">
-                        <StyledButtonText>Chiudi il menu</StyledButtonText>
-                        <Icon icon={CloseIcon} l />
-                    </StyledButton>
-                </PanelHeader>
-                <StyledNavigationLinks links={links} active={activeLinkIndex} />
-            </Panel>
-
-            <Script
-                libs={[
-                    {
-                        where: 'body',
-                        tag: '<script src="/js/utils.js" />',
-                    },
-                ]}
-                vars={[
-                    {
-                        name: 'mobileMediaQuery',
-                        value: device.mobile,
-                    },
-                ]}
-            >
-                {client}
-            </Script>
-        </>
-    );
+    return <NavigationLinks links={links} active={activeLinkIndex} />;
 }

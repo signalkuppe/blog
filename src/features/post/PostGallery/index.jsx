@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Container from '../../../components/layout/Container';
-import PhotoGallery from '../../../components/ui/PhotoGallery';
 import { device } from '../../../theme';
+import Container from '../../../components/layout/Container';
+import { postPhotoLink } from '../../../pages/post-photo';
 
 const Wrapper = styled.div`
     max-width: 70ch;
@@ -27,8 +27,12 @@ const squareStyle = css`
 
 const StyledListItem = styled.li`
     ${squareStyle}
+    transition: all 0.2s ease-in-out;
     img {
-        ${squareStyle}// we need to override native image dimensions to force the square aspcet ratio
+        ${squareStyle}/* we need to override native image dimensions to force the square aspcet ratio */
+    }
+    :hover {
+        transform: translateY(-0.15em);
     }
 `;
 
@@ -37,11 +41,19 @@ export default function PostGallery({ post }) {
     return (
         <Container>
             <Wrapper>
-                <PhotoGallery
-                    photos={gallery}
-                    WrapperElement={StyledList}
-                    ItemElement={StyledListItem}
-                />
+                <StyledList>
+                    {gallery.map((photo, i) => (
+                        <StyledListItem key={i}>
+                            <a href={postPhotoLink(photo)} title={photo.title}>
+                                <img
+                                    src={`${photo.src}?w=300&h=300&fm=webp&fit=thumb&q=80`}
+                                    title={photo.title}
+                                    alt={photo.alt || photo.title}
+                                />
+                            </a>
+                        </StyledListItem>
+                    ))}
+                </StyledList>
             </Wrapper>
         </Container>
     );

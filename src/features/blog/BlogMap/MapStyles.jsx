@@ -41,11 +41,10 @@ export default MapStyles = createGlobalStyle`
         }
         :hover,
         .js-is-selected & {
-            background: var(--color-primary)!important;
+            background: var(--color-map-active-marker-background)!important;
+            color: var(--color-map-active-marker-color)!important;
             transform: scale(1.15);
-            img {
-                filter: invert(0);
-            }
+            
             
         }
         transition: all 0.2s linear;

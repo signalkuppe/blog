@@ -21,16 +21,7 @@ export default function BlogLayout({ hero, content }) {
                 <Hero id="js-postLayout-hero">{hero}</Hero>
                 <Content>{content}</Content>
             </Wrapper>
-            <Script
-                libs={[
-                    {
-                        where: 'body',
-                        tag: '<script src="/js/utils.js" />',
-                    },
-                ]}
-            >
-                {client}
-            </Script>
+            <Script>{client}</Script>
         </>
     );
 }

@@ -1,7 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { imgStyles } from '../Image';
-import { headingsSize, headingsStyles, linksStyles } from '../../../theme';
+import {
+    headingsSize,
+    headingsStyles,
+    linksStyles,
+    imagesStyles,
+} from '../../../theme';
 
 /** Injects basic html styles in a component  */
 
@@ -36,12 +40,14 @@ const Container = styled.div`
         margin-top: calc(var(--space-unit) * 2);
     }
 
-    h3 + img {
-        margin-top: calc(var(--space-unit) * 0.25);
+    h3 + figure {
+        margin-top: calc(var(--space-unit) * 0.5);
     }
 
     ul {
         margin-bottom: calc(var(--space-unit) * 2);
+        padding-left: var(--space-unit);
+        list-style-type: disc;
     }
 
     ul li {
@@ -49,6 +55,10 @@ const Container = styled.div`
         p {
             margin: 0;
         }
+    }
+
+    li::marker {
+        color: var(--color-links);
     }
 
     b,
@@ -78,12 +88,11 @@ const Container = styled.div`
     }
 
     img {
-        ${imgStyles};
+        ${imagesStyles}
     }
 
     figcaption {
         font-family: var(--font-family-cursive);
-        font-style: normal;
         color: var(--color-text-light-accent);
         padding-top: 0.5em;
         background: var(--color-background);

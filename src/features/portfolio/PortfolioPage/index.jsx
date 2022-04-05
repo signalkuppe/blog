@@ -9,7 +9,7 @@ import Head from '../../../components/common/Head';
 import PortfolioPhotos from '../PortfolioPhotos';
 
 const StyledPager = styled(Pager)`
-    margin-top: calc(var(--space-unit) * 2);
+    margin-top: calc(var(--space-unit) * 6);
     margin-bottom: calc(var(--space-unit) * 4);
 `;
 

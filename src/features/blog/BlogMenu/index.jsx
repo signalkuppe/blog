@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 import withFiletto from '../../../components/hoc/withFiletto';
 import { device, visuallyHidden } from '../../../theme';
 import PostCategoryIcon from '../../post/PostCategoryIcon';
-import { categoryPermalink } from '../../../pages/blog-by-category';
-import { blogPermalink } from '../../../pages/blog';
+import { categoryLink } from '../../../pages/blog-by-category';
+import { blogLink } from '../../../pages/blog';
 
 const StyledList = styled.ul`
     display: flex;
@@ -70,12 +70,12 @@ export default function BlogMenu({ categories, category }) {
     const tabs = [
         {
             text: 'Tutte',
-            href: blogPermalink(1),
+            href: blogLink(),
             title: 'Tutte le relazioni',
         },
         ...categories.map((cat) => ({
             text: cat,
-            href: categoryPermalink(1, cat),
+            href: categoryLink(1, cat),
             icon: <PostCategoryIcon category={cat} left />,
             title: `Solo ${cat}`,
         })),
@@ -84,7 +84,7 @@ export default function BlogMenu({ categories, category }) {
     const active = category ? categories.indexOf(category) + 1 : 0;
 
     return (
-        <StyledList id="js-blogTabs" {...props}>
+        <StyledList>
             {tabs.map((tab, i) => {
                 let linkText = <LinkText first={i === 0}>{tab.text}</LinkText>;
                 if (i === active) {

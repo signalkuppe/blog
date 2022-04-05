@@ -5,8 +5,8 @@ import {
     headingsSize,
     headingsStyles,
     linksStyles,
+    imagesStyles,
 } from '../../../theme';
-import Image from '../../../components/ui/Image';
 import PostCategoryIcon from '../../post/PostCategoryIcon';
 
 const WrapperLink = styled.a`
@@ -14,6 +14,7 @@ const WrapperLink = styled.a`
     color: inherit;
     :hover img {
         transform: rotate(-5deg);
+        border-color: var(--color-primary);
     }
 `;
 const ImageWrapper = styled.figure`
@@ -27,9 +28,8 @@ const ImageWrapper = styled.figure`
         width: 90px;
     }
 `;
-const StyledImage = styled(Image)`
-    object-fit: cover;
-    display: block;
+const StyledImage = styled.img`
+    ${imagesStyles};
     transition: all 0.1s linear;
     border: 6px solid var(--color-text-light-accent);
     border-radius: 12px;

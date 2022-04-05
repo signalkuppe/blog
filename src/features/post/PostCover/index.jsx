@@ -46,7 +46,7 @@ const StyledFigcaption = styled.figcaption`
     font-size: clamp(
         var(--font-size-x-small),
         var(--font-size-xxx-large),
-        3vmax
+        2.5vmax
     );
     font-weight: 900;
     font-stretch: var(--extra-narrow-font-stretch);

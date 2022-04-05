@@ -1,7 +1,6 @@
 const hero = document.getElementById('js-postLayout-hero');
 const header = document.getElementById('js-header');
-
-const windowWidth = window.innerWidth;
+let windowWidth = window.innerWidth;
 const headerHeight = header.getBoundingClientRect().height;
 
 function onResize() {

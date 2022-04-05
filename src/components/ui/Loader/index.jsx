@@ -83,9 +83,9 @@ const LoaderText = styled.span`
     display: inline-block;
 `;
 
-export default function Loader({ size, children }) {
+export default function Loader({ size, children, ...props }) {
     return (
-        <LoaderWrapper>
+        <LoaderWrapper {...props}>
             <LoaderContainer size={size}>
                 <LoaderInner />
             </LoaderContainer>

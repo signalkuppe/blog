@@ -6,8 +6,6 @@ const { SitemapStream, streamToPromise } = require('sitemap');
 module.exports = {
     copy: {
         'node_modules/scrollama/build/scrollama.js': 'libs/scrollama.js',
-        'node_modules/glightbox/dist/css/glightbox.css': 'libs/glightbox.css',
-        'node_modules/glightbox/dist/js/glightbox.js': 'libs/glightbox.js',
         'node_modules/leaflet/dist/leaflet.js': 'libs/leaflet.js',
         'node_modules/leaflet/dist/leaflet.css': 'libs/leaflet.css',
         'node_modules/leaflet-fullscreen/dist/Leaflet.fullscreen.js':

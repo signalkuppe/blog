@@ -1,5 +1,6 @@
 import React from 'react';
 import vars from '../../../vars';
+import { vars as themeVars } from '../../../theme';
 
 export default function Head({
     title,
@@ -73,8 +74,12 @@ export default function Head({
                 color="#009fe3"
             />
             {extraLinks}
+
             <meta name="msapplication-TileColor" content="#ffffff" />
-            <meta name="theme-color" content="#ffffff" />
+            <meta
+                name="theme-color"
+                content={themeVars['--color-background']}
+            />
             <meta name="generator" content="pequeno" />
             <meta name="og:type" content="website" />
             <meta name="twitter:site" content="@signalkuppe" />

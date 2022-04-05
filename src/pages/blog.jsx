@@ -7,7 +7,8 @@ export const paginate = {
     size: 16,
 };
 
-export const blogPermalink = function (page) {
+export const blogLink = function (page) {
+    page = page || 1;
     if (page === 1) {
         return `/blog/index.html`;
     } else {
@@ -17,7 +18,7 @@ export const blogPermalink = function (page) {
 
 export const permalink = function (data) {
     const { page } = data.pagination;
-    return blogPermalink(page);
+    return blogLink(page);
 };
 
 export default function Blog({ route, posts, pagination }) {

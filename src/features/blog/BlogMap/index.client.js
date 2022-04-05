@@ -1,6 +1,4 @@
 /* Initialize map */
-const tabs = document.getElementById('js-blogTabs');
-const header = document.getElementById('js-header');
 const mapDiv = document.getElementById('js-map');
 const zoom = 7;
 const lat = 45.7929;
@@ -74,7 +72,7 @@ const showmap = function (markers) {
     );
 
     Array.from(posts).forEach((post) => {
-        post.addEventListener('mouseenter', function (e) {
+        post.addEventListener('mouseenter', function () {
             const selectedMarker = [...markerList].find((e) => {
                 const id = post.id.split('-').pop();
                 return e.classList.contains(`map-marker-${id}`);
@@ -96,7 +94,7 @@ const showmap = function (markers) {
             }
         });
 
-        post.addEventListener('mouseleave', function (e) {
+        post.addEventListener('mouseleave', function () {
             [...markerContainersList].forEach((e) =>
                 e.classList.remove('js-is-selected'),
             );

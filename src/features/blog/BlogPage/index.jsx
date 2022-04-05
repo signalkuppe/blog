@@ -5,7 +5,7 @@ import vars from '../../../vars';
 import BaseLayout from '../../../components/layout/Base';
 import Head from '../../../components/common/Head';
 import Pager from '../../../components/ui/Pager';
-import Bloglayout from '../Bloglayout';
+import Bloglayout from '../BlogLayout';
 import BlogMap from '../BlogMap';
 import BlogMenu from '../BlogMenu';
 import BlogSearch from '../BlogSearch';

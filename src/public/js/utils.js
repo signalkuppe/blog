@@ -41,10 +41,12 @@ function animateValue(obj, start, end, duration) {
   window.requestAnimationFrame(step);
 }
 
+// eslint-disable-next-line no-unused-vars
 function times  (n, func = i => i) {
   return Array.from({ length: n }).map((_, i) => func(i))
 }
 
+// eslint-disable-next-line no-unused-vars
 function getCssVar (varString) {
   return getComputedStyle(
                     document.documentElement,

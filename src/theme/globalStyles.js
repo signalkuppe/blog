@@ -115,7 +115,13 @@ const GlobalStyles = createGlobalStyle`
     background: var(--color-background);
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
   }
+
+  /**
+  * basic html styles for element in components/ui/BasicHtmlStyles
+  */
+  
 `;
 
 export default GlobalStyles;
