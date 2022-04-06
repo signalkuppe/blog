@@ -88,6 +88,9 @@ export default function Head({
             <meta name="twitter:image" content={twitterCardImage} />
             <meta name="og:image" content={ogImage} />
             {extraMetas}
+            {vars.env === 'development' && (
+                <meta name="robots" content="noindex" />
+            )}
         </head>
     );
 }

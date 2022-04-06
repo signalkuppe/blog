@@ -1,4 +1,5 @@
 module.exports = {
+    env: process.env.SIGNALKUPPE_WEBSITE_ENV,
     websiteUrl: process.env.SIGNALKUPPE_WEBSITE_URL,
     siteName: 'Signalkuppe',
     siteSlogan: 'Parole oltre i 4000m',
