@@ -73,8 +73,28 @@ export default function Head({
                 href="/img/favicons/safari-pinned-tab.svg"
                 color="#009fe3"
             />
+            <link
+                rel="preload"
+                href="/fonts/roboto-flex.woff2"
+                as="font"
+                type="font/woff2"
+                crossOrigin="true"
+            />
+            <link
+                rel="preload"
+                href="/fonts/sriracha-regular.woff2"
+                as="font"
+                type="font/woff2"
+                crossOrigin="true"
+            />
+            <link
+                rel="preload"
+                href="/fonts/yeseva-regular.woff2"
+                as="font"
+                type="font/woff2"
+                crossOrigin="true"
+            />
             {extraLinks}
-
             <meta name="msapplication-TileColor" content="#ffffff" />
             <meta name="color-scheme" content="dark" />
             <meta

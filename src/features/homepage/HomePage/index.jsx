@@ -13,10 +13,10 @@ import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import PageTitle from '../../../components/ui/PageTitle';
 
 const imgeUrl = vars.homepageFoto;
-const mobileBackgroundImage = `${imgeUrl}?w=1024&h=682&fm=webp&q=80`;
-const tabletBackgroundImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=80`;
-const desktopBackgroundImage = `${imgeUrl}?w=1920&&fm=webp&q=80`;
-const largeDesktopBackgroundImage = `${imgeUrl}?w=2200&&fm=webp&q=80`;
+const mobileBackgroundImage = `${imgeUrl}?w=640&h=426&fm=webp&q=50`;
+const tabletBackgroundImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=50`;
+const desktopBackgroundImage = `${imgeUrl}?w=1920&h=1280&fm=webp&q=50`;
+const largeDesktopBackgroundImage = `${imgeUrl}?w=2200&h=1466&fm=webp&q=50`;
 
 const bloglink = blogLink();
 
@@ -93,7 +93,7 @@ export default function HomePage({ route }) {
                     <link
                         rel="preconnect"
                         href="https://assets.ctfassets.net"
-                        crossOrigin
+                        crossOrigin="true"
                     />
                 }
             />

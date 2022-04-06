@@ -15,8 +15,8 @@ const StyledUl = styled.ul`
     gap: calc(var(--space-unit) * 1.5);
     @media ${device.mobile} {
         flex-direction: column;
-        gap: 0.1em;
         text-align: right;
+        gap: 0;
     }
 `;
 const StyledLi = styled.li`
@@ -31,6 +31,10 @@ const StyledLink = styled.a`
     transition: color 0.2s ease-in;
     :hover {
         color: var(--color-text-light-accent);
+    }
+    @media ${device.mobile} {
+        padding: 0.25em 1em;
+        padding-right: 0;
     }
     @media ${device.atLeastTablet} {
         font-size: var(--font-size-medium);

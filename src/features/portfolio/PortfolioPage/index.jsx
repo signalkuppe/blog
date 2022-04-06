@@ -39,7 +39,7 @@ export default function PortfolioPage({ route, pagination }) {
                             <link
                                 rel="preconnect"
                                 href="https://assets.ctfassets.net"
-                                crossOrigin
+                                crossOrigin="true"
                             />
                         </>
                     }

@@ -7,7 +7,7 @@ import { css } from 'styled-components';
 export const vars = {
     '--color-background': '#110F16',
     '--color-background-light': '#19171a',
-    '--color-primary': '#e9322e',
+    '--color-primary': '#EA3734',
     '--color-secondary': '#FBA456',
     '--color-text': '#CACDD6',
     '--color-text-light-accent': '#FFFFFF',
@@ -50,7 +50,7 @@ export const vars = {
     '--logo-width': '9rem',
     '--container-max-width': '80rem',
     '--container-offset': 'calc(var(--logo-width) + var(--space-unit))',
-    '--header-height': '7rem',
+    '--header-height': '8rem',
     '--blog-tabs-height': 'clamp(4em, 10vw, 5em)',
     '--blog-search-height': '10em',
     '--z-index-menu': '10000',

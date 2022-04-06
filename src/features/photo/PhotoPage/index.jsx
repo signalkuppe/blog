@@ -138,7 +138,7 @@ export default function PhotoPage({ photo, pagination, backTo }) {
                     <link
                         rel="preconnect"
                         href="https://assets.ctfassets.net"
-                        crossOrigin
+                        crossOrigin="true"
                     />
                 }
             />
