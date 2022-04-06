@@ -4,14 +4,15 @@ import { device } from '../../../theme';
 /**
  * autocomplete plugin ovverides
  */
-export default TooltipStyles = createGlobalStyle` 
+export default createGlobalStyle` 
   .tippy-box {
-    background: var(--color-links)!important;
+    background: var(--color-button-background)!important;
+    color: var(--color-button-color)!important;
     @media ${device.desktop} {
       display: none!important;
     }
   }
   .tippy-arrow {
-    color: var(--color-links)!important;
+    color: var(--color-button-background)!important;
   }
 `;

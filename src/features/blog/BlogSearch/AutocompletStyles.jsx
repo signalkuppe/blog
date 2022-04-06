@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 /**
  * autocomplete plugin ovverides
  */
-export default AutocompletStyles = createGlobalStyle` 
+export default createGlobalStyle` 
 
     #js-autocomplete {
       opacity: 0;

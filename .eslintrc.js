@@ -54,5 +54,6 @@ module.exports = {
         Chart: true,
         workbox: true,
         importScripts: true,
+        quicklink: true,
     },
 };

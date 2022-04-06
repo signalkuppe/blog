@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { device } from '../../../theme';
 
 const StyledButton = styled.button`
     font-size: var(--font-size-small);
-    font-weight: 500;
+    font-weight: 700;
     display: inline-flex;
     align-items: center;
     text-decoration: none;
@@ -14,7 +13,7 @@ const StyledButton = styled.button`
     cursor: pointer;
     border: 3px solid;
     border-radius: var(--border-radius);
-    padding: 0.5em 1em;
+    padding: 0.6em 1em;
     box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px,
         4px 4px 0px 0px, 5px 5px 0px 0px;
     position: relative;

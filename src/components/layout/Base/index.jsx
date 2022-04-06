@@ -1,28 +1,21 @@
 import React from 'react';
-import { Script } from 'pequeno';
+import Html from '../../common/Html';
+import Body from '../../common/Body';
+import CommonScripts from '../../common/CommonScripts';
+import CommonStyles from '../../common/CommonStyles';
 import Header from '../../common/Header';
-import GlobalStyles from '../../../theme/globalStyles';
-import PrintStyles from '../../../theme/printStyles';
 
 export default function BaseLayout({ route, head, children }) {
     return (
-        <html lang="it">
+        <Html>
             {head}
-            <body>
-                <GlobalStyles />
-                <PrintStyles />
+            <Body>
+                <CommonStyles />
                 <Header route={route} />
                 <main>{children}</main>
                 <footer></footer>
-                <Script
-                    libs={[
-                        {
-                            where: 'body',
-                            tag: '<script src="/js/utils.js" />',
-                        },
-                    ]}
-                />
-            </body>
-        </html>
+                <CommonScripts />
+            </Body>
+        </Html>
     );
 }

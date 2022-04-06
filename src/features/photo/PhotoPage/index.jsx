@@ -4,8 +4,10 @@ import styled, { css } from 'styled-components';
 import { imagesStyles, device } from '../../../theme';
 import vars from '../../../vars';
 import Head from '../../../components/common/Head';
-import GlobalStyles from '../../../theme/globalStyles';
-import PrintStyles from '../../../theme/printStyles';
+import Html from '../../../components/common/Html';
+import Body from '../../../components/common/Body';
+import CommonScripts from '../../../components/common/CommonScripts';
+import CommonStyles from '../../../components/common/CommonStyles';
 import Icon from '../../../components/ui/Icon';
 import Loader from '../../../components/ui/Loader';
 import LeftIcon from '../../../public/icons/ChevronLeft.svg';
@@ -127,7 +129,7 @@ export default function PhotoPage({ photo, pagination, backTo }) {
     const enlargmentLarge = `${photo.src}?w=3000&fm=webp&q=80`;
 
     return (
-        <html lang="it">
+        <Html>
             <Head
                 title={title}
                 slogan={vars.siteName}
@@ -140,9 +142,8 @@ export default function PhotoPage({ photo, pagination, backTo }) {
                     />
                 }
             />
-            <body>
-                <GlobalStyles />
-                <PrintStyles />
+            <Body>
+                <CommonStyles />
                 <ImageContainer
                     id="js-foto"
                     data-prev={pagination.prev}
@@ -207,17 +208,9 @@ export default function PhotoPage({ photo, pagination, backTo }) {
                         </ul>
                     </ImageNavigation>
                 </ImageContainer>
-            </body>
-            <Script
-                libs={[
-                    {
-                        where: 'body',
-                        tag: '<script src="/js/utils.js" />',
-                    },
-                ]}
-            >
-                {client}
-            </Script>
-        </html>
+            </Body>
+            <CommonScripts />
+            <Script>{client}</Script>
+        </Html>
     );
 }

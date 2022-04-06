@@ -29,6 +29,7 @@ module.exports = {
         'node_modules/tippy.js/dist/tippy-bundle.umd.js': 'libs/tippy.js',
         'node_modules/tippy.js/dist/tippy.css': 'libs/tippy.css',
         'node_modules/@popperjs/core/dist/umd/popper.js': 'libs/popper.js',
+        'node_modules/quicklink/dist/quicklink.umd.js': 'libs/quicklink.js',
     },
     processHtml: function ($, data) {
         $('head').append(`

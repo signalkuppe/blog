@@ -32,15 +32,7 @@ const StyledImage = styled.img`
     ${imagesStyles};
     transition: all 0.1s linear;
     border: 6px solid var(--color-text-light-accent);
-    border-radius: 12px;
-    @media ${device.mobile} {
-        border-width: 2px;
-        border-radius: 4px;
-    }
-    @media ${device.onlyTablet} {
-        border-width: 4px;
-        border-radius: 8px;
-    }
+    border-radius: var(--border-radius);
 `;
 const ContentWrapper = styled.div``;
 

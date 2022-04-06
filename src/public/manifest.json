@@ -1,7 +1,7 @@
 {
-    "name": "Pequeño",
-    "description": "A React static site generator.",
-    "short_name": "Pequeño",
+    "name": "Signalkuppe",
+    "description": "Parole oltre i 4000m",
+    "short_name": "Signalkuppe",
     "icons": [
         {
             "src": "/img/favicons/android-chrome-192x192.png",
@@ -14,7 +14,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
+    "theme_color": "#e9322e",
     "background_color": "#ffffff",
     "display": "standalone",
     "start_url": "/"

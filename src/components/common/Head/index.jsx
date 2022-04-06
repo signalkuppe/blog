@@ -76,6 +76,7 @@ export default function Head({
             {extraLinks}
 
             <meta name="msapplication-TileColor" content="#ffffff" />
+            <meta name="color-scheme" content="dark" />
             <meta
                 name="theme-color"
                 content={themeVars['--color-background']}

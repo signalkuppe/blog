@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import vars from '../../../vars';
-import Head from '../../../components/common/Head';
-import Header from '../../../components/common/Header';
-import GlobalStyles from '../../../theme/globalStyles';
-import PrintStyles from '../../../theme/printStyles';
 import { device, hideScrollbar } from '../../../theme';
 import { blogLink } from '../../../pages/blog';
+import Head from '../../../components/common/Head';
+import Header from '../../../components/common/Header';
+import Html from '../../../components/common/Html';
+import Body from '../../../components/common/Body';
+import CommonScripts from '../../../components/common/CommonScripts';
+import CommonStyles from '../../../components/common/CommonStyles';
 import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import PageTitle from '../../../components/ui/PageTitle';
 
@@ -80,17 +82,23 @@ const HomePageGridContent = styled.main`
     }
 `;
 
-export default function HomePage({ route, head }) {
+export default function HomePage({ route }) {
     return (
-        <html lang="it">
+        <Html>
             <Head
                 title={vars.siteName}
                 slogan={vars.siteSlogan}
                 description={vars.description}
+                extraLinks={
+                    <link
+                        rel="preconnect"
+                        href="https://assets.ctfassets.net"
+                        crossOrigin="true"
+                    />
+                }
             />
-            <body>
-                <GlobalStyles />
-                <PrintStyles />
+            <Body>
+                <CommonStyles />
                 <HomePageGrid>
                     <HomePageGridHeader>
                         <Header route={route} />
@@ -161,7 +169,8 @@ export default function HomePage({ route, head }) {
                         </BasicHtmlStyles>
                     </HomePageGridContent>
                 </HomePageGrid>
-            </body>
-        </html>
+                <CommonScripts />
+            </Body>
+        </Html>
     );
 }

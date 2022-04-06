@@ -62,7 +62,7 @@ const Buttons = styled.footer`
     margin-top: calc(var(--space-unit) * 4);
     margin-bottom: calc(var(--space-unit) * 2);
     > * + * {
-        margin-left: var(--space-unit);
+        margin-left: calc(var(--space-unit) / 2);
     }
 `;
 
