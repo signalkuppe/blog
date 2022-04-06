@@ -40,12 +40,12 @@ export default function BlogPage({
                             <link
                                 rel="preconnect"
                                 href="https://assets.ctfassets.net"
-                                crossOrigin="true"
+                                crossOrigin
                             />
                             <link
                                 rel="preconnect"
                                 href="https://tile.thunderforest.com"
-                                crossOrigin="true"
+                                crossOrigin
                             />
                         </>
                     }

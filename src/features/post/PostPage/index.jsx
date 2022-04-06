@@ -16,17 +16,19 @@ export default function PostPage({ post, route }) {
                     title={post.title}
                     slogan={vars.siteName}
                     description={post.description}
+                    ogImage={`${post.cover.src}?w=1280&h=630&fm=jpg&q=80`}
+                    twitterCardImage={`${post.cover.src}?w=1200&h=600&fm=jpg&q=80`}
                     extraLinks={
                         <>
                             <link
                                 rel="preconnect"
                                 href="https://assets.ctfassets.net"
-                                crossOrigin="true"
+                                crossOrigin
                             />
                             <link
                                 rel="preconnect"
                                 href="https://tile.thunderforest.com"
-                                crossOrigin="true"
+                                crossOrigin
                             />
                         </>
                     }

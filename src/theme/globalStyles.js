@@ -70,6 +70,7 @@ const GlobalStyles = createGlobalStyle`
         url('/fonts/roboto-flex.woff2') format('woff2-variations');
     font-weight: 1 999;
     font-stretch: 25% 150%;
+    font-display: swap;
   }
 
   @font-face {

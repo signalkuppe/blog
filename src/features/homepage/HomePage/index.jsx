@@ -12,11 +12,11 @@ import CommonStyles from '../../../components/common/CommonStyles';
 import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import PageTitle from '../../../components/ui/PageTitle';
 
-const imgeUrl = `https://images.ctfassets.net/rotmy72mdop6/AGcSil2jT7UhmU7oDphmX/4f9972b00fd481338648bc5f5003afda/io___gio.jpg`;
-const mobileBackgroundImage = `${imgeUrl}?w=1024&h=682&fl=progressive&fm=jpg&q=80`;
-const tabletBackgroundImage = `${imgeUrl}?w=1280&h=853&fl=progressive&fm=jpg&q=80`;
-const desktopBackgroundImage = `${imgeUrl}?w=1920&fl=progressive&fm=jpg&q=80`;
-const largeDesktopBackgroundImage = `${imgeUrl}?w=2200&fl=progressive&fm=jpg&q=80`;
+const imgeUrl = vars.homepageFoto;
+const mobileBackgroundImage = `${imgeUrl}?w=1024&h=682&fm=webp&q=80`;
+const tabletBackgroundImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=80`;
+const desktopBackgroundImage = `${imgeUrl}?w=1920&&fm=webp&q=80`;
+const largeDesktopBackgroundImage = `${imgeUrl}?w=2200&&fm=webp&q=80`;
 
 const bloglink = blogLink();
 
@@ -93,7 +93,7 @@ export default function HomePage({ route }) {
                     <link
                         rel="preconnect"
                         href="https://assets.ctfassets.net"
-                        crossOrigin="true"
+                        crossOrigin
                     />
                 }
             />
