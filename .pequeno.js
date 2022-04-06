@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const { Readable } = require('stream');
 const { SitemapStream, streamToPromise } = require('sitemap');
+const { roboto, sriracha, yeseva } = require('./src/base64fonts');
 
 module.exports = {
     copy: {
@@ -32,14 +33,28 @@ module.exports = {
         'node_modules/quicklink/dist/quicklink.umd.js': 'libs/quicklink.js',
     },
     processHtml: function ($, data) {
-        $('head').append(`
-        <script>
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js');
-                });
+        $('head').prepend(`
+        <style>
+            @font-face {
+                font-family: "Roboto Flex";
+                src:url(${roboto}) format('woff2-variations');
+                font-weight: 1 999;
+                font-stretch: 25% 150%;
+                font-display: swap;
             }
-        </script>`);
+            @font-face {
+                font-family: "Sriracha";
+                src: url(${sriracha}) format('woff2');
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "Yeseva One";
+                src: url(${yeseva}) format('woff2');
+                font-display: swap;
+            }    
+        </style>
+        `);
         return $.html();
     },
     afterBuild: async function (renderedPages) {

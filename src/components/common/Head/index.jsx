@@ -1,6 +1,8 @@
 import React from 'react';
+import { Script } from 'pequeno';
 import vars from '../../../vars';
 import { vars as themeVars } from '../../../theme';
+import client from './index.client';
 
 export default function Head({
     title,
@@ -67,32 +69,10 @@ export default function Head({
                 sizes="16x16"
                 href="/img/favicons/favicon-16x16.png"
             />
-
             <link
                 rel="mask-icon"
                 href="/img/favicons/safari-pinned-tab.svg"
                 color="#009fe3"
-            />
-            <link
-                rel="preload"
-                href="/fonts/roboto-flex.woff2"
-                as="font"
-                type="font/woff2"
-                crossOrigin="true"
-            />
-            <link
-                rel="preload"
-                href="/fonts/sriracha-regular.woff2"
-                as="font"
-                type="font/woff2"
-                crossOrigin="true"
-            />
-            <link
-                rel="preload"
-                href="/fonts/yeseva-regular.woff2"
-                as="font"
-                type="font/woff2"
-                crossOrigin="true"
             />
             {extraLinks}
             <meta name="msapplication-TileColor" content="#ffffff" />
@@ -108,9 +88,11 @@ export default function Head({
             <meta name="twitter:image" content={twitterCardImage} />
             <meta name="og:image" content={ogImage} />
             {extraMetas}
-            {vars.env === 'development' && (
+            {vars.env !== 'production' && (
                 <meta name="robots" content="noindex" />
             )}
+            {vars.env !== 'development' && <Script>{client}</Script>}{' '}
+            {/** service worker */}
         </head>
     );
 }

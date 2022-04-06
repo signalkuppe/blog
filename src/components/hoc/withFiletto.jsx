@@ -13,7 +13,7 @@ export const styles = css`
         background: var(--color-primary);
         position: absolute;
         left: 0;
-        bottom: -0.1em;
+        bottom: 0;
     }
 `;
 

@@ -64,6 +64,7 @@ const GlobalStyles = createGlobalStyle`
 
   /** end reset */
 
+  /*
   @font-face {
     font-family: "Roboto Flex";
     src: url('/fonts/roboto-flex.woff2') format('woff2 supports variations'),
@@ -84,6 +85,8 @@ const GlobalStyles = createGlobalStyle`
     src: url('/fonts/yeseva-regular.woff2') format('woff2');
     font-display: swap;
   }
+
+  */
 
   :root {
     ${rootVars};

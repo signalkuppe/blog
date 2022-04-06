@@ -33,8 +33,7 @@ const StyledLink = styled.a`
         color: var(--color-text-light-accent);
     }
     @media ${device.mobile} {
-        padding: 0.25em 1em;
-        padding-right: 0;
+        padding: 0.2em 0;
     }
     @media ${device.atLeastTablet} {
         font-size: var(--font-size-medium);
