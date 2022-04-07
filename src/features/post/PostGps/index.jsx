@@ -30,7 +30,6 @@ const MapInfos = styled.div`
 
 const InfoBox = styled.dl`
     dt {
-        font-stretch: var(--narrow-font-stretch);
         color: var(--color-text-light-accent);
         @media ${device.desktop} {
             font-size: var(--font-size-medium);
@@ -44,6 +43,7 @@ const InfoBox = styled.dl`
         }
         span {
             color: var(--color-text-light-accent);
+            letter-spacing: -0.03em;
             font-weight: 900;
         }
     }

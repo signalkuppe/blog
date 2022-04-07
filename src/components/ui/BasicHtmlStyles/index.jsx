@@ -5,6 +5,9 @@ import {
     headingsStyles,
     linksStyles,
     imagesStyles,
+    italicStyles,
+    boldStyles,
+    figCaptionStyles,
 } from '../../../theme';
 
 /** Injects basic html styles in a component  */
@@ -63,14 +66,12 @@ const Container = styled.div`
 
     b,
     strong {
-        font-weight: 700;
-        color: var(--color-text-light-accent);
+        ${boldStyles}
     }
 
     i,
     em {
-        font-family: var(--font-family-cursive);
-        color: var(--color-primary);
+        ${italicStyles};
     }
 
     a {
@@ -92,19 +93,17 @@ const Container = styled.div`
     }
 
     figcaption {
-        font-family: var(--font-family-cursive);
-        color: var(--color-text-light-accent);
-        padding-top: 0.5em;
-        background: var(--color-background);
+        ${figCaptionStyles}
     }
 
     @media screen {
         > p:first-of-type:first-letter {
             font-family: var(--font-family-drop-cap);
             font-size: var(--font-size-xxxx-large);
+            font-weight: 700;
             color: var(--color-text-light-accent);
             float: left;
-            line-height: 0.7em;
+            line-height: 0.8em;
             padding-top: 10px;
             padding-right: 0.2em;
             padding-left: 0;

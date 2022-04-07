@@ -65,28 +65,6 @@ const GlobalStyles = createGlobalStyle`
   /** end reset */
 
 
-  @font-face {
-    font-family: "Roboto Flex";
-    src: url('/fonts/roboto-flex.woff2') format('woff2 supports variations'),
-        url('/fonts/roboto-flex.woff2') format('woff2-variations');
-    font-weight: 1 999;
-    font-stretch: 25% 150%;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Sriracha";
-    src: url('/fonts/sriracha-regular.woff2') format('woff2');
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Yeseva One";
-    src: url('/fonts/yeseva-regular.woff2') format('woff2');
-    font-display: swap;
-  }
-
-
   :root {
     ${rootVars};
     font-size: 100%;
@@ -113,7 +91,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: var(--font-family-base);
     line-height: 1.7;
-    letter-spacing: 0.015em;
+    letter-spacing: -0.01em;
     color: var(--color-text);
     background: var(--color-background);
     margin: 0;

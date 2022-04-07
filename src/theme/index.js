@@ -5,6 +5,23 @@ import { css } from 'styled-components';
 // https://coolors.co/cfdbd5-e8eddf-f5cb5c-242423-333533
 
 export const vars = {
+    '--font-family-base':
+        'system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif',
+    '--font-family-mono':
+        'ui-monospace,  Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro","Fira Mono", "Droid Sans Mono",  "Courier New", monospace',
+    '--font-family-cursive':
+        'Comic Sans, "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", "Marker Felt", "Purisa", "URW Chancery L", cursive',
+    '--font-family-drop-cap': "'Didot', cursive",
+    '--font-size-xx-small': '0.5rem',
+    '--font-size-x-small': '0.75rem',
+    '--font-size-small': '0.85rem',
+    '--font-size-base': '1rem',
+    '--font-size-medium': '1.25rem',
+    '--font-size-large': '1.5rem',
+    '--font-size-x-large': '2rem',
+    '--font-size-xx-large': '3rem',
+    '--font-size-xxx-large': '4rem',
+    '--font-size-xxxx-large': '5rem',
     '--color-background': '#110F16',
     '--color-background-light': '#19171a',
     '--color-primary': '#EA3734',
@@ -25,21 +42,6 @@ export const vars = {
     '--color-twitter': '#1da1f2',
     '--color-whatsapp': '#25d366',
     '--color-error': 'crimson',
-    '--font-family-base': "'Roboto Flex', sans-serif",
-    '--font-family-cursive': "'Sriracha', cursive",
-    '--font-family-drop-cap': "'Yeseva One', cursive",
-    '--font-size-xx-small': '0.5rem',
-    '--font-size-x-small': '0.75rem',
-    '--font-size-small': '0.85rem',
-    '--font-size-base': '1rem',
-    '--font-size-medium': '1.25rem',
-    '--font-size-large': '1.5rem',
-    '--font-size-x-large': '2rem',
-    '--font-size-xx-large': '3rem',
-    '--font-size-xxx-large': '4rem',
-    '--font-size-xxxx-large': '5rem',
-    '--narrow-font-stretch': 'condensed',
-    '--extra-narrow-font-stretch': 'extra-condensed',
     '--inputs-border': '4px solid var(--color-text)',
     '--inputs-background': 'var(--color-background)',
     '--inputs-color': 'var(--color-text)',
@@ -68,7 +70,7 @@ export const headingsStyles = css`
     font-stretch: var(--narrow-font-stretch);
     line-height: 1.1;
     margin-bottom: 0.5rem;
-    letter-spacing: 0;
+    letter-spacing: -0.05em;
     color: var(--color-text-light-accent);
 `;
 
@@ -80,7 +82,7 @@ export const headingsSize = {
 
 export const linksStyles = css`
     color: var(--color-links);
-    font-weight: 500;
+    font-weight: 600;
     :hover {
         text-decoration: underline;
         text-decoration-thickness: 3px;
@@ -98,6 +100,25 @@ export const imagesStyles = css`
         visibility: hidden;
     }
     background: var(--color-background-light);
+`;
+
+export const italicStyles = css`
+    font-family: var(--font-family-cursive);
+    font-weight: 900;
+    color: var(--color-primary);
+`;
+
+export const boldStyles = css`
+    font-weight: 700;
+    color: var(--color-text-light-accent);
+`;
+
+export const figCaptionStyles = css`
+    font-family: var(--font-family-cursive);
+    color: var(--color-text-light-accent);
+    line-height: 1.5;
+    font-weight: 900;
+    padding-top: 0.5em;
 `;
 
 export const device = {

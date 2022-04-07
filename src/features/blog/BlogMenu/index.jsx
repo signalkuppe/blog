@@ -7,6 +7,9 @@ import { categoryLink } from '../../../pages/blog-by-category';
 import { blogLink } from '../../../pages/blog';
 
 const StyledList = styled.ul`
+    font-weight: 600;
+    font-size: var(--font-size-base);
+    letter-spacing: -0.03em;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -16,7 +19,7 @@ const StyledList = styled.ul`
     gap: 0.2em;
     padding-left: var(--space-unit);
     @media ${device.atLeastTablet} {
-        gap: var(--space-unit);
+        gap: 1em;
     }
 `;
 const StyledLi = styled.li`
@@ -24,17 +27,13 @@ const StyledLi = styled.li`
     margin: 0;
 `;
 const StyledLink = styled.a`
-    font-stretch: var(--narrow-font-stretch);
-    font-weight: 400;
     display: flex;
     align-items: center;
     height: 100%;
     padding: 0 1.5em;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
-    @media ${device.atLeastTablet} {
-        font-size: var(--font-size-medium);
-    }
+
     :first-child {
         padding-left: 0;
     }

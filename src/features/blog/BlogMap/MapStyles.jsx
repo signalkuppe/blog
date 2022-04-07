@@ -5,7 +5,7 @@ import { lineClamp } from '../../../theme';
  * map plugin ovverides
  */
 
-export default MapStyles = createGlobalStyle` 
+export default createGlobalStyle` 
 
     .leaflet-tile-pane {
         filter: grayscale(1);
@@ -70,6 +70,7 @@ export default MapStyles = createGlobalStyle`
         color: inherit!important;
         text-decoration: none!important;
         box-shadow: none!important;
+      
     }
 
     .map-popup-image { 
@@ -93,18 +94,14 @@ export default MapStyles = createGlobalStyle`
 
    .map-popup-date { 
         text-transform: uppercase;
-        font-stretch: var(--narrow-font-stretch);
         font-size: var(--font-size-x-small);
         margin-bottom: 0.25em;
     }
 
    .map-popup-title { 
-        font-stretch: var(--narrow-font-stretch);
         font-weight: 700;
+        letter-spacing: -0.02em;
         line-height: 1.2;
         ${lineClamp(3)};
-        :hover {
-            text-decoration: underline;
-        }
     }
 `;

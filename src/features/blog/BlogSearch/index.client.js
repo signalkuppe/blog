@@ -111,24 +111,3 @@ fetch('/_data/map-points.json')
             IconWrapper.style.opacity = 1;
         }, 10);
     });
-
-/** tooltip */
-
-const tooltip = tippy('#js-map-tooltip', {
-    content: 'Mostra sulla mappa',
-    placement: 'bottom',
-    trigger: 'manual',
-})[0];
-
-setTimeout(() => {
-    if (!sessionStorage.getItem('signalkuppe-blog-tooltip-read')) {
-        tooltip.show();
-    }
-}, 1000);
-
-document
-    .getElementById('js-map-tooltip')
-    .addEventListener('click', function () {
-        sessionStorage.setItem('signalkuppe-blog-tooltip-read', true);
-        tooltip.hide();
-    });

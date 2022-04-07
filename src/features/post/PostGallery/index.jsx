@@ -27,7 +27,7 @@ const squareStyle = css`
 
 const StyledListItem = styled.li`
     ${squareStyle}
-    transition: all 0.2s ease-in-out;
+    transition: translate 0.2s ease-in-out;
     img {
         ${squareStyle}/* we need to override native image dimensions to force the square aspcet ratio */
     }

@@ -44,7 +44,6 @@ const ContentHeader = styled.div`
     align-items: center;
     text-transform: uppercase;
     font-size: var(--font-size-x-small);
-    font-stretch: var(--narrow-font-stretch);
     margin-bottom: 0.5em;
 `;
 

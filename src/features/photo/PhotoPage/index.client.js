@@ -27,13 +27,13 @@ if (IS_IOS) {
 
 function handleGesture() {
     if (touchendX < touchstartX) {
-        if (prevPhoto) {
-            window.location.href = prevPhoto;
+        if (nextPhoto) {
+            window.location.href = nextPhoto;
         }
     }
     if (touchendX > touchstartX) {
-        if (nextPhoto) {
-            window.location.href = nextPhoto;
+        if (prevPhoto) {
+            window.location.href = prevPhoto;
         }
     }
 }

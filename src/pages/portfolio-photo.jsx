@@ -29,6 +29,7 @@ export default function PortfolioPhoto({ pagination, route }) {
             photo={photo}
             pagination={pagination}
             backTo={backTo}
+            backToText="Torna al portfolio"
             route={route}
         />
     );

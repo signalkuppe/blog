@@ -29,18 +29,6 @@ const SearchContainer = styled.div`
     align-items: center;
 `;
 
-const StyledIcon = styled(Icon)`
-    color: var(--color-links);
-`;
-
-const StyledLink = styled.a`
-    padding: calc(var(--space-unit) / 2);
-    padding-right: 0;
-    @media ${device.desktop} {
-        display: none;
-    }
-`;
-
 export default function BlogSearch({ category }) {
     return (
         <>
@@ -63,10 +51,6 @@ export default function BlogSearch({ category }) {
                         maxLength="2048"
                         tabIndex="1"
                     />
-
-                    <StyledLink href="#js-map">
-                        <StyledIcon icon={MarkerIcon} l id="js-map-tooltip" />
-                    </StyledLink>
                 </SearchContainer>
                 <SearchHint>Digita almeno 3 caratteri</SearchHint>
             </SearchWrapper>
@@ -77,20 +61,8 @@ export default function BlogSearch({ category }) {
                         tag: '<link rel="stylesheet" href="/libs/autoComplete.css" />',
                     },
                     {
-                        where: 'head',
-                        tag: '<link rel="stylesheet" href="/libs/tippy.css" />',
-                    },
-                    {
                         where: 'body',
                         tag: '<script src="/libs/autoComplete.js"></script>',
-                    },
-                    {
-                        where: 'body',
-                        tag: '<script src="/libs/popper.js"></script>',
-                    },
-                    {
-                        where: 'body',
-                        tag: '<script src="/libs/tippy.js"></script>',
                     },
                 ]}
             >

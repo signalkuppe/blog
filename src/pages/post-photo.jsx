@@ -33,6 +33,7 @@ export default function PostPhoto({ pagination, route }) {
             photo={photo}
             pagination={pagination}
             backTo={backTo}
+            backToText="Torna al post"
             route={route}
         />
     );

@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "npx pequeno --serve --noAfterBuild",
     "dev-blog": "npx pequeno --serve --page=blog --path=/blog/index.html --data=posts --noAfterBuild",
-    "dev-post": "npx pequeno --serve --page=post-item --path=/scialpinismo/2022/03/03/norvegia-lofoten/index.html --data=posts --noAfterBuild",
+    "dev-post": "npx pequeno --serve --page=post-item --path=/escursionismo/2021/10/17/pizzo-gandaiole/index.html --data=posts --noAfterBuild",
     "dev-post-photo": "npx pequeno --serve --page=post-photo --path=/scialpinismo/2022/03/03/norvegia-lofoten/tramonto-a-svolvaer-avoelpimvfl0i39stnahp/index.html --data=posts --noAfterBuild",
     "dev-portfolio": "npx pequeno --serve --page=portfolio --data=portfolio --noAfterBuild",
     "dev-portfolio-photo": "npx pequeno --serve --page=portfolio-photo --path=/portfolio/il-disgrazia-dalla-vetta-del-pizzo-scalino-3s1iwswsae0qwwek4bdv9j/index.html --data=portfolio --noAfterBuild",

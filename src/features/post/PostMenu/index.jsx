@@ -24,6 +24,9 @@ const MenuContainer = styled.nav`
 `;
 
 const List = styled.ul`
+    font-weight: 600;
+    font-size: var(--font-size-small);
+    letter-spacing: -0.05em;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -37,6 +40,7 @@ const List = styled.ul`
         ${hideScrollbar};
     }
     @media ${device.desktop} {
+        font-size: var(--font-size-medium);
         > * + * {
             margin-left: calc(var(--space-unit) * 2);
         }
@@ -53,8 +57,6 @@ const ListItem = styled.li`
 `;
 
 const MenuLink = styled.a`
-    font-stretch: var(--narrow-font-stretch);
-    font-weight: 400;
     display: block;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
@@ -69,7 +71,6 @@ const MenuLink = styled.a`
     }
     @media ${device.desktop} {
         padding: var(--space-unit) 0;
-        font-size: var(--font-size-medium);
     }
 `;
 

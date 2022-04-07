@@ -43,14 +43,10 @@ const StyledFigure = styled.figure`
 
 const StyledFigcaption = styled.figcaption`
     font-style: normal;
-    font-size: clamp(
-        var(--font-size-x-small),
-        var(--font-size-xxx-large),
-        2.5vmax
-    );
+    font-size: clamp(var(--font-size-small), var(--font-size-xxx-large), 3vmax);
     font-weight: 900;
-    font-stretch: var(--extra-narrow-font-stretch);
     line-height: 1.1;
+    letter-spacing: -0.02em;
     color: var(--color-text-light-accent);
     position: absolute;
     right: 0;

@@ -38,7 +38,6 @@ const ShakeY = keyframes`
 `;
 
 const commonMetaStyles = css`
-    font-stretch: var(--narrow-font-stretch);
     text-transform: uppercase;
     color: var(--color-text-dark-accent);
 `;
@@ -70,7 +69,7 @@ const HeroSpacer = styled.div`
 
 const Date = styled.time`
     ${commonMetaStyles};
-    font-size: clamp(var(--font-size-small), var(--font-size-base), 2vmax);
+    font-size: clamp(var(--font-size-x-small), var(--font-size-small), 1.5vmax);
     display: block;
     @media print {
         display: none;
@@ -81,7 +80,7 @@ const Category = styled.span`
     ${commonMetaStyles};
     display: flex;
     align-items: center;
-    font-size: clamp(var(--font-size-medium), var(--font-size-x-large), 2vmax);
+    font-size: clamp(var(--font-size-base), var(--font-size-large), 2vmax);
     font-weight: 700;
     margin-left: -1em;
     margin-bottom: var(--space-unit);

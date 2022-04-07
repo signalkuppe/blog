@@ -48,7 +48,7 @@ export default createGlobalStyle`
     }
 
     .autoComplete_wrapper > input:focus::selection {
-      background-color: var(--color-primary)!important;
+      background-color: var(--color-links)!important;
     }
 
     .autoComplete_wrapper > ul {
@@ -78,9 +78,14 @@ export default createGlobalStyle`
       background-color: var(--color-background)!important;
     }
 
+    .autocomplete-top-row {
+      font-weight: 700!important;
+      letter-spacing: -0.02em!important;
+    }
+
 
     .autoComplete_wrapper > ul > li mark {
-      color: var(--color-primary)!important;
+      color: var(--color-links)!important;
     }
 
     .autoComplete_wrapper > ul > li:hover {

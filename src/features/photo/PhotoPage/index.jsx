@@ -1,7 +1,7 @@
 import React from 'react';
 import { Script } from 'pequeno';
 import styled, { css } from 'styled-components';
-import { imagesStyles, device } from '../../../theme';
+import { imagesStyles, device, figCaptionStyles } from '../../../theme';
 import vars from '../../../vars';
 import Head from '../../../components/common/Head';
 import Html from '../../../components/common/Html';
@@ -85,14 +85,14 @@ const ImageHeader = styled.header`
 `;
 
 const ImageFooter = styled.figcaption`
-    font-family: var(--font-family-cursive);
+    ${figCaptionStyles};
     color: var(--color-lightbox-color);
     bottom: 0;
     left: 0;
     text-align: center;
     ${overlayCommonStyles}
     ${overlay}
-    padding: 0.5em var(--space-unit);
+    padding: 0.75em var(--space-unit);
     @media ${device.desktop} {
         font-size: var(--font-size-large);
     }
@@ -121,7 +121,7 @@ const HeaderLink = styled.a`
     ${navLinksCommonStyles}
 `;
 
-export default function PhotoPage({ photo, pagination, backTo }) {
+export default function PhotoPage({ photo, pagination, backTo, backToText }) {
     let title = photo.title;
     let description = photo.alt || photo.title + ', ' + photo.title;
     const enlargmentSmall = `${photo.src}?w=1024&fm=webp&q=80`;
@@ -158,7 +158,7 @@ export default function PhotoPage({ photo, pagination, backTo }) {
                         >
                             <Icon icon={DownloadIcon} />
                         </HeaderLink>
-                        <HeaderLink href={backTo} title="Torna al post">
+                        <HeaderLink href={backTo} title={backToText}>
                             <Icon icon={CloseIcon} l />
                         </HeaderLink>
                     </ImageHeader>

@@ -8,6 +8,10 @@ import { portfolioLink } from '../../../pages/portfolio';
 import { permalink as contattiLink } from '../../../pages/contatti';
 
 const StyledUl = styled.ul`
+    font-family: var(--font-family-mono);
+    font-weight: 700;
+    font-size: var(--font-size-x-small);
+    text-transform: uppercase;
     display: flex;
     list-style: none;
     margin: 0;
@@ -18,26 +22,24 @@ const StyledUl = styled.ul`
         text-align: right;
         gap: 0;
     }
+
+    @media ${device.atLeastTablet} {
+        font-size: 90%;
+    }
 `;
 const StyledLi = styled.li`
     margin: 0;
     @media ${device.mobile} {
-        padding: 0.2em 0;
+        padding: 0.4em 0;
     }
 `;
 const StyledLink = styled.a`
-    font-stretch: var(--narrow-font-stretch);
-    font-weight: 500;
     display: inline-block;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
     transition: color 0.2s ease-in;
     :hover {
         color: var(--color-text-light-accent);
-    }
-
-    @media ${device.atLeastTablet} {
-        font-size: var(--font-size-medium);
     }
 `;
 

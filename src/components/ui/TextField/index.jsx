@@ -25,7 +25,7 @@ const StyledTextField = styled.input`
     &.js-is-invalid {
         border-color: var(--color-error);
     }
-    transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: border-color 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
     ${(props) =>
         props.block &&
         css`

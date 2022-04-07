@@ -10,6 +10,8 @@ const Wrapper = styled.div`
 
 const Hero = styled.div`
     height: calc(100vh - var(--header-height));
+    transition: opacity 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+    opacity: 0;
 `;
 
 const Content = styled.div``;

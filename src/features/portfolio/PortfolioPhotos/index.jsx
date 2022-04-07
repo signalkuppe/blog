@@ -52,7 +52,6 @@ const PhotoDate = styled.time`
     text-transform: uppercase;
     color: var(--color-text-dark-accent);
     font-size: var(--font-size-x-small);
-    font-stretch: var(--narrow-font-stretch);
     font-weight: 500;
 `;
 

@@ -7,13 +7,12 @@ import Head from '../../../components/common/Head';
 import Header from '../../../components/common/Header';
 import Html from '../../../components/common/Html';
 import Body from '../../../components/common/Body';
-import CommonScripts from '../../../components/common/CommonScripts';
 import CommonStyles from '../../../components/common/CommonStyles';
 import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import PageTitle from '../../../components/ui/PageTitle';
 
 const imgeUrl = vars.homepageFoto;
-const mobileBackgroundImage = `${imgeUrl}?w=10240&h=682&fm=webp&q=50`;
+const mobileBackgroundImage = `${imgeUrl}?w=1024&h=682&fm=webp&q=50`;
 const tabletBackgroundImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=50`;
 const desktopBackgroundImage = `${imgeUrl}?w=1920&h=1280&fm=webp&q=50`;
 const largeDesktopBackgroundImage = `${imgeUrl}?w=2200&h=1466&fm=webp&q=50`;
