@@ -43,23 +43,24 @@ const NewsletterLink = styled.a`
 
 export default function PostShare({ post }) {
     const { title, permalink } = post;
+    const fullPermalink = `${vars.websiteUrl}/${permalink}`;
     const shareLinks = [
         {
             id: 'facebook',
             title: 'Condividi su Facebook',
-            url: `https://www.facebook.com/sharer/sharer.php?u=${permalink}&amp;title=${title}`,
+            url: `https://www.facebook.com/sharer/sharer.php?u=${fullPermalink}&amp;title=${title}`,
             icon: Facebook,
         },
         {
             id: 'twitter',
             title: 'Condividi su Twitter',
-            url: `https://twitter.com/intent/tweet?text=${title}&amp;url=${permalink}&amp;via=${vars.twitterAuthor}`,
+            url: `https://twitter.com/intent/tweet?text=${title}&amp;url=${fullPermalink}&amp;via=${vars.twitterAuthor}`,
             icon: Twitter,
         },
         {
             id: 'whatsapp',
             title: 'Condividi su Whatsapp',
-            url: `whatsapp://send?text=${permalink}`,
+            url: `whatsapp://send?text=${fullPermalink}`,
             icon: Whatsapp,
         },
     ];

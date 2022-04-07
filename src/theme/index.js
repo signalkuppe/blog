@@ -121,6 +121,12 @@ export const figCaptionStyles = css`
     padding-top: 0.5em;
 `;
 
+export const pageMenuTypography = css`
+    font-weight: 700;
+    font-size: var(--font-size-base);
+    letter-spacing: -0.05em;
+`;
+
 export const device = {
     mobile: `screen and (max-width: 47.9375rem)`, // <= 767px
     mobileAndTablet: `screen and (max-width: 85.3125rem)`, // <= 1365

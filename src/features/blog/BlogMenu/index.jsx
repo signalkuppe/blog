@@ -1,15 +1,13 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import withFiletto from '../../../components/hoc/withFiletto';
-import { device, visuallyHidden } from '../../../theme';
+import { device, visuallyHidden, pageMenuTypography } from '../../../theme';
 import PostCategoryIcon from '../../post/PostCategoryIcon';
 import { categoryLink } from '../../../pages/blog-by-category';
 import { blogLink } from '../../../pages/blog';
 
 const StyledList = styled.ul`
-    font-weight: 600;
-    font-size: var(--font-size-base);
-    letter-spacing: -0.03em;
+    ${pageMenuTypography};
     display: flex;
     flex-wrap: wrap;
     align-items: center;

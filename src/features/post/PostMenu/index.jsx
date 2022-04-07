@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Script } from 'pequeno';
-import { device, hideScrollbar } from '../../../theme';
+import { device, hideScrollbar, pageMenuTypography } from '../../../theme';
 import { styles } from '../../../components/hoc/withFiletto';
 import Container from '../../../components/layout/Container';
 import client from './index.client';
@@ -24,14 +24,11 @@ const MenuContainer = styled.nav`
 `;
 
 const List = styled.ul`
-    font-weight: 600;
-    font-size: var(--font-size-small);
-    letter-spacing: -0.05em;
+    ${pageMenuTypography};
     margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
-    flex-direction: row;
     @media ${device.mobileAndTablet} {
         flex-wrap: nowrap;
         overflow-x: scroll;
@@ -40,7 +37,6 @@ const List = styled.ul`
         ${hideScrollbar};
     }
     @media ${device.desktop} {
-        font-size: var(--font-size-medium);
         > * + * {
             margin-left: calc(var(--space-unit) * 2);
         }
