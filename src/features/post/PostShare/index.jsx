@@ -15,6 +15,7 @@ import client from './index.client.js';
 
 const StyledSocialLink = styled.a`
     color: var(--color-text-light-accent);
+    display: block;
     :hover {
         color: ${(props) => {
             if (props.social === 'facebook') {
@@ -25,9 +26,6 @@ const StyledSocialLink = styled.a`
                 return `var(--color-whatsapp)`;
             }
         }};
-    }
-    * {
-        pointer-events: none;
     }
 `;
 
@@ -76,10 +74,11 @@ export default function PostShare({ post }) {
                                 href={link.url}
                                 title={link.title}
                                 aria-label={link.title}
-                                target="_blank"
-                                rel="noopener"
                                 social={link.id}
-                                className="js-postShare-link"
+                                target={
+                                    link.id !== 'whatsapp' ? '_blank' : null
+                                }
+                                rel="noopener"
                             >
                                 <Icon icon={link.icon} xl />
                             </StyledSocialLink>

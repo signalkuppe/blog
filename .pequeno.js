@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs-extra');
 const { Readable } = require('stream');
 const { SitemapStream, streamToPromise } = require('sitemap');
-const { roboto, sriracha, yeseva } = require('./src/base64fonts');
 
 module.exports = {
     copy: {
@@ -31,31 +30,6 @@ module.exports = {
         'node_modules/tippy.js/dist/tippy.css': 'libs/tippy.css',
         'node_modules/@popperjs/core/dist/umd/popper.js': 'libs/popper.js',
         'node_modules/quicklink/dist/quicklink.umd.js': 'libs/quicklink.js',
-    },
-    processHtml: function ($, data) {
-        $('head').prepend(`
-        <style>
-            @font-face {
-                font-family: "Roboto Flex";
-                src:url(${roboto}) format('woff2-variations');
-                font-weight: 1 999;
-                font-stretch: 25% 150%;
-                font-display: swap;
-            }
-            @font-face {
-                font-family: "Sriracha";
-                src: url(${sriracha}) format('woff2');
-                font-display: swap;
-            }
-
-            @font-face {
-                font-family: "Yeseva One";
-                src: url(${yeseva}) format('woff2');
-                font-display: swap;
-            }    
-        </style>
-        `);
-        return $.html();
     },
     afterBuild: async function (renderedPages) {
         // create a sitemap

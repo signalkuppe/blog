@@ -21,6 +21,9 @@ const StyledUl = styled.ul`
 `;
 const StyledLi = styled.li`
     margin: 0;
+    @media ${device.mobile} {
+        padding: 0.2em 0;
+    }
 `;
 const StyledLink = styled.a`
     font-stretch: var(--narrow-font-stretch);
@@ -32,9 +35,7 @@ const StyledLink = styled.a`
     :hover {
         color: var(--color-text-light-accent);
     }
-    @media ${device.mobile} {
-        padding: 0.2em 0;
-    }
+
     @media ${device.atLeastTablet} {
         font-size: var(--font-size-medium);
     }

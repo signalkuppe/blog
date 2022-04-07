@@ -13,7 +13,7 @@ import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import PageTitle from '../../../components/ui/PageTitle';
 
 const imgeUrl = vars.homepageFoto;
-const mobileBackgroundImage = `${imgeUrl}?w=640&h=426&fm=webp&q=50`;
+const mobileBackgroundImage = `${imgeUrl}?w=10240&h=682&fm=webp&q=50`;
 const tabletBackgroundImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=50`;
 const desktopBackgroundImage = `${imgeUrl}?w=1920&h=1280&fm=webp&q=50`;
 const largeDesktopBackgroundImage = `${imgeUrl}?w=2200&h=1466&fm=webp&q=50`;
@@ -169,7 +169,6 @@ export default function HomePage({ route }) {
                         </BasicHtmlStyles>
                     </HomePageGridContent>
                 </HomePageGrid>
-                <CommonScripts />
             </Body>
         </Html>
     );

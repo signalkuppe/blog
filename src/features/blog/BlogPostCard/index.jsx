@@ -22,7 +22,7 @@ const ImageWrapper = styled.figure`
     margin-right: var(--space-unit);
     flex-shrink: 0;
     @media ${device.mobile} {
-        width: 60px;
+        width: 80px;
     }
     @media ${device.onlyTablet} {
         width: 90px;
@@ -31,8 +31,11 @@ const ImageWrapper = styled.figure`
 const StyledImage = styled.img`
     ${imagesStyles};
     transition: all 0.1s linear;
-    border: 6px solid var(--color-text-light-accent);
+    border: 4px solid var(--color-text-light-accent);
     border-radius: var(--border-radius);
+    @media ${device.atLeastTablet} {
+        border-width: 6px;
+    }
 `;
 const ContentWrapper = styled.div``;
 
