@@ -48,13 +48,19 @@ export default function PostShare({ post }) {
         {
             id: 'facebook',
             title: 'Condividi su Facebook',
-            url: `https://www.facebook.com/sharer/sharer.php?u=${fullPermalink}&amp;title=${title}`,
+            url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                fullPermalink,
+            )}&amp;title=${encodeURIComponent(title)}`,
             icon: Facebook,
         },
         {
             id: 'twitter',
             title: 'Condividi su Twitter',
-            url: `https://twitter.com/intent/tweet?text=${title}&amp;url=${fullPermalink}&amp;via=${vars.twitterAuthor}`,
+            url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                title,
+            )}&amp;url=${encodeURIComponent(
+                fullPermalink,
+            )}&amp;via=${encodeURIComponent(vars.twitterAuthor)}`,
             icon: Twitter,
         },
         {
@@ -80,6 +86,11 @@ export default function PostShare({ post }) {
                                     link.id !== 'whatsapp' ? '_blank' : null
                                 }
                                 rel="noopener"
+                                onClick={
+                                    link.id !== 'whatsapp'
+                                        ? `window.open(${link.url}); return false;`
+                                        : null
+                                }
                             >
                                 <Icon icon={link.icon} xl />
                             </StyledSocialLink>

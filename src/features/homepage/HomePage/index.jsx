@@ -69,15 +69,17 @@ const HomePageGridContent = styled.main`
     padding: 0 4vmax 2vh 4vmax;
     @media ${device.mobileAndTablet} {
         margin: 0 auto;
-        max-width: 70ch;
     }
     @media ${device.desktop} {
         grid-area: 2 / 2 / 2 / 2;
         height: calc(100vh - var(--header-height));
         overflow-y: auto;
-        max-width: 85ch;
         padding-top: calc(var(--space-unit) * 2);
         ${hideScrollbar};
+    }
+    p {
+        display: inline-block;
+        max-width: 55ch;
     }
 `;
 
@@ -109,10 +111,10 @@ export default function HomePage({ route }) {
                             <p>
                                 Benvenuti sul mio blog. La{' '}
                                 <strong>montagna</strong> è la mia grande
-                                passione. È stato mio papà a introdurmi a questo
-                                magico mondo e, da allora, non ho mai smesso di
-                                cercare nuove avventure. Questo blog è un
-                                semplice{' '}
+                                passione. È stato <strong>mio papà</strong> a
+                                introdurmi a questo magico mondo e, da allora,
+                                non ho mai smesso di cercare nuove avventure.
+                                Questo blog è un{' '}
                                 <a href={bloglink}>
                                     diario di tutte le mie gite,
                                 </a>{' '}
@@ -133,8 +135,10 @@ export default function HomePage({ route }) {
                                 <strong>front-end engineer.</strong> Trasformo
                                 un design in un’applicazione web, con
                                 particolare attenzione alla scomposizione in
-                                componenti. Utilizzo principalmente{' '}
+                                componenti e alle performance. Utilizzo
+                                principalmente{' '}
                                 <a href="https://reactjs.org/">React</a>,{' '}
+                                <a href="https://www.figma.com/">Figma</a>,{' '}
                                 <a href="https://storybook.js.org/">
                                     Storybook
                                 </a>{' '}
@@ -142,8 +146,7 @@ export default function HomePage({ route }) {
                                 <a href="https://styled-components.com/">
                                     Styled Components
                                 </a>{' '}
-                                . Quando possibile cerco di non usare alcun
-                                framework. Amo{' '}
+                                . Amo{' '}
                                 <a href="https://en.wikipedia.org/wiki/CSS">
                                     css,
                                 </a>{' '}
