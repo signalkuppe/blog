@@ -11,7 +11,7 @@ export const vars = {
         'ui-monospace,  Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro","Fira Mono", "Droid Sans Mono",  "Courier New", monospace',
     '--font-family-cursive':
         'Comic Sans, "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", "Marker Felt", "Purisa", "URW Chancery L", cursive',
-    '--font-family-drop-cap': "'Didot', cursive",
+    '--font-family-drop-cap': "'Didot', Georgia, cursive",
     '--font-size-xx-small': '0.5rem',
     '--font-size-x-small': '0.75rem',
     '--font-size-small': '0.85rem',

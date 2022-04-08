@@ -43,7 +43,7 @@ const PhotoCaption = styled.div`
 `;
 const PhotoTitle = styled.h2`
     ${headingsStyles};
-    font-size: ${headingsSize.h3};
+    font-size: var(--font-size-medium);
     color: var(--color-text);
     margin: 0;
 `;

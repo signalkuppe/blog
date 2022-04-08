@@ -6,10 +6,11 @@ print.addEventListener('click', function () {
 
 Array.from(links).forEach((link) => {
     const social = link.getAttribute('data-social');
-    const url = link.getAttribute('data-url');
+    const url = link.getAttribute('href');
     link.addEventListener('click', (e) => {
         if (social !== 'whatsapp') {
             e.preventDefault();
+
             window.open(url, 'condividi', `status=0,toolbar=0,menubar=0`);
         }
     });

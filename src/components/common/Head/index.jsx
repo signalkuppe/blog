@@ -15,9 +15,10 @@ export default function Head({
     extraMetas,
 }) {
     let titleTag = `${title || '-title-'} | ${slogan || '-slogan-'}`;
-    ogImage = ogImage || `${vars.homepageFoto}?w=1280&h=630&fm=jpg&q=80`;
+    ogImage = ogImage || `https:${vars.homepageFoto}?w=1280&h=630&fm=jpg&q=80`;
     twitterCardImage =
-        twitterCardImage || `${vars.homepageFoto}?w=1200&h=600&fm=jpg&q=80`;
+        twitterCardImage ||
+        `https:${vars.homepageFoto}?w=1200&h=600&fm=jpg&q=80`;
 
     return (
         <head>

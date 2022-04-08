@@ -48,19 +48,13 @@ export default function PostShare({ post }) {
         {
             id: 'facebook',
             title: 'Condividi su Facebook',
-            url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                fullPermalink,
-            )}&amp;title=${encodeURIComponent(title)}`,
+            url: `https://www.facebook.com/sharer/sharer.php?u=${fullPermalink}&title=${title}`,
             icon: Facebook,
         },
         {
             id: 'twitter',
             title: 'Condividi su Twitter',
-            url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                title,
-            )}&amp;url=${encodeURIComponent(
-                fullPermalink,
-            )}&amp;via=${encodeURIComponent(vars.twitterAuthor)}`,
+            url: `https://twitter.com/intent/tweet?url=${fullPermalink}&text=${title}&via=${vars.twitterAuthor}`,
             icon: Twitter,
         },
         {
@@ -84,9 +78,8 @@ export default function PostShare({ post }) {
                         <li key={i}>
                             <StyledSocialLink
                                 className="js-postShare-link"
-                                href=""
+                                href={link.url}
                                 data-social={link.id}
-                                data-url={link.url}
                                 title={link.title}
                                 aria-label={link.title}
                                 social={link.id}
