@@ -5,7 +5,7 @@ import Container from '../../../components/layout/Container';
 import { postPhotoLink } from '../../../pages/post-photo';
 
 const Wrapper = styled.div`
-    max-width: 70ch;
+    max-width: 65ch;
 `;
 const StyledList = styled.ul`
     display: grid;
@@ -27,7 +27,7 @@ const squareStyle = css`
 
 const StyledListItem = styled.li`
     ${squareStyle}
-    transition: translate 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     img {
         ${squareStyle}/* we need to override native image dimensions to force the square aspcet ratio */
     }

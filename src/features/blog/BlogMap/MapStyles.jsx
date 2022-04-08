@@ -100,7 +100,7 @@ export default createGlobalStyle`
 
    .map-popup-title { 
         font-weight: 700;
-        letter-spacing: -0.02em;
+        letter-spacing: var(--text-letter-spacing);
         line-height: 1.2;
         ${lineClamp(3)};
     }

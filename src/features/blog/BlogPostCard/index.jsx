@@ -24,9 +24,6 @@ const ImageWrapper = styled.figure`
     @media ${device.mobile} {
         width: 80px;
     }
-    @media ${device.onlyTablet} {
-        width: 90px;
-    }
 `;
 const StyledImage = styled.img`
     ${imagesStyles};

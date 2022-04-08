@@ -43,7 +43,7 @@ const InfoBox = styled.dl`
         }
         span {
             color: var(--color-text-light-accent);
-            letter-spacing: -0.03em;
+            letter-spacing: var(--text-letter-spacing);
             font-weight: 900;
         }
     }

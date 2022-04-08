@@ -22,6 +22,8 @@ export const vars = {
     '--font-size-xx-large': '3rem',
     '--font-size-xxx-large': '4rem',
     '--font-size-xxxx-large': '5rem',
+    '--text-letter-spacing': '-0.02em',
+    '--headings-letter-spacing': '-0.05em',
     '--color-background': '#110F16',
     '--color-background-light': '#19171a',
     '--color-primary': '#EA3734',
@@ -67,10 +69,9 @@ export const vars = {
 
 export const headingsStyles = css`
     font-weight: 900;
-    font-stretch: var(--narrow-font-stretch);
     line-height: 1.1;
     margin-bottom: 0.5rem;
-    letter-spacing: -0.05em;
+    letter-spacing: var(--headings-letter-spacing);
     color: var(--color-text-light-accent);
 `;
 
@@ -124,7 +125,7 @@ export const figCaptionStyles = css`
 export const pageMenuTypography = css`
     font-weight: 700;
     font-size: var(--font-size-base);
-    letter-spacing: -0.05em;
+    letter-spacing: var(--headings-letter-spacing);
 `;
 
 export const device = {

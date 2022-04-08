@@ -5,7 +5,7 @@ import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import Container from '../../../components/layout/Container';
 
 const PostBody = styled.div`
-    max-width: 70ch;
+    max-width: 65ch;
 `;
 
 export default function PostContent({ post }) {

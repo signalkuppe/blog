@@ -50,6 +50,13 @@ const PostSectionTitleLink = styled.a`
 const PostSection = styled.section`
     padding-bottom: calc(var(--space-unit) * 6);
     ${(props) =>
+        (props.id === 'relazione' || props.id === 'foto') &&
+        css`
+            @media ${device.onlyTablet} {
+                margin-left: calc(var(--space-unit) * 2);
+            }
+        `}
+    ${(props) =>
         props.id !== 'relazione' &&
         css`
             @media print {

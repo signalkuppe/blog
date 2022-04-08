@@ -80,7 +80,7 @@ export default createGlobalStyle`
 
     .autocomplete-top-row {
       font-weight: 700!important;
-      letter-spacing: -0.02em!important;
+      letter-spacing: var(--text-letter-spacing)!important;
     }
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import vars from '../../../vars';
-import { device, hideScrollbar } from '../../../theme';
+import { device, hideScrollbar, imagesStyles } from '../../../theme';
 import { blogLink } from '../../../pages/blog';
 import Head from '../../../components/common/Head';
 import Header from '../../../components/common/Header';
@@ -12,15 +12,15 @@ import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import PageTitle from '../../../components/ui/PageTitle';
 
 const imgeUrl = vars.homepageFoto;
-const mobileBackgroundImage = `${imgeUrl}?w=1024&h=682&fm=webp&q=50`;
-const tabletBackgroundImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=50`;
-const desktopBackgroundImage = `${imgeUrl}?w=1920&h=1280&fm=webp&q=50`;
-const largeDesktopBackgroundImage = `${imgeUrl}?w=2200&h=1466&fm=webp&q=50`;
+const smallImage = `${imgeUrl}?w=1024&h=682&fm=webp&q=50`;
+const mediumImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=50`;
+const largeImage = `${imgeUrl}?w=1920&h=1280&fm=webp&q=50`;
+const extraLargeImage = `${imgeUrl}?w=3000&h=2000&fm=webp&q=50`;
 
 const bloglink = blogLink();
 
 const StyledPageTitle = styled(PageTitle)`
-    margin-bottom: 1.25em;
+    margin-bottom: 1.5em;
 `;
 
 const HomePageGrid = styled.div`
@@ -36,37 +36,34 @@ const HomePageGrid = styled.div`
 `;
 const HomePageGridHeader = styled.header`
     grid-area: 1 / 1 / 1 / span 2;
+    @media ${device.desktop} {
+        z-index: 1;
+    }
 `;
 const HomePageGridImage = styled.figure`
-    background-color: var(--color-background-light);
-    background-position: left top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-blend-mode: difference;
     @media ${device.mobileAndTablet} {
         width: 100vw;
         aspect-ratio: 3/2;
-        margin-bottom: calc(var(--space-unit) * 2);
-    }
-    @media ${device.mobile} {
-        background-image: url(${mobileBackgroundImage});
+        margin-bottom: calc(var(--space-unit) * 3);
     }
     @media ${device.onlyTablet} {
-        background-image: url(${tabletBackgroundImage});
         margin-bottom: calc(var(--space-unit) * 4);
     }
-
     @media ${device.desktop} {
         grid-area: 1 / 2 / 1 / 1;
         height: 100vh;
-        background-image: url(${desktopBackgroundImage});
     }
-    @media ${device.largeDesktop} {
-        background-image: url(${largeDesktopBackgroundImage});
+    img {
+        ${imagesStyles}
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.8) contrast(1.3);
     }
 `;
 const HomePageGridContent = styled.main`
     padding: 0 4vmax 2vh 4vmax;
+    margin: 0 auto;
     @media ${device.mobileAndTablet} {
         margin: 0 auto;
     }
@@ -74,7 +71,7 @@ const HomePageGridContent = styled.main`
         grid-area: 2 / 2 / 2 / 2;
         height: calc(100vh - var(--header-height));
         overflow-y: auto;
-        padding-top: calc(var(--space-unit) * 2);
+        padding-top: calc(var(--space-unit) * 3);
         ${hideScrollbar};
     }
     p {
@@ -104,7 +101,26 @@ export default function HomePage({ route }) {
                     <HomePageGridHeader>
                         <Header route={route} />
                     </HomePageGridHeader>
-                    <HomePageGridImage />
+                    <HomePageGridImage>
+                        <picture>
+                            <source
+                                media="(min-width: 2500px)"
+                                srcSet={extraLargeImage}
+                            />
+                            <source
+                                media="(min-width: 1920px)"
+                                srcSet={largeImage}
+                            />
+                            <source
+                                media="(min-width: 1024px)"
+                                srcSet={mediumImage}
+                            />
+                            <img
+                                src={smallImage}
+                                alt="Matteo e Giorgio Leoni"
+                            />
+                        </picture>
+                    </HomePageGridImage>
                     <HomePageGridContent>
                         <StyledPageTitle small>Piacere Matteo!</StyledPageTitle>
                         <BasicHtmlStyles>

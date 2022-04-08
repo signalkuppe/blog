@@ -70,6 +70,11 @@ export default function PostShare({ post }) {
             icon: Whatsapp,
         },
     ];
+
+    /* 
+                                    link.id !== 'whatsapp'
+                                        ? `window.open(${link.url}); return false;`
+                                        : null  */
     return (
         <>
             <Container as="section">
@@ -78,19 +83,13 @@ export default function PostShare({ post }) {
                     {shareLinks.map((link, i) => (
                         <li key={i}>
                             <StyledSocialLink
-                                href={link.url}
+                                className="js-postShare-link"
+                                href=""
+                                data-social={link.id}
+                                data-url={link.url}
                                 title={link.title}
                                 aria-label={link.title}
                                 social={link.id}
-                                target={
-                                    link.id !== 'whatsapp' ? '_blank' : null
-                                }
-                                rel="noopener"
-                                onClick={
-                                    link.id !== 'whatsapp'
-                                        ? `window.open(${link.url}); return false;`
-                                        : null
-                                }
                             >
                                 <Icon icon={link.icon} xl />
                             </StyledSocialLink>

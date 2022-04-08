@@ -46,7 +46,7 @@ const StyledFigcaption = styled.figcaption`
     font-size: clamp(var(--font-size-small), var(--font-size-xxx-large), 3vmax);
     font-weight: 900;
     line-height: 1.1;
-    letter-spacing: -0.02em;
+    letter-spacing: var(--headings-letter-spacing);
     color: var(--color-text-light-accent);
     position: absolute;
     right: 0;

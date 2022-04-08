@@ -90,8 +90,8 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: var(--font-family-base);
-    line-height: 1.7;
-    letter-spacing: -0.01em;
+    line-height: 1.8;
+    letter-spacing: var(--text-letter-spacing);
     color: var(--color-text);
     background: var(--color-background);
     margin: 0;
