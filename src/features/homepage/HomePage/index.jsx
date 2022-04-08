@@ -12,7 +12,7 @@ import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import PageTitle from '../../../components/ui/PageTitle';
 
 const imgeUrl = vars.homepageFoto;
-const smallImage = `${imgeUrl}?w=1024&h=682&fm=webp&q=50`;
+const smallImage = `${imgeUrl}?w=900&h=450&fm=webp&q=50`;
 const mediumImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=50`;
 const largeImage = `${imgeUrl}?w=1920&h=1280&fm=webp&q=50`;
 const extraLargeImage = `${imgeUrl}?w=3000&h=2000&fm=webp&q=50`;
