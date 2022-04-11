@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import vars from '../../../vars';
 import { device, hideScrollbar, imagesStyles } from '../../../theme';
 import { blogLink } from '../../../pages/blog';
+import { portfolioLink } from '../../../pages/portfolio';
+import { permalink as contattilink } from '../../../pages/contatti';
 import Head from '../../../components/common/Head';
 import Header from '../../../components/common/Header';
 import Html from '../../../components/common/Html';
@@ -18,6 +20,7 @@ const largeImage = `${imgeUrl}?w=1920&h=1280&fm=webp&q=50`;
 const extraLargeImage = `${imgeUrl}?w=3000&h=2000&fm=webp&q=50`;
 
 const bloglink = blogLink();
+const portfoliolink = portfolioLink();
 
 const StyledPageTitle = styled(PageTitle)`
     margin-bottom: 1.5em;
@@ -88,11 +91,25 @@ export default function HomePage({ route }) {
                 slogan={vars.siteSlogan}
                 description={vars.description}
                 extraLinks={
-                    <link
-                        rel="preconnect"
-                        href="https://assets.ctfassets.net"
-                        crossOrigin="anonymous"
-                    />
+                    <>
+                        <link
+                            rel="preconnect"
+                            href="https://assets.ctfassets.net"
+                            crossOrigin="anonymous"
+                        />
+                        <link
+                            rel="prefetch"
+                            href={`${vars.websiteUrl}${bloglink}`}
+                        />
+                        <link
+                            rel="prefetch"
+                            href={`${vars.websiteUrl}${portfoliolink}`}
+                        />
+                        <link
+                            rel="prefetch"
+                            href={`${vars.websiteUrl}${contattilink}`}
+                        />
+                    </>
                 }
             />
             <Body>
@@ -133,7 +150,10 @@ export default function HomePage({ route }) {
                                 introdurmi a questo magico mondo e, da allora,
                                 non ho mai smesso di cercare nuove avventure.
                                 Questo blog è un{' '}
-                                <a href={bloglink}>
+                                <a
+                                    href={bloglink}
+                                    title="Elenco alle relazioni"
+                                >
                                     diario di tutte le mie gite,
                                 </a>{' '}
                                 spero possa esservi utile per scoprire nuovi
