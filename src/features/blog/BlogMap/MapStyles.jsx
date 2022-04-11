@@ -7,9 +7,6 @@ import { lineClamp } from '../../../theme';
 
 export default createGlobalStyle` 
 
-    .leaflet-tile-pane {
-        filter: grayscale(1);
-    }
     .leaflet-container {
         font-family: inherit!important;
         font-size: inherit!important;

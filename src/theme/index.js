@@ -1,9 +1,5 @@
 import { css } from 'styled-components';
 
-// consider this themes
-
-// https://coolors.co/cfdbd5-e8eddf-f5cb5c-242423-333533
-
 export const vars = {
     '--font-family-base':
         'system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif',

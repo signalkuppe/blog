@@ -6,16 +6,19 @@ import {
     headingsStyles,
     headingsSize,
 } from '../../../theme';
+import Container from '../../../components/layout/Container';
 import PostMenu from '../PostMenu';
 import PostBody from '../PostBody';
 import PostGallery from '../PostGallery';
 import PostGps from '../PostGps';
 import PostShare from '../PostShare';
-import Container from '../../../components/layout/Container';
+import PostPrevNext from '../PostPrevNext';
+import VerticalSpace from '../../../components/ui/VerticalSpace';
 
 const Wrapper = styled.div`
     margin-top: calc(var(--space-unit) * 2);
     margin-bottom: calc(var(--space-unit) * 4);
+    padding-bottom: calc(var(--space-unit) * 4);
     width: 100vw;
     overflow: hidden;
     @media print {
@@ -48,7 +51,11 @@ const PostSectionTitleLink = styled.a`
 `;
 
 const PostSection = styled.section`
-    padding-bottom: calc(var(--space-unit) * 6);
+    ${(props) =>
+        props.id !== 'condividi' &&
+        css`
+            padding-bottom: calc(var(--space-unit) * 6);
+        `}
     ${(props) =>
         (props.id === 'relazione' || props.id === 'foto') &&
         css`
@@ -70,7 +77,7 @@ const PostSection = styled.section`
         `}
 `;
 
-export default function PostSections({ post }) {
+export default function PostSections({ post, prev, next }) {
     const { gps } = post;
     const sections = [
         {
@@ -119,6 +126,8 @@ export default function PostSections({ post }) {
                         </PostSection>
                     ) : null,
                 )}
+                <VerticalSpace size={4} />
+                <PostPrevNext prev={prev} next={next} />
             </Wrapper>
         </>
     );

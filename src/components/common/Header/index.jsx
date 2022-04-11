@@ -64,7 +64,9 @@ export default function Header({ route, ...props }) {
     return (
         <HeaderContainer id="js-header" {...props}>
             {logo}
-            <MainMenu route={route} />
+            <nav>
+                <MainMenu route={route} />
+            </nav>
         </HeaderContainer>
     );
 }

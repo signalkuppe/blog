@@ -39,7 +39,7 @@ export default function PortfolioPage({ route, pagination }) {
                             <link
                                 rel="preconnect"
                                 href="https://assets.ctfassets.net"
-                                crossOrigin="true"
+                                crossOrigin="anonymous"
                             />
                         </>
                     }
@@ -53,7 +53,9 @@ export default function PortfolioPage({ route, pagination }) {
                 }
             >
                 <PortfolioPhotos photos={photos} />
-                <StyledPager pagination={pagination} />
+                <nav>
+                    <StyledPager pagination={pagination} />
+                </nav>
             </DefaultPageLayout>
         </BaseLayout>
     );

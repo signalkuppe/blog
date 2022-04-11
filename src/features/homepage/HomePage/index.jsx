@@ -91,7 +91,7 @@ export default function HomePage({ route }) {
                     <link
                         rel="preconnect"
                         href="https://assets.ctfassets.net"
-                        crossOrigin="true"
+                        crossOrigin="anonymous"
                     />
                 }
             />
@@ -122,7 +122,9 @@ export default function HomePage({ route }) {
                         </picture>
                     </HomePageGridImage>
                     <HomePageGridContent>
-                        <StyledPageTitle small>Piacere Matteo!</StyledPageTitle>
+                        <StyledPageTitle small forwardedAs="h2">
+                            Piacere Matteo!
+                        </StyledPageTitle>
                         <BasicHtmlStyles>
                             <p>
                                 Benvenuti sul mio blog. La{' '}

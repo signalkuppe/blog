@@ -31,6 +31,14 @@ const showmap = function (markers) {
         .addTo(mymap);
     mymap.scrollWheelZoom.disable();
     mymap.addControl(new L.Control.Fullscreen({ position: 'topright' }));
+
+    mymap.on('fullscreenchange', function () {
+        if (mymap.isFullscreen()) {
+            console.log('entered fullscreen');
+        } else {
+            console.log('exited fullscreen');
+        }
+    });
     /* add markers */
     markers.forEach(function (marker) {
         const customIcon = L.divIcon({

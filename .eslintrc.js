@@ -55,5 +55,6 @@ module.exports = {
         workbox: true,
         importScripts: true,
         quicklink: true,
+        Hammer: true,
     },
 };

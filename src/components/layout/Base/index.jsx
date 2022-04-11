@@ -11,9 +11,10 @@ export default function BaseLayout({ route, head, children }) {
             {head}
             <Body>
                 <CommonStyles />
-                <Header route={route} />
+                <header>
+                    <Header route={route} />
+                </header>
                 <main>{children}</main>
-                <footer></footer>
                 <CommonScripts />
             </Body>
         </Html>

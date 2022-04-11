@@ -65,10 +65,6 @@ export default function PostShare({ post }) {
         },
     ];
 
-    /* 
-                                    link.id !== 'whatsapp'
-                                        ? `window.open(${link.url}); return false;`
-                                        : null  */
     return (
         <>
             <Container as="section">
@@ -101,7 +97,6 @@ export default function PostShare({ post }) {
                         Iscriviti alla newsletter
                     </NewsletterLink>
                 </p>
-                <VerticalSpace size={12} />
             </Container>
             <Script>{client}</Script>
         </>

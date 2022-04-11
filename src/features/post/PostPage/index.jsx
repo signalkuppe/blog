@@ -7,7 +7,7 @@ import PostHero from '../PostHero';
 import PostCover from '../PostCover';
 import PostSections from '../PostSections';
 
-export default function PostPage({ post, route }) {
+export default function PostPage({ post, route, prev, next }) {
     return (
         <BaseLayout
             route={route}
@@ -23,12 +23,12 @@ export default function PostPage({ post, route }) {
                             <link
                                 rel="preconnect"
                                 href="https://assets.ctfassets.net"
-                                crossOrigin="true"
+                                crossOrigin="anonymous"
                             />
                             <link
                                 rel="preconnect"
                                 href="https://tile.thunderforest.com"
-                                crossOrigin="true"
+                                crossOrigin="anonymous"
                             />
                         </>
                     }
@@ -40,7 +40,7 @@ export default function PostPage({ post, route }) {
                 content={
                     <>
                         <PostCover cover={post.cover} />
-                        <PostSections post={post} />
+                        <PostSections post={post} prev={prev} next={next} />
                     </>
                 }
             />

@@ -138,7 +138,7 @@ export default function PhotoPage({ photo, pagination, backTo, backToText }) {
                     <link
                         rel="preconnect"
                         href="https://assets.ctfassets.net"
-                        crossOrigin="true"
+                        crossOrigin="anonymous"
                     />
                 }
             />
@@ -210,7 +210,16 @@ export default function PhotoPage({ photo, pagination, backTo, backToText }) {
                 </ImageContainer>
             </Body>
             <CommonScripts />
-            <Script>{client}</Script>
+            <Script
+                libs={[
+                    {
+                        where: 'body',
+                        tag: '<script src="/libs/hammer.js"></script>',
+                    },
+                ]}
+            >
+                {client}
+            </Script>
         </Html>
     );
 }

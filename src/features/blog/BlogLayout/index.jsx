@@ -20,7 +20,7 @@ const Wrapper = styled.div`
         flex-direction: column;
     }
 `;
-const TopBar = styled.div`
+const TopBar = styled.nav`
     @media ${device.desktop} {
         grid-area: topBar;
     }
@@ -29,7 +29,7 @@ const TopBar = styled.div`
         height: var(--blog-tabs-height);
     }
 `;
-const Content = styled.div`
+const Content = styled.section`
     @media ${device.desktop} {
         grid-area: content;
         overflow: auto;
@@ -50,7 +50,7 @@ const ContentWrapper = styled.div`
     }
 `;
 
-const Search = styled.div`
+const Search = styled.aside`
     @media ${device.desktop} {
         grid-area: search;
         padding-right: var(--space-unit);
@@ -62,7 +62,7 @@ const Search = styled.div`
     }
 `;
 
-const Map = styled.div`
+const Map = styled.aside`
     @media ${device.desktop} {
         grid-area: map;
         max-height: 100%;
@@ -71,12 +71,7 @@ const Map = styled.div`
     @media ${device.mobileAndTablet} {
         order: 4;
         height: 500px;
-        clip-path: polygon(
-            0 calc(var(--space-unit) * 1.5),
-            100% 0,
-            100% 100%,
-            0% 100%
-        );
+        margin-top: calc(var(--space-unit) * 2);
     }
 `;
 

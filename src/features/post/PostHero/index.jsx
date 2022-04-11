@@ -126,7 +126,7 @@ export default function PostHero({ post }) {
     const { title, date, dateTime, category, description } = post;
     return (
         <Hero>
-            <Container as="header">
+            <Container>
                 <HeroSpacer>
                     <Date dateTime={dateTime}>{date}</Date>
                     <Category>

@@ -17,5 +17,12 @@ export const permalink = function (data) {
 
 export default function PostItem({ pagination, route }) {
     const post = pagination.items[0];
-    return <PostPage route={route} post={post} />;
+    return (
+        <PostPage
+            route={route}
+            post={post}
+            prev={pagination.prevItem}
+            next={pagination.nextItem}
+        />
+    );
 }
