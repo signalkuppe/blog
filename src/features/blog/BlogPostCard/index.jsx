@@ -56,6 +56,7 @@ const PostDate = styled.div`
 
 const PostTitle = styled.h2`
     ${headingsStyles};
+    line-height: 1.3;
     font-size: ${headingsSize.h2};
     margin: 0;
     margin-bottom: calc(var(--space-unit) / 2);

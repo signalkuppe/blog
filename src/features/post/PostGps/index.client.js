@@ -133,6 +133,7 @@ const drawChart = function (elevationData) {
 
 document.addEventListener('post-section-reached', function (event) {
     // fires when map sections is intersecting viewport
+
     if (event.detail.section === 'mappa' && !loaded) {
         showMap();
     }

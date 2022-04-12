@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { device } from '../../../theme';
+import { device, imagesStyles } from '../../../theme';
 import Container from '../../../components/layout/Container';
 import { postPhotoLink } from '../../../pages/post-photo';
 
@@ -36,6 +36,10 @@ const StyledListItem = styled.li`
     }
 `;
 
+const StyledImage = styled.img`
+    ${imagesStyles}
+`;
+
 export default function PostGallery({ post }) {
     const { gallery } = post;
     return (
@@ -45,7 +49,7 @@ export default function PostGallery({ post }) {
                     {gallery.map((photo, i) => (
                         <StyledListItem key={i}>
                             <a href={postPhotoLink(photo)} title={photo.title}>
-                                <img
+                                <StyledImage
                                     src={`${photo.src}?w=240&h=240&fm=webp&fit=thumb&q=50`}
                                     title={photo.title}
                                     alt={photo.alt || photo.title}

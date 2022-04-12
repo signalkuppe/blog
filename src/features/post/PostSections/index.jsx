@@ -44,12 +44,6 @@ const PostSectionTitle = styled.h2`
         `}
 `;
 
-const PostSectionTitleLink = styled.a`
-    padding-top: calc(var(--space-unit) * 6);
-    margin-top: calc(var(--space-unit) * -6);
-    scroll-margin-top: 120px;
-`;
-
 const PostSection = styled.section`
     ${(props) =>
         props.id !== 'condividi' &&
@@ -110,16 +104,14 @@ export default function PostSections({ post, prev, next }) {
                         <PostSection
                             key={i}
                             className="js-postSection"
-                            id={section.id}
                             data-step={section.id}
                         >
                             <Container as="header">
                                 <PostSectionTitle
                                     hide={section.id === 'relazione'}
+                                    id={section.id}
                                 >
-                                    <PostSectionTitleLink id={section.id}>
-                                        {section.title}
-                                    </PostSectionTitleLink>
+                                    {section.title}
                                 </PostSectionTitle>
                             </Container>
                             {section.content}

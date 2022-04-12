@@ -2,7 +2,7 @@ const menu = document.querySelector('.js-postMenu');
 const scrollableList = document.querySelector('.js-postMenu-list');
 const activeLink = function (entry) {
     return document.querySelector(
-        `.js-postMenuLink[href="#${entry.querySelector('a').id}"]`,
+        `.js-postMenuLink[href="#${entry.querySelector('h2').id}"]`,
     );
 };
 const activeLinkText = function (entry) {
