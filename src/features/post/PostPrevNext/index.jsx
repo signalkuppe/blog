@@ -7,6 +7,7 @@ const PostNavigation = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 2em;
+    margin-top: calc(var(--space-unit) * 4);
 `;
 const Link = styled.a`
     ${linksStyles}
@@ -17,9 +18,9 @@ const Strong = styled.strong`
     display: block;
 `;
 
-export default function PostPrevNext({ prev, next }) {
+export default function PostPrevNext({ prev, next, ...props }) {
     return (
-        <Container as="footer">
+        <Container as="footer" {...props}>
             <nav>
                 <PostNavigation>
                     {prev && (

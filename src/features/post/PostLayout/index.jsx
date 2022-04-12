@@ -20,7 +20,9 @@ export default function BlogLayout({ hero, content }) {
     return (
         <>
             <Wrapper>
-                <Hero id="js-postLayout-hero">{hero}</Hero>
+                <Hero id="js-postLayout-hero" className="print-post-hero">
+                    {hero}
+                </Hero>
                 <Content>{content}</Content>
             </Wrapper>
             <Script>{client}</Script>

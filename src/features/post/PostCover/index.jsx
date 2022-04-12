@@ -36,9 +36,6 @@ const StyledFigure = styled.figure`
         );
         z-index: var(--z-index-post-cover);
     }
-    @media print {
-        display: none;
-    }
 `;
 
 const StyledFigcaption = styled.figcaption`
@@ -81,7 +78,7 @@ export default function PostCover({ cover }) {
     };
     return (
         <>
-            <StyledFigure id="js-postCover">
+            <StyledFigure id="js-postCover" className="print-post-cover">
                 <StyledFigcaption id="js-postCover-caption">
                     {title}
                 </StyledFigcaption>

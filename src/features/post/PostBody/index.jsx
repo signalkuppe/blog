@@ -12,7 +12,7 @@ export default function PostContent({ post }) {
     const { body } = post;
     return (
         <Container as="section">
-            <PostBody>
+            <PostBody className="print-post-body">
                 <BasicHtmlStyles>
                     <Html>{body}</Html>
                 </BasicHtmlStyles>

@@ -13,7 +13,6 @@ import PostGallery from '../PostGallery';
 import PostGps from '../PostGps';
 import PostShare from '../PostShare';
 import PostPrevNext from '../PostPrevNext';
-import VerticalSpace from '../../../components/ui/VerticalSpace';
 
 const Wrapper = styled.div`
     margin-top: calc(var(--space-unit) * 2);
@@ -21,10 +20,6 @@ const Wrapper = styled.div`
     padding-bottom: calc(var(--space-unit) * 4);
     width: 100vw;
     overflow: hidden;
-    @media print {
-        margin: 0;
-        max-width: 21cm;
-    }
     @media ${device.desktop} {
         margin-top: calc(var(--space-unit) * 4);
     }
@@ -38,9 +33,6 @@ const PostSectionTitle = styled.h2`
         props.hide &&
         css`
             ${visuallyHidden};
-            @media print {
-                display: none;
-            }
         `}
 `;
 
@@ -57,18 +49,16 @@ const PostSection = styled.section`
                 margin-left: calc(var(--space-unit) * 2);
             }
         `}
-    ${(props) =>
-        props.id !== 'relazione' &&
-        css`
-            @media print {
-                display: none;
-            }
-        `}
+
     ${(props) =>
         props.id === 'condividi' &&
         css`
             min-height: 20rem;
         `}
+`;
+
+const PostPrintThanks = styled.div`
+    display: none;
 `;
 
 export default function PostSections({ post, prev, next }) {
@@ -98,12 +88,12 @@ export default function PostSections({ post, prev, next }) {
     return (
         <>
             <PostMenu sections={sections} />
-            <Wrapper>
+            <Wrapper className="print-post-sections-wrapper">
                 {sections.map((section, i) =>
                     section.content ? (
                         <PostSection
                             key={i}
-                            className="js-postSection"
+                            className={`js-postSection print-post-section-${section.id}`}
                             data-step={section.id}
                         >
                             <Container as="header">
@@ -118,8 +108,17 @@ export default function PostSections({ post, prev, next }) {
                         </PostSection>
                     ) : null,
                 )}
-                <VerticalSpace size={4} />
-                <PostPrevNext prev={prev} next={next} />
+                <PostPrintThanks
+                    aria-hidden="true"
+                    className="print-post-thanks"
+                >
+                    👋 Grazie per aver stampato la relazione, buona gita!
+                </PostPrintThanks>
+                <PostPrevNext
+                    prev={prev}
+                    next={next}
+                    className="print-post-nav"
+                />
             </Wrapper>
         </>
     );

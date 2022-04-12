@@ -25,5 +25,9 @@ const StyledContainer = styled.div`
 `;
 
 export default function Container({ children, ...props }) {
-    return <StyledContainer {...props}>{children}</StyledContainer>;
+    return (
+        <StyledContainer className="print-container" {...props}>
+            {children}
+        </StyledContainer>
+    );
 }

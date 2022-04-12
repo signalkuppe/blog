@@ -11,7 +11,7 @@ export default function BaseLayout({ route, head, children }) {
             {head}
             <Body>
                 <CommonStyles />
-                <header>
+                <header className="print-layout-header">
                     <Header route={route} />
                 </header>
                 <main>{children}</main>

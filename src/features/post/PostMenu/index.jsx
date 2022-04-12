@@ -18,9 +18,6 @@ const MenuContainer = styled.nav`
     @media ${device.noReduceMotion} {
         transition: opacity 0.2s linear;
     }
-    @media print {
-        display: none;
-    }
 `;
 
 const List = styled.ul`
@@ -80,7 +77,7 @@ const MenuLinkText = styled.span`
 export default function PostMenu({ sections }) {
     return (
         <>
-            <MenuContainer className="js-postMenu">
+            <MenuContainer className="js-postMenu print-post-menu">
                 <Container>
                     <List className="js-postMenu-list">
                         {sections.map((section, i) =>

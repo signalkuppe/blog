@@ -47,10 +47,6 @@ const Hero = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @media print {
-        height: auto;
-        display: block;
-    }
 `;
 
 const HeroSpacer = styled.div`
@@ -63,18 +59,12 @@ const HeroSpacer = styled.div`
         margin-left: var(--logo-width);
         margin-right: calc(var(--space-unit) * 4);
     }
-    @media print {
-        margin: 0;
-    }
 `;
 
 const Date = styled.time`
     ${commonMetaStyles};
     font-size: clamp(var(--font-size-x-small), var(--font-size-small), 1.5vmax);
     display: block;
-    @media print {
-        display: none;
-    }
 `;
 
 const Category = styled.span`
@@ -85,9 +75,6 @@ const Category = styled.span`
     font-weight: 700;
     margin-left: -1em;
     margin-bottom: var(--space-unit);
-    @media print {
-        display: none;
-    }
 `;
 
 const StyledPostCategoryIcon = styled(PostCategoryIcon)`
@@ -107,9 +94,6 @@ const ScrollHint = styled.span`
         animation: ${ShakeY} 1s linear;
         animation-delay: 1s;
     }
-    @media print {
-        display: none;
-    }
 `;
 
 const StyledMouseIcon = styled(MouseIcon)`
@@ -127,15 +111,22 @@ export default function PostHero({ post }) {
     return (
         <Hero>
             <Container>
-                <HeroSpacer>
-                    <Date dateTime={dateTime}>{date}</Date>
-                    <Category>
+                <HeroSpacer className="print-post-heroSpacer">
+                    <Date dateTime={dateTime} className="print-post-date">
+                        {date}
+                    </Date>
+                    <Category className="print-post-category">
                         <StyledPostCategoryIcon category={category} />
                         {category}
                     </Category>
-                    <PageTitle>{title}</PageTitle>
-                    <Description>{description}</Description>
-                    <ScrollHint aria-hidden="true">
+                    <PageTitle className="print-post-title">{title}</PageTitle>
+                    <Description className="print-post-description">
+                        {description}
+                    </Description>
+                    <ScrollHint
+                        aria-hidden="true"
+                        className="print-post-scrollHint"
+                    >
                         <StyledMouseIcon />
                         <StyledDownIcon />
                     </ScrollHint>
