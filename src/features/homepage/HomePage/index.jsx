@@ -97,6 +97,7 @@ export default function HomePage({ route }) {
                             href="https://assets.ctfassets.net"
                             crossOrigin="anonymous"
                         />
+                        {/** we don't use quicklink to save a js file request */}
                         <link
                             rel="prefetch"
                             href={`${vars.websiteUrl}${bloglink}`}

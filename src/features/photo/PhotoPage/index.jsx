@@ -46,7 +46,6 @@ const ImageContainer = styled.div`
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     background: var(--color-lightbox-background);
-    touch-action: pan-x pinch-zoom;
     &.js-is-ready {
         opacity: 1;
     }

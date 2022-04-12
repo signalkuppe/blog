@@ -110,11 +110,30 @@ const showmap = function (markers) {
     });
 };
 
-fetch('/_data/map-points.json')
-    .then((response) => response.json())
-    .then((data) => {
-        const filteredMarkers = data.filter((m) =>
-            activeCategory ? m.category === activeCategory : true,
-        );
-        showmap(filteredMarkers);
+const loadMap = () =>
+    fetch('/_data/map-points.json')
+        .then((response) => response.json())
+        .then((data) => {
+            const filteredMarkers = data.filter((m) =>
+                activeCategory ? m.category === activeCategory : true,
+            );
+            showmap(filteredMarkers);
+        });
+
+let mapLoaded = false;
+
+const options = {
+    threshold: 0.5,
+};
+
+const callback = (entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting && !mapLoaded) {
+            loadMap();
+            mapLoaded = true;
+        }
     });
+};
+
+const observer = new IntersectionObserver(callback, options);
+observer.observe(mapDiv);

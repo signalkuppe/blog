@@ -1,5 +1,5 @@
 const container = document.getElementById('js-foto');
-const hammertime = new Hammer(container, {});
+const hammertime = new Hammer(container, { touchAction: 'auto' });
 const nextPhoto = container.getAttribute('data-next');
 const prevPhoto = container.getAttribute('data-prev');
 let windowWidth = window.innerWidth;

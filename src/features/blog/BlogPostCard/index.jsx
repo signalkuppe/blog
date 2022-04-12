@@ -54,7 +54,7 @@ const PostDate = styled.div`
     margin-left: var(--space-unit);
 `;
 
-const PostTitle = styled.h3`
+const PostTitle = styled.h2`
     ${headingsStyles};
     font-size: ${headingsSize.h2};
     margin: 0;
@@ -84,10 +84,11 @@ export default function BlogPostCard({ post }) {
             href={post.permalink}
             id={`js-post-${post.id}`}
             className="js-post"
+            title="Leggi la relazione"
         >
             <ImageWrapper>
                 <StyledImage
-                    src={`${post.cover.src}?w=300&h=300&fm=webp&fit=thumb&q=80&f=center`}
+                    src={`${post.cover.src}?w=300&h=300&fm=webp&fit=thumb&q=50&f=center`}
                     alt={post.cover.alt}
                     width="300"
                     height="300"
@@ -104,8 +105,8 @@ export default function BlogPostCard({ post }) {
                 </ContentHeader>
                 <PostTitle>{post.title}</PostTitle>
                 <PostAbstract>{post.description}</PostAbstract>
-                <object>
-                    <PostLink>Leggi tutto</PostLink>
+                <object aria-label="Leggi tutto">
+                    <PostLink href={post.permalink}>Leggi tutto</PostLink>
                 </object>
             </ContentWrapper>
         </WrapperLink>
