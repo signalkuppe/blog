@@ -46,9 +46,10 @@ export default function PostGallery({ post }) {
                         <StyledListItem key={i}>
                             <a href={postPhotoLink(photo)} title={photo.title}>
                                 <img
-                                    src={`${photo.src}?w=300&h=300&fm=webp&fit=thumb&q=80`}
+                                    src={`${photo.src}?w=240&h=240&fm=webp&fit=thumb&q=50`}
                                     title={photo.title}
                                     alt={photo.alt || photo.title}
+                                    loading="lazy"
                                 />
                             </a>
                         </StyledListItem>
