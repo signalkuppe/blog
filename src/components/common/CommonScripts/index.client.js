@@ -1,1 +1,3 @@
-quicklink.listen();
+window.addEventListener('DOMContentLoaded', () => {
+    quicklink.listen();
+});

@@ -13,6 +13,7 @@
     "dev-index": "npx pequeno --serve --page=index --noData --noAfterBuild",
     "build": "npm run lint && npx pequeno --clean",
     "build-verbose": "npx pequeno --clean --verbose",
+    "build-blog": "npm run lint && npx pequeno --clean --page=blog --path=/blog/index.html --data=posts",
     "lint": "npx eslint ."
   },
   "repository": {

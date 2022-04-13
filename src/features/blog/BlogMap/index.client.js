@@ -136,4 +136,7 @@ const callback = (entries) => {
 };
 
 const observer = new IntersectionObserver(callback, options);
-observer.observe(mapDiv);
+
+window.addEventListener('DOMContentLoaded', () => {
+    observer.observe(mapDiv);
+});

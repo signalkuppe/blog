@@ -8,11 +8,11 @@ export default function CommonScripts() {
             libs={[
                 {
                     where: 'body',
-                    tag: '<script src="/js/utils.js" />',
+                    tag: '<script defer src="/js/utils.js" />',
                 },
                 {
                     where: 'body',
-                    tag: '<script src="/libs/quicklink.js" />',
+                    tag: '<script defer src="/libs/quicklink.js" />',
                 },
             ]}
         >

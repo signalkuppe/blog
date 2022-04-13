@@ -19,27 +19,27 @@ export default function BlogMap({ category }) {
                 libs={[
                     {
                         where: 'head',
-                        tag: '<link rel="stylesheet" href="/libs/leaflet.css" />',
+                        tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet.css" />',
                     },
                     {
                         where: 'head',
-                        tag: '<link rel="stylesheet" href="/libs/leaflet-fullscreen.css" />',
+                        tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet-fullscreen.css" />',
                     },
                     {
                         where: 'head',
-                        tag: '<link rel="stylesheet" href="/libs/leaflet-gesture-handling.css" />',
+                        tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet-gesture-handling.css" />',
                     },
                     {
                         where: 'body',
-                        tag: '<script src="/libs/leaflet.js"></script>',
+                        tag: '<script defer src="/libs/leaflet.js"></script>',
                     },
                     {
                         where: 'body',
-                        tag: '<script src="/libs/leaflet-fullscreen.js"></script>',
+                        tag: '<script defer src="/libs/leaflet-fullscreen.js"></script>',
                     },
                     {
                         where: 'body',
-                        tag: '<script src="/libs/leaflet-gesture-handling.js"></script>',
+                        tag: '<script defer src="/libs/leaflet-gesture-handling.js"></script>',
                     },
                 ]}
             >
