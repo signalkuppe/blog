@@ -19,15 +19,15 @@ export default function BlogMap({ category }) {
                 libs={[
                     {
                         where: 'head',
-                        tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet.css" />',
+                        tag: '<link rel="preload" as="style" rel="stylesheet" media="screen" href="/libs/leaflet.css" />',
                     },
                     {
                         where: 'head',
-                        tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet-fullscreen.css" />',
+                        tag: '<link rel="preload" as="style" rel="stylesheet" media="screen" href="/libs/leaflet-fullscreen.css" />',
                     },
                     {
                         where: 'head',
-                        tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet-gesture-handling.css" />',
+                        tag: '<link rel="preload" as="style" rel="stylesheet" media="screen" href="/libs/leaflet-gesture-handling.css" />',
                     },
                     {
                         where: 'body',
