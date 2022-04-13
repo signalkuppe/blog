@@ -7,7 +7,6 @@ const PostNavigation = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 2em;
-    margin-top: calc(var(--space-unit) * 4);
 `;
 const Link = styled.a`
     ${linksStyles}

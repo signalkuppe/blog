@@ -11,7 +11,7 @@
     "dev-contatti": "npx pequeno --serve --page=contatti --noData --noAfterBuild",
     "dev-grazie": "npx pequeno --serve --page=grazie --noData --noAfterBuild",
     "dev-index": "npx pequeno --serve --page=index --noData --noAfterBuild",
-    "build": "npx pequeno --clean",
+    "build": "npm run lint && npx pequeno --clean",
     "build-verbose": "npx pequeno --clean --verbose",
     "lint": "npx eslint ."
   },

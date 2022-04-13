@@ -38,12 +38,12 @@ const PostSectionTitle = styled.h2`
 
 const PostSection = styled.section`
     ${(props) =>
-        props.id !== 'condividi' &&
+        props.sectionId !== 'condividi' &&
         css`
             padding-bottom: calc(var(--space-unit) * 6);
         `}
     ${(props) =>
-        (props.id === 'relazione' || props.id === 'foto') &&
+        (props.sectionId === 'relazione' || props.sectionId === 'foto') &&
         css`
             @media ${device.onlyTablet} {
                 margin-left: calc(var(--space-unit) * 2);
@@ -51,9 +51,10 @@ const PostSection = styled.section`
         `}
 
     ${(props) =>
-        props.id === 'condividi' &&
+        props.sectionId === 'condividi' &&
         css`
             min-height: 20rem;
+            margin-bottom: calc(var(--space-unit) * 2);
         `}
 `;
 
@@ -95,6 +96,7 @@ export default function PostSections({ post, prev, next }) {
                             key={i}
                             className={`js-postSection print-post-section-${section.id}`}
                             data-step={section.id}
+                            sectionId={section.id}
                         >
                             <Container as="header">
                                 <PostSectionTitle

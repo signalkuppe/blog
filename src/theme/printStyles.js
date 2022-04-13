@@ -64,6 +64,7 @@ const PrintStyles = createGlobalStyle`
 
     .print-post-body {
       max-width: 1000000px!important;
+      columns: 2;
       h3 {
         font-size: 12pt!important;
       }
@@ -80,6 +81,8 @@ const PrintStyles = createGlobalStyle`
       display:block!important;
       font-weight: 700;
       margin-top: 20pt;
+      padding: 1em;
+      border: 2px solid black;
     }
     
   }
