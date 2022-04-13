@@ -59,7 +59,7 @@ export default function BlogSearch({ category }) {
                     {
                         where: 'head',
                         tag: `
-                        <link rel="preload" as="style"  media="screen" href="/libs/autoComplete.css" onload="this.onload=null;this.rel='stylesheet'"/>
+                        <link rel="preload" as="style" media="screen" href="/libs/autoComplete.css" />
                         <noscript><link rel="stylesheet" href="/libs/autoComplete.css" /></noscript>
                         `,
                     },

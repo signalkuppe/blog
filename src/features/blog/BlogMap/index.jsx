@@ -21,20 +21,20 @@ export default function BlogMap({ category }) {
                     {
                         where: 'head',
                         tag: `
-                        <link rel="preload" as="style" media="screen" href="/libs/leaflet.css" onload="this.onload=null;this.rel='stylesheet'"/>
+                        <link rel="preload" as="style" media="screen" href="/libs/leaflet.css" />
                         <noscript><link rel="stylesheet" href="/libs/leaflet.css" /></noscript>
                         `,
                     },
                     {
                         where: 'head',
                         tag: `
-                        <link rel="preload" as="style" media="screen" href="/libs/leaflet-fullscreen.css" onload="this.onload=null;this.rel='stylesheet'"/>
+                        <link rel="preload" as="style" media="screen" href="/libs/leaflet-fullscreen.css"/>
                         <noscript><link rel="stylesheet" href="/libs/leaflet-fullscreen.css" /></noscript>`,
                     },
                     {
                         where: 'head',
                         tag: `
-                        <link rel="preload" as="style" media="screen" href="/libs/leaflet-gesture-handling.css" onload="this.onload=null;this.rel='stylesheet'" />
+                        <link rel="preload" as="style" media="screen" href="/libs/leaflet-gesture-handling.css" />
                         <noscript><link rel="stylesheet" href="/libs/leaflet-gesture-handling.css" /></noscript>
                         `,
                     },
