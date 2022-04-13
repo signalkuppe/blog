@@ -58,7 +58,10 @@ export default function BlogSearch({ category }) {
                 libs={[
                     {
                         where: 'head',
-                        tag: '<link rel="preload" as="style" rel="stylesheet" media="screen" href="/libs/autoComplete.css" />',
+                        tag: `
+                        <link rel="preload" as="style"  media="screen" href="/libs/autoComplete.css" onload="this.onload=null;this.rel='stylesheet'"/>
+                        <noscript><link rel="stylesheet" href="/libs/autoComplete.css" /></noscript>
+                        `,
                     },
                     {
                         where: 'body',
