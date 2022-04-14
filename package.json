@@ -56,7 +56,6 @@
     "leaflet-gesture-handling": "^1.2.1",
     "leaflet-gpx": "^1.5.2",
     "quicklink": "^2.2.0",
-    "scrollama": "^3.1.0",
-    "tippy.js": "^6.3.2"
+    "scrollama": "^3.1.0"
   }
 }

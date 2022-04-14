@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Script } from 'pequeno';
 import client from './index.client';
 import AutocompletStyles from './AutocompletStyles';
-import TooltipStyles from './TooltipStyles';
 
 const SearchWrapper = styled.div`
     display: flex;
@@ -30,7 +29,6 @@ export default function BlogSearch({ category }) {
     return (
         <>
             <AutocompletStyles />
-            <TooltipStyles />
             <SearchWrapper>
                 <SearchContainer
                     id="js-search"
