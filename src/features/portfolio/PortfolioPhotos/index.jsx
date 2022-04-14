@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-    device,
-    headingsStyles,
-    headingsSize,
-    imagesStyles,
-} from '../../../theme';
+import { device, headingsStyles, imagesStyles } from '../../../theme';
 import { portfolioPhotoLink } from '../../../pages/portfolio-photo';
 
 const StyledList = styled.ul`

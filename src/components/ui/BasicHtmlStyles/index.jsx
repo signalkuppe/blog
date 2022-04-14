@@ -38,26 +38,10 @@ const Container = styled.div`
         margin-bottom: calc(var(--space-unit) * 1.5);
     }
 
-    p + h3,
-    img + p {
-        margin-top: calc(var(--space-unit) * 2);
-    }
-
-    h3 + figure {
-        margin-top: calc(var(--space-unit) * 0.5);
-    }
-
     ul {
         margin-bottom: calc(var(--space-unit) * 2);
         padding-left: var(--space-unit);
         list-style-type: disc;
-    }
-
-    ul li {
-        margin-bottom: calc(var(--space-unit) / 2);
-        p {
-            margin: 0;
-        }
     }
 
     li::marker {
@@ -94,6 +78,22 @@ const Container = styled.div`
 
     figcaption {
         ${figCaptionStyles}
+    }
+
+    p + h3,
+    img + p {
+        margin-top: calc(var(--space-unit) * 2);
+    }
+
+    h3 + figure {
+        margin-top: calc(var(--space-unit) * 0.5);
+    }
+
+    ul li {
+        margin-bottom: calc(var(--space-unit) / 2);
+        p {
+            margin: 0;
+        }
     }
 
     @media screen {

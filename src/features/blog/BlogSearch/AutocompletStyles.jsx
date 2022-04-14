@@ -16,7 +16,7 @@ export default createGlobalStyle`
     .autoComplete_wrapper {
       width: 100%!important;
       :focus-within svg {
-        color:   var(--color-text-light-accent)!important;;
+        color:   var(--color-text-light-accent)!important;
       }
     }
 

@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Script } from 'pequeno';
-import Icon from '../../../components/ui/Icon';
-import MarkerIcon from '../../../public/icons/Marker.svg';
-import { device } from '../../../theme';
 import client from './index.client';
 import AutocompletStyles from './AutocompletStyles';
 import TooltipStyles from './TooltipStyles';
@@ -58,10 +55,7 @@ export default function BlogSearch({ category }) {
                 libs={[
                     {
                         where: 'head',
-                        tag: `
-                        <link rel="preload" as="style" media="screen" href="/libs/autoComplete.css" />
-                        <noscript><link rel="stylesheet" href="/libs/autoComplete.css" /></noscript>
-                        `,
+                        tag: '<link rel="stylesheet" media="screen" href="/libs/autoComplete.css" />',
                     },
                     {
                         where: 'body',

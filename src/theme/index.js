@@ -147,15 +147,17 @@ export const visuallyHidden = css`
 `;
 
 export const hideScrollbar = css`
+    -ms-overflow-style: none;
+    /* stylelint-disable-next-line */
     ::-webkit-scrollbar {
         display: none;
     }
-    -ms-overflow-style: none;
     scrollbar-width: none;
 `;
 
 export const lineClamp = (lines = 1) => {
     return css`
+        /* stylelint-disable-next-line */
         display: -webkit-box;
         -webkit-line-clamp: ${lines};
         -webkit-box-orient: vertical;

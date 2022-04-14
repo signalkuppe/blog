@@ -11,7 +11,6 @@ const MapContainer = styled.figure`
 `;
 
 export default function BlogMap({ category }) {
-    /** https://web.dev/defer-non-critical-css/ */
     return (
         <>
             <MapStyles />
@@ -20,23 +19,15 @@ export default function BlogMap({ category }) {
                 libs={[
                     {
                         where: 'head',
-                        tag: `
-                        <link rel="preload" as="style" media="screen" href="/libs/leaflet.css" />
-                        <noscript><link rel="stylesheet" href="/libs/leaflet.css" /></noscript>
-                        `,
+                        tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet.css" />',
                     },
                     {
                         where: 'head',
-                        tag: `
-                        <link rel="preload" as="style" media="screen" href="/libs/leaflet-fullscreen.css"/>
-                        <noscript><link rel="stylesheet" href="/libs/leaflet-fullscreen.css" /></noscript>`,
+                        tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet-fullscreen.css" />',
                     },
                     {
                         where: 'head',
-                        tag: `
-                        <link rel="preload" as="style" media="screen" href="/libs/leaflet-gesture-handling.css" />
-                        <noscript><link rel="stylesheet" href="/libs/leaflet-gesture-handling.css" /></noscript>
-                        `,
+                        tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet-gesture-handling.css" />',
                     },
                     {
                         where: 'body',

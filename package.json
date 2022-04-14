@@ -14,7 +14,9 @@
     "build": "npm run lint && npx pequeno --clean",
     "build-verbose": "npx pequeno --clean --verbose",
     "build-blog": "npm run lint && npx pequeno --clean --page=blog --path=/blog/index.html --data=posts",
-    "lint": "npx eslint ."
+    "lint:js": "eslint --ext .jsx --ext .js .",
+    "lint:css": "stylelint src/**/*.{js,jsx}",
+    "lint": "npm run lint:js && npm run lint:css"
   },
   "repository": {
     "type": "git",
@@ -37,8 +39,13 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "pequeno": "0.1.3",
+    "postcss-styled": "^0.34.0",
     "sitemap": "^7.0.0",
-    "slug": "^5.3.0"
+    "slug": "^5.3.0",
+    "stylelint": "^11.1.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
   },
   "dependencies": {
     "@tarekraafat/autocomplete.js": "^10.2.6",

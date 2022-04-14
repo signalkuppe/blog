@@ -32,7 +32,7 @@ const navLinksCommonStyles = css`
     height: 2.5em;
     display: grid;
     place-items: center;
-    ${overlay}
+    ${overlay};
     :hover {
         background-color: var(--color-button-background);
         color: var(--color-button-color);
