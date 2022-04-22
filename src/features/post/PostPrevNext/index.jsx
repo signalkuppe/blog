@@ -24,13 +24,13 @@ export default function PostPrevNext({ prev, next, ...props }) {
                 <PostNavigation>
                     {prev && (
                         <li>
-                            <Strong>Post precedente</Strong>
+                            <Strong>Relazione precedente</Strong>
                             <Link href={prev.permalink}>{prev.title}</Link>
                         </li>
                     )}
                     {next && (
                         <li>
-                            <Strong>Post successivo</Strong>
+                            <Strong>Relazione successiva</Strong>
                             <Link href={next.permalink}>{next.title}</Link>
                         </li>
                     )}

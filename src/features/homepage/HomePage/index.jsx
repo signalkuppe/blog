@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import vars from '../../../vars';
 import { device, hideScrollbar, imagesStyles } from '../../../theme';
 import { blogLink } from '../../../pages/blog';
@@ -83,6 +83,28 @@ const HomePageGridContent = styled.main`
     }
 `;
 
+const animation = keyframes`
+    0% { transform: rotate( 0.0deg) }
+   10% { transform: rotate(14.0deg) }
+   20% { transform: rotate(-8.0deg) }
+   30% { transform: rotate(14.0deg) }
+   40% { transform: rotate(-4.0deg) }
+   50% { transform: rotate(10.0deg) }
+   60% { transform: rotate( 0.0deg) }
+  100% { transform: rotate( 0.0deg) }
+`;
+
+const Hand = styled.span`
+    display: inline-block;
+    margin-left: 0.2em;
+    @media ${device.noReduceMotion} {
+        animation-name: ${animation};
+        animation-duration: 1.2s;
+        animation-delay: 1s;
+        transform-origin: 70% 70%;
+    }
+`;
+
 export default function HomePage({ route }) {
     return (
         <Html>
@@ -141,7 +163,7 @@ export default function HomePage({ route }) {
                     </HomePageGridImage>
                     <HomePageGridContent>
                         <StyledPageTitle small forwardedAs="h2">
-                            Piacere Matteo!
+                            Piacere Matteo <Hand aria-hidden="true">👋</Hand>
                         </StyledPageTitle>
                         <BasicHtmlStyles>
                             <p>

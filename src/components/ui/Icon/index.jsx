@@ -14,6 +14,7 @@ const Wrapper = styled.span`
         }
     }};
     display: inline-flex;
+    vertical-align: -0.125em;
     svg {
         display: inline-block;
         font-size: inherit;

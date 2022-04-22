@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Script } from 'pequeno';
 import vars from '../../../vars';
-import { linksStyles } from '../../../theme';
+import { linksStyles, boldStyles } from '../../../theme';
 import PageTitle from '../../../components/ui/PageTitle';
 import BaseLayout from '../../../components/layout/Base';
 import DefaultPageLayout from '../../../components/layout/DefaultPageLayout';
@@ -13,6 +13,7 @@ import Facebook from '../../../public/icons/Facebook.svg';
 import Twitter from '../../../public/icons/Twitter.svg';
 import Instagram from '../../../public/icons/Instagram.svg';
 import Github from '../../../public/icons/Github.svg';
+import Rss from '../../../public/icons/Rss.svg';
 import ContattiForm from '../ContattiForm';
 import client from './index.client';
 
@@ -37,6 +38,10 @@ const RegularLink = styled.a`
     ${linksStyles}
 `;
 
+const Bold = styled.strong`
+    ${boldStyles}
+`;
+
 export default function ContattiPage({ route }) {
     let title = 'Inviami un messaggio';
     let description =
@@ -59,8 +64,8 @@ export default function ContattiPage({ route }) {
                 <ContattiForm />
 
                 <div>
-                    <VerticalSpace size={2} />
-                    <span>Seguimi su</span>
+                    <VerticalSpace size={4} />
+                    <Bold>Seguimi su</Bold>
                     <VerticalSpace size={0.5} />
                     <StyledUl>
                         <li>
@@ -97,6 +102,13 @@ export default function ContattiPage({ route }) {
                             </WhiteLink>
                         </li>
                     </StyledUl>
+                    <VerticalSpace size={2} />
+                    <p>
+                        <RegularLink href={`${vars.websiteUrl}/rss.sxml`}>
+                            <Icon icon={Rss} left />
+                            Feed RSS della relazioni
+                        </RegularLink>
+                    </p>
                     <VerticalSpace size={2} />
                     <p>
                         Questo sito è stato realizzato con{' '}
