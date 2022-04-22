@@ -104,7 +104,7 @@ export default function ContattiPage({ route }) {
                     </StyledUl>
                     <VerticalSpace size={2} />
                     <p>
-                        <RegularLink href={`${vars.websiteUrl}/rss.sxml`}>
+                        <RegularLink href={`${vars.websiteUrl}/rss.xml`}>
                             <Icon icon={Rss} left />
                             Feed RSS della relazioni
                         </RegularLink>
