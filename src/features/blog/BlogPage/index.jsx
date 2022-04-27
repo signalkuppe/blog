@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { visuallyHidden } from '../../../theme';
+import { visuallyHidden, boldStyles } from '../../../theme';
 import vars from '../../../vars';
 import BaseLayout from '../../../components/layout/Base';
 import Head from '../../../components/common/Head';
@@ -16,14 +16,22 @@ const StyledPageTitle = styled.h1`
     ${visuallyHidden}
 `;
 
+const PostCount = styled.p`
+    margin-top: calc(var(--space-unit) * 2);
+    strong {
+        ${boldStyles}
+    }
+`;
+
 export default function BlogPage({
     posts,
+    postsCount,
     category,
     categories,
     route,
     pagination,
 }) {
-    let title = 'Blog';
+    let title = 'Relazioni';
     if (category) {
         title = category;
     }
@@ -62,6 +70,12 @@ export default function BlogPage({
                         <BlogPostList posts={posts} />
                         <VerticalSpace size={4} />
                         <Pager pagination={pagination} />
+                        {!category && (
+                            <PostCount>
+                                <strong>{postsCount}</strong>{' '}
+                                <span>relazioni</span>
+                            </PostCount>
+                        )}
                     </>
                 }
                 map={<BlogMap category={category} />}

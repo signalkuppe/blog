@@ -26,6 +26,7 @@ export default function Blog({ route, posts, pagination }) {
     return (
         <BlogPage
             route={route}
+            postsCount={posts.length}
             posts={pagination.items}
             categories={categories}
             pagination={pagination}

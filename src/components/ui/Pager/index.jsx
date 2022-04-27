@@ -31,6 +31,11 @@ const Page = styled.div`
     > * + * {
         margin-left: 0.2em;
     }
+    ${(props) =>
+        props.firstPage &&
+        css`
+            margin-left: 0;
+        `}
 `;
 
 const StyledLink = styled.a`
@@ -70,7 +75,7 @@ export default function Pager({ pagination, ...props }) {
                     </>
                 )}
                 <StyledLi>
-                    <Page>
+                    <Page firstPage={!prev}>
                         <span>Pagina</span>
                         <strong>{page}</strong>
                         <span>di</span>

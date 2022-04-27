@@ -10,8 +10,11 @@ const Wrapper = styled.article`
 
 const Hero = styled.header`
     height: calc(100vh - var(--header-height));
-    transition: opacity 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
-    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    transform: translateX(-100%);
+    &.js-is-ready {
+        transform: translateX(0);
+    }
 `;
 
 const Content = styled.div``;

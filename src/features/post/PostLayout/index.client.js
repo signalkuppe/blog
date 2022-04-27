@@ -4,10 +4,10 @@ window.addEventListener('DOMContentLoaded', () => {
     let windowWidth = window.innerWidth;
     const headerHeight = header.getBoundingClientRect().height;
 
-    function resetOpacity() {
+    function animate() {
         setTimeout(() => {
-            hero.style.opacity = 1;
-        }, 200);
+            hero.classList.add('js-is-ready');
+        }, 300);
     }
 
     function onResize() {
@@ -20,13 +20,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function setHeroSize() {
         hero.style.height = `${window.innerHeight - headerHeight}px`;
-        resetOpacity();
+        animate();
     }
 
     if (IS_IOS) {
         setHeroSize();
         window.addEventListener('resize', debounce(onResize, 250));
     } else {
-        resetOpacity();
+        animate();
     }
 });

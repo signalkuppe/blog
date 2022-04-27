@@ -10,6 +10,7 @@ export default function Head({
     description,
     url,
     ogImage,
+    ogType,
     twitterCardImage,
     extraLinks,
     extraMetas,
@@ -19,6 +20,8 @@ export default function Head({
     twitterCardImage =
         twitterCardImage ||
         `https:${vars.homepageFoto}?w=1200&h=600&fm=jpg&q=80`;
+
+    ogType = ogType || 'website';
 
     return (
         <head>
@@ -83,9 +86,9 @@ export default function Head({
                 content={themeVars['--color-background']}
             />
             <meta name="generator" content="pequeno" />
-            <meta name="og:type" content="website" />
+            <meta name="og:type" content={ogType} />
             <meta name="twitter:site" content="@signalkuppe" />
-            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:card" content="summary" />
             <meta name="twitter:image" content={twitterCardImage} />
             <meta name="og:image" content={ogImage} />
             {extraMetas}

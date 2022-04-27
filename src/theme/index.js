@@ -93,9 +93,12 @@ export const imagesStyles = css`
     display: block;
     aspect-ratio: attr(width) / attr(height);
     text-indent: -9999px;
+    border: none;
+    outline: none;
     :-moz-loading {
         visibility: hidden;
     }
+    color: var(--color-background-light);
     background: var(--color-background-light);
 `;
 

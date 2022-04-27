@@ -8,6 +8,8 @@ import PostCover from '../PostCover';
 import PostSections from '../PostSections';
 
 export default function PostPage({ post, route, prev, next }) {
+    const ogImage = `https:${post.cover.src}?fit=thumb&w=400&h=400&f=center`;
+    const url = `${vars.websiteUrl}/${post.slug}`;
     return (
         <BaseLayout
             route={route}
@@ -16,8 +18,10 @@ export default function PostPage({ post, route, prev, next }) {
                     title={post.title}
                     slogan={vars.siteName}
                     description={post.description}
-                    ogImage={`${post.cover.src}?w=1280&h=630&fm=jpg&q=80`}
-                    twitterCardImage={`${post.cover.src}?w=1200&h=600&fm=jpg&q=80`}
+                    ogImage={ogImage}
+                    twitterCardImage={ogImage}
+                    ogType="article"
+                    url={url}
                     extraLinks={
                         <>
                             <link
