@@ -8,9 +8,9 @@ import { portfolioLink } from '../../../pages/portfolio';
 import { permalink as contattiLink } from '../../../pages/contatti';
 
 const StyledUl = styled.ul`
-    font-family: var(--font-family-mono);
     font-weight: 700;
     font-size: var(--font-size-x-small);
+    letter-spacing: var(--headings-letter-spacing);
     text-transform: uppercase;
     display: flex;
     list-style: none;
@@ -22,9 +22,8 @@ const StyledUl = styled.ul`
         text-align: right;
         gap: 0;
     }
-
     @media ${device.atLeastTablet} {
-        font-size: 90%;
+        font-size: 85%;
     }
 `;
 const StyledLi = styled.li`
