@@ -1,11 +1,23 @@
 {
   "name": "blog",
-  "version": "1.0.0",
   "description": "Personal blog",
-  "main": "index.js",
   "scripts": {
-    "build": "eleventy && node site/service-worker-build.js && node scripts/copyOldPosts",
-    "dev": "node scripts/emptyCache && eleventy --serve"
+    "dev": "npx pequeno --serve --noAfterBuild",
+    "dev-blog": "npx pequeno --serve --page=blog --path=/blog/index.html --data=posts --noAfterBuild",
+    "dev-post": "npx pequeno --serve --page=post-item --path=/escursionismo/2021/10/17/pizzo-gandaiole/index.html --data=posts --noAfterBuild",
+    "dev-post-photo": "npx pequeno --serve --page=post-photo --path=/scialpinismo/2022/03/03/norvegia-lofoten/tramonto-a-svolvaer-avoelpimvfl0i39stnahp/index.html --data=posts --noAfterBuild",
+    "dev-portfolio": "npx pequeno --serve --page=portfolio --data=portfolio --noAfterBuild",
+    "dev-portfolio-photo": "npx pequeno --serve --page=portfolio-photo --path=/portfolio/il-disgrazia-dalla-vetta-del-pizzo-scalino-3s1iwswsae0qwwek4bdv9j/index.html --data=portfolio --noAfterBuild",
+    "dev-contatti": "npx pequeno --serve --page=contatti --noData --noAfterBuild",
+    "dev-grazie": "npx pequeno --serve --page=grazie --noData --noAfterBuild",
+    "dev-index": "npx pequeno --serve --page=index --noData --noAfterBuild",
+    "dev-rss": "npx pequeno --page=post-item --data=posts",
+    "build": "npm run lint && npx pequeno --clean",
+    "build-verbose": "npx pequeno --clean --verbose",
+    "build-blog": "npm run lint && npx pequeno --clean --page=blog --path=/blog/index.html --data=posts",
+    "lint:js": "eslint --ext .jsx --ext .js .",
+    "lint:css": "stylelint src/**/*.{js,jsx}",
+    "lint": "npm run lint:js && npm run lint:css"
   },
   "repository": {
     "type": "git",
@@ -17,30 +29,35 @@
     "url": "https://github.com/signalkuppe/blog/issues"
   },
   "homepage": "https://www.signalkuppe.com",
-  "dependencies": {
-    "baguettebox.js": "^1.11.1",
-    "clean-css": "^4.2.3",
-    "colcade": "^0.2.0",
-    "gsap": "^3.4.2",
-    "leaflet": "^1.6.0",
-    "leaflet-fullscreen": "^1.0.2",
-    "leaflet-gpx": "^1.5.0",
-    "lunr": "^2.3.8",
-    "pristinejs": "^0.1.6",
-    "toastify-js": "^1.8.0",
-    "vanilla-lazyload": "^13.0.0"
-  },
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "@contentful/rich-text-html-renderer": "^13.4.0",
-    "@contentful/rich-text-types": "^13.4.0",
-    "chalk": "^2.4.2",
-    "contentful": "^8.3.6",
-    "dayjs": "^1.8.30",
-    "dotenv": "^8.2.0",
-    "fs-extra": "^10.0.0",
-    "lodash": "^4.17.19",
-    "mkdirp": "^0.5.5",
-    "workbox-build": "^4.3.1"
+    "@contentful/rich-text-html-renderer": "^14.1.2",
+    "contentful": "^8.4.0",
+    "dayjs": "^1.10.6",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-import-resolver-webpack": "^0.13.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "jstoxml": "^3.2.3",
+    "pequeno": "0.1.3",
+    "postcss-styled": "^0.34.0",
+    "sitemap": "^7.0.0",
+    "slug": "^5.3.0",
+    "stylelint": "^11.1.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
+  },
+  "dependencies": {
+    "@tarekraafat/autocomplete.js": "^10.2.6",
+    "chart.js": "^3.4.1",
+    "hammerjs": "^2.0.8",
+    "leaflet": "^1.7.1",
+    "leaflet-fullscreen": "^1.0.2",
+    "leaflet-gesture-handling": "^1.2.1",
+    "leaflet-gpx": "^1.5.2",
+    "quicklink": "^2.2.0",
+    "scrollama": "^3.1.0"
   }
 }
