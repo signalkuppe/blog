@@ -1,6 +1,6 @@
 # signalkuppe.com
 
-Personal blog made with [Eleventy](https://www.11ty.io/) and hosted by [Netlify](https://www.netlify.com/)
+Personal blog made with [Pequeño](https://github.com/signalkuppe/pequeno) and hosted by [Netlify](https://www.netlify.com/)
 
 [https://www.signalkuppe.com](https://www.signalkuppe.com)
 
