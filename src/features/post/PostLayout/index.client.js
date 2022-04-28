@@ -5,9 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const headerHeight = header.getBoundingClientRect().height;
 
     function animate() {
-        setTimeout(() => {
-            hero.classList.add('js-is-ready');
-        }, 300);
+        hero.classList.add('js-is-ready');
     }
 
     function onResize() {
