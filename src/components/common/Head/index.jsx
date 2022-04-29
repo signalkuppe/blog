@@ -2,7 +2,7 @@ import React from 'react';
 import { Script } from 'pequeno';
 import vars from '../../../vars';
 import { vars as themeVars } from '../../../theme';
-import client from './index.client';
+import serviceWorkerActivation from './index.client';
 
 export default function Head({
     title,
@@ -95,8 +95,23 @@ export default function Head({
             {vars.env !== 'production' && (
                 <meta name="robots" content="noindex" />
             )}
-            {vars.env !== 'development' && <Script>{client}</Script>}{' '}
-            {/** service worker */}
+            {vars.env !== 'development' && (
+                <Script>{serviceWorkerActivation}</Script>
+            )}
+            {vars.env === 'production' && (
+                <>
+                    <link
+                        rel="preconnect"
+                        crossOrigin="anonymous"
+                        href="https://www.googletagmanager.com"
+                    />
+                    <link
+                        rel="preconnect"
+                        crossOrigin="anonymous"
+                        href="https://www.google-analytics.com"
+                    />
+                </>
+            )}
         </head>
     );
 }

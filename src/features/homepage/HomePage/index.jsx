@@ -14,7 +14,7 @@ import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import PageTitle from '../../../components/ui/PageTitle';
 
 const imgeUrl = vars.homepageFoto;
-const smallImage = `${imgeUrl}?w=900&h=450&fm=webp&q=50`;
+const smallImage = `${imgeUrl}?w=800&h=533&fm=webp&q=50`;
 const mediumImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=50`;
 const largeImage = `${imgeUrl}?w=1920&h=1280&fm=webp&q=50`;
 const extraLargeImage = `${imgeUrl}?w=3000&h=2000&fm=webp&q=50`;
@@ -222,6 +222,26 @@ export default function HomePage({ route }) {
                                 </a>
                                 <em> — il mio nickname — </em> è il nome in
                                 tedesco della Punta Gnifetti.
+                            </p>
+                            <p>
+                                Questo sito è stato realizzato con{' '}
+                                <a
+                                    href="https://github.com/signalkuppe/pequeno"
+                                    title="Pequeno, uno static site generator basato su react"
+                                >
+                                    Pequeño
+                                </a>
+                                , uno <strong>static site generator</strong>{' '}
+                                basato su React che ho sviluppato appositamente
+                                per questo blog. Se volete spulciare il codice
+                                sorgente{' '}
+                                <a
+                                    href="https://github.com/signalkuppe/blog"
+                                    rel="noopener"
+                                    title="Il codice sorgente del blog"
+                                >
+                                    lo trovate qui.
+                                </a>
                             </p>
                             <p>
                                 <a href="/contatti" rel="noopener">
