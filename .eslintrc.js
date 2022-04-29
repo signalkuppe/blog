@@ -56,5 +56,6 @@ module.exports = {
         importScripts: true,
         quicklink: true,
         Hammer: true,
+        dataLayer: true,
     },
 };

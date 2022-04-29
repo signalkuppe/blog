@@ -12,6 +12,7 @@ import Body from '../../../components/common/Body';
 import CommonStyles from '../../../components/common/CommonStyles';
 import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import PageTitle from '../../../components/ui/PageTitle';
+import GoogleAnalytics from '../../../components/common/GoogleAnalytics';
 
 const imgeUrl = vars.homepageFoto;
 const smallImage = `${imgeUrl}?w=700&h=466&fm=webp&q=50`;
@@ -233,7 +234,7 @@ export default function HomePage({ route }) {
                                 </a>
                                 , uno <strong>static site generator</strong>{' '}
                                 basato su React che ho sviluppato appositamente
-                                per questo blog. Se volete spulciare il codice
+                                per il blog. Se volete spulciare il codice
                                 sorgente{' '}
                                 <a
                                     href="https://github.com/signalkuppe/blog"
@@ -252,6 +253,7 @@ export default function HomePage({ route }) {
                         </BasicHtmlStyles>
                     </HomePageGridContent>
                 </HomePageGrid>
+                {vars.env === 'production' && <GoogleAnalytics />}
             </Body>
         </Html>
     );
