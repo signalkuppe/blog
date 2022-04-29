@@ -91,26 +91,24 @@ export default function Head({
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:image" content={twitterCardImage} />
             <meta name="og:image" content={ogImage} />
+            {vars.env === 'production' && (
+                <>
+                    <link
+                        rel="dns-prefetch"
+                        href="//www.googletagmanager.com"
+                    />
+                    <link
+                        rel="dns-prefetch"
+                        href="//www.google-analytics.com"
+                    />
+                </>
+            )}
             {extraMetas}
             {vars.env !== 'production' && (
                 <meta name="robots" content="noindex" />
             )}
             {vars.env !== 'development' && (
                 <Script>{serviceWorkerActivation}</Script>
-            )}
-            {vars.env === 'production' && (
-                <>
-                    <link
-                        rel="preconnect"
-                        crossOrigin="anonymous"
-                        href="https://www.googletagmanager.com"
-                    />
-                    <link
-                        rel="preconnect"
-                        crossOrigin="anonymous"
-                        href="https://www.google-analytics.com"
-                    />
-                </>
             )}
         </head>
     );
