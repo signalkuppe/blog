@@ -117,6 +117,13 @@ export default function ContattiPage({ route }) {
                         </RegularLink>
                     </p>
                     <VerticalSpace size={2} />
+                    <p>
+                        Vuoi rimanere aggiornato sulle nuove relazioni? <br />
+                        <RegularLink href={vars.newsletterUrl}>
+                            Iscriviti alla newsletter
+                        </RegularLink>
+                    </p>
+                    <VerticalSpace size={2} />
                     <span id="js-year"></span> -{' '}
                     <WhiteLink href={vars.websiteUrl}>
                         signalkuppe.com
