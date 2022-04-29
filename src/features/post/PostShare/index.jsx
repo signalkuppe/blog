@@ -37,7 +37,7 @@ const List = styled.ul`
     list-style: none;
 `;
 
-const NewsletterLink = styled.a`
+const BaseLink = styled.a`
     ${linksStyles}
 `;
 
@@ -92,10 +92,10 @@ export default function PostShare({ post }) {
                 </Button>
                 <VerticalSpace size={3} />
                 <p>
-                    Vuoi rimanere aggiornato sui nuovi post? <br />
-                    <NewsletterLink href="http://eepurl.com/dgiWQH">
+                    Vuoi rimanere aggiornato sulle nuove relazioni? <br />
+                    <BaseLink href={vars.newsletterUrl}>
                         Iscriviti alla newsletter
-                    </NewsletterLink>
+                    </BaseLink>
                 </p>
             </Container>
             <Script>{client}</Script>

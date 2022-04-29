@@ -9,6 +9,7 @@ module.exports = {
     twitter: 'https://twitter.com/signalkuppe',
     github: 'https://github.com/signalkuppe',
     twitterAuthor: 'signalkuppe',
+    newsletterUrl: 'http://eepurl.com/dgiWQH',
     homepageFoto:
         '//images.ctfassets.net/rotmy72mdop6/AGcSil2jT7UhmU7oDphmX/4f9972b00fd481338648bc5f5003afda/io___gio.jpg',
 };

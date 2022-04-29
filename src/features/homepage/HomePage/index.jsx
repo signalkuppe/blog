@@ -245,6 +245,16 @@ export default function HomePage({ route }) {
                                 </a>
                             </p>
                             <p>
+                                Esiste{' '}
+                                <a href={vars.newsletterUrl}>una newsletter</a>{' '}
+                                per ricevere gli ultimi aggiornamenti del sito,
+                                e un{' '}
+                                <a href={`${vars.websiteUrl}/rss.xml`}>
+                                    feed rss
+                                </a>{' '}
+                                con l’elenco completo delle relazioni.
+                            </p>
+                            <p>
                                 <a href="/contatti" rel="noopener">
                                     Contattatemi
                                 </a>{' '}
