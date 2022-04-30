@@ -126,6 +126,7 @@ export default function PhotoPage({ photo, pagination, backTo, backToText }) {
     const enlargmentSmall = `${photo.src}?w=1024&fm=webp&q=80`;
     const enlargmentMedium = `${photo.src}?w=1920&fm=webp&q=80`;
     const enlargmentLarge = `${photo.src}?w=3000&fm=webp&q=80`;
+    const donwloadTitle = 'Scarica la foto in formato originale';
 
     return (
         <Html>
@@ -145,6 +146,7 @@ export default function PhotoPage({ photo, pagination, backTo, backToText }) {
                 <CommonStyles />
                 <ImageContainer
                     id="js-foto"
+                    data-back={backTo}
                     data-prev={pagination.prev}
                     data-next={pagination.next}
                 >
@@ -152,12 +154,17 @@ export default function PhotoPage({ photo, pagination, backTo, backToText }) {
                     <ImageHeader>
                         <HeaderLink
                             href={photo.src}
-                            title="Scarica la foto in formato originale"
+                            title={donwloadTitle}
+                            aria-label={donwloadTitle}
                             download
                         >
                             <Icon icon={DownloadIcon} />
                         </HeaderLink>
-                        <HeaderLink href={backTo} title={backToText}>
+                        <HeaderLink
+                            href={backTo}
+                            title={backToText}
+                            aria-label={backToText}
+                        >
                             <Icon icon={CloseIcon} l />
                         </HeaderLink>
                     </ImageHeader>

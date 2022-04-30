@@ -55,7 +55,7 @@ export default function Pager({ pagination, ...props }) {
     const { next, prev, pages, page, total } = pagination;
     const firstPage = pages[0];
     const lastPage = pages[total - 1];
-    if (!pages) {
+    if (!pages || total === 1) {
         return null;
     } else {
         return (

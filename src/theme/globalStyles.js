@@ -80,9 +80,6 @@ const GlobalStyles = createGlobalStyle`
   html {
     -webkit-text-size-adjust: 100%; /* 2 */
     scroll-padding-top: calc(var(--space-unit) * 4);
-    @media ${device.noReduceMotion} {
-      scroll-behavior: smooth;
-    }
   }
 
   body {

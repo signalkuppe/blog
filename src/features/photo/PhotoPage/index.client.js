@@ -36,4 +36,11 @@ window.addEventListener('DOMContentLoaded', () => {
     } else {
         container.classList.add('js-is-ready');
     }
+
+    document.onkeydown = function (evt) {
+        evt = evt || window.event;
+        if (evt.key === 'Escape') {
+            window.location = document.referrer + '?index=1';
+        }
+    };
 });

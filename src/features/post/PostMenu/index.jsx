@@ -72,6 +72,7 @@ const MenuLinkText = styled.span`
         ${styles}
         color: var(--color-text-light-accent);
     }
+    pointer-events: none;
 `;
 
 export default function PostMenu({ sections }) {
