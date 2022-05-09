@@ -12,10 +12,9 @@ import Body from '../../../components/common/Body';
 import CommonStyles from '../../../components/common/CommonStyles';
 import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import PageTitle from '../../../components/ui/PageTitle';
-import GoogleAnalytics from '../../../components/common/GoogleAnalytics';
 
 const imgeUrl = vars.homepageFoto;
-const smallImage = `${imgeUrl}?w=700&h=466&fm=webp&q=50`;
+const smallImage = `${imgeUrl}?w=600&h=400&fm=webp&q=50`;
 const mediumImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=50`;
 const largeImage = `${imgeUrl}?w=1920&h=1280&fm=webp&q=50`;
 const extraLargeImage = `${imgeUrl}?w=3000&h=2000&fm=webp&q=50`;
@@ -260,10 +259,13 @@ export default function HomePage({ route }) {
                                 </a>{' '}
                                 per parlare di un vostro progetto o di montagna!
                             </p>
+                            <p>
+                                Non avete visto nessun banner perchè questo sito
+                                non imposta alcun cookie 🙂
+                            </p>
                         </BasicHtmlStyles>
                     </HomePageGridContent>
                 </HomePageGrid>
-                {vars.env === 'production' && <GoogleAnalytics />}
             </Body>
         </Html>
     );

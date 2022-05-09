@@ -5,7 +5,6 @@ import Body from '../../common/Body';
 import CommonScripts from '../../common/CommonScripts';
 import CommonStyles from '../../common/CommonStyles';
 import Header from '../../common/Header';
-import GoogleAnalytics from '../../common/GoogleAnalytics';
 
 export default function BaseLayout({ route, head, children }) {
     return (
@@ -18,7 +17,6 @@ export default function BaseLayout({ route, head, children }) {
                 </header>
                 <main>{children}</main>
                 <CommonScripts />
-                {vars.env === 'production' && <GoogleAnalytics />}
             </Body>
         </Html>
     );
