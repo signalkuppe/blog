@@ -1,5 +1,4 @@
 import React from 'react';
-import vars from '../../../vars';
 import Html from '../../common/Html';
 import Body from '../../common/Body';
 import CommonScripts from '../../common/CommonScripts';
