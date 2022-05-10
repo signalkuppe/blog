@@ -90,13 +90,14 @@ export default createGlobalStyle`
     }
 
    .map-popup-date { 
-        text-transform: uppercase;
+        font-variant: small-caps;
         font-size: var(--font-size-x-small);
-        margin-bottom: 0.25em;
+        margin-bottom: 0.3em;
     }
 
    .map-popup-title { 
         font-weight: 700;
+        font-size: var(--font-size-small);
         letter-spacing: var(--text-letter-spacing);
         line-height: 1.2;
         ${lineClamp(3)};

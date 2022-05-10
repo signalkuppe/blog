@@ -74,7 +74,7 @@ const HomePageGridContent = styled.main`
         grid-area: 2 / 2 / 2 / 2;
         height: calc(100vh - var(--header-height));
         overflow-y: auto;
-        padding-top: calc(var(--space-unit) * 3);
+        padding-top: calc(var(--space-unit) * 1.5);
         ${hideScrollbar};
     }
     p {
@@ -260,8 +260,8 @@ export default function HomePage({ route }) {
                                 per parlare di un vostro progetto o di montagna!
                             </p>
                             <p>
-                                Non avete visto nessun banner perchè questo sito
-                                non imposta alcun cookie 🙂
+                                Non avete visto alcun banner perchè questo sito
+                                non imposta cookies 🙂
                             </p>
                         </BasicHtmlStyles>
                     </HomePageGridContent>
