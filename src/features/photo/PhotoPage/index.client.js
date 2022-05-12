@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('js-foto');
+
     const hammertime = new Hammer(container, { touchAction: 'auto' });
     const nextPhoto = container.getAttribute('data-next');
     const prevPhoto = container.getAttribute('data-prev');
@@ -37,10 +38,11 @@ window.addEventListener('DOMContentLoaded', () => {
         container.classList.add('js-is-ready');
     }
 
-    document.onkeydown = function (evt) {
-        evt = evt || window.event;
-        if (evt.key === 'Escape') {
-            window.location = document.referrer + '?index=1';
+    document.onkeydown = function (e) {
+        e = e || window.event;
+        if (e.key === 'Escape') {
+            history.back();
         }
+        return false;
     };
 });
