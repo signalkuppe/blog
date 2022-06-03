@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Script } from 'pequeno';
-import client from './index.client';
 
 const Wrapper = styled.article`
     display: flex;
@@ -10,10 +8,8 @@ const Wrapper = styled.article`
 
 const Hero = styled.header`
     height: calc(100vh - var(--header-height));
-    transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
-    transform: translateX(-100%);
-    &.js-is-ready {
-        transform: translateX(0);
+    @supports (height: 100svh) {
+        height: calc(100svh - var(--header-height));
     }
 `;
 
@@ -28,7 +24,6 @@ export default function BlogLayout({ hero, content }) {
                 </Hero>
                 <Content>{content}</Content>
             </Wrapper>
-            <Script>{client}</Script>
         </>
     );
 }
