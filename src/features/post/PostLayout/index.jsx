@@ -8,6 +8,7 @@ const Wrapper = styled.article`
 
 const Hero = styled.header`
     height: calc(100vh - var(--header-height));
+    /* stylelint-disable */
     @supports (height: 100svh) {
         height: calc(100svh - var(--header-height));
     }
