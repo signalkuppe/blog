@@ -18,7 +18,7 @@ const Wrapper = styled.div`
     margin-top: calc(var(--space-unit) * 2);
     margin-bottom: calc(var(--space-unit) * 4);
     padding-bottom: calc(var(--space-unit) * 4);
-    width: 100vw;
+
     overflow: hidden;
     @media ${device.desktop} {
         margin-top: calc(var(--space-unit) * 4);
