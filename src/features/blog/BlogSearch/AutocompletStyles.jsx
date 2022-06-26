@@ -6,11 +6,7 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle` 
 
     #js-autocomplete {
-      opacity: 0;
       width: 100% !important;
-      .js-is-loaded & {
-          opacity: 1;
-      }
     }
 
     .autoComplete_wrapper {

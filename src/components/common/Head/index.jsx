@@ -76,10 +76,10 @@ export default function Head({
             <link
                 rel="mask-icon"
                 href="/img/favicons/safari-pinned-tab.svg"
-                color="#009fe3"
+                color="#000000"
             />
             {extraLinks}
-            <meta name="msapplication-TileColor" content="#ffffff" />
+            <meta name="msapplication-TileColor" content="#000000" />
             <meta name="color-scheme" content="dark" />
             <meta
                 name="theme-color"
@@ -91,18 +91,6 @@ export default function Head({
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:image" content={twitterCardImage} />
             <meta name="og:image" content={ogImage} />
-            {vars.env === 'production' && (
-                <>
-                    <link
-                        rel="dns-prefetch"
-                        href="//www.googletagmanager.com"
-                    />
-                    <link
-                        rel="dns-prefetch"
-                        href="//www.google-analytics.com"
-                    />
-                </>
-            )}
             {extraMetas}
             {vars.env !== 'production' && (
                 <meta name="robots" content="noindex" />

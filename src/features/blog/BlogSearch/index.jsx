@@ -56,8 +56,8 @@ export default function BlogSearch({ category }) {
                         tag: '<link rel="stylesheet" media="screen" href="/libs/autoComplete.css" />',
                     },
                     {
-                        where: 'body',
-                        tag: '<script defer src="/libs/autoComplete.js"></script>',
+                        where: 'head',
+                        tag: '<script  src="/libs/autoComplete.js"></script>',
                     },
                 ]}
             >

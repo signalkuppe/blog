@@ -6,10 +6,11 @@ import { lineClamp } from '../../../theme';
  */
 
 export default createGlobalStyle` 
-
+  
     .leaflet-container {
         font-family: inherit!important;
         font-size: inherit!important;
+        
     }
     .leaflet-marker-icon {
         background: none!important; /** library default marker div */
