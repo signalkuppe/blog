@@ -109,6 +109,13 @@ const Container = styled.div`
             padding-left: 0;
         }
     }
+
+    /* youtube embeds */
+
+    [data-youtube-embed] {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+    }
 `;
 
 export default function BasicHtmlStyles({ children }) {

@@ -9,6 +9,9 @@ window.addEventListener('DOMContentLoaded', () => {
             const filteredItems = data.filter((m) =>
                 activeCategory ? m.category === activeCategory : true,
             );
+            document
+                .getElementById('js-autocomplete-wrapper')
+                .classList.add('js-is-ready');
             new autoComplete({
                 // https://github.com/TarekRaafat/autoComplete.js
                 placeHolder: `Cerca${

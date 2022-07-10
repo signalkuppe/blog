@@ -9,6 +9,10 @@ const SearchWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    opacity: 0;
+    &.js-is-ready {
+        opacity: 1;
+    }
 `;
 
 const SearchHint = styled.span`
@@ -29,7 +33,7 @@ export default function BlogSearch({ category }) {
     return (
         <>
             <AutocompletStyles />
-            <SearchWrapper>
+            <SearchWrapper id="js-autocomplete-wrapper">
                 <SearchContainer
                     id="js-search"
                     role="search"
@@ -57,7 +61,7 @@ export default function BlogSearch({ category }) {
                     },
                     {
                         where: 'head',
-                        tag: '<script  src="/libs/autoComplete.js"></script>',
+                        tag: '<script defer src="/libs/autoComplete.js"></script>',
                     },
                 ]}
             >
