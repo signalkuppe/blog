@@ -100,7 +100,7 @@ function Cerca() {
                                 <FormSearch>
                                     <TextField
                                         block
-                                        placeholder="Es: Pizzo Gandaiole, engadina, orobie"
+                                        placeholder="Es:Pizzo Scalino, orobie"
                                         value={state.query}
                                         onChange={(e) =>
                                             setState({
