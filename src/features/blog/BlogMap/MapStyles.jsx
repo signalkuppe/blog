@@ -28,6 +28,13 @@ export default createGlobalStyle`
         filter: grayscale(1) contrast(1);
     }
 
+    .map-popup-image img { 
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        display: block;
+    }
+
     .map-marker { /** my custom marker */
         display: flex!important;
         align-items: center!important;
@@ -85,13 +92,6 @@ export default createGlobalStyle`
         height: 80px;
         background: #eee;
         margin-right: 8px;
-    }
-
-    .map-popup-image img { 
-        width: 80px;
-        height: 80px;
-        object-fit: cover;
-        display: block;
     }
 
     .map-popup-info { 
