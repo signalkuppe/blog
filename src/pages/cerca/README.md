@@ -1,1 +1,1 @@
-## Search page made with react and vite
+## Search page is a SPA made with react and vite
