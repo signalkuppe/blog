@@ -82,7 +82,7 @@ const drawChart = function (elevationData) {
         datasets: [
             {
                 label: '',
-                borderColor: getCssVar('--color-map-track'),
+                borderColor: getCssVar('--color-primary'),
                 borderWidth: 4,
                 data: elevationData,
                 pointRadius: 1,

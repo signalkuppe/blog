@@ -1,20 +1,33 @@
 import React from 'react';
-import styled from 'styled-components';
-import { visuallyHidden, boldStyles } from '../../../theme';
+import styled, { css } from 'styled-components';
+import { boldStyles, device, visuallyHidden } from '../../../theme';
 import vars from '../../../vars';
+import withFiletto from '../../../components/hoc/withFiletto';
 import BaseLayout from '../../../components/layout/Base';
 import Head from '../../../components/common/Head';
 import Pager from '../../../components/ui/Pager';
+import Fab from '../../../components/ui/Fab';
+import Icon from '../../../components/ui/Icon';
+import SearchIcon from '../../../public/icons/Search.svg';
 import Bloglayout from '../BlogLayout';
 import BlogMap from '../BlogMap';
 import BlogMenu from '../BlogMenu';
-import BlogSearch from '../BlogSearch';
 import BlogPostList from '../BlogPostList';
 import VerticalSpace from '../../../components/ui/VerticalSpace';
 
-const StyledPageTitle = styled.h1`
-    ${visuallyHidden}
-`;
+const StyledPageTitle = withFiletto(styled.h1`
+    text-transform: uppercase;
+    ${boldStyles}
+    margin-bottom: calc(var(--space-unit) * 1.5);
+    ${(props) =>
+        !props.category &&
+        css`
+            ${visuallyHidden}
+        `}
+    @media ${device.desktop} {
+        ${visuallyHidden}
+    }
+`);
 
 const PostCount = styled.p`
     margin-top: calc(var(--space-unit) * 2);
@@ -66,7 +79,9 @@ export default function BlogPage({
                 }
                 content={
                     <>
-                        <StyledPageTitle>{title}</StyledPageTitle>
+                        <StyledPageTitle category={category}>
+                            {title}
+                        </StyledPageTitle>
                         <BlogPostList posts={posts} />
                         <VerticalSpace size={4} />
                         <Pager pagination={pagination} />
@@ -79,7 +94,16 @@ export default function BlogPage({
                     </>
                 }
                 map={<BlogMap category={category} />}
-                search={<BlogSearch category={category} />}
+                fab={
+                    <Fab
+                        as="a"
+                        href="/cerca"
+                        title="Cerca una relazione"
+                        aria-label="Cerca una relazione"
+                    >
+                        <Icon icon={SearchIcon} l />
+                    </Fab>
+                }
             />
         </BaseLayout>
     );

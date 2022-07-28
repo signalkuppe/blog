@@ -1,18 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { device, hideScrollbar } from '../../../theme';
 
 const Wrapper = styled.div`
     @media ${device.desktop} {
         display: grid;
         grid-template-columns: 40vw 60vw;
-        grid-template-rows: var(--blog-tabs-height) var(--blog-search-height) calc(
-                100vh - var(--header-height) - var(--blog-tabs-height) -
-                    var(--blog-search-height)
+        grid-template-rows: var(--blog-tabs-height) calc(
+                100vh - var(--header-height) - var(--blog-tabs-height)
             );
         grid-template-areas:
             'topBar topBar'
-            'content search'
             'content map';
     }
     @media ${device.mobileAndTablet} {
@@ -42,24 +40,7 @@ const Content = styled.section`
 `;
 
 const ContentWrapper = styled.div`
-    @media ${device.desktop} {
-        padding: calc(var(--space-unit) * 3) var(--space-unit);
-    }
-    @media ${device.mobileAndTablet} {
-        padding: var(--space-unit);
-    }
-`;
-
-const Search = styled.aside`
-    @media ${device.desktop} {
-        grid-area: search;
-        padding-right: var(--space-unit);
-    }
-    @media ${device.mobileAndTablet} {
-        order: 2;
-        height: var(--blog-search-height);
-        padding: 0 var(--space-unit);
-    }
+    padding: calc(var(--space-unit) * 1.5) var(--space-unit);
 `;
 
 const Map = styled.aside`
@@ -75,15 +56,43 @@ const Map = styled.aside`
     }
 `;
 
-export default function BlogLayout({ topBar, content, search, map }) {
+const fabAnimation = keyframes`
+    0% {
+        transform: translateY(calc(100% + var(--space-unit) * 1.5))
+    }
+    100% {
+        transform: translateY(0%);
+    }
+`;
+
+const Fab = styled.div`
+    position: fixed;
+    z-index: calc(var(--z-index-map) + 1);
+    @media ${device.desktop} {
+        left: calc(40vw - calc(var(--space-unit) * 4));
+        bottom: calc(var(--space-unit) * 1.5);
+    }
+    @media ${device.mobileAndTablet} {
+        right: calc(var(--space-unit) * 1);
+        bottom: calc(var(--space-unit) * 1);
+    }
+    @media ${device.noReduceMotion} {
+        animation-name: ${fabAnimation};
+        animation-duration: 0.3s;
+        animation-delay: 1s;
+        animation-fill-mode: backwards;
+    }
+`;
+
+export default function BlogLayout({ topBar, content, map, fab }) {
     return (
         <Wrapper>
             <TopBar>{topBar}</TopBar>
             <Content>
                 <ContentWrapper>{content}</ContentWrapper>
             </Content>
-            <Search>{search}</Search>
             <Map>{map}</Map>
+            <Fab>{fab}</Fab>
         </Wrapper>
     );
 }

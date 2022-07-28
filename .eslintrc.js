@@ -57,5 +57,6 @@ module.exports = {
         quicklink: true,
         Hammer: true,
         dataLayer: true,
+        React: true,
     },
 };

@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const contentfulClient = require('../../lib/contentfulClient');
 const normalizePosts = require('../../lib/normalizePosts');
-const writeMapJson = require('../../lib/writeMapJson');
+const writePostsJson = require('../../lib/writePostsJson');
 const postQuery = {
     content_type: 'post',
     include: 1,
@@ -15,7 +15,7 @@ module.exports = async () => {
             .getEntries(postQuery)
             .then((posts) => {
                 const normalizedPosts = normalizePosts(posts);
-                writeMapJson(normalizedPosts);
+                writePostsJson(normalizedPosts);
                 resolve(normalizedPosts);
             })
             .catch((err) => reject(err));

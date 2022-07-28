@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-y: scroll">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--
+            this will be overrided (see vite.config.js)
+        -->
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
+        <noscript>
+            <h1>Cerca una relazione</h1>
+            <form action="http://www.google.com/search" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Cerca" />
+                <input
+                    type="hidden"
+                    name="as_sitesearch"
+                    value="signalkuppe.com"
+                />
+            </form>
+        </noscript>
+    </body>
+</html>

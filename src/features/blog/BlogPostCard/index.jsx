@@ -11,10 +11,13 @@ import PostCategoryIcon from '../../post/PostCategoryIcon';
 
 const WrapperLink = styled.a`
     display: flex;
+    width: fit-content;
     color: inherit;
-    :hover img {
-        transform: rotate(-5deg);
-        border-color: var(--color-primary);
+    @media (hover: hover) {
+        :hover img {
+            transform: rotate(-5deg);
+            border-color: var(--color-primary);
+        }
     }
 `;
 const ImageWrapper = styled.figure`
