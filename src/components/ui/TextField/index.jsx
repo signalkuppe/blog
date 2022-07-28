@@ -1,8 +1,6 @@
 import React from 'react';
 import { omit } from 'lodash';
 import styled, { css } from 'styled-components';
-import { Script } from 'pequeno';
-import client from './index.client.js';
 
 let i = 0;
 
@@ -13,17 +11,41 @@ const StyledLabel = styled.label`
     padding-left: 25px;
 `;
 const StyledTextField = styled.input`
+    line-height: 1;
     border: var(--inputs-border);
     background: var(--inputs-background);
     padding: var(--inputs-padding);
     color: var(--inputs-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--inputs-border-radius);
+    -webkit-appearance: none;
+    ::-webkit-search-cancel-button {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-left: 10px;
+        background: linear-gradient(
+                45deg,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(0, 0, 0, 0) 43%,
+                var(--color-primary) 45%,
+                var(--color-primary) 55%,
+                rgba(0, 0, 0, 0) 57%,
+                rgba(0, 0, 0, 0) 100%
+            ),
+            linear-gradient(
+                135deg,
+                transparent 0%,
+                transparent 43%,
+                var(--color-primary) 45%,
+                var(--color-primary) 55%,
+                transparent 57%,
+                transparent 100%
+            );
+    }
+
     :focus {
         border-color: var(--inputs-focused-border-color);
         outline: transparent;
-    }
-    &.js-is-invalid {
-        border-color: var(--color-error);
     }
     transition: border-color 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
     ${(props) =>
@@ -32,10 +54,9 @@ const StyledTextField = styled.input`
             display: block;
             width: 100%;
         `};
-    appareance: none;
 `;
 
-export default function TextField({ ...props }) {
+function TextField({ ...props }, ref) {
     const uid = `textfield-${i++}`;
     const className = 'js-textinput';
 
@@ -49,8 +70,10 @@ export default function TextField({ ...props }) {
                 className={className}
                 type={props.type || 'text'}
                 {...omit(props, ['className'])}
+                ref={ref}
             />
-            <Script>{client}</Script>
         </>
     );
 }
+
+export default React.forwardRef(TextField);

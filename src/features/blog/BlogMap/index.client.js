@@ -111,7 +111,7 @@ const showmap = function (markers) {
 };
 
 const loadMap = () =>
-    fetch('/_data/map-points.json')
+    fetch('/_data/posts.json')
         .then((response) => response.json())
         .then((data) => {
             const filteredMarkers = data.filter((m) =>

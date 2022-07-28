@@ -2,8 +2,9 @@
   "name": "blog",
   "description": "Personal blog",
   "scripts": {
-    "dev": "npx pequeno --serve --noAfterBuild",
+    "dev": "npm run build-cerca && npm run copy-cerca-assets && npx pequeno --serve --noAfterBuild",
     "dev-blog": "npx pequeno --serve --page=blog --path=/blog/index.html --data=posts --noAfterBuild",
+    "dev-blog-category": "npx pequeno --serve --page=blog-by-category --path=/blog/alpinismo/index.html --data=posts --noAfterBuild",
     "dev-post": "npx pequeno --serve --page=post-item --path=/escursionismo/2021/10/17/pizzo-gandaiole/index.html --data=posts --noAfterBuild",
     "dev-post-photo": "npx pequeno --serve --page=post-photo --path=/scialpinismo/2022/03/03/norvegia-lofoten/tramonto-a-svolvaer-avoelpimvfl0i39stnahp/index.html --data=posts --noAfterBuild",
     "dev-portfolio": "npx pequeno --serve --page=portfolio --data=portfolio --noAfterBuild",
@@ -12,12 +13,17 @@
     "dev-grazie": "npx pequeno --serve --page=grazie --noData --noAfterBuild",
     "dev-index": "npx pequeno --serve --page=index --noData --noAfterBuild",
     "dev-rss": "npx pequeno --page=post-item --data=posts",
-    "build": "npm run lint && npx pequeno --clean",
+    "dev-cerca": "npm run build-blog && npm run copy-posts-json && cd src/pages/cerca && npm run dev",
+    "copy-posts-json": "mkdir -p ./src/pages/cerca/_data && cp .site/_data/posts.json ./src/pages/cerca/_data/posts.json",
+    "copy-cerca-assets": "mkdir -p .site/assets && cp -R .site/cerca/assets .site",
+    "build-cerca": "cd src/pages/cerca && npm run build",
+    "build": "npm run lint && npx pequeno --clean && npm run build-cerca && npm run copy-cerca-assets",
     "build-verbose": "npx pequeno --clean --verbose",
-    "build-blog": "npm run lint && npx pequeno --clean --page=blog --path=/blog/index.html --data=posts",
+    "build-blog": "npx pequeno --clean --page=blog --path=/blog/index.html --data=posts",
     "lint:js": "eslint --ext .jsx --ext .js .",
     "lint:css": "stylelint src/**/*.{js,jsx}",
-    "lint": "npm run lint:js && npm run lint:css"
+    "lint": "npm run lint:js && npm run lint:css",
+    "postinstall": "cd src/pages/cerca && npm install"
   },
   "repository": {
     "type": "git",
@@ -50,7 +56,6 @@
     "stylelint-processor-styled-components": "^1.10.0"
   },
   "dependencies": {
-    "@tarekraafat/autocomplete.js": "^10.2.6",
     "chart.js": "^3.4.1",
     "hammerjs": "^2.0.8",
     "leaflet": "^1.7.1",

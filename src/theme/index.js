@@ -22,17 +22,16 @@ export const vars = {
     '--headings-letter-spacing': '-0.05em',
     '--color-background': '#000',
     '--color-background-light': '#181818',
-    '--color-primary': '#EA3734',
-    '--color-secondary': '#FBA456',
+    '--color-primary': '#FBA456',
     '--color-text': '#d6d6d6',
     '--color-text-light-accent': '#FFFFFF',
     '--color-text-dark-accent': '#AAAAAA',
-    '--color-links': 'var(--color-secondary)',
-    '--color-button-background': 'var(--color-secondary)',
-    '--color-button-color': '#000',
+    '--color-links': 'var(--color-primary)',
+    '--color-button-background': 'var(--color-primary)',
+    '--color-button-color': 'var(--color-background)',
     '--color-map-active-marker-background': 'var(--color-primary)',
-    '--color-map-active-marker-color': '#ffff',
-    '--color-map-track': 'var(--color-primary)',
+    '--color-map-active-marker-color': 'var(--color-background)',
+    '--color-map-track': 'blue',
     '--color-lightbox-background': '#000',
     '--color-lightbox-color': 'rgba(255, 255, 255, 0.8)',
     '--color-lightbox-overlay': 'rgba(0,0,0,0.5)',
@@ -40,12 +39,13 @@ export const vars = {
     '--color-twitter': '#1da1f2',
     '--color-whatsapp': '#25d366',
     '--color-error': 'crimson',
-    '--inputs-border': '4px solid var(--color-text)',
+    '--inputs-border': '4px solid var(--color-text-light-accent)',
     '--inputs-background': 'var(--color-background)',
     '--inputs-color': 'var(--color-text)',
     '--inputs-padding': '1em',
+    '--inputs-border-radius': '999999px',
     '--inputs-focused-border-color': 'var(--color-primary)',
-    '--border-radius': '0px',
+    '--border-radius': '10px',
     '--space-unit': '1.5rem',
     '--logo-width': '9rem',
     '--container-max-width': '80rem',
@@ -105,7 +105,7 @@ export const imagesStyles = css`
 export const italicStyles = css`
     font-family: var(--font-family-cursive);
     font-weight: 900;
-    color: var(--color-primary);
+    color: var(--color-text-light-accent);
 `;
 
 export const boldStyles = css`

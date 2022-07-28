@@ -10,8 +10,9 @@ export default createGlobalStyle`
     .leaflet-container {
         font-family: inherit!important;
         font-size: inherit!important;
-        
+        z-index: var(--z-index-map)!important;
     }
+
     .leaflet-marker-icon {
         background: none!important; /** library default marker div */
         border: none!important;
@@ -22,31 +23,39 @@ export default createGlobalStyle`
             z-index: var(--z-index-map-selected-marker)!important;
         }
     }
+
+    .leaflet-tile-pane {
+        filter: grayscale(1) contrast(1);
+    }
+
     .map-marker { /** my custom marker */
-        background: var(--color-background)!important;
         display: flex!important;
         align-items: center!important;
         justify-content: center!important;
         width: 100%!important;
         height: 100%!important;
         border-radius: 50%!important;
-        border: 2px solid white!important;
+        border: var(--inputs-border)!important;
         box-shadow:-5px 0px 5px var(--drop-shadow-color)!important;
+        background: var(--color-button-background)!important;
+        will-change: transform;
+        transition: transform 0.2s ease-in;
         img {
             width: 1em!important;
             height: 1em!important;
-            filter: invert(1);
         }
         :hover,
         .js-is-selected & {
-            background: var(--color-map-active-marker-background)!important;
-            color: var(--color-map-active-marker-color)!important;
+            background: var(--color-background)!important;
             transform: scale(1.15);
-            
+            img {
+                filter: invert(1);
+            }
             
         }
         transition: all 0.2s linear;
     }
+
     .leaflet-popup-content-wrapper { /** library default popup div */
         background: white!important;
         border-radius: 0px!important;
@@ -78,7 +87,7 @@ export default createGlobalStyle`
         margin-right: 8px;
     }
 
-     .map-popup-image img { 
+    .map-popup-image img { 
         width: 80px;
         height: 80px;
         object-fit: cover;
