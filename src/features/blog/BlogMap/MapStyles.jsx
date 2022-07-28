@@ -44,21 +44,21 @@ export default createGlobalStyle`
         border-radius: 50%!important;
         border: var(--inputs-border)!important;
         box-shadow:-5px 0px 5px var(--drop-shadow-color)!important;
-        background: var(--color-button-background)!important;
+        background: var(--color-map-marker-background)!important;
         will-change: transform;
         transition: transform 0.2s ease-in;
         img {
             width: 1em!important;
             height: 1em!important;
+            filter: invert(1);
         }
         :hover,
         .js-is-selected & {
-            background: var(--color-background)!important;
+            background: var(--color-primary)!important;
             transform: scale(1.15);
             img {
-                filter: invert(1);
+             filter: none;
             }
-            
         }
         transition: all 0.2s linear;
     }

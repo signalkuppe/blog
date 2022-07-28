@@ -117,7 +117,7 @@ function Cerca() {
                                                 type="submit"
                                                 aria-label="Cerca"
                                             >
-                                                <Icon icon={SearchIcon} />
+                                                <Icon icon={SearchIcon} l />
                                             </Fab>
                                         )}
                                         {state.searching && <Loader />}
