@@ -14,6 +14,7 @@ const htmlPluginOpt = {
         },
     ],
     title: `Cerca una relazione | ${vars.siteName}`,
+    style: `body { color: var(--color-background); };`,
 };
 
 // https://vitejs.dev/config/
