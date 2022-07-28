@@ -19,6 +19,8 @@ const StyledTextField = styled.input`
     border-radius: var(--inputs-border-radius);
     -webkit-appearance: none;
     ::-webkit-search-cancel-button {
+        /* customize cross button  */
+        -webkit-appearance: none;
         display: inline-block;
         width: 12px;
         height: 12px;

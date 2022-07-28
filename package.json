@@ -21,7 +21,7 @@
     "build-verbose": "npx pequeno --clean --verbose",
     "build-blog": "npx pequeno --clean --page=blog --path=/blog/index.html --data=posts",
     "lint:js": "eslint --ext .jsx --ext .js .",
-    "lint:css": "stylelint src/**/*.{js,jsx}",
+    "lint:css": "stylelint **/*.{js,jsx}",
     "lint": "npm run lint:js && npm run lint:css",
     "postinstall": "cd src/pages/cerca && npm install"
   },
