@@ -23,7 +23,8 @@
     "lint:js": "eslint --ext .jsx --ext .js .",
     "lint:css": "stylelint **/*.{js,jsx}",
     "lint": "npm run lint:js && npm run lint:css",
-    "postinstall": "cd src/pages/cerca && npm install"
+    "postinstall": "cd src/pages/cerca && npm install",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
+    "husky": "^8.0.1",
     "jstoxml": "^3.2.3",
     "pequeno": "0.1.4",
     "postcss-styled": "^0.34.0",

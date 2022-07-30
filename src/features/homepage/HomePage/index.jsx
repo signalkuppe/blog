@@ -45,7 +45,7 @@ const HomePageGridHeader = styled.header`
 `;
 const HomePageGridImage = styled.figure`
     @media ${device.mobileAndTablet} {
-        width: 100vw;
+        width: 100%;
         aspect-ratio: 3/2;
         margin-bottom: calc(var(--space-unit) * 3);
     }
@@ -78,8 +78,7 @@ const HomePageGridContent = styled.main`
         ${hideScrollbar};
     }
     p {
-        display: inline-block;
-        max-width: 55ch;
+        max-width: 65ch;
     }
 `;
 
