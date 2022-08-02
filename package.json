@@ -13,17 +13,16 @@
     "dev-grazie": "npx pequeno --serve --page=grazie --noData --noAfterBuild",
     "dev-index": "npx pequeno --serve --page=index --noData --noAfterBuild",
     "dev-rss": "npx pequeno --page=post-item --data=posts",
-    "dev-cerca": "npm run build-blog && npm run copy-posts-json && cd src/pages/cerca && npm run dev",
+    "dev-cerca": "npm run build-blog && npm run copy-posts-json && cd src/pages/cerca && vite",
     "copy-posts-json": "mkdir -p ./src/pages/cerca/_data && cp .site/_data/posts.json ./src/pages/cerca/_data/posts.json",
     "copy-cerca-assets": "mkdir -p .site/assets && cp -R .site/cerca/assets .site",
-    "build-cerca": "cd src/pages/cerca && npm run build",
+    "build-cerca": "cd src/pages/cerca && vite build",
     "build": "npx pequeno --clean && npm run build-cerca && npm run copy-cerca-assets",
     "build-verbose": "npx pequeno --clean --verbose",
     "build-blog": "npx pequeno --clean --page=blog --path=/blog/index.html --data=posts",
     "lint:js": "eslint --ext .jsx --ext .js .",
     "lint:css": "stylelint **/*.{js,jsx}",
     "lint": "npm run lint:js && npm run lint:css",
-    "postinstall": "cd src/pages/cerca && npm install",
     "prepare": "husky install"
   },
   "repository": {
@@ -38,6 +37,9 @@
   "homepage": "https://www.signalkuppe.com",
   "devDependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.2",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.0",
     "contentful": "^8.4.0",
     "dayjs": "^1.10.6",
     "eslint": "^7.29.0",
@@ -55,7 +57,9 @@
     "stylelint": "^11.1.1",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.10.0"
+    "stylelint-processor-styled-components": "^1.10.0",
+    "vite": "^3.0.0",
+    "vite-plugin-svgr": "^2.2.1"
   },
   "dependencies": {
     "chart.js": "^3.9.0",
@@ -65,6 +69,8 @@
     "leaflet-gesture-handling": "^1.2.1",
     "leaflet-gpx": "^1.5.2",
     "quicklink": "^2.2.0",
-    "scrollama": "^3.1.0"
+    "rooks": "^5.14.0",
+    "scrollama": "^3.1.0",
+    "lunr": "^2.3.9"
   }
 }
