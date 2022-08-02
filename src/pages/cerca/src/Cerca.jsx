@@ -16,7 +16,7 @@ import BlogPostCard from '../../../features/blog/BlogPostCard';
 
 function Cerca() {
     const [state, setState] = useState({
-        fetching: false,
+        fetching: true,
         searching: false,
         hasSearched: false,
         posts: [],
@@ -57,7 +57,6 @@ function Cerca() {
     );
 
     useEffect(() => {
-        setState({ ...state, fetching: true });
         fetch('/_data/posts.json')
             .then((response) => response.json())
             .then((data) => {
@@ -69,12 +68,14 @@ function Cerca() {
                         this.add(post);
                     }, this);
                 });
-                setState({
-                    ...state,
-                    fetching: false,
-                    searchIndex: idx,
-                    posts: data,
-                });
+                setTimeout(() => {
+                    setState({
+                        ...state,
+                        fetching: false,
+                        searchIndex: idx,
+                        posts: data,
+                    });
+                }, 1500);
             });
     }, []);
 
@@ -92,61 +93,58 @@ function Cerca() {
                 </CloseButton>
             </Header>
             <ContentContainer as="main">
-                <Content>
+                {state.fetching && (
+                    <FetchingInfo>
+                        <Loader size="2rem" /> Inizializzo la ricerca ...
+                    </FetchingInfo>
+                )}
+
+                <Content fetching={state.fetching}>
                     <PageTitle small>Cerca una relazione</PageTitle>
-                    {!state.fetching && (
+                    <Form onSubmit={onFormSubmit}>
+                        <FormSearch>
+                            <TextField
+                                block
+                                placeholder="Es:Pizzo Scalino, orobie"
+                                value={state.query}
+                                onChange={(e) =>
+                                    setState({
+                                        ...state,
+                                        query: e.target.value,
+                                    })
+                                }
+                                ref={inputRef}
+                                type="search"
+                            />
+                            <ButtonContainer>
+                                {!state.searching && (
+                                    <Fab type="submit" aria-label="Cerca">
+                                        <Icon icon={SearchIcon} l />
+                                    </Fab>
+                                )}
+                                {state.searching && <Loader />}
+                            </ButtonContainer>
+                        </FormSearch>
+                    </Form>
+
+                    {!state.searching && state.hasSearched && (
                         <>
-                            <Form onSubmit={onFormSubmit}>
-                                <FormSearch>
-                                    <TextField
-                                        block
-                                        placeholder="Es:Pizzo Scalino, orobie"
-                                        value={state.query}
-                                        onChange={(e) =>
-                                            setState({
-                                                ...state,
-                                                query: e.target.value,
-                                            })
-                                        }
-                                        ref={inputRef}
-                                        type="search"
-                                    />
-                                    <ButtonContainer>
-                                        {!state.searching && (
-                                            <Fab
-                                                type="submit"
-                                                aria-label="Cerca"
-                                            >
-                                                <Icon icon={SearchIcon} l />
-                                            </Fab>
-                                        )}
-                                        {state.searching && <Loader />}
-                                    </ButtonContainer>
-                                </FormSearch>
-                            </Form>
-
-                            {!state.searching && state.hasSearched && (
-                                <>
-                                    {!hasResults && (
-                                        <NoResults>
-                                            Nessun risultato 😕
-                                        </NoResults>
-                                    )}
-                                    {hasResults && (
-                                        <ResultsList>
-                                            {state.searchResults.map((post) => (
-                                                <li key={post.id}>
-                                                    <BlogPostCard post={post} />
-                                                </li>
-                                            ))}
-                                        </ResultsList>
-                                    )}
-
-                                    <BackLink href={backToLink}>
-                                        &laquo; Torna alle relazioni
-                                    </BackLink>
-                                </>
+                            {!hasResults && (
+                                <NoResults>Nessun risultato 😕</NoResults>
                             )}
+                            {hasResults && (
+                                <ResultsList>
+                                    {state.searchResults.map((post) => (
+                                        <li key={post.id}>
+                                            <BlogPostCard post={post} />
+                                        </li>
+                                    ))}
+                                </ResultsList>
+                            )}
+
+                            <BackLink href={backToLink}>
+                                &laquo; Torna alle relazioni
+                            </BackLink>
                         </>
                     )}
                 </Content>
@@ -163,6 +161,12 @@ const Header = styled.header`
 
 const CloseButton = styled.a`
     color: var(--color-text);
+`;
+
+const FetchingInfo = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 `;
 
 const Form = styled.form``;
@@ -186,6 +190,8 @@ const Content = styled.div`
     flex-direction: column;
     gap: calc(var(--space-unit) * 2);
     padding-bottom: calc(var(--space-unit) * 4);
+    opacity: ${(props) => (props.fetching ? 0 : 1)};
+    transition: opacity 0.2s ease-in-out;
 `;
 
 const BackLink = styled.a`
