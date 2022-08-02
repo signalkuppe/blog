@@ -61,7 +61,7 @@ const showMap = function () {
                     x: data[0].toFixed(1),
                 })),
                 1,
-                rawElevationData.length < 2000 ? 2 : 20,
+                20,
             );
 
             setTimeout(() => {
@@ -85,7 +85,9 @@ const drawChart = function (elevationData) {
                 borderColor: getCssVar('--color-primary'),
                 borderWidth: 4,
                 data: elevationData,
-                pointRadius: 1,
+                pointRadius: 0,
+                pointBorderWidth: 0,
+                spanGaps: true,
             },
         ],
     };
@@ -106,6 +108,7 @@ const drawChart = function (elevationData) {
                         text: '(Km)',
                         color: getCssVar('--color-text-dark-accent'),
                     },
+
                     max: Math.floor(elevationData[elevationData.length - 1].x),
                     min: Math.floor(elevationData[0].x),
                     grid: {
