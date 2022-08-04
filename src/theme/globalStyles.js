@@ -80,6 +80,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     -webkit-text-size-adjust: 100%; /* 2 */
     scroll-padding-top: calc(var(--space-unit) * 4);
+    height: 100%;
   }
 
   body {
@@ -91,6 +92,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
+    height: 100%;
   }
 
   /**

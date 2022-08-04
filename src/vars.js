@@ -11,5 +11,5 @@ module.exports = {
     twitterAuthor: 'signalkuppe',
     newsletterUrl: 'http://eepurl.com/dgiWQH',
     homepageFoto:
-        '//images.ctfassets.net/rotmy72mdop6/AGcSil2jT7UhmU7oDphmX/4f9972b00fd481338648bc5f5003afda/io___gio.jpg',
+        '//images.ctfassets.net/rotmy72mdop6/550oMjcWnUrt5EsIpSFNX8/533a61fbef5a46f5f84452530f40dc4d/matteo-leoni.jpg',
 };

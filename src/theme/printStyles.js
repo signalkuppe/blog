@@ -45,7 +45,7 @@ const PrintStyles = createGlobalStyle`
       margin: 0!important;
     }
 
-     .print-post-date {
+    .print-post-date {
       font-size: 8pt!important;
     }
 
@@ -74,6 +74,9 @@ const PrintStyles = createGlobalStyle`
 
       p {
         margin-bottom:5pt!important ;
+        iframe {
+          display: none;
+        }
       }
     }
 
