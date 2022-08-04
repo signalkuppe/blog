@@ -30,7 +30,7 @@ import ViaggiIcon from '../../../public/icons/Viaggi.svg';
 
 const bloglink = blogLink();
 const portfoliolink = portfolioLink();
-const image = `${vars.homepageFoto}?w=800&fm=webp&q=50`;
+const image = `${vars.homepageFoto}?w=680&fm=webp&q=40`;
 
 const whats = [
     {
