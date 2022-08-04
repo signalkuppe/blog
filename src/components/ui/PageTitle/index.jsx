@@ -8,16 +8,12 @@ const StyledH1 = styled.h1`
     ${(props) =>
         !props.small &&
         css`
-            font-size: clamp(
-                var(--font-size-xx-large),
-                100rem,
-                calc(4vh + 3vw)
-            );
+            font-size: clamp(var(--font-size-x-large), 5vmax, 7rem);
         `}
     ${(props) =>
         props.small &&
         css`
-            font-size: clamp(var(--font-size-x-large), 100rem, calc(3vh + 1vw));
+            font-size: clamp(var(--font-size-x-large), 3.5vmax, 4rem);
         `}
     margin: 0;
 `;

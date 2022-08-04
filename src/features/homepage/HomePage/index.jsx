@@ -439,13 +439,13 @@ const TextConstraint = styled.div`
 
 const Intro = styled.p`
     font-weight: 700;
-    font-size: clamp(1.2rem, 3vmax, 2rem);
+    font-size: clamp(1.2rem, 2vmax, 2rem);
     line-height: 1.4;
     margin-top: calc(var(--space-unit) * 2);
     margin-bottom: calc(var(--space-unit) * 2);
     @media ${device.mobile} {
         margin-top: calc(var(--space-unit) * 1);
-        margin-bottom: calc(var(--space-unit) * 1);
+        margin-bottom: 0;
     }
 `;
 
