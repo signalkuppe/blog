@@ -291,9 +291,11 @@ const InnerContainer = styled.div`
     gap: calc(var(--space-unit) * 4);
     @media ${device.mobileAndTablet} {
         flex-direction: column;
-        gap: calc(var(--space-unit) * 1);
         max-width: 80vw;
         margin: 0 auto;
+    }
+    @media ${device.mobile} {
+        gap: calc(var(--space-unit) * 1.5);
     }
 `;
 
@@ -345,14 +347,8 @@ const Hand = styled.span`
 
 const StyledPageTitle = styled.h1`
     ${headingsStyles};
-    font-size: var(--font-size-xxxx-large);
+    font-size: clamp(2rem, 4vmax, 5rem);
     margin-bottom: 0.25em;
-    @media ${device.mobile} {
-        font-size: calc(var(--font-size-xx-large) - 0.75rem);
-    }
-    @media ${device.onlyTablet} {
-        font-size: var(--font-size-xxx-large);
-    }
 `;
 
 const faderCommonStyles = css`
@@ -366,7 +362,7 @@ const faderCommonStyles = css`
 `;
 
 const PageSubTitle = styled.h2`
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-medium);
     font-weight: 700;
     display: flex;
     align-items: flex-start;
@@ -441,7 +437,7 @@ const TextConstraint = styled.div`
 const Intro = styled.p`
     font-weight: 700;
     font-size: var(--font-size-x-large);
-    line-height: 1.3;
+    line-height: 1.4;
     margin-top: calc(var(--space-unit) * 2);
     margin-bottom: calc(var(--space-unit) * 2);
     @media ${device.mobile} {
@@ -474,6 +470,7 @@ const Details = styled.details`
 `;
 const Summary = styled.summary`
     cursor: pointer;
+    font-size: var(--font-size-medium);
     font-weight: 700;
     color: var(--color-primary);
     @media ${device.mobile} {
