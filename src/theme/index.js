@@ -22,7 +22,7 @@ export const vars = {
     '--headings-letter-spacing': '-0.02em',
     '--color-background': '#000',
     '--color-background-light': '#181818',
-    '--color-primary': '#FBA456',
+    '--color-primary': '#F4BF3A',
     '--color-text': '#d6d6d6',
     '--color-text-light-accent': '#FFFFFF',
     '--color-text-dark-accent': '#AAAAAA',

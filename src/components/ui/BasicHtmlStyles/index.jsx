@@ -96,20 +96,6 @@ const Container = styled.div`
         }
     }
 
-    @media screen {
-        > p:first-of-type:first-letter {
-            font-family: var(--font-family-drop-cap);
-            font-size: var(--font-size-xxxx-large);
-            font-weight: 700;
-            color: var(--color-text-light-accent);
-            float: left;
-            line-height: 0.8em;
-            padding-top: 10px;
-            padding-right: 0.2em;
-            padding-left: 0;
-        }
-    }
-
     /* youtube embeds */
 
     [data-youtube-embed] {

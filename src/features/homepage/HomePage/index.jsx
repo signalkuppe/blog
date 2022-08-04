@@ -1,108 +1,75 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import vars from '../../../vars';
-import { device, hideScrollbar, imagesStyles } from '../../../theme';
+import {
+    device,
+    headingsStyles,
+    hideScrollbar,
+    visuallyHidden,
+} from '../../../theme';
 import { blogLink } from '../../../pages/blog';
 import { portfolioLink } from '../../../pages/portfolio';
 import { permalink as contattilink } from '../../../pages/contatti';
+import Container from '../../../components/layout/Container';
 import Head from '../../../components/common/Head';
 import Header from '../../../components/common/Header';
 import Html from '../../../components/common/Html';
 import Body from '../../../components/common/Body';
 import CommonStyles from '../../../components/common/CommonStyles';
 import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
-import PageTitle from '../../../components/ui/PageTitle';
-
-const imgeUrl = vars.homepageFoto;
-const smallImage = `${imgeUrl}?w=600&h=400&fm=webp&q=50`;
-const mediumImage = `${imgeUrl}?w=1280&h=853&fm=webp&q=50`;
-const largeImage = `${imgeUrl}?w=1920&h=1280&fm=webp&q=50`;
-const extraLargeImage = `${imgeUrl}?w=3000&h=2000&fm=webp&q=50`;
+import Icon from '../../../components/ui/Icon';
+import MountainIcon from '../../../public/icons/Mountain.svg';
+import AlpinismoIcon from '../../../public/icons/Alpinismo.svg';
+import EscursionismoIcon from '../../../public/icons/Escursionismo.svg';
+import ScialpinismoIcon from '../../../public/icons/Scialpinismo.svg';
+import TrailRunningIcon from '../../../public/icons/Trail.svg';
+import TrekkingIcon from '../../../public/icons/Trekking.svg';
+import CameraIcon from '../../../public/icons/Camera.svg';
+import CodeIcon from '../../../public/icons/Code.svg';
+import ViaggiIcon from '../../../public/icons/Viaggi.svg';
 
 const bloglink = blogLink();
 const portfoliolink = portfolioLink();
+const image = `${vars.homepageFoto}?w=680&fm=webp&q=40`;
 
-const StyledPageTitle = styled(PageTitle)`
-    margin-bottom: 1.5em;
-`;
-
-const HomePageGrid = styled.div`
-    padding-bottom: calc(var(--space-unit) * 2);
-    @media ${device.desktop} {
-        display: grid;
-        height: 100vh;
-        grid-template-columns: 60vw 40vw;
-        grid-template-rows: var(--header-height) calc(
-                100vh - var(--header-height)
-            );
-    }
-`;
-const HomePageGridHeader = styled.header`
-    grid-area: 1 / 1 / 1 / span 2;
-    @media ${device.desktop} {
-        z-index: 1;
-    }
-`;
-const HomePageGridImage = styled.figure`
-    @media ${device.mobileAndTablet} {
-        width: 100%;
-        aspect-ratio: 3/2;
-        margin-bottom: calc(var(--space-unit) * 3);
-    }
-    @media ${device.onlyTablet} {
-        margin-bottom: calc(var(--space-unit) * 4);
-    }
-    @media ${device.desktop} {
-        grid-area: 1 / 2 / 1 / 1;
-        height: 100vh;
-    }
-    img {
-        ${imagesStyles}
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(0.8) contrast(1.3);
-    }
-`;
-const HomePageGridContent = styled.main`
-    padding: 0 4vmax 2vh 4vmax;
-    margin: 0 auto;
-    @media ${device.mobileAndTablet} {
-        margin: 0 auto;
-    }
-    @media ${device.desktop} {
-        grid-area: 2 / 2 / 2 / 2;
-        height: calc(100vh - var(--header-height));
-        overflow-y: auto;
-        padding-top: calc(var(--space-unit) * 1.5);
-        ${hideScrollbar};
-    }
-    p {
-        max-width: 65ch;
-    }
-`;
-
-const animation = keyframes`
-    0% { transform: rotate( 0.0deg) }
-   10% { transform: rotate(14.0deg) }
-   20% { transform: rotate(-8.0deg) }
-   30% { transform: rotate(14.0deg) }
-   40% { transform: rotate(-4.0deg) }
-   50% { transform: rotate(10.0deg) }
-   60% { transform: rotate( 0.0deg) }
-  100% { transform: rotate( 0.0deg) }
-`;
-
-const Hand = styled.span`
-    display: inline-block;
-    margin-left: 0.2em;
-    @media ${device.noReduceMotion} {
-        animation-name: ${animation};
-        animation-duration: 1.2s;
-        animation-delay: 1s;
-        transform-origin: 70% 70%;
-    }
-`;
+const whats = [
+    {
+        icon: MountainIcon,
+        text: 'un appassionato di montagna',
+    },
+    {
+        icon: AlpinismoIcon,
+        text: 'un quasi alpinista',
+    },
+    {
+        icon: EscursionismoIcon,
+        text: 'un escursionista',
+    },
+    {
+        icon: ScialpinismoIcon,
+        text: 'uno scialpinista',
+    },
+    {
+        icon: TrailRunningIcon,
+        text: 'un trail runner',
+    },
+    {
+        icon: TrekkingIcon,
+        text: 'un trekker',
+    },
+    {
+        icon: CameraIcon,
+        text: 'un appassionato di fotografia',
+    },
+    {
+        icon: CodeIcon,
+        text: 'un front-end engineer',
+    },
+    {
+        icon: ViaggiIcon,
+        text: 'un viaggiatore',
+    },
+];
 
 export default function HomePage({ route }) {
     return (
@@ -136,136 +103,381 @@ export default function HomePage({ route }) {
             />
             <Body>
                 <CommonStyles />
-                <HomePageGrid>
-                    <HomePageGridHeader>
-                        <Header route={route} />
-                    </HomePageGridHeader>
-                    <HomePageGridImage>
-                        <picture>
-                            <source
-                                media="(min-width: 2500px)"
-                                srcSet={extraLargeImage}
-                            />
-                            <source
-                                media="(min-width: 1920px)"
-                                srcSet={largeImage}
-                            />
-                            <source
-                                media="(min-width: 1024px)"
-                                srcSet={mediumImage}
-                            />
-                            <img
-                                src={smallImage}
-                                alt="Matteo e Giorgio Leoni"
-                            />
-                        </picture>
-                    </HomePageGridImage>
-                    <HomePageGridContent>
-                        <StyledPageTitle small forwardedAs="h2">
-                            Piacere Matteo <Hand aria-hidden="true">👋</Hand>
-                        </StyledPageTitle>
-                        <BasicHtmlStyles>
-                            <p>
-                                Benvenuti sul mio blog. La{' '}
-                                <strong>montagna</strong> è la mia grande
-                                passione. È stato <strong>mio papà</strong> a
-                                introdurmi a questo magico mondo e, da allora,
-                                non ho mai smesso di cercare nuove avventure.
-                                Questo blog è un{' '}
-                                <a
-                                    href={bloglink}
-                                    title="Elenco alle relazioni"
-                                >
-                                    diario di tutte le mie gite,
-                                </a>{' '}
-                                spero possa esservi utile per scoprire nuovi
-                                itinerari.
-                            </p>
+                <Header route={route} as="header" />
+                <StyledContainer fullWidth>
+                    <InnerContainer>
+                        <Content>
+                            <hgroup>
+                                <StyledPageTitle forwardedAs="h2">
+                                    Piacere Matteo{' '}
+                                    <Hand aria-hidden="true">👋</Hand>
+                                </StyledPageTitle>
+                                <PageSubTitle>
+                                    <span>Sono</span>
+                                    <PageTitleWhatWrapper>
+                                        {whats.map((what, index) => (
+                                            <PageSubTitleWhat key={index}>
+                                                <Icon left icon={what.icon} />
+                                                {what.text}
+                                                {index < whats.length - 1 && (
+                                                    <Comma>, </Comma>
+                                                )}
+                                            </PageSubTitleWhat>
+                                        ))}
+                                    </PageTitleWhatWrapper>
+                                </PageSubTitle>
+                            </hgroup>
+                            <TextConstraint>
+                                <Intro>
+                                    Questo blog è un diario di tutte le mie
+                                    gite, spero possa esservi utile per scoprire
+                                    nuovi itinerari.
+                                </Intro>
+                            </TextConstraint>
+                            <Details>
+                                <Summary>
+                                    <SummaryOpenText>
+                                        Raccontami qualcosa in più di te
+                                    </SummaryOpenText>
+                                    <SummaryCloseText>
+                                        Meno grazie
+                                    </SummaryCloseText>
+                                </Summary>
+                                <TextConstraint>
+                                    <BasicHtmlStyles>
+                                        <p>
+                                            La <strong>montagna</strong> è la
+                                            mia grande passione. È stato{' '}
+                                            <strong>mio papà</strong> a
+                                            introdurmi a questo magico mondo e,
+                                            da allora, non ho mai smesso di
+                                            cercare nuove avventure.
+                                        </p>
 
-                            <p>
-                                Sono un semplice{' '}
-                                <strong>appassionato di fotografia, </strong>
-                                senza alcuna velleità professionale. Potete
-                                utilizzare tutte le mie foto come volete. Non
-                                avete neanche l’obbligo di citare la fonte ma un
-                                gesto di cortesia verrà apprezzato sicuramente.
-                            </p>
-                            <p>
-                                Lavoro come un{' '}
-                                <strong>front-end engineer.</strong> Trasformo
-                                un design in un’applicazione web, con
-                                particolare attenzione alla scomposizione in
-                                componenti e alle performance. Utilizzo
-                                principalmente{' '}
-                                <a href="https://reactjs.org/">React</a>,{' '}
-                                <a href="https://www.figma.com/">Figma</a>,{' '}
-                                <a href="https://storybook.js.org/">
-                                    Storybook
-                                </a>{' '}
-                                e{' '}
-                                <a href="https://styled-components.com/">
-                                    Styled Components
-                                </a>{' '}
-                                . Amo{' '}
-                                <a href="https://en.wikipedia.org/wiki/CSS">
-                                    css,
-                                </a>{' '}
-                                credo sia un linguaggio meraviglioso.
-                            </p>
-                            <p>
-                                <a
-                                    href="https://it.wikipedia.org/wiki/Punta_Gnifetti"
-                                    rel="noopener"
-                                >
-                                    Signalkuppe
-                                </a>
-                                <em> — il mio nickname — </em> è il nome in
-                                tedesco della Punta Gnifetti.
-                            </p>
-                            <p>
-                                Questo sito è stato realizzato con{' '}
-                                <a
-                                    href="https://github.com/signalkuppe/pequeno"
-                                    title="Pequeno, uno static site generator basato su react"
-                                >
-                                    Pequeño
-                                </a>
-                                , uno <strong>static site generator</strong>{' '}
-                                basato su React che ho sviluppato appositamente
-                                per il blog. Se volete spulciare il codice
-                                sorgente{' '}
-                                <a
-                                    href="https://github.com/signalkuppe/blog"
-                                    rel="noopener"
-                                    title="Il codice sorgente del blog"
-                                >
-                                    lo trovate qui.
-                                </a>
-                            </p>
-                            <p>
-                                Esiste{' '}
-                                <a href={vars.newsletterUrl}>una newsletter</a>{' '}
-                                per ricevere gli ultimi aggiornamenti del sito,
-                                e un{' '}
-                                <a href={`${vars.websiteUrl}/rss.xml`}>
-                                    feed rss
-                                </a>{' '}
-                                con l’elenco completo delle relazioni.
-                            </p>
-                            <p>
-                                <a href="/contatti" rel="noopener">
-                                    Contattatemi
-                                </a>{' '}
-                                per parlare di un vostro progetto o di montagna!
-                            </p>
-                            <p>
-                                Non avete visto alcun banner perchè questo sito
-                                non imposta cookies 🙂
-                            </p>
-                        </BasicHtmlStyles>
-                    </HomePageGridContent>
-                </HomePageGrid>
+                                        <p>
+                                            Sono un semplice{' '}
+                                            <strong>
+                                                appassionato di fotografia,{' '}
+                                            </strong>
+                                            senza alcuna velleità professionale.
+                                            Potete utilizzare tutte le mie foto
+                                            come volete. Non avete neanche
+                                            l’obbligo di citare la fonte ma un
+                                            gesto di cortesia verrà apprezzato
+                                            sicuramente.
+                                        </p>
+                                        <p>
+                                            Lavoro come un{' '}
+                                            <strong>front-end engineer.</strong>{' '}
+                                            Trasformo un design in
+                                            un’applicazione web, con particolare
+                                            attenzione alla scomposizione in
+                                            componenti e alle performance.
+                                            Utilizzo principalmente{' '}
+                                            <a href="https://reactjs.org/">
+                                                React
+                                            </a>
+                                            ,{' '}
+                                            <a href="https://www.figma.com/">
+                                                Figma
+                                            </a>
+                                            ,{' '}
+                                            <a href="https://storybook.js.org/">
+                                                Storybook
+                                            </a>{' '}
+                                            e{' '}
+                                            <a href="https://styled-components.com/">
+                                                Styled Components
+                                            </a>{' '}
+                                            . Amo{' '}
+                                            <a href="https://en.wikipedia.org/wiki/CSS">
+                                                css,
+                                            </a>{' '}
+                                            credo sia un linguaggio
+                                            meraviglioso.
+                                        </p>
+                                        <p>
+                                            <a
+                                                href="https://it.wikipedia.org/wiki/Punta_Gnifetti"
+                                                rel="noopener"
+                                            >
+                                                Signalkuppe
+                                            </a>
+                                            <em> — il mio nickname — </em> è il
+                                            nome in tedesco della Punta
+                                            Gnifetti.
+                                        </p>
+                                        <p>
+                                            Questo sito è stato realizzato con{' '}
+                                            <a
+                                                href="https://github.com/signalkuppe/pequeno"
+                                                title="Pequeno, uno static site generator basato su react"
+                                            >
+                                                Pequeño
+                                            </a>
+                                            , uno{' '}
+                                            <strong>
+                                                static site generator
+                                            </strong>{' '}
+                                            basato su React che ho sviluppato
+                                            appositamente per il blog. Se volete
+                                            spulciare il codice sorgente{' '}
+                                            <a
+                                                href="https://github.com/signalkuppe/blog"
+                                                rel="noopener"
+                                                title="Il codice sorgente del blog"
+                                            >
+                                                lo trovate qui.
+                                            </a>
+                                        </p>
+                                        <p>
+                                            Esiste{' '}
+                                            <a href={vars.newsletterUrl}>
+                                                una newsletter
+                                            </a>{' '}
+                                            per ricevere gli ultimi
+                                            aggiornamenti del sito, e un{' '}
+                                            <a
+                                                href={`${vars.websiteUrl}/rss.xml`}
+                                            >
+                                                feed rss
+                                            </a>{' '}
+                                            con l’elenco completo delle
+                                            relazioni.
+                                        </p>
+                                        <p>
+                                            <a href="/contatti" rel="noopener">
+                                                Contattatemi
+                                            </a>{' '}
+                                            per parlare di un vostro progetto o
+                                            di montagna!
+                                        </p>
+                                        <p>
+                                            Non avete visto alcun banner perchè
+                                            questo sito non imposta cookies 🙂
+                                        </p>
+                                    </BasicHtmlStyles>
+                                </TextConstraint>
+                            </Details>
+                        </Content>
+                        <Image>
+                            <img
+                                src={image}
+                                alt="Matteo Leoni"
+                                width={800}
+                                height={800}
+                            />
+                        </Image>
+                    </InnerContainer>
+                </StyledContainer>
             </Body>
         </Html>
     );
 }
+
+const StyledContainer = styled(Container)`
+    height: calc(100% - var(--header-height));
+    overflow-y: auto;
+    ${hideScrollbar}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+`;
+
+const InnerContainer = styled.div`
+    position: relative;
+    top: calc(0px - calc(var(--header-height) / 2));
+    display: flex;
+    gap: calc(var(--space-unit) * 4);
+    @media ${device.mobileAndTablet} {
+        flex-direction: column;
+        max-width: 80vw;
+        margin: 0 auto;
+    }
+    @media ${device.mobile} {
+        gap: calc(var(--space-unit) * 1);
+    }
+    @media ${device.onlyTablet} {
+        gap: calc(var(--space-unit) * 2);
+    }
+`;
+
+const Content = styled.main`
+    @media ${device.mobileAndTablet} {
+        order: 2;
+    }
+`;
+const Image = styled.aside`
+    img {
+        width: 35vh;
+        height: 35vh;
+        border-radius: 50%;
+        overflow: hidden;
+        object-fit: cover;
+        aspect-ratio: 1/ 1;
+        @media ${device.mobileAndTablet} {
+            width: 20vmax;
+            height: 20vmax;
+        }
+    }
+    @media ${device.mobileAndTablet} {
+        order: 1;
+        align-self: center;
+    }
+`;
+
+const handAnimation = keyframes`
+    0% { transform: rotate( 0.0deg) }
+   10% { transform: rotate(14.0deg) }
+   20% { transform: rotate(-8.0deg) }
+   30% { transform: rotate(14.0deg) }
+   40% { transform: rotate(-4.0deg) }
+   50% { transform: rotate(10.0deg) }
+   60% { transform: rotate( 0.0deg) }
+  100% { transform: rotate( 0.0deg) }
+`;
+
+const Hand = styled.span`
+    display: inline-block;
+    margin-left: 0.1em;
+    @media ${device.noReduceMotion} {
+        animation-name: ${handAnimation};
+        animation-duration: 1.2s;
+        animation-delay: 1s;
+        transform-origin: 70% 70%;
+    }
+`;
+
+const StyledPageTitle = styled.h1`
+    ${headingsStyles};
+    font-size: clamp(2rem, 4vmax, 5rem);
+    margin-bottom: 0.25em;
+`;
+
+const faderCommonStyles = css`
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0.25em;
+    z-index: 1;
+`;
+
+const PageSubTitle = styled.h2`
+    font-size: var(--font-size-medium);
+    font-weight: 700;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.25em;
+    white-space: nowrap;
+    height: 1.5em;
+    line-height: 1.5em;
+    overflow: hidden;
+    position: relative;
+    ::after {
+        ${faderCommonStyles};
+        top: 0;
+        background: linear-gradient(
+            to bottom,
+            var(--color-background) 0%,
+            transparent 100%
+        );
+    }
+    ::before {
+        ${faderCommonStyles};
+        bottom: 0;
+        background: linear-gradient(
+            to top,
+            var(--color-background) 0%,
+            transparent 100%
+        );
+    }
+    @media ${device.mobile} {
+        font-size: var(--font-size-base);
+    }
+`;
+
+const PageSubTitleWhat = styled.span`
+    color: var(--color-primary);
+    svg {
+        height: 0.9em;
+    }
+`;
+
+const whatAnimation = keyframes`
+    0%    { transform: translateY(0) }
+    12.5% { transform: translateY(-1.5em) }
+    25%   { transform: translateY(-3em) }
+    37.5% { transform: translateY(-4.5em) }
+    50%   { transform: translateY(-6em) }
+    62.5% { transform: translateY(-7.5em) }
+    75%   { transform: translateY(-9em) }
+    87.5% { transform: translateY(-10.5em) }
+    100%  { transform: translateY(-12em) }
+`;
+
+const PageTitleWhatWrapper = styled.span`
+    display: flex;
+    flex-direction: column;
+    @media ${device.noReduceMotion} {
+        animation-name: ${whatAnimation};
+        animation-duration: 16s;
+        animation-delay: 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+`;
+
+const Comma = styled.span`
+    ${visuallyHidden}
+`;
+
+const TextConstraint = styled.div`
+    max-width: 55ch;
+`;
+
+const Intro = styled.p`
+    font-weight: 700;
+    font-size: clamp(1.2rem, 3vmax, 2rem);
+    line-height: 1.4;
+    margin-top: calc(var(--space-unit) * 2);
+    margin-bottom: calc(var(--space-unit) * 2);
+    @media ${device.mobile} {
+        margin-top: calc(var(--space-unit) * 1);
+        margin-bottom: calc(var(--space-unit) * 1);
+    }
+`;
+
+const SummaryCloseText = styled.span``;
+const SummaryOpenText = styled.span``;
+
+const Details = styled.details`
+    position: absolute;
+    &:not([open]) ${SummaryCloseText} {
+        display: none;
+    }
+    &:not([open]) ${SummaryOpenText} {
+        display: initial;
+    }
+    &[open] ${SummaryOpenText} {
+        display: none;
+    }
+    &[open] ${SummaryCloseText} {
+        display: initial;
+    }
+    p:first-child {
+        margin-top: var(--space-unit);
+    }
+`;
+const Summary = styled.summary`
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    color: var(--color-primary);
+    @media ${device.mobile} {
+        font-size: var(--font-size-small);
+        margin-top: calc(var(--space-unit) * 1);
+        margin-bottom: calc(var(--space-unit) * 1);
+    }
+`;
