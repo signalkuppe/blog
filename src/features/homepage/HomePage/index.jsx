@@ -295,7 +295,10 @@ const InnerContainer = styled.div`
         margin: 0 auto;
     }
     @media ${device.mobile} {
-        gap: calc(var(--space-unit) * 1.5);
+        gap: calc(var(--space-unit) * 1);
+    }
+    @media ${device.onlyTablet} {
+        gap: calc(var(--space-unit) * 2);
     }
 `;
 
@@ -313,8 +316,8 @@ const Image = styled.aside`
         object-fit: cover;
         aspect-ratio: 1/ 1;
         @media ${device.mobileAndTablet} {
-            width: 25vh;
-            height: 25vh;
+            width: 20vmax;
+            height: 20vmax;
         }
     }
     @media ${device.mobileAndTablet} {
@@ -436,12 +439,11 @@ const TextConstraint = styled.div`
 
 const Intro = styled.p`
     font-weight: 700;
-    font-size: var(--font-size-x-large);
+    font-size: clamp(1.2rem, 3vmax, 2rem);
     line-height: 1.4;
     margin-top: calc(var(--space-unit) * 2);
     margin-bottom: calc(var(--space-unit) * 2);
     @media ${device.mobile} {
-        font-size: var(--font-size-medium);
         margin-top: calc(var(--space-unit) * 1);
         margin-bottom: calc(var(--space-unit) * 1);
     }
