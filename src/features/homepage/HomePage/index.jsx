@@ -472,10 +472,12 @@ const Details = styled.details`
 `;
 const Summary = styled.summary`
     cursor: pointer;
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-base);
     font-weight: 700;
     color: var(--color-primary);
     @media ${device.mobile} {
-        font-size: var(--font-size-base);
+        font-size: var(--font-size-small);
+        margin-top: calc(var(--space-unit) * 1);
+        margin-bottom: calc(var(--space-unit) * 1);
     }
 `;
