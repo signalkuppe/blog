@@ -72,8 +72,8 @@ export const headingsStyles = css`
 
 export const headingsSize = {
     h1: 'var(--font-size-xxx-large)',
-    h2: 'var(--font-size-x-large)',
-    h3: 'var(--font-size-large)',
+    h2: 'var(--font-size-large)',
+    h3: 'var(--font-size-medium)',
 };
 
 export const linksStyles = css`
@@ -114,6 +114,7 @@ export const boldStyles = css`
 
 export const figCaptionStyles = css`
     font-family: var(--font-family-cursive);
+    font-size: var(--font-size-small);
     color: var(--color-text-light-accent);
     line-height: 1.5;
     font-weight: 900;

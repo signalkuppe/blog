@@ -40,7 +40,11 @@ const StyledFigure = styled.figure`
 
 const StyledFigcaption = styled.figcaption`
     font-style: normal;
-    font-size: clamp(var(--font-size-small), var(--font-size-xxx-large), 3vmax);
+    font-size: clamp(
+        var(--font-size-base),
+        2.5vmax,
+        var(--font-size-xxx-large)
+    );
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: var(--headings-letter-spacing);

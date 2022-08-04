@@ -63,8 +63,8 @@ const PostTitle = styled.h2`
     font-size: ${headingsSize.h2};
     margin: 0;
     margin-bottom: calc(var(--space-unit) / 2);
-    @media ${device.mobile} {
-        font-size: var(--font-size-large);
+    @media ${device.desktop} {
+        font-size: var(--font-size-x-large);
     }
 `;
 
