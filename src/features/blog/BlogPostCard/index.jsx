@@ -64,6 +64,9 @@ const PostTitle = styled.h2`
     margin: 0;
     margin-bottom: calc(var(--space-unit) / 2);
     @media ${device.desktop} {
+        font-size: var(--font-size-large);
+    }
+    @media ${device.largeDesktop} {
         font-size: var(--font-size-x-large);
     }
 `;

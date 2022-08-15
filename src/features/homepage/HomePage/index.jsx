@@ -252,10 +252,6 @@ export default function HomePage({ route }) {
                                             per parlare di un vostro progetto o
                                             di montagna!
                                         </p>
-                                        <p>
-                                            Non avete visto alcun banner perchè
-                                            questo sito non imposta cookies 🙂
-                                        </p>
                                     </BasicHtmlStyles>
                                 </TextConstraint>
                             </Details>
@@ -400,6 +396,7 @@ const PageSubTitle = styled.h2`
 
 const PageSubTitleWhat = styled.span`
     color: var(--color-primary);
+    height: 1.5rem;
     svg {
         height: 0.9em;
     }
@@ -407,14 +404,14 @@ const PageSubTitleWhat = styled.span`
 
 const whatAnimation = keyframes`
     0%    { transform: translateY(0) }
-    12.5% { transform: translateY(-1.5em) }
-    25%   { transform: translateY(-3em) }
-    37.5% { transform: translateY(-4.5em) }
-    50%   { transform: translateY(-6em) }
-    62.5% { transform: translateY(-7.5em) }
-    75%   { transform: translateY(-9em) }
-    87.5% { transform: translateY(-10.5em) }
-    100%  { transform: translateY(-12em) }
+    12.5% { transform: translateY(-1.5rem) }
+    25%   { transform: translateY(-3rem) }
+    37.5% { transform: translateY(-4.5rem) }
+    50%   { transform: translateY(-6rem) }
+    62.5% { transform: translateY(-7.5rem) }
+    75%   { transform: translateY(-9rem) }
+    87.5% { transform: translateY(-10.5rem) }
+    100%  { transform: translateY(-12rem) }
 `;
 
 const PageTitleWhatWrapper = styled.span`
