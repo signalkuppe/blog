@@ -117,7 +117,7 @@ export default function HomePage({ route }) {
                                     <PageTitleWhatWrapper>
                                         {whats.map((what, index) => (
                                             <PageSubTitleWhat key={index}>
-                                                <Icon left icon={what.icon} />
+                                                <Icon icon={what.icon} />
                                                 {what.text}
                                                 {index < whats.length - 1 && (
                                                     <Comma>, </Comma>
@@ -356,7 +356,7 @@ const faderCommonStyles = css`
     position: absolute;
     left: 0;
     width: 100%;
-    height: 0.25em;
+    height: 0.3em;
     z-index: 1;
 `;
 
@@ -367,8 +367,8 @@ const PageSubTitle = styled.h2`
     align-items: flex-start;
     gap: 0.25em;
     white-space: nowrap;
-    height: 1.5em;
-    line-height: 1.5em;
+    height: 1.5rem;
+    line-height: 1.5rem;
     overflow: hidden;
     position: relative;
     ::after {
@@ -382,7 +382,7 @@ const PageSubTitle = styled.h2`
     }
     ::before {
         ${faderCommonStyles};
-        bottom: 0;
+        bottom: -0.2em;
         background: linear-gradient(
             to top,
             var(--color-background) 0%,
@@ -398,7 +398,8 @@ const PageSubTitleWhat = styled.span`
     color: var(--color-primary);
     height: 1.5rem;
     svg {
-        height: 0.9em;
+        height: 0.8em;
+        margin-right: 0.15em;
     }
 `;
 
