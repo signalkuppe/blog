@@ -114,7 +114,6 @@ export const boldStyles = css`
 
 export const figCaptionStyles = css`
     font-family: var(--font-family-cursive);
-    font-size: var(--font-size-small);
     color: var(--color-text-light-accent);
     line-height: 1.5;
     font-weight: 900;

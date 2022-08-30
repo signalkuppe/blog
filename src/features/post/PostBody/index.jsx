@@ -18,6 +18,9 @@ const PostBody = styled.div`
             padding-right: 0.2em;
             padding-left: 0;
         }
+        ul li p {
+            all: unset;
+        }
     }
 `;
 

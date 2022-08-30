@@ -51,6 +51,8 @@ const Chart = styled.figure`
     margin-bottom: calc(var(--space-unit) * 2);
     canvas {
         max-width: var(--container-max-width);
+        width: 100%;
+        height: auto;
         aspect-ratio: attr(width) / attr(height);
     }
 `;
@@ -107,13 +109,21 @@ export default function PostGps({ post }) {
 
                     <Buttons>
                         {gps.gpx && (
-                            <Button href={gps.gpx} as="a" download>
+                            <Button
+                                href={gps.gpx}
+                                as="a"
+                                className="js-gps-download"
+                            >
                                 <Icon icon={DownloadIcon} left l />
                                 Traccia .gpx
                             </Button>
                         )}
                         {gps.kml && (
-                            <Button href={gps.kml} as="a" download>
+                            <Button
+                                href={gps.kml}
+                                as="a"
+                                className="js-gps-download"
+                            >
                                 <Icon icon={DownloadIcon} left l />
                                 Traccia .kml
                             </Button>

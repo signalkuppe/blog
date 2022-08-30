@@ -3,6 +3,7 @@ const minEl = document.getElementById('js-postGps-min');
 const maxEl = document.getElementById('js-postGps-max');
 const gainEl = document.getElementById('js-postGps-gain');
 const distanceEl = document.getElementById('js-postGps-distance');
+const gpsDownloadButtons = document.querySelectorAll('.js-gps-download');
 let loaded;
 
 function decimateArray(arr, passes = 1, fidelity = 2) {
@@ -139,4 +140,28 @@ document.addEventListener('post-section-reached', function (event) {
     if (event.detail.section === 'mappa' && !loaded) {
         showMap();
     }
+});
+
+// force download on gpx ad kml files for files on contentful
+Array.from(gpsDownloadButtons).forEach(function (button) {
+    const url = button.getAttribute('href');
+    const filename = url.split('/').pop();
+    button.removeAttribute('href');
+    button.addEventListener('click', function (e) {
+        e.preventDefault();
+        fetch(url)
+            .then((response) => response.blob())
+            .then((blob) => {
+                const blobURL = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobURL;
+                a.style = 'display: none';
+                document.body.appendChild(a);
+                a.setAttribute('download', filename);
+                a.click();
+            })
+            .catch((err) => {
+                console.log('download error', err);
+            });
+    });
 });
