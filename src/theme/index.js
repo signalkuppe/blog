@@ -33,7 +33,7 @@ export const vars = {
     '--color-map-track': 'blue',
     '--color-lightbox-background': '#000',
     '--color-lightbox-color': 'rgba(255, 255, 255, 0.8)',
-    '--color-lightbox-overlay': 'rgba(0,0,0,0.5)',
+    '--color-lightbox-overlay': 'rgba(0,0,0,0.7)',
     '--color-facebook': '#1877f2',
     '--color-twitter': '#1da1f2',
     '--color-whatsapp': '#25d366',

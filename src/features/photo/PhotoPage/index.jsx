@@ -23,7 +23,7 @@ const overlay = css`
 
 const overlayCommonStyles = css`
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     width: 100%;
 `;
 
@@ -32,6 +32,7 @@ const navLinksCommonStyles = css`
     height: 2.5em;
     display: grid;
     place-items: center;
+    z-index: 3;
     ${overlay};
     :hover {
         background-color: var(--color-button-background);
@@ -41,14 +42,11 @@ const navLinksCommonStyles = css`
 
 const ImageContainer = styled.div`
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+    overflow: hidden;
     position: relative;
-    opacity: 0;
     transition: opacity 0.3s ease-in-out;
     background: var(--color-lightbox-background);
-    &.js-is-ready {
-        opacity: 1;
-    }
 `;
 
 const StyledLoader = styled(Loader)`
@@ -92,8 +90,16 @@ const ImageFooter = styled.figcaption`
     ${overlayCommonStyles}
     ${overlay}
     padding: 0.75em var(--space-unit);
+    transform: translateY(100%);
+    transition: transform 0.2s ease-in-out;
     @media ${device.desktop} {
+        font-size: var(--font-size-medium);
+    }
+    @media ${device.largeDesktop} {
         font-size: var(--font-size-large);
+    }
+    &.js-is-hovering {
+        transform: translateY(0%);
     }
 `;
 
@@ -105,7 +111,6 @@ const PrevLink = styled.a`
     transform: translate(0%, -50%);
     ${navLinksCommonStyles}
     position: absolute;
-    z-index: 2;
 `;
 const NextLink = styled.a`
     right: 0;
@@ -113,7 +118,6 @@ const NextLink = styled.a`
     transform: translate(0%, -50%);
     position: absolute;
     ${navLinksCommonStyles}
-    z-index: 2;
 `;
 
 const HeaderLink = styled.a`
@@ -185,7 +189,7 @@ export default function PhotoPage({ photo, pagination, backTo, backToText }) {
                                 width={photo.width}
                             />
                         </picture>
-                        <ImageFooter>
+                        <ImageFooter id="js-foto-caption">
                             <h1>{photo.title}</h1>
                         </ImageFooter>
                     </figure>

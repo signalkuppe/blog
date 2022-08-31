@@ -38,9 +38,11 @@ const PhotoCaption = styled.div`
 `;
 const PhotoTitle = styled.h2`
     ${headingsStyles};
-    font-size: var(--font-size-medium);
     color: var(--color-text);
     margin: 0;
+    @media ${device.largeDesktop} {
+        font-size: var(--font-size-medium);
+    }
 `;
 const PhotoDate = styled.time`
     display: block;

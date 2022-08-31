@@ -95,37 +95,39 @@ function Cerca() {
             <ContentContainer as="main">
                 {state.fetching && (
                     <FetchingInfo>
-                        <Loader size="2rem" /> Inizializzo la ricerca ...
+                        <Loader size="2rem" /> <b>Inizializzo la ricerca ...</b>
                     </FetchingInfo>
                 )}
 
                 <Content fetching={state.fetching}>
-                    <PageTitle small>Cerca una relazione</PageTitle>
-                    <Form onSubmit={onFormSubmit}>
-                        <FormSearch>
-                            <TextField
-                                block
-                                placeholder="Es:Pizzo Scalino, orobie"
-                                value={state.query}
-                                onChange={(e) =>
-                                    setState({
-                                        ...state,
-                                        query: e.target.value,
-                                    })
-                                }
-                                ref={inputRef}
-                                type="search"
-                            />
-                            <ButtonContainer>
-                                {!state.searching && (
-                                    <Fab type="submit" aria-label="Cerca">
-                                        <Icon icon={SearchIcon} l />
-                                    </Fab>
-                                )}
-                                {state.searching && <Loader />}
-                            </ButtonContainer>
-                        </FormSearch>
-                    </Form>
+                    <TitleAndFormContainer>
+                        <PageTitle small>Cerca una relazione</PageTitle>
+                        <Form onSubmit={onFormSubmit}>
+                            <FormSearch>
+                                <TextField
+                                    block
+                                    placeholder="Es:Pizzo Scalino, orobie"
+                                    value={state.query}
+                                    onChange={(e) =>
+                                        setState({
+                                            ...state,
+                                            query: e.target.value,
+                                        })
+                                    }
+                                    ref={inputRef}
+                                    type="search"
+                                />
+                                <ButtonContainer>
+                                    {!state.searching && (
+                                        <Fab type="submit" aria-label="Cerca">
+                                            <Icon icon={SearchIcon} l />
+                                        </Fab>
+                                    )}
+                                    {state.searching && <Loader />}
+                                </ButtonContainer>
+                            </FormSearch>
+                        </Form>
+                    </TitleAndFormContainer>
 
                     {!state.searching && state.hasSearched && (
                         <>
@@ -156,7 +158,13 @@ function Cerca() {
 const Header = styled.header`
     display: flex;
     justify-content: flex-end;
-    padding: var(--space-unit);
+    align-items: center;
+    height: 10vh;
+    padding-right: var(--space-unit);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--color-background);
 `;
 
 const CloseButton = styled.a`
@@ -167,9 +175,20 @@ const FetchingInfo = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
+    padding-top: calc(var(--space-unit) * 2);
 `;
 
-const Form = styled.form``;
+const TitleAndFormContainer = styled.div`
+    position: sticky;
+    top: 10vh;
+    z-index: 1;
+    background: var(--color-background);
+    padding-bottom: calc(var(--space-unit) * 2);
+`;
+
+const Form = styled.form`
+    padding-top: calc(var(--space-unit) * 2);
+`;
 
 const FormSearch = styled.div`
     display: flex;
@@ -188,7 +207,7 @@ const ButtonContainer = styled.div`
 const Content = styled.div`
     display: flex;
     flex-direction: column;
-    gap: calc(var(--space-unit) * 2);
+    gap: calc(var(--space-unit) * 1);
     padding-bottom: calc(var(--space-unit) * 4);
     opacity: ${(props) => (props.fetching ? 0 : 1)};
     transition: opacity 0.2s ease-in-out;
@@ -210,6 +229,7 @@ const ResultsList = styled.ol`
     gap: calc(var(--space-unit) * 2);
     margin-top: calc(var(--space-unit) * 1);
     margin-bottom: calc(var(--space-unit) * 4);
+    margin-left: calc(var(--space-unit) * 0.5);
 `;
 
 export default Cerca;
