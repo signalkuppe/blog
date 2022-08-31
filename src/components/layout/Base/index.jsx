@@ -14,7 +14,7 @@ export default function BaseLayout({ route, head, children }) {
                 <header className="print-layout-header">
                     <Header route={route} />
                 </header>
-                <main>{children}</main>
+                <main style={{ height: '100%' }}>{children}</main>
                 <CommonScripts />
             </Body>
         </Html>

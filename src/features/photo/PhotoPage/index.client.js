@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
     imageOverlayDiv.style.top = '0px';
     imageOverlayDiv.style.zIndex = 2;
     imageOverlayDiv.style.cursor = 'help';
-    imageOverlayDiv.style.outline = 'none';
+    imageOverlayDiv.style.outline = '1px solid yellow';
     imageOverlayDiv.tabIndex = 1;
     imageOverlayDiv.addEventListener('mouseenter', function () {
         caption.classList.add('js-is-hovering');

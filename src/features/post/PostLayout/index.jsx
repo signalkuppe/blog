@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Script } from 'pequeno';
+import client from './index.client';
 
 const Wrapper = styled.article`
     display: flex;
@@ -11,6 +13,9 @@ const Hero = styled.header`
     /* stylelint-disable */
     @supports (height: 100svh) {
         height: calc(100svh - var(--header-height));
+    }
+    @supports not (height: 100svh) {
+        opacity: 0;
     }
 `;
 
@@ -24,6 +29,7 @@ export default function BlogLayout({ hero, content }) {
                     {hero}
                 </Hero>
                 <Content>{content}</Content>
+                <Script>{client}</Script>
             </Wrapper>
         </>
     );
