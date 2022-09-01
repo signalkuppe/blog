@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
     imageOverlayDiv.style.zIndex = 2;
     imageOverlayDiv.style.cursor = 'help';
     imageOverlayDiv.style.outline = 'none';
-    imageOverlayDiv.tabIndex = 1;
+
     imageOverlayDiv.addEventListener('mouseenter', function () {
         caption.classList.add('js-is-hovering');
         imageOverlayDiv.focus();
@@ -27,8 +27,10 @@ window.addEventListener('DOMContentLoaded', () => {
         caption.classList.remove('js-is-hovering');
     });
 
-    imageOverlayDiv.addEventListener('blur', function () {
-        caption.classList.remove('js-is-hovering');
+    container.addEventListener('click', function (e) {
+        if (e.target !== imageOverlayDiv) {
+            caption.classList.remove('js-is-hovering');
+        }
     });
 
     container.append(imageOverlayDiv);

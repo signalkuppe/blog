@@ -467,6 +467,7 @@ const Details = styled.details`
     p:first-child {
         margin-top: var(--space-unit);
     }
+    padding-bottom: calc(var(--space-unit) * 4);
 `;
 const Summary = styled.summary`
     cursor: pointer;
