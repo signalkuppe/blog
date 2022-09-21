@@ -24,8 +24,9 @@ export default createGlobalStyle`
         }
     }
 
+    
     .leaflet-tile-pane {
-        filter: grayscale(1) contrast(1);
+        filter: saturate(0.5);
     }
 
     .map-popup-image img { 
@@ -43,7 +44,7 @@ export default createGlobalStyle`
         height: 100%!important;
         border-radius: 50%!important;
         border: var(--inputs-border)!important;
-        box-shadow:-5px 0px 5px var(--drop-shadow-color)!important;
+        box-shadow:-5px 0px 0px var(--drop-shadow-color)!important;
         background: var(--color-map-marker-background)!important;
         will-change: transform;
         transition: transform 0.2s ease-in;

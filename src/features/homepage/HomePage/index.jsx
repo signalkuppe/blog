@@ -137,7 +137,7 @@ export default function HomePage({ route }) {
                             <Details>
                                 <Summary>
                                     <SummaryOpenText>
-                                        Raccontami qualcosa in più di te
+                                        Vuoi saperne di più?
                                     </SummaryOpenText>
                                     <SummaryCloseText>
                                         Meno grazie
