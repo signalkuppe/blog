@@ -44,9 +44,8 @@ export default createGlobalStyle`
         height: 100%!important;
         border-radius: 50%!important;
         border: var(--inputs-border)!important;
-        /* box-shadow:-5px 0px 0px var(--drop-shadow-color)!important; */
+        box-shadow:-5px 0px 0px rgba(0,0,0,0.25)!important;
         background: var(--color-map-marker-background)!important;
-        outline: 1px solid rgba(0,0,0,0.25);
         will-change: transform;
         transition: transform 0.2s ease-in;
         img {
