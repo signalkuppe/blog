@@ -72,17 +72,22 @@ const PostTitle = styled.h2`
 `;
 
 const PostAbstract = styled.p`
+    font-size: var(--font-size-small);
     margin: 0;
     max-width: 55ch;
-    @media ${device.mobile} {
-        font-size: var(--font-size-small);
+    @media ${device.largeDesktop} {
+        font-size: var(--font-size-base);
     }
 `;
 
 const PostLink = styled.a`
+    font-size: var(--font-size-small);
     display: inline-block;
     margin-top: calc(var(--space-unit) / 2);
     ${linksStyles};
+    @media ${device.largeDesktop} {
+        font-size: var(--font-size-base);
+    }
 `;
 
 export default function BlogPostCard({ post }) {

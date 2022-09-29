@@ -1,6 +1,7 @@
 import React from 'react';
 import { Script } from 'pequeno';
 import vars from '../../../vars';
+import { vars as themeVars } from '../../../theme/index';
 import serviceWorkerActivation from './index.client';
 
 export default function Head({
@@ -75,11 +76,17 @@ export default function Head({
             <link
                 rel="mask-icon"
                 href="/img/favicons/safari-pinned-tab.svg"
-                color="#000000"
+                color={themeVars['--color-background']}
             />
             {extraLinks}
-            <meta name="msapplication-TileColor" content="#000000" />
-            <meta name="theme-color" content="#181818" />
+            <meta
+                name="msapplication-TileColor"
+                content={themeVars['--color-background']}
+            />
+            <meta
+                name="theme-color"
+                content={themeVars['--color-background']}
+            />
             <meta name="generator" content="pequeno" />
             <meta name="og:type" content={ogType} />
             <meta name="twitter:site" content="@signalkuppe" />

@@ -1,4 +1,5 @@
 const map = document.getElementById('js-map');
+const loaderDiv = document.getElementById('js-map-loader');
 const minEl = document.getElementById('js-postGps-min');
 const maxEl = document.getElementById('js-postGps-max');
 const gainEl = document.getElementById('js-postGps-gain');
@@ -34,6 +35,8 @@ const showMap = function () {
         },
     );
     TILELAYER.addTo(mymap);
+
+    loaderDiv.style.display = 'none';
 
     new L.GPX(gpxUrl, {
         async: true,

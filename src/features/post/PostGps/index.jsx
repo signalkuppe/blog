@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Container from '../../../components/layout/Container';
 import Button from '../../../components/ui/Button';
 import Icon from '../../../components/ui/Icon';
+import Loader from '../../../components/ui/Loader';
 import DownloadIcon from '../../../public/icons/DownloadFile.svg';
 import { device } from '../../../theme';
 import client from './index.client';
@@ -12,6 +13,7 @@ const MapContainer = styled.div`
     height: 50vmax;
     width: 100vw;
     background: var(--color-background-light);
+    position: relative;
 `;
 
 const WidthWrapper = styled.div`
@@ -70,11 +72,23 @@ const Disclaimer = styled.p`
     color: var(--color-text-dark-accent);
 `;
 
+const LoaderIndicator = styled.div`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+`;
+
 export default function PostGps({ post }) {
     const { gps } = post;
     return (
         <>
-            <MapContainer id="js-map" data-gpx={gps.gpx} />
+            <MapContainer id="js-map" data-gpx={gps.gpx}>
+                <LoaderIndicator id="js-map-loader" aria-hidden="true">
+                    <Loader>Carico la mappa</Loader>
+                </LoaderIndicator>
+            </MapContainer>
             <Container>
                 <WidthWrapper>
                     <MapInfos>

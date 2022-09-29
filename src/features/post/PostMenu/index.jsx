@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Script } from 'pequeno';
 import { device, hideScrollbar, pageMenuTypography } from '../../../theme';
 import { styles } from '../../../components/hoc/withFiletto';
@@ -51,16 +51,13 @@ const ListItem = styled.li`
 
 const MenuLink = styled.a`
     display: block;
+    line-height: 1.5;
+    font-size: var(--font-size-small);
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
     padding: calc(var(--space-unit) / 2) 0;
     :hover {
         color: var(--color-text-light-accent);
-        ${(props) =>
-            props.active &&
-            css`
-                box-shadow: none;
-            `}
     }
     @media ${device.desktop} {
         padding: var(--space-unit) 0;

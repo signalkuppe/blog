@@ -1,5 +1,6 @@
 /* Initialize map */
 const mapDiv = document.getElementById('js-map');
+const loaderDiv = document.getElementById('js-map-loader');
 const zoom = 7;
 const lat = 45.7929;
 const lng = 9.0;
@@ -118,6 +119,7 @@ const loadMap = () =>
                 activeCategory ? m.category === activeCategory : true,
             );
             showmap(filteredMarkers);
+            loaderDiv.style.display = 'none';
         });
 
 let mapLoaded = false;

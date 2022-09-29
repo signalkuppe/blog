@@ -25,10 +25,12 @@ const StyledLi = styled.li`
     margin: 0;
 `;
 const StyledLink = styled.a`
+    font-size: var(--font-size-small);
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 1.5em;
+    padding: 0 1.85em;
+    line-height: 1.5;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
 

@@ -34,6 +34,7 @@ const StyledLi = styled.li`
 `;
 const StyledLink = styled.a`
     display: inline-block;
+    line-height: 1.5;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
     transition: color 0.2s ease-in;
