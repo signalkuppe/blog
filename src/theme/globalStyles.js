@@ -65,6 +65,8 @@ const GlobalStyles = createGlobalStyle`
   :root {
     ${rootVars};
     font-size: 100%;
+    color-scheme: dark;
+    scrollbar-gutter: stable;
   }
 
   @media ${device.desktop} {
