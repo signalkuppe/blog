@@ -145,7 +145,7 @@ export const visuallyHidden = css`
     overflow: hidden;
     position: absolute;
     white-space: nowrap;
-    width: 1px;
+    width: 0px;
 `;
 
 export const hideScrollbar = css`

@@ -26,19 +26,26 @@ const StyledLi = styled.li`
 `;
 const StyledLink = styled.a`
     font-size: var(--font-size-small);
+    text-transform: uppercase;
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 1.85em;
+    padding: 0 1em;
     line-height: 1.5;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
 
-    :first-child {
+    ul li:first-child & {
         padding-left: 0;
+        @media ${device.mobile} {
+            font-size: var(--font-size-x-small);
+        }
     }
     :hover {
         color: var(--color-text-light-accent);
+    }
+    @media ${device.desktop} {
+        font-size: var(--font-size-x-small);
     }
 `;
 
@@ -100,9 +107,11 @@ export default function BlogMenu({ categories, category }) {
                             active={i === active}
                             title={tab.title}
                         >
-                            <LinkIcon active={i === active}>
-                                {tab.icon}
-                            </LinkIcon>
+                            {tab.icon && (
+                                <LinkIcon active={i === active}>
+                                    {tab.icon}
+                                </LinkIcon>
+                            )}
                             {linkText}
                         </StyledLink>
                     </StyledLi>

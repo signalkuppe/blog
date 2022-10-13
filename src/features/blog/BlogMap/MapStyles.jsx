@@ -24,6 +24,10 @@ export default createGlobalStyle`
         }
     }
 
+    .leaflet-right {
+        right: calc(var(--space-unit) / 1.5)!important;
+    }
+
     
     .leaflet-tile-pane {
         filter: saturate(0.5);
