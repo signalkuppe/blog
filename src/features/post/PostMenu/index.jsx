@@ -11,10 +11,9 @@ const MenuContainer = styled.nav`
     position: sticky;
     top: 0;
     z-index: var(--z-index-post-menu);
-    /*
     box-shadow: 0 1px 1px var(--drop-shadow-color),
         0 2px 2px var(--drop-shadow-color), 0 4px 4px var(--drop-shadow-color),
-        0 8px 8px var(--drop-shadow-color), 0 16px 16px var(--drop-shadow-color); */
+        0 8px 8px var(--drop-shadow-color), 0 16px 16px var(--drop-shadow-color);
     @media ${device.noReduceMotion} {
         transition: opacity 0.2s linear;
     }
@@ -52,7 +51,8 @@ const ListItem = styled.li`
 const MenuLink = styled.a`
     display: block;
     line-height: 1.5;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-x-small);
+    text-transform: uppercase;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
     padding: calc(var(--space-unit) / 2) 0;
