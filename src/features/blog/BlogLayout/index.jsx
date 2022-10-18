@@ -5,7 +5,7 @@ import { device, hideScrollbar } from '../../../theme';
 const Wrapper = styled.div`
     @media ${device.desktop} {
         display: grid;
-        grid-template-columns: 40vw 60vw;
+        grid-template-columns: 40% 60%;
         grid-template-rows: var(--blog-tabs-height) calc(
                 100vh - var(--header-height) - var(--blog-tabs-height)
             );
