@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { device, imagesStyles } from '../../../theme';
+import PhotoDisclaimer from '../../../components/common/PhotoDisclaimer';
 import Container from '../../../components/layout/Container';
 import { postPhotoLink } from '../../../pages/post-photo';
 
@@ -14,6 +15,7 @@ const StyledList = styled.ul`
     @media ${device.desktop} {
         grid-template-columns: repeat(auto-fit, 120px);
     }
+    margin-bottom: calc(var(--space-unit) * 2);
 `;
 
 const squareStyle = css`
@@ -59,6 +61,7 @@ export default function PostGallery({ post }) {
                         </StyledListItem>
                     ))}
                 </StyledList>
+                <PhotoDisclaimer />
             </Wrapper>
         </Container>
     );

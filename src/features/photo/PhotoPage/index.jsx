@@ -18,7 +18,7 @@ import client from './index.client';
 
 const overlay = css`
     background: var(--color-lightbox-overlay);
-    color: var(--color-lightbox-color);
+    color: var(--color-text-light-accent);
 `;
 
 const overlayCommonStyles = css`
@@ -83,7 +83,7 @@ const ImageHeader = styled.header`
 
 const ImageFooter = styled.figcaption`
     ${figCaptionStyles};
-    color: var(--color-lightbox-color);
+    color: var(--color-text-light-accent);
     bottom: 0;
     left: 0;
     text-align: center;
