@@ -11,7 +11,7 @@ const Title = styled.div`
 `;
 
 const Description = styled.div`
-    margin-top: calc(var(--space-unit) * 1);
+    margin-top: calc(var(--space-unit) * 2);
 `;
 
 const Header = styled.div`

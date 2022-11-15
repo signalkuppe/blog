@@ -246,7 +246,10 @@ export default function HomePage({ route }) {
                                             relazioni.
                                         </p>
                                         <p>
-                                            <a href="/contatti" rel="noopener">
+                                            <a
+                                                href={contattilink}
+                                                rel="noopener"
+                                            >
                                                 Contattatemi
                                             </a>{' '}
                                             per parlare di un vostro progetto o

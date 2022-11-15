@@ -22,7 +22,8 @@ const showMap = function () {
     let mymap = L.map('js-map', {
         renderer: L.canvas(),
         attributionControl: false,
-        gestureHandling: true, // depends on https://github.com/elmarquis/Leaflet.GestureHandling
+        scrollWheelZoom: false,
+        //  gestureHandling: true, // depends on https://github.com/elmarquis/Leaflet.GestureHandling
     });
     mymap.addControl(new L.Control.Fullscreen());
     // mappe da thunderforest.com: 150.000 richieste al mese poi bisogna pagare, verificare

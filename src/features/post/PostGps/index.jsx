@@ -178,10 +178,6 @@ export default function PostGps({ post }) {
                     },
                     {
                         where: 'body',
-                        tag: '<script src="/libs/leaflet-gesture-handling.js"></script>',
-                    },
-                    {
-                        where: 'body',
                         tag: '<script src="/libs/chart.js"></script>',
                     },
                 ]}
