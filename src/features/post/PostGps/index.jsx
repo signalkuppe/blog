@@ -6,7 +6,7 @@ import Button from '../../../components/ui/Button';
 import Icon from '../../../components/ui/Icon';
 import Loader from '../../../components/ui/Loader';
 import DownloadIcon from '../../../public/icons/DownloadFile.svg';
-import { device } from '../../../theme';
+import { device, headingsStyles } from '../../../theme';
 import client from './index.client';
 
 const MapContainer = styled.div`
@@ -29,6 +29,7 @@ const MapInfos = styled.div`
 
 const InfoBox = styled.dl`
     dt {
+        font-weight: 700;
         color: var(--color-text-light-accent);
         @media ${device.desktop} {
             font-size: var(--font-size-medium);
@@ -41,9 +42,9 @@ const InfoBox = styled.dl`
             font-size: var(--font-size-x-large);
         }
         span {
+            ${headingsStyles};
             color: var(--color-text-light-accent);
             letter-spacing: var(--text-letter-spacing);
-            font-weight: 900;
         }
     }
 `;
@@ -159,10 +160,6 @@ export default function PostGps({ post }) {
                     {
                         where: 'head',
                         tag: '<link rel="stylesheet" href="/libs/leaflet-fullscreen.css" />',
-                    },
-                    {
-                        where: 'head',
-                        tag: '<link rel="stylesheet" href="/libs/leaflet-gesture-handling.css" />',
                     },
                     {
                         where: 'body',
