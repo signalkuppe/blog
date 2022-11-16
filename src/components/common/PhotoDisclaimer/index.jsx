@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BasicHtmlStyles from '../../ui/BasicHtmlStyles';
+import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import { permalink as contattiPermalink } from '../../../pages/contatti';
 
 const Description = styled.p`
