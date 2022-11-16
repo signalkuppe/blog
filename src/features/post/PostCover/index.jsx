@@ -1,7 +1,7 @@
 import React from 'react';
 import { Script } from 'pequeno';
 import styled from 'styled-components';
-import { device } from '../../../theme';
+import { device, headingsStyles } from '../../../theme';
 import Loader from '../../../components/ui/Loader';
 import client from './index.client';
 
@@ -39,16 +39,13 @@ const StyledFigure = styled.figure`
 `;
 
 const StyledFigcaption = styled.figcaption`
+    ${headingsStyles};
     font-style: normal;
     font-size: clamp(
         var(--font-size-base),
         2.5vmax,
         var(--font-size-xxx-large)
     );
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: var(--headings-letter-spacing);
-    color: var(--color-text-light-accent);
     position: absolute;
     right: 0;
     bottom: 0;

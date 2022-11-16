@@ -1,12 +1,9 @@
 import { css } from 'styled-components';
 
 export const vars = {
-    '--font-family-base':
-        'system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif',
-    '--font-family-mono':
-        'ui-monospace,  Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro","Fira Mono", "Droid Sans Mono",  "Courier New", monospace',
-    '--font-family-cursive':
-        '"Comic Sans MS", Comic Sans, "Chalkboard", "ChalkboardSE-Regular", "Marker Felt", "Purisa", "URW Chancery L"',
+    '--font-family-base': '"Inter", sans-serif',
+    '--font-family-headings': '"Inter Tight", sans-serif',
+    '--font-family-cursive': '"Sriracha", cursive',
     '--font-family-drop-cap': "'Didot', Georgia",
     '--font-size-xx-small': '0.5rem',
     '--font-size-x-small': '0.75rem',
@@ -63,10 +60,10 @@ export const vars = {
 };
 
 export const headingsStyles = css`
+    font-family: var(--font-family-headings);
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: 0.5rem;
-    letter-spacing: var(--headings-letter-spacing);
     color: var(--color-text-light-accent);
 `;
 

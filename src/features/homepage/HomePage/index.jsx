@@ -317,6 +317,7 @@ const Image = styled.aside`
         @media ${device.mobileAndTablet} {
             width: 20vmax;
             height: 20vmax;
+            margin-bottom: var(--space-unit);
         }
     }
     @media ${device.mobileAndTablet} {
@@ -440,7 +441,7 @@ const TextConstraint = styled.div`
 
 const Intro = styled.p`
     font-weight: 700;
-    font-size: clamp(1.2rem, 2vmax, 2rem);
+    font-size: clamp(1rem, 1.5vmax, 1.8rem);
     line-height: 1.4;
     margin-top: calc(var(--space-unit) * 2);
     margin-bottom: calc(var(--space-unit) * 2);
