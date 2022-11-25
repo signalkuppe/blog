@@ -11,9 +11,9 @@ const MenuContainer = styled.nav`
     position: sticky;
     top: 0;
     z-index: var(--z-index-post-menu);
-    box-shadow: 0 1px 1px var(--drop-shadow-color),
+    /* box-shadow: 0 1px 1px var(--drop-shadow-color),
         0 2px 2px var(--drop-shadow-color), 0 4px 4px var(--drop-shadow-color),
-        0 8px 8px var(--drop-shadow-color), 0 16px 16px var(--drop-shadow-color);
+        0 8px 8px var(--drop-shadow-color), 0 16px 16px var(--drop-shadow-color); */
     @media ${device.noReduceMotion} {
         transition: opacity 0.2s linear;
     }
