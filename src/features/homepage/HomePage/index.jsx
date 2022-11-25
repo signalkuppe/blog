@@ -375,6 +375,7 @@ const PageSubTitle = styled.h2`
     line-height: 1.5rem;
     overflow: hidden;
     position: relative;
+    /*
     ::after {
         ${faderCommonStyles};
         top: 0;
@@ -393,6 +394,7 @@ const PageSubTitle = styled.h2`
             transparent 100%
         );
     }
+    */
     @media ${device.mobile} {
         font-size: var(--font-size-base);
     }

@@ -65,11 +65,16 @@ const showmap = function (markers) {
             </a>
         
         `;
-        L.marker([marker.coordinates.lat, marker.coordinates.lon], {
+        const mk = L.marker([marker.coordinates.lat, marker.coordinates.lon], {
             icon: customIcon,
         })
             .addTo(mymap)
             .bindPopup(popupHtml);
+
+        mk.on('click', function () {
+            clearOtherMarkers(mk._icon);
+            mk._icon.classList.add('js-is-selected');
+        });
     });
 
     // hover effects
@@ -79,6 +84,14 @@ const showmap = function (markers) {
     const markerContainersList = document.querySelectorAll(
         '.leaflet-marker-icon',
     );
+
+    const clearOtherMarkers = (clicked) => {
+        [...markerContainersList].forEach(function (marker) {
+            if (clicked !== marker) {
+                marker.classList.remove('js-is-selected');
+            }
+        });
+    };
 
     Array.from(posts).forEach((post) => {
         post.addEventListener('mouseenter', function () {

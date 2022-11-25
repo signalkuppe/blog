@@ -124,7 +124,6 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.8;
     letter-spacing: var(--text-letter-spacing);
     color: var(--color-text);
-    background: var(--color-background);
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;

@@ -17,24 +17,42 @@ export const vars = {
     '--font-size-xxxx-large': '5rem',
     '--text-letter-spacing': '-0.02em',
     '--headings-letter-spacing': '-0.02em',
-    '--color-background': '#000',
-    '--color-background-light': '#181818',
-    '--color-primary': '#F4BF3A',
-    '--color-text': '#d6d6d6',
-    '--color-text-light-accent': '#FFFFFF',
-    '--color-text-dark-accent': '#AAAAAA',
+    '--color-background-hue': '190',
+    '--color-background-saturation': '6%',
+    '--color-background-lightness': '7%',
+    '--color-text-hue': '0',
+    '--color-text-saturation': '0%',
+    '--color-text-lightness': '75%',
+    '--color-primary-hue': '43',
+    '--color-primary-saturation': '89%',
+    '--color-primary-lightness': '50%',
+    '--color-background':
+        'hsl(var(--color-background-hue), var(--color-background-saturation), var(--color-background-lightness))',
+    '--color-background-light':
+        'hsl(var(--color-background-hue), var(--color-background-saturation), calc(var(--color-background-lightness) + 5%))',
+    '--color-primary':
+        'hsl(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness))',
+    '--color-secondary':
+        'hsl(calc(var(--color-primary-hue) + 320), var(--color-primary-saturation), calc(var(--color-primary-lightness) - 5%))',
+    '--color-text':
+        'hsl(var(--color-text-hue), var(--color-text-saturation), var(--color-text-lightness))',
+    '--color-text-accent':
+        'hsl(var(--color-text-hue), var(--color-text-saturation), calc(var(--color-text-lightness) + 15%))',
+    '--color-text-light-accent':
+        'hsl(var(--color-text-hue), var(--color-text-saturation), calc(var(--color-text-lightness) + 30%))',
+    '--color-text-dark-accent':
+        'hsl(var(--color-text-hue), var(--color-text-saturation), calc(var(--color-text-lightness) - 20%))',
     '--color-links': 'var(--color-primary)',
     '--color-button-background': 'var(--color-primary)',
     '--color-button-color': 'var(--color-background)',
-    '--color-map-marker-background': 'crimson',
-    '--color-map-track': 'blue',
-    '--color-lightbox-background': '#000',
-    '--color-lightbox-color': 'rgba(255, 255, 255, 0.8)',
-    '--color-lightbox-overlay': 'rgba(0,0,0,0.7)',
+    '--color-map-marker-background': 'var(--color-secondary)',
+    '--color-map-track': 'var(--color-secondary)',
+    '--color-lightbox-background': 'var(--color-background)',
+    '--color-lightbox-color': 'var(--color-text)',
+    '--color-lightbox-overlay': 'hsla(210deg, 15%, 12%, 0.5)',
     '--color-facebook': '#1877f2',
     '--color-twitter': '#1da1f2',
     '--color-whatsapp': '#25d366',
-    '--color-error': 'crimson',
     '--inputs-border': '4px solid var(--color-text-light-accent)',
     '--inputs-background': 'var(--color-background)',
     '--inputs-color': 'var(--color-text)',
@@ -100,20 +118,18 @@ export const imagesStyles = css`
 
 export const italicStyles = css`
     font-family: var(--font-family-cursive);
-    font-weight: 900;
-    color: var(--color-text-light-accent);
+    color: var(--color-text-accent);
 `;
 
 export const boldStyles = css`
     font-weight: 700;
-    color: var(--color-text-light-accent);
+    color: var(--color-text-accent);
 `;
 
 export const figCaptionStyles = css`
     font-family: var(--font-family-cursive);
     color: var(--color-text-light-accent);
     line-height: 1.5;
-    font-weight: 900;
     padding-top: 0.5em;
 `;
 

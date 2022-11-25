@@ -30,7 +30,7 @@ export default createGlobalStyle`
 
     
     .leaflet-tile-pane {
-        filter: saturate(0.5);
+        /* filter: grayscale(1) brightness(0.9); */
     }
 
     .map-popup-image img { 
@@ -38,6 +38,9 @@ export default createGlobalStyle`
         height: 80px;
         object-fit: cover;
         display: block;
+        border-radius: 8px!important;
+        border: 0px solid var(--color-text-light-accent);
+        background: var(--color-background-light);
     }
 
     .map-marker { /** my custom marker */
@@ -47,7 +50,7 @@ export default createGlobalStyle`
         width: 100%!important;
         height: 100%!important;
         border-radius: 50%!important;
-        border: var(--inputs-border)!important;
+        border: 4px solid var(--color-text-light-accent)!important;
         box-shadow:-5px 0px 0px rgba(0,0,0,0.25)!important;
         background: var(--color-map-marker-background)!important;
         will-change: transform;
@@ -60,7 +63,7 @@ export default createGlobalStyle`
         :hover,
         .js-is-selected & {
             background: var(--color-primary)!important;
-            transform: scale(1.15);
+            border: 4px solid var(--color-text-light-accent)!important;
             img {
              filter: none;
             }
@@ -68,20 +71,28 @@ export default createGlobalStyle`
         transition: all 0.2s linear;
     }
 
+    .leaflet-popup-pane {
+        transform: translateX(15px);
+    }
+
     .leaflet-popup-content-wrapper { /** library default popup div */
-        background: white!important;
-        border-radius: 0px!important;
+        background: var(--color-background)!important;
         box-shadow: none!important;
+        border-radius: 12px!important;
         filter: drop-shadow(-5px 0px 20px var(--drop-shadow-color));
+        padding: 16px!important;
     }
 
     .leaflet-popup-content[style] {
-        margin: 8px!important;
+        margin: 0px!important;
         width: auto!important;
     }
 
     .leaflet-popup-close-button {
         box-shadow: none!important;
+        top: 8px!important;
+        right: 8px!important;
+        color: var(--color-text-light-accent)!important;
     }
 
     .map-popup { /** my custom popup */
@@ -89,14 +100,14 @@ export default createGlobalStyle`
         color: inherit!important;
         text-decoration: none!important;
         box-shadow: none!important;
-      
+    }
+
+    .leaflet-popup-tip {
+        background: var(--color-background)!important;
     }
 
     .map-popup-image { 
-        width: 80px;
-        height: 80px;
-        background: #eee;
-        margin-right: 8px;
+        margin-right: 16px;
     }
 
     .map-popup-info { 
@@ -105,12 +116,14 @@ export default createGlobalStyle`
     }
 
    .map-popup-date { 
+        color: var(--color-text)!important;
         font-variant: small-caps;
         font-size: var(--font-size-x-small);
         margin-bottom: 0.3em;
     }
 
    .map-popup-title { 
+        color: var(--color-text-light-accent)!important;
         font-weight: 700;
         font-size: var(--font-size-small);
         letter-spacing: var(--text-letter-spacing);
