@@ -18,7 +18,7 @@ export const vars = {
     '--text-letter-spacing': '-0.02em',
     '--headings-letter-spacing': '-0.02em',
     '--color-background-hue': '190',
-    '--color-background-saturation': '6%',
+    '--color-background-saturation': '0%',
     '--color-background-lightness': '7%',
     '--color-text-hue': '0',
     '--color-text-saturation': '0%',
@@ -29,7 +29,7 @@ export const vars = {
     '--color-background':
         'hsl(var(--color-background-hue), var(--color-background-saturation), var(--color-background-lightness))',
     '--color-background-light':
-        'hsl(var(--color-background-hue), var(--color-background-saturation), calc(var(--color-background-lightness) + 5%))',
+        'hsl(var(--color-background-hue), var(--color-background-saturation), calc(var(--color-background-lightness) + 8%))',
     '--color-primary':
         'hsl(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness))',
     '--color-secondary':
