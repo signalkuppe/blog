@@ -42,7 +42,6 @@ export const vars = {
         'hsl(var(--color-text-hue), var(--color-text-saturation), calc(var(--color-text-lightness) + 30%))',
     '--color-text-dark-accent':
         'hsl(var(--color-text-hue), var(--color-text-saturation), calc(var(--color-text-lightness) - 20%))',
-    '--color-links': 'var(--color-primary)',
     '--color-button-background': 'var(--color-primary)',
     '--color-button-color': 'var(--color-background)',
     '--color-map-marker-background': 'var(--color-secondary)',
@@ -92,12 +91,12 @@ export const headingsSize = {
 };
 
 export const linksStyles = css`
-    color: var(--color-links);
-    font-weight: 600;
+    color: var(--color-text-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.15em;
     :hover {
-        text-decoration: underline;
-        text-decoration-thickness: 3px;
-        text-underline-offset: 0.1em;
+        color: var(--color-text-light-accent);
     }
 `;
 
