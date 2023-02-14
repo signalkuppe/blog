@@ -1,6 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+export default function Button({ ...props }) {
+    return <StyledButton role="button" {...props} />;
+}
+
 const StyledButton = styled.button`
     font-size: var(--font-size-small);
     font-weight: 700;
@@ -33,7 +37,3 @@ const StyledButton = styled.button`
             cursor: not-allowed;
         `};
 `;
-
-export default function Button({ ...props }) {
-    return <StyledButton role="button" {...props} />;
-}

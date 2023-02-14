@@ -7,6 +7,31 @@ import Fab from '../../../components/ui/Fab';
 import Icon from '../../../components/ui/Icon';
 import client from './index.client';
 
+export default function PostLayout({ hero, content }) {
+    return (
+        <>
+            <Wrapper>
+                <Hero id="js-postLayout-hero" className="print-post-hero">
+                    {hero}
+                </Hero>
+                <Content>{content}</Content>
+                <ToTop id="js-postlayout-goToTop">
+                    <Fab
+                        as="a"
+                        href="#top"
+                        title="Torna in cima"
+                        aria-label="Torna in cima"
+                        s
+                    >
+                        <Icon icon={UpIcon} />
+                    </Fab>
+                </ToTop>
+                <Script>{client}</Script>
+            </Wrapper>
+        </>
+    );
+}
+
 const Wrapper = styled.article`
     display: flex;
     flex-direction: column;
@@ -42,28 +67,3 @@ const ToTop = styled.div`
         bottom: calc(var(--space-unit) * 1.5);
     }
 `;
-
-export default function PostLayout({ hero, content }) {
-    return (
-        <>
-            <Wrapper>
-                <Hero id="js-postLayout-hero" className="print-post-hero">
-                    {hero}
-                </Hero>
-                <Content>{content}</Content>
-                <ToTop id="js-postlayout-goToTop">
-                    <Fab
-                        as="a"
-                        href="#top"
-                        title="Torna in cima"
-                        aria-label="Torna in cima"
-                        s
-                    >
-                        <Icon icon={UpIcon} />
-                    </Fab>
-                </ToTop>
-                <Script>{client}</Script>
-            </Wrapper>
-        </>
-    );
-}

@@ -4,6 +4,25 @@ import styled, { css } from 'styled-components';
 
 let i = 0;
 
+export default function TextArea({ ...props }) {
+    const uid = `textarea-${i++}`;
+    const className = 'js-textinput';
+
+    return (
+        <>
+            {props.label && (
+                <StyledLabel htmlFor={uid}>{props.label}</StyledLabel>
+            )}
+            <StyledTextArea
+                id={uid}
+                className={className}
+                type={props.type || 'text'}
+                {...omit(props, ['className'])}
+            />
+        </>
+    );
+}
+
 const StyledLabel = styled.label`
     display: block;
     font-weight: 500;
@@ -28,22 +47,3 @@ const StyledTextArea = styled.textarea`
             width: 100%;
         `}
 `;
-
-export default function TextArea({ ...props }) {
-    const uid = `textarea-${i++}`;
-    const className = 'js-textinput';
-
-    return (
-        <>
-            {props.label && (
-                <StyledLabel htmlFor={uid}>{props.label}</StyledLabel>
-            )}
-            <StyledTextArea
-                id={uid}
-                className={className}
-                type={props.type || 'text'}
-                {...omit(props, ['className'])}
-            />
-        </>
-    );
-}

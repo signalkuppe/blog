@@ -3,6 +3,41 @@ import styled from 'styled-components';
 import { device, headingsStyles, imagesStyles } from '../../../theme';
 import { portfolioPhotoLink } from '../../../pages/portfolio-photo';
 
+export default function PortfolioPhotos({ photos }) {
+    return (
+        <StyledList>
+            {photos.map((photo, i) => {
+                const enlargmentSmall = `${photo.src}?w=640&fm=webp&q=80`;
+                const enlargmentLarge = `${photo.src}?w=1024&fm=webp&q=80`;
+                return (
+                    <Photo key={i}>
+                        <a href={portfolioPhotoLink(photo)} title={photo.title}>
+                            <picture>
+                                <source
+                                    media="(min-width: 1680px)"
+                                    srcSet={enlargmentLarge}
+                                />
+                                <StyledImage
+                                    src={enlargmentSmall}
+                                    alt={photo.alt || photo.title}
+                                    height={photo.height}
+                                    width={photo.width}
+                                />
+                            </picture>
+                            <PhotoCaption>
+                                <PhotoDate dateTime={photo.dateTime}>
+                                    {photo.date}
+                                </PhotoDate>
+                                <PhotoTitle>{photo.title}</PhotoTitle>
+                            </PhotoCaption>
+                        </a>
+                    </Photo>
+                );
+            })}
+        </StyledList>
+    );
+}
+
 const StyledList = styled.ul`
     @media ${device.onlyTablet} {
         columns: 2;
@@ -55,38 +90,3 @@ const PhotoDate = styled.time`
 const StyledImage = styled.img`
     ${imagesStyles};
 `;
-
-export default function PortfolioPhotos({ photos }) {
-    return (
-        <StyledList>
-            {photos.map((photo, i) => {
-                const enlargmentSmall = `${photo.src}?w=640&fm=webp&q=80`;
-                const enlargmentLarge = `${photo.src}?w=1024&fm=webp&q=80`;
-                return (
-                    <Photo key={i}>
-                        <a href={portfolioPhotoLink(photo)} title={photo.title}>
-                            <picture>
-                                <source
-                                    media="(min-width: 1680px)"
-                                    srcSet={enlargmentLarge}
-                                />
-                                <StyledImage
-                                    src={enlargmentSmall}
-                                    alt={photo.alt || photo.title}
-                                    height={photo.height}
-                                    width={photo.width}
-                                />
-                            </picture>
-                            <PhotoCaption>
-                                <PhotoDate dateTime={photo.dateTime}>
-                                    {photo.date}
-                                </PhotoDate>
-                                <PhotoTitle>{photo.title}</PhotoTitle>
-                            </PhotoCaption>
-                        </a>
-                    </Photo>
-                );
-            })}
-        </StyledList>
-    );
-}

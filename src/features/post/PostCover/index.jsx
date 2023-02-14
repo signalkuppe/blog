@@ -5,6 +5,57 @@ import { device, headingsStyles } from '../../../theme';
 import Loader from '../../../components/ui/Loader';
 import client from './index.client';
 
+export default function PostCover({ cover }) {
+    const { alt, title, src, focus } = cover;
+    const imgUrl = function (width, format) {
+        return `${src}?w=${width}&h=${Math.round(
+            width / 1.5,
+        )}&fm=${format}&fit=thumb&q=50&f=${focus}`;
+    };
+    return (
+        <>
+            <StyledFigure id="js-postCover" className="print-post-cover">
+                <StyledFigcaption id="js-postCover-caption">
+                    {title}
+                </StyledFigcaption>
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcSet={`
+                     ${imgUrl(600, 'webp')} 600w,
+                     ${imgUrl(1600, 'webp')} 1600w,
+                     ${imgUrl(3000, 'webp')} 3000w
+                    `}
+                        sizes="100vw"
+                    />
+                    <img
+                        srcSet={`
+                      ${imgUrl(600, 'webp')}  600w,
+                      ${imgUrl(1600, 'webp')} 1600w,
+                       ${imgUrl(3000, 'webp')} 3000w
+                    `}
+                        sizes="
+                      (max-width: 768px) 100vw,
+                      (max-width: 1387px) 100vw,
+                      (min-width: 1388px) 100vw"
+                        src={src}
+                        alt={alt}
+                        decoding="async"
+                        loading="lazy"
+                        width="1600"
+                        height="1066"
+                        id="js-postCover-img"
+                    />
+                </picture>
+                <LoaderIndicator id="js-postCover-loader" aria-hidden="true">
+                    <Loader>Carico la foto</Loader>
+                </LoaderIndicator>
+            </StyledFigure>
+            <Script>{client}</Script>
+        </>
+    );
+}
+
 const StyledFigure = styled.figure`
     margin: 0;
     position: relative;
@@ -69,54 +120,3 @@ const LoaderIndicator = styled.div`
     display: none;
     text-align: center;
 `;
-
-export default function PostCover({ cover }) {
-    const { alt, title, src, focus } = cover;
-    const imgUrl = function (width, format) {
-        return `${src}?w=${width}&h=${Math.round(
-            width / 1.5,
-        )}&fm=${format}&fit=thumb&q=50&f=${focus}`;
-    };
-    return (
-        <>
-            <StyledFigure id="js-postCover" className="print-post-cover">
-                <StyledFigcaption id="js-postCover-caption">
-                    {title}
-                </StyledFigcaption>
-                <picture>
-                    <source
-                        type="image/webp"
-                        srcSet={`
-                     ${imgUrl(600, 'webp')} 600w,
-                     ${imgUrl(1600, 'webp')} 1600w,
-                     ${imgUrl(3000, 'webp')} 3000w
-                    `}
-                        sizes="100vw"
-                    />
-                    <img
-                        srcSet={`
-                      ${imgUrl(600, 'webp')}  600w,
-                      ${imgUrl(1600, 'webp')} 1600w,
-                       ${imgUrl(3000, 'webp')} 3000w
-                    `}
-                        sizes="
-                      (max-width: 768px) 100vw,
-                      (max-width: 1387px) 100vw,
-                      (min-width: 1388px) 100vw"
-                        src={src}
-                        alt={alt}
-                        decoding="async"
-                        loading="lazy"
-                        width="1600"
-                        height="1066"
-                        id="js-postCover-img"
-                    />
-                </picture>
-                <LoaderIndicator id="js-postCover-loader" aria-hidden="true">
-                    <Loader>Carico la foto</Loader>
-                </LoaderIndicator>
-            </StyledFigure>
-            <Script>{client}</Script>
-        </>
-    );
-}

@@ -7,6 +7,32 @@ import { blogLink } from '../../../pages/blog';
 import { portfolioLink } from '../../../pages/portfolio';
 import { permalink as contattiLink } from '../../../pages/contatti';
 
+export default function MainMenu({ route }) {
+    const links = [
+        {
+            href: blogLink(),
+            text: 'Relazioni',
+            active:
+                route.name === 'blog' ||
+                route.name === 'post-item' ||
+                route.name === 'blog-by-category',
+        },
+        {
+            href: portfolioLink(),
+            text: 'Portfolio',
+            active: route.name === 'portfolio',
+        },
+        {
+            href: contattiLink,
+            text: 'Info & Contatti',
+            active: route.name === 'contatti' || route.name === 'grazie',
+        },
+    ];
+
+    const activeLinkIndex = findIndex(links, (l) => l.active);
+    return <NavigationLinks links={links} active={activeLinkIndex} />;
+}
+
 const StyledUl = styled.ul`
     font-weight: 700;
     font-size: var(--font-size-x-small);
@@ -75,30 +101,4 @@ function NavigationLinks({ links, active, ...props }) {
             ))}
         </StyledUl>
     );
-}
-
-export default function MainMenu({ route }) {
-    const links = [
-        {
-            href: blogLink(),
-            text: 'Relazioni',
-            active:
-                route.name === 'blog' ||
-                route.name === 'post-item' ||
-                route.name === 'blog-by-category',
-        },
-        {
-            href: portfolioLink(),
-            text: 'Portfolio',
-            active: route.name === 'portfolio',
-        },
-        {
-            href: contattiLink,
-            text: 'Info & Contatti',
-            active: route.name === 'contatti' || route.name === 'grazie',
-        },
-    ];
-
-    const activeLinkIndex = findIndex(links, (l) => l.active);
-    return <NavigationLinks links={links} active={activeLinkIndex} />;
 }

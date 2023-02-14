@@ -14,54 +14,6 @@ import PostGps from '../PostGps';
 import PostShare from '../PostShare';
 import PostPrevNext from '../PostPrevNext';
 
-const Wrapper = styled.div`
-    margin-top: calc(var(--space-unit) * 2);
-    margin-bottom: calc(var(--space-unit) * 4);
-    padding-bottom: calc(var(--space-unit) * 4);
-
-    overflow: hidden;
-    @media ${device.desktop} {
-        margin-top: calc(var(--space-unit) * 4);
-    }
-`;
-
-const PostSectionTitle = styled.h2`
-    ${headingsStyles};
-    font-size: ${headingsSize.h2};
-    margin-bottom: var(--space-unit);
-    ${(props) =>
-        props.hide &&
-        css`
-            ${visuallyHidden};
-        `}
-`;
-
-const PostSection = styled.section`
-    ${(props) =>
-        props.sectionId !== 'condividi' &&
-        css`
-            padding-bottom: calc(var(--space-unit) * 6);
-        `}
-    ${(props) =>
-        (props.sectionId === 'relazione' || props.sectionId === 'foto') &&
-        css`
-            @media ${device.onlyTablet} {
-                margin-left: calc(var(--space-unit) * 2);
-            }
-        `}
-
-    ${(props) =>
-        props.sectionId === 'condividi' &&
-        css`
-            min-height: 20rem;
-            margin-bottom: calc(var(--space-unit) * 2);
-        `}
-`;
-
-const PostPrintThanks = styled.div`
-    display: none;
-`;
-
 export default function PostSections({ post, prev, next }) {
     const { gps } = post;
     const sections = [
@@ -125,3 +77,51 @@ export default function PostSections({ post, prev, next }) {
         </>
     );
 }
+
+const Wrapper = styled.div`
+    margin-top: calc(var(--space-unit) * 2);
+    margin-bottom: calc(var(--space-unit) * 4);
+    padding-bottom: calc(var(--space-unit) * 4);
+
+    overflow: hidden;
+    @media ${device.desktop} {
+        margin-top: calc(var(--space-unit) * 4);
+    }
+`;
+
+const PostSectionTitle = styled.h2`
+    ${headingsStyles};
+    font-size: ${headingsSize.h2};
+    margin-bottom: var(--space-unit);
+    ${(props) =>
+        props.hide &&
+        css`
+            ${visuallyHidden};
+        `}
+`;
+
+const PostSection = styled.section`
+    ${(props) =>
+        props.sectionId !== 'condividi' &&
+        css`
+            padding-bottom: calc(var(--space-unit) * 6);
+        `}
+    ${(props) =>
+        (props.sectionId === 'relazione' || props.sectionId === 'foto') &&
+        css`
+            @media ${device.onlyTablet} {
+                margin-left: calc(var(--space-unit) * 2);
+            }
+        `}
+
+    ${(props) =>
+        props.sectionId === 'condividi' &&
+        css`
+            min-height: 20rem;
+            margin-bottom: calc(var(--space-unit) * 2);
+        `}
+`;
+
+const PostPrintThanks = styled.div`
+    display: none;
+`;

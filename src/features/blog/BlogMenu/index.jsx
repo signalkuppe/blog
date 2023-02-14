@@ -6,6 +6,55 @@ import PostCategoryIcon from '../../post/PostCategoryIcon';
 import { categoryLink } from '../../../pages/blog-by-category';
 import { blogLink } from '../../../pages/blog';
 
+export default function BlogMenu({ categories, category }) {
+    const tabs = [
+        {
+            text: 'Tutte',
+            href: blogLink(),
+            title: 'Tutte le relazioni',
+        },
+        ...categories.map((cat) => ({
+            text: cat,
+            href: categoryLink(1, cat),
+            icon: <PostCategoryIcon category={cat} left />,
+            title: `Solo ${cat}`,
+        })),
+    ];
+
+    const active = category ? categories.indexOf(category) + 1 : 0;
+
+    return (
+        <StyledList>
+            {tabs.map((tab, i) => {
+                let linkText = <LinkText first={i === 0}>{tab.text}</LinkText>;
+                if (i === active) {
+                    linkText = (
+                        <WithFilettoLinkText first={i === 0}>
+                            {tab.text}
+                        </WithFilettoLinkText>
+                    );
+                }
+                return (
+                    <StyledLi key={i}>
+                        <StyledLink
+                            href={tab.href}
+                            active={i === active}
+                            title={tab.title}
+                        >
+                            {tab.icon && (
+                                <LinkIcon active={i === active}>
+                                    {tab.icon}
+                                </LinkIcon>
+                            )}
+                            {linkText}
+                        </StyledLink>
+                    </StyledLi>
+                );
+            })}
+        </StyledList>
+    );
+}
+
 const StyledList = styled.ul`
     ${pageMenuTypography};
     display: flex;
@@ -71,52 +120,3 @@ const LinkText = styled.span`
 `;
 
 const WithFilettoLinkText = withFiletto(LinkText);
-
-export default function BlogMenu({ categories, category }) {
-    const tabs = [
-        {
-            text: 'Tutte',
-            href: blogLink(),
-            title: 'Tutte le relazioni',
-        },
-        ...categories.map((cat) => ({
-            text: cat,
-            href: categoryLink(1, cat),
-            icon: <PostCategoryIcon category={cat} left />,
-            title: `Solo ${cat}`,
-        })),
-    ];
-
-    const active = category ? categories.indexOf(category) + 1 : 0;
-
-    return (
-        <StyledList>
-            {tabs.map((tab, i) => {
-                let linkText = <LinkText first={i === 0}>{tab.text}</LinkText>;
-                if (i === active) {
-                    linkText = (
-                        <WithFilettoLinkText first={i === 0}>
-                            {tab.text}
-                        </WithFilettoLinkText>
-                    );
-                }
-                return (
-                    <StyledLi key={i}>
-                        <StyledLink
-                            href={tab.href}
-                            active={i === active}
-                            title={tab.title}
-                        >
-                            {tab.icon && (
-                                <LinkIcon active={i === active}>
-                                    {tab.icon}
-                                </LinkIcon>
-                            )}
-                            {linkText}
-                        </StyledLink>
-                    </StyledLi>
-                );
-            })}
-        </StyledList>
-    );
-}

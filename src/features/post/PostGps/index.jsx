@@ -9,78 +9,6 @@ import DownloadIcon from '../../../public/icons/DownloadFile.svg';
 import { device, headingsStyles } from '../../../theme';
 import client from './index.client';
 
-const MapContainer = styled.div`
-    height: 50vmax;
-    width: 100vw;
-    background: var(--color-background-light);
-    position: relative;
-`;
-
-const WidthWrapper = styled.div`
-    max-width: var(--container-max-width);
-`;
-
-const MapInfos = styled.div`
-    margin-top: calc(var(--space-unit) * 2);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    grid-gap: var(--space-unit);
-`;
-
-const InfoBox = styled.dl`
-    dt {
-        font-weight: 700;
-        color: var(--color-text-light-accent);
-        @media ${device.desktop} {
-            font-size: var(--font-size-medium);
-        }
-    }
-    dd {
-        margin: 0;
-        font-size: var(--font-size-large);
-        @media ${device.desktop} {
-            font-size: var(--font-size-x-large);
-        }
-        span {
-            ${headingsStyles};
-            color: var(--color-text-light-accent);
-            letter-spacing: var(--text-letter-spacing);
-        }
-    }
-`;
-
-const Chart = styled.figure`
-    margin-top: calc(var(--space-unit) * 4);
-    margin-bottom: calc(var(--space-unit) * 2);
-    canvas {
-        max-width: var(--container-max-width);
-        width: 100%;
-        height: auto;
-        aspect-ratio: attr(width) / attr(height);
-    }
-`;
-
-const Buttons = styled.footer`
-    margin-top: calc(var(--space-unit) * 4);
-    margin-bottom: calc(var(--space-unit) * 2);
-    > * + * {
-        margin-left: calc(var(--space-unit) / 2);
-    }
-`;
-
-const Disclaimer = styled.p`
-    font-size: var(--font-size-small);
-    color: var(--color-text-dark-accent);
-`;
-
-const LoaderIndicator = styled.div`
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-`;
-
 export default function PostGps({ post }) {
     const { gps } = post;
     return (
@@ -184,3 +112,75 @@ export default function PostGps({ post }) {
         </>
     );
 }
+
+const MapContainer = styled.div`
+    height: 50vmax;
+    width: 100vw;
+    background: var(--color-background-light);
+    position: relative;
+`;
+
+const WidthWrapper = styled.div`
+    max-width: var(--container-max-width);
+`;
+
+const MapInfos = styled.div`
+    margin-top: calc(var(--space-unit) * 2);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-gap: var(--space-unit);
+`;
+
+const InfoBox = styled.dl`
+    dt {
+        font-weight: 700;
+        color: var(--color-text-light-accent);
+        @media ${device.desktop} {
+            font-size: var(--font-size-medium);
+        }
+    }
+    dd {
+        margin: 0;
+        font-size: var(--font-size-large);
+        @media ${device.desktop} {
+            font-size: var(--font-size-x-large);
+        }
+        span {
+            ${headingsStyles};
+            color: var(--color-text-light-accent);
+            letter-spacing: var(--text-letter-spacing);
+        }
+    }
+`;
+
+const Chart = styled.figure`
+    margin-top: calc(var(--space-unit) * 4);
+    margin-bottom: calc(var(--space-unit) * 2);
+    canvas {
+        max-width: var(--container-max-width);
+        width: 100%;
+        height: auto;
+        aspect-ratio: attr(width) / attr(height);
+    }
+`;
+
+const Buttons = styled.footer`
+    margin-top: calc(var(--space-unit) * 4);
+    margin-bottom: calc(var(--space-unit) * 2);
+    > * + * {
+        margin-left: calc(var(--space-unit) / 2);
+    }
+`;
+
+const Disclaimer = styled.p`
+    font-size: var(--font-size-small);
+    color: var(--color-text-dark-accent);
+`;
+
+const LoaderIndicator = styled.div`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+`;

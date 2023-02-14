@@ -9,6 +9,41 @@ import {
 } from '../../../theme';
 import PostCategoryIcon from '../../post/PostCategoryIcon';
 
+export default function BlogPostCard({ post }) {
+    return (
+        <WrapperLink
+            href={post.permalink}
+            id={`js-post-${post.id}`}
+            className="js-post"
+            title="Leggi la relazione"
+        >
+            <ImageWrapper>
+                <StyledImage
+                    src={`${post.cover.src}?w=200&h=200&fm=webp&fit=thumb&q=50&f=center`}
+                    alt={post.cover.alt}
+                    width="200"
+                    height="200"
+                    loading="lazy"
+                />
+            </ImageWrapper>
+            <ContentWrapper>
+                <ContentHeader>
+                    <PostCategory>
+                        <PostCategoryIcon category={post.category} left />
+                        {post.category}
+                    </PostCategory>
+                    <PostDate>{post.dateShort}</PostDate>
+                </ContentHeader>
+                <PostTitle>{post.title}</PostTitle>
+                <PostAbstract>{post.description}</PostAbstract>
+                <object aria-label="Leggi tutto">
+                    <PostLink href={post.permalink}>Leggi tutto</PostLink>
+                </object>
+            </ContentWrapper>
+        </WrapperLink>
+    );
+}
+
 const WrapperLink = styled.a`
     display: flex;
     width: fit-content;
@@ -89,38 +124,3 @@ const PostLink = styled.a`
         font-size: var(--font-size-base);
     }
 `;
-
-export default function BlogPostCard({ post }) {
-    return (
-        <WrapperLink
-            href={post.permalink}
-            id={`js-post-${post.id}`}
-            className="js-post"
-            title="Leggi la relazione"
-        >
-            <ImageWrapper>
-                <StyledImage
-                    src={`${post.cover.src}?w=200&h=200&fm=webp&fit=thumb&q=50&f=center`}
-                    alt={post.cover.alt}
-                    width="200"
-                    height="200"
-                    loading="lazy"
-                />
-            </ImageWrapper>
-            <ContentWrapper>
-                <ContentHeader>
-                    <PostCategory>
-                        <PostCategoryIcon category={post.category} left />
-                        {post.category}
-                    </PostCategory>
-                    <PostDate>{post.dateShort}</PostDate>
-                </ContentHeader>
-                <PostTitle>{post.title}</PostTitle>
-                <PostAbstract>{post.description}</PostAbstract>
-                <object aria-label="Leggi tutto">
-                    <PostLink href={post.permalink}>Leggi tutto</PostLink>
-                </object>
-            </ContentWrapper>
-        </WrapperLink>
-    );
-}

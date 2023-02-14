@@ -7,6 +7,37 @@ import BaseLayout from '../../../components/layout/Base';
 import DefaultPageLayout from '../../../components/layout/DefaultPageLayout';
 import Head from '../../../components/common/Head';
 
+export default function GraziePage({ route }) {
+    let title = 'Grazie!';
+    let description = 'Grazie per avermi contattato';
+    return (
+        <BaseLayout
+            route={route}
+            head={
+                <Head
+                    title={title}
+                    slogan={vars.siteName}
+                    description={description}
+                />
+            }
+        >
+            <DefaultPageLayout
+                title={
+                    <StyledPageTitle small>Messaggio ricevuto!</StyledPageTitle>
+                }
+                description={
+                    <Text>
+                        <Intro>
+                            Cercherò di risponderti il prima possibile 🙂
+                        </Intro>
+                        <RegularLink href="/">Torna alla homepage</RegularLink>
+                    </Text>
+                }
+            />
+        </BaseLayout>
+    );
+}
+
 const backInLeft = keyframes`
   from {
     opacity: 0;
@@ -49,34 +80,3 @@ const Intro = styled.p`
 const RegularLink = styled.a`
     ${linksStyles}
 `;
-
-export default function GraziePage({ route }) {
-    let title = 'Grazie!';
-    let description = 'Grazie per avermi contattato';
-    return (
-        <BaseLayout
-            route={route}
-            head={
-                <Head
-                    title={title}
-                    slogan={vars.siteName}
-                    description={description}
-                />
-            }
-        >
-            <DefaultPageLayout
-                title={
-                    <StyledPageTitle small>Messaggio ricevuto!</StyledPageTitle>
-                }
-                description={
-                    <Text>
-                        <Intro>
-                            Cercherò di risponderti il prima possibile 🙂
-                        </Intro>
-                        <RegularLink href="/">Torna alla homepage</RegularLink>
-                    </Text>
-                }
-            />
-        </BaseLayout>
-    );
-}

@@ -8,9 +8,13 @@ const PrintStyles = createGlobalStyle`
       background: white!important;
       letter-spacing:normal!important;
     }
+
+    @page  {  
+      margin: 1.5cm;
+    } 
+
     body {
       font-size: 10pt!important;
-      margin: 1cm;
       
     }
     h1 {
@@ -33,7 +37,8 @@ const PrintStyles = createGlobalStyle`
     .print-post-section-mappa,
     .print-post-section-condividi,
     .print-post-nav,
-    .print-post-description {
+    .print-post-description,
+    #js-postlayout-goToTop {
       display: none!important;
     }
 

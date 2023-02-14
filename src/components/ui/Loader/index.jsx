@@ -2,6 +2,17 @@ import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { device } from '../../../theme';
 
+export default function Loader({ size, children, ...props }) {
+    return (
+        <LoaderWrapper {...props}>
+            <LoaderContainer size={size}>
+                <LoaderInner />
+            </LoaderContainer>
+            {children && <LoaderText>{children}</LoaderText>}
+        </LoaderWrapper>
+    );
+}
+
 const loader = keyframes`
   0% {
     transform: rotate(0deg);
@@ -82,14 +93,3 @@ const LoaderText = styled.span`
     margin-top: 1em;
     display: inline-block;
 `;
-
-export default function Loader({ size, children, ...props }) {
-    return (
-        <LoaderWrapper {...props}>
-            <LoaderContainer size={size}>
-                <LoaderInner />
-            </LoaderContainer>
-            {children && <LoaderText>{children}</LoaderText>}
-        </LoaderWrapper>
-    );
-}

@@ -3,6 +3,10 @@ import styled, { css } from 'styled-components';
 import { headingsStyles } from '../../../theme';
 import withFiletto from '../../hoc/withFiletto';
 
+export default function PageTitle({ children, ...props }) {
+    return <H1WithFiletto {...props}>{children}</H1WithFiletto>;
+}
+
 const StyledH1 = styled.h1`
     ${headingsStyles}
     ${(props) =>
@@ -17,9 +21,5 @@ const StyledH1 = styled.h1`
         `}
     margin: 0;
 `;
-
-export default function PageTitle({ children, ...props }) {
-    return <H1WithFiletto {...props}>{children}</H1WithFiletto>;
-}
 
 const H1WithFiletto = withFiletto(StyledH1);

@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+export default function Fab({ ...props }) {
+    return <StyledButton {...props} />;
+}
+
 const StyledButton = styled.button`
     font-size: var(--font-size-small);
     font-weight: 700;
@@ -26,7 +30,3 @@ const StyledButton = styled.button`
         left: 5px;
     }
 `;
-
-export default function Fab({ ...props }) {
-    return <StyledButton {...props} />;
-}

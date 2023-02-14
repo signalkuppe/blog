@@ -3,6 +3,23 @@ import styled from 'styled-components';
 import { device } from '../../../theme';
 import Container from '../../../components/layout/Container';
 
+/*
+ * default internal layout for simple pages like contatti, grazie, portfolio
+ * menages only the spaces between title, description and children slots
+ */
+
+export default function DefaultPageLayout({ title, description, children }) {
+    return (
+        <Container fullWidth>
+            <Header>
+                <Title>{title}</Title>
+                {description && <Description>{description}</Description>}
+            </Header>
+            <Content>{children}</Content>
+        </Container>
+    );
+}
+
 const Title = styled.div`
     margin-top: calc(var(--space-unit) * 1.5);
     @media ${device.desktop} {
@@ -21,20 +38,3 @@ const Header = styled.div`
 const Content = styled.div`
     padding-bottom: calc(var(--space-unit) * 4);
 `;
-
-/*
- * default internal layout for simple pages like contatti, grazie, portfolio
- * menages only the spaces between title, description and children slots
- */
-
-export default function DefaultPageLayout({ title, description, children }) {
-    return (
-        <Container fullWidth>
-            <Header>
-                <Title>{title}</Title>
-                {description && <Description>{description}</Description>}
-            </Header>
-            <Content>{children}</Content>
-        </Container>
-    );
-}

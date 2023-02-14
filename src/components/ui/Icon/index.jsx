@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { propsToFontSize } from '../../../theme';
 
+function Icon({ icon, ...props }) {
+    const Svg = icon;
+    return <Wrapper {...props}>{Svg && <Svg />}</Wrapper>;
+}
+
 const Wrapper = styled.span`
     font-size: ${propsToFontSize};
     margin-right: ${(props) => (props.left ? '0.25em' : '0px')};
@@ -24,8 +29,4 @@ const Wrapper = styled.span`
     }
 `;
 
-function Icon({ icon, ...props }) {
-    const Svg = icon;
-    return <Wrapper {...props}>{Svg && <Svg />}</Wrapper>;
-}
 export default Icon;

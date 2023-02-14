@@ -5,6 +5,32 @@ import Logo from '../../ui/Logo';
 import vars from '../../../vars';
 import MainMenu from '../MainMenu';
 
+export default function Header({ route, ...props }) {
+    const isFronPage = route.name === 'index';
+    let logo;
+    const logoLink = (
+        <LogoLink href="/" title="Torna alla homepage">
+            <StyledLogo />
+            <LogoText>{vars.siteName}</LogoText>
+        </LogoLink>
+    );
+
+    if (isFronPage) {
+        logo = <H1LogoContainer>{logoLink}</H1LogoContainer>;
+    } else {
+        logo = <PlainLogoContainer>{logoLink}</PlainLogoContainer>;
+    }
+
+    return (
+        <HeaderContainer id="js-header" {...props}>
+            {logo}
+            <nav>
+                <MainMenu route={route} />
+            </nav>
+        </HeaderContainer>
+    );
+}
+
 const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
@@ -44,29 +70,3 @@ const LogoLink = styled.a`
     display: grid;
     place-items: center;
 `;
-
-export default function Header({ route, ...props }) {
-    const isFronPage = route.name === 'index';
-    let logo;
-    const logoLink = (
-        <LogoLink href="/" title="Torna alla homepage">
-            <StyledLogo />
-            <LogoText>{vars.siteName}</LogoText>
-        </LogoLink>
-    );
-
-    if (isFronPage) {
-        logo = <H1LogoContainer>{logoLink}</H1LogoContainer>;
-    } else {
-        logo = <PlainLogoContainer>{logoLink}</PlainLogoContainer>;
-    }
-
-    return (
-        <HeaderContainer id="js-header" {...props}>
-            {logo}
-            <nav>
-                <MainMenu route={route} />
-            </nav>
-        </HeaderContainer>
-    );
-}

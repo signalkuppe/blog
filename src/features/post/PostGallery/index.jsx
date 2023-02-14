@@ -5,6 +5,31 @@ import PhotoDisclaimer from '../../../components/common/PhotoDisclaimer';
 import Container from '../../../components/layout/Container';
 import { postPhotoLink } from '../../../pages/post-photo';
 
+export default function PostGallery({ post }) {
+    const { gallery } = post;
+    return (
+        <Container>
+            <Wrapper>
+                <StyledList>
+                    {gallery.map((photo, i) => (
+                        <StyledListItem key={i}>
+                            <a href={postPhotoLink(photo)} title={photo.title}>
+                                <StyledImage
+                                    src={`${photo.src}?w=240&h=240&fm=webp&fit=thumb&q=50`}
+                                    title={photo.title}
+                                    alt={photo.alt || photo.title}
+                                    loading="lazy"
+                                />
+                            </a>
+                        </StyledListItem>
+                    ))}
+                </StyledList>
+                <PhotoDisclaimer />
+            </Wrapper>
+        </Container>
+    );
+}
+
 const Wrapper = styled.div`
     max-width: 65ch;
 `;
@@ -41,28 +66,3 @@ const StyledListItem = styled.li`
 const StyledImage = styled.img`
     ${imagesStyles}
 `;
-
-export default function PostGallery({ post }) {
-    const { gallery } = post;
-    return (
-        <Container>
-            <Wrapper>
-                <StyledList>
-                    {gallery.map((photo, i) => (
-                        <StyledListItem key={i}>
-                            <a href={postPhotoLink(photo)} title={photo.title}>
-                                <StyledImage
-                                    src={`${photo.src}?w=240&h=240&fm=webp&fit=thumb&q=50`}
-                                    title={photo.title}
-                                    alt={photo.alt || photo.title}
-                                    loading="lazy"
-                                />
-                            </a>
-                        </StyledListItem>
-                    ))}
-                </StyledList>
-                <PhotoDisclaimer />
-            </Wrapper>
-        </Container>
-    );
-}

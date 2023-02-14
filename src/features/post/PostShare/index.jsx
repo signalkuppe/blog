@@ -13,34 +13,6 @@ import Whatsapp from '../../../public/icons/Whatsapp.svg';
 import PrintIcon from '../../../public/icons/Print.svg';
 import client from './index.client.js';
 
-const StyledSocialLink = styled.a`
-    color: var(--color-text-light-accent);
-    display: block;
-    :hover {
-        color: ${(props) => {
-            if (props.social === 'facebook') {
-                return `var(--color-facebook)`;
-            } else if (props.social === 'twitter') {
-                return `var(--color-twitter)`;
-            } else if (props.social === 'whatsapp') {
-                return `var(--color-whatsapp)`;
-            }
-        }};
-    }
-`;
-
-const List = styled.ul`
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: var(--space-unit);
-    list-style: none;
-`;
-
-const BaseLink = styled.a`
-    ${linksStyles}
-`;
-
 export default function PostShare({ post }) {
     const { title, permalink } = post;
     const fullPermalink = `${vars.websiteUrl}/${permalink}`;
@@ -102,3 +74,31 @@ export default function PostShare({ post }) {
         </>
     );
 }
+
+const StyledSocialLink = styled.a`
+    color: var(--color-text-light-accent);
+    display: block;
+    :hover {
+        color: ${(props) => {
+            if (props.social === 'facebook') {
+                return `var(--color-facebook)`;
+            } else if (props.social === 'twitter') {
+                return `var(--color-twitter)`;
+            } else if (props.social === 'whatsapp') {
+                return `var(--color-whatsapp)`;
+            }
+        }};
+    }
+`;
+
+const List = styled.ul`
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--space-unit);
+    list-style: none;
+`;
+
+const BaseLink = styled.a`
+    ${linksStyles}
+`;

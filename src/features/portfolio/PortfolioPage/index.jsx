@@ -9,11 +9,6 @@ import DefaultPageLayout from '../../../components/layout/DefaultPageLayout';
 import Head from '../../../components/common/Head';
 import PortfolioPhotos from '../PortfolioPhotos';
 
-const StyledPager = styled(Pager)`
-    margin-top: calc(var(--space-unit) * 6);
-    margin-bottom: calc(var(--space-unit) * 4);
-`;
-
 export default function PortfolioPage({ route, pagination }) {
     let title = 'Portfolio';
     let description = 'Una raccolta delle foto che mi piacciono di più';
@@ -57,3 +52,8 @@ export default function PortfolioPage({ route, pagination }) {
         </BaseLayout>
     );
 }
+
+const StyledPager = styled(Pager)`
+    margin-top: calc(var(--space-unit) * 6);
+    margin-bottom: calc(var(--space-unit) * 4);
+`;

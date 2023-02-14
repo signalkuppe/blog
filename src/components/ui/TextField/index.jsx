@@ -4,6 +4,26 @@ import styled, { css } from 'styled-components';
 
 let i = 0;
 
+function TextField({ ...props }, ref) {
+    const uid = `textfield-${i++}`;
+    const className = 'js-textinput';
+
+    return (
+        <>
+            {props.label && (
+                <StyledLabel htmlFor={uid}>{props.label}</StyledLabel>
+            )}
+            <StyledTextField
+                id={uid}
+                className={className}
+                type={props.type || 'text'}
+                {...omit(props, ['className'])}
+                ref={ref}
+            />
+        </>
+    );
+}
+
 const StyledLabel = styled.label`
     display: block;
     font-weight: 500;
@@ -57,25 +77,5 @@ const StyledTextField = styled.input`
             width: 100%;
         `};
 `;
-
-function TextField({ ...props }, ref) {
-    const uid = `textfield-${i++}`;
-    const className = 'js-textinput';
-
-    return (
-        <>
-            {props.label && (
-                <StyledLabel htmlFor={uid}>{props.label}</StyledLabel>
-            )}
-            <StyledTextField
-                id={uid}
-                className={className}
-                type={props.type || 'text'}
-                {...omit(props, ['className'])}
-                ref={ref}
-            />
-        </>
-    );
-}
 
 export default React.forwardRef(TextField);

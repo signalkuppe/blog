@@ -5,22 +5,6 @@ import Loader from '../../../components/ui/Loader';
 import client from './index.client';
 import MapStyles from './MapStyles';
 
-const MapContainer = styled.figure`
-    height: 100%;
-    width: 100%;
-    background: var(--color-background-light);
-    position: relative;
-`;
-
-const LoaderIndicator = styled.div`
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    text-align: center;
-`;
-
 export default function BlogMap({ category }) {
     return (
         <>
@@ -63,3 +47,19 @@ export default function BlogMap({ category }) {
         </>
     );
 }
+
+const MapContainer = styled.figure`
+    height: 100%;
+    width: 100%;
+    background: var(--color-background-light);
+    position: relative;
+`;
+
+const LoaderIndicator = styled.div`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+`;

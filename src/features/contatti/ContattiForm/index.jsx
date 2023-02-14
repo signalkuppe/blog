@@ -6,25 +6,6 @@ import TextField from '../../../components/ui/TextField';
 import TextArea from '../../../components/ui/TextArea';
 import VerticalSpace from '../../../components/ui/VerticalSpace';
 
-const HoneyPot = styled.div`
-    ${visuallyHidden};
-`;
-
-const StyledForm = styled.form`
-    border-radius: var(--border-radius);
-    max-width: 85ch;
-    padding: var(--space-unit);
-    background: var(--color-background-light);
-    border: 4px solid var(--color-background-light);
-    :focus-within {
-        box-shadow: 0 1px 1px var(--drop-shadow-color),
-            0 2px 2px var(--drop-shadow-color),
-            0 4px 4px var(--drop-shadow-color),
-            0 8px 8px var(--drop-shadow-color),
-            0 16px 16px var(--drop-shadow-color);
-    }
-`;
-
 export default function ContattiForm() {
     // https://docs.netlify.com/forms/setup/
 
@@ -68,3 +49,22 @@ export default function ContattiForm() {
         </StyledForm>
     );
 }
+
+const HoneyPot = styled.div`
+    ${visuallyHidden};
+`;
+
+const StyledForm = styled.form`
+    border-radius: var(--border-radius);
+    max-width: 85ch;
+    padding: var(--space-unit);
+    background: var(--color-background-light);
+    border: 4px solid var(--color-background-light);
+    :focus-within {
+        box-shadow: 0 1px 1px var(--drop-shadow-color),
+            0 2px 2px var(--drop-shadow-color),
+            0 4px 4px var(--drop-shadow-color),
+            0 8px 8px var(--drop-shadow-color),
+            0 16px 16px var(--drop-shadow-color);
+    }
+`;

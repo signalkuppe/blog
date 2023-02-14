@@ -2,6 +2,14 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { device } from '../../../theme';
 
+export default function Container({ children, ...props }) {
+    return (
+        <StyledContainer className="print-container" {...props}>
+            {children}
+        </StyledContainer>
+    );
+}
+
 const StyledContainer = styled.div`
     padding: 0 var(--space-unit);
     ${(props) =>
@@ -23,11 +31,3 @@ const StyledContainer = styled.div`
             `}
     }
 `;
-
-export default function Container({ children, ...props }) {
-    return (
-        <StyledContainer className="print-container" {...props}>
-            {children}
-        </StyledContainer>
-    );
-}

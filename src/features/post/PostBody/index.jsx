@@ -4,6 +4,19 @@ import { Html } from 'pequeno';
 import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import Container from '../../../components/layout/Container';
 
+export default function PostContent({ post }) {
+    const { body } = post;
+    return (
+        <Container as="section">
+            <PostBody className="print-post-body">
+                <BasicHtmlStyles>
+                    <Html>{body}</Html>
+                </BasicHtmlStyles>
+            </PostBody>
+        </Container>
+    );
+}
+
 const PostBody = styled.div`
     max-width: 65ch;
     @media screen {
@@ -23,16 +36,3 @@ const PostBody = styled.div`
         }
     }
 `;
-
-export default function PostContent({ post }) {
-    const { body } = post;
-    return (
-        <Container as="section">
-            <PostBody className="print-post-body">
-                <BasicHtmlStyles>
-                    <Html>{body}</Html>
-                </BasicHtmlStyles>
-            </PostBody>
-        </Container>
-    );
-}

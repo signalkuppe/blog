@@ -2,14 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import BlogPostCard from '../BlogPostCard';
 
-const PostGridList = styled.ul`
-    display: flex;
-    flex-direction: column;
-    > * + * {
-        margin-top: calc(var(--space-unit) * 3);
-    }
-`;
-
 export default function BlogPostList({ posts }) {
     return (
         <PostGridList>
@@ -21,3 +13,11 @@ export default function BlogPostList({ posts }) {
         </PostGridList>
     );
 }
+
+const PostGridList = styled.ul`
+    display: flex;
+    flex-direction: column;
+    > * + * {
+        margin-top: calc(var(--space-unit) * 3);
+    }
+`;

@@ -7,6 +7,36 @@ import DownIcon from '../../../public/icons/ChevronDown.svg';
 import PageTitle from '../../../components/ui/PageTitle';
 import PostCategoryIcon from '../PostCategoryIcon';
 
+export default function PostHero({ post }) {
+    const { title, date, dateTime, category, description } = post;
+    return (
+        <Hero>
+            <Container>
+                <HeroSpacer className="print-post-heroSpacer">
+                    <Date dateTime={dateTime} className="print-post-date">
+                        {date}
+                    </Date>
+                    <Category className="print-post-category">
+                        <StyledPostCategoryIcon category={category} />
+                        {category}
+                    </Category>
+                    <PageTitle className="print-post-title">{title}</PageTitle>
+                    <Description className="print-post-description">
+                        {description}
+                    </Description>
+                    <ScrollHint
+                        aria-hidden="true"
+                        className="print-post-scrollHint"
+                    >
+                        <StyledMouseIcon />
+                        <StyledDownIcon />
+                    </ScrollHint>
+                </HeroSpacer>
+            </Container>
+        </Hero>
+    );
+}
+
 const ShakeY = keyframes`
   from,
   20%,
@@ -105,33 +135,3 @@ const StyledDownIcon = styled(DownIcon)`
     transform: scale(0.8);
     width: 1.5em;
 `;
-
-export default function PostHero({ post }) {
-    const { title, date, dateTime, category, description } = post;
-    return (
-        <Hero>
-            <Container>
-                <HeroSpacer className="print-post-heroSpacer">
-                    <Date dateTime={dateTime} className="print-post-date">
-                        {date}
-                    </Date>
-                    <Category className="print-post-category">
-                        <StyledPostCategoryIcon category={category} />
-                        {category}
-                    </Category>
-                    <PageTitle className="print-post-title">{title}</PageTitle>
-                    <Description className="print-post-description">
-                        {description}
-                    </Description>
-                    <ScrollHint
-                        aria-hidden="true"
-                        className="print-post-scrollHint"
-                    >
-                        <StyledMouseIcon />
-                        <StyledDownIcon />
-                    </ScrollHint>
-                </HeroSpacer>
-            </Container>
-        </Hero>
-    );
-}

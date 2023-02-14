@@ -6,6 +6,46 @@ import { styles } from '../../../components/hoc/withFiletto';
 import Container from '../../../components/layout/Container';
 import client from './index.client';
 
+export default function PostMenu({ sections }) {
+    return (
+        <>
+            <MenuContainer className="js-postMenu print-post-menu">
+                <Container>
+                    <List className="js-postMenu-list">
+                        {sections.map((section, i) =>
+                            section.content ? (
+                                <ListItem key={i}>
+                                    <MenuLink
+                                        href={`#${section.id}`}
+                                        className="js-postMenuLink"
+                                    >
+                                        <MenuLinkText
+                                            className="js-postMenuLinkText"
+                                            id={`js-postMenuLinkText-${section.id}`}
+                                        >
+                                            {section.title}
+                                        </MenuLinkText>
+                                    </MenuLink>
+                                </ListItem>
+                            ) : null,
+                        )}
+                    </List>
+                </Container>
+            </MenuContainer>
+            <Script
+                libs={[
+                    {
+                        where: 'body',
+                        tag: '<script src="/libs/scrollama.js" />',
+                    },
+                ]}
+            >
+                {client}
+            </Script>
+        </>
+    );
+}
+
 const MenuContainer = styled.nav`
     background: var(--color-background-light);
     position: sticky;
@@ -71,43 +111,3 @@ const MenuLinkText = styled.span`
     }
     pointer-events: none;
 `;
-
-export default function PostMenu({ sections }) {
-    return (
-        <>
-            <MenuContainer className="js-postMenu print-post-menu">
-                <Container>
-                    <List className="js-postMenu-list">
-                        {sections.map((section, i) =>
-                            section.content ? (
-                                <ListItem key={i}>
-                                    <MenuLink
-                                        href={`#${section.id}`}
-                                        className="js-postMenuLink"
-                                    >
-                                        <MenuLinkText
-                                            className="js-postMenuLinkText"
-                                            id={`js-postMenuLinkText-${section.id}`}
-                                        >
-                                            {section.title}
-                                        </MenuLinkText>
-                                    </MenuLink>
-                                </ListItem>
-                            ) : null,
-                        )}
-                    </List>
-                </Container>
-            </MenuContainer>
-            <Script
-                libs={[
-                    {
-                        where: 'body',
-                        tag: '<script src="/libs/scrollama.js" />',
-                    },
-                ]}
-            >
-                {client}
-            </Script>
-        </>
-    );
-}

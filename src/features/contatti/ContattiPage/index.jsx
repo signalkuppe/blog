@@ -17,31 +17,6 @@ import Rss from '../../../public/icons/Rss.svg';
 import ContattiForm from '../ContattiForm';
 import client from './index.client';
 
-const Description = styled.p`
-    margin: 0;
-`;
-
-const StyledUl = styled.ul`
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: var(--space-unit);
-    list-style: none;
-`;
-
-const WhiteLink = styled.a`
-    font-weight: 500;
-    color: var(--color-text-light-accent);
-`;
-
-const RegularLink = styled.a`
-    ${linksStyles}
-`;
-
-const Bold = styled.strong`
-    ${boldStyles}
-`;
-
 export default function ContattiPage({ route }) {
     let title = 'Inviami un messaggio';
     let description =
@@ -143,3 +118,28 @@ export default function ContattiPage({ route }) {
         </BaseLayout>
     );
 }
+
+const Description = styled.p`
+    margin: 0;
+`;
+
+const StyledUl = styled.ul`
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--space-unit);
+    list-style: none;
+`;
+
+const WhiteLink = styled.a`
+    font-weight: 500;
+    color: var(--color-text-light-accent);
+`;
+
+const RegularLink = styled.a`
+    ${linksStyles}
+`;
+
+const Bold = styled.strong`
+    ${boldStyles}
+`;

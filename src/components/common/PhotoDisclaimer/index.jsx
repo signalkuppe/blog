@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import BasicHtmlStyles from '../../../components/ui/BasicHtmlStyles';
 import { permalink as contattiPermalink } from '../../../pages/contatti';
 
-const Description = styled.p`
-    font-size: var(--font-size-small);
-    color: var(--color-text-dark-accent);
-`;
-
 export default function PhotoDisclaimer({ small }) {
     return (
         <BasicHtmlStyles>
@@ -21,3 +16,8 @@ export default function PhotoDisclaimer({ small }) {
         </BasicHtmlStyles>
     );
 }
+
+const Description = styled.p`
+    font-size: var(--font-size-small);
+    color: var(--color-text-dark-accent);
+`;
