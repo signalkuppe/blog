@@ -6,35 +6,11 @@ import withFiletto from '../../../components/hoc/withFiletto';
 import BaseLayout from '../../../components/layout/Base';
 import Head from '../../../components/common/Head';
 import Pager from '../../../components/ui/Pager';
-import Fab from '../../../components/ui/Fab';
-import Icon from '../../../components/ui/Icon';
-import SearchIcon from '../../../public/icons/Search.svg';
 import Bloglayout from '../BlogLayout';
 import BlogMap from '../BlogMap';
 import BlogMenu from '../BlogMenu';
 import BlogPostList from '../BlogPostList';
 import VerticalSpace from '../../../components/ui/VerticalSpace';
-
-const StyledPageTitle = withFiletto(styled.h1`
-    text-transform: uppercase;
-    ${boldStyles}
-    margin-bottom: calc(var(--space-unit) * 1.5);
-    ${(props) =>
-        !props.category &&
-        css`
-            ${visuallyHidden}
-        `}
-    @media ${device.desktop} {
-        ${visuallyHidden}
-    }
-`);
-
-const PostCount = styled.p`
-    margin-top: calc(var(--space-unit) * 2);
-    strong {
-        ${boldStyles}
-    }
-`;
 
 export default function BlogPage({
     posts,
@@ -94,17 +70,28 @@ export default function BlogPage({
                     </>
                 }
                 map={<BlogMap category={category} />}
-                fab={
-                    <Fab
-                        as="a"
-                        href="/cerca"
-                        title="Cerca una relazione"
-                        aria-label="Cerca una relazione"
-                    >
-                        <Icon icon={SearchIcon} l />
-                    </Fab>
-                }
             />
         </BaseLayout>
     );
 }
+
+const StyledPageTitle = withFiletto(styled.h1`
+    text-transform: uppercase;
+    ${boldStyles}
+    margin-bottom: calc(var(--space-unit) * 1.5);
+    ${(props) =>
+        !props.category &&
+        css`
+            ${visuallyHidden}
+        `}
+    @media ${device.desktop} {
+        ${visuallyHidden}
+    }
+`);
+
+const PostCount = styled.p`
+    margin-top: calc(var(--space-unit) * 2);
+    strong {
+        ${boldStyles}
+    }
+`;

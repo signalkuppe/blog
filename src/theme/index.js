@@ -55,7 +55,7 @@ export const vars = {
     '--inputs-border': '4px solid var(--color-text-light-accent)',
     '--inputs-background': 'var(--color-background)',
     '--inputs-color': 'var(--color-text)',
-    '--inputs-padding': '1em',
+    '--inputs-padding': '0.8em',
     '--inputs-border-radius': '999999px',
     '--inputs-focused-border-color': 'var(--color-primary)',
     '--border-radius': '10px',

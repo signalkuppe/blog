@@ -1,4 +1,5 @@
 const hero = document.getElementById('js-postLayout-hero');
+const goToTopLink = document.getElementById('js-postlayout-goToTop');
 const doesNotSupportSvh = !CSS.supports('height', '100svh');
 
 function onResize() {
@@ -12,3 +13,23 @@ if (doesNotSupportSvh) {
     onResize();
     window.addEventListener('resize', debounce(onResize, 250));
 }
+
+document.addEventListener('post-section-reached', function (event) {
+    // detect when we reach the post body
+    if (
+        event.detail.section === 'relazione' &&
+        event.detail.direction === 'down'
+    ) {
+        goToTopLink.classList.add('js-is-visible');
+    }
+});
+
+document.addEventListener('post-section-exit', function (event) {
+    // detect when we exit the post body
+    if (
+        event.detail.section === 'relazione' &&
+        event.detail.direction === 'up'
+    ) {
+        goToTopLink.classList.remove('js-is-visible');
+    }
+});

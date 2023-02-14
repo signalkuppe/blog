@@ -21,12 +21,12 @@ scroller
     .setup({
         step: '.js-postSection',
     })
-    .onStepEnter(({ element }) => {
+    .onStepEnter(({ element, direction }) => {
         // { element, index, direction }
 
         const event = new CustomEvent('post-section-reached', {
             bubbles: true,
-            detail: { section: element.getAttribute('data-step') },
+            detail: { section: element.getAttribute('data-step'), direction },
         });
 
         document.querySelectorAll('.js-postMenuLink span').forEach((span) => {
@@ -41,6 +41,13 @@ scroller
     .onStepExit(({ element, direction }) => {
         // { element, index, direction }
         const step = element.getAttribute('data-step');
+        const event = new CustomEvent('post-section-exit', {
+            bubbles: true,
+            detail: { section: step, direction },
+        });
+        setTimeout(function () {
+            element.dispatchEvent(event);
+        }, 100);
         if (step === 'relazione' && direction === 'up') {
             return;
         }

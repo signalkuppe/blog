@@ -7,7 +7,7 @@ import Header from '../../common/Header';
 
 export default function BaseLayout({ route, head, children }) {
     return (
-        <Html className="no-js">
+        <Html className="no-js" id="top">
             {head}
             <Body>
                 <CommonStyles />

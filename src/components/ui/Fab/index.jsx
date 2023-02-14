@@ -7,8 +7,8 @@ const StyledButton = styled.button`
     text-decoration: none;
     display: grid;
     place-items: center;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: ${(props) => (props.s ? '2rem' : '3.5em')};
+    height: ${(props) => (props.s ? '2rem' : '3.5em')};
     border-radius: 50%;
     color: var(--color-button-color);
     border: var(--inputs-border);

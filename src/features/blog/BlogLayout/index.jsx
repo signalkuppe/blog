@@ -1,6 +1,31 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { device, hideScrollbar } from '../../../theme';
+import Fab from '../../../components/ui/Fab';
+import Icon from '../../../components/ui/Icon';
+import SearchIcon from '../../../public/icons/Search.svg';
+
+export default function BlogLayout({ topBar, content, map }) {
+    return (
+        <Wrapper>
+            <TopBar>{topBar}</TopBar>
+            <Content>
+                <ContentWrapper>{content}</ContentWrapper>
+            </Content>
+            <Map>{map}</Map>
+            <FabContainer>
+                <Fab
+                    as="a"
+                    href="/cerca"
+                    title="Cerca una relazione"
+                    aria-label="Cerca una relazione"
+                >
+                    <Icon icon={SearchIcon} l />
+                </Fab>
+            </FabContainer>
+        </Wrapper>
+    );
+}
 
 const Wrapper = styled.div`
     @media ${device.desktop} {
@@ -65,7 +90,7 @@ const fabAnimation = keyframes`
     }
 `;
 
-const Fab = styled.div`
+const FabContainer = styled.div`
     position: fixed;
     z-index: calc(var(--z-index-map) + 1);
     @media ${device.desktop} {
@@ -83,16 +108,3 @@ const Fab = styled.div`
         animation-fill-mode: backwards;
     }
 `;
-
-export default function BlogLayout({ topBar, content, map, fab }) {
-    return (
-        <Wrapper>
-            <TopBar>{topBar}</TopBar>
-            <Content>
-                <ContentWrapper>{content}</ContentWrapper>
-            </Content>
-            <Map>{map}</Map>
-            <Fab>{fab}</Fab>
-        </Wrapper>
-    );
-}
