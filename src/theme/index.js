@@ -91,12 +91,12 @@ export const headingsSize = {
 };
 
 export const linksStyles = css`
-    color: var(--color-text-accent);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.15em;
+    color: var(--color-primary);
+    font-weight: 700;
     :hover {
-        color: var(--color-text-light-accent);
+        text-decoration: underline;
+        text-decoration-thickness: 3px;
+        text-underline-offset: 0.1em;
     }
 `;
 
