@@ -14,13 +14,21 @@ if (doesNotSupportSvh) {
     window.addEventListener('resize', debounce(onResize, 250));
 }
 
+function hideGoToTopLink() {
+    goToTopLink.classList.remove('js-is-visible');
+}
+
+function showGoToTopLink() {
+    goToTopLink.classList.add('js-is-visible');
+}
+
 document.addEventListener('post-section-reached', function (event) {
     // detect when we reach the post body
     if (
         event.detail.section === 'relazione' &&
         event.detail.direction === 'down'
     ) {
-        goToTopLink.classList.add('js-is-visible');
+        showGoToTopLink();
     }
 });
 
@@ -30,6 +38,11 @@ document.addEventListener('post-section-exit', function (event) {
         event.detail.section === 'relazione' &&
         event.detail.direction === 'up'
     ) {
-        goToTopLink.classList.remove('js-is-visible');
+        hideGoToTopLink();
     }
+});
+
+goToTopLink.addEventListener('click', function () {
+    console.log('click');
+    hideGoToTopLink();
 });
