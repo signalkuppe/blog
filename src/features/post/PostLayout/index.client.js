@@ -42,7 +42,8 @@ document.addEventListener('post-section-exit', function (event) {
     }
 });
 
-goToTopLink.addEventListener('click', function () {
-    console.log('click');
+goToTopLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo(0, -15);
     hideGoToTopLink();
 });

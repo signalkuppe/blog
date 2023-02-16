@@ -59,7 +59,7 @@ export default function PostShare({ post }) {
                 </List>
                 <VerticalSpace size={3} />
                 <Button className="js-postShare-print">
-                    <Icon icon={PrintIcon} l left />
+                    <Icon icon={PrintIcon} left />
                     Stampa
                 </Button>
                 <VerticalSpace size={3} />

@@ -57,7 +57,7 @@ export default function PostGps({ post }) {
                                 as="a"
                                 className="js-gps-download"
                             >
-                                <Icon icon={DownloadIcon} left l />
+                                <Icon icon={DownloadIcon} left />
                                 Traccia .gpx
                             </Button>
                         )}
@@ -67,7 +67,7 @@ export default function PostGps({ post }) {
                                 as="a"
                                 className="js-gps-download"
                             >
-                                <Icon icon={DownloadIcon} left l />
+                                <Icon icon={DownloadIcon} left />
                                 Traccia .kml
                             </Button>
                         )}
