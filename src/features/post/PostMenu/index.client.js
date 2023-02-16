@@ -33,21 +33,14 @@ scroller
             span.classList.remove('js-is-active');
         });
         setActiveLinktext(activeLinkText(element));
+        element.dispatchEvent(event);
         setTimeout(function () {
             scrollableList.scrollLeft = activeLink(element).offsetLeft - 24;
-            element.dispatchEvent(event);
         }, 100);
     })
     .onStepExit(({ element, direction }) => {
         // { element, index, direction }
         const step = element.getAttribute('data-step');
-        const event = new CustomEvent('post-section-exit', {
-            bubbles: true,
-            detail: { section: step, direction },
-        });
-        setTimeout(function () {
-            element.dispatchEvent(event);
-        }, 100);
         if (step === 'relazione' && direction === 'up') {
             return;
         }

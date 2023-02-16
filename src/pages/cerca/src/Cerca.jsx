@@ -120,7 +120,7 @@ function Cerca() {
                                 <ButtonContainer>
                                     {!state.searching && (
                                         <Fab type="submit" aria-label="Cerca">
-                                            <Icon icon={SearchIcon} l />
+                                            <Icon icon={SearchIcon} />
                                         </Fab>
                                     )}
                                     {state.searching && <Loader />}

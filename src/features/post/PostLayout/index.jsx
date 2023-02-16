@@ -21,7 +21,6 @@ export default function PostLayout({ hero, content }) {
                         href="#top"
                         title="Torna in cima"
                         aria-label="Torna in cima"
-                        s
                     >
                         <Icon icon={UpIcon} />
                     </Fab>
@@ -64,6 +63,6 @@ const ToTop = styled.div`
     }
     @media ${device.desktop} {
         left: calc(var(--space-unit) * 1.5);
-        bottom: calc(var(--space-unit) * 1.5);
+        bottom: calc(var(--space-unit) * 3);
     }
 `;

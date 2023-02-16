@@ -41,7 +41,10 @@ export default function PostSections({ post, prev, next }) {
     return (
         <>
             <PostMenu sections={sections} />
-            <Wrapper className="print-post-sections-wrapper">
+            <Wrapper
+                className="print-post-sections-wrapper"
+                id="js-post-sections-wrapper"
+            >
                 {sections.map((section, i) =>
                     section.content ? (
                         <PostSection

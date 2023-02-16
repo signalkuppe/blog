@@ -22,22 +22,10 @@ function showGoToTopLink() {
     goToTopLink.classList.add('js-is-visible');
 }
 
-document.addEventListener('post-section-reached', function (event) {
-    // detect when we reach the post body
-    if (
-        event.detail.section === 'relazione' &&
-        event.detail.direction === 'down'
-    ) {
+document.addEventListener('post-cover-intersecting', function (event) {
+    if (!event.detail.isIntersecting) {
         showGoToTopLink();
-    }
-});
-
-document.addEventListener('post-section-exit', function (event) {
-    // detect when we exit the post body
-    if (
-        event.detail.section === 'relazione' &&
-        event.detail.direction === 'up'
-    ) {
+    } else {
         hideGoToTopLink();
     }
 });

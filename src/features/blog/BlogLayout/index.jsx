@@ -20,7 +20,7 @@ export default function BlogLayout({ topBar, content, map }) {
                     title="Cerca una relazione"
                     aria-label="Cerca una relazione"
                 >
-                    <Icon icon={SearchIcon} l />
+                    <Icon icon={SearchIcon} />
                 </Fab>
             </FabContainer>
         </Wrapper>
@@ -83,7 +83,7 @@ const Map = styled.aside`
 
 const fabAnimation = keyframes`
     0% {
-        transform: translateY(calc(100% + var(--space-unit) * 1.5))
+        transform: translateY(calc(100% + var(--space-unit) * 4))
     }
     100% {
         transform: translateY(0%);
@@ -95,11 +95,11 @@ const FabContainer = styled.div`
     z-index: calc(var(--z-index-map) + 1);
     @media ${device.desktop} {
         left: calc(40vw - calc(var(--space-unit) * 4));
-        bottom: calc(var(--space-unit) * 1.5);
+        bottom: calc(var(--space-unit) * 3);
     }
     @media ${device.mobileAndTablet} {
-        right: calc(var(--space-unit) * 1);
-        bottom: calc(var(--space-unit) * 1);
+        right: calc(var(--space-unit) * 1.5);
+        bottom: calc(var(--space-unit) * 3);
     }
     @media ${device.noReduceMotion} {
         animation-name: ${fabAnimation};

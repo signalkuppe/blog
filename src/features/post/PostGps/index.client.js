@@ -18,13 +18,16 @@ function decimateArray(arr, passes = 1, fidelity = 2) {
 
 const showMap = function () {
     const gpxUrl = map.getAttribute('data-gpx');
+    let mymap;
+    if (!mymap) {
+        mymap = L.map('js-map', {
+            renderer: L.canvas(),
+            attributionControl: false,
+            scrollWheelZoom: false,
+            //  gestureHandling: true, // depends on https://github.com/elmarquis/Leaflet.GestureHandling
+        });
+    }
 
-    let mymap = L.map('js-map', {
-        renderer: L.canvas(),
-        attributionControl: false,
-        scrollWheelZoom: false,
-        //  gestureHandling: true, // depends on https://github.com/elmarquis/Leaflet.GestureHandling
-    });
     mymap.addControl(new L.Control.Fullscreen());
     // mappe da thunderforest.com: 150.000 richieste al mese poi bisogna pagare, verificare
     const TILELAYER = L.tileLayer(

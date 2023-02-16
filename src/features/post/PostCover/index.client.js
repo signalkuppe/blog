@@ -31,3 +31,16 @@ if (!image.complete || !image.naturalWidth) {
     // we retrieved it from cache
     imageLoaded();
 }
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        const intersectingEvent = new CustomEvent('post-cover-intersecting', {
+            bubbles: true,
+            detail: { isIntersecting: entry.isIntersecting },
+        });
+
+        container.dispatchEvent(intersectingEvent);
+    });
+});
+
+observer.observe(container);
