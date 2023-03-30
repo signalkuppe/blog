@@ -75,11 +75,10 @@ const StyledLi = styled.li`
 `;
 const StyledLink = styled.a`
     font-size: var(--font-size-small);
-    text-transform: uppercase;
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 0 1em;
+    padding: 0 0.85em;
     line-height: 1.5;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
@@ -92,9 +91,6 @@ const StyledLink = styled.a`
     }
     :hover {
         color: var(--color-text-light-accent);
-    }
-    @media ${device.desktop} {
-        font-size: var(--font-size-x-small);
     }
 `;
 
@@ -113,7 +109,7 @@ const LinkText = styled.span`
     ${(props) =>
         !props.first &&
         css`
-            @media ${device.mobileAndTablet} {
+            @media ${device.mobile} {
                 ${visuallyHidden};
             }
         `}

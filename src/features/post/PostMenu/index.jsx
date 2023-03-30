@@ -92,12 +92,15 @@ const MenuLink = styled.a`
     display: block;
     line-height: 1.5;
     font-size: var(--font-size-x-small);
-    text-transform: uppercase;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
     padding: calc(var(--space-unit) / 2) 0;
     :hover {
         color: var(--color-text-light-accent);
+    }
+
+    @media ${device.atLeastTablet} {
+        font-size: var(--font-size-small);
     }
     @media ${device.desktop} {
         padding: var(--space-unit) 0;

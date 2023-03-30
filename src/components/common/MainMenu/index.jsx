@@ -35,9 +35,8 @@ export default function MainMenu({ route }) {
 
 const StyledUl = styled.ul`
     font-weight: 700;
-    font-size: var(--font-size-x-small);
+    font-size: var(--font-size-small);
     letter-spacing: var(--headings-letter-spacing);
-    text-transform: uppercase;
     display: flex;
     list-style: none;
     margin: 0;
@@ -49,18 +48,18 @@ const StyledUl = styled.ul`
         gap: 0;
     }
     @media ${device.atLeastTablet} {
-        font-size: 85%;
+        font-size: var(--font-size-base);
     }
 `;
 const StyledLi = styled.li`
     margin: 0;
     @media ${device.mobile} {
-        padding: 0.4em 0;
+        padding: 0.2em 0;
     }
 `;
 const StyledLink = styled.a`
     display: inline-block;
-    line-height: 1.5;
+    line-height: 1.25;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
     transition: color 0.2s ease-in;

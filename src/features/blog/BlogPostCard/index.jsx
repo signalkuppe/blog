@@ -28,11 +28,12 @@ export default function BlogPostCard({ post }) {
             </ImageWrapper>
             <ContentWrapper>
                 <ContentHeader>
+                    <PostDate>{post.dateShort}</PostDate>
+                    <span aria-hidden="true">|</span>
                     <PostCategory>
                         <PostCategoryIcon category={post.category} left />
                         {post.category}
                     </PostCategory>
-                    <PostDate>{post.dateShort}</PostDate>
                 </ContentHeader>
                 <PostTitle>{post.title}</PostTitle>
                 <PostAbstract>{post.description}</PostAbstract>
@@ -80,17 +81,15 @@ const ContentHeader = styled.div`
     text-transform: uppercase;
     font-size: var(--font-size-x-small);
     margin-bottom: 0.5em;
+    gap: 0.5em;
 `;
 
 const PostCategory = styled.div`
     display: flex;
     align-items: center;
-    font-weight: 500;
 `;
 
-const PostDate = styled.div`
-    margin-left: var(--space-unit);
-`;
+const PostDate = styled.div``;
 
 const PostTitle = styled.h2`
     ${headingsStyles};
@@ -110,9 +109,6 @@ const PostAbstract = styled.p`
     font-size: var(--font-size-small);
     margin: 0;
     max-width: 55ch;
-    @media ${device.largeDesktop} {
-        font-size: var(--font-size-base);
-    }
 `;
 
 const PostLink = styled.a`
@@ -120,7 +116,4 @@ const PostLink = styled.a`
     display: inline-block;
     margin-top: calc(var(--space-unit) / 2);
     ${linksStyles};
-    @media ${device.largeDesktop} {
-        font-size: var(--font-size-base);
-    }
 `;
