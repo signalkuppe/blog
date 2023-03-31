@@ -14,9 +14,9 @@ const StyledButton = styled.button`
     color: var(--color-button-color);
     background: var(--color-button-background);
     cursor: pointer;
-    border: var(--inputs-border);
-    border-radius: var(--inputs-border-radius);
-    padding: var(--inputs-padding);
+    border: var(--buttons-border);
+    border-radius: var(--border-radius);
+    padding: var(--buttons-padding);
     position: relative;
     user-select: none;
     -webkit-user-select: none;

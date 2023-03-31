@@ -36,7 +36,7 @@ const StyledTextField = styled.input`
     background: var(--inputs-background);
     padding: var(--inputs-padding);
     color: var(--inputs-color);
-    border-radius: var(--inputs-border-radius);
+    border-radius: var(--border-radius);
     -webkit-appearance: none;
     ::-webkit-search-cancel-button {
         /* customize cross button  */

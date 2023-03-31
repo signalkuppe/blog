@@ -19,7 +19,7 @@ export const vars = {
     '--headings-letter-spacing': '-0.02em',
     '--color-background-hue': '190',
     '--color-background-saturation': '0%',
-    '--color-background-lightness': '7%',
+    '--color-background-lightness': '10%',
     '--color-text-hue': '0',
     '--color-text-saturation': '0%',
     '--color-text-lightness': '75%',
@@ -27,21 +27,21 @@ export const vars = {
     '--color-primary-saturation': '89%',
     '--color-primary-lightness': '50%',
     '--color-background':
-        'hsl(var(--color-background-hue), var(--color-background-saturation), var(--color-background-lightness))',
+        'hsl(var(--color-background-hue) var(--color-background-saturation) var(--color-background-lightness))',
     '--color-background-light':
-        'hsl(var(--color-background-hue), var(--color-background-saturation), calc(var(--color-background-lightness) + 8%))',
+        'hsl(var(--color-background-hue) var(--color-background-saturation) calc(var(--color-background-lightness) + 8%))',
     '--color-primary':
-        'hsl(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness))',
+        'hsl(var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness))',
     '--color-secondary':
-        'hsl(calc(var(--color-primary-hue) + 320), var(--color-primary-saturation), calc(var(--color-primary-lightness) - 5%))',
+        'hsl(calc(var(--color-primary-hue) + 320) var(--color-primary-saturation) calc(var(--color-primary-lightness) - 5%))',
     '--color-text':
-        'hsl(var(--color-text-hue), var(--color-text-saturation), var(--color-text-lightness))',
+        'hsl(var(--color-text-hue) var(--color-text-saturation) var(--color-text-lightness))',
     '--color-text-accent':
-        'hsl(var(--color-text-hue), var(--color-text-saturation), calc(var(--color-text-lightness) + 15%))',
+        'hsl(var(--color-text-hue) var(--color-text-saturation) calc(var(--color-text-lightness) + 15%))',
     '--color-text-light-accent':
-        'hsl(var(--color-text-hue), var(--color-text-saturation), calc(var(--color-text-lightness) + 30%))',
+        'hsl(var(--color-text-hue) var(--color-text-saturation) calc(var(--color-text-lightness) + 30%))',
     '--color-text-dark-accent':
-        'hsl(var(--color-text-hue), var(--color-text-saturation), calc(var(--color-text-lightness) - 20%))',
+        'hsl(var(--color-text-hue) var(--color-text-saturation) calc(var(--color-text-lightness) - 20%))',
     '--color-button-background': 'var(--color-primary)',
     '--color-button-color': 'var(--color-background)',
     '--color-map-marker-background': 'var(--color-secondary)',
@@ -55,9 +55,10 @@ export const vars = {
     '--inputs-border': '4px solid var(--color-text-light-accent)',
     '--inputs-background': 'var(--color-background)',
     '--inputs-color': 'var(--color-text)',
-    '--inputs-padding': '0.5em 1em',
-    '--inputs-border-radius': '999999px',
+    '--inputs-padding': '0.75em 1em',
     '--inputs-focused-border-color': 'var(--color-primary)',
+    '--buttons-padding': '0.5em 1em',
+    '--buttons-border': '0px',
     '--border-radius': '5px',
     '--space-unit': '1.5rem',
     '--logo-width': '9rem',

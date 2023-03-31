@@ -123,6 +123,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: var(--font-family-base);
     line-height: 1.8;
     letter-spacing: var(--text-letter-spacing);
+    background: var(--color-background);
     color: var(--color-text);
     margin: 0;
     padding: 0;

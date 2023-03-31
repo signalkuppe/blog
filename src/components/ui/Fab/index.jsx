@@ -15,7 +15,7 @@ const StyledButton = styled.button`
     height: ${(props) => (props.s ? '2rem' : '3.5em')};
     border-radius: 50%;
     color: var(--color-button-color);
-    border: var(--inputs-border);
+    border: var(--buttons-border);
     background: var(--color-button-background);
     cursor: pointer;
     position: relative;
