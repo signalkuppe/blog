@@ -13,7 +13,14 @@ export default function PostGps({ post }) {
     const { gps } = post;
     return (
         <>
-            <MapContainer id="js-map" data-gpx={gps.gpx}>
+            <MapContainer
+                id="js-map"
+                data-gpx={gps.gpx}
+                data-elevation-gain={gps.correctedElevationGain}
+                data-distance={gps.correctedDistance}
+                data-minimum-altitude={gps.correctedMinimumAltitude}
+                data-maximum-altitude={gps.correctedMaximumAltitude}
+            >
                 <LoaderIndicator id="js-map-loader" aria-hidden="true">
                     <Loader>Carico la mappa</Loader>
                 </LoaderIndicator>

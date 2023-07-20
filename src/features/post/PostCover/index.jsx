@@ -6,11 +6,11 @@ import Loader from '../../../components/ui/Loader';
 import client from './index.client';
 
 export default function PostCover({ cover }) {
-    const { alt, title, src, focus } = cover;
+    const { alt, title, src } = cover;
     const imgUrl = function (width, format) {
         return `${src}?w=${width}&h=${Math.round(
             width / 1.5,
-        )}&fm=${format}&fit=thumb&q=50&f=${focus}`;
+        )}&fm=${format}&fit=thumb&q=50`;
     };
     return (
         <>

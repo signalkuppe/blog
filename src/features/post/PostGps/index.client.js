@@ -18,6 +18,10 @@ function decimateArray(arr, passes = 1, fidelity = 2) {
 
 const showMap = function () {
     const gpxUrl = map.getAttribute('data-gpx');
+    const correctedElevationGain = map.getAttribute('data-elevation-gain');
+    const correctedDistance = map.getAttribute('data-distance');
+    const correctedMimimumAltitude = map.getAttribute('data-minimum-altitude');
+    const correctedMaximumAltitude = map.getAttribute('data-maximum-altitude');
     let mymap;
     if (!mymap) {
         mymap = L.map('js-map', {
@@ -58,10 +62,18 @@ const showMap = function () {
     })
         .on('loaded', function (e) {
             mymap.fitBounds(e.target.getBounds());
-            const gain = Math.round(e.target.get_elevation_gain());
-            const distance = Math.round(e.target.get_distance() / 1000);
-            const min = Math.round(e.target.get_elevation_min());
-            const max = Math.round(e.target.get_elevation_max());
+            const gain = Math.round(
+                correctedElevationGain || e.target.get_elevation_gain(),
+            );
+            const distance = Math.round(
+                correctedDistance || e.target.get_distance() / 1000,
+            );
+            const min =
+                correctedMimimumAltitude ||
+                Math.round(e.target.get_elevation_min());
+            const max =
+                correctedMaximumAltitude ||
+                Math.round(e.target.get_elevation_max());
             const rawElevationData = e.target.get_elevation_data();
             const elevationData = decimateArray(
                 rawElevationData.map((data) => ({
