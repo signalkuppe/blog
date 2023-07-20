@@ -12,6 +12,7 @@
     "dev-contatti": "npx pequeno --serve --page=contatti --noData --noAfterBuild",
     "dev-grazie": "npx pequeno --serve --page=grazie --noData --noAfterBuild",
     "dev-index": "npx pequeno --serve --page=index --noData --noAfterBuild",
+    "dev-404": "npx pequeno --serve --page=404 --noData --noAfterBuild",
     "dev-rss": "npx pequeno --page=post-item --data=posts",
     "dev-cerca": "npm run build-blog && npm run copy-posts-json && cd src/pages/cerca && vite",
     "copy-posts-json": "mkdir -p ./src/pages/cerca/_data && cp .site/_data/posts.json ./src/pages/cerca/_data/posts.json",
