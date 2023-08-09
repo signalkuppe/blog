@@ -25,20 +25,12 @@ export default function BlogMap({ category }) {
                         tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet-fullscreen.css" />',
                     },
                     {
-                        where: 'head',
-                        tag: '<link rel="stylesheet" media="screen" href="/libs/leaflet-gesture-handling.css" />',
-                    },
-                    {
                         where: 'body',
                         tag: '<script defer src="/libs/leaflet.js"></script>',
                     },
                     {
                         where: 'body',
                         tag: '<script defer src="/libs/leaflet-fullscreen.js"></script>',
-                    },
-                    {
-                        where: 'body',
-                        tag: '<script defer src="/libs/leaflet-gesture-handling.js"></script>',
                     },
                 ]}
             >
