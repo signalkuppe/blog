@@ -28,7 +28,6 @@ const showMap = function () {
             renderer: L.canvas(),
             attributionControl: false,
             scrollWheelZoom: false,
-            //  gestureHandling: true, // depends on https://github.com/elmarquis/Leaflet.GestureHandling
         });
     }
 
