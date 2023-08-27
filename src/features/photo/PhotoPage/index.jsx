@@ -1,7 +1,12 @@
 import React from 'react';
 import { Script } from 'pequeno';
 import styled, { css } from 'styled-components';
-import { imagesStyles, device, figCaptionStyles } from '../../../theme';
+import {
+    imagesStyles,
+    device,
+    figCaptionStyles,
+    visuallyHidden,
+} from '../../../theme';
 import vars from '../../../vars';
 import Head from '../../../components/common/Head';
 import Html from '../../../components/common/Html';
@@ -94,6 +99,9 @@ export default function PhotoPage({ photo, pagination, backTo, backToText }) {
                                         title={pagination.prev.title}
                                     >
                                         <Icon icon={LeftIcon} />
+                                        <NavLinkText>
+                                            Foto procedente
+                                        </NavLinkText>
                                     </PrevLink>
                                 </li>
                             )}
@@ -104,6 +112,9 @@ export default function PhotoPage({ photo, pagination, backTo, backToText }) {
                                         title={pagination.next.title}
                                     >
                                         <Icon icon={RightIcon} />
+                                        <NavLinkText>
+                                            Foto successiva
+                                        </NavLinkText>
                                     </NextLink>
                                 </li>
                             )}
@@ -232,4 +243,8 @@ const NextLink = styled.a`
 
 const HeaderLink = styled.a`
     ${navLinksCommonStyles}
+`;
+
+const NavLinkText = styled.span`
+    ${visuallyHidden}
 `;

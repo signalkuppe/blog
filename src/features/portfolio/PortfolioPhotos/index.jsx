@@ -79,7 +79,7 @@ const PhotoTitle = styled.h2`
 const PhotoDate = styled.time`
     display: block;
     text-transform: uppercase;
-    color: var(--color-text-dark-accent);
+    color: var(--color-text);
     font-size: var(--font-size-x-small);
     font-weight: 500;
 `;

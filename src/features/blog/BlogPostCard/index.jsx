@@ -19,7 +19,7 @@ export default function BlogPostCard({ post }) {
         >
             <ImageWrapper>
                 <StyledImage
-                    src={`${post.cover.src}?w=200&h=200&fm=webp&fit=thumb&q=50&f=center`}
+                    src={`${post.cover.src}?w=140&h=140&fm=webp&fit=thumb&q=50&f=center`}
                     alt={post.cover.alt}
                     width="200"
                     height="200"

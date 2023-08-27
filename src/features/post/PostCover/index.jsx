@@ -40,7 +40,6 @@ export default function PostCover({ cover }) {
                       (min-width: 1388px) 100vw"
                         src={src}
                         alt={alt}
-                        decoding="async"
                         loading="lazy"
                         width="1600"
                         height="1066"

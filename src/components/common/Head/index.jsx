@@ -1,8 +1,6 @@
 import React from 'react';
-import { Script } from 'pequeno';
 import vars from '../../../vars';
 import { vars as themeVars } from '../../../theme/index';
-import serviceWorkerActivation from './index.client';
 
 export default function Head({
     title,
@@ -96,9 +94,6 @@ export default function Head({
             {extraMetas}
             {vars.env !== 'production' && (
                 <meta name="robots" content="noindex" />
-            )}
-            {vars.env !== 'development' && (
-                <Script>{serviceWorkerActivation}</Script>
             )}
         </head>
     );
