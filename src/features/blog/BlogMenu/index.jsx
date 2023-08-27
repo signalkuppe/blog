@@ -1,10 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Script } from 'pequeno';
 import withFiletto from '../../../components/hoc/withFiletto';
 import { device, visuallyHidden, pageMenuTypography } from '../../../theme';
 import PostCategoryIcon from '../../post/PostCategoryIcon';
 import { categoryLink } from '../../../pages/blog-by-category';
 import { blogLink } from '../../../pages/blog';
+import client from './index.client';
 
 export default function BlogMenu({ categories, category }) {
     const tabs = [
@@ -24,34 +26,39 @@ export default function BlogMenu({ categories, category }) {
     const active = category ? categories.indexOf(category) + 1 : 0;
 
     return (
-        <StyledList>
-            {tabs.map((tab, i) => {
-                let linkText = <LinkText first={i === 0}>{tab.text}</LinkText>;
-                if (i === active) {
-                    linkText = (
-                        <WithFilettoLinkText first={i === 0}>
-                            {tab.text}
-                        </WithFilettoLinkText>
+        <>
+            <StyledList>
+                {tabs.map((tab, i) => {
+                    let linkText = (
+                        <LinkText first={i === 0}>{tab.text}</LinkText>
                     );
-                }
-                return (
-                    <StyledLi key={i}>
-                        <StyledLink
-                            href={tab.href}
-                            active={i === active}
-                            title={tab.title}
-                        >
-                            {tab.icon && (
-                                <LinkIcon active={i === active}>
-                                    {tab.icon}
-                                </LinkIcon>
-                            )}
-                            {linkText}
-                        </StyledLink>
-                    </StyledLi>
-                );
-            })}
-        </StyledList>
+                    if (i === active) {
+                        linkText = (
+                            <WithFilettoLinkText first={i === 0}>
+                                {tab.text}
+                            </WithFilettoLinkText>
+                        );
+                    }
+                    return (
+                        <StyledLi key={i} className="js-blogMenu-item">
+                            <StyledLink
+                                href={tab.href}
+                                active={i === active}
+                                title={tab.title}
+                            >
+                                {tab.icon && (
+                                    <LinkIcon active={i === active}>
+                                        {tab.icon}
+                                    </LinkIcon>
+                                )}
+                                {linkText}
+                            </StyledLink>
+                        </StyledLi>
+                    );
+                })}
+            </StyledList>
+            <Script>{client}</Script>
+        </>
     );
 }
 
@@ -82,7 +89,6 @@ const StyledLink = styled.a`
     line-height: 1.5;
     color: ${(props) =>
         props.active ? `var(--color-text-light-accent)` : `var(--color-text)`};
-
     ul li:first-child & {
         padding-left: 0;
         @media ${device.mobile} {
@@ -97,6 +103,7 @@ const StyledLink = styled.a`
 const LinkIcon = styled.span`
     display: flex;
     align-items: center;
+    width: 1rem;
     @media ${device.mobileAndTablet} {
         ${(props) =>
             props.active &&
@@ -106,6 +113,8 @@ const LinkIcon = styled.span`
     }
 `;
 const LinkText = styled.span`
+    display: inline-block;
+    min-width: fit-content;
     ${(props) =>
         !props.first &&
         css`

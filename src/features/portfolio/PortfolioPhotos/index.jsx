@@ -62,9 +62,6 @@ const Photo = styled.li`
     padding-top: 2em;
     :hover {
         transform: translateY(-0.25em);
-        h2 {
-            color: var(--color-text-light-accent);
-        }
     }
 `;
 const PhotoCaption = styled.div`
@@ -73,8 +70,8 @@ const PhotoCaption = styled.div`
 `;
 const PhotoTitle = styled.h2`
     ${headingsStyles};
-    color: var(--color-text);
     margin: 0;
+    font-size: var(--font-size-base);
     @media ${device.largeDesktop} {
         font-size: var(--font-size-medium);
     }
