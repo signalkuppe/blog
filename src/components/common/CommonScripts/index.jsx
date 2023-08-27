@@ -10,10 +10,6 @@ export default function CommonScripts() {
                     where: 'body',
                     tag: '<script src="/js/utils.js" />',
                 },
-                {
-                    where: 'body',
-                    tag: '<script defer src="/libs/quicklink.js" />',
-                },
             ]}
         >
             {client}

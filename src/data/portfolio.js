@@ -6,14 +6,27 @@ const portfolioQuery = {
     order: '-fields.date',
     limit: 1,
 };
-module.exports = async () => {
+
+function processPortfolio(photos, resolve) {
+    const normalizedPortfolio = normalizePortofolio(photos);
+    resolve(normalizedPortfolio);
+}
+module.exports = async (photoId) => {
     return new Promise((resolve, reject) => {
-        contentfulClient
-            .getEntries(portfolioQuery)
-            .then((photos) => {
-                const normalizedPortfolio = normalizePortofolio(photos);
-                resolve(normalizedPortfolio);
-            })
-            .catch((err) => reject(err));
+        if (!photoId) {
+            contentfulClient
+                .getEntries(portfolioQuery)
+                .then((photos) => {
+                    processPortfolio(photos, resolve);
+                })
+                .catch((err) => reject(err));
+        } else {
+            contentfulClient
+                .getEntry(photoId)
+                .then((photos) => {
+                    processPortfolio(photos, resolve);
+                })
+                .catch((err) => reject(err));
+        }
     });
 };
