@@ -11,11 +11,12 @@ const htmlPluginOpt = {
     metas: [
         {
             name: 'description',
-            content: 'Cerca in tutte le relazioni pubblicate',
+            content:
+                'Dati in diretta dalla stazione meteo di Concenedo (Barzio) in Valsassina',
         },
     ],
-    title: `Cerca una relazione | ${vars.siteName}`,
-    style: `body { background: ${cssVars['--color-background']} };`,
+    title: `Meteo Concenedo | ${vars.siteName}`,
+    style: `body { background: ${cssVars['--color-background']} }`,
 };
 
 // https://vitejs.dev/config/
@@ -26,7 +27,7 @@ export default defineConfig({
         htmlPlugin(htmlPluginOpt),
     ],
     build: {
-        outDir: '../../../.site/cerca',
+        outDir: '../../../.site/meteo',
         emptyOutDir: true,
     },
     publicDir: '../../../.site/',

@@ -19,6 +19,7 @@
     "dev-rss": "npx pequeno --page=post-item --data=posts",
     "dev-jsOptimization": "npx pequeno --serve --page=post-item --path=/alpinismo/2023/07/10/monte-bianco-via-italiana-dal-rifugio-gonella/index.html --data=posts",
     "dev-cerca": "npm run build-blog && npm run copy-posts-json && cd src/pages/cerca && vite",
+    "dev-meteo": "npx netlify functions:serve --port=3000 & cd src/pages/meteo && vite",
     "copy-posts-json": "mkdir -p ./src/pages/cerca/_data && cp .site/_data/posts.json ./src/pages/cerca/_data/posts.json",
     "copy-cerca-assets": "mkdir -p .site/assets && cp -R .site/cerca/assets .site",
     "build-cerca": "cd src/pages/cerca && vite build",
@@ -56,6 +57,7 @@
     "eslint-plugin-react": "^7.33.1",
     "husky": "^8.0.3",
     "jstoxml": "^3.2.7",
+    "netlify-cli": "^16.4.2",
     "pequeno": "0.2.1",
     "postcss-styled": "^0.34.0",
     "postcss-styled-syntax": "^0.4.0",
@@ -69,12 +71,16 @@
     "vite-plugin-svgr": "^3.2.0"
   },
   "dependencies": {
+    "@nivo/core": "^0.83.0",
+    "@nivo/line": "^0.83.0",
     "chart.js": "^4.3.3",
     "hammerjs": "^2.0.8",
     "leaflet": "^1.9.4",
     "leaflet-fullscreen": "^1.0.2",
     "leaflet-gpx": "^1.7.0",
+    "lodash": "^4.17.21",
     "lunr": "^2.3.9",
+    "react-query": "^3.39.3",
     "rooks": "^7.14.1",
     "scrollama": "^3.2.0"
   }
