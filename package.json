@@ -85,7 +85,6 @@
     "leaflet-gpx": "^1.7.0",
     "lodash": "^4.17.21",
     "lunr": "^2.3.9",
-    "node-cache": "^5.1.2",
     "react-query": "^3.39.3",
     "rooks": "^7.14.1",
     "scrollama": "^3.2.0"

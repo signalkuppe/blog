@@ -326,12 +326,14 @@ exports.handler = async function () {
             body: JSON.stringify(readableData),
             headers: {
                 'Access-Control-Allow-Origin': '*',
+                'Cache-Control': 'public, s-maxage=300',
             },
         };
     } catch (err) {
         console.log(err);
         return {
             statusCode: 500,
+            headers: {},
             body: JSON.stringify(err),
         };
     }
