@@ -28,7 +28,9 @@ export default defineConfig({
     ],
     build: {
         outDir: '../../../.site/meteo',
+        assetsDir: 'meteo-assets',
         emptyOutDir: true,
     },
-    publicDir: '../../../.site/',
+    publicDir: '../../../.src/public',
+    base: '/meteo',
 });

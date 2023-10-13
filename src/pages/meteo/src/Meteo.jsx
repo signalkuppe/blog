@@ -52,8 +52,6 @@ function Meteo() {
         },
     );
 
-    console.log(data);
-
     return (
         <>
             <GlobalStyles />

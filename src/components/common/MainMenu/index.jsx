@@ -24,8 +24,12 @@ export default function MainMenu({ route }) {
         },
         {
             href: contattiLink,
-            text: 'Info & Contatti',
+            text: 'Contatti',
             active: route.name === 'contatti' || route.name === 'grazie',
+        },
+        {
+            href: '/meteo',
+            text: 'Meteo & webcam',
         },
     ];
 
@@ -35,7 +39,7 @@ export default function MainMenu({ route }) {
 
 const StyledUl = styled.ul`
     font-weight: 700;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-x-small);
     letter-spacing: var(--headings-letter-spacing);
     display: flex;
     list-style: none;
@@ -43,9 +47,11 @@ const StyledUl = styled.ul`
     padding: 0;
     gap: calc(var(--space-unit) * 1.5);
     @media ${device.mobile} {
-        flex-direction: column;
-        text-align: right;
-        gap: 0;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+        row-gap: 1rem;
+        column-gap: 0.75rem;
+        justify-content: flex-end;
     }
     @media ${device.atLeastTablet} {
         font-size: var(--font-size-base);
@@ -54,7 +60,7 @@ const StyledUl = styled.ul`
 const StyledLi = styled.li`
     margin: 0;
     @media ${device.mobile} {
-        padding: 0.2em 0;
+        line-height: 1;
     }
 `;
 const StyledLink = styled.a`

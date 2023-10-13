@@ -166,6 +166,13 @@ export default function HomePage({ route }) {
                                             sicuramente.
                                         </p>
                                         <p>
+                                            Ho posizionato una stazione meteo a
+                                            Concenedo. <br />
+                                            <a href="/meteo">
+                                                Qui trovate i dati in diretta
+                                            </a>
+                                        </p>
+                                        <p>
                                             Lavoro come un{' '}
                                             <strong>front-end engineer.</strong>{' '}
                                             Trasformo un design in

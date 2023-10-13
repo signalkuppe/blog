@@ -27,7 +27,9 @@ export default defineConfig({
     ],
     build: {
         outDir: '../../../.site/cerca',
+        assetsDir: 'cerca-assets',
         emptyOutDir: true,
     },
-    publicDir: '../../../.site/',
+    publicDir: '../../../.src/public',
+    base: '/cerca',
 });
