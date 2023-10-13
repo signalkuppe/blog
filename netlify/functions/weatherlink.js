@@ -1,6 +1,6 @@
 const dayjs = require('dayjs');
 const _ = require('lodash');
-const API_CACHE = require('./cache');
+const API_CACHE = require('../cache');
 const STATION_ID = '168235';
 const CONSOLE_SENSOR_ID = 653401;
 const TETTO_SENSOR_ID = 656258;
