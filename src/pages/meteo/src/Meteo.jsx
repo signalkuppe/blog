@@ -14,6 +14,7 @@ import ChevronLeft from '../../../public/icons/ChevronLeft.svg';
 import Low from '../../../public/icons/Low.svg';
 import ArrowUpRight from '../../../public/icons/ArrowUpRight.svg';
 import Text from '../../../public/icons/Text.svg';
+import Video from '../../../public/icons/Video.svg';
 import Clock from '../../../public/icons/Clock.svg';
 import { linksStyles, boldStyles } from '../../../theme';
 import Flex from './Flex';
@@ -124,7 +125,9 @@ function DataPage({ data, isRefetching }) {
         <DataWrapper>
             <Header>
                 <HeaderLeft>
-                    <PageTitle xsmall>Meteo Concenedo</PageTitle>
+                    <StyledPageTitle xsmall>
+                        Meteo Concenedo <Beta>beta</Beta>
+                    </StyledPageTitle>
                     <LatestUpdate>
                         Ultimo aggiornamento il{' '}
                         <strong>
@@ -134,6 +137,9 @@ function DataPage({ data, isRefetching }) {
                         <strong>
                             <MonoText>{current.last_data_hour}</MonoText>
                         </strong>
+                        <Webcam>
+                            <Icon icon={Video} /> Webcam in arrivo!
+                        </Webcam>
                     </LatestUpdate>
                 </HeaderLeft>
             </Header>
@@ -637,6 +643,11 @@ function DataPage({ data, isRefetching }) {
                 <br />
                 La pagina si aggiorna automaticamente ogni{' '}
                 <strong>5 minuti</strong>
+                <br />
+                se riscontri degli errori{' '}
+                <ErrorLink href="/contatti/index.html">
+                    Inviami un messaggio
+                </ErrorLink>{' '}
             </StationInfo>
 
             <BackToLink href="/">
@@ -1298,6 +1309,31 @@ const StationInfo = styled.p`
 const BackToLink = styled.a`
     ${linksStyles}
     display: block;
+`;
+
+const Webcam = styled.span`
+    font-size: var(--font-size-small);
+    gap: 0.25em;
+    margin-left: 1em;
+    ${boldStyles}
+`;
+
+const StyledPageTitle = styled(PageTitle)`
+    position: relative;
+`;
+
+const Beta = styled.span`
+    position: absolute;
+    top: 0px;
+    right: -20px;
+    font-size: var(--font-size-x-small);
+    background-color: var(--color-primary);
+    color: black;
+    padding: 0.3em 0.6em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 15px;
 `;
 
 export default Meteo;

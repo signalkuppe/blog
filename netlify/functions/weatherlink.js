@@ -321,6 +321,8 @@ exports.handler = async function () {
             },
         };
 
+        console.log(tettoCurrent.et_year);
+
         return {
             statusCode: 200,
             body: JSON.stringify(readableData),
