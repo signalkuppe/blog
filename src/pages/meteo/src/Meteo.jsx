@@ -42,6 +42,15 @@ const monoStyles = css`
 `;
 const LINE_WIDTH = 1;
 
+const GraphTemperatureTitle = `Temperatura (${TEMPERATURE_UNIT})`;
+const GraphHumidityTitle = `Umidità (${HUMIDITY_UNIT})`;
+const GraphPressureTitle = `Pressione (${PRESSURE_UNIT})`;
+const GraphAvarageWindTitle = `Vento medio (${WIND_UNIT})`;
+const GraphAvarageWindDirection = `Direzione del vento`;
+const GraphAvarageWindDistribution = `Distribuzione vento`;
+const GraphrainRateTitle = `Intensità pioggia (${RAIN_RATE_UNIT})`;
+const GraphTemperatureDownUp = `Temperatura 2m/12m (${TEMPERATURE_UNIT})`;
+
 function Meteo() {
     const { isLoading, isSuccess, isError, data, isRefetching } = useQuery(
         // default cache is 5 mins, same as our interval data
@@ -143,517 +152,569 @@ function DataPage({ data, isRefetching }) {
                     </LatestUpdate>
                 </HeaderLeft>
             </Header>
-            <DataGrid>
-                <DataBox
-                    title="Temperatura"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <MaxLabel />
-                                <Flex gap="1rem">
-                                    <HiText>
-                                        <MonoText>
-                                            {day.temperature_max}
-                                            {TEMPERATURE_UNIT}
-                                        </MonoText>
-                                    </HiText>
-                                    <AtValue>{day.temperature_max_at}</AtValue>
+            <main>
+                <DataGrid>
+                    <DataBox
+                        title="Temperatura"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <MaxLabel />
+                                    <Flex gap="1rem">
+                                        <HiText>
+                                            <MonoText>
+                                                {day.temperature_max}
+                                                {TEMPERATURE_UNIT}
+                                            </MonoText>
+                                        </HiText>
+                                        <AtValue>
+                                            {day.temperature_max_at}
+                                        </AtValue>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <MinLabel />
+                                    <Flex gap="1rem">
+                                        <LowText>
+                                            <MonoText>
+                                                {day.temperature_min}
+                                                {TEMPERATURE_UNIT}
+                                            </MonoText>
+                                        </LowText>
+                                        <AtValue>
+                                            {day.temperature_min_at}
+                                        </AtValue>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                            <Flex justifyContent="space-between">
-                                <MinLabel />
-                                <Flex gap="1rem">
-                                    <LowText>
-                                        <MonoText>
-                                            {day.temperature_min}
-                                            {TEMPERATURE_UNIT}
-                                        </MonoText>
-                                    </LowText>
-                                    <AtValue>{day.temperature_min_at}</AtValue>
-                                </Flex>
-                            </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.temperature}
-                        {TEMPERATURE_UNIT}
-                    </FatValue>
-                </DataBox>
-                <DataBox
-                    title="Umidità"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <MaxLabel />
-                                <Flex gap="1rem">
-                                    <HiText>
-                                        <MonoText>
-                                            {day.humidity_max}
-                                            {HUMIDITY_UNIT}
-                                        </MonoText>
-                                    </HiText>
-                                    <AtValue>{day.humidity_max_at}</AtValue>
-                                </Flex>
-                            </Flex>
-                            <Flex justifyContent="space-between">
-                                <MinLabel />
-                                <Flex gap="1rem">
-                                    <LowText>
-                                        <MonoText>
-                                            {day.humidity_min}
-                                            {HUMIDITY_UNIT}
-                                        </MonoText>
-                                    </LowText>
-                                    <AtValue>{day.humidity_min_at}</AtValue>
-                                </Flex>
-                            </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.humidity}
-                        {HUMIDITY_UNIT}
-                    </FatValue>
-                </DataBox>
-                <DataBox
-                    title="Pressione"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <MaxLabel />
-                                <Flex gap="1rem">
-                                    <HiText>
-                                        <MonoText>
-                                            {day.pressure_max}
-                                            {PRESSURE_UNIT}
-                                        </MonoText>
-                                    </HiText>
-                                    <AtValue>{day.pressure_max_at}</AtValue>
-                                </Flex>
-                            </Flex>
-                            <Flex justifyContent="space-between">
-                                <MinLabel />
-                                <Flex gap="1rem">
-                                    <LowText>
-                                        <MonoText>
-                                            {day.pressure_min}
-                                            {PRESSURE_UNIT}
-                                        </MonoText>
-                                    </LowText>
-                                    <AtValue>{day.pressure_min_at}</AtValue>
-                                </Flex>
-                            </Flex>
-                        </Flex>
-                    }
-                >
-                    <Flex
-                        gap="0.2em"
-                        flexDirection="column"
-                        alignItems="center"
-                        style={{
-                            position: 'relative',
-                            top: '0.5em',
-                        }}
+                        }
                     >
                         <FatValue>
-                            {current.pressure} {PRESSURE_UNIT}
+                            {current.temperature}
+                            {TEMPERATURE_UNIT}
                         </FatValue>
-                        <SmallValue>{current.pressure_trend}</SmallValue>
-                    </Flex>
-                </DataBox>
-                <DataBox
-                    title="Vento"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <MaxLabel />
-                                <Flex gap="1rem">
-                                    <HiText>
-                                        <MonoText>
-                                            {day.wind_max}
-                                            {WIND_UNIT}
-                                        </MonoText>
-                                    </HiText>
-                                    <AtValue>{day.wind_max_at}</AtValue>
+                    </DataBox>
+                    <DataBox
+                        title="Umidità"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <MaxLabel />
+                                    <Flex gap="1rem">
+                                        <HiText>
+                                            <MonoText>
+                                                {day.humidity_max}
+                                                {HUMIDITY_UNIT}
+                                            </MonoText>
+                                        </HiText>
+                                        <AtValue>{day.humidity_max_at}</AtValue>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <MinLabel />
+                                    <Flex gap="1rem">
+                                        <LowText>
+                                            <MonoText>
+                                                {day.humidity_min}
+                                                {HUMIDITY_UNIT}
+                                            </MonoText>
+                                        </LowText>
+                                        <AtValue>{day.humidity_min_at}</AtValue>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                            <Flex justifyContent="space-between">
-                                <AccentLabel icon={<ArrowUpAccentIcon />}>
-                                    Dir. prevalente
-                                </AccentLabel>
-                                <Flex gap="1rem">
-                                    <AccentText>
-                                        <BoldText>
-                                            {day.wind_prevailing_dir}
-                                            {TEMPERATURE_UNIT}
-                                        </BoldText>
-                                    </AccentText>
+                        }
+                    >
+                        <FatValue>
+                            {current.humidity}
+                            {HUMIDITY_UNIT}
+                        </FatValue>
+                    </DataBox>
+                    <DataBox
+                        title="Pressione"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <MaxLabel />
+                                    <Flex gap="1rem">
+                                        <HiText>
+                                            <MonoText>
+                                                {day.pressure_max}
+                                                {PRESSURE_UNIT}
+                                            </MonoText>
+                                        </HiText>
+                                        <AtValue>{day.pressure_max_at}</AtValue>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <MinLabel />
+                                    <Flex gap="1rem">
+                                        <LowText>
+                                            <MonoText>
+                                                {day.pressure_min}
+                                                {PRESSURE_UNIT}
+                                            </MonoText>
+                                        </LowText>
+                                        <AtValue>{day.pressure_min_at}</AtValue>
+                                    </Flex>
+                                </Flex>
+                            </Flex>
+                        }
+                    >
+                        <Flex
+                            gap="0.2em"
+                            flexDirection="column"
+                            alignItems="center"
+                            style={{
+                                position: 'relative',
+                                top: '0.5em',
+                            }}
+                        >
+                            <FatValue>
+                                {current.pressure} {PRESSURE_UNIT}
+                            </FatValue>
+                            <SmallValue>{current.pressure_trend}</SmallValue>
+                        </Flex>
+                    </DataBox>
+                    <DataBox
+                        title="Vento"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <MaxLabel />
+                                    <Flex gap="1rem">
+                                        <HiText>
+                                            <MonoText>
+                                                {day.wind_max}
+                                                {WIND_UNIT}
+                                            </MonoText>
+                                        </HiText>
+                                        <AtValue>{day.wind_max_at}</AtValue>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <AccentLabel icon={<ArrowUpAccentIcon />}>
+                                        Dir. prevalente
+                                    </AccentLabel>
+                                    <Flex gap="1rem">
+                                        <AccentText>
+                                            <BoldText>
+                                                {day.wind_prevailing_dir}
+                                                {TEMPERATURE_UNIT}
+                                            </BoldText>
+                                        </AccentText>
 
-                                    <AtValue>{day.wind_chill_min_at}</AtValue>
+                                        <AtValue>
+                                            {day.wind_chill_min_at}
+                                        </AtValue>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.wind} {WIND_UNIT} {current.wind_direction}
-                    </FatValue>
-                </DataBox>
-                <DataBox
-                    title="Pioggia odierna"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <ArchiveLabel>Mese</ArchiveLabel>
-                                <Flex gap="1rem">
-                                    <ArhiveText>
-                                        <MonoText>
-                                            {current.rain_month}
-                                            {RAIN_UNIT}
-                                        </MonoText>
-                                    </ArhiveText>
+                        }
+                    >
+                        <FatValue>
+                            {current.wind} {WIND_UNIT} {current.wind_direction}
+                        </FatValue>
+                    </DataBox>
+                    <DataBox
+                        title="Pioggia odierna"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <ArchiveLabel>Mese</ArchiveLabel>
+                                    <Flex gap="1rem">
+                                        <ArhiveText>
+                                            <MonoText>
+                                                {current.rain_month}
+                                                {RAIN_UNIT}
+                                            </MonoText>
+                                        </ArhiveText>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <ArchiveLabel>Anno</ArchiveLabel>
+                                    <Flex gap="1rem">
+                                        <ArhiveText>
+                                            <MonoText>
+                                                {current.rain_year}
+                                                {RAIN_UNIT}
+                                            </MonoText>
+                                        </ArhiveText>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                            <Flex justifyContent="space-between">
-                                <ArchiveLabel>Anno</ArchiveLabel>
-                                <Flex gap="1rem">
-                                    <ArhiveText>
-                                        <MonoText>
-                                            {current.rain_year}
-                                            {RAIN_UNIT}
-                                        </MonoText>
-                                    </ArhiveText>
+                        }
+                    >
+                        <FatValue>
+                            {current.rain} {RAIN_UNIT}
+                        </FatValue>
+                    </DataBox>
+                    <DataBox
+                        title="Intensità pioggia"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <MaxLabel />
+                                    <Flex gap="1rem">
+                                        <HiText>
+                                            <MonoText>
+                                                {day.rain_rate_max}
+                                                {RAIN_RATE_UNIT}
+                                            </MonoText>
+                                        </HiText>
+                                        <AtValue>
+                                            {day.rain_rate_max_at}
+                                        </AtValue>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <AccentLabel icon={<UpAccentIcon />}>
+                                        Ultimi 15 minuti
+                                    </AccentLabel>
+                                    <Flex gap="1rem">
+                                        <AccentText>
+                                            <MonoText>
+                                                {day.rain_rate_last_15_min > 0
+                                                    ? `${day.rain_rate_last_15_min} ${RAIN_RATE_UNIT}`
+                                                    : '-'}
+                                            </MonoText>
+                                        </AccentText>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.rain} {RAIN_UNIT}
-                    </FatValue>
-                </DataBox>
-                <DataBox
-                    title="Intensità pioggia"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <MaxLabel />
-                                <Flex gap="1rem">
-                                    <HiText>
-                                        <MonoText>
-                                            {day.rain_rate_max}
-                                            {RAIN_RATE_UNIT}
-                                        </MonoText>
-                                    </HiText>
-                                    <AtValue>{day.rain_rate_max_at}</AtValue>
+                        }
+                    >
+                        <FatValue>
+                            {current.rain_rate} {RAIN_RATE_UNIT}
+                        </FatValue>
+                    </DataBox>
+                    <DataBox
+                        title="Punto di rugiada"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <MaxLabel />
+                                    <Flex gap="1rem">
+                                        <HiText>
+                                            <MonoText>
+                                                {day.dew_point_max}
+                                                {TEMPERATURE_UNIT}
+                                            </MonoText>
+                                        </HiText>
+                                        <AtValue>
+                                            {day.dew_point_max_at}
+                                        </AtValue>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <MinLabel />
+                                    <Flex gap="1rem">
+                                        <LowText>
+                                            <MonoText>
+                                                {day.dew_point_min}
+                                                {TEMPERATURE_UNIT}
+                                            </MonoText>
+                                        </LowText>
+                                        <AtValue>
+                                            {day.dew_point_min_at}
+                                        </AtValue>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                            <Flex justifyContent="space-between">
-                                <AccentLabel icon={<UpAccentIcon />}>
-                                    Ultimi 15 minuti
-                                </AccentLabel>
-                                <Flex gap="1rem">
-                                    <AccentText>
-                                        <MonoText>
-                                            {day.rain_rate_last_15_min > 0
-                                                ? `${day.rain_rate_last_15_min} ${RAIN_RATE_UNIT}`
-                                                : '-'}
-                                        </MonoText>
-                                    </AccentText>
+                        }
+                    >
+                        <FatValue>
+                            {current.dew_point}
+                            {TEMPERATURE_UNIT}
+                        </FatValue>
+                    </DataBox>
+                    <DataBox
+                        title="Bulbo umido"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <MaxLabel />
+                                    <Flex gap="1rem">
+                                        <HiText>
+                                            <MonoText>
+                                                {day.wet_bulb_max}
+                                                {TEMPERATURE_UNIT}
+                                            </MonoText>
+                                        </HiText>
+                                        <AtValue>{day.wet_bulb_max_at}</AtValue>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <MinLabel />
+                                    <Flex gap="1rem">
+                                        <LowText>
+                                            <MonoText>
+                                                {day.wet_bulb_min}
+                                                {TEMPERATURE_UNIT}
+                                            </MonoText>
+                                        </LowText>
+                                        <AtValue>{day.wet_bulb_min_at}</AtValue>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.rain_rate} {RAIN_RATE_UNIT}
-                    </FatValue>
-                </DataBox>
-                <DataBox
-                    title="Punto di rugiada"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <MaxLabel />
-                                <Flex gap="1rem">
-                                    <HiText>
-                                        <MonoText>
-                                            {day.dew_point_max}
-                                            {TEMPERATURE_UNIT}
-                                        </MonoText>
-                                    </HiText>
-                                    <AtValue>{day.dew_point_max_at}</AtValue>
+                        }
+                    >
+                        <FatValue>
+                            {current.wet_bulb}
+                            {TEMPERATURE_UNIT}
+                        </FatValue>
+                    </DataBox>
+                    <DataBox
+                        title="Indice di calore"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <MaxLabel />
+                                    <Flex gap="1rem">
+                                        <HiText>
+                                            <MonoText>
+                                                {day.heat_index_max}
+                                                {TEMPERATURE_UNIT}
+                                            </MonoText>
+                                        </HiText>
+                                        <AtValue>
+                                            {day.heat_index_max_at}
+                                        </AtValue>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <MinLabel>
+                                        <LowText>Wind chill min</LowText>
+                                    </MinLabel>
+                                    <Flex gap="1rem">
+                                        <LowText>
+                                            <MonoText>
+                                                {day.wind_chill_min}
+                                                {TEMPERATURE_UNIT}
+                                            </MonoText>
+                                        </LowText>
+                                        <AtValue>
+                                            {day.wind_chill_min_at}
+                                        </AtValue>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                            <Flex justifyContent="space-between">
-                                <MinLabel />
-                                <Flex gap="1rem">
-                                    <LowText>
-                                        <MonoText>
-                                            {day.dew_point_min}
-                                            {TEMPERATURE_UNIT}
-                                        </MonoText>
-                                    </LowText>
-                                    <AtValue>{day.dew_point_min_at}</AtValue>
+                        }
+                    >
+                        <FatValue>
+                            {current.heat_index}
+                            {TEMPERATURE_UNIT}
+                        </FatValue>
+                    </DataBox>
+                    <DataBox
+                        title="Radiazione solare"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <ArchiveLabel>
+                                        Evapotraspirazione
+                                    </ArchiveLabel>
+                                    <Flex gap="1rem">
+                                        <ArhiveText>
+                                            <MonoText>
+                                                {current.et_day}
+                                                {RAIN_UNIT}
+                                            </MonoText>
+                                        </ArhiveText>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <ArchiveLabel>Ev annuale</ArchiveLabel>
+                                    <Flex gap="1rem">
+                                        <ArhiveText>
+                                            <MonoText>
+                                                {current.et_year}
+                                                {RAIN_UNIT}
+                                            </MonoText>
+                                        </ArhiveText>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.dew_point}
-                        {TEMPERATURE_UNIT}
-                    </FatValue>
-                </DataBox>
-                <DataBox
-                    title="Bulbo umido"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <MaxLabel />
-                                <Flex gap="1rem">
-                                    <HiText>
-                                        <MonoText>
-                                            {day.wet_bulb_max}
-                                            {TEMPERATURE_UNIT}
-                                        </MonoText>
-                                    </HiText>
-                                    <AtValue>{day.wet_bulb_max_at}</AtValue>
+                        }
+                    >
+                        <FatValue>
+                            {current.solar_radiation} W/m<sup>2</sup>
+                        </FatValue>
+                    </DataBox>
+                    <DataBox
+                        title="Temperatura a 12m"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <MaxLabel />
+                                    <Flex gap="1rem">
+                                        <HiText>
+                                            <MonoText>
+                                                {day.temperature_tetto_max}
+                                                {TEMPERATURE_UNIT}
+                                            </MonoText>
+                                        </HiText>
+                                        <AtValue>
+                                            {day.temperature_tetto_max_at}
+                                        </AtValue>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <MinLabel />
+                                    <Flex gap="1rem">
+                                        <LowText>
+                                            <MonoText>
+                                                {day.temperature_tetto_min}
+                                                {TEMPERATURE_UNIT}
+                                            </MonoText>
+                                        </LowText>
+                                        <AtValue>
+                                            {day.temperature_tetto_min_at}
+                                        </AtValue>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                            <Flex justifyContent="space-between">
-                                <MinLabel />
-                                <Flex gap="1rem">
-                                    <LowText>
-                                        <MonoText>
-                                            {day.wet_bulb_min}
-                                            {TEMPERATURE_UNIT}
-                                        </MonoText>
-                                    </LowText>
-                                    <AtValue>{day.wet_bulb_min_at}</AtValue>
+                        }
+                    >
+                        <FatValue>
+                            {current.temperature_tetto}
+                            {TEMPERATURE_UNIT}
+                        </FatValue>
+                    </DataBox>
+                    <DataBox
+                        title="Umidità a 12m"
+                        isRefetching={isRefetching}
+                        footer={
+                            <Flex flexDirection="column" gap="0.5rem">
+                                <Flex justifyContent="space-between">
+                                    <MaxLabel />
+                                    <Flex gap="1rem">
+                                        <HiText>
+                                            <MonoText>
+                                                {day.humidity_tetto_max}
+                                                {HUMIDITY_UNIT}
+                                            </MonoText>
+                                        </HiText>
+                                        <AtValue>
+                                            {day.humidity_tetto_max_at}
+                                        </AtValue>
+                                    </Flex>
+                                </Flex>
+                                <Flex justifyContent="space-between">
+                                    <MinLabel />
+                                    <Flex gap="1rem">
+                                        <LowText>
+                                            <MonoText>
+                                                {day.humidity_tetto_min}
+                                                {HUMIDITY_UNIT}
+                                            </MonoText>
+                                        </LowText>
+                                        <AtValue>
+                                            {day.humidity_tetto_min_at}
+                                        </AtValue>
+                                    </Flex>
                                 </Flex>
                             </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.wet_bulb}
-                        {TEMPERATURE_UNIT}
-                    </FatValue>
-                </DataBox>
-                <DataBox
-                    title="Indice di calore"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <MaxLabel />
-                                <Flex gap="1rem">
-                                    <HiText>
-                                        <MonoText>
-                                            {day.heat_index_max}
-                                            {TEMPERATURE_UNIT}
-                                        </MonoText>
-                                    </HiText>
-                                    <AtValue>{day.heat_index_max_at}</AtValue>
-                                </Flex>
-                            </Flex>
-                            <Flex justifyContent="space-between">
-                                <MinLabel>
-                                    <LowText>Wind chill min</LowText>
-                                </MinLabel>
-                                <Flex gap="1rem">
-                                    <LowText>
-                                        <MonoText>
-                                            {day.wind_chill_min}
-                                            {TEMPERATURE_UNIT}
-                                        </MonoText>
-                                    </LowText>
-                                    <AtValue>{day.wind_chill_min_at}</AtValue>
-                                </Flex>
-                            </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.heat_index}
-                        {TEMPERATURE_UNIT}
-                    </FatValue>
-                </DataBox>
-                <DataBox
-                    title="Radiazione solare"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <ArchiveLabel>Evapotraspirazione</ArchiveLabel>
-                                <Flex gap="1rem">
-                                    <ArhiveText>
-                                        <MonoText>
-                                            {current.et_day}
-                                            {RAIN_UNIT}
-                                        </MonoText>
-                                    </ArhiveText>
-                                </Flex>
-                            </Flex>
-                            <Flex justifyContent="space-between">
-                                <ArchiveLabel>Ev annuale</ArchiveLabel>
-                                <Flex gap="1rem">
-                                    <ArhiveText>
-                                        <MonoText>
-                                            {current.et_year}
-                                            {RAIN_UNIT}
-                                        </MonoText>
-                                    </ArhiveText>
-                                </Flex>
-                            </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.solar_radiation} W/m<sup>2</sup>
-                    </FatValue>
-                </DataBox>
-                <DataBox
-                    title="Temperatura a 12m"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <MaxLabel />
-                                <Flex gap="1rem">
-                                    <HiText>
-                                        <MonoText>
-                                            {day.temperature_tetto_max}
-                                            {TEMPERATURE_UNIT}
-                                        </MonoText>
-                                    </HiText>
-                                    <AtValue>
-                                        {day.temperature_tetto_max_at}
-                                    </AtValue>
-                                </Flex>
-                            </Flex>
-                            <Flex justifyContent="space-between">
-                                <MinLabel />
-                                <Flex gap="1rem">
-                                    <LowText>
-                                        <MonoText>
-                                            {day.temperature_tetto_min}
-                                            {TEMPERATURE_UNIT}
-                                        </MonoText>
-                                    </LowText>
-                                    <AtValue>
-                                        {day.temperature_tetto_min_at}
-                                    </AtValue>
-                                </Flex>
-                            </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.temperature_tetto}
-                        {TEMPERATURE_UNIT}
-                    </FatValue>
-                </DataBox>
-                <DataBox
-                    title="Umidità a 12m"
-                    isRefetching={isRefetching}
-                    footer={
-                        <Flex flexDirection="column" gap="0.5rem">
-                            <Flex justifyContent="space-between">
-                                <MaxLabel />
-                                <Flex gap="1rem">
-                                    <HiText>
-                                        <MonoText>
-                                            {day.humidity_tetto_max}
-                                            {HUMIDITY_UNIT}
-                                        </MonoText>
-                                    </HiText>
-                                    <AtValue>
-                                        {day.humidity_tetto_max_at}
-                                    </AtValue>
-                                </Flex>
-                            </Flex>
-                            <Flex justifyContent="space-between">
-                                <MinLabel />
-                                <Flex gap="1rem">
-                                    <LowText>
-                                        <MonoText>
-                                            {day.humidity_tetto_min}
-                                            {HUMIDITY_UNIT}
-                                        </MonoText>
-                                    </LowText>
-                                    <AtValue>
-                                        {day.humidity_tetto_min_at}
-                                    </AtValue>
-                                </Flex>
-                            </Flex>
-                        </Flex>
-                    }
-                >
-                    <FatValue>
-                        {current.humidity_tetto}
-                        {HUMIDITY_UNIT}
-                    </FatValue>
-                </DataBox>
-            </DataGrid>
-            <GraphGrid>
-                <Graph title={`Temperatura (${TEMPERATURE_UNIT})`}>
-                    <BaseLineChart data={day.graph_temperature} />
-                </Graph>
-                <Graph title={`Umidità (${HUMIDITY_UNIT})`}>
-                    <BaseLineChart data={day.graph_humidity} />
-                </Graph>
-                <Graph title={`Pressione (${PRESSURE_UNIT})`}>
-                    <BaseLineChart data={day.graph_pressure} leftMargin={50} />
-                </Graph>
-                <Graph title={`Vento medio (${WIND_UNIT})`}>
-                    <WindLineChart data={day.graph_wind} />
-                </Graph>
-                <Graph title={`Direzione del vento`}>
-                    <WindDirGraph data={day.graph_wind_dir} />
-                </Graph>
-                <Graph title={`Distribuzione vento`}>
-                    <WindPieChart data={day.graph_wind_dir_pie} />
-                </Graph>
-                <Graph title={`Intensità pioggia (${RAIN_RATE_UNIT})`}>
-                    <BaseLineChart data={day.graph_rain_rate} />
-                </Graph>
-                <Graph title={`Temperatura 2m/12m (${TEMPERATURE_UNIT})`}>
-                    <TettoPratoLineChart
-                        data={day.graph_temperature_tetto_prato}
-                    />
-                </Graph>
-            </GraphGrid>
-            <StationInfo>
-                <strong>Davis Vantage Pro 2</strong> con schermo ventilato
-                daytime e pluviometro riscaldato
-                <br />
-                Termoigrometro a <strong>180cm su prato</strong>, anemometro
-                posizionato a 12m sul tetto
-                <br />
-                La pagina si aggiorna automaticamente ogni{' '}
-                <strong>5 minuti</strong>
-                <br />
-                se riscontri degli errori{' '}
-                <ErrorLink href="/contatti/index.html">
-                    Inviami un messaggio
-                </ErrorLink>{' '}
-            </StationInfo>
+                        }
+                    >
+                        <FatValue>
+                            {current.humidity_tetto}
+                            {HUMIDITY_UNIT}
+                        </FatValue>
+                    </DataBox>
+                </DataGrid>
+            </main>
+            <aside>
+                <GraphGrid>
+                    <Graph
+                        title={GraphTemperatureTitle}
+                        aria-label={GraphTemperatureTitle}
+                    >
+                        <BaseLineChart data={day.graph_temperature} />
+                    </Graph>
+                    <Graph
+                        title={GraphHumidityTitle}
+                        aria-label={GraphHumidityTitle}
+                    >
+                        <BaseLineChart data={day.graph_humidity} />
+                    </Graph>
+                    <Graph
+                        title={GraphPressureTitle}
+                        aria-label={GraphPressureTitle}
+                    >
+                        <BaseLineChart
+                            data={day.graph_pressure}
+                            leftMargin={50}
+                        />
+                    </Graph>
+                    <Graph
+                        title={GraphAvarageWindTitle}
+                        aria-label={GraphAvarageWindTitle}
+                    >
+                        <WindLineChart data={day.graph_wind} />
+                    </Graph>
+                    <Graph title={GraphAvarageWindDirection}>
+                        <WindDirGraph
+                            data={day.graph_wind_dir}
+                            title={GraphAvarageWindDirection}
+                        />
+                    </Graph>
+                    <Graph
+                        title={GraphAvarageWindDistribution}
+                        aria-label={GraphAvarageWindDistribution}
+                    >
+                        <WindPieChart data={day.graph_wind_dir_pie} />
+                    </Graph>
+                    <Graph
+                        title={GraphrainRateTitle}
+                        aria-label={GraphrainRateTitle}
+                    >
+                        <BaseLineChart data={day.graph_rain_rate} />
+                    </Graph>
+                    <Graph
+                        title={GraphTemperatureDownUp}
+                        aria-label={GraphrainRateTitle}
+                    >
+                        <TettoPratoLineChart
+                            data={day.graph_temperature_tetto_prato}
+                            title={GraphTemperatureDownUp}
+                        />
+                    </Graph>
+                </GraphGrid>
+            </aside>
+            <footer>
+                <StationInfo>
+                    <strong>Davis Vantage Pro 2</strong> con schermo ventilato
+                    daytime e pluviometro riscaldato
+                    <br />
+                    Termoigrometro a <strong>180cm su prato</strong>, anemometro
+                    posizionato a 12m sul tetto
+                    <br />
+                    La pagina si aggiorna automaticamente ogni{' '}
+                    <strong>5 minuti</strong>
+                    <br />
+                    se riscontri degli errori{' '}
+                    <ErrorLink href="/contatti/index.html">
+                        Inviami un messaggio
+                    </ErrorLink>{' '}
+                </StationInfo>
 
-            <BackToLink href="/">
-                <Icon icon={ChevronLeft} left />
-                Torna al blog
-            </BackToLink>
+                <BackToLink href="/">
+                    <Icon icon={ChevronLeft} left />
+                    Torna al blog
+                </BackToLink>
+            </footer>
         </DataWrapper>
     );
 }
@@ -661,7 +722,9 @@ function DataPage({ data, isRefetching }) {
 function DataBox({ title, children, footer, isRefetching }) {
     return (
         <DataBoxWrapper>
-            <DataBoxHeader>{title}</DataBoxHeader>
+            <DataBoxHeader>
+                <h2>{title}</h2>
+            </DataBoxHeader>
             <DataBoxBody>{isRefetching ? <Spinner /> : children}</DataBoxBody>
             <DataBoxFooter>{footer}</DataBoxFooter>
         </DataBoxWrapper>
@@ -1042,11 +1105,13 @@ function WindPieChart({ data }) {
     );
 }
 
-function Graph({ title, children }) {
+function Graph({ title, children, ...props }) {
     return (
-        <GraphWrapper>
-            <GraphTitle>{title}</GraphTitle>
-            {children}
+        <GraphWrapper {...props}>
+            <article>
+                <GraphTitle>{title}</GraphTitle>
+                {children}
+            </article>
         </GraphWrapper>
     );
 }
@@ -1118,7 +1183,7 @@ function convertWindDirection(degree) {
     return arr[val % 16];
 }
 
-const Header = styled.div`
+const Header = styled.header`
     display: flex;
     padding-right: var(--space-unit);
     position: sticky;
@@ -1182,7 +1247,7 @@ const LatestUpdate = styled.div`
     }
 `;
 
-const DataGrid = styled.div`
+const DataGrid = styled.ul`
     margin-top: calc(var(--space-unit) * 1.5);
     display: flex;
     flex-direction: column;
@@ -1194,7 +1259,7 @@ const DataGrid = styled.div`
     }
 `;
 
-const DataBoxWrapper = styled.div`
+const DataBoxWrapper = styled.li`
     background-color: var(--color-background-light);
     border-radius: 10px;
     line-height: 1;
@@ -1203,7 +1268,7 @@ const DataBoxWrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
 `;
-const DataBoxHeader = styled.div`
+const DataBoxHeader = styled.header`
     padding: calc(var(--space-unit) / 2);
     background: var(--color-background-x-light);
     color: var(--color-text-light-accent);
@@ -1215,7 +1280,7 @@ const DataBoxBody = styled.div`
     justify-content: center;
     align-items: center;
 `;
-const DataBoxFooter = styled.div`
+const DataBoxFooter = styled.footer`
     font-size: var(--font-size-small);
     padding: calc(var(--space-unit) / 2);
     background: var(--color-background-x-light);
@@ -1272,22 +1337,29 @@ const BoldText = styled.span`
     font-weight: 700;
 `;
 
-const GraphGrid = styled.div`
+const GraphGrid = styled.ul`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    grid-gap: 1rem;
+    grid-column-gap: 1rem;
+    grid-row-gap: 2rem;
     margin-top: calc(var(--space-unit) * 1.5);
 `;
 
-const GraphWrapper = styled.div`
+const graphCss = css`
     width: 100%;
     aspect-ratio: 3/2;
 `;
+const GraphWrapper = styled.li`
+    article {
+        ${graphCss}
+    }
+`;
 
-const GraphTitle = styled.div`
+const GraphTitle = styled.h2`
     font-size: var(--font-size-base);
     font-weight: 700;
     color: var(--color-text-light-accent);
+    margin-bottom: 0.5rem;
 `;
 
 const Point = styled.div`
