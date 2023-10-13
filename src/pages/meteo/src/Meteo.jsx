@@ -146,6 +146,7 @@ function DataPage({ data, isRefetching }) {
                         <strong>
                             <MonoText>{current.last_data_hour}</MonoText>
                         </strong>
+                        <br />
                         <Webcam>
                             <Icon icon={Video} /> Webcam in arrivo!
                         </Webcam>
