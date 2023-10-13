@@ -25,7 +25,7 @@
     "copy-meteo-fonts": "cp -R src/public/fonts src/pages/meteo",
     "copy-cerca-fonts": "cp -R src/public/fonts src/pages/cerca",
     "build-cerca": "cd src/pages/cerca && vite build",
-    "build": "npx pequeno --clean && npm run build-cerca && npm run build-meteo",
+    "build": "npx pequeno --clean && npm run build-cerca && npm run build-meteo && mkdir -p .site/netlify && cp -R netlify .site",
     "build-verbose": "npx pequeno --clean --verbose",
     "build-blog": "npx pequeno --clean --page=blog --path=/blog/index.html --data=posts",
     "lint:js": "eslint --ext .jsx --ext .js .",
