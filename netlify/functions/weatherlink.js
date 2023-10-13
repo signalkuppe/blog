@@ -1,5 +1,6 @@
 const dayjs = require('dayjs');
 const _ = require('lodash');
+const API_CACHE = require('./cache');
 const STATION_ID = '168235';
 const CONSOLE_SENSOR_ID = 653401;
 const TETTO_SENSOR_ID = 656258;
@@ -7,15 +8,36 @@ const PRATO_SENSOR_ID = 653403;
 const API_KEY = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_APIKEY;
 const API_SECRET = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_SECRET;
 const START_OF_TODAY = dayjs().startOf('day').add(1, 'minute').unix();
-const END_OF_TODAY = dayjs().endOf('day').unix();
+const ONE_DAY_BEFORE = dayjs().subtract(24, 'hours').add(1, 'minute').unix();
+const NOW = dayjs().unix();
 
 exports.handler = async function () {
+    let currentSensors;
+    let oneDayBeforeSensors;
     try {
-        const { sensors: currentSensors } = await fetchCurrentData();
-        const { sensors: historicSensor } = await fetchHistoricData(
-            START_OF_TODAY,
-            END_OF_TODAY,
-        );
+        const cachedCurrentSensors = API_CACHE.get('currentSensors');
+        if (!cachedCurrentSensors) {
+            console.log('CURRENT DATA FROM API');
+            const { sensors } = await fetchCurrentData();
+            API_CACHE.set('currentSensors', sensors);
+            currentSensors = sensors;
+        } else {
+            console.log('CURRENT DATA FROM CACHE');
+            currentSensors = cachedCurrentSensors;
+        }
+
+        const cachedOneDayBeforeSensors = API_CACHE.get('oneDayBeforeSensors');
+
+        if (!cachedOneDayBeforeSensors) {
+            console.log('HISTORIC DATA FROM API');
+            const { sensors } = await fetchHistoricData(ONE_DAY_BEFORE, NOW);
+            API_CACHE.set('oneDayBeforeSensors', sensors);
+            oneDayBeforeSensors = sensors;
+        } else {
+            console.log('HISTORIC DATA FROM CACHE');
+            oneDayBeforeSensors = cachedOneDayBeforeSensors;
+        }
+
         const weatherlinkConsole = sensorData(
             currentSensors,
             CONSOLE_SENSOR_ID,
@@ -26,22 +48,35 @@ exports.handler = async function () {
             pratoCurrent.last_packet_received_timestamp * 1000,
         );
 
-        const consoleDailyValues = sensorData(
-            historicSensor,
+        const consoleOneDayBefore = sensorData(
+            oneDayBeforeSensors,
             CONSOLE_SENSOR_ID,
             true,
         );
-
-        const pratoDailyValues = sensorData(
-            historicSensor,
+        const pratoOneDayBefore = sensorData(
+            oneDayBeforeSensors,
             PRATO_SENSOR_ID,
             true,
         );
-
-        const tettoDailyValues = sensorData(
-            historicSensor,
+        const tettoOneDayBefore = sensorData(
+            oneDayBeforeSensors,
             TETTO_SENSOR_ID,
             true,
+        );
+
+        // filter day values
+
+        const consoleDailyValues = _.filter(
+            consoleOneDayBefore,
+            (d) => d.ts >= START_OF_TODAY && d.ts <= NOW,
+        );
+        const pratoDailyValues = _.filter(
+            pratoOneDayBefore,
+            (d) => d.ts >= START_OF_TODAY && d.ts <= NOW,
+        );
+        const tettoDailyValues = _.filter(
+            tettoOneDayBefore,
+            (d) => d.ts >= START_OF_TODAY && d.ts <= NOW,
         );
 
         const readableData = {
@@ -236,37 +271,52 @@ exports.handler = async function () {
                     findLastMaxPropertyItem(tettoDailyValues, 'rain_rate_hi_mm')
                         .rain_rate_hi_at,
                 ),
-                graph_temperature: _.map(pratoDailyValues, (v) => ({
+                graph_temperature: _.map(pratoOneDayBefore, (v) => ({
                     x: unixToGraphTime(v.ts),
                     y: parseFloat(convertTemperature(v.temp_last)),
                 })),
-                graph_humidity: _.map(pratoDailyValues, (v) => ({
+                graph_temperature_tetto_prato: [
+                    {
+                        id: '2m',
+                        data: _.map(pratoOneDayBefore, (v) => ({
+                            x: unixToGraphTime(v.ts),
+                            y: parseFloat(convertTemperature(v.temp_last)),
+                        })),
+                    },
+                    {
+                        id: '12m',
+                        data: _.map(tettoOneDayBefore, (v) => ({
+                            x: unixToGraphTime(v.ts),
+                            y: parseFloat(convertTemperature(v.temp_last)),
+                        })),
+                    },
+                ],
+                graph_humidity: _.map(pratoOneDayBefore, (v) => ({
                     x: unixToGraphTime(v.ts),
                     y: parseFloat(v.hum_last),
                 })),
-                graph_pressure: _.map(consoleDailyValues, (v) => ({
+                graph_pressure: _.map(consoleOneDayBefore, (v) => ({
                     x: unixToGraphTime(v.ts),
-                    y: parseFloat(convertPressure(v.bar_hi)),
+                    y: convertPressure(v.bar_hi),
                 })),
-                graph_dew_point: _.map(pratoDailyValues, (v) => ({
-                    hour: unixToHour(v.ts),
-                    value: convertTemperature(v.dew_point_last),
+                graph_dew_point: _.map(pratoOneDayBefore, (v) => ({
+                    x: unixToGraphTime(v.ts),
+                    y: convertTemperature(v.dew_point_last),
                 })),
-                graph_wind: _.map(pratoDailyValues, (v) => ({
-                    hour: unixToHour(v.ts),
-                    value: convertWindSpeed(v.wind_speed_hi),
+                graph_wind: _.map(pratoOneDayBefore, (v) => ({
+                    x: unixToGraphTime(v.ts),
+                    y: parseFloat(convertWindSpeed(v.wind_speed_avg)),
+                    dir: convertWindDirection(v.wind_dir_of_prevail), // needed in tooltip
                 })),
-                graph_wind_dir: _.map(pratoDailyValues, (v) => ({
-                    hour: unixToHour(v.ts),
-                    value: convertWindDirection(v.wind_dir_of_prevail),
+                graph_wind_dir: _.map(pratoOneDayBefore, (v) => ({
+                    x: unixToGraphTime(v.ts),
+                    y: v.wind_dir_of_prevail, // we need numbers, then we format them i  the graph
+                    dir: convertWindDirection(v.wind_dir_of_prevail),
                 })),
-                graph_rain: _.map(pratoDailyValues, (v) => ({
-                    hour: unixToHour(v.ts),
-                    value: v.rainfall_mm,
-                })),
-                graph_rain_rate: _.map(pratoDailyValues, (v) => ({
-                    hour: unixToHour(v.ts),
-                    value: v.rain_rate_hi_mm,
+                graph_wind_dir_pie: windPieChart(tettoOneDayBefore),
+                graph_rain_rate: _.map(tettoOneDayBefore, (v) => ({
+                    x: unixToGraphTime(v.ts),
+                    y: v.rain_rate_hi_mm,
                 })),
             },
         };
@@ -297,6 +347,7 @@ async function fetchCurrentData() {
         },
     );
     const jsonData = await response.json();
+
     return jsonData;
 }
 
@@ -314,13 +365,13 @@ async function fetchHistoricData(startTimeStamp, endTimeStamp) {
 }
 
 function sensorData(sensors, sensorId, historic) {
-    const sensor = sensors.find((sensor) => sensor.lsid === sensorId);
-    return !historic ? sensor.data[0] : sensor.data;
+    const sensor = sensors?.find((sensor) => sensor?.lsid === sensorId);
+    return !historic ? sensor?.data[0] : sensor?.data;
 }
 
 function convertPressure(pressure) {
     /** Inches of mercury to hectopascal */
-    return Math.round(pressure * 33.863889532610884);
+    return pressure ? Math.round(pressure * 33.863889532610884) : null;
 }
 
 function convertPressureTrend(pressureTrend) {
@@ -340,16 +391,16 @@ function convertPressureTrend(pressureTrend) {
 
 function convertTemperature(temperature) {
     /** Fahrenheit to Celsius */
-    return ((temperature - 32) * (5 / 9)).toFixed(1);
+    return temperature ? ((temperature - 32) * (5 / 9)).toFixed(1) : null;
 }
 
 function convertWindSpeed(mph) {
     /** MPH to km/h */
-    return (mph * 1.60934).toFixed(1);
+    return mph ? (mph * 1.60934).toFixed(1) : null;
 }
 
 function convertWindDirection(degree) {
-    const val = Math.floor(degree / 22.5 + 0.5);
+    const val = degree ? Math.floor(degree / 22.5 + 0.5) : null;
     const arr = [
         'N',
         'NNE',
@@ -369,10 +420,6 @@ function convertWindDirection(degree) {
         'NNW',
     ];
     return arr[val % 16];
-}
-
-function unixToHour(unix) {
-    return dayjs.unix(unix).format('HH');
 }
 
 function unixToGraphTime(unix) {
@@ -438,6 +485,26 @@ function minTemperatureHour(arr, property) {
     return unixToHourAndSecods(
         findLastMinPropertyItem(arr, property)[`${property}_at`],
     );
+}
+
+function windPieChart(data) {
+    const windDirCounts = _.countBy(
+        _.map(data, 'wind_dir_of_prevail'),
+        _.identity,
+    );
+
+    const total = _.sum(_.values(windDirCounts));
+
+    const resultArray = _.filter(
+        _.map(windDirCounts, (count, windDir) => ({
+            id: convertWindDirection(parseInt(windDir, 10)),
+            label: convertWindDirection(parseInt(windDir, 10)),
+            value: Math.round((count / total) * 100),
+        })),
+        (v) => v.value >= 5,
+    );
+
+    return resultArray;
 }
 
 function calculatePrevailingWindDirection(tettoDailyValues) {

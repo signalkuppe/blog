@@ -12,7 +12,7 @@ const htmlPluginOpt = {
         {
             name: 'description',
             content:
-                'Dati in diretta dalla stazione meteo di Concenedo (Barzio) in Valsassina',
+                'Dati meteo in diretta e webcam da Concenedo (Barzio) in Valsassina',
         },
     ],
     title: `Meteo Concenedo | ${vars.siteName}`,

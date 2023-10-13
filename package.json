@@ -19,8 +19,9 @@
     "dev-rss": "npx pequeno --page=post-item --data=posts",
     "dev-jsOptimization": "npx pequeno --serve --page=post-item --path=/alpinismo/2023/07/10/monte-bianco-via-italiana-dal-rifugio-gonella/index.html --data=posts",
     "dev-cerca": "npm run build-blog && npm run copy-posts-json && cd src/pages/cerca && vite",
-    "dev-meteo": "npx netlify functions:serve --port=3000 & cd src/pages/meteo && vite",
+    "dev-meteo": "npm run copy-fonts && concurrently --kill-others \"npx netlify functions:serve --port=3000\" \"cd src/pages/meteo && vite --host\"",
     "copy-posts-json": "mkdir -p ./src/pages/cerca/_data && cp .site/_data/posts.json ./src/pages/cerca/_data/posts.json",
+    "copy-fonts": "mkdir -p .site && cp -R src/public/fonts .site/fonts",
     "copy-cerca-assets": "mkdir -p .site/assets && cp -R .site/cerca/assets .site",
     "build-cerca": "cd src/pages/cerca && vite build",
     "build": "npx pequeno --clean && npm run build-cerca && npm run copy-cerca-assets",
@@ -47,6 +48,7 @@
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^4.0.4",
     "clean-css": "^5.3.2",
+    "concurrently": "^8.2.1",
     "contentful": "^10.4.2",
     "dayjs": "^1.11.9",
     "eslint": "^8.46.0",
@@ -71,8 +73,10 @@
     "vite-plugin-svgr": "^3.2.0"
   },
   "dependencies": {
+    "@nivo/bar": "^0.83.0",
     "@nivo/core": "^0.83.0",
     "@nivo/line": "^0.83.0",
+    "@nivo/pie": "^0.83.0",
     "chart.js": "^4.3.3",
     "hammerjs": "^2.0.8",
     "leaflet": "^1.9.4",
@@ -80,6 +84,7 @@
     "leaflet-gpx": "^1.7.0",
     "lodash": "^4.17.21",
     "lunr": "^2.3.9",
+    "node-cache": "^5.1.2",
     "react-query": "^3.39.3",
     "rooks": "^7.14.1",
     "scrollama": "^3.2.0"

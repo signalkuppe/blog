@@ -1,12 +1,16 @@
 import { useQuery } from 'react-query';
 import styled, { css } from 'styled-components';
-import { maxBy, minBy } from 'lodash';
-import { ResponsiveLine } from '@nivo/line';
+import { maxBy, minBy, union } from 'lodash';
+import { ResponsiveLine } from '@nivo/line'; // https://nivo.rocks/line/
+import { ResponsivePie } from '@nivo/pie';
 import GlobalStyles from '../../../theme/globalStyles';
+import ContentContainer from '../../../components/layout/Container';
 import PageTitle from '../../../components/ui/PageTitle';
 import Loader from '../../../components/ui/Loader';
 import Icon from '../../../components/ui/Icon';
 import Hi from '../../../public/icons/Hi.svg';
+// import CloseIcon from '../../../public/icons/Cross.svg';
+import ChevronLeft from '../../../public/icons/ChevronLeft.svg';
 import Low from '../../../public/icons/Low.svg';
 import ArrowUpRight from '../../../public/icons/ArrowUpRight.svg';
 import Text from '../../../public/icons/Text.svg';
@@ -18,6 +22,12 @@ const HI_COLOR = '#f85757';
 const LOW_COLOR = '#51a2ed';
 const ARCHIVE_COLOR = 'var(--color-primary)';
 const CHART_COLOR = 'var(--color-primary)';
+const CHART_SECONDARY_COLOR = '#006ac3';
+const CHART_FONT_SIZE = 11;
+const CHART_GRID_SIZE = 1;
+const CHART_GRID_COLOR = 'var(--color-background-xx-light)';
+const CHART_GRID_DASH = '4 4';
+const CHART_AXIS_COLOR = 'var(--color-text)';
 const ACCENT_COLOR = '#cb77fb';
 const TEMPERATURE_UNIT = '°C';
 const HUMIDITY_UNIT = '%';
@@ -29,27 +39,52 @@ const monoStyles = css`
     font-family: var(--font-family-mono);
     font-weight: 800;
 `;
+const LINE_WIDTH = 1;
 
 function Meteo() {
-    const { isLoading, isSuccess, isError, data } = useQuery(
+    const { isLoading, isSuccess, isError, data, isRefetching } = useQuery(
         // default cache is 5 mins, same as our interval data
         'meteo',
         getMeteoData,
+        {
+            refetchOnWindowFocus: false,
+            refetchInterval: 300000, // 5 mins
+        },
     );
+
+    console.log(data);
 
     return (
         <>
             <GlobalStyles />
-            <Wrapper center={isLoading || isError}>
-                {isLoading && (
+            {/*
+            <CloseButton
+                href={'/'}
+                title="Torna al blog"
+                aria-label="Torna al blog"
+            >
+                <Icon icon={CloseIcon} l />
+            </CloseButton>
+    */}
+            {isLoading && (
+                <Center>
                     <LoadingInfo>
                         <Loader size="2rem" />
                         Carico i dati..
                     </LoadingInfo>
-                )}
-                {isError && <ErrorMessage />}
-                {isSuccess && <DataPage data={data} />}
-            </Wrapper>
+                </Center>
+            )}
+            {isError && (
+                <Center>
+                    <ErrorMessage />
+                </Center>
+            )}
+
+            {isSuccess && (
+                <ContentContainer>
+                    <DataPage data={data} isRefetching={isRefetching} />
+                </ContentContainer>
+            )}
         </>
     );
 }
@@ -84,18 +119,30 @@ function ErrorMessage() {
     );
 }
 
-function DataPage({ data }) {
+function DataPage({ data, isRefetching }) {
     const { current, day } = data;
+
     return (
         <DataWrapper>
-            <PageTitle xsmall>Meteo Concenedo</PageTitle>
-            <LatestUpdate>
-                Ultimo aggiornamento il <strong>{current.last_data_day}</strong>{' '}
-                alle <strong>{current.last_data_hour}</strong>
-            </LatestUpdate>
+            <Header>
+                <HeaderLeft>
+                    <PageTitle xsmall>Meteo Concenedo</PageTitle>
+                    <LatestUpdate>
+                        Ultimo aggiornamento il{' '}
+                        <strong>
+                            <MonoText>{current.last_data_day}</MonoText>
+                        </strong>{' '}
+                        alle{' '}
+                        <strong>
+                            <MonoText>{current.last_data_hour}</MonoText>
+                        </strong>
+                    </LatestUpdate>
+                </HeaderLeft>
+            </Header>
             <DataGrid>
                 <DataBox
                     title="Temperatura"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -132,6 +179,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Umidità"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -168,6 +216,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Pressione"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -201,6 +250,10 @@ function DataPage({ data }) {
                         gap="0.2em"
                         flexDirection="column"
                         alignItems="center"
+                        style={{
+                            position: 'relative',
+                            top: '0.5em',
+                        }}
                     >
                         <FatValue>
                             {current.pressure} {PRESSURE_UNIT}
@@ -210,6 +263,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Vento"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -226,7 +280,7 @@ function DataPage({ data }) {
                             </Flex>
                             <Flex justifyContent="space-between">
                                 <AccentLabel icon={<ArrowUpAccentIcon />}>
-                                    Direzione media
+                                    Dir. prevalente
                                 </AccentLabel>
                                 <Flex gap="1rem">
                                     <AccentText>
@@ -248,6 +302,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Pioggia odierna"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -281,6 +336,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Intensità pioggia"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -302,11 +358,11 @@ function DataPage({ data }) {
                                 <Flex gap="1rem">
                                     <AccentText>
                                         <MonoText>
-                                            {day.rain_rate_max}
-                                            {RAIN_RATE_UNIT}
+                                            {day.rain_rate_last_15_min > 0
+                                                ? `${day.rain_rate_last_15_min} ${RAIN_RATE_UNIT}`
+                                                : '-'}
                                         </MonoText>
                                     </AccentText>
-                                    <AtValue>{day.rain_rate_max_at}</AtValue>
                                 </Flex>
                             </Flex>
                         </Flex>
@@ -318,6 +374,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Punto di rugiada"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -354,6 +411,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Bulbo umido"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -390,6 +448,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Indice di calore"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -428,6 +487,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Radiazione solare"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -461,6 +521,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Temperatura a 12m"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -501,6 +562,7 @@ function DataPage({ data }) {
                 </DataBox>
                 <DataBox
                     title="Umidità a 12m"
+                    isRefetching={isRefetching}
                     footer={
                         <Flex flexDirection="column" gap="0.5rem">
                             <Flex justifyContent="space-between">
@@ -541,25 +603,57 @@ function DataPage({ data }) {
                 </DataBox>
             </DataGrid>
             <GraphGrid>
-                <Graph title="Temperatura">
-                    <LineChart data={day.graph_temperature} />
+                <Graph title={`Temperatura (${TEMPERATURE_UNIT})`}>
+                    <BaseLineChart data={day.graph_temperature} />
                 </Graph>
-                <Graph title="Umidità">
-                    <LineChart data={day.graph_humidity} />
+                <Graph title={`Umidità (${HUMIDITY_UNIT})`}>
+                    <BaseLineChart data={day.graph_humidity} />
                 </Graph>
-                <Graph title="Pressione">
-                    <LineChart data={day.graph_pressure} />
+                <Graph title={`Pressione (${PRESSURE_UNIT})`}>
+                    <BaseLineChart data={day.graph_pressure} leftMargin={50} />
+                </Graph>
+                <Graph title={`Vento medio (${WIND_UNIT})`}>
+                    <WindLineChart data={day.graph_wind} />
+                </Graph>
+                <Graph title={`Direzione del vento`}>
+                    <WindDirGraph data={day.graph_wind_dir} />
+                </Graph>
+                <Graph title={`Distribuzione vento`}>
+                    <WindPieChart data={day.graph_wind_dir_pie} />
+                </Graph>
+                <Graph title={`Intensità pioggia (${RAIN_RATE_UNIT})`}>
+                    <BaseLineChart data={day.graph_rain_rate} />
+                </Graph>
+                <Graph title={`Temperatura 2m/12m (${TEMPERATURE_UNIT})`}>
+                    <TettoPratoLineChart
+                        data={day.graph_temperature_tetto_prato}
+                    />
                 </Graph>
             </GraphGrid>
+            <StationInfo>
+                <strong>Davis Vantage Pro 2</strong> con schermo ventilato
+                daytime e pluviometro riscaldato
+                <br />
+                Termoigrometro a <strong>180cm su prato</strong>, anemometro
+                posizionato a 12m sul tetto
+                <br />
+                La pagina si aggiorna automaticamente ogni{' '}
+                <strong>5 minuti</strong>
+            </StationInfo>
+
+            <BackToLink href="/">
+                <Icon icon={ChevronLeft} left />
+                Torna al blog
+            </BackToLink>
         </DataWrapper>
     );
 }
 
-function DataBox({ title, children, footer }) {
+function DataBox({ title, children, footer, isRefetching }) {
     return (
         <DataBoxWrapper>
             <DataBoxHeader>{title}</DataBoxHeader>
-            <DataBoxBody>{children}</DataBoxBody>
+            <DataBoxBody>{isRefetching ? <Spinner /> : children}</DataBoxBody>
             <DataBoxFooter>{footer}</DataBoxFooter>
         </DataBoxWrapper>
     );
@@ -646,17 +740,16 @@ function ArrowUpAccentIcon() {
     );
 }
 
-function LineChart({ data }) {
-    // https://nivo.rocks/line/
-
+function BaseLineChart({ data, leftMargin }) {
     const fullData = [{ id: Math.random(), data }];
 
     return (
         <ResponsiveLine
             curve="basis"
-            margin={{ top: 0, right: 30, bottom: 30, left: 50 }}
-            colors={['var(--color-primary)']}
+            margin={{ top: 10, right: 30, bottom: 30, left: leftMargin || 30 }}
+            colors={[CHART_COLOR]}
             data={fullData}
+            lineWidth={LINE_WIDTH}
             xScale={{
                 type: 'time',
                 format: '%Y-%m-%d %H:%M',
@@ -670,34 +763,272 @@ function LineChart({ data }) {
             }}
             axisBottom={{
                 format: '%H',
-                tickValues: 'every 1 hour',
+                tickValues: 'every 2 hour',
             }}
-            colorBy={() => CHART_COLOR}
+            axisLeft={{
+                tickValues: 8,
+                format: (v) => v,
+            }}
             layers={['grid', 'axes', 'lines']}
-            tickCount={10}
             theme={{
                 grid: {
                     line: {
-                        stroke: 'var(--color-background-xx-light)',
-                        strokeWidth: 2,
-                        strokeDasharray: '4 4',
+                        stroke: CHART_GRID_COLOR,
+                        strokeWidth: CHART_GRID_SIZE,
+                        strokeDasharray: CHART_GRID_DASH,
                     },
                 },
                 axis: {
                     ticks: {
                         text: {
-                            fill: 'var(--color-text)',
-                            fontSize: 14,
+                            fill: 'var(--color-text-dark-accent)',
                         },
                     },
                     domain: {
                         line: {
-                            stroke: 'var(--color-text)',
-                            strokeWidth: 1,
+                            stroke: CHART_AXIS_COLOR,
+                            strokeWidth: CHART_GRID_SIZE,
                         },
                     },
                 },
+                fontSize: CHART_FONT_SIZE,
             }}
+        />
+    );
+}
+
+function WindLineChart({ data }) {
+    const fullData = [{ id: Math.random(), data }];
+
+    return (
+        <ResponsiveLine
+            margin={{ top: 10, right: 30, bottom: 30, left: 30 }}
+            colors={[CHART_COLOR]}
+            data={fullData}
+            lineWidth={LINE_WIDTH}
+            xScale={{
+                type: 'time',
+                format: '%Y-%m-%d %H:%M',
+                useUTC: false,
+                precision: 'minute',
+            }}
+            yScale={{
+                type: 'linear',
+                min: minBy(data, (d) => d.y).y - 1,
+                max: maxBy(data, (d) => d.y).y + 1,
+            }}
+            axisBottom={{
+                format: '%H',
+                tickValues: 'every 2 hour',
+            }}
+            axisLeft={{
+                tickValues: 8,
+            }}
+            theme={{
+                grid: {
+                    line: {
+                        stroke: CHART_GRID_COLOR,
+                        strokeWidth: CHART_GRID_SIZE,
+                        strokeDasharray: CHART_GRID_DASH,
+                    },
+                },
+                axis: {
+                    ticks: {
+                        text: {
+                            fill: 'var(--color-text-dark-accent)',
+                        },
+                    },
+                    domain: {
+                        line: {
+                            stroke: CHART_AXIS_COLOR,
+                            strokeWidth: CHART_GRID_SIZE,
+                        },
+                    },
+                },
+                fontSize: CHART_FONT_SIZE,
+            }}
+            pointSize={6}
+            pointColor="var(--color-text)"
+            useMesh={true}
+            tooltip={(point) => {
+                return (
+                    <Point>
+                        {point.point.data.y}km/h da {point.point.data.dir}
+                    </Point>
+                );
+            }}
+        />
+    );
+}
+function WindDirGraph({ data }) {
+    const fullData = [{ id: Math.random(), data }];
+
+    return (
+        <ResponsiveLine
+            curve="basis"
+            margin={{ top: 10, right: 30, bottom: 30, left: 40 }}
+            colors={[CHART_COLOR]}
+            data={fullData}
+            lineWidth={LINE_WIDTH}
+            xScale={{
+                type: 'time',
+                format: '%Y-%m-%d %H:%M',
+                useUTC: false,
+                precision: 'minute',
+            }}
+            yScale={{
+                type: 'point',
+            }}
+            axisBottom={{
+                format: '%H',
+                tickValues: 'every 2 hour',
+            }}
+            axisLeft={{
+                format: (tick) => {
+                    return convertWindDirection(tick);
+                },
+            }}
+            layers={['grid', 'axes', 'lines']}
+            theme={{
+                grid: {
+                    line: {
+                        stroke: CHART_GRID_COLOR,
+                        strokeWidth: CHART_GRID_SIZE,
+                        strokeDasharray: CHART_GRID_DASH,
+                    },
+                },
+                axis: {
+                    ticks: {
+                        text: {
+                            fill: 'var(--color-text-dark-accent)',
+                        },
+                    },
+                    domain: {
+                        line: {
+                            stroke: CHART_AXIS_COLOR,
+                            strokeWidth: CHART_GRID_SIZE,
+                        },
+                    },
+                },
+                fontSize: CHART_FONT_SIZE,
+            }}
+        />
+    );
+}
+
+function TettoPratoLineChart({ data }) {
+    return (
+        <ResponsiveLine
+            data={data}
+            margin={{ top: 30, right: 60, bottom: 30, left: 25 }}
+            xScale={{
+                type: 'time',
+                format: '%Y-%m-%d %H:%M',
+                useUTC: false,
+                precision: 'minute',
+            }}
+            yScale={{
+                type: 'linear',
+                min: minBy(union(data[0].data, data[1].data), (v) => v.y).y - 1,
+                max: maxBy(union(data[0].data, data[1].data), (v) => v.y).y + 1,
+            }}
+            axisBottom={{
+                format: '%H',
+                tickValues: 'every 2 hour',
+            }}
+            axisLeft={{
+                tickValues: 8,
+            }}
+            colors={[CHART_COLOR, CHART_SECONDARY_COLOR]}
+            axisTop={null}
+            axisRight={null}
+            pointSize={0}
+            legends={[
+                {
+                    anchor: 'top-right',
+                    direction: 'row',
+                    justify: false,
+                    translateX: 0,
+                    translateY: -30,
+                    itemsSpacing: 0,
+                    itemDirection: 'left-to-right',
+                    itemWidth: 50,
+                    itemHeight: 20,
+                    itemOpacity: 0.75,
+                    symbolSize: 12,
+                    symbolShape: 'circle',
+                    symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                    itemTextColor: 'var(--color-text)', // <= this worked for me in the end
+                },
+            ]}
+            theme={{
+                grid: {
+                    line: {
+                        stroke: CHART_GRID_COLOR,
+                        strokeWidth: CHART_GRID_SIZE,
+                        strokeDasharray: CHART_GRID_DASH,
+                    },
+                },
+                axis: {
+                    ticks: {
+                        text: {
+                            fill: 'var(--color-text-dark-accent)',
+                        },
+                    },
+                    domain: {
+                        line: {
+                            stroke: CHART_AXIS_COLOR,
+                            strokeWidth: CHART_GRID_SIZE,
+                        },
+                    },
+                },
+                fontSize: CHART_FONT_SIZE,
+            }}
+        />
+    );
+}
+
+function WindPieChart({ data }) {
+    return (
+        <ResponsivePie
+            data={data}
+            margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+            innerRadius={0.5}
+            padAngle={0.7}
+            cornerRadius={3}
+            activeOuterRadiusOffset={8}
+            borderWidth={1}
+            borderColor={{
+                from: 'color',
+                modifiers: [['darker', 0.2]],
+            }}
+            arcLinkLabelsSkipAngle={10}
+            arcLinkLabelsTextColor={CHART_AXIS_COLOR}
+            arcLinkLabelsThickness={2}
+            arcLinkLabelsColor={{ from: 'color' }}
+            arcLabelsSkipAngle={15}
+            arcLabelsTextColor={{
+                from: 'color',
+                modifiers: [['darker', 2]],
+            }}
+            arcLabel={(v) => `${v.value}%`}
+            legends={[
+                {
+                    anchor: 'top-left',
+                    direction: 'column',
+                    justify: false,
+                    translateX: -80,
+                    translateY: 0,
+                    itemsSpacing: 0,
+                    itemWidth: 40,
+                    itemHeight: 18,
+                    itemTextColor: 'var(--color-text)',
+                    itemDirection: 'left-to-right',
+                    itemOpacity: 1,
+                    symbolSize: 9,
+                    symbolShape: 'circle',
+                },
+            ]}
         />
     );
 }
@@ -711,24 +1042,108 @@ function Graph({ title, children }) {
     );
 }
 
-const Wrapper = styled.div`
-    padding: calc(var(--space-unit) * 1.5);
-    ${(props) =>
-        props.center &&
-        css`
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-        `}
+function Spinner({ ...props }) {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={24}
+            height={24}
+            {...props}
+        >
+            <style>
+                {
+                    '@keyframes spinner_MGfb{93.75%,to{opacity:.2}}.spinner_S1WN{animation:spinner_MGfb .8s linear infinite;animation-delay:-.8s}'
+                }
+            </style>
+            <circle
+                cx={4}
+                cy={12}
+                r={3}
+                className="spinner_S1WN"
+                fill="var(--color-text)"
+            />
+            <circle
+                cx={12}
+                cy={12}
+                r={3}
+                className="spinner_S1WN"
+                style={{
+                    animationDelay: '-.65s',
+                }}
+                fill="var(--color-text)"
+            />
+            <circle
+                cx={20}
+                cy={12}
+                r={3}
+                className="spinner_S1WN"
+                style={{
+                    animationDelay: '-.5s',
+                }}
+                fill="var(--color-text)"
+            />
+        </svg>
+    );
+}
+
+function convertWindDirection(degree) {
+    const val = degree ? Math.floor(degree / 22.5 + 0.5) : null;
+    const arr = [
+        'N',
+        'NNE',
+        'NE',
+        'ENE',
+        'E',
+        'ESE',
+        'SE',
+        'SSE',
+        'S',
+        'SSW',
+        'SW',
+        'WSW',
+        'W',
+        'WNW',
+        'NW',
+        'NNW',
+    ];
+    return arr[val % 16];
+}
+
+const Header = styled.div`
+    display: flex;
+    padding-right: var(--space-unit);
+    position: sticky;
+    background: var(--color-background);
+    margin-top: calc(var(--space-unit) * 1.5);
+`;
+
+const HeaderLeft = styled.div``;
+
+/*
+const CloseButton = styled.a`
+    color: var(--color-text);
+    position: absolute;
+    right: calc(var(--space-unit) * 1.5);
+    top: calc(var(--space-unit) * 1.8);
+    z-index: 1;
+    cursor: pointer;
+`; */
+
+const Center = styled.div`
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 `;
 
 const LoadingInfo = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: calc(var(--space-unit) / 2);
+    gap: 2rem;
 `;
 const Error = styled.div`
     background-color: var(--color-background-light);
@@ -746,10 +1161,12 @@ const ErrorLink = styled.a`
     ${linksStyles}
 `;
 
-const DataWrapper = styled.div``;
+const DataWrapper = styled.div`
+    padding-bottom: calc(var(--space-unit) * 4);
+`;
 
-const LatestUpdate = styled.p`
-    margin-top: calc(var(--space-unit) / 1.5);
+const LatestUpdate = styled.div`
+    margin-top: calc(var(--space-unit) * 1.5);
     font-size: var(--font-size-small);
     strong {
         ${boldStyles}
@@ -757,11 +1174,15 @@ const LatestUpdate = styled.p`
 `;
 
 const DataGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 1rem;
     margin-top: calc(var(--space-unit) * 1.5);
-    max-width: 1180px;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--space-unit) * 1);
+    @media (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        grid-gap: 1rem;
+    }
 `;
 
 const DataBoxWrapper = styled.div`
@@ -780,9 +1201,10 @@ const DataBoxHeader = styled.div`
     ${boldStyles}
 `;
 const DataBoxBody = styled.div`
-    padding: calc(var(--space-unit) / 1);
+    height: 6em;
     display: flex;
     justify-content: center;
+    align-items: center;
 `;
 const DataBoxFooter = styled.div`
     font-size: var(--font-size-small);
@@ -843,10 +1265,9 @@ const BoldText = styled.span`
 
 const GraphGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     grid-gap: 1rem;
     margin-top: calc(var(--space-unit) * 1.5);
-    max-width: 1200px;
 `;
 
 const GraphWrapper = styled.div`
@@ -855,9 +1276,30 @@ const GraphWrapper = styled.div`
 `;
 
 const GraphTitle = styled.div`
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-base);
     font-weight: 700;
     color: var(--color-text-light-accent);
+`;
+
+const Point = styled.div`
+    font-size: var(--font-size-small);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding: 0.5em 1em;
+`;
+
+const StationInfo = styled.p`
+    margin-top: calc(var(--space-unit) * 1.5);
+    margin-bottom: calc(var(--space-unit) * 1.5);
+    font-size: var(--font-size-small);
+    strong {
+        ${boldStyles}
+    }
+`;
+
+const BackToLink = styled.a`
+    ${linksStyles}
+    display: block;
 `;
 
 export default Meteo;
