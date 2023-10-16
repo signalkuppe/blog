@@ -3,8 +3,6 @@ const utc = require('dayjs/plugin/utc');
 const timezone = require('dayjs/plugin/timezone');
 dayjs.extend(utc);
 dayjs.extend(timezone);
-const tz = 'Europe/Rome';
-dayjs.tz.setDefault('America/New_York');
 const _ = require('lodash');
 // const API_CACHE = require('../cache');
 const STATION_ID = '168235';
@@ -13,13 +11,11 @@ const TETTO_SENSOR_ID = 656258;
 const PRATO_SENSOR_ID = 653403;
 const API_KEY = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_APIKEY;
 const API_SECRET = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_SECRET;
-const START_OF_TODAY = dayjs().utc().startOf('day').add(1, 'minute').unix();
-const ONE_DAY_BEFORE = dayjs()
-    .utc()
-    .subtract(24, 'hours')
-    .add(1, 'minute')
-    .unix();
-const NOW = dayjs().utc().tz(tz).unix();
+const START_OF_TODAY = dayjs().startOf('day').utc().unix();
+const ONE_DAY_BEFORE = dayjs().subtract(24, 'hours').utc().unix();
+const NOW = dayjs().utc().unix();
+const GRAPH_DATE_FORMAT = 'YYYY-MM-DD HH:mm';
+const TIMEZONE = 'Europe/Rome';
 
 exports.handler = async function () {
     try {
@@ -70,12 +66,14 @@ exports.handler = async function () {
         const readableData = {
             ok: true,
             current: {
-                last_data_day: dayjs
-                    .unix(tettoCurrent.last_packet_received_timestamp)
-                    .format('DD/MM/YYYY'),
-                last_data_hour: dayjs
-                    .unix(tettoCurrent.last_packet_received_timestamp)
-                    .format('HH:mm'),
+                last_data_day: formatDate(
+                    tettoCurrent.last_packet_received_timestamp,
+                    'DD/MM/YYYY',
+                ),
+                last_data_hour: formatDate(
+                    tettoCurrent.last_packet_received_timestamp,
+                    'HH:mm',
+                ),
                 pressure: convertPressure(weatherlinkConsole.bar_sea_level),
                 pressure_trend: convertPressureTrend(
                     weatherlinkConsole.bar_trend,
@@ -133,12 +131,12 @@ exports.handler = async function () {
                         'bar_hi'
                     ],
                 ),
-                pressure_max_at: unixToHourAndSecods(
+                pressure_max_at: unixToHourAndMinutes(
                     findLastMaxPropertyItem(consoleDailyValues, 'bar_hi')[
                         'bar_hi'
                     ],
                 ),
-                pressure_min_at: unixToHourAndSecods(
+                pressure_min_at: unixToHourAndMinutes(
                     findLastMinPropertyItem(consoleDailyValues, 'bar_lo')[
                         'bar_lo'
                     ],
@@ -153,7 +151,7 @@ exports.handler = async function () {
                         'hum_hi'
                     ],
                 ),
-                humidity_max_at: unixToHourAndSecods(
+                humidity_max_at: unixToHourAndMinutes(
                     findLastMaxPropertyItem(pratoDailyValues, 'hum_hi')[
                         'hum_hi_at'
                     ],
@@ -163,7 +161,7 @@ exports.handler = async function () {
                         'hum_lo'
                     ],
                 ),
-                humidity_min_at: unixToHourAndSecods(
+                humidity_min_at: unixToHourAndMinutes(
                     findLastMinPropertyItem(pratoDailyValues, 'hum_lo')[
                         'hum_hi_at'
                     ],
@@ -173,7 +171,7 @@ exports.handler = async function () {
                         'hum_hi'
                     ],
                 ),
-                humidity_tetto_max_at: unixToHourAndSecods(
+                humidity_tetto_max_at: unixToHourAndMinutes(
                     findLastMaxPropertyItem(tettoDailyValues, 'hum_hi')[
                         'hum_hi_at'
                     ],
@@ -183,7 +181,7 @@ exports.handler = async function () {
                         'hum_lo'
                     ],
                 ),
-                humidity_tetto_min_at: unixToHourAndSecods(
+                humidity_tetto_min_at: unixToHourAndMinutes(
                     findLastMinPropertyItem(tettoDailyValues, 'hum_lo')[
                         'hum_hi_at'
                     ],
@@ -228,7 +226,7 @@ exports.handler = async function () {
                     tettoDailyValues,
                     'solar_rad_hi',
                 ).solar_rad_hi,
-                solar_radiation_max_at: unixToHourAndSecods(
+                solar_radiation_max_at: unixToHourAndMinutes(
                     findLastMaxPropertyItem(tettoDailyValues, 'solar_rad_hi')
                         .solar_rad_hi_at,
                 ),
@@ -236,7 +234,7 @@ exports.handler = async function () {
                     findLastMaxPropertyItem(tettoDailyValues, 'wind_speed_hi')
                         .wind_speed_hi,
                 ),
-                wind_max_at: unixToHourAndSecods(
+                wind_max_at: unixToHourAndMinutes(
                     findLastMaxPropertyItem(tettoDailyValues, 'wind_speed_hi')
                         .wind_speed_hi_at,
                 ),
@@ -250,7 +248,7 @@ exports.handler = async function () {
                     tettoDailyValues,
                     'rain_rate_hi_mm',
                 ).rain_rate_hi_mm,
-                rain_rate_max_at: unixToHourAndSecods(
+                rain_rate_max_at: unixToHourAndMinutes(
                     findLastMaxPropertyItem(tettoDailyValues, 'rain_rate_hi_mm')
                         .rain_rate_hi_at,
                 ),
@@ -419,12 +417,16 @@ function convertWindDirection(degree) {
     return arr[val % 16];
 }
 
-function unixToGraphTime(unix) {
-    return dayjs.unix(unix).format('YYYY-MM-DD HH:mm');
+function formatDate(ts, format) {
+    return dayjs.unix(ts).utc().tz(TIMEZONE).format(format);
 }
 
-function unixToHourAndSecods(unix) {
-    return dayjs.unix(unix).format('HH:mm');
+function unixToHourAndMinutes(ts) {
+    return formatDate(ts, 'HH:mm');
+}
+
+function unixToGraphTime(ts) {
+    return formatDate(ts, GRAPH_DATE_FORMAT);
 }
 
 function findLastMaxPropertyItem(arr, property) {
@@ -469,7 +471,7 @@ function maxTemperature(arr, property) {
 }
 
 function maxTemperatureHour(arr, property) {
-    return unixToHourAndSecods(
+    return unixToHourAndMinutes(
         findLastMaxPropertyItem(arr, property)[`${property}_at`],
     );
 }
@@ -479,7 +481,7 @@ function minTemperature(arr, property) {
 }
 
 function minTemperatureHour(arr, property) {
-    return unixToHourAndSecods(
+    return unixToHourAndMinutes(
         findLastMinPropertyItem(arr, property)[`${property}_at`],
     );
 }

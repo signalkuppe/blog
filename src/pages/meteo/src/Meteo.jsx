@@ -56,7 +56,7 @@ function Meteo() {
         'meteo',
         getMeteoData,
         {
-            refetchOnWindowFocus: false,
+            refetchOnWindowFocus: true,
             refetchInterval: 300000, // 5 mins
         },
     );
