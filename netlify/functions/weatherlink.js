@@ -4,6 +4,7 @@ const timezone = require('dayjs/plugin/timezone');
 dayjs.extend(utc);
 dayjs.extend(timezone);
 const tz = 'Europe/Rome';
+dayjs.tz.setDefault('America/New_York');
 const _ = require('lodash');
 // const API_CACHE = require('../cache');
 const STATION_ID = '168235';
@@ -12,15 +13,9 @@ const TETTO_SENSOR_ID = 656258;
 const PRATO_SENSOR_ID = 653403;
 const API_KEY = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_APIKEY;
 const API_SECRET = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_SECRET;
-const START_OF_TODAY = dayjs()
-    .utc()
-    .tz(tz)
-    .startOf('day')
-    .add(1, 'minute')
-    .unix();
+const START_OF_TODAY = dayjs().utc().startOf('day').add(1, 'minute').unix();
 const ONE_DAY_BEFORE = dayjs()
     .utc()
-    .tz(tz)
     .subtract(24, 'hours')
     .add(1, 'minute')
     .unix();
@@ -40,9 +35,6 @@ exports.handler = async function () {
         );
         const pratoCurrent = sensorData(currentSensors, PRATO_SENSOR_ID);
         const tettoCurrent = sensorData(currentSensors, TETTO_SENSOR_ID);
-        const last_trasmission_date = new Date(
-            pratoCurrent.last_packet_received_timestamp * 1000,
-        );
 
         const consoleOneDayBefore = sensorData(
             oneDayBeforeSensors,
@@ -78,17 +70,12 @@ exports.handler = async function () {
         const readableData = {
             ok: true,
             current: {
-                last_received: last_trasmission_date,
-                last_data_day: last_trasmission_date
-                    .toLocaleDateString('it-IT')
-                    .padStart(10, '0'),
-                last_data_hour: `${last_trasmission_date
-                    .getHours()
-                    .toString()
-                    .padStart(2, '0')}:${last_trasmission_date
-                    .getMinutes()
-                    .toString()
-                    .padStart(2, '0')}`,
+                last_data_day: dayjs
+                    .unix(tettoCurrent.last_packet_received_timestamp)
+                    .format('DD/MM/YYYY'),
+                last_data_hour: dayjs
+                    .unix(tettoCurrent.last_packet_received_timestamp)
+                    .format('HH:mm'),
                 pressure: convertPressure(weatherlinkConsole.bar_sea_level),
                 pressure_trend: convertPressureTrend(
                     weatherlinkConsole.bar_trend,
@@ -399,7 +386,9 @@ function convertPressureTrend(pressureTrend) {
 
 function convertTemperature(temperature) {
     /** Fahrenheit to Celsius */
-    return temperature ? ((temperature - 32) * (5 / 9)).toFixed(1) : null;
+    return temperature
+        ? ((temperature - 32) * (5 / 9)).toFixed(1).toLocaleString('it-IT')
+        : null;
 }
 
 function convertWindSpeed(mph) {
