@@ -22,14 +22,15 @@ export default function MainMenu({ route }) {
             text: 'Portfolio',
             active: route.name === 'portfolio',
         },
+
+        {
+            href: '/meteo',
+            text: 'Meteo',
+        },
         {
             href: contattiLink,
             text: 'Contatti',
             active: route.name === 'contatti' || route.name === 'grazie',
-        },
-        {
-            href: '/meteo',
-            text: 'Meteo & webcam',
         },
     ];
 
@@ -39,28 +40,30 @@ export default function MainMenu({ route }) {
 
 const StyledUl = styled.ul`
     font-weight: 700;
-    font-size: var(--font-size-x-small);
+    font-size: var(--font-size-small);
     letter-spacing: var(--headings-letter-spacing);
-    display: flex;
+
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: calc(var(--space-unit) * 1.5);
+
     @media ${device.mobile} {
-        flex-wrap: wrap;
-        flex-shrink: 0;
-        row-gap: 1rem;
-        column-gap: 0.75rem;
-        justify-content: flex-end;
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        grid-column-gap: 0.8em;
+        grid-row-gap: 1em;
     }
     @media ${device.atLeastTablet} {
+        display: flex;
         font-size: var(--font-size-base);
+        gap: calc(var(--space-unit) * 1.5);
     }
 `;
 const StyledLi = styled.li`
     margin: 0;
     @media ${device.mobile} {
         line-height: 1;
+        justify-self: flex-end;
     }
 `;
 const StyledLink = styled.a`
