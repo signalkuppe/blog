@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { visuallyHidden } from '../../../theme';
+import { visuallyHidden, device } from '../../../theme';
 import Logo from '../../ui/Logo';
 import vars from '../../../vars';
 import MainMenu from '../MainMenu';
@@ -24,9 +24,9 @@ export default function Header({ route, ...props }) {
     return (
         <HeaderContainer id="js-header" {...props}>
             {logo}
-            <nav>
+            <Nav>
                 <MainMenu route={route} />
-            </nav>
+            </Nav>
         </HeaderContainer>
     );
 }
@@ -40,9 +40,13 @@ const HeaderContainer = styled.div`
 `;
 
 const logostyles = css`
-    width: var(--logo-width);
+    width: 8rem;
     margin: 0;
     transform: translateY(0.2rem);
+    flex-shrink: 0;
+    @media ${device.atLeastTablet} {
+        width: 9rem;
+    }
 `;
 
 const H1LogoContainer = styled.h1`
@@ -69,4 +73,10 @@ const LogoText = styled.span`
 const LogoLink = styled.a`
     display: grid;
     place-items: center;
+`;
+
+const Nav = styled.nav`
+    @media ${device.mobile} {
+        margin-left: 1rem;
+    }
 `;

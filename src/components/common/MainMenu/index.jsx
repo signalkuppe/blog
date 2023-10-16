@@ -22,9 +22,14 @@ export default function MainMenu({ route }) {
             text: 'Portfolio',
             active: route.name === 'portfolio',
         },
+
+        {
+            href: '/meteo',
+            text: 'Meteo',
+        },
         {
             href: contattiLink,
-            text: 'Info & Contatti',
+            text: 'Contatti',
             active: route.name === 'contatti' || route.name === 'grazie',
         },
     ];
@@ -37,24 +42,28 @@ const StyledUl = styled.ul`
     font-weight: 700;
     font-size: var(--font-size-small);
     letter-spacing: var(--headings-letter-spacing);
-    display: flex;
+
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: calc(var(--space-unit) * 1.5);
+
     @media ${device.mobile} {
-        flex-direction: column;
-        text-align: right;
-        gap: 0;
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        grid-column-gap: 0.8em;
+        grid-row-gap: 1em;
     }
     @media ${device.atLeastTablet} {
+        display: flex;
         font-size: var(--font-size-base);
+        gap: calc(var(--space-unit) * 1.5);
     }
 `;
 const StyledLi = styled.li`
     margin: 0;
     @media ${device.mobile} {
-        padding: 0.2em 0;
+        line-height: 1;
+        justify-self: flex-end;
     }
 `;
 const StyledLink = styled.a`

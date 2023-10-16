@@ -9,15 +9,16 @@ export default function PageTitle({ children, ...props }) {
 
 const StyledH1 = styled.h1`
     ${headingsStyles}
-    ${(props) =>
-        !props.small &&
-        css`
-            font-size: clamp(var(--font-size-x-large), 5vmax, 7rem);
-        `}
+    font-size: clamp(var(--font-size-x-large), 5vmax, 7rem);
     ${(props) =>
         props.small &&
         css`
             font-size: clamp(var(--font-size-x-large), 3.5vmax, 4rem);
+        `}
+    ${(props) =>
+        props.xsmall &&
+        css`
+            font-size: clamp(var(--font-size-x-large), 2.5vmax, 4rem);
         `}
     margin: 0;
 `;

@@ -11,11 +11,12 @@ const htmlPluginOpt = {
     metas: [
         {
             name: 'description',
-            content: 'Cerca in tutte le relazioni pubblicate',
+            content:
+                'Dati meteo in diretta e webcam da Concenedo (Barzio) in Valsassina',
         },
     ],
-    title: `Cerca una relazione | ${vars.siteName}`,
-    style: `body { background: ${cssVars['--color-background']} };`,
+    title: `Meteo Concenedo | ${vars.siteName}`,
+    style: `body { background: ${cssVars['--color-background']} }`,
 };
 
 // https://vitejs.dev/config/
@@ -26,10 +27,10 @@ export default defineConfig({
         htmlPlugin(htmlPluginOpt),
     ],
     build: {
-        outDir: '../../../.site/cerca',
-        assetsDir: 'cerca-assets',
+        outDir: '../../../.site/meteo',
+        assetsDir: 'meteo-assets',
         emptyOutDir: true,
     },
     publicDir: '../../../.src/public',
-    base: '/cerca',
+    base: '/meteo',
 });

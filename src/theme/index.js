@@ -5,6 +5,7 @@ export const vars = {
     '--font-family-headings': '"Inter Tight", sans-serif',
     '--font-family-cursive': '"Sriracha", cursive',
     '--font-family-drop-cap': "'Didot', Georgia",
+    '--font-family-mono': "'Martian Mono', monospace",
     '--font-size-xx-small': '0.5rem',
     '--font-size-x-small': '0.75rem',
     '--font-size-small': '0.85rem',
@@ -30,6 +31,10 @@ export const vars = {
         'hsl(var(--color-background-hue) var(--color-background-saturation) var(--color-background-lightness))',
     '--color-background-light':
         'hsl(var(--color-background-hue) var(--color-background-saturation) calc(var(--color-background-lightness) + 8%))',
+    '--color-background-x-light':
+        'hsl(var(--color-background-hue) var(--color-background-saturation) calc(var(--color-background-lightness) + 12%))',
+    '--color-background-xx-light':
+        'hsl(var(--color-background-hue) var(--color-background-saturation) calc(var(--color-background-lightness) + 16%))',
     '--color-primary':
         'hsl(var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness))',
     '--color-secondary':

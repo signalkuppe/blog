@@ -4,3 +4,7 @@ node_modules
 .cache
 .site
 src/pages/cerca/_data
+# Local Netlify folder
+.netlify
+src/pages/cerca/fonts
+src/pages/meteo/fonts
