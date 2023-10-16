@@ -1,3 +1,0 @@
-# Include files in all functions
-[functions]
-  included_files = ["netlify/cache.js"]

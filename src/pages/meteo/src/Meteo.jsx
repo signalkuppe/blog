@@ -10,7 +10,6 @@ import Loader from '../../../components/ui/Loader';
 import Icon from '../../../components/ui/Icon';
 import Hi from '../../../public/icons/Hi.svg';
 // import CloseIcon from '../../../public/icons/Cross.svg';
-import ChevronLeft from '../../../public/icons/ChevronLeft.svg';
 import Low from '../../../public/icons/Low.svg';
 import ArrowUpRight from '../../../public/icons/ArrowUpRight.svg';
 import Text from '../../../public/icons/Text.svg';
@@ -45,7 +44,7 @@ const LINE_WIDTH = 1;
 const GraphTemperatureTitle = `Temperatura (${TEMPERATURE_UNIT})`;
 const GraphHumidityTitle = `Umidità (${HUMIDITY_UNIT})`;
 const GraphPressureTitle = `Pressione (${PRESSURE_UNIT})`;
-const GraphAvarageWindTitle = `Vento medio (${WIND_UNIT})`;
+const GraphMaxWindTitle = `Raffica massima (${WIND_UNIT})`;
 const GraphAvarageWindDirection = `Direzione del vento`;
 const GraphAvarageWindDistribution = `Distribuzione vento`;
 const GraphrainRateTitle = `Intensità pioggia (${RAIN_RATE_UNIT})`;
@@ -146,10 +145,6 @@ function DataPage({ data, isRefetching }) {
                         <strong>
                             <MonoText>{current.last_data_hour}</MonoText>
                         </strong>
-                        <br />
-                        <Webcam>
-                            <Icon icon={Video} /> Webcam in arrivo!
-                        </Webcam>
                     </LatestUpdate>
                 </HeaderLeft>
             </Header>
@@ -660,10 +655,10 @@ function DataPage({ data, isRefetching }) {
                         />
                     </Graph>
                     <Graph
-                        title={GraphAvarageWindTitle}
-                        aria-label={GraphAvarageWindTitle}
+                        title={GraphMaxWindTitle}
+                        aria-label={GraphMaxWindTitle}
                     >
-                        <WindLineChart data={day.graph_wind} />
+                        <WindLineChart data={day.graph_wind_max} />
                     </Graph>
                     <Graph title={GraphAvarageWindDirection}>
                         <WindDirGraph
@@ -696,25 +691,31 @@ function DataPage({ data, isRefetching }) {
             </aside>
             <footer>
                 <StationInfo>
-                    <strong>Davis Vantage Pro 2</strong> con schermo ventilato
-                    daytime e pluviometro riscaldato
-                    <br />
-                    Termoigrometro a <strong>180cm su prato</strong>, anemometro
-                    posizionato a 12m sul tetto
-                    <br />
-                    La pagina si aggiorna automaticamente ogni{' '}
-                    <strong>5 minuti</strong>
-                    <br />
-                    se riscontri degli errori{' '}
-                    <ErrorLink href="/contatti/index.html">
-                        Inviami un messaggio
-                    </ErrorLink>{' '}
+                    <p>
+                        <strong>Davis Vantage Pro 2</strong> con schermo
+                        ventilato daytime e pluviometro riscaldato
+                    </p>
+                    <p>
+                        Termoigrometro a <strong>180cm su prato</strong>,
+                        anemometro posizionato a 12m sul tetto
+                    </p>
+                    <p>
+                        La pagina si aggiorna automaticamente ogni{' '}
+                        <strong>5 minuti</strong>
+                    </p>
+                    <p>
+                        se riscontri degli errori{' '}
+                        <ErrorLink href="/contatti/index.html">
+                            Inviami un messaggio
+                        </ErrorLink>
+                    </p>
+                    <p>
+                        <Webcam>
+                            <Icon icon={Video} /> Webcam in arrivo!
+                        </Webcam>
+                    </p>
+                    <BackToLink href="/">Torna al mio blog</BackToLink>
                 </StationInfo>
-
-                <BackToLink href="/">
-                    <Icon icon={ChevronLeft} left />
-                    Torna al blog
-                </BackToLink>
             </footer>
         </DataWrapper>
     );
@@ -1370,12 +1371,14 @@ const Point = styled.div`
     padding: 0.5em 1em;
 `;
 
-const StationInfo = styled.p`
-    margin-top: calc(var(--space-unit) * 1.5);
-    margin-bottom: calc(var(--space-unit) * 1.5);
+const StationInfo = styled.div`
+    margin-top: calc(var(--space-unit) * 2.5);
     font-size: var(--font-size-small);
     strong {
         ${boldStyles}
+    }
+    p {
+        margin-bottom: calc(var(--space-unit) * 0.25);
     }
 `;
 
@@ -1387,18 +1390,18 @@ const BackToLink = styled.a`
 const Webcam = styled.span`
     font-size: var(--font-size-small);
     gap: 0.25em;
-    margin-left: 1em;
     ${boldStyles}
 `;
 
 const StyledPageTitle = styled(PageTitle)`
     position: relative;
+    width: max-content;
 `;
 
 const Beta = styled.span`
     position: absolute;
     top: 0px;
-    right: -20px;
+    right: -60px;
     font-size: var(--font-size-x-small);
     background-color: var(--color-primary);
     color: black;

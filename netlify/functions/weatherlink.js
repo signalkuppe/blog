@@ -1,42 +1,38 @@
 const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+dayjs.extend(utc);
+dayjs.extend(timezone);
+const tz = 'Europe/Rome';
 const _ = require('lodash');
-const API_CACHE = require('../cache');
+// const API_CACHE = require('../cache');
 const STATION_ID = '168235';
 const CONSOLE_SENSOR_ID = 653401;
 const TETTO_SENSOR_ID = 656258;
 const PRATO_SENSOR_ID = 653403;
 const API_KEY = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_APIKEY;
 const API_SECRET = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_SECRET;
-const START_OF_TODAY = dayjs().startOf('day').add(1, 'minute').unix();
-const ONE_DAY_BEFORE = dayjs().subtract(24, 'hours').add(1, 'minute').unix();
-const NOW = dayjs().unix();
+const START_OF_TODAY = dayjs()
+    .utc()
+    .tz(tz)
+    .startOf('day')
+    .add(1, 'minute')
+    .unix();
+const ONE_DAY_BEFORE = dayjs()
+    .utc()
+    .tz(tz)
+    .subtract(24, 'hours')
+    .add(1, 'minute')
+    .unix();
+const NOW = dayjs().utc().tz(tz).unix();
 
 exports.handler = async function () {
-    let currentSensors;
-    let oneDayBeforeSensors;
     try {
-        const cachedCurrentSensors = API_CACHE.get('currentSensors');
-        if (!cachedCurrentSensors) {
-            console.log('CURRENT DATA FROM API');
-            const { sensors } = await fetchCurrentData();
-            API_CACHE.set('currentSensors', sensors);
-            currentSensors = sensors;
-        } else {
-            console.log('CURRENT DATA FROM CACHE');
-            currentSensors = cachedCurrentSensors;
-        }
-
-        const cachedOneDayBeforeSensors = API_CACHE.get('oneDayBeforeSensors');
-
-        if (!cachedOneDayBeforeSensors) {
-            console.log('HISTORIC DATA FROM API');
-            const { sensors } = await fetchHistoricData(ONE_DAY_BEFORE, NOW);
-            API_CACHE.set('oneDayBeforeSensors', sensors);
-            oneDayBeforeSensors = sensors;
-        } else {
-            console.log('HISTORIC DATA FROM CACHE');
-            oneDayBeforeSensors = cachedOneDayBeforeSensors;
-        }
+        const { sensors: currentSensors } = await fetchCurrentData();
+        const { sensors: oneDayBeforeSensors } = await fetchHistoricData(
+            ONE_DAY_BEFORE,
+            NOW,
+        );
 
         const weatherlinkConsole = sensorData(
             currentSensors,
@@ -308,6 +304,11 @@ exports.handler = async function () {
                     y: parseFloat(convertWindSpeed(v.wind_speed_avg)),
                     dir: convertWindDirection(v.wind_dir_of_prevail), // needed in tooltip
                 })),
+                graph_wind_max: _.map(pratoOneDayBefore, (v) => ({
+                    x: unixToGraphTime(v.ts),
+                    y: parseFloat(convertWindSpeed(v.wind_speed_hi)),
+                    dir: convertWindDirection(v.wind_speed_hi_dir), // needed in tooltip
+                })),
                 graph_wind_dir: _.map(pratoOneDayBefore, (v) => ({
                     x: unixToGraphTime(v.ts),
                     y: v.wind_dir_of_prevail, // we need numbers, then we format them i  the graph
@@ -320,8 +321,6 @@ exports.handler = async function () {
                 })),
             },
         };
-
-        console.log(tettoCurrent.et_year);
 
         return {
             statusCode: 200,
@@ -342,6 +341,7 @@ exports.handler = async function () {
 };
 
 async function fetchCurrentData() {
+    console.log('Feching current data');
     const response = await fetch(
         `https://api.weatherlink.com/v2/current/${STATION_ID}?api-key=${API_KEY}`,
         {
@@ -356,6 +356,10 @@ async function fetchCurrentData() {
 }
 
 async function fetchHistoricData(startTimeStamp, endTimeStamp) {
+    console.log('Feching historical data', {
+        start: startTimeStamp,
+        end: endTimeStamp,
+    });
     const response = await fetch(
         `https://api.weatherlink.com/v2/historic/${STATION_ID}?api-key=${API_KEY}&start-timestamp=${startTimeStamp}&end-timestamp=${endTimeStamp}`,
         {
