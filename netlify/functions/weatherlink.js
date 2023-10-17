@@ -133,12 +133,12 @@ exports.handler = async function () {
                 ),
                 pressure_max_at: unixToHourAndMinutes(
                     findLastMaxPropertyItem(consoleDailyValues, 'bar_hi')[
-                        'bar_hi'
+                        'bar_hi_at'
                     ],
                 ),
                 pressure_min_at: unixToHourAndMinutes(
                     findLastMinPropertyItem(consoleDailyValues, 'bar_lo')[
-                        'bar_lo'
+                        'bar_lo_at'
                     ],
                 ),
                 pressure_min: convertPressure(
