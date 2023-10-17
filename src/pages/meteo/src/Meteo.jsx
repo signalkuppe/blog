@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import styled, { css } from 'styled-components';
 import { maxBy, minBy, union } from 'lodash';
@@ -13,6 +14,7 @@ import Hi from '../../../public/icons/Hi.svg';
 import Low from '../../../public/icons/Low.svg';
 import ArrowUpRight from '../../../public/icons/ArrowUpRight.svg';
 import Text from '../../../public/icons/Text.svg';
+import Refresh from '../../../public/icons/Refresh.svg';
 import Video from '../../../public/icons/Video.svg';
 import Clock from '../../../public/icons/Clock.svg';
 import { linksStyles, boldStyles } from '../../../theme';
@@ -31,7 +33,7 @@ const CHART_AXIS_COLOR = 'var(--color-text)';
 const ACCENT_COLOR = '#cb77fb';
 const TEMPERATURE_UNIT = '°C';
 const HUMIDITY_UNIT = '%';
-const WIND_UNIT = 'Km/h';
+const WIND_UNIT = 'km/h';
 const PRESSURE_UNIT = 'hPa';
 const RAIN_UNIT = 'mm';
 const RAIN_RATE_UNIT = 'mm/h';
@@ -42,7 +44,7 @@ const monoStyles = css`
 const LINE_WIDTH = 1;
 
 const GraphTemperatureTitle = `Temperatura (${TEMPERATURE_UNIT})`;
-const GraphHumidityTitle = `Umidità (${HUMIDITY_UNIT})`;
+const GraphHumidityTitle = `Umidità relativa(${HUMIDITY_UNIT})`;
 const GraphPressureTitle = `Pressione (${PRESSURE_UNIT})`;
 const GraphMaxWindTitle = `Raffica massima (${WIND_UNIT})`;
 const GraphAvarageWindDirection = `Direzione del vento`;
@@ -51,15 +53,20 @@ const GraphrainRateTitle = `Intensità pioggia (${RAIN_RATE_UNIT})`;
 const GraphTemperatureDownUp = `Temperatura 2m/12m (${TEMPERATURE_UNIT})`;
 
 function Meteo() {
-    const { isLoading, isSuccess, isError, data, isRefetching } = useQuery(
-        // default cache is 5 mins, same as our interval data
-        'meteo',
-        getMeteoData,
-        {
-            refetchOnWindowFocus: false,
-            refetchInterval: 300000, // 5 mins
-        },
-    );
+    const { isLoading, isSuccess, isError, data, isRefetching, refetch } =
+        useQuery(
+            // default cache is 5 mins, same as our interval data
+            'meteo',
+            getMeteoData,
+            {
+                refetchOnWindowFocus: false,
+                refetchInterval: 300000, // 5 mins
+            },
+        );
+
+    useEffect(() => {
+        document.body.removeAttribute('style'); // see index.html to avoid white flash before app kicks in
+    }, []);
 
     return (
         <>
@@ -89,7 +96,11 @@ function Meteo() {
 
             {isSuccess && (
                 <ContentContainer>
-                    <DataPage data={data} isRefetching={isRefetching} />
+                    <DataPage
+                        data={data}
+                        isRefetching={isRefetching}
+                        refetch={refetch}
+                    />
                 </ContentContainer>
             )}
         </>
@@ -126,27 +137,34 @@ function ErrorMessage() {
     );
 }
 
-function DataPage({ data, isRefetching }) {
+function DataPage({ data, isRefetching, refetch }) {
     const { current, day } = data;
 
     return (
         <DataWrapper>
             <Header>
-                <HeaderLeft>
-                    <StyledPageTitle xsmall>
-                        Meteo Concenedo <Beta>beta</Beta>
-                    </StyledPageTitle>
-                    <LatestUpdate>
-                        Ultimo aggiornamento il{' '}
-                        <strong>
-                            <MonoText>{current.last_data_day}</MonoText>
-                        </strong>{' '}
-                        alle{' '}
-                        <strong>
-                            <MonoText>{current.last_data_hour}</MonoText>
-                        </strong>
-                    </LatestUpdate>
-                </HeaderLeft>
+                <StyledPageTitle xsmall>
+                    Meteo Concenedo <Beta>beta</Beta>
+                </StyledPageTitle>
+                <HeaderUpdate>
+                    <HeaderUpdateLeft>
+                        <LatestUpdate>
+                            <strong>
+                                <MonoText>{current.last_data_day}</MonoText>
+                            </strong>{' '}
+                            alle{' '}
+                            <strong>
+                                <MonoText>{current.last_data_hour}</MonoText>
+                            </strong>
+                        </LatestUpdate>
+                    </HeaderUpdateLeft>
+                    <HeaderUpdateRight>
+                        <RefreshButton onClick={refetch}>
+                            {!isRefetching && <Icon icon={Refresh} />}
+                            {isRefetching ? 'Aggiorno...' : 'Aggiorna'}
+                        </RefreshButton>
+                    </HeaderUpdateRight>
+                </HeaderUpdate>
             </Header>
             <main>
                 <DataGrid>
@@ -192,7 +210,7 @@ function DataPage({ data, isRefetching }) {
                         </FatValue>
                     </DataBox>
                     <DataBox
-                        title="Umidità"
+                        title="Umidità relativa"
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
@@ -300,7 +318,6 @@ function DataPage({ data, isRefetching }) {
                                         <AccentText>
                                             <BoldText>
                                                 {day.wind_prevailing_dir}
-                                                {TEMPERATURE_UNIT}
                                             </BoldText>
                                         </AccentText>
 
@@ -358,15 +375,23 @@ function DataPage({ data, isRefetching }) {
                                 <Flex justifyContent="space-between">
                                     <MaxLabel />
                                     <Flex gap="1rem">
-                                        <HiText>
-                                            <MonoText>
-                                                {day.rain_rate_max}
-                                                {RAIN_RATE_UNIT}
-                                            </MonoText>
-                                        </HiText>
-                                        <AtValue>
-                                            {day.rain_rate_max_at}
-                                        </AtValue>
+                                        {day.rain_rate_max > 0 ? (
+                                            <>
+                                                <HiText>
+                                                    <MonoText>
+                                                        {day.rain_rate_max}
+                                                        {RAIN_RATE_UNIT}
+                                                    </MonoText>
+                                                </HiText>
+                                                <AtValue>
+                                                    {day.rain_rate_max_at}
+                                                </AtValue>
+                                            </>
+                                        ) : (
+                                            <HiText>
+                                                <MonoText>-</MonoText>
+                                            </HiText>
+                                        )}
                                     </Flex>
                                 </Flex>
                                 <Flex justifyContent="space-between">
@@ -530,7 +555,7 @@ function DataPage({ data, isRefetching }) {
                                     </Flex>
                                 </Flex>
                                 <Flex justifyContent="space-between">
-                                    <ArchiveLabel>Ev annuale</ArchiveLabel>
+                                    <ArchiveLabel>Etp</ArchiveLabel>
                                     <Flex gap="1rem">
                                         <ArhiveText>
                                             <MonoText>
@@ -1187,13 +1212,18 @@ function convertWindDirection(degree) {
 
 const Header = styled.header`
     display: flex;
-    padding-right: var(--space-unit);
-    position: sticky;
-    background: var(--color-background);
+    flex-direction: column;
     margin-top: calc(var(--space-unit) * 1.5);
 `;
 
-const HeaderLeft = styled.div``;
+const HeaderUpdate = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: calc(var(--space-unit) * 1.5);
+`;
+const HeaderUpdateLeft = styled.div``;
+const HeaderUpdateRight = styled.div``;
 
 /*
 const CloseButton = styled.a`
@@ -1242,7 +1272,6 @@ const DataWrapper = styled.div`
 `;
 
 const LatestUpdate = styled.div`
-    margin-top: calc(var(--space-unit) * 1.5);
     font-size: var(--font-size-small);
     strong {
         ${boldStyles}
@@ -1329,6 +1358,10 @@ const FatValue = styled.span`
     font-size: var(--font-size-large);
     font-weight: 700;
     color: var(--color-text-light-accent);
+    sup {
+        vertical-align: super;
+        font-size: smaller;
+    }
 `;
 
 const SmallValue = styled.span`
@@ -1410,6 +1443,16 @@ const Beta = styled.span`
     display: inline-flex;
     align-items: center;
     border-radius: 15px;
+`;
+
+const RefreshButton = styled.button`
+    all: unset;
+    ${boldStyles}
+    color: var(--color-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
 `;
 
 export default Meteo;
