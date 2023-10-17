@@ -7,7 +7,6 @@ import { vars as cssVars } from '../../theme/index';
 
 // add meta tag to index.html at build time
 const htmlPluginOpt = {
-    favicon: '/img/favicons/favicon.ico',
     metas: [
         {
             name: 'description',
