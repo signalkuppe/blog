@@ -1207,7 +1207,7 @@ function convertWindDirection(degree) {
         'NW',
         'NNW',
     ];
-    return arr[val % 16];
+    return val ? arr[val % 16] : '-';
 }
 
 const Header = styled.header`

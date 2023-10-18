@@ -391,7 +391,7 @@ function convertTemperature(temperature) {
 
 function convertWindSpeed(mph) {
     /** MPH to km/h */
-    return mph ? (mph * 1.60934).toFixed(1) : null;
+    return mph > 0 ? (mph * 1.60934).toFixed(1) : 0;
 }
 
 function convertWindDirection(degree) {
@@ -414,7 +414,7 @@ function convertWindDirection(degree) {
         'NW',
         'NNW',
     ];
-    return arr[val % 16];
+    return val ? arr[val % 16] : null;
 }
 
 function formatDate(ts, format) {
