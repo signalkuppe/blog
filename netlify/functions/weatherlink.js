@@ -527,7 +527,7 @@ function calculatePrevailingWindDirection(tettoDailyValues) {
 
     // Convert the average direction to degrees (0-360)
     const averageDegrees = (radiansToDegrees(averageRadians) + 360) % 360;
-
+    console.log({ averageDegrees });
     return convertWindDirection(averageDegrees);
 }
 

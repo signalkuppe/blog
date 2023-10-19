@@ -150,11 +150,19 @@ function DataPage({ data, isRefetching, refetch }) {
                     <HeaderUpdateLeft>
                         <LatestUpdate>
                             <strong>
-                                <MonoText>{current.last_data_day}</MonoText>
+                                <MonoText>
+                                    {!isRefetching
+                                        ? current.last_data_day
+                                        : '--/--/----'}
+                                </MonoText>
                             </strong>{' '}
                             alle{' '}
                             <strong>
-                                <MonoText>{current.last_data_hour}</MonoText>
+                                <MonoText>
+                                    {!isRefetching
+                                        ? current.last_data_hour
+                                        : '--:--'}
+                                </MonoText>
                             </strong>
                         </LatestUpdate>
                     </HeaderUpdateLeft>
@@ -320,10 +328,6 @@ function DataPage({ data, isRefetching, refetch }) {
                                                 {day.wind_prevailing_dir}
                                             </BoldText>
                                         </AccentText>
-
-                                        <AtValue>
-                                            {day.wind_chill_min_at}
-                                        </AtValue>
                                     </Flex>
                                 </Flex>
                             </Flex>
@@ -401,9 +405,8 @@ function DataPage({ data, isRefetching, refetch }) {
                                     <Flex gap="1rem">
                                         <AccentText>
                                             <MonoText>
-                                                {day.rain_rate_last_15_min > 0
-                                                    ? `${day.rain_rate_last_15_min} ${RAIN_RATE_UNIT}`
-                                                    : '-'}
+                                                {day.rain_rate_last_15_min || 0}
+                                                {RAIN_RATE_UNIT}
                                             </MonoText>
                                         </AccentText>
                                     </Flex>
@@ -718,11 +721,13 @@ function DataPage({ data, isRefetching, refetch }) {
                 <StationInfo>
                     <p>
                         <strong>Davis Vantage Pro 2</strong> con schermo
-                        ventilato daytime e pluviometro riscaldato
+                        ventilato daytime e pluviometro riscaldato, quota
+                        pozzetto <strong>922m</strong>
                     </p>
                     <p>
                         Termoigrometro a <strong>180cm su prato</strong>,
-                        anemometro posizionato a 12m sul tetto
+                        anemometro e secondo schermo ventilato daytime
+                        posizionati a 12m sul tetto.
                     </p>
                     <p>
                         La pagina si aggiorna automaticamente ogni{' '}
