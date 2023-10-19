@@ -396,6 +396,7 @@ function convertWindSpeed(mph) {
 
 function convertWindDirection(degree) {
     const val = degree ? Math.floor(degree / 22.5 + 0.5) : null;
+
     const arr = [
         'N',
         'NNE',
@@ -414,7 +415,7 @@ function convertWindDirection(degree) {
         'NW',
         'NNW',
     ];
-    return val ? arr[val % 16] : null;
+    return arr[val % 16];
 }
 
 function formatDate(ts, format) {
@@ -527,7 +528,7 @@ function calculatePrevailingWindDirection(tettoDailyValues) {
 
     // Convert the average direction to degrees (0-360)
     const averageDegrees = (radiansToDegrees(averageRadians) + 360) % 360;
-    console.log({ averageDegrees });
+
     return convertWindDirection(averageDegrees);
 }
 
