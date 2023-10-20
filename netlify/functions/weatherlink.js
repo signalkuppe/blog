@@ -304,7 +304,10 @@ exports.handler = async function () {
                     x: unixToGraphTime(v.ts),
                     y: v.rain_rate_hi_mm,
                 })),
-                tettoCurrent,
+                graph_solar_radiation: _.map(tettoOneDayBefore, (v) => ({
+                    x: unixToGraphTime(v.ts),
+                    y: parseFloat(v.solar_rad_avg),
+                })),
             },
         };
 

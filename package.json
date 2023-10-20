@@ -74,6 +74,7 @@
     "vite-plugin-svgr": "^3.2.0"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.26.1",
     "@nivo/bar": "^0.83.0",
     "@nivo/core": "^0.83.0",
     "@nivo/line": "^0.83.0",

@@ -10,15 +10,16 @@ import PageTitle from '../../../components/ui/PageTitle';
 import Loader from '../../../components/ui/Loader';
 import Icon from '../../../components/ui/Icon';
 import Hi from '../../../public/icons/Hi.svg';
-// import CloseIcon from '../../../public/icons/Cross.svg';
 import Low from '../../../public/icons/Low.svg';
 import ArrowUpRight from '../../../public/icons/ArrowUpRight.svg';
 import Text from '../../../public/icons/Text.svg';
 import Refresh from '../../../public/icons/Refresh.svg';
 import Video from '../../../public/icons/Video.svg';
 import Clock from '../../../public/icons/Clock.svg';
+import Info from '../../../public/icons/Info.svg';
 import { linksStyles, boldStyles } from '../../../theme';
 import Flex from './Flex';
+import Popover from './Popover/index';
 
 const HI_COLOR = '#f85757';
 const LOW_COLOR = '#51a2ed';
@@ -51,6 +52,7 @@ const GraphAvarageWindDirection = `Direzione del vento`;
 const GraphAvarageWindDistribution = `Distribuzione vento`;
 const GraphrainRateTitle = `Intensità pioggia (${RAIN_RATE_UNIT})`;
 const GraphTemperatureDownUp = `Temperatura 2m/12m (${TEMPERATURE_UNIT})`;
+const GraphSolarRadiationTitle = `radiazione solare (W/m2)`;
 
 function Meteo() {
     const { isLoading, isSuccess, isError, data, isRefetching, refetch } =
@@ -71,15 +73,6 @@ function Meteo() {
     return (
         <>
             <GlobalStyles />
-            {/*
-            <CloseButton
-                href={'/'}
-                title="Torna al blog"
-                aria-label="Torna al blog"
-            >
-                <Icon icon={CloseIcon} l />
-            </CloseButton>
-    */}
             {isLoading && (
                 <Center>
                     <LoadingInfo>
@@ -146,6 +139,7 @@ function DataPage({ data, isRefetching, refetch }) {
                 <StyledPageTitle xsmall>
                     Meteo Concenedo <Beta>beta</Beta>
                 </StyledPageTitle>
+
                 <HeaderUpdate>
                     <HeaderUpdateLeft>
                         <LatestUpdate>
@@ -219,6 +213,25 @@ function DataPage({ data, isRefetching, refetch }) {
                     </DataBox>
                     <DataBox
                         title="Umidità relativa"
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <PopoverParagraph>
+                                        È il <strong>rapporto</strong> tra la{' '}
+                                        <strong>
+                                            quantità di vapore acqueo
+                                        </strong>{' '}
+                                        contenuto in una massa d’aria e la{' '}
+                                        <strong>
+                                            quantità massima di vapore acqueo
+                                        </strong>{' '}
+                                        che la stessa massa d’aria riesce a
+                                        contenere nelle stesse condizioni di
+                                        temperatura e pressione.
+                                    </PopoverParagraph>
+                                }
+                            />
+                        }
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
@@ -256,6 +269,38 @@ function DataPage({ data, isRefetching, refetch }) {
                     </DataBox>
                     <DataBox
                         title="Pressione"
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <>
+                                        <PopoverParagraph>
+                                            È la{' '}
+                                            <strong>
+                                                forza esercitata dal peso di una
+                                                colonna d’aria
+                                            </strong>{' '}
+                                            sulla superficie terrestre, che ha
+                                            come base l’unità di superficie e
+                                            come altezza il limite superiore
+                                            dell’atmosfera a partire dal livello
+                                            del mare.
+                                        </PopoverParagraph>
+                                        <PopoverParagraph>
+                                            Si misura con il barometro e si
+                                            esprime in hPa, unità pari ad una
+                                            forza di 100 Newton su una
+                                            superficie di un metro quadrato.
+                                        </PopoverParagraph>
+                                        <PopoverParagraph>
+                                            <strong>
+                                                Mediamente, al livello del mare,
+                                                essa vale 1013,25 hPa.
+                                            </strong>
+                                        </PopoverParagraph>
+                                    </>
+                                }
+                            />
+                        }
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
@@ -339,29 +384,53 @@ function DataPage({ data, isRefetching, refetch }) {
                     </DataBox>
                     <DataBox
                         title="Pioggia odierna"
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <>
+                                        <PopoverParagraph>
+                                            La misura in millimetri corrisponde
+                                            alla così detta “altezza
+                                            pluviometrica o altezza di pioggia”.
+                                        </PopoverParagraph>
+                                        <PopoverParagraph>
+                                            <strong>
+                                                Un millimetro di pioggia
+                                            </strong>{' '}
+                                            misurato all’interno del pluviometro
+                                            è pari come quantità a{' '}
+                                            <strong>
+                                                1 litro caduto su una superficie
+                                                di 1 metro quadrato:
+                                            </strong>
+                                        </PopoverParagraph>
+                                    </>
+                                }
+                            />
+                        }
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
                                 <Flex justifyContent="space-between">
                                     <ArchiveLabel>Mese</ArchiveLabel>
                                     <Flex gap="1rem">
-                                        <ArhiveText>
+                                        <ArchiveText>
                                             <MonoText>
                                                 {current.rain_month}
                                                 {RAIN_UNIT}
                                             </MonoText>
-                                        </ArhiveText>
+                                        </ArchiveText>
                                     </Flex>
                                 </Flex>
                                 <Flex justifyContent="space-between">
                                     <ArchiveLabel>Anno</ArchiveLabel>
                                     <Flex gap="1rem">
-                                        <ArhiveText>
+                                        <ArchiveText>
                                             <MonoText>
                                                 {current.rain_year}
                                                 {RAIN_UNIT}
                                             </MonoText>
-                                        </ArhiveText>
+                                        </ArchiveText>
                                     </Flex>
                                 </Flex>
                             </Flex>
@@ -374,6 +443,64 @@ function DataPage({ data, isRefetching, refetch }) {
                     <DataBox
                         title="Intensità pioggia"
                         isRefetching={isRefetching}
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <>
+                                        <PopoverParagraph>
+                                            I millimetri di pioggia caduti in
+                                            un’ora definiscono quella che viene
+                                            chiamata dai meteorologi intensità
+                                            della pioggia
+                                        </PopoverParagraph>
+                                        <PopoverParagraph>
+                                            <ul>
+                                                <li>
+                                                    <strong>
+                                                        pioviggine debole
+                                                    </strong>{' '}
+                                                    ({'i<0.1'})
+                                                </li>
+                                                <li>
+                                                    <strong>
+                                                        pioviggine moderata
+                                                    </strong>{' '}
+                                                    ({'0.1<=i<0.5'})
+                                                </li>
+                                                <li>
+                                                    <strong>
+                                                        pioviggine forte
+                                                    </strong>{' '}
+                                                    ({'0.5<=i<1'})
+                                                </li>
+                                                <li>
+                                                    <strong>
+                                                        pioggia debole
+                                                    </strong>{' '}
+                                                    ({'1<=i<2.5'})
+                                                </li>
+                                                <li>
+                                                    <strong>
+                                                        pioggia moderata
+                                                    </strong>{' '}
+                                                    ({'2.5<=i<10'})
+                                                </li>
+                                                <li>
+                                                    <strong>
+                                                        pioggia forte
+                                                    </strong>{' '}
+                                                    ({'10<=i<50'})
+                                                </li>
+                                                <li>
+                                                    <strong>nubifragio</strong>{' '}
+                                                    ({'i>50'})
+                                                </li>
+                                            </ul>
+                                        </PopoverParagraph>
+                                    </>
+                                }
+                            />
+                        }
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
                                 <Flex justifyContent="space-between">
@@ -415,12 +542,40 @@ function DataPage({ data, isRefetching, refetch }) {
                             </Flex>
                         }
                     >
-                        <FatValue>
-                            {current.rain_rate} {RAIN_RATE_UNIT}
-                        </FatValue>
+                        <Flex
+                            gap="0.2em"
+                            flexDirection="column"
+                            alignItems="center"
+                            style={{
+                                position: 'relative',
+                                top: '0.5em',
+                            }}
+                        >
+                            <FatValue>
+                                {current.rain_rate} {RAIN_RATE_UNIT}
+                            </FatValue>
+                            <SmallValue>
+                                {rainRateText(current.rain_rate)}
+                            </SmallValue>
+                        </Flex>
                     </DataBox>
                     <DataBox
                         title="Punto di rugiada"
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <>
+                                        <PopoverParagraph>
+                                            È la temperatura alla quale l’aria
+                                            deve raffreddarsi affinché il vapore
+                                            acqueo presente inizi a condensare.
+                                            Il punto di rugiada fornisce
+                                            informazioni sull’umidità dell’aria.
+                                        </PopoverParagraph>
+                                    </>
+                                }
+                            />
+                        }
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
@@ -462,6 +617,25 @@ function DataPage({ data, isRefetching, refetch }) {
                     </DataBox>
                     <DataBox
                         title="Bulbo umido"
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <>
+                                        <PopoverParagraph>
+                                            Indica la{' '}
+                                            <strong>
+                                                temperatura più bassa che
+                                                potremo raggiungere,
+                                            </strong>{' '}
+                                            per effetto dell’evaporazione
+                                            dell’acqua nell’aria a pressione
+                                            costante. Utile per capire se la
+                                            pioggia può trasformarsi in neve
+                                        </PopoverParagraph>
+                                    </>
+                                }
+                            />
+                        }
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
@@ -499,6 +673,33 @@ function DataPage({ data, isRefetching, refetch }) {
                     </DataBox>
                     <DataBox
                         title="Indice di calore"
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <>
+                                        <PopoverParagraph>
+                                            Indica la{' '}
+                                            <strong>
+                                                temperatura effettiva da noi
+                                                avvertita
+                                            </strong>{' '}
+                                            e si calcola conoscendo i valori di
+                                            temperatura e umidità relativa
+                                            dell’aria.
+                                        </PopoverParagraph>
+                                        <PopoverParagraph>
+                                            Il <strong>wind chill</strong>{' '}
+                                            invece e si calcola conoscendo i
+                                            valori di
+                                            <strong>
+                                                {' '}
+                                                temperatura e velocità del vento
+                                            </strong>
+                                        </PopoverParagraph>
+                                    </>
+                                }
+                            />
+                        }
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
@@ -542,6 +743,18 @@ function DataPage({ data, isRefetching, refetch }) {
                     </DataBox>
                     <DataBox
                         title="Radiazione solare"
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <>
+                                        <PopoverParagraph>
+                                            Indica l’energia trasferita dal sole
+                                            per unità di area
+                                        </PopoverParagraph>
+                                    </>
+                                }
+                            />
+                        }
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
@@ -550,23 +763,23 @@ function DataPage({ data, isRefetching, refetch }) {
                                         Evapotraspirazione
                                     </ArchiveLabel>
                                     <Flex gap="1rem">
-                                        <ArhiveText>
+                                        <ArchiveText>
                                             <MonoText>
                                                 {current.et_day}
                                                 {RAIN_UNIT}
                                             </MonoText>
-                                        </ArhiveText>
+                                        </ArchiveText>
                                     </Flex>
                                 </Flex>
                                 <Flex justifyContent="space-between">
                                     <ArchiveLabel>Etp</ArchiveLabel>
                                     <Flex gap="1rem">
-                                        <ArhiveText>
+                                        <ArchiveText>
                                             <MonoText>
                                                 {current.et_year}
                                                 {RAIN_UNIT}
                                             </MonoText>
-                                        </ArhiveText>
+                                        </ArchiveText>
                                     </Flex>
                                 </Flex>
                             </Flex>
@@ -578,6 +791,26 @@ function DataPage({ data, isRefetching, refetch }) {
                     </DataBox>
                     <DataBox
                         title="Temperatura a 12m"
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <>
+                                        <PopoverParagraph>
+                                            La{' '}
+                                            <strong>
+                                                temperatura rilevata dal secondo
+                                                sensore,
+                                            </strong>{' '}
+                                            posto a 12m sul tetto. In inverno,
+                                            grazie all’inversione termica, i
+                                            valori possono risultare più alti
+                                            rispetto al sensore posto a 180cm su
+                                            prato
+                                        </PopoverParagraph>
+                                    </>
+                                }
+                            />
+                        }
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
@@ -619,6 +852,22 @@ function DataPage({ data, isRefetching, refetch }) {
                     </DataBox>
                     <DataBox
                         title="Umidità a 12m"
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <>
+                                        <PopoverParagraph>
+                                            L’{' '}
+                                            <strong>
+                                                umidità relativa rilevata dal
+                                                secondo sensore,
+                                            </strong>{' '}
+                                            posto a 12m sul tetto.
+                                        </PopoverParagraph>
+                                    </>
+                                }
+                            />
+                        }
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
@@ -716,6 +965,12 @@ function DataPage({ data, isRefetching, refetch }) {
                             title={GraphTemperatureDownUp}
                         />
                     </Graph>
+                    <Graph
+                        title={GraphSolarRadiationTitle}
+                        aria-label={GraphSolarRadiationTitle}
+                    >
+                        <BaseLineChart data={day.graph_solar_radiation} />
+                    </Graph>
                 </GraphGrid>
             </aside>
             <footer>
@@ -752,11 +1007,11 @@ function DataPage({ data, isRefetching, refetch }) {
     );
 }
 
-function DataBox({ title, children, footer, isRefetching }) {
+function DataBox({ title, tooltip, children, footer, isRefetching }) {
     return (
         <DataBoxWrapper>
             <DataBoxHeader>
-                <h2>{title}</h2>
+                <h2>{title}</h2> {tooltip}
             </DataBoxHeader>
             <DataBoxBody>{isRefetching ? <Spinner /> : children}</DataBoxBody>
             <DataBoxFooter>{footer}</DataBoxFooter>
@@ -823,9 +1078,9 @@ function LowIcon() {
 
 function ArchiveIcon() {
     return (
-        <ArhiveText>
+        <ArchiveText>
             <Icon icon={Text} />
-        </ArhiveText>
+        </ArchiveText>
     );
 }
 
@@ -842,6 +1097,18 @@ function ArrowUpAccentIcon() {
         <AccentText>
             <Icon icon={ArrowUpRight} />
         </AccentText>
+    );
+}
+
+function InfoIcon() {
+    return <Icon icon={Info} style={{ cursor: 'pointer' }} />;
+}
+
+function BasicPopover({ content }) {
+    return (
+        <Popover content={content}>
+            <InfoIcon />
+        </Popover>
     );
 }
 
@@ -1216,6 +1483,26 @@ function convertWindDirection(degree) {
     return val ? arr[val % 16] : '-';
 }
 
+function rainRateText(rate) {
+    if (!rate) {
+        return null;
+    } else if (rate < 0.1) {
+        return 'pioviggine debole';
+    } else if (rate >= 0.1 && rate < 0.5) {
+        return 'pioviggine moderata';
+    } else if (rate >= 0.5 && rate < 1) {
+        return 'pioviggine forte';
+    } else if (rate >= 1 && rate < 2.5) {
+        return 'pioggia debole';
+    } else if (rate >= 2.5 && rate < 10) {
+        return 'pioggia moderata';
+    } else if (rate >= 10 && rate < 50) {
+        return 'pioggia forte';
+    } else if (rate >= 50) {
+        return 'nubifragio';
+    }
+}
+
 const Header = styled.header`
     display: flex;
     flex-direction: column;
@@ -1310,6 +1597,9 @@ const DataBoxHeader = styled.header`
     background: var(--color-background-x-light);
     color: var(--color-text-light-accent);
     ${boldStyles}
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `;
 const DataBoxBody = styled.div`
     height: 6em;
@@ -1348,7 +1638,7 @@ const HiText = styled.span`
     color: ${HI_COLOR};
 `;
 
-const ArhiveText = styled.span`
+const ArchiveText = styled.span`
     color: ${ARCHIVE_COLOR};
 `;
 
@@ -1459,6 +1749,16 @@ const RefreshButton = styled.button`
     display: flex;
     align-items: center;
     gap: 0.2em;
+`;
+
+const PopoverParagraph = styled.p`
+    strong {
+        ${boldStyles}
+    }
+    margin-bottom: 1em;
+    :last-child {
+        margin-bottom: 0;
+    }
 `;
 
 export default Meteo;
