@@ -304,6 +304,7 @@ exports.handler = async function () {
                     x: unixToGraphTime(v.ts),
                     y: v.rain_rate_hi_mm,
                 })),
+                tettoCurrent,
             },
         };
 

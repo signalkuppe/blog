@@ -405,7 +405,8 @@ function DataPage({ data, isRefetching, refetch }) {
                                     <Flex gap="1rem">
                                         <AccentText>
                                             <MonoText>
-                                                {day.rain_rate_last_15_min || 0}
+                                                {current.rain_rate_last_15_min ||
+                                                    0}
                                                 {RAIN_RATE_UNIT}
                                             </MonoText>
                                         </AccentText>
