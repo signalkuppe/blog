@@ -1292,7 +1292,7 @@ function TettoPratoLineChart({ data }) {
     return (
         <ResponsiveLine
             data={data}
-            margin={{ top: 30, right: 60, bottom: 30, left: 25 }}
+            margin={{ top: 30, right: 60, bottom: 30, left: 30 }}
             xScale={{
                 type: 'time',
                 format: '%Y-%m-%d %H:%M',
