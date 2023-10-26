@@ -27,6 +27,7 @@ export default function PostHero({ post }) {
                     <ScrollHint
                         aria-hidden="true"
                         className="print-post-scrollHint"
+                        href="#post"
                     >
                         <StyledMouseIcon />
                         <StyledDownIcon />
@@ -115,7 +116,8 @@ const Description = styled.p`
     margin-top: calc(var(--space-unit) * 2);
 `;
 
-const ScrollHint = styled.span`
+const ScrollHint = styled.a`
+    color: inherit;
     display: inline-flex;
     flex-direction: column;
     align-items: center;

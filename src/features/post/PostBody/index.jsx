@@ -7,7 +7,7 @@ import Container from '../../../components/layout/Container';
 export default function PostContent({ post }) {
     const { body } = post;
     return (
-        <Container as="section">
+        <Container as="section" id="post">
             <PostBody className="print-post-body">
                 <BasicHtmlStyles>
                     <Html>{body}</Html>

@@ -12,6 +12,7 @@ import Icon from '../../../components/ui/Icon';
 import Hi from '../../../public/icons/Hi.svg';
 import Low from '../../../public/icons/Low.svg';
 import ArrowUpRight from '../../../public/icons/ArrowUpRight.svg';
+import BackIcon from '../../../public/icons/ChevronLeft.svg';
 import Text from '../../../public/icons/Text.svg';
 import Refresh from '../../../public/icons/Refresh.svg';
 import Video from '../../../public/icons/Video.svg';
@@ -136,6 +137,10 @@ function DataPage({ data, isRefetching, refetch }) {
     return (
         <DataWrapper>
             <Header>
+                <BackToLink href="/">
+                    <Icon xs icon={BackIcon} left />
+                    Torna al mio blog
+                </BackToLink>
                 <StyledPageTitle xsmall>
                     Meteo Concenedo <Beta>beta</Beta>
                 </StyledPageTitle>
@@ -1000,7 +1005,6 @@ function DataPage({ data, isRefetching, refetch }) {
                             <Icon icon={Video} /> Webcam in arrivo!
                         </Webcam>
                     </p>
-                    <BackToLink href="/">Torna al mio blog</BackToLink>
                 </StationInfo>
             </footer>
         </DataWrapper>
@@ -1713,7 +1717,10 @@ const StationInfo = styled.div`
 
 const BackToLink = styled.a`
     ${linksStyles}
-    display: block;
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-small);
+    margin-bottom: calc(var(--space-unit) * 0.25);
 `;
 
 const Webcam = styled.span`

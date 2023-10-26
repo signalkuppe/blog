@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import vars from '../../../vars';
 import {
     device,
@@ -39,7 +39,7 @@ const whats = [
     },
     {
         icon: AlpinismoIcon,
-        text: 'un quasi alpinista',
+        text: 'un alpinista',
     },
     {
         icon: EscursionismoIcon,
@@ -138,9 +138,6 @@ export default function HomePage({ route }) {
                                     <SummaryOpenText>
                                         Vuoi saperne di più?
                                     </SummaryOpenText>
-                                    <SummaryCloseText>
-                                        Meno grazie
-                                    </SummaryCloseText>
                                 </Summary>
                                 <TextConstraint>
                                     <BasicHtmlStyles>
@@ -360,16 +357,6 @@ const StyledPageTitle = styled.h1`
     margin-bottom: 0.25em;
 `;
 
-const faderCommonStyles = css`
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 0.3em;
-    z-index: 1;
-`;
-
 const PageSubTitle = styled.h2`
     font-size: var(--font-size-medium);
     font-weight: 700;
@@ -381,33 +368,13 @@ const PageSubTitle = styled.h2`
     line-height: 1.5rem;
     overflow: hidden;
     position: relative;
-    /*
-    ::after {
-        ${faderCommonStyles};
-        top: 0;
-        background: linear-gradient(
-            to bottom,
-            var(--color-background) 0%,
-            transparent 100%
-        );
-    }
-    ::before {
-        ${faderCommonStyles};
-        bottom: -0.2em;
-        background: linear-gradient(
-            to top,
-            var(--color-background) 0%,
-            transparent 100%
-        );
-    }
-    */
     @media ${device.mobile} {
         font-size: var(--font-size-base);
     }
 `;
 
 const PageSubTitleWhat = styled.span`
-    color: var(--color-primary);
+    color: var(--color-text-light-accent);
     height: 1.5rem;
     svg {
         height: 0.8em;
@@ -432,7 +399,7 @@ const PageTitleWhatWrapper = styled.span`
     flex-direction: column;
     @media ${device.noReduceMotion} {
         animation-name: ${whatAnimation};
-        animation-duration: 16s;
+        animation-duration: 24s;
         animation-delay: 2s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
@@ -459,23 +426,10 @@ const Intro = styled.p`
     }
 `;
 
-const SummaryCloseText = styled.span``;
 const SummaryOpenText = styled.span``;
 
 const Details = styled.details`
     position: absolute;
-    &:not([open]) ${SummaryCloseText} {
-        display: none;
-    }
-    &:not([open]) ${SummaryOpenText} {
-        display: initial;
-    }
-    &[open] ${SummaryOpenText} {
-        display: none;
-    }
-    &[open] ${SummaryCloseText} {
-        display: initial;
-    }
     p:first-child {
         margin-top: var(--space-unit);
     }

@@ -11,7 +11,7 @@ export default function MainMenu({ route }) {
     const links = [
         {
             href: blogLink(),
-            text: 'Relazioni',
+            text: 'Gite',
             active:
                 route.name === 'blog' ||
                 route.name === 'post-item' ||
@@ -25,7 +25,7 @@ export default function MainMenu({ route }) {
 
         {
             href: '/meteo',
-            text: 'Meteo',
+            text: 'Meteo Concenedo',
         },
         {
             href: contattiLink,
@@ -49,9 +49,9 @@ const StyledUl = styled.ul`
 
     @media ${device.mobile} {
         display: grid;
-        grid-template-columns: 0.8fr 1.2fr;
-        grid-column-gap: 0.8em;
-        grid-row-gap: 1em;
+        grid-template-columns: max-content max-content;
+        grid-column-gap: 1em;
+        grid-row-gap: 1.2em;
     }
     @media ${device.atLeastTablet} {
         display: flex;

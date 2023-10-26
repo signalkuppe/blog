@@ -59,7 +59,7 @@ export const vars = {
     '--color-whatsapp': '#25d366',
     '--inputs-border': '4px solid var(--color-text-light-accent)',
     '--inputs-background': 'var(--color-background)',
-    '--inputs-color': 'var(--color-text)',
+    '--inputs-color': 'var(--color-text-light-accent)',
     '--inputs-padding': '0.75em 1em',
     '--inputs-focused-border-color': 'var(--color-primary)',
     '--buttons-padding': '0.5em 1em',
