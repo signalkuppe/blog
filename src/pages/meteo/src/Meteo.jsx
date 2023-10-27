@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import styled, { css } from 'styled-components';
 import { maxBy, minBy, union } from 'lodash';
@@ -24,7 +24,7 @@ import Popover from './Popover/index';
 
 const HI_COLOR = '#f85757';
 const LOW_COLOR = '#51a2ed';
-const ARCHIVE_COLOR = 'var(--color-primary)';
+const ARCHIVE_COLOR = '#99CC33';
 const CHART_COLOR = 'var(--color-primary)';
 const CHART_SECONDARY_COLOR = '#006ac3';
 const CHART_FONT_SIZE = 11;
@@ -56,6 +56,7 @@ const GraphTemperatureDownUp = `Temperatura 2m/12m (${TEMPERATURE_UNIT})`;
 const GraphSolarRadiationTitle = `radiazione solare (W/m2)`;
 
 function Meteo() {
+    const [fromBlog, setFromBlog] = useState(false);
     const { isLoading, isSuccess, isError, data, isRefetching, refetch } =
         useQuery(
             // default cache is 5 mins, same as our interval data
@@ -69,6 +70,10 @@ function Meteo() {
 
     useEffect(() => {
         document.body.removeAttribute('style'); // see index.html to avoid white flash before app kicks in
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('fromBlog')) {
+            setFromBlog(true);
+        }
     }, []);
 
     return (
@@ -94,6 +99,7 @@ function Meteo() {
                         data={data}
                         isRefetching={isRefetching}
                         refetch={refetch}
+                        fromBlog={fromBlog}
                     />
                 </ContentContainer>
             )}
@@ -131,7 +137,7 @@ function ErrorMessage() {
     );
 }
 
-function DataPage({ data, isRefetching, refetch }) {
+function DataPage({ data, isRefetching, refetch, fromBlog }) {
     const { current, day } = data;
 
     return (
@@ -139,7 +145,7 @@ function DataPage({ data, isRefetching, refetch }) {
             <Header>
                 <BackToLink href="/">
                     <Icon xs icon={BackIcon} left />
-                    Torna al mio blog
+                    {fromBlog ? 'Torna al mio blog' : 'Visita il mio blog'}
                 </BackToLink>
                 <StyledPageTitle xsmall>
                     Meteo Concenedo <Beta>beta</Beta>
@@ -753,8 +759,20 @@ function DataPage({ data, isRefetching, refetch }) {
                                 content={
                                     <>
                                         <PopoverParagraph>
-                                            Indica l’energia trasferita dal sole
-                                            per unità di area
+                                            <strong>
+                                                La radiazione solare
+                                            </strong>{' '}
+                                            indica l’energia emessa dal sole per
+                                            unità di area.{' '}
+                                            <strong>
+                                                L’Etp o evapotraspirazione
+                                                potenziale
+                                            </strong>{' '}
+                                            Consiste nella quantità d’acqua che
+                                            dal terreno passa nell’aria allo
+                                            stato di vapore. Viene stimata
+                                            grazie alla misura della{' '}
+                                            <strong>radiazione solare</strong>
                                         </PopoverParagraph>
                                     </>
                                 }
@@ -764,9 +782,7 @@ function DataPage({ data, isRefetching, refetch }) {
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
                                 <Flex justifyContent="space-between">
-                                    <ArchiveLabel>
-                                        Evapotraspirazione
-                                    </ArchiveLabel>
+                                    <ArchiveLabel>Etp giornaliera</ArchiveLabel>
                                     <Flex gap="1rem">
                                         <ArchiveText>
                                             <MonoText>
@@ -777,7 +793,7 @@ function DataPage({ data, isRefetching, refetch }) {
                                     </Flex>
                                 </Flex>
                                 <Flex justifyContent="space-between">
-                                    <ArchiveLabel>Etp</ArchiveLabel>
+                                    <ArchiveLabel>Etp annuale</ArchiveLabel>
                                     <Flex gap="1rem">
                                         <ArchiveText>
                                             <MonoText>
@@ -1105,7 +1121,7 @@ function ArrowUpAccentIcon() {
 }
 
 function InfoIcon() {
-    return <Icon icon={Info} style={{ cursor: 'pointer' }} />;
+    return <Icon icon={Info} style={{ cursor: 'help' }} />;
 }
 
 function BasicPopover({ content }) {
@@ -1719,8 +1735,8 @@ const BackToLink = styled.a`
     ${linksStyles}
     display: flex;
     align-items: center;
-    font-size: var(--font-size-small);
-    margin-bottom: calc(var(--space-unit) * 0.25);
+    font-size: var(--font-size-x-small);
+    margin-bottom: calc(var(--space-unit) * 0.5);
 `;
 
 const Webcam = styled.span`
