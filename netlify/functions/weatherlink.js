@@ -1,5 +1,10 @@
 const dayjs = require('dayjs');
 const _ = require('lodash');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+dayjs.extend(utc);
+dayjs.extend(timezone);
+const TIMEZONE = 'Europe/Rome';
 const STATION_ID = '168235';
 const CONSOLE_SENSOR_ID = 653401;
 const TETTO_SENSOR_ID = 656258;
@@ -417,7 +422,7 @@ function convertWindDirection(degree) {
 }
 
 function formatDate(ts, format) {
-    return dayjs.unix(ts).format(format);
+    return dayjs.unix(ts).utc().tz(TIMEZONE).format(format);
 }
 
 function unixToHourAndMinutes(ts) {
