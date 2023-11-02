@@ -8,7 +8,7 @@ const API_KEY = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_APIKEY;
 const API_SECRET = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_SECRET;
 const START_OF_TODAY = dayjs().startOf('day').unix();
 const ONE_DAY_BEFORE = dayjs().subtract(24, 'hours').unix();
-const NOW = dayjs().startOf('day').unix();
+const NOW = dayjs().unix();
 const GRAPH_DATE_FORMAT = 'YYYY-MM-DD HH:mm';
 
 exports.handler = async function () {
@@ -302,7 +302,6 @@ exports.handler = async function () {
                     x: unixToGraphTime(v.ts),
                     y: parseFloat(v.solar_rad_avg),
                 })),
-                pratoDailyValues,
             },
         };
 
