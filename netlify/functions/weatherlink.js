@@ -1,21 +1,15 @@
 const dayjs = require('dayjs');
-const utc = require('dayjs/plugin/utc');
-const timezone = require('dayjs/plugin/timezone');
-dayjs.extend(utc);
-dayjs.extend(timezone);
 const _ = require('lodash');
-// const API_CACHE = require('../cache');
 const STATION_ID = '168235';
 const CONSOLE_SENSOR_ID = 653401;
 const TETTO_SENSOR_ID = 656258;
 const PRATO_SENSOR_ID = 653403;
 const API_KEY = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_APIKEY;
 const API_SECRET = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_SECRET;
-const START_OF_TODAY = dayjs().startOf('day').utc().unix();
-const ONE_DAY_BEFORE = dayjs().subtract(24, 'hours').utc().unix();
-const NOW = dayjs().utc().unix();
+const START_OF_TODAY = dayjs().startOf('day').unix();
+const ONE_DAY_BEFORE = dayjs().subtract(24, 'hours').unix();
+const NOW = dayjs().startOf('day').unix();
 const GRAPH_DATE_FORMAT = 'YYYY-MM-DD HH:mm';
-const TIMEZONE = 'Europe/Rome';
 
 exports.handler = async function () {
     try {
@@ -308,6 +302,7 @@ exports.handler = async function () {
                     x: unixToGraphTime(v.ts),
                     y: parseFloat(v.solar_rad_avg),
                 })),
+                pratoDailyValues,
             },
         };
 
@@ -423,7 +418,7 @@ function convertWindDirection(degree) {
 }
 
 function formatDate(ts, format) {
-    return dayjs.unix(ts).utc().tz(TIMEZONE).format(format);
+    return dayjs.unix(ts).format(format);
 }
 
 function unixToHourAndMinutes(ts) {
