@@ -183,6 +183,33 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                 <DataGrid>
                     <DataBox
                         title="Temperatura"
+                        tooltip={
+                            <BasicPopover
+                                content={
+                                    <>
+                                        <PopoverParagraph>
+                                            La temperatura principale è misurata
+                                            a 180cm dal suolo su terreno erboso.
+                                        </PopoverParagraph>
+                                        <PopoverParagraph>
+                                            Il sensore è schermato da uno{' '}
+                                            <strong>schermo solare</strong> con
+                                            ventilazione forzata durante il
+                                            giorno, per migliorare l’accuratezza
+                                            della misura
+                                        </PopoverParagraph>
+                                        <PopoverParagraph>
+                                            <strong>
+                                                La temperatura a 12m
+                                            </strong>{' '}
+                                            è misurata da un secondo sensore,
+                                            sempre in schermo ventilato,
+                                            posizionato sul tetto.
+                                        </PopoverParagraph>
+                                    </>
+                                }
+                            />
+                        }
                         isRefetching={isRefetching}
                         footer={
                             <Flex flexDirection="column" gap="0.5rem">
@@ -217,29 +244,53 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                             </Flex>
                         }
                     >
-                        <FatValue>
-                            {current.temperature}
-                            {TEMPERATURE_UNIT}
-                        </FatValue>
+                        <Flex
+                            gap="0.2em"
+                            flexDirection="column"
+                            alignItems="center"
+                            style={{
+                                position: 'relative',
+                                top: '0.5em',
+                            }}
+                        >
+                            <FatValue>
+                                {current.temperature} {TEMPERATURE_UNIT}
+                            </FatValue>
+                            <SmallValue>
+                                {current.temperature_tetto} {TEMPERATURE_UNIT} a
+                                12m
+                            </SmallValue>
+                        </Flex>
                     </DataBox>
                     <DataBox
                         title="Umidità relativa"
                         tooltip={
                             <BasicPopover
                                 content={
-                                    <PopoverParagraph>
-                                        È il <strong>rapporto</strong> tra la{' '}
-                                        <strong>
-                                            quantità di vapore acqueo
-                                        </strong>{' '}
-                                        contenuto in una massa d’aria e la{' '}
-                                        <strong>
-                                            quantità massima di vapore acqueo
-                                        </strong>{' '}
-                                        che la stessa massa d’aria riesce a
-                                        contenere nelle stesse condizioni di
-                                        temperatura e pressione.
-                                    </PopoverParagraph>
+                                    <>
+                                        <PopoverParagraph>
+                                            È il <strong>rapporto</strong> tra
+                                            la{' '}
+                                            <strong>
+                                                quantità di vapore acqueo
+                                            </strong>{' '}
+                                            contenuto in una massa d’aria e la{' '}
+                                            <strong>
+                                                quantità massima di vapore
+                                                acqueo
+                                            </strong>{' '}
+                                            che la stessa massa d’aria riesce a
+                                            contenere nelle stesse condizioni di
+                                            temperatura e pressione.
+                                        </PopoverParagraph>
+                                        <PopoverParagraph>
+                                            <strong>
+                                                L’umidità relativa a 12m
+                                            </strong>{' '}
+                                            è misurata da un secondo sensore,
+                                            posizionato sul tetto.
+                                        </PopoverParagraph>
+                                    </>
                                 }
                             />
                         }
@@ -273,10 +324,23 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                             </Flex>
                         }
                     >
-                        <FatValue>
-                            {current.humidity}
-                            {HUMIDITY_UNIT}
-                        </FatValue>
+                        <Flex
+                            gap="0.2em"
+                            flexDirection="column"
+                            alignItems="center"
+                            style={{
+                                position: 'relative',
+                                top: '0.5em',
+                            }}
+                        >
+                            <FatValue>
+                                {current.humidity}
+                                {HUMIDITY_UNIT}
+                            </FatValue>
+                            <SmallValue>
+                                {current.humidity_tetto} {HUMIDITY_UNIT} a 12m
+                            </SmallValue>
+                        </Flex>
                     </DataBox>
                     <DataBox
                         title="Pressione"
