@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import styled, { css } from 'styled-components';
-import { maxBy, minBy, union } from 'lodash';
+import { maxBy, minBy, union, some } from 'lodash';
 import { ResponsiveLine } from '@nivo/line'; // https://nivo.rocks/line/
 import { ResponsivePie } from '@nivo/pie';
 import GlobalStyles from '../../../theme/globalStyles';
@@ -17,11 +17,13 @@ import Text from '../../../public/icons/Text.svg';
 import Refresh from '../../../public/icons/Refresh.svg';
 import Video from '../../../public/icons/Video.svg';
 import Clock from '../../../public/icons/Clock.svg';
+import Alert from '../../../public/icons/Alert.svg';
 import Info from '../../../public/icons/Info.svg';
 import { linksStyles, boldStyles } from '../../../theme';
 import Flex from './Flex';
 import Popover from './Popover/index';
 
+const ALERT_COLOR = '#930707';
 const HI_COLOR = '#f85757';
 const LOW_COLOR = '#51a2ed';
 const ARCHIVE_COLOR = '#99CC33';
@@ -48,7 +50,7 @@ const LINE_WIDTH = 1;
 const GraphTemperatureTitle = `Temperatura (${TEMPERATURE_UNIT})`;
 const GraphHumidityTitle = `Umidità relativa(${HUMIDITY_UNIT})`;
 const GraphPressureTitle = `Pressione (${PRESSURE_UNIT})`;
-const GraphMaxWindTitle = `Raffica massima (${WIND_UNIT})`;
+const GraphWindTitle = `Velocità media del vento (${WIND_UNIT})`;
 const GraphAvarageWindDirection = `Direzione del vento`;
 const GraphAvarageWindDistribution = `Distribuzione vento`;
 const GraphrainRateTitle = `Intensità pioggia (${RAIN_RATE_UNIT})`;
@@ -139,6 +141,7 @@ function ErrorMessage() {
 
 function DataPage({ data, isRefetching, refetch, fromBlog }) {
     const { current, day } = data;
+    const hasLostSignal = some(day.graph_temperature, (t) => t.y === null);
 
     return (
         <DataWrapper>
@@ -995,6 +998,13 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                 </DataGrid>
             </main>
             <aside>
+                {hasLostSignal && (
+                    <LostSignalAlert role="alert">
+                        <Icon icon={Alert} left />
+                        C’è stata una mancata ricezione del segnale dei sensori,
+                        alcuni grafici potrebbero essere discontinui.
+                    </LostSignalAlert>
+                )}
                 <GraphGrid>
                     <Graph
                         title={GraphTemperatureTitle}
@@ -1017,11 +1027,8 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                             leftMargin={50}
                         />
                     </Graph>
-                    <Graph
-                        title={GraphMaxWindTitle}
-                        aria-label={GraphMaxWindTitle}
-                    >
-                        <WindLineChart data={day.graph_wind_max} />
+                    <Graph title={GraphWindTitle} aria-label={GraphWindTitle}>
+                        <WindLineChart data={day.graph_wind} />
                     </Graph>
                     <Graph title={GraphAvarageWindDirection}>
                         <WindDirGraph
@@ -1462,7 +1469,7 @@ function WindPieChart({ data }) {
             arcLinkLabelsTextColor={CHART_AXIS_COLOR}
             arcLinkLabelsThickness={2}
             arcLinkLabelsColor={{ from: 'color' }}
-            arcLabelsSkipAngle={15}
+            arcLabelsSkipAngle={0}
             arcLabelsTextColor={{
                 from: 'color',
                 modifiers: [['darker', 2]],
@@ -1845,6 +1852,17 @@ const PopoverParagraph = styled.p`
     margin-bottom: 1em;
     :last-child {
         margin-bottom: 0;
+    }
+`;
+
+const LostSignalAlert = styled.div`
+    ${boldStyles};
+    background: ${ALERT_COLOR};
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    margin: 4em 0;
+    svg {
+        fill: ${ALERT_COLOR};
     }
 `;
 
