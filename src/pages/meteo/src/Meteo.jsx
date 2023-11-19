@@ -183,6 +183,15 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                 </HeaderUpdate>
             </Header>
             <main>
+                <img
+                    src={current?.webcam?.url}
+                    style={{
+                        maxWidth: '100%',
+                        height: 'auto',
+                        marginTop: '1em',
+                        display: 'block',
+                    }}
+                />
                 <DataGrid>
                     <DataBox
                         title="Temperatura"

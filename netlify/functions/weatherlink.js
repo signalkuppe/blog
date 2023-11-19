@@ -24,6 +24,8 @@ exports.handler = async function () {
             NOW,
         );
 
+        const webcam = await fetchWebcam();
+
         const weatherlinkConsole = sensorData(
             currentSensors,
             CONSOLE_SENSOR_ID,
@@ -65,6 +67,7 @@ exports.handler = async function () {
         const readableData = {
             ok: true,
             current: {
+                webcam,
                 last_data_day: formatDate(
                     tettoCurrent.last_packet_received_timestamp,
                     'DD/MM/YYYY',
@@ -357,6 +360,23 @@ async function fetchHistoricData(startTimeStamp, endTimeStamp) {
         },
     );
     const jsonData = await response.json();
+    return jsonData;
+}
+
+async function fetchWebcam() {
+    const response = await fetch(
+        `https://www.caiseregno.it/webcam_concenedo/webcam.php`,
+        {
+            headers: {
+                password: '4556',
+            },
+        },
+    );
+
+    const jsonData = await response.json();
+
+    console.log(response);
+
     return jsonData;
 }
 
