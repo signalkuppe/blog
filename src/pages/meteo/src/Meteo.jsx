@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { maxBy, minBy, union, some } from 'lodash';
 import { ResponsiveLine } from '@nivo/line'; // https://nivo.rocks/line/
 import { ResponsivePie } from '@nivo/pie';
@@ -15,7 +15,6 @@ import ArrowUpRight from '../../../public/icons/ArrowUpRight.svg';
 import BackIcon from '../../../public/icons/ChevronLeft.svg';
 import Text from '../../../public/icons/Text.svg';
 import Refresh from '../../../public/icons/Refresh.svg';
-import Video from '../../../public/icons/Video.svg';
 import Clock from '../../../public/icons/Clock.svg';
 import Alert from '../../../public/icons/Alert.svg';
 import Info from '../../../public/icons/Info.svg';
@@ -183,15 +182,20 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                 </HeaderUpdate>
             </Header>
             <main>
-                <img
-                    src={current?.webcam?.url}
-                    style={{
-                        maxWidth: '100%',
-                        height: 'auto',
-                        marginTop: '1em',
-                        display: 'block',
-                    }}
-                />
+                <WebCam>
+                    <img
+                        src={current?.webcam?.url}
+                        style={{
+                            maxWidth: '100%',
+                            height: 'auto',
+                            border: 'none',
+                            display: isRefetching ? 'none' : 'block',
+                        }}
+                        width="3840"
+                        height="2160"
+                    />
+                </WebCam>
+
                 <DataGrid>
                     <DataBox
                         title="Temperatura"
@@ -1096,11 +1100,6 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                             Inviami un messaggio
                         </ErrorLink>
                     </p>
-                    <p>
-                        <Webcam>
-                            <Icon icon={Video} /> Webcam in arrivo!
-                        </Webcam>
-                    </p>
                 </StationInfo>
             </footer>
         </DataWrapper>
@@ -1819,12 +1818,6 @@ const BackToLink = styled.a`
     margin-bottom: calc(var(--space-unit) * 0.5);
 `;
 
-const Webcam = styled.span`
-    font-size: var(--font-size-small);
-    gap: 0.25em;
-    ${boldStyles}
-`;
-
 const StyledPageTitle = styled(PageTitle)`
     position: relative;
     width: max-content;
@@ -1873,6 +1866,27 @@ const LostSignalAlert = styled.div`
     svg {
         fill: ${ALERT_COLOR};
     }
+`;
+
+const animateBg = keyframes`
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 0% }
+`;
+
+const WebCam = styled.div`
+    background: var(--color-background-light);
+    width: 100%;
+    aspect-ratio: 1.77;
+    animation: ${animateBg} 2s linear infinite;
+    background-image: linear-gradient(
+        90deg,
+        #020202,
+        #1c1c1c,
+        #020202,
+        #1c1c1c
+    );
+    background-size: 300% 100%;
+    margin-top: 1.5em;
 `;
 
 export default Meteo;
