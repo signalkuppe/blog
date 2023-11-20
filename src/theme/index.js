@@ -35,6 +35,8 @@ export const vars = {
         'hsl(var(--color-background-hue) var(--color-background-saturation) calc(var(--color-background-lightness) + 12%))',
     '--color-background-xx-light':
         'hsl(var(--color-background-hue) var(--color-background-saturation) calc(var(--color-background-lightness) + 16%))',
+    '--color-background-dark':
+        'hsl(var(--color-background-hue) var(--color-background-saturation) calc(var(--color-background-lightness) - 2%))',
     '--color-primary':
         'hsl(var(--color-primary-hue) var(--color-primary-saturation) var(--color-primary-lightness))',
     '--color-secondary':

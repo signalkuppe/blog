@@ -375,8 +375,6 @@ async function fetchWebcam() {
 
     const jsonData = await response.json();
 
-    console.log(response);
-
     return jsonData;
 }
 

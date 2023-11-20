@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { maxBy, minBy, union, some } from 'lodash';
 import { ResponsiveLine } from '@nivo/line'; // https://nivo.rocks/line/
 import { ResponsivePie } from '@nivo/pie';
@@ -154,25 +154,6 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                 </StyledPageTitle>
 
                 <HeaderUpdate>
-                    <HeaderUpdateLeft>
-                        <LatestUpdate>
-                            <strong>
-                                <MonoText>
-                                    {!isRefetching
-                                        ? current.last_data_day
-                                        : '--/--/----'}
-                                </MonoText>
-                            </strong>{' '}
-                            alle{' '}
-                            <strong>
-                                <MonoText>
-                                    {!isRefetching
-                                        ? current.last_data_hour
-                                        : '--:--'}
-                                </MonoText>
-                            </strong>
-                        </LatestUpdate>
-                    </HeaderUpdateLeft>
                     <HeaderUpdateRight>
                         <RefreshButton onClick={refetch}>
                             {!isRefetching && <Icon icon={Refresh} />}
@@ -183,19 +164,37 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
             </Header>
             <main>
                 <WebCam>
-                    <img
-                        src={current?.webcam?.url}
-                        style={{
-                            maxWidth: '100%',
-                            height: 'auto',
-                            border: 'none',
-                            display: isRefetching ? 'none' : 'block',
-                        }}
-                        width="3840"
-                        height="2160"
-                    />
+                    {!isRefetching ? (
+                        <img
+                            src={current?.webcam?.url}
+                            style={{
+                                maxWidth: '100%',
+                                height: 'auto',
+                                border: 'none',
+                            }}
+                            width="3840"
+                            height="2160"
+                        />
+                    ) : (
+                        <Spinner />
+                    )}
                 </WebCam>
-
+                <LatestUpdate>
+                    <small>Ultimo aggiornamento</small>
+                    <strong>
+                        <MonoText>
+                            {!isRefetching
+                                ? current.last_data_day
+                                : '--/--/----'}
+                        </MonoText>
+                    </strong>{' '}
+                    alle{' '}
+                    <strong>
+                        <MonoText>
+                            {!isRefetching ? current.last_data_hour : '--:--'}
+                        </MonoText>
+                    </strong>
+                </LatestUpdate>
                 <DataGrid>
                     <DataBox
                         title="Temperatura"
@@ -1610,22 +1609,11 @@ const Header = styled.header`
 
 const HeaderUpdate = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     margin-top: calc(var(--space-unit) * 1.5);
 `;
-const HeaderUpdateLeft = styled.div``;
 const HeaderUpdateRight = styled.div``;
-
-/*
-const CloseButton = styled.a`
-    color: var(--color-text);
-    position: absolute;
-    right: calc(var(--space-unit) * 1.5);
-    top: calc(var(--space-unit) * 1.8);
-    z-index: 1;
-    cursor: pointer;
-`; */
 
 const Center = styled.div`
     display: flex;
@@ -1663,15 +1651,20 @@ const DataWrapper = styled.div`
     padding-bottom: calc(var(--space-unit) * 4);
 `;
 
-const LatestUpdate = styled.div`
+const LatestUpdate = styled.p`
     font-size: var(--font-size-small);
+    margin-top: calc(var(--space-unit) * 1);
     strong {
         ${boldStyles}
+    }
+    small {
+        font-size: var(--font-size-x-small);
+        margin-right: 0.75em;
     }
 `;
 
 const DataGrid = styled.ul`
-    margin-top: calc(var(--space-unit) * 1.5);
+    margin-top: calc(var(--space-unit) * 1);
     display: flex;
     flex-direction: column;
     gap: calc(var(--space-unit) * 1);
@@ -1868,25 +1861,14 @@ const LostSignalAlert = styled.div`
     }
 `;
 
-const animateBg = keyframes`
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 0% }
-`;
-
 const WebCam = styled.div`
-    background: var(--color-background-light);
+    background: var(--color-background-dark);
     width: 100%;
     aspect-ratio: 1.77;
-    animation: ${animateBg} 2s linear infinite;
-    background-image: linear-gradient(
-        90deg,
-        #020202,
-        #1c1c1c,
-        #020202,
-        #1c1c1c
-    );
-    background-size: 300% 100%;
     margin-top: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 export default Meteo;
