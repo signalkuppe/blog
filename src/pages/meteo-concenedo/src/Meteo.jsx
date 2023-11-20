@@ -145,22 +145,18 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
     return (
         <DataWrapper>
             <Header>
-                <BackToLink href="/">
-                    <Icon xs icon={BackIcon} left />
-                    {fromBlog ? 'Torna al mio blog' : 'Visita il mio blog'}
-                </BackToLink>
-                <StyledPageTitle xsmall>
-                    Meteo Concenedo <Beta>beta</Beta>
-                </StyledPageTitle>
+                <Top>
+                    <BackToLink href="/">
+                        <Icon s icon={BackIcon} left />
+                        {fromBlog ? 'Torna al mio blog' : 'Visita il mio blog'}
+                    </BackToLink>
+                    <RefreshButton onClick={refetch}>
+                        {!isRefetching && <Icon icon={Refresh} />}
+                        {isRefetching ? 'Aggiorno...' : 'Aggiorna'}
+                    </RefreshButton>
+                </Top>
 
-                <HeaderUpdate>
-                    <HeaderUpdateRight>
-                        <RefreshButton onClick={refetch}>
-                            {!isRefetching && <Icon icon={Refresh} />}
-                            {isRefetching ? 'Aggiorno...' : 'Aggiorna'}
-                        </RefreshButton>
-                    </HeaderUpdateRight>
-                </HeaderUpdate>
+                <StyledPageTitle xsmall>Meteo Concenedo</StyledPageTitle>
             </Header>
             <main>
                 <WebCam>
@@ -1607,13 +1603,12 @@ const Header = styled.header`
     margin-top: calc(var(--space-unit) * 1.5);
 `;
 
-const HeaderUpdate = styled.div`
+const Top = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    margin-top: calc(var(--space-unit) * 1.5);
+    margin-bottom: calc(var(--space-unit) * 1);
 `;
-const HeaderUpdateRight = styled.div``;
 
 const Center = styled.div`
     display: flex;
@@ -1807,27 +1802,11 @@ const BackToLink = styled.a`
     ${linksStyles}
     display: flex;
     align-items: center;
-    font-size: var(--font-size-x-small);
-    margin-bottom: calc(var(--space-unit) * 0.5);
 `;
 
 const StyledPageTitle = styled(PageTitle)`
     position: relative;
     width: max-content;
-`;
-
-const Beta = styled.span`
-    position: absolute;
-    top: 0px;
-    right: -60px;
-    font-size: var(--font-size-x-small);
-    background-color: var(--color-primary);
-    color: black;
-    padding: 0.3em 0.6em;
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    border-radius: 15px;
 `;
 
 const RefreshButton = styled.button`
@@ -1865,7 +1844,7 @@ const WebCam = styled.div`
     background: var(--color-background-dark);
     width: 100%;
     aspect-ratio: 1.77;
-    margin-top: 1.5em;
+    margin-top: 2em;
     display: flex;
     align-items: center;
     justify-content: center;

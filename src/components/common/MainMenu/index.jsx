@@ -24,7 +24,7 @@ export default function MainMenu({ route }) {
         },
 
         {
-            href: '/meteo?fromBlog=true',
+            href: '/meteo-concenedo?fromBlog=true',
             text: 'Meteo Concenedo',
         },
         {

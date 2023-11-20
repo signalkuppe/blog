@@ -26,10 +26,10 @@ export default defineConfig({
         htmlPlugin(htmlPluginOpt),
     ],
     build: {
-        outDir: '../../../.site/meteo',
+        outDir: '../../../.site/meteo-concenedo',
         assetsDir: 'meteo-assets',
         emptyOutDir: true,
     },
     publicDir: '../../../.src/public',
-    base: '/meteo',
+    base: '/meteo-concenedo',
 });
