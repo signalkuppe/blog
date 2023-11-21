@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const dayjs = require('dayjs');
 const _ = require('lodash');
 const utc = require('dayjs/plugin/utc');
@@ -16,7 +17,22 @@ const ONE_DAY_BEFORE = dayjs().subtract(24, 'hours').unix();
 const NOW = dayjs().unix();
 const GRAPH_DATE_FORMAT = 'YYYY-MM-DD HH:mm';
 
-exports.handler = async function () {
+exports.handler = async function (event, _ctx) {
+    const allowedDomains = [
+        'http://localhost:5173',
+        'https://www.signalkuppe.com',
+    ];
+    const origin = event.headers.origin || event.headers.referer;
+
+    console.log({ origin });
+
+    if (!allowedDomains.includes(origin) && origin?.indexOf('192') === -1) {
+        return {
+            statusCode: 403,
+            body: JSON.stringify({ error: 'Accesso non autorizzato' }),
+        };
+    }
+
     try {
         const { sensors: currentSensors } = await fetchCurrentData();
         const { sensors: oneDayBeforeSensors } = await fetchHistoricData(
@@ -366,11 +382,6 @@ async function fetchHistoricData(startTimeStamp, endTimeStamp) {
 async function fetchWebcam() {
     const response = await fetch(
         `https://www.caiseregno.it/webcam_concenedo/webcam.php`,
-        {
-            headers: {
-                password: '4556',
-            },
-        },
     );
 
     const jsonData = await response.json();

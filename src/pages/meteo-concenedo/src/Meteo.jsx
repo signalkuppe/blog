@@ -108,11 +108,15 @@ function Meteo() {
 }
 
 async function getMeteoData() {
-    const response = await fetch(
-        `${
-            import.meta.env.VITE_SIGNALKUPPE_WEBSITE_FUNCTIONS_BASE_URL
-        }.netlify/functions/weatherlink`,
-    );
+    let baseUrl = `https://www.signalkuppe.com/`;
+    if (window.location.hostname === 'localhost') {
+        baseUrl = `http://localhost:3000/`;
+    }
+    if (window.location.hostname.indexOf('192') !== -1) {
+        baseUrl = `http://${window.location.hostname}:3000/`;
+    }
+
+    const response = await fetch(`${baseUrl}.netlify/functions/weatherlink`);
 
     const json = await response.json();
 
