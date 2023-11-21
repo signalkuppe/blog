@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useQuery } from 'react-query';
 import styled, { css } from 'styled-components';
 import { maxBy, minBy, union, some } from 'lodash';
@@ -16,7 +16,6 @@ import BackIcon from '../../../public/icons/ChevronLeft.svg';
 import Text from '../../../public/icons/Text.svg';
 import Refresh from '../../../public/icons/Refresh.svg';
 import Clock from '../../../public/icons/Clock.svg';
-import Alert from '../../../public/icons/Alert.svg';
 import Info from '../../../public/icons/Info.svg';
 import { linksStyles, boldStyles } from '../../../theme';
 import Flex from './Flex';
@@ -141,6 +140,17 @@ function ErrorMessage() {
 function DataPage({ data, isRefetching, refetch, fromBlog }) {
     const { current, day } = data;
     const hasLostSignal = some(day.graph_temperature, (t) => t.y === null);
+    const [webcamLoading, setWebcamLoading] = useState(false);
+    const webcamRef = useRef();
+
+    useEffect(() => {
+        if (!isRefetching && webcamRef?.current) {
+            setWebcamLoading(true);
+            webcamRef.current.onload = function () {
+                setWebcamLoading(false);
+            };
+        }
+    }, [isRefetching, webcamRef]);
 
     return (
         <DataWrapper>
@@ -160,7 +170,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
             </Header>
             <main>
                 <WebCam>
-                    {!isRefetching ? (
+                    {!isRefetching && !webcamLoading ? (
                         <img
                             src={current?.webcam?.url}
                             style={{
@@ -170,9 +180,17 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                             }}
                             width="3840"
                             height="2160"
+                            ref={webcamRef}
                         />
                     ) : (
-                        <Spinner />
+                        <Flex
+                            flexDirection="column"
+                            justifyContent="center"
+                            alignItems="center"
+                        >
+                            <Spinner />
+                            <span>Carico la webcam</span>
+                        </Flex>
                     )}
                 </WebCam>
                 <LatestUpdate>
@@ -1008,7 +1026,6 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
             <aside>
                 {hasLostSignal && (
                     <LostSignalAlert role="alert">
-                        <Icon icon={Alert} left />
                         C’è stata una mancata ricezione del segnale dei sensori,
                         alcuni grafici potrebbero essere discontinui.
                     </LostSignalAlert>
@@ -1830,13 +1847,16 @@ const PopoverParagraph = styled.p`
 `;
 
 const LostSignalAlert = styled.div`
+    font-size: var(--font-size-small);
     ${boldStyles};
     background: ${ALERT_COLOR};
     border-radius: 5px;
     padding: 0.5em 1em;
     margin: 4em 0;
-    svg {
-        fill: ${ALERT_COLOR};
+    display: flex;
+    align-items: baseline;
+    @media (min-width: 768px) {
+        font-size: var(--font-size-base);
     }
 `;
 
