@@ -144,17 +144,7 @@ function ErrorMessage() {
 function DataPage({ data, isRefetching, refetch, fromBlog }) {
     const { current, day } = data;
     const hasLostSignal = some(day.graph_temperature, (t) => t.y === null);
-    const [webcamLoading, setWebcamLoading] = useState(false);
     const webcamRef = useRef();
-
-    useEffect(() => {
-        if (!isRefetching && webcamRef?.current) {
-            setWebcamLoading(true);
-            webcamRef.current.onload = function () {
-                setWebcamLoading(false);
-            };
-        }
-    }, [isRefetching, webcamRef]);
 
     return (
         <DataWrapper>
@@ -174,7 +164,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
             </Header>
             <main>
                 <WebCam>
-                    {!isRefetching && !webcamLoading ? (
+                    {!isRefetching ? (
                         <img
                             src={current?.webcam?.url}
                             style={{
