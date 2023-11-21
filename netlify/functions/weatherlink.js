@@ -18,332 +18,361 @@ const NOW = dayjs().unix();
 const GRAPH_DATE_FORMAT = 'YYYY-MM-DD HH:mm';
 
 exports.handler = async function (event, _ctx) {
-    const allowedDomains = [
-        'http://localhost:5173',
-        'https://www.signalkuppe.com',
-    ];
     const origin = event.headers.origin || event.headers.referer;
 
-    console.log({ origin });
+    if (
+        origin.indexOf('signalkuppe.com') !== -1 ||
+        origin.indexOf('192') !== -1 ||
+        origin.indexOf('localhost') !== -1
+    ) {
+        try {
+            const { sensors: currentSensors } = await fetchCurrentData();
+            const { sensors: oneDayBeforeSensors } = await fetchHistoricData(
+                ONE_DAY_BEFORE,
+                NOW,
+            );
 
-    if (!allowedDomains.includes(origin) && origin?.indexOf('192') === -1) {
-        return {
-            statusCode: 403,
-            body: JSON.stringify({ error: 'Accesso non autorizzato' }),
-        };
-    }
+            const webcam = await fetchWebcam();
 
-    try {
-        const { sensors: currentSensors } = await fetchCurrentData();
-        const { sensors: oneDayBeforeSensors } = await fetchHistoricData(
-            ONE_DAY_BEFORE,
-            NOW,
-        );
+            const weatherlinkConsole = sensorData(
+                currentSensors,
+                CONSOLE_SENSOR_ID,
+            );
+            const pratoCurrent = sensorData(currentSensors, PRATO_SENSOR_ID);
+            const tettoCurrent = sensorData(currentSensors, TETTO_SENSOR_ID);
 
-        const webcam = await fetchWebcam();
+            const consoleOneDayBefore = sensorData(
+                oneDayBeforeSensors,
+                CONSOLE_SENSOR_ID,
+                true,
+            );
+            const pratoOneDayBefore = sensorData(
+                oneDayBeforeSensors,
+                PRATO_SENSOR_ID,
+                true,
+            );
+            const tettoOneDayBefore = sensorData(
+                oneDayBeforeSensors,
+                TETTO_SENSOR_ID,
+                true,
+            );
 
-        const weatherlinkConsole = sensorData(
-            currentSensors,
-            CONSOLE_SENSOR_ID,
-        );
-        const pratoCurrent = sensorData(currentSensors, PRATO_SENSOR_ID);
-        const tettoCurrent = sensorData(currentSensors, TETTO_SENSOR_ID);
+            // filter day values
 
-        const consoleOneDayBefore = sensorData(
-            oneDayBeforeSensors,
-            CONSOLE_SENSOR_ID,
-            true,
-        );
-        const pratoOneDayBefore = sensorData(
-            oneDayBeforeSensors,
-            PRATO_SENSOR_ID,
-            true,
-        );
-        const tettoOneDayBefore = sensorData(
-            oneDayBeforeSensors,
-            TETTO_SENSOR_ID,
-            true,
-        );
+            const consoleDailyValues = _.filter(
+                consoleOneDayBefore,
+                (d) => d.ts >= START_OF_TODAY && d.ts <= NOW,
+            );
+            const pratoDailyValues = _.filter(
+                pratoOneDayBefore,
+                (d) => d.ts >= START_OF_TODAY && d.ts <= NOW,
+            );
+            const tettoDailyValues = _.filter(
+                tettoOneDayBefore,
+                (d) => d.ts >= START_OF_TODAY && d.ts <= NOW,
+            );
 
-        // filter day values
+            const readableData = {
+                ok: true,
+                current: {
+                    webcam,
+                    last_data_day: formatDate(
+                        tettoCurrent.last_packet_received_timestamp,
+                        'DD/MM/YYYY',
+                    ),
+                    last_data_hour: formatDate(
+                        tettoCurrent.last_packet_received_timestamp,
+                        'HH:mm',
+                    ),
+                    pressure: convertPressure(weatherlinkConsole.bar_sea_level),
+                    pressure_trend: convertPressureTrend(
+                        weatherlinkConsole.bar_trend,
+                    ),
+                    temperature: convertTemperature(pratoCurrent.temp),
+                    temperature_tetto: convertTemperature(tettoCurrent.temp),
+                    humidity: Math.round(pratoCurrent.hum),
+                    humidity_tetto: Math.round(tettoCurrent.hum),
+                    dew_point: convertTemperature(pratoCurrent.dew_point),
+                    wind_chill: convertTemperature(pratoCurrent.wind_chill),
+                    wet_bulb: convertTemperature(pratoCurrent.wet_bulb),
+                    heat_index: convertTemperature(pratoCurrent.heat_index),
+                    wind: convertWindSpeed(tettoCurrent.wind_speed_last),
+                    wind_direction: convertWindDirection(
+                        tettoCurrent.wind_dir_last,
+                    ),
+                    rain_rate: tettoCurrent.rain_rate_last_mm,
+                    rain_rate_last_15_min:
+                        tettoCurrent.rain_rate_hi_last_15_min_mm,
+                    rain: tettoCurrent.rainfall_day_mm,
+                    rain_month: tettoCurrent?.rainfall_month_mm,
+                    rain_year: tettoCurrent?.rainfall_year_mm,
+                    solar_radiation: tettoCurrent.solar_rad,
+                    et_day: tettoCurrent.et_day,
+                    et_year: tettoCurrent.et_year,
+                },
+                day: {
+                    temperature_max: maxTemperature(
+                        pratoDailyValues,
+                        'temp_hi',
+                    ),
+                    temperature_max_at: maxTemperatureHour(
+                        pratoDailyValues,
+                        'temp_hi',
+                    ),
+                    temperature_min: minTemperature(
+                        pratoDailyValues,
+                        'temp_lo',
+                    ),
+                    temperature_min_at: minTemperatureHour(
+                        pratoDailyValues,
+                        'temp_lo',
+                    ),
+                    temperature_tetto_max: maxTemperature(
+                        tettoDailyValues,
+                        'temp_hi',
+                    ),
+                    temperature_tetto_max_at: maxTemperatureHour(
+                        tettoDailyValues,
+                        'temp_hi',
+                    ),
+                    temperature_tetto_min: minTemperature(
+                        tettoDailyValues,
+                        'temp_lo',
+                    ),
+                    temperature_tetto_min_at: minTemperatureHour(
+                        tettoDailyValues,
+                        'temp_lo',
+                    ),
+                    pressure_max: convertPressure(
+                        findLastMaxPropertyItem(consoleDailyValues, 'bar_hi')[
+                            'bar_hi'
+                        ],
+                    ),
+                    pressure_max_at: unixToHourAndMinutes(
+                        findLastMaxPropertyItem(consoleDailyValues, 'bar_hi')[
+                            'bar_hi_at'
+                        ],
+                    ),
+                    pressure_min_at: unixToHourAndMinutes(
+                        findLastMinPropertyItem(consoleDailyValues, 'bar_lo')[
+                            'bar_lo_at'
+                        ],
+                    ),
+                    pressure_min: convertPressure(
+                        findLastMinPropertyItem(consoleDailyValues, 'bar_lo')[
+                            'bar_lo'
+                        ],
+                    ),
+                    humidity_max: Math.round(
+                        findLastMaxPropertyItem(pratoDailyValues, 'hum_hi')[
+                            'hum_hi'
+                        ],
+                    ),
+                    humidity_max_at: unixToHourAndMinutes(
+                        findLastMaxPropertyItem(pratoDailyValues, 'hum_hi')[
+                            'hum_hi_at'
+                        ],
+                    ),
+                    humidity_min: Math.round(
+                        findLastMinPropertyItem(pratoDailyValues, 'hum_lo')[
+                            'hum_lo'
+                        ],
+                    ),
+                    humidity_min_at: unixToHourAndMinutes(
+                        findLastMinPropertyItem(pratoDailyValues, 'hum_lo')[
+                            'hum_hi_at'
+                        ],
+                    ),
+                    humidity_tetto_max: Math.round(
+                        findLastMaxPropertyItem(tettoDailyValues, 'hum_hi')[
+                            'hum_hi'
+                        ],
+                    ),
+                    humidity_tetto_max_at: unixToHourAndMinutes(
+                        findLastMaxPropertyItem(tettoDailyValues, 'hum_hi')[
+                            'hum_hi_at'
+                        ],
+                    ),
+                    humidity_tetto_min: Math.round(
+                        findLastMinPropertyItem(tettoDailyValues, 'hum_lo')[
+                            'hum_lo'
+                        ],
+                    ),
+                    humidity_tetto_min_at: unixToHourAndMinutes(
+                        findLastMinPropertyItem(tettoDailyValues, 'hum_lo')[
+                            'hum_hi_at'
+                        ],
+                    ),
+                    heat_index_max: maxTemperature(
+                        pratoDailyValues,
+                        'heat_index_hi',
+                    ),
+                    heat_index_max_at: maxTemperatureHour(
+                        pratoDailyValues,
+                        'heat_index_hi',
+                    ),
+                    wind_chill_min: minTemperature(
+                        pratoDailyValues,
+                        'wind_chill_lo',
+                    ),
+                    wind_chill_min_at: minTemperatureHour(
+                        pratoDailyValues,
+                        'wind_chill_lo',
+                    ),
+                    dew_point_max: maxTemperature(
+                        pratoDailyValues,
+                        'dew_point_hi',
+                    ),
+                    dew_point_max_at: maxTemperatureHour(
+                        pratoDailyValues,
+                        'dew_point_hi',
+                    ),
+                    dew_point_min: minTemperature(
+                        pratoDailyValues,
+                        'dew_point_lo',
+                    ),
+                    dew_point_min_at: minTemperatureHour(
+                        pratoDailyValues,
+                        'dew_point_lo',
+                    ),
+                    wet_bulb_min: minTemperature(
+                        pratoDailyValues,
+                        'wet_bulb_lo',
+                    ),
+                    wet_bulb_min_at: minTemperatureHour(
+                        pratoDailyValues,
+                        'wet_bulb_lo',
+                    ),
+                    wet_bulb_max: minTemperature(
+                        pratoDailyValues,
+                        'wet_bulb_hi',
+                    ),
+                    wet_bulb_max_at: minTemperatureHour(
+                        pratoDailyValues,
+                        'wet_bulb_hi',
+                    ),
+                    solar_radiation_max: findLastMaxPropertyItem(
+                        tettoDailyValues,
+                        'solar_rad_hi',
+                    ).solar_rad_hi,
+                    solar_radiation_max_at: unixToHourAndMinutes(
+                        findLastMaxPropertyItem(
+                            tettoDailyValues,
+                            'solar_rad_hi',
+                        ).solar_rad_hi_at,
+                    ),
+                    wind_max: convertWindSpeed(
+                        findLastMaxPropertyItem(
+                            tettoDailyValues,
+                            'wind_speed_hi',
+                        ).wind_speed_hi,
+                    ),
+                    wind_max_at: unixToHourAndMinutes(
+                        findLastMaxPropertyItem(
+                            tettoDailyValues,
+                            'wind_speed_hi',
+                        ).wind_speed_hi_at,
+                    ),
+                    wind_max_dir: convertWindDirection(
+                        findLastMaxPropertyItem(
+                            tettoDailyValues,
+                            'wind_speed_hi',
+                        ).wind_speed_hi_dir,
+                    ),
+                    wind_prevailing_dir:
+                        calculatePrevailingWindDirection(tettoDailyValues),
+                    rain_rate_max: findLastMaxPropertyItem(
+                        tettoDailyValues,
+                        'rain_rate_hi_mm',
+                    ).rain_rate_hi_mm,
+                    rain_rate_max_at: unixToHourAndMinutes(
+                        findLastMaxPropertyItem(
+                            tettoDailyValues,
+                            'rain_rate_hi_mm',
+                        ).rain_rate_hi_at,
+                    ),
+                    graph_temperature: _.map(pratoOneDayBefore, (v) => ({
+                        x: unixToGraphTime(v.ts),
+                        y: parseFloat(convertTemperature(v.temp_last)),
+                    })),
+                    graph_temperature_tetto_prato: [
+                        {
+                            id: '2m',
+                            data: _.map(pratoOneDayBefore, (v) => ({
+                                x: unixToGraphTime(v.ts),
+                                y: parseFloat(convertTemperature(v.temp_last)),
+                            })),
+                        },
+                        {
+                            id: '12m',
+                            data: _.map(tettoOneDayBefore, (v) => ({
+                                x: unixToGraphTime(v.ts),
+                                y: parseFloat(convertTemperature(v.temp_last)),
+                            })),
+                        },
+                    ],
+                    graph_humidity: _.map(pratoOneDayBefore, (v) => ({
+                        x: unixToGraphTime(v.ts),
+                        y: parseFloat(v.hum_last),
+                    })),
+                    graph_pressure: _.map(consoleOneDayBefore, (v) => ({
+                        x: unixToGraphTime(v.ts),
+                        y: convertPressure(v.bar_hi),
+                    })),
+                    graph_dew_point: _.map(pratoOneDayBefore, (v) => ({
+                        x: unixToGraphTime(v.ts),
+                        y: convertTemperature(v.dew_point_last),
+                    })),
+                    graph_wind: _.map(pratoOneDayBefore, (v) => ({
+                        x: unixToGraphTime(v.ts),
+                        y: parseFloat(convertWindSpeed(v.wind_speed_avg)),
+                        dir: convertWindDirection(v.wind_dir_of_prevail), // needed in tooltip
+                    })),
+                    graph_wind_max: _.map(pratoOneDayBefore, (v) => ({
+                        x: unixToGraphTime(v.ts),
+                        y: parseFloat(convertWindSpeed(v.wind_speed_hi)),
+                        dir: convertWindDirection(v.wind_speed_hi_dir), // needed in tooltip
+                    })),
+                    graph_wind_dir: _.map(pratoOneDayBefore, (v) => ({
+                        x: unixToGraphTime(v.ts),
+                        y: v.wind_dir_of_prevail, // we need numbers, then we format them i  the graph
+                        dir: convertWindDirection(v.wind_dir_of_prevail),
+                    })),
+                    graph_wind_dir_pie: windPieChart(tettoOneDayBefore),
+                    graph_rain_rate: _.map(tettoOneDayBefore, (v) => ({
+                        x: unixToGraphTime(v.ts),
+                        y: v.rain_rate_hi_mm,
+                    })),
+                    graph_solar_radiation: _.map(tettoOneDayBefore, (v) => ({
+                        x: unixToGraphTime(v.ts),
+                        y: parseFloat(v.solar_rad_avg),
+                    })),
+                },
+            };
 
-        const consoleDailyValues = _.filter(
-            consoleOneDayBefore,
-            (d) => d.ts >= START_OF_TODAY && d.ts <= NOW,
-        );
-        const pratoDailyValues = _.filter(
-            pratoOneDayBefore,
-            (d) => d.ts >= START_OF_TODAY && d.ts <= NOW,
-        );
-        const tettoDailyValues = _.filter(
-            tettoOneDayBefore,
-            (d) => d.ts >= START_OF_TODAY && d.ts <= NOW,
-        );
-
-        const readableData = {
-            ok: true,
-            current: {
-                webcam,
-                last_data_day: formatDate(
-                    tettoCurrent.last_packet_received_timestamp,
-                    'DD/MM/YYYY',
-                ),
-                last_data_hour: formatDate(
-                    tettoCurrent.last_packet_received_timestamp,
-                    'HH:mm',
-                ),
-                pressure: convertPressure(weatherlinkConsole.bar_sea_level),
-                pressure_trend: convertPressureTrend(
-                    weatherlinkConsole.bar_trend,
-                ),
-                temperature: convertTemperature(pratoCurrent.temp),
-                temperature_tetto: convertTemperature(tettoCurrent.temp),
-                humidity: Math.round(pratoCurrent.hum),
-                humidity_tetto: Math.round(tettoCurrent.hum),
-                dew_point: convertTemperature(pratoCurrent.dew_point),
-                wind_chill: convertTemperature(pratoCurrent.wind_chill),
-                wet_bulb: convertTemperature(pratoCurrent.wet_bulb),
-                heat_index: convertTemperature(pratoCurrent.heat_index),
-                wind: convertWindSpeed(tettoCurrent.wind_speed_last),
-                wind_direction: convertWindDirection(
-                    tettoCurrent.wind_dir_last,
-                ),
-                rain_rate: tettoCurrent.rain_rate_last_mm,
-                rain_rate_last_15_min: tettoCurrent.rain_rate_hi_last_15_min_mm,
-                rain: tettoCurrent.rainfall_day_mm,
-                rain_month: tettoCurrent?.rainfall_month_mm,
-                rain_year: tettoCurrent?.rainfall_year_mm,
-                solar_radiation: tettoCurrent.solar_rad,
-                et_day: tettoCurrent.et_day,
-                et_year: tettoCurrent.et_year,
-            },
-            day: {
-                temperature_max: maxTemperature(pratoDailyValues, 'temp_hi'),
-                temperature_max_at: maxTemperatureHour(
-                    pratoDailyValues,
-                    'temp_hi',
-                ),
-                temperature_min: minTemperature(pratoDailyValues, 'temp_lo'),
-                temperature_min_at: minTemperatureHour(
-                    pratoDailyValues,
-                    'temp_lo',
-                ),
-                temperature_tetto_max: maxTemperature(
-                    tettoDailyValues,
-                    'temp_hi',
-                ),
-                temperature_tetto_max_at: maxTemperatureHour(
-                    tettoDailyValues,
-                    'temp_hi',
-                ),
-                temperature_tetto_min: minTemperature(
-                    tettoDailyValues,
-                    'temp_lo',
-                ),
-                temperature_tetto_min_at: minTemperatureHour(
-                    tettoDailyValues,
-                    'temp_lo',
-                ),
-                pressure_max: convertPressure(
-                    findLastMaxPropertyItem(consoleDailyValues, 'bar_hi')[
-                        'bar_hi'
-                    ],
-                ),
-                pressure_max_at: unixToHourAndMinutes(
-                    findLastMaxPropertyItem(consoleDailyValues, 'bar_hi')[
-                        'bar_hi_at'
-                    ],
-                ),
-                pressure_min_at: unixToHourAndMinutes(
-                    findLastMinPropertyItem(consoleDailyValues, 'bar_lo')[
-                        'bar_lo_at'
-                    ],
-                ),
-                pressure_min: convertPressure(
-                    findLastMinPropertyItem(consoleDailyValues, 'bar_lo')[
-                        'bar_lo'
-                    ],
-                ),
-                humidity_max: Math.round(
-                    findLastMaxPropertyItem(pratoDailyValues, 'hum_hi')[
-                        'hum_hi'
-                    ],
-                ),
-                humidity_max_at: unixToHourAndMinutes(
-                    findLastMaxPropertyItem(pratoDailyValues, 'hum_hi')[
-                        'hum_hi_at'
-                    ],
-                ),
-                humidity_min: Math.round(
-                    findLastMinPropertyItem(pratoDailyValues, 'hum_lo')[
-                        'hum_lo'
-                    ],
-                ),
-                humidity_min_at: unixToHourAndMinutes(
-                    findLastMinPropertyItem(pratoDailyValues, 'hum_lo')[
-                        'hum_hi_at'
-                    ],
-                ),
-                humidity_tetto_max: Math.round(
-                    findLastMaxPropertyItem(tettoDailyValues, 'hum_hi')[
-                        'hum_hi'
-                    ],
-                ),
-                humidity_tetto_max_at: unixToHourAndMinutes(
-                    findLastMaxPropertyItem(tettoDailyValues, 'hum_hi')[
-                        'hum_hi_at'
-                    ],
-                ),
-                humidity_tetto_min: Math.round(
-                    findLastMinPropertyItem(tettoDailyValues, 'hum_lo')[
-                        'hum_lo'
-                    ],
-                ),
-                humidity_tetto_min_at: unixToHourAndMinutes(
-                    findLastMinPropertyItem(tettoDailyValues, 'hum_lo')[
-                        'hum_hi_at'
-                    ],
-                ),
-                heat_index_max: maxTemperature(
-                    pratoDailyValues,
-                    'heat_index_hi',
-                ),
-                heat_index_max_at: maxTemperatureHour(
-                    pratoDailyValues,
-                    'heat_index_hi',
-                ),
-                wind_chill_min: minTemperature(
-                    pratoDailyValues,
-                    'wind_chill_lo',
-                ),
-                wind_chill_min_at: minTemperatureHour(
-                    pratoDailyValues,
-                    'wind_chill_lo',
-                ),
-                dew_point_max: maxTemperature(pratoDailyValues, 'dew_point_hi'),
-                dew_point_max_at: maxTemperatureHour(
-                    pratoDailyValues,
-                    'dew_point_hi',
-                ),
-                dew_point_min: minTemperature(pratoDailyValues, 'dew_point_lo'),
-                dew_point_min_at: minTemperatureHour(
-                    pratoDailyValues,
-                    'dew_point_lo',
-                ),
-                wet_bulb_min: minTemperature(pratoDailyValues, 'wet_bulb_lo'),
-                wet_bulb_min_at: minTemperatureHour(
-                    pratoDailyValues,
-                    'wet_bulb_lo',
-                ),
-                wet_bulb_max: minTemperature(pratoDailyValues, 'wet_bulb_hi'),
-                wet_bulb_max_at: minTemperatureHour(
-                    pratoDailyValues,
-                    'wet_bulb_hi',
-                ),
-                solar_radiation_max: findLastMaxPropertyItem(
-                    tettoDailyValues,
-                    'solar_rad_hi',
-                ).solar_rad_hi,
-                solar_radiation_max_at: unixToHourAndMinutes(
-                    findLastMaxPropertyItem(tettoDailyValues, 'solar_rad_hi')
-                        .solar_rad_hi_at,
-                ),
-                wind_max: convertWindSpeed(
-                    findLastMaxPropertyItem(tettoDailyValues, 'wind_speed_hi')
-                        .wind_speed_hi,
-                ),
-                wind_max_at: unixToHourAndMinutes(
-                    findLastMaxPropertyItem(tettoDailyValues, 'wind_speed_hi')
-                        .wind_speed_hi_at,
-                ),
-                wind_max_dir: convertWindDirection(
-                    findLastMaxPropertyItem(tettoDailyValues, 'wind_speed_hi')
-                        .wind_speed_hi_dir,
-                ),
-                wind_prevailing_dir:
-                    calculatePrevailingWindDirection(tettoDailyValues),
-                rain_rate_max: findLastMaxPropertyItem(
-                    tettoDailyValues,
-                    'rain_rate_hi_mm',
-                ).rain_rate_hi_mm,
-                rain_rate_max_at: unixToHourAndMinutes(
-                    findLastMaxPropertyItem(tettoDailyValues, 'rain_rate_hi_mm')
-                        .rain_rate_hi_at,
-                ),
-                graph_temperature: _.map(pratoOneDayBefore, (v) => ({
-                    x: unixToGraphTime(v.ts),
-                    y: parseFloat(convertTemperature(v.temp_last)),
-                })),
-                graph_temperature_tetto_prato: [
-                    {
-                        id: '2m',
-                        data: _.map(pratoOneDayBefore, (v) => ({
-                            x: unixToGraphTime(v.ts),
-                            y: parseFloat(convertTemperature(v.temp_last)),
-                        })),
-                    },
-                    {
-                        id: '12m',
-                        data: _.map(tettoOneDayBefore, (v) => ({
-                            x: unixToGraphTime(v.ts),
-                            y: parseFloat(convertTemperature(v.temp_last)),
-                        })),
-                    },
-                ],
-                graph_humidity: _.map(pratoOneDayBefore, (v) => ({
-                    x: unixToGraphTime(v.ts),
-                    y: parseFloat(v.hum_last),
-                })),
-                graph_pressure: _.map(consoleOneDayBefore, (v) => ({
-                    x: unixToGraphTime(v.ts),
-                    y: convertPressure(v.bar_hi),
-                })),
-                graph_dew_point: _.map(pratoOneDayBefore, (v) => ({
-                    x: unixToGraphTime(v.ts),
-                    y: convertTemperature(v.dew_point_last),
-                })),
-                graph_wind: _.map(pratoOneDayBefore, (v) => ({
-                    x: unixToGraphTime(v.ts),
-                    y: parseFloat(convertWindSpeed(v.wind_speed_avg)),
-                    dir: convertWindDirection(v.wind_dir_of_prevail), // needed in tooltip
-                })),
-                graph_wind_max: _.map(pratoOneDayBefore, (v) => ({
-                    x: unixToGraphTime(v.ts),
-                    y: parseFloat(convertWindSpeed(v.wind_speed_hi)),
-                    dir: convertWindDirection(v.wind_speed_hi_dir), // needed in tooltip
-                })),
-                graph_wind_dir: _.map(pratoOneDayBefore, (v) => ({
-                    x: unixToGraphTime(v.ts),
-                    y: v.wind_dir_of_prevail, // we need numbers, then we format them i  the graph
-                    dir: convertWindDirection(v.wind_dir_of_prevail),
-                })),
-                graph_wind_dir_pie: windPieChart(tettoOneDayBefore),
-                graph_rain_rate: _.map(tettoOneDayBefore, (v) => ({
-                    x: unixToGraphTime(v.ts),
-                    y: v.rain_rate_hi_mm,
-                })),
-                graph_solar_radiation: _.map(tettoOneDayBefore, (v) => ({
-                    x: unixToGraphTime(v.ts),
-                    y: parseFloat(v.solar_rad_avg),
-                })),
-            },
-        };
-
-        return {
-            statusCode: 200,
-            body: JSON.stringify(readableData),
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Cache-Control': 'public, s-maxage=300',
-            },
-        };
-    } catch (err) {
-        console.log(err);
-        return {
-            statusCode: 500,
-            headers: {},
-            body: JSON.stringify(err),
-        };
+            return {
+                statusCode: 200,
+                body: JSON.stringify(readableData),
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Cache-Control': 'public, s-maxage=300',
+                },
+            };
+        } catch (err) {
+            console.log(err);
+            return {
+                statusCode: 500,
+                headers: {},
+                body: JSON.stringify(err),
+            };
+        }
+    } else {
+        {
+            return {
+                statusCode: 403,
+                body: JSON.stringify({ error: 'Accesso non autorizzato' }),
+            };
+        }
     }
 };
 
