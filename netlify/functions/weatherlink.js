@@ -90,8 +90,12 @@ exports.handler = async function (event, _ctx) {
                     ),
                     temperature: convertTemperature(pratoCurrent.temp),
                     temperature_tetto: convertTemperature(tettoCurrent.temp),
-                    humidity: Math.round(pratoCurrent.hum),
-                    humidity_tetto: Math.round(tettoCurrent.hum),
+                    humidity: pratoCurrent.hum
+                        ? Math.round(pratoCurrent.hum)
+                        : null,
+                    humidity_tetto: tettoCurrent.hum
+                        ? Math.round(tettoCurrent.hum)
+                        : null,
                     dew_point: convertTemperature(pratoCurrent.dew_point),
                     wind_chill: convertTemperature(pratoCurrent.wind_chill),
                     wet_bulb: convertTemperature(pratoCurrent.wet_bulb),

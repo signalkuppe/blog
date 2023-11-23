@@ -11,6 +11,7 @@ import Loader from '../../../components/ui/Loader';
 import Icon from '../../../components/ui/Icon';
 import Hi from '../../../public/icons/Hi.svg';
 import Low from '../../../public/icons/Low.svg';
+import Alert from '../../../public/icons/Alert.svg';
 import ArrowUpRight from '../../../public/icons/ArrowUpRight.svg';
 import BackIcon from '../../../public/icons/ChevronLeft.svg';
 import Text from '../../../public/icons/Text.svg';
@@ -21,7 +22,6 @@ import { linksStyles, boldStyles } from '../../../theme';
 import Flex from './Flex';
 import Popover from './Popover/index';
 
-const ALERT_COLOR = '#930707';
 const HI_COLOR = '#f85757';
 const LOW_COLOR = '#51a2ed';
 const ARCHIVE_COLOR = '#99CC33';
@@ -277,11 +277,17 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                             }}
                         >
                             <FatValue>
-                                {current.temperature} {TEMPERATURE_UNIT}
+                                {dataBoxValue(
+                                    current.temperature,
+                                    TEMPERATURE_UNIT,
+                                )}
                             </FatValue>
                             <SmallValue>
-                                {current.temperature_tetto} {TEMPERATURE_UNIT} a
-                                12m
+                                {dataBoxValue(
+                                    current.temperature_tetto,
+                                    TEMPERATURE_UNIT,
+                                )}{' '}
+                                a 12m
                             </SmallValue>
                         </Flex>
                     </DataBox>
@@ -357,11 +363,14 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                             }}
                         >
                             <FatValue>
-                                {current.humidity}
-                                {HUMIDITY_UNIT}
+                                {dataBoxValue(current.humidity, HUMIDITY_UNIT)}
                             </FatValue>
                             <SmallValue>
-                                {current.humidity_tetto} {HUMIDITY_UNIT} a 12m
+                                {dataBoxValue(
+                                    current.humidity_tetto,
+                                    HUMIDITY_UNIT,
+                                )}{' '}
+                                a 12m
                             </SmallValue>
                         </Flex>
                     </DataBox>
@@ -439,7 +448,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                             }}
                         >
                             <FatValue>
-                                {current.pressure} {PRESSURE_UNIT}
+                                {dataBoxValue(current.pressure, PRESSURE_UNIT)}
                             </FatValue>
                             <SmallValue>{current.pressure_trend}</SmallValue>
                         </Flex>
@@ -477,7 +486,8 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                         }
                     >
                         <FatValue>
-                            {current.wind} {WIND_UNIT} {current.wind_direction}
+                            {dataBoxValue(current.wind, WIND_UNIT)}{' '}
+                            {current.wind_direction}
                         </FatValue>
                     </DataBox>
                     <DataBox
@@ -709,8 +719,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                         }
                     >
                         <FatValue>
-                            {current.dew_point}
-                            {TEMPERATURE_UNIT}
+                            {dataBoxValue(current.dew_point, TEMPERATURE_UNIT)}
                         </FatValue>
                     </DataBox>
                     <DataBox
@@ -765,8 +774,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                         }
                     >
                         <FatValue>
-                            {current.wet_bulb}
-                            {TEMPERATURE_UNIT}
+                            {dataBoxValue(current.wet_bulb, TEMPERATURE_UNIT)}
                         </FatValue>
                     </DataBox>
                     <DataBox
@@ -835,8 +843,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                         }
                     >
                         <FatValue>
-                            {current.heat_index}
-                            {TEMPERATURE_UNIT}
+                            {dataBoxValue(current.heat_index, TEMPERATURE_UNIT)}
                         </FatValue>
                     </DataBox>
                     <DataBox
@@ -954,8 +961,10 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                         }
                     >
                         <FatValue>
-                            {current.temperature_tetto}
-                            {TEMPERATURE_UNIT}
+                            {dataBoxValue(
+                                current.temperature_tetto,
+                                TEMPERATURE_UNIT,
+                            )}
                         </FatValue>
                     </DataBox>
                     <DataBox
@@ -1011,8 +1020,10 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                         }
                     >
                         <FatValue>
-                            {current.humidity_tetto}
-                            {HUMIDITY_UNIT}
+                            {dataBoxValue(
+                                current.humidity_tetto,
+                                HUMIDITY_UNIT,
+                            )}
                         </FatValue>
                     </DataBox>
                 </DataGrid>
@@ -1020,6 +1031,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
             <aside>
                 {hasLostSignal && (
                     <LostSignalAlert role="alert">
+                        <Icon icon={Alert} />
                         C’è stata una mancata ricezione del segnale dei sensori,
                         alcuni grafici potrebbero essere discontinui.
                     </LostSignalAlert>
@@ -1122,6 +1134,10 @@ function DataBox({ title, tooltip, children, footer, isRefetching }) {
             <DataBoxFooter>{footer}</DataBoxFooter>
         </DataBoxWrapper>
     );
+}
+
+function dataBoxValue(value, unit) {
+    return value ? `${value} ${unit}` : '--';
 }
 
 function MaxLabel({ children }) {
@@ -1843,12 +1859,10 @@ const PopoverParagraph = styled.p`
 const LostSignalAlert = styled.div`
     font-size: var(--font-size-small);
     ${boldStyles};
-    background: ${ALERT_COLOR};
-    border-radius: 5px;
-    padding: 0.5em 1em;
     margin: 4em 0;
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    gap: 10px;
     @media (min-width: 768px) {
         font-size: var(--font-size-base);
     }
