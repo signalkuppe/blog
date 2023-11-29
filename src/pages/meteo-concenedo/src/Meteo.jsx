@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import styled, { css } from 'styled-components';
 import { maxBy, minBy, union, some } from 'lodash';
@@ -144,8 +144,6 @@ function ErrorMessage() {
 function DataPage({ data, isRefetching, refetch, fromBlog }) {
     const { current, day } = data;
     const hasLostSignal = some(day.graph_temperature, (t) => t.y === null);
-    const webcamRef = useRef();
-
     return (
         <DataWrapper>
             <Header>
@@ -165,17 +163,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
             <main>
                 <WebCam>
                     {!isRefetching ? (
-                        <img
-                            src={current?.webcam?.url}
-                            style={{
-                                maxWidth: '100%',
-                                height: 'auto',
-                                border: 'none',
-                            }}
-                            width="3840"
-                            height="2160"
-                            ref={webcamRef}
-                        />
+                        <WebCamContent url={current?.webcam?.url} />
                     ) : (
                         <Flex
                             flexDirection="column"
@@ -486,7 +474,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                         }
                     >
                         <FatValue>
-                            {dataBoxValue(current.wind, WIND_UNIT)}{' '}
+                            {current.wind} {WIND_UNIT}
                             {current.wind_direction}
                         </FatValue>
                     </DataBox>
@@ -1621,6 +1609,29 @@ function rainRateText(rate) {
         return 'pioggia forte';
     } else if (rate >= 50) {
         return 'nubifragio';
+    }
+}
+
+function WebCamContent({ url }) {
+    if (url) {
+        return (
+            <img
+                src={url}
+                style={{
+                    maxWidth: '100%',
+                    height: 'auto',
+                    border: 'none',
+                }}
+                width="3840"
+                height="2160"
+            />
+        );
+    } else {
+        return (
+            <>
+                <span>Webcam non disponibile 🫤</span>
+            </>
+        );
     }
 }
 
