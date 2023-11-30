@@ -474,8 +474,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
                         }
                     >
                         <FatValue>
-                            {current.wind} {WIND_UNIT}
-                            {current.wind_direction}
+                            {current.wind} {WIND_UNIT} {current.wind_direction}
                         </FatValue>
                     </DataBox>
                     <DataBox
