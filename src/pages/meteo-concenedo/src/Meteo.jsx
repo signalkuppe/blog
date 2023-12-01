@@ -163,7 +163,7 @@ function DataPage({ data, isRefetching, refetch, fromBlog }) {
             <main>
                 <WebCam>
                     {!isRefetching ? (
-                        <WebCamContent url={current?.webcam?.url} />
+                        <WebCamContent webcam={current?.webcam} />
                     ) : (
                         <Flex
                             flexDirection="column"
@@ -1611,19 +1611,30 @@ function rainRateText(rate) {
     }
 }
 
-function WebCamContent({ url }) {
-    if (url) {
+function WebCamContent({ webcam }) {
+    if (webcam?.url) {
         return (
-            <img
-                src={url}
-                style={{
-                    maxWidth: '100%',
-                    height: 'auto',
-                    border: 'none',
-                }}
-                width="3840"
-                height="2160"
-            />
+            <a
+                href={webcam.url}
+                target="_blank"
+                rel="noreferrer"
+                title="Scarica in formato originale"
+            >
+                <picture>
+                    <source media="(min-width: 1440px)" srcSet={webcam.url} />
+                    <source
+                        media="(min-width: 768px) and (max-width: 1439px)"
+                        srcSet={webcam.desktop}
+                    />
+                    <source media="(max-width: 767px)" srcSet={webcam.mobile} />
+                    <img
+                        src={webcam.desktop}
+                        alt="Responsive Image"
+                        width="1920"
+                        height="1080"
+                    />
+                </picture>
+            </a>
         );
     } else {
         return (
@@ -1696,7 +1707,7 @@ const LatestUpdate = styled.p`
 `;
 
 const DataGrid = styled.ul`
-    margin-top: calc(var(--space-unit) * 1);
+    margin-top: calc(var(--space-unit) * 1.5);
     display: flex;
     flex-direction: column;
     gap: calc(var(--space-unit) * 1);
@@ -1881,11 +1892,18 @@ const LostSignalAlert = styled.div`
 const WebCam = styled.div`
     background: var(--color-background-dark);
     width: 100%;
-    aspect-ratio: 1.77;
-    margin-top: 2em;
+    height: 100%;
+    aspect-ratio: 1.77777777778;
+    margin-top: 2.5em;
     display: flex;
     align-items: center;
     justify-content: center;
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border: none;
+    }
 `;
 
 export default Meteo;
