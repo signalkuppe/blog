@@ -414,7 +414,7 @@ async function fetchHistoricData(startTimeStamp, endTimeStamp) {
 
 async function fetchWebcam() {
     const response = await fetch(
-        `https://www.caiseregno.it/webcam_concenedo/webcam_with_resize.php`,
+        `https://www.caiseregno.it/webcam_concenedo/webcam.php`,
     );
 
     const jsonData = await response.json();
