@@ -1,0 +1,47 @@
+---
+interface Props {
+	title: string
+	description: string
+	url: string
+	ogType: string
+	ogImage: string
+}
+
+const { title, description, url, ogType, ogImage } = Astro.props
+---
+
+<!doctype html>
+<html lang="it">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="og:title" content={title} />
+		<meta name="twitter:title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="og:description" content={description} />
+		<meta name="twitter:description" content={description} />
+		<meta name="og:type" content={ogType} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="og:image" content={ogImage} />
+		<meta name="og:url" content={url} />
+		<title>{title}</title>
+	</head>
+	<body class="py-6 text-slate-800">
+		<header class="mb-6 px-4 text-center">
+			<a href="/" class="mb-2 block text-5xl font-black">Signalkuppe</a>
+			<p class="text-lg text-slate-500">Parole oltre i 4000m</p>
+		</header>
+		<nav class="mb-6 border-y p-4">
+			<ul class="flex items-center justify-center gap-6">
+				<li><a href="">Gite</a></li>
+				<li><a href="">Portfolio</a></li>
+				<li><a href="">Meteo Concenedo</a></li>
+				<li><a href="">Info & Contatti</a></li>
+			</ul>
+		</nav>
+		<slot />
+	</body>
+</html>
