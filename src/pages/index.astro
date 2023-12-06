@@ -3,4 +3,13 @@ import Layout from '../layouts/Layout.astro'
 import { Image } from 'astro:assets'
 ---
 
-<Layout title="Welcome to Astro.">a</Layout>
+<Layout title="Welcome to Astro.">
+	<Image
+		src="/images/matteo-leoni-2.jpg"
+		alt="Matteo Leoni"
+		width="4032"
+		height="3024"
+		decoding="async"
+		loading="lazy"
+	/>
+</Layout>
