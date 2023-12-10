@@ -7,8 +7,9 @@ interface Props {
 	ogImage: string
 }
 
+import Menu from '../components/Menu'
+
 const { title, description, url, ogType, ogImage } = Astro.props
-import { MenuIcon } from 'astro-feather'
 ---
 
 <!doctype html>
@@ -33,19 +34,8 @@ import { MenuIcon } from 'astro-feather'
 	<body class="py-6 text-slate-800">
 		<header class="mb-6 flex items-center justify-between px-4">
 			<a href="/" class="block text-2xl font-black uppercase tracking-tight">Signalkuppe</a>
-			<MenuIcon />
+			<Menu client:load />
 		</header>
-		{
-			/* 		<nav class="mb-6 border-y p-4">
-			<ul class="flex items-center justify-center gap-6">
-				<li><a href="">Gite</a></li>
-				<li><a href="">Portfolio</a></li>
-				<li><a href="">Meteo Concenedo</a></li>
-				<li><a href="">Info & Contatti</a></li>
-			</ul>
-		</nav> */
-		}
-
 		<slot />
 	</body>
 </html>
