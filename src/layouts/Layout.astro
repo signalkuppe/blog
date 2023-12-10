@@ -7,9 +7,9 @@ interface Props {
 	ogImage: string
 }
 
-import Menu from '../components/Menu'
-
 const { title, description, url, ogType, ogImage } = Astro.props
+
+import Menu from '../components/Menu.astro'
 ---
 
 <!doctype html>
@@ -34,7 +34,7 @@ const { title, description, url, ogType, ogImage } = Astro.props
 	<body class="py-6 text-slate-800">
 		<header class="mb-6 flex items-center justify-between px-4">
 			<a href="/" class="block text-2xl font-black uppercase tracking-tight">Signalkuppe</a>
-			<Menu client:load />
+			<Menu />
 		</header>
 		<slot />
 	</body>
