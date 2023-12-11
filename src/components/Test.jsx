@@ -1,9 +1,9 @@
-import Icon from './IconJsx'
+import { Camera } from 'react-feather'
 
 export default function Test() {
 	return (
 		<div className="text-red">
-			test <Icon name="x" size="96" strokeWidth="6" className="text-red-700" /> -
+			test <Camera /> -
 		</div>
 	)
 }
