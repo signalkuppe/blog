@@ -1,9 +1,15 @@
 ---
-import { X } from 'astro-feather-icons'
+import Icon from '../components/Icon.astro'
+import Test from './Test.jsx'
 ---
 
 <nav class="fixed right-0 top-0 flex h-full w-full flex-col justify-center bg-white lg:static">
-	<X size="30" stroke-width="4" />
+	<button>
+		<Icon name="x" size="64" class="text-red-900" strokeWidth="4" />
+
+		<span class="sr-only">Close menu</span>
+	</button>
+
 	<ul
 		class="flex flex-col items-center justify-center gap-4 text-2xl font-bold lg:flex-row lg:justify-start"
 	>
@@ -19,9 +25,11 @@ import { X } from 'astro-feather-icons'
 		<li>
 			<a href="/contatti">Info & Contatti</a>
 		</li>
+		<li><Test client:load /></li>
 	</ul>
 </nav>
 
 <script>
 	console.log('menu')
 </script>
+ ./Test
