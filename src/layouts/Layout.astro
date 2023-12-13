@@ -8,7 +8,8 @@ interface Props {
 }
 
 const { title, description, url, ogType, ogImage } = Astro.props
-import Menu from '../components/Menu.astro'
+import GlobalStyles from '../components/GlobalStyles.astro'
+import TopBar from '../components/TopBar.astro'
 ---
 
 <!doctype html>
@@ -29,12 +30,10 @@ import Menu from '../components/Menu.astro'
 		<meta name="og:image" content={ogImage} />
 		<meta name="og:url" content={url} />
 		<title>{title}</title>
+		<GlobalStyles />
 	</head>
-	<body class="py-6 text-slate-800">
-		<header class="mb-6 flex items-center justify-between px-4">
-			<a href="/" class="block text-2xl font-black uppercase tracking-tight">Signalkuppe</a>
-			<Menu />
-		</header>
+	<body>
+		<TopBar />
 		<slot />
 	</body>
 </html>

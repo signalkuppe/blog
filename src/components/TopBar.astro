@@ -1,0 +1,61 @@
+---
+import { X as CloseIcon } from 'astro-feather-icons'
+const openMenuId = 'Menu-open-button'
+---
+
+<header>
+	<a href="/" class="sitename">Signalkuppe</a>
+	<nav>
+		<ul>
+			<li>
+				<a href="/blog">Gite</a>
+			</li>
+			<li>
+				<a href="/portfolio">Portfolio</a>
+			</li>
+			<li>
+				<a href="/meteo-concenedo">Meteo Concenedo</a>
+			</li>
+			<li>
+				<a href="/contatti">Info & Contatti</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+
+<style>
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.sitename {
+		font-weight: 900;
+		text-transform: uppercase;
+		font-size: 2rem;
+		letter-spacing: -0.05em;
+	}
+	nav {
+		container: menu / inline;
+	}
+
+	ul {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	li {
+		font-size: 1.25rem;
+	}
+
+	@container menu (max-width: 400px) {
+		ul {
+			background-color: yellow;
+		}
+	}
+</style>
+
+<script define:vars={{ openMenuId }}>
+	console.log('menu', openMenuId)
+</script>
