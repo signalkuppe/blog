@@ -1,0 +1,37 @@
+---
+interface Props {
+	Element: string
+}
+
+const { Element = 'button', ...props } = Astro.props
+---
+
+<Element data-button ontouchstart="" {...props}><slot /></Element>
+
+<style>
+	[data-button] {
+		font-weight: 700;
+		display: flex;
+		border: 2px solid var(--color);
+		background: var(--background);
+		box-shadow: 0.3rem 0.3rem 0px var(--color);
+		padding: 0.3rem 1rem;
+		white-space: nowrap;
+		position: relative;
+		cursor: pointer;
+		transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+		touch-action: manipulation;
+		user-select: none;
+	}
+
+	[data-button]:active {
+		transform: translate3d(0.1rem, 0.1rem, 0);
+		box-shadow: none;
+	}
+
+	@media (hover: hover) {
+		[data-button]:hover {
+			box-shadow: 0.4rem 0.4rem 0px var(--color);
+		}
+	}
+</style>

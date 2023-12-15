@@ -1,6 +1,125 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import { Moon } from 'astro-feather-icons'
 import { Image } from 'astro:assets'
+import Layout from '../layouts/Layout.astro'
+import Button from '../components/Button.astro'
+
+const menuItems = [
+	{
+		text: 'Gite',
+		href: '/blog'
+	},
+	{
+		text: 'Foto',
+		href: '/portfolio'
+	},
+	{
+		text: 'Meteo Concenedo',
+		href: '/meteo-concenedo'
+	},
+	{
+		text: 'Info & Contatti',
+		href: '/contatti'
+	}
+]
 ---
 
-<Layout title="Welcome to Astro.">ss</Layout>
+<Layout title="Welcome to Astro.">
+	<header>
+		<h1>Piacere Matteo <span data-hand>👋</span></h1>
+		<button><Moon /></button>
+	</header>
+	<aside>
+		<Image src="/images/matteo-leoni.jpg" alt="Matteo Leoni" width={2048} height={1563} />
+	</aside>
+	<main>
+		<p>
+			Sono un <strong>appassionato di montagna,</strong> Questo blog è un <strong
+				>diario di tutte le mie gite,</strong
+			> spero possa esservi utile per scoprire nuovi itinerari.
+		</p>
+	</main>
+	<nav>
+		<ul>
+			{
+				menuItems.map((item) => (
+					<li>
+						<Button Element="button" href={item.href}>
+							{item.text}
+						</Button>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</Layout>
+
+<style>
+	header {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	h1 {
+		margin-bottom: 0.5rem;
+	}
+
+	img {
+		aspect-ratio: 4/;
+	}
+
+	p {
+		width: 95%;
+		max-width: 60ch;
+		margin-top: 4vh;
+		margin-bottom: 4vh;
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	@keyframes handAnimation {
+		0% {
+			transform: rotate(0deg);
+		}
+		10% {
+			transform: rotate(14deg);
+		}
+		20% {
+			transform: rotate(-8deg);
+		}
+		30% {
+			transform: rotate(14deg);
+		}
+		40% {
+			transform: rotate(-4deg);
+		}
+		50% {
+			transform: rotate(10deg);
+		}
+		60% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(0deg);
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		[data-hand] {
+			display: inline-block;
+			animation-name: handAnimation;
+			animation-duration: 1.2s;
+			animation-delay: 1s;
+			transform-origin: 70% 70%;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		[data-hand] {
+			animation: none;
+		}
+	}
+</style>

@@ -8,8 +8,9 @@ interface Props {
 }
 
 const { title, description, url, ogType, ogImage } = Astro.props
-import GlobalStyles from '../components/GlobalStyles.astro'
-import TopBar from '../components/TopBar.astro'
+import CssReset from '../components/CssReset.astro'
+import CssUtilities from '../components/CssUtilities.astro'
+import CssBaseStyles from '../components/CssBaseStyles.astro'
 ---
 
 <!doctype html>
@@ -30,10 +31,19 @@ import TopBar from '../components/TopBar.astro'
 		<meta name="og:image" content={ogImage} />
 		<meta name="og:url" content={url} />
 		<title>{title}</title>
-		<GlobalStyles />
 	</head>
 	<body>
-		<TopBar />
 		<slot />
 	</body>
 </html>
+<CssReset />
+<CssBaseStyles />
+<CssUtilities />
+
+<style>
+	body {
+		max-width: 65ch;
+		margin: 0 auto;
+		padding: 1rem;
+	}
+</style>
