@@ -3,6 +3,7 @@ import { Moon } from 'astro-feather-icons'
 import { Image } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
 import Button from '../components/Button.astro'
+import MainImage from '../images/matteo-leoni.jpg'
 
 const menuItems = [
 	{
@@ -30,7 +31,7 @@ const menuItems = [
 		<button><Moon /></button>
 	</header>
 	<aside>
-		<Image src="/images/matteo-leoni.jpg" alt="Matteo Leoni" width={2048} height={1563} />
+		<Image src={MainImage} alt="Matteo Leoni" width={2048} height={1563} />
 	</aside>
 	<main>
 		<p>
