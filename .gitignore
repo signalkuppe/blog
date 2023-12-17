@@ -8,3 +8,4 @@ src/pages/cerca/_data
 .netlify
 src/pages/cerca/fonts
 src/pages/meteo/fonts
+dist

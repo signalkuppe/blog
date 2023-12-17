@@ -6,6 +6,7 @@ import Button from '../../../components/ui/Button';
 import Icon from '../../../components/ui/Icon';
 import Loader from '../../../components/ui/Loader';
 import DownloadIcon from '../../../public/icons/DownloadFile.svg';
+import LoadingIcon from '../../../public/icons/Loading.svg';
 import { device, headingsStyles } from '../../../theme';
 import client from './index.client';
 
@@ -61,20 +62,42 @@ export default function PostGps({ post }) {
                         {gps.gpx && (
                             <Button
                                 href={gps.gpx}
+                                data-slug={post.slug}
                                 as="a"
-                                className="js-gps-download"
+                                className="js-gps-download js-gps-download-gpx"
                             >
-                                <Icon icon={DownloadIcon} left />
+                                <Icon
+                                    icon={DownloadIcon}
+                                    left
+                                    className="js-download-icon"
+                                />
+                                <Icon
+                                    icon={LoadingIcon}
+                                    left
+                                    className="js-loading-icon"
+                                    style={{ display: 'none' }}
+                                />
                                 Traccia .gpx
                             </Button>
                         )}
                         {gps.kml && (
                             <Button
                                 href={gps.kml}
+                                data-slug={post.slug}
                                 as="a"
-                                className="js-gps-download"
+                                className="js-gps-download js-gps-download-kml"
                             >
-                                <Icon icon={DownloadIcon} left />
+                                <Icon
+                                    icon={DownloadIcon}
+                                    left
+                                    className="js-download-icon"
+                                />
+                                <Icon
+                                    icon={LoadingIcon}
+                                    left
+                                    className="js-loading-icon"
+                                    style={{ display: 'none' }}
+                                />
                                 Traccia .kml
                             </Button>
                         )}
@@ -111,6 +134,10 @@ export default function PostGps({ post }) {
                     {
                         where: 'body',
                         tag: '<script src="/libs/chart.js"></script>',
+                    },
+                    {
+                        where: 'body',
+                        tag: '<script src="/libs/jszip.js"></script>',
                     },
                 ]}
             >

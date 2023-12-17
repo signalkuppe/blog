@@ -58,5 +58,6 @@ module.exports = {
         Hammer: true,
         dataLayer: true,
         React: true,
+        JSZip: true,
     },
 };

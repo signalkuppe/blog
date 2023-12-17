@@ -18,6 +18,7 @@ module.exports = {
         'node_modules/leaflet-gpx/gpx.js': 'libs/leaflet-gpx.js',
         'node_modules/chart.js/dist/chart.umd.js': 'libs/chart.js',
         'node_modules/hammerjs/hammer.js': 'libs/hammer.js',
+        'node_modules/jszip/dist/jszip.js': 'libs/jszip.js',
     },
     afterBuild: async function (renderedPages) {
         await createSitemap(renderedPages);

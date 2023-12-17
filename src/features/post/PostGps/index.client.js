@@ -4,7 +4,8 @@ const minEl = document.getElementById('js-postGps-min');
 const maxEl = document.getElementById('js-postGps-max');
 const gainEl = document.getElementById('js-postGps-gain');
 const distanceEl = document.getElementById('js-postGps-distance');
-const gpsDownloadButtons = document.querySelectorAll('.js-gps-download');
+const gpxDownload = document.querySelector('.js-gps-download-gpx');
+const kmlDownload = document.querySelector('.js-gps-download-kml');
 let loaded;
 
 function decimateArray(arr, passes = 1, fidelity = 2) {
@@ -160,26 +161,74 @@ document.addEventListener('post-section-reached', function (event) {
     }
 });
 
-// force download on gpx ad kml files for files on contentful
-Array.from(gpsDownloadButtons).forEach(function (button) {
-    const url = button.getAttribute('href');
-    const filename = url.split('/').pop();
-    button.removeAttribute('href');
-    button.addEventListener('click', function (e) {
-        e.preventDefault();
-        fetch(url)
-            .then((response) => response.blob())
-            .then((blob) => {
-                const blobURL = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = blobURL;
-                a.style = 'display: none';
-                document.body.appendChild(a);
-                a.setAttribute('download', filename);
-                a.click();
-            })
-            .catch((err) => {
-                console.log('download error', err);
-            });
+function artificialDelay(milliseconds) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, milliseconds);
     });
-});
+}
+
+async function downloadAndCompress(file, filename, type) {
+    const remoteFileUrl = file;
+    const name = `${filename}.${type}`;
+
+    try {
+        await artificialDelay(1000);
+        const response = await fetch(remoteFileUrl);
+        const fileData = await response.blob();
+        const fileName = `${filename}.zip`;
+        const zip = new JSZip();
+        zip.file(name, fileData);
+        const zipContent = await zip.generateAsync({ type: 'blob' });
+        const zipUrl = URL.createObjectURL(zipContent);
+
+        const link = document.createElement('a');
+        link.href = zipUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(zipUrl);
+    } catch (error) {
+        console.error(
+            'Errore durante il download o la compressione del file:',
+            error,
+        );
+    }
+}
+
+if (gpxDownload) {
+    gpxDownload.addEventListener('click', async function (e) {
+        e.preventDefault();
+        gpxDownload.querySelector('.js-download-icon').style.display = 'none';
+        gpxDownload.querySelector('.js-loading-icon').style.display =
+            'inline-flex';
+        await downloadAndCompress(
+            gpxDownload.getAttribute('href'),
+            gpxDownload.getAttribute('data-slug').split('/').pop(),
+            'gpx',
+        );
+
+        gpxDownload.querySelector('.js-download-icon').style.display =
+            'inline-flex';
+        gpxDownload.querySelector('.js-loading-icon').style.display = 'none';
+    });
+}
+
+if (kmlDownload) {
+    kmlDownload.addEventListener('click', async function (e) {
+        e.preventDefault();
+        kmlDownload.querySelector('.js-download-icon').style.display = 'none';
+        kmlDownload.querySelector('.js-loading-icon').style.display =
+            'inline-flex';
+        await downloadAndCompress(
+            kmlDownload.getAttribute('href'),
+            gpxDownload.getAttribute('data-slug').split('/').pop(),
+            'kml',
+        );
+        kmlDownload.querySelector('.js-download-icon').style.display =
+            'inline-flex';
+        kmlDownload.querySelector('.js-loading-icon').style.display = 'none';
+    });
+}
