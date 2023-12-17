@@ -28,7 +28,7 @@ const menuItems = [
 <Layout title="Welcome to Astro.">
 	<header>
 		<h1>Piacere Matteo <span data-hand>👋</span></h1>
-		<button><Moon /></button>
+		<button><Moon fill="red" /></button>
 	</header>
 	<aside>
 		<Image src={MainImage} alt="Matteo Leoni" width={2048} height={1563} />
@@ -59,14 +59,24 @@ const menuItems = [
 	header {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 	}
 
 	h1 {
-		margin-bottom: 0.5rem;
+		display: flex;
+		align-items: center;
+		line-height: 1;
+		gap: 0.5rem;
+	}
+
+	[data-hand] {
+		position: relative;
+		top: 0.15rem;
 	}
 
 	img {
-		aspect-ratio: 4/;
+		margin-top: 1.5rem;
+		aspect-ratio: 4/3;
 	}
 
 	p {
