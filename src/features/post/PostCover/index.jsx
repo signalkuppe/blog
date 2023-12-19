@@ -10,7 +10,7 @@ export default function PostCover({ cover }) {
     const imgUrl = function (width, format) {
         return `${src}?w=${width}&h=${Math.round(
             width / 1.5,
-        )}&fm=${format}&fit=thumb&q=50`;
+        )}&fm=${format}&fit=thumb&q=70`;
     };
     return (
         <>
@@ -32,7 +32,7 @@ export default function PostCover({ cover }) {
                         srcSet={`
                       ${imgUrl(600, 'webp')}  600w,
                       ${imgUrl(1600, 'webp')} 1600w,
-                       ${imgUrl(3000, 'webp')} 3000w
+                       ${imgUrl(3500, 'webp')} 3000w
                     `}
                         sizes="
                       (max-width: 768px) 100vw,

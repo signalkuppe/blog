@@ -80,27 +80,6 @@ export default function PostGps({ post }) {
                                 Traccia .gpx
                             </Button>
                         )}
-                        {gps.kml && (
-                            <Button
-                                href={gps.kml}
-                                data-slug={post.slug}
-                                as="a"
-                                className="js-gps-download js-gps-download-kml"
-                            >
-                                <Icon
-                                    icon={DownloadIcon}
-                                    left
-                                    className="js-download-icon"
-                                />
-                                <Icon
-                                    icon={LoadingIcon}
-                                    left
-                                    className="js-loading-icon"
-                                    style={{ display: 'none' }}
-                                />
-                                Traccia .kml
-                            </Button>
-                        )}
                     </Buttons>
 
                     <Disclaimer>
