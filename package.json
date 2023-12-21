@@ -10,8 +10,15 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^3.0.7",
+    "@radix-ui/react-switch": "^1.0.3",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
     "astro": "^4.0.4",
-    "astro-feather-icons": "^1.0.2"
+    "astro-feather-icons": "^1.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-responsive": "^9.0.2"
   },
   "devDependencies": {
     "prettier": "^3.1.1",

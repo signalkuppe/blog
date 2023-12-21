@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro'
+import SettingsForm from '../features/settings/SettingsForm'
+---
+
+<Layout
+	title="Signalkuppe | Impostazioni"
+	description="Impostazioni del sito"
+	ogImage="/matteo-leoni-og.jpg"
+	ogType="website"
+	url="https://www.signalkuppe.com/impostazioni"
+>
+	<div transition:animate="slide">
+		<SettingsForm client:load />
+	</div>
+</Layout>

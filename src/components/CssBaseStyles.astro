@@ -1,8 +1,15 @@
 <style is:global>
-	:root {
+	html {
 		--color: black;
 		--background: white;
+		--accent: blue;
 	}
+
+	.dark {
+		--color: white;
+		--background: black;
+	}
+
 	body {
 		font-size: clamp(1.2rem, 2vw, 1.8rem);
 		color: var(--color);
@@ -17,13 +24,5 @@
 
 	strong {
 		font-weight: 700;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		/* Dark theme styles go here */
-		:root {
-			--color: white;
-			--background: black;
-		}
 	}
 </style>

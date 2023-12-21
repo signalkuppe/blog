@@ -1,6 +1,9 @@
 ---
 interface Props {
-	Element: string
+	Element?: string
+	children: any
+	href?: string
+	ontouchstart?: string
 }
 
 const { Element = 'button', ...props } = Astro.props

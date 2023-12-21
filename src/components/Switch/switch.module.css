@@ -1,0 +1,40 @@
+/* reset */
+button {
+	all: unset;
+}
+
+.SwitchWrapper {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.SwitchRoot {
+	width: 42px;
+	height: 25px;
+	background-color: var(--background);
+	border-radius: 9999px;
+	position: relative;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	box-shadow: 0 0 0 2px black;
+}
+
+.SwitchRoot[data-state='checked'] {
+	background-color: var(--color);
+}
+
+.SwitchThumb {
+	display: block;
+	width: 21px;
+	height: 21px;
+	background-color: var(--color);
+	border-radius: 9999px;
+	box-shadow: none;
+	transition: transform 100ms;
+	transform: translate(0.15rem, -0.01rem);
+	will-change: transform;
+}
+.SwitchThumb[data-state='checked'] {
+	transform: translateX(19px);
+	background-color: var(--background);
+}

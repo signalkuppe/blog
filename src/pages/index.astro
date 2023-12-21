@@ -1,8 +1,9 @@
 ---
-import { Moon } from 'astro-feather-icons'
+import { Settings } from 'astro-feather-icons'
 import { Image } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
 import Button from '../components/Button.astro'
+import SrOnly from '../components/SrOnly.astro'
 import MainImage from '../images/matteo-leoni.jpg'
 
 const menuItems = [
@@ -25,13 +26,21 @@ const menuItems = [
 ]
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout
+	title="Signalkuppe | Parole oltre i 4000m"
+	description="Blog personale di Matteo Leoni"
+	ogImage="/matteo-leoni-og.jpg"
+	ogType="website"
+	url="https://www.signalkuppe.com"
+>
 	<header>
-		<h1>Piacere Matteo <span data-hand>👋</span></h1>
-		<button><Moon fill="red" /></button>
+		<h1>Piacere Matteo <span class="hand" aria-hidden="true">👋</span></h1>
+		<a href="/impostazioni/" title="Impostazioni di visualizzazione del sito"
+			><Settings title={null} /><SrOnly>Impostazioni del sito</SrOnly></a
+		>
 	</header>
 	<aside>
-		<Image src={MainImage} alt="Matteo Leoni" width={2048} height={1563} />
+		<Image src={MainImage} alt="Matteo Leoni" width={4032} height={2688} />
 	</aside>
 	<main>
 		<p>
@@ -45,7 +54,7 @@ const menuItems = [
 			{
 				menuItems.map((item) => (
 					<li>
-						<Button Element="button" href={item.href}>
+						<Button Element="a" href={item.href}>
 							{item.text}
 						</Button>
 					</li>
@@ -69,21 +78,20 @@ const menuItems = [
 		gap: 0.5rem;
 	}
 
-	[data-hand] {
+	.hand {
 		position: relative;
 		top: 0.15rem;
 	}
 
 	img {
 		margin-top: 1.5rem;
-		aspect-ratio: 4/3;
 	}
 
 	p {
 		width: 95%;
 		max-width: 60ch;
-		margin-top: 4vh;
-		margin-bottom: 4vh;
+		margin-top: 2rem;
+		margin-bottom: 3rem;
 	}
 
 	ul {
@@ -120,7 +128,7 @@ const menuItems = [
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
-		[data-hand] {
+		.hand {
 			display: inline-block;
 			animation-name: handAnimation;
 			animation-duration: 1.2s;
@@ -129,7 +137,7 @@ const menuItems = [
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
-		[data-hand] {
+		.hand {
 			animation: none;
 		}
 	}

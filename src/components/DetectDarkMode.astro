@@ -1,0 +1,22 @@
+<script>
+	function check() {
+		const pref = window.localStorage.getItem('darkMode')
+
+		if (!pref) {
+			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.classList.add('dark')
+			}
+		} else {
+			if (pref === 'true') {
+				document.documentElement.classList.add('dark')
+			}
+		}
+	}
+
+	check()
+
+	document.addEventListener('astro:page-load', function () {
+		console.log('!swap')
+		check()
+	})
+</script>

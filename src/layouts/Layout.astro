@@ -1,16 +1,19 @@
 ---
+import { ViewTransitions } from 'astro:transitions'
+import CssReset from '../components/CssReset.astro'
+import CssBaseStyles from '../components/CssBaseStyles.astro'
+import DetectDarkMode from '../components/DetectDarkMode.astro'
+
 interface Props {
 	title: string
 	description: string
 	url: string
 	ogType: string
 	ogImage: string
+	children: any
 }
 
 const { title, description, url, ogType, ogImage } = Astro.props
-import CssReset from '../components/CssReset.astro'
-import CssUtilities from '../components/CssUtilities.astro'
-import CssBaseStyles from '../components/CssBaseStyles.astro'
 ---
 
 <!doctype html>
@@ -31,19 +34,21 @@ import CssBaseStyles from '../components/CssBaseStyles.astro'
 		<meta name="og:image" content={ogImage} />
 		<meta name="og:url" content={url} />
 		<title>{title}</title>
+		<DetectDarkMode />
+		<ViewTransitions />
 	</head>
 	<body>
 		<slot />
+		<CssReset />
+		<CssBaseStyles />
+
+		<style>
+			body {
+				max-width: 65ch;
+				margin: 0 auto;
+				padding: 1.5rem;
+				padding-top: 2rem;
+			}
+		</style>
 	</body>
 </html>
-<CssReset />
-<CssBaseStyles />
-<CssUtilities />
-
-<style>
-	body {
-		max-width: 65ch;
-		margin: 0 auto;
-		padding: 1.5rem;
-	}
-</style>
