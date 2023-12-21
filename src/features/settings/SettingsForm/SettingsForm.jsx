@@ -32,6 +32,7 @@ export default function SettingsForm({}) {
 			<Switch checked={darkMode} onCheckedChange={onDarkModeChange}>
 				Dark mode
 			</Switch>
+			<br />
 			<a href="/">back</a>
 		</form>
 	)

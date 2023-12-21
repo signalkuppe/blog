@@ -3,6 +3,7 @@ import { Settings } from 'astro-feather-icons'
 import { Image } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
 import Button from '../components/Button.astro'
+import PageAction from '../components/PageAction.astro'
 import SrOnly from '../components/SrOnly.astro'
 import MainImage from '../images/matteo-leoni.jpg'
 
@@ -33,73 +34,40 @@ const menuItems = [
 	ogType="website"
 	url="https://www.signalkuppe.com"
 >
-	<header>
-		<h1>Piacere Matteo <span class="hand" aria-hidden="true">👋</span></h1>
-		<a href="/impostazioni/" title="Impostazioni di visualizzazione del sito"
-			><Settings title={null} /><SrOnly>Impostazioni del sito</SrOnly></a
-		>
-	</header>
-	<aside>
-		<Image src={MainImage} alt="Matteo Leoni" width={4032} height={2688} />
-	</aside>
-	<main>
-		<p>
-			Sono un <strong>appassionato di montagna,</strong> Questo blog è un <strong
-				>diario di tutte le mie gite,</strong
-			> spero possa esservi utile per scoprire nuovi itinerari.
-		</p>
-	</main>
-	<nav>
-		<ul>
-			{
-				menuItems.map((item) => (
-					<li>
-						<Button Element="a" href={item.href}>
-							{item.text}
-						</Button>
-					</li>
-				))
-			}
-		</ul>
-	</nav>
+	<div class="grid">
+		<header>
+			<h1>Piacere Matteo <span class="hand" aria-hidden="true">👋</span></h1>
+		</header>
+		<nav>
+			<ul>
+				{
+					menuItems.map((item) => (
+						<li>
+							<Button Element="a" href={item.href}>
+								{item.text}
+							</Button>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+		<main>
+			<p>
+				Sono un <strong>appassionato di montagna,</strong> Questo blog è un <strong
+					>diario di tutte le mie gite,</strong
+				> spero possa esservi utile per scoprire nuovi itinerari.
+			</p>
+		</main>
+		<aside>
+			<Image src={MainImage} alt="Matteo Leoni" width={4032} height={2688} />
+		</aside>
+	</div>
+	<PageAction slot="actionButton" href="/impostazioni">
+		<Settings stroke-width="3" /><SrOnly>Scegli un tema</SrOnly>
+	</PageAction>
 </Layout>
 
 <style>
-	header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	h1 {
-		display: flex;
-		align-items: center;
-		line-height: 1;
-		gap: 0.5rem;
-	}
-
-	.hand {
-		position: relative;
-		top: 0.15rem;
-	}
-
-	img {
-		margin-top: 1.5rem;
-	}
-
-	p {
-		width: 95%;
-		max-width: 60ch;
-		margin-top: 2rem;
-		margin-bottom: 3rem;
-	}
-
-	ul {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-	}
-
 	@keyframes handAnimation {
 		0% {
 			transform: rotate(0deg);
@@ -139,6 +107,94 @@ const menuItems = [
 	@media (prefers-reduced-motion: reduce) {
 		.hand {
 			animation: none;
+		}
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	footer {
+		position: fixed;
+		right: 1.5rem;
+		bottom: 1.5rem;
+	}
+
+	p {
+		width: 95%;
+		max-width: 50ch;
+	}
+
+	h1 {
+		display: flex;
+		align-items: center;
+		line-height: 1;
+		gap: 0.5rem;
+	}
+
+	.hand {
+		position: relative;
+		top: 0.15rem;
+	}
+
+	img {
+		background-color: var(--grey);
+	}
+
+	@media screen and (max-width: 1179px) {
+		.grid {
+			display: flex;
+			flex-direction: column;
+			row-gap: 1.5rem;
+		}
+
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			order: 1;
+		}
+
+		aside {
+			order: 2;
+		}
+
+		main {
+			order: 3;
+		}
+
+		nav {
+			order: 4;
+		}
+	}
+
+	@media screen and (min-width: 1180px) {
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: min-content 1fr 2fr;
+			grid-template-areas:
+				'header image'
+				'content image'
+				'navigation image';
+			gap: 2.5rem;
+			max-width: 1170px;
+			margin: 4rem auto;
+		}
+		header {
+			grid-area: header;
+		}
+
+		main {
+			grid-area: content;
+		}
+		aside {
+			grid-area: image;
+		}
+		nav {
+			grid-area: navigation;
 		}
 	}
 </style>

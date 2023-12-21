@@ -1,0 +1,36 @@
+---
+interface Props {
+	children: any
+	href?: string
+	title?: string
+	icon?: any
+}
+
+const { ...props } = Astro.props
+---
+
+<a data-button {...props}><slot /></a>
+
+<style>
+	[data-button] {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		touch-action: manipulation;
+		user-select: none;
+		width: 3rem;
+		height: 3rem;
+		border: 2px solid var(--color);
+		border-right: none;
+		box-shadow: 0.3rem 0.3rem 0px var(--color);
+	}
+
+	[data-button]:active {
+	}
+
+	@media (hover: hover) {
+		[data-button]:hover {
+		}
+	}
+</style>

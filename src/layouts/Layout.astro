@@ -11,9 +11,10 @@ interface Props {
 	ogType: string
 	ogImage: string
 	children: any
+	actionButton?: any
 }
 
-const { title, description, url, ogType, ogImage } = Astro.props
+const { title, description, url, ogType, ogImage, actionButton } = Astro.props
 ---
 
 <!doctype html>
@@ -41,13 +42,35 @@ const { title, description, url, ogType, ogImage } = Astro.props
 		<slot />
 		<CssReset />
 		<CssBaseStyles />
+		{
+			Astro.slots.has('actionButton') && (
+				<div>
+					<slot name="actionButton" />
+				</div>
+			)
+		}
 
 		<style>
+			@keyframes actionAnimation {
+				0% {
+					transform: translate3d(100%, 0, 0);
+				}
+				100% {
+					transform: translate3d(0, 0, 0);
+				}
+			}
 			body {
-				max-width: 65ch;
-				margin: 0 auto;
 				padding: 1.5rem;
 				padding-top: 2rem;
+			}
+			div {
+				position: fixed;
+				right: 0;
+				bottom: 2rem;
+				animation-name: actionAnimation;
+				animation-duration: 0.2s;
+				animation-delay: 1s;
+				animation-fill-mode: backwards;
 			}
 		</style>
 	</body>
