@@ -15,11 +15,13 @@ const { Element = 'button', ...props } = Astro.props
 <style>
 	[data-button] {
 		font-weight: 700;
+		color: var(--text);
+		text-decoration: none;
 		display: flex;
 		border: 2px solid var(--color);
 		background: var(--background);
 		box-shadow: 0.3rem 0.3rem 0px var(--color);
-		padding: 0.3rem 1rem;
+		padding: 0.5rem 1rem;
 		white-space: nowrap;
 		position: relative;
 		cursor: pointer;
