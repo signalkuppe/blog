@@ -5,6 +5,7 @@
 		--accent: #0077cc;
 		--grey: #e2e2e2;
 		font-size: 100%;
+		scrollbar-gutter: stable;
 	}
 
 	.dark {
@@ -17,6 +18,7 @@
 		font-size: 1rem;
 		color: var(--color);
 		background: var(--background);
+		padding: 1.5rem;
 	}
 
 	:is(h1, h2, h3, h4, h5, h6) {
@@ -52,6 +54,10 @@
 
 	p {
 		margin-bottom: 1.5rem;
+	}
+
+	summary {
+		cursor: pointer;
 	}
 
 	@media screen and (min-width: 1180px) {

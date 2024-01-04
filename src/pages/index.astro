@@ -1,5 +1,4 @@
 ---
-import { Settings } from 'astro-feather-icons'
 import Layout from '../layouts/Layout.astro'
 import Button from '../components/Button.astro'
 import HomePageImage from '../features/homepage/HomepageImage.astro'
@@ -22,10 +21,6 @@ const menuItems = [
 	{
 		text: 'Info & Contatti',
 		href: '/contatti'
-	},
-	{
-		text: 'Impostazioni del sito',
-		href: '/impostazioni'
 	}
 ]
 ---
@@ -45,19 +40,10 @@ const menuItems = [
 			<ul>
 				{
 					menuItems.map((item) => {
-						let content = item?.text
-						if (item?.href === '/impostazioni') {
-							content = (
-								<span class="settingsButton">
-									<Settings />
-									<span>{item?.text}</span>
-								</span>
-							)
-						}
 						return (
 							<li>
 								<Button Element="a" href={item.href}>
-									{content}
+									{item.text}
 								</Button>
 							</li>
 						)
@@ -181,20 +167,8 @@ const menuItems = [
 		top: 0.15rem;
 	}
 
-	img {
-		background-color: var(--grey);
-	}
-
-	.settingsButton {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	nav {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
+	details {
+		margin-bottom: 1rem;
 	}
 
 	@media screen and (max-width: 1179px) {

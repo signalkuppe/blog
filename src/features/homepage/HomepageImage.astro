@@ -30,3 +30,20 @@ const desktopImg = await getImage({
 	<source media="(min-width: 1180px)" srcset={desktopImg.src} width="2016" height="3024" />
 	<img src={desktopImg.src} alt={alt} />
 </picture>
+
+<style>
+	img {
+		background-color: var(--grey);
+	}
+
+	@media screen and (max-width: 1179px) {
+		img {
+			border: 16px solid var(--color);
+		}
+	}
+	@media screen and (min-width: 1180px) {
+		img {
+			border: 32px solid var(--color);
+		}
+	}
+</style>
