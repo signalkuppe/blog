@@ -12,13 +12,16 @@ export default function Container({ children, ...props }) {
 
 const StyledContainer = styled.div`
     padding: 0 var(--space-unit);
-    ${(props) =>
-        !props.fullWidth &&
-        css`
-            max-width: var(--container-max-width);
-        `}
     @media ${device.desktop} {
+        padding: 0 calc(var(--space-unit) * 2);
+    }
+    @media ${device.largeDesktop} {
         margin-left: var(--container-offset);
+        ${(props) =>
+            !props.fullWidth &&
+            css`
+                max-width: var(--container-max-width);
+            `}
         ${(props) =>
             props.fullWidth &&
             css`
