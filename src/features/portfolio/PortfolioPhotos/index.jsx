@@ -70,6 +70,7 @@ const PhotoCaption = styled.div`
 `;
 const PhotoTitle = styled.h2`
     ${headingsStyles};
+    line-height: 1.3;
     margin: 0;
     font-size: var(--font-size-base);
     @media ${device.largeDesktop} {
