@@ -148,10 +148,10 @@ export const pageMenuTypography = css`
 
 export const device = {
     mobile: `screen and (max-width: 47.9375rem)`, // <= 767px
-    mobileAndTablet: `screen and (max-width: 85.3125rem)`, // <= 1365
-    onlyTablet: `screen and (min-width: 48rem) and (max-width: 85.3125rem)`, // >= 768px <= 1365px
+    mobileAndTablet: `screen and (max-width: 79rem)`, // <= 1279
+    onlyTablet: `screen and (min-width: 48rem) and (max-width: 79rem)`, // >= 768px <= 1279px
     atLeastTablet: `screen and (min-width: 48rem)`, // >= 768px
-    desktop: `screen and (min-width: 85.3125rem)`, // >= 1366px
+    desktop: `screen and (min-width: 79rem)`, // >= 1280px
     largeDesktop: `screen and (min-width: 120rem)`, // >= 1920px
     noReduceMotion: `screen and (prefers-reduced-motion: no-preference)`,
     portrait: `screen and (orientation: portrait)`,

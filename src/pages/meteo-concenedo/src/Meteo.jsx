@@ -1685,7 +1685,7 @@ const DataWrapper = styled.div`
 
 const LatestUpdate = styled.p`
     font-size: var(--font-size-small);
-    margin-top: calc(var(--space-unit) * 1);
+    margin-top: calc(var(--space-unit) * 0.5);
     strong {
         ${boldStyles}
     }
@@ -1696,7 +1696,7 @@ const LatestUpdate = styled.p`
 `;
 
 const DataGrid = styled.ul`
-    margin-top: calc(var(--space-unit) * 1);
+    margin-top: calc(var(--space-unit) * 1.5);
     display: flex;
     flex-direction: column;
     gap: calc(var(--space-unit) * 1);
