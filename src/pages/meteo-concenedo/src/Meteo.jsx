@@ -1238,8 +1238,8 @@ function BaseLineChart({ data, leftMargin }) {
             }}
             yScale={{
                 type: 'linear',
-                min: minBy(data, (d) => d.y).y,
-                max: maxBy(data, (d) => d.y).y,
+                min: minBy(data, (d) => d.y)?.y,
+                max: maxBy(data, (d) => d.y)?.y,
             }}
             axisBottom={{
                 format: '%H',
@@ -1294,8 +1294,8 @@ function WindLineChart({ data }) {
             }}
             yScale={{
                 type: 'linear',
-                min: minBy(data, (d) => d.y).y - 1,
-                max: maxBy(data, (d) => d.y).y + 1,
+                min: minBy(data, (d) => d.y)?.y - 1,
+                max: maxBy(data, (d) => d.y)?.y + 1,
             }}
             axisBottom={{
                 format: '%H',
@@ -1409,8 +1409,8 @@ function TettoPratoLineChart({ data }) {
             }}
             yScale={{
                 type: 'linear',
-                min: minBy(union(data[0].data, data[1].data), (v) => v.y).y - 1,
-                max: maxBy(union(data[0].data, data[1].data), (v) => v.y).y + 1,
+                min: minBy(union(data[0].data, data[1].data), (v) => v.y)?.y - 1,
+                max: maxBy(union(data[0].data, data[1].data), (v) => v.y)?.y + 1,
             }}
             axisBottom={{
                 format: '%H',

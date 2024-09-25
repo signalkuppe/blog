@@ -484,7 +484,12 @@ function convertWindDirection(degree) {
 }
 
 function formatDate(ts, format) {
-    return dayjs.unix(ts).utc().tz(TIMEZONE).format(format);
+    if(dayjs.unix(ts).isValid()) {
+         return dayjs.unix(ts).utc().tz(TIMEZONE).format(format);
+    } else {
+        return '-'
+    }
+   
 }
 
 function unixToHourAndMinutes(ts) {
@@ -497,7 +502,7 @@ function unixToGraphTime(ts) {
 
 function findLastMaxPropertyItem(arr, property) {
     if (arr.length === 0) {
-        return null;
+        return {};
     }
 
     let maxItem = null;
@@ -516,7 +521,7 @@ function findLastMaxPropertyItem(arr, property) {
 
 function findLastMinPropertyItem(arr, property) {
     if (arr.length === 0) {
-        return null; // Return null if the array is empty
+        return {}; // Return null if the array is empty
     }
 
     let minItem = arr[arr.length - 1]; // Start with the last item
