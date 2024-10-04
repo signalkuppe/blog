@@ -27,7 +27,6 @@ const { title, description } = Astro.props;
       const THEME_STORAGE_KEY = "theme";
       const THEME_OWNER = document.documentElement;
 
-      // Function to set theme
       function setTheme(theme) {
         if (theme === "auto") {
           delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
