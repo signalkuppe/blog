@@ -62,7 +62,7 @@ const { title, description } = Astro.props;
     </script>
 
     <style>
-      html {
+      :root {
         --dark: black;
         --light: white;
         --accent: crimson;
@@ -86,6 +86,11 @@ const { title, description } = Astro.props;
           --color: var(--light);
           color-scheme: dark;
         }
+      }
+
+      html {
+        background: var(--background);
+        color: var(--color);
       }
     </style>
 
@@ -234,8 +239,6 @@ const { title, description } = Astro.props;
     margin: 0;
     padding: 1.5rem;
     height: 100%;
-    background: var(--background);
-    color: var(--color);
     max-width: 80rem;
     margin: 0 auto;
   }
