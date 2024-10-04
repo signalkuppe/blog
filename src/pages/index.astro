@@ -1,0 +1,77 @@
+---
+import { Image } from "astro:assets";
+import home1 from "../images/home1.png";
+import home2 from "../images/home2.png";
+import home3 from "../images/home3.png";
+import home4 from "../images/home4.png";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Pagina iniziale - Signalkuppe" description="test">
+  <h1>Piacere, Matteo.<br /> Benvenuto nel mio blog.</h1>
+
+  <p class="lead">
+    Sono un appassionato di montagna. <br />Questo blog è un diario di tutte le
+    mie uscite, spero possa esservi utile per scoprire nuovi itinerari. Vivo a
+    Concenedo, dove ho posizionato una stazione meteo.<br /> In <a
+      href="/meteo-concenedo">questa pagina</a
+    > trovate i dati in diretta.
+  </p>
+  <p class="button-wrapper">
+    <a href="/matteo" class="btn">Qualcosa in più su di me</a>
+  </p>
+  <aside class="hide-scrollbars">
+    <Image
+      src={home1}
+      alt="A bird sitting on a nest of eggs."
+      width="350"
+      height="567"
+      loading="eager"
+    />
+    <Image
+      src={home2}
+      alt="A bird sitting on a nest of eggs."
+      width="350"
+      height="567"
+      loading="eager"
+    />
+    <Image
+      src={home3}
+      alt="A bird sitting on a nest of eggs."
+      width="350"
+      height="567"
+      loading="eager"
+    />
+    <Image
+      src={home4}
+      alt="A bird sitting on a nest of eggs."
+      width="350"
+      height="567"
+      loading="eager"
+    />
+  </aside>
+</Layout>
+
+<style>
+  p {
+  }
+  aside {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    scroll-snap-align: center;
+  }
+
+  .button-wrapper {
+    margin-top: 3rem;
+  }
+</style>

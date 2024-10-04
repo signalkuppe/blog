@@ -1,0 +1,304 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import RadioButton from "../components/RadioButton.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <script>
+      // @ts-nocheck
+
+      const THEME_STORAGE_KEY = "theme";
+      const THEME_OWNER = document.documentElement;
+
+      // Function to set theme
+      function setTheme(theme) {
+        if (theme === "auto") {
+          delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
+        } else {
+          THEME_OWNER.dataset[THEME_STORAGE_KEY] = theme;
+        }
+      }
+
+      // Immediately set theme from localStorage
+      const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+      setTheme(cachedTheme || "auto");
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const themePicker = document.getElementById("theme-picker");
+        if (!themePicker) return;
+
+        const initialTheme = cachedTheme ?? "auto";
+        themePicker.querySelector("input[checked]").removeAttribute("checked");
+        themePicker
+          .querySelector(`input[value="${initialTheme}"]`)
+          .setAttribute("checked", "");
+
+        themePicker.addEventListener("change", (e) => {
+          const theme = e.target.value;
+          setTheme(theme);
+          if (theme === "auto") {
+            localStorage.removeItem(THEME_STORAGE_KEY);
+          } else {
+            localStorage.setItem(THEME_STORAGE_KEY, theme);
+          }
+        });
+      });
+    </script>
+
+    <style>
+      html {
+        --dark: black;
+        --light: white;
+        --accent: crimson;
+      }
+
+      html[data-theme="light"] {
+        color-scheme: light;
+        --background: var(--light);
+        --color: var(--dark);
+      }
+
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --background: var(--dark);
+        --color: var(--light);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        html:not([data-theme]) {
+          --background: var(--dark);
+          --color: var(--light);
+          color-scheme: dark;
+        }
+      }
+    </style>
+
+    <noscript>
+      <style>
+        #theme-picker {
+          display: none;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <a href="#main" class="visually-hidden"
+      >Vai al contenuto principale della pagina</a
+    >
+    <Header />
+    <main id="main" class="main">
+      <slot />
+    </main>
+    <Footer />
+    <form id="theme-picker">
+      <fieldset>
+        <legend>Tema</legend>
+        <div>
+          <RadioButton name="theme" value="auto" checked>Automatico</RadioButton
+          >
+          <RadioButton name="theme" value="light">Chiaro</RadioButton>
+          <RadioButton name="theme" value="dark">Scuro</RadioButton>
+        </div>
+      </fieldset>
+    </form>
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: "Atkinson Hyperlegible";
+    src: url("/fonts/Atkinson-Hyperlegible-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Atkinson Hyperlegible";
+    src: url("/fonts/Atkinson-Hyperlegible-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    accent-color: rgb(48, 121, 237);
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    text-wrap: pretty;
+    max-width: 60ch;
+  }
+
+  p,
+  ul {
+    margin-bottom: 2rem;
+  }
+
+  a {
+    color: currentColor;
+    text-decoration-thickness: 0.15em;
+    text-underline-offset: 0.25em;
+  }
+
+  html {
+    height: 100%;
+    font-size: 100%;
+    scrollbar-gutter: stable;
+  }
+
+  @media screen and (min-width: 60rem) {
+    html {
+      font-size: 125%;
+    }
+  }
+
+  @media screen and (min-width: 80rem) {
+    html {
+      font-size: 150%;
+    }
+  }
+
+  body {
+    font-family:
+      "Atkinson Hyperlegible",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    line-height: 1.5;
+    margin: 0;
+    padding: 1.5rem;
+    height: 100%;
+    background: var(--background);
+    color: var(--color);
+    max-width: 80rem;
+    margin: 0 auto;
+  }
+
+  main {
+    padding-top: 4rem;
+    padding-bottom: 8rem;
+  }
+
+  #theme-picker {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+  }
+
+  #theme-picker legend {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  #theme-picker fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #theme-picker div {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    top: auto;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE 6/7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    width: 1px;
+    height: 1px;
+    white-space: nowrap;
+  }
+
+  .btn {
+    border: 2px solid currentColor;
+    box-shadow: currentColor 5px 5px 0px 0px;
+    padding: 1.1rem 1rem 1rem 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 1;
+    font-size: 90%;
+    font-weight: bold;
+  }
+
+  .btn:active {
+    box-shadow: currentColor 3px 3px 0px 0px;
+  }
+
+  .hide-scrollbars {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+  .hide-scrollbars::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+</style>
