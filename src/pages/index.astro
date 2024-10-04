@@ -11,16 +11,15 @@ import Layout from "../layouts/Layout.astro";
   <h1>Piacere, Matteo.<br /> Benvenuto nel mio blog.</h1>
 
   <p class="lead">
-    Sono un appassionato di montagna. <br />Questo blog è un diario di tutte le
-    mie uscite, spero possa esservi utile per scoprire nuovi itinerari. Vivo a
-    Concenedo, dove ho posizionato una stazione meteo.<br /> In <a
-      href="/meteo-concenedo">questa pagina</a
-    > trovate i dati in diretta.
+    Sono un appassionato di montagna. <br />Questo sito vuole essere un diario
+    di tutte le mie uscite, spero possa esservi utile per scoprire nuovi
+    itinerari. Vivo a Concenedo, dove ho posizionato una stazione meteo, in
+    <a href="/meteo-concenedo">questa pagina</a> trovate i dati in diretta.
   </p>
   <p class="button-wrapper">
     <a href="/matteo" class="btn">Qualcosa in più su di me</a>
   </p>
-  <aside class="hide-scrollbars">
+  <aside class="hide-scrollbars" id="js-image-carousel">
     <Image
       src={home1}
       alt="A bird sitting on a nest of eggs."
@@ -53,7 +52,9 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-  p {
+  .lead {
+    text-wrap: pretty;
+    max-width: 50ch;
   }
   aside {
     overflow-x: auto;

@@ -1,4 +1,6 @@
 ---
+import RadioButton from "../components/RadioButton.astro";
+import Signature from "./Signature.astro";
 const url = Astro.url.pathname;
 const links = [
   {
@@ -54,11 +56,35 @@ const links = [
       }
     </ul>
   </nav>
+  <form id="js-theme-picker">
+    <fieldset>
+      <legend>Tema</legend>
+      <div class="radios">
+        <RadioButton name="theme" value="auto" checked>Automatico</RadioButton>
+        <RadioButton name="theme" value="light">Chiaro</RadioButton>
+        <RadioButton name="theme" value="dark">Scuro</RadioButton>
+      </div>
+    </fieldset>
+  </form>
+
+  <p class="copyright">
+    2006 - <span id="js-year"></span>
+    <b>signalkuppe.com.</b>
+    <br />Contenuti pubblicati sotto licenza <a
+      href=""
+      rel="noreferrer"
+      href="https://choosealicense.com/licenses/agpl-3.0/"
+    >
+      Gnu AGPLv3.</a
+    ><br />
+    <a href="#top" class="go-top">Torna in cima</a>
+  </p>
+
+  <Signature class="signature" />
 </footer>
+<!--css and scripts for theme switcher in layout's head tag to avoid fuoc -->
 
 <style>
-  footer {
-  }
   ul {
     list-style: none;
     margin: 0;
@@ -72,8 +98,39 @@ const links = [
   }
 
   ul p {
-    color: light-dark(#666, #666);
+    color: var(--colorLight);
     font-size: 0.85rem;
     margin: 0;
   }
+
+  form {
+    padding: 4rem 0;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  legend {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .radios {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .copyright {
+    margin-bottom: 3rem;
+    font-size: 0.85rem;
+  }
+
+  .signature {
+    transform: translateX(-1rem);
+  }
 </style>
+
+<script>
+  document.getElementById("js-year").innerText = `${new Date().getFullYear()}`;
+</script>
