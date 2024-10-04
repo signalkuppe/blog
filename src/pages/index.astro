@@ -32,21 +32,21 @@ import Layout from "../layouts/Layout.astro";
       alt="A bird sitting on a nest of eggs."
       width="350"
       height="567"
-      loading="eager"
+      loading="lazy"
     />
     <Image
       src={home3}
       alt="A bird sitting on a nest of eggs."
       width="350"
       height="567"
-      loading="eager"
+      loading="lazy"
     />
     <Image
       src={home4}
       alt="A bird sitting on a nest of eggs."
       width="350"
       height="567"
-      loading="eager"
+      loading="lazy"
     />
   </aside>
 </Layout>
@@ -70,6 +70,7 @@ import Layout from "../layouts/Layout.astro";
     width: 100%;
     height: auto;
     scroll-snap-align: center;
+    background: var(--colorLight);
   }
 
   .button-wrapper {
