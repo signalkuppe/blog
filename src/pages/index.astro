@@ -40,9 +40,7 @@ const images = [
   <aside class="hide-scrollbars">
     {
       images.map((image) => (
-        <div>
-          <Image src={image.src} alt={image.alt} width="350" height="567" />
-        </div>
+        <Image src={image.src} alt={image.alt} width="350" height="567" />
       ))
     }
   </aside>
@@ -64,16 +62,13 @@ const images = [
     -webkit-overflow-scrolling: touch;
   }
 
-  aside div {
+  aside img {
     height: 100%;
+    display: block;
     scroll-snap-align: center;
-    background: var(--colorLight);
+    background: var(--contrastBackground);
     aspect-ratio: 350/567;
     flex-shrink: 0;
-  }
-
-  img {
-    display: block;
   }
 
   .button-wrapper {

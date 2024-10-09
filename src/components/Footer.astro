@@ -1,5 +1,5 @@
 ---
-import RadioButton from "../components/RadioButton.astro";
+import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher.astro";
 import Signature from "./Signature.astro";
 const url = Astro.url.pathname;
 const links = [
@@ -56,16 +56,8 @@ const links = [
       }
     </ul>
   </nav>
-  <form id="js-theme-picker">
-    <fieldset>
-      <legend>Tema</legend>
-      <div class="radios">
-        <RadioButton name="theme" value="auto" checked>Automatico</RadioButton>
-        <RadioButton name="theme" value="light">Chiaro</RadioButton>
-        <RadioButton name="theme" value="dark">Scuro</RadioButton>
-      </div>
-    </fieldset>
-  </form>
+
+  <ThemeSwitcher class="theme-switcher" />
 
   <p class="copyright">
     2006 - <span id="js-year"></span>
@@ -83,7 +75,6 @@ const links = [
   <Signature class="signature" />
 </footer>
 <!--css and scripts for theme switcher in layout's head tag to avoid fuoc -->
-
 <style>
   ul {
     list-style: none;
@@ -103,22 +94,8 @@ const links = [
     margin: 0;
   }
 
-  form {
+  .theme-switcher {
     padding: 4rem 0;
-  }
-
-  fieldset {
-    border: none;
-    padding: 0;
-  }
-
-  legend {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  .radios {
-    display: flex;
-    gap: 0.5rem;
   }
 
   .copyright {
@@ -126,8 +103,13 @@ const links = [
     font-size: 0.85rem;
   }
 
+  .go-top {
+    display: block;
+    margin-top: 1rem;
+  }
   .signature {
     transform: translateX(-1rem);
+    width: 150px;
   }
 </style>
 
