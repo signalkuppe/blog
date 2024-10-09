@@ -5,6 +5,24 @@ import home2 from "../images/home2.png";
 import home3 from "../images/home3.png";
 import home4 from "../images/home4.png";
 import Layout from "../layouts/Layout.astro";
+const images = [
+  {
+    src: home1,
+    alt: "Sulla cima del Rosso di Ribbia",
+  },
+  {
+    src: home2,
+    alt: "In cima al Piz Lagrev",
+  },
+  {
+    src: home3,
+    alt: "Notte in tenda alla Svalbard",
+  },
+  {
+    src: home4,
+    alt: "Al traguarrdo della Lavredo Ultra Trail",
+  },
+];
 ---
 
 <Layout title="Pagina iniziale - Signalkuppe" description="test">
@@ -19,35 +37,14 @@ import Layout from "../layouts/Layout.astro";
   <p class="button-wrapper">
     <a href="/matteo" class="btn">Qualcosa in più su di me</a>
   </p>
-  <aside class="hide-scrollbars" id="js-image-carousel">
-    <Image
-      src={home1}
-      alt="A bird sitting on a nest of eggs."
-      width="350"
-      height="567"
-      loading="eager"
-    />
-    <Image
-      src={home2}
-      alt="A bird sitting on a nest of eggs."
-      width="350"
-      height="567"
-      loading="lazy"
-    />
-    <Image
-      src={home3}
-      alt="A bird sitting on a nest of eggs."
-      width="350"
-      height="567"
-      loading="lazy"
-    />
-    <Image
-      src={home4}
-      alt="A bird sitting on a nest of eggs."
-      width="350"
-      height="567"
-      loading="lazy"
-    />
+  <aside class="hide-scrollbars">
+    {
+      images.map((image) => (
+        <div>
+          <Image src={image.src} alt={image.alt} width="350" height="567" />
+        </div>
+      ))
+    }
   </aside>
 </Layout>
 
@@ -60,19 +57,23 @@ import Layout from "../layouts/Layout.astro";
     overflow-x: auto;
     white-space: nowrap;
     display: flex;
+    flex-wrap: nowrap;
     gap: 1.5rem;
     margin-top: 5rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
 
-  img {
-    width: 100%;
-    height: auto;
+  aside div {
+    height: 100%;
     scroll-snap-align: center;
     background: var(--colorLight);
     aspect-ratio: 350/567;
-    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  img {
+    display: block;
   }
 
   .button-wrapper {
