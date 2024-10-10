@@ -42,15 +42,18 @@ const links = [
     <h2>Link utili</h2>
     <ul role="list">
       {
-        links.map((link) => (
+        links.map((link, i) => (
           <li>
             <a
               href={link.href}
               aria-current={url === link.href ? "page" : false}
+              aria-describedby={`footer-link-${i + 1}`}
             >
               {link.text}
             </a>
-            {link.description && <p>{link.description}</p>}
+            {link.description && (
+              <p id={`footer-link-${i + 1}`}>{link.description}</p>
+            )}
           </li>
         ))
       }
