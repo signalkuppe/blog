@@ -7,16 +7,16 @@ import home4 from "../images/home4.png";
 import Layout from "../layouts/Layout.astro";
 const images = [
   {
+    src: home3,
+    alt: "Notte in tenda alla Svalbard",
+  },
+  {
     src: home1,
     alt: "Sulla cima del Rosso di Ribbia",
   },
   {
     src: home2,
     alt: "In cima al Piz Lagrev",
-  },
-  {
-    src: home3,
-    alt: "Notte in tenda alla Svalbard",
   },
   {
     src: home4,
@@ -29,9 +29,10 @@ const images = [
   <h1>Piacere, Matteo.<br /> Benvenuto nel mio blog.</h1>
 
   <p class="lead">
-    Sono un appassionato di montagna. <br />Questo sito vuole essere un diario
-    di tutte le mie uscite, spero possa esservi utile per scoprire nuovi
-    itinerari. Vivo a Concenedo, dove ho posizionato una stazione meteo, in
+    Sono un appassionato di montagna. <br />Questo sito vuole essere un <a
+      href="/blog">diario di tutte le mie uscite,</a
+    > spero possa esservi utile per scoprire nuovi itinerari. Vivo a Concenedo, dove
+    ho posizionato una stazione meteo, in
     <a href="/meteo-concenedo">questa pagina</a> trovate i dati in diretta.
   </p>
   <p class="button-wrapper">
@@ -39,8 +40,14 @@ const images = [
   </p>
   <aside class="hide-scrollbars">
     {
-      images.map((image) => (
-        <Image src={image.src} alt={image.alt} width="350" height="567" />
+      images.map((image, i) => (
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width="350"
+          height="567"
+          loading={i === 0 ? "eager" : "lazy"}
+        />
       ))
     }
   </aside>

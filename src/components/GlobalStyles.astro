@@ -3,19 +3,24 @@
     font-family: "Atkinson Hyperlegible";
     src: url("/fonts/Atkinson-Hyperlegible-Regular.woff2") format("woff2");
     font-weight: 400;
-    font-display: swap;
+    font-display: fallback;
   }
 
   @font-face {
     font-family: "Atkinson Hyperlegible";
     src: url("/fonts/Atkinson-Hyperlegible-Bold.woff2") format("woff2");
     font-weight: 700;
-    font-display: swap;
+    font-display: fallback;
   }
 
   * {
     box-sizing: border-box;
     margin: 0;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
   }
 
   img,
@@ -76,6 +81,10 @@
     color: currentColor;
     text-decoration-thickness: 0.15em;
     text-underline-offset: 0.25em;
+  }
+
+  a:focus-visible {
+    text-decoration: none;
   }
 
   html {
