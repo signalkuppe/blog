@@ -1,7 +1,5 @@
 ---
-import CssVariables from "../components/CssVariables.astro";
 import GlobalStyles from "../components/GlobalStyles.astro";
-import CssUtilities from "../components/CssUtilities.astro";
 import ThemeSwitcherScript from "../components/ThemeSwitcher/ThemeSwitcherScript.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -23,10 +21,7 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <!-- need to be inline in the head to avoid FUOC -->
-    <CssVariables />
     <GlobalStyles />
-    <CssUtilities />
     <ThemeSwitcherScript />
   </head>
   <body>

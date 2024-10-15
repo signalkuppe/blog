@@ -1,6 +1,6 @@
 ---
-import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher.astro";
 import Signature from "./Signature.astro";
+import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher.astro";
 const url = Astro.url.pathname;
 const links = [
   {
@@ -73,9 +73,8 @@ const links = [
       Gnu AGPLv3.</a
     ><br />
     <a href="#top" class="go-top">Torna in cima</a>
+    <Signature aria-hidden="true" class="signature" />
   </p>
-
-  <Signature class="signature" />
 </footer>
 <!--css and scripts for theme switcher in layout's head tag to avoid fuoc -->
 <style>
@@ -111,8 +110,9 @@ const links = [
     margin-top: 1rem;
   }
   .signature {
-    transform: translateX(-1rem);
-    width: 150px;
+    width: 120px;
+    margin-top: 2rem;
+    margin-left: -0.5rem;
   }
 </style>
 

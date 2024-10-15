@@ -1,6 +1,6 @@
 ---
-import Logo from "../components/Logo.astro";
-import Logo2 from "./Logo2.astro";
+import { Image } from "astro:assets";
+import image from "../images/signalkuppe-main.png";
 const url = Astro.url.pathname;
 const links = [
   { href: "/blog", text: "Uscite" },
@@ -11,8 +11,15 @@ const links = [
 ---
 
 <header>
-  <a href="/" class="name" aria-label="Pagina principale"
-    ><Logo height="60" aria-hidden="true" /></a
+  <a href="/" class="back-home-link" aria-label="Pagina principale">
+    <Image
+      src={image}
+      alt=""
+      width="200"
+      height="200"
+      loading="eager"
+      aria-hidden="true"
+    /></a
   >
 
   <nav aria-label="Sito">
@@ -48,13 +55,16 @@ const links = [
     }
   }
 
-  .name {
-    font-weight: bold;
-    color: currentColor;
+  .back-home-link {
     text-decoration: none;
-    line-height: 1;
-    font-size: 1.5rem;
     display: block;
+  }
+
+  .back-home-link img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   ul {
