@@ -27,54 +27,53 @@ const images = [
 
 <Layout title="Pagina iniziale - Signalkuppe" description="test">
   <h1>Piacere Matteo <span aria-hidden="true">👋</span></h1>
-
   <p class="lead">
-    Sono un appassionato di montagna. <br />Questo sito vuole essere un <a
+    Sono un appassionato di montagna. Questo sito vuole essere un <a
       href="/blog">diario di tutte le mie uscite,</a
-    ><br class="new-line" /> spero possa esservi utile per scoprire nuovi itinerari.
-    <br class="new-line" />Vivo a Concenedo, dove ho posizionato una stazione
-    meteo, <br class="new-line" />in
-    <a href="/meteo-concenedo" aria-label="Dati meteo in diretta da Concenedo"
-      >questa pagina</a
+    > spero possa esservi utile per scoprire nuovi itinerari. Vivo a Concenedo, dove
+    ho posizionato una stazione meteo, in
+    <a
+      href="/meteo-concenedo"
+      aria-description="Dati meteo in diretta da Concenedo">questa pagina</a
     > trovate i dati in diretta.
   </p>
-  <p class="button-wrapper">
+  <p class="lead-button-wrapper">
     <a href="/matteo" class="btn">Qualcosa in più su di me</a>
   </p>
-  <aside class="hide-scrollbars">
-    {
-      images.map((image, i) => (
-        <Image
-          src={image.src}
-          alt={image.alt}
-          width="350"
-          height="567"
-          loading={i === 0 ? "eager" : "lazy"}
-        />
-      ))
-    }
+  <aside
+    class="hide-scrollbars"
+    id="js-home-carousel"
+    aria-labelledby="carousel-heading"
+  >
+    <h2 id="carousel-heading" class="visually-hidden">Alcune mie foto</h2>
+    <ul class="hide-scrollbars images-list" role="list">
+      {
+        images.map((image, i) => (
+          <li>
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width="350"
+              height="567"
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          </li>
+        ))
+      }
+    </ul>
   </aside>
 </Layout>
 
 <style>
   .lead {
     text-wrap: pretty;
-    max-width: 50ch;
-    container-name: greeting;
-    container-type: inline-size;
+    max-width: 65ch;
   }
 
-  .new-line {
-    display: none;
-  }
-
-  @container hero-banner (width > 30rem) {
-    .new-line {
-      display: inline-block;
-    }
-  }
-
-  aside {
+  .images-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     overflow-x: auto;
     white-space: nowrap;
     display: flex;
@@ -85,16 +84,19 @@ const images = [
     -webkit-overflow-scrolling: touch;
   }
 
-  aside img {
+  .images-list li {
+    flex-shrink: 0;
+  }
+
+  .images-list img {
     height: 100%;
     display: block;
     scroll-snap-align: center;
     background: var(--contrastBackground);
     aspect-ratio: 350/567;
-    flex-shrink: 0;
   }
 
-  .button-wrapper {
+  .lead-button-wrapper {
     margin-top: 3rem;
   }
 
