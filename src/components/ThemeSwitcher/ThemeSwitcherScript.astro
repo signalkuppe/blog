@@ -15,7 +15,7 @@
   const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
   setTheme(cachedTheme || "auto");
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     const themePicker = document.getElementById("js-theme-picker");
     if (!themePicker) return;
 
