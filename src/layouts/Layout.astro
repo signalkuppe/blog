@@ -1,4 +1,5 @@
 ---
+const url = Astro.url;
 import GlobalStyles from "../components/GlobalStyles.astro";
 import ThemeSwitcherScript from "../components/ThemeSwitcher/ThemeSwitcherScript.astro";
 import Header from "../components/Header.astro";
@@ -7,9 +8,10 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title: string;
   description: string;
+  ogImage: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogImage } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,6 +22,21 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Signalkuppe" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="og:image" content={ogImage} />
+    <meta name="og:url" content={url} />
     <title>{title}</title>
     <GlobalStyles />
     <ThemeSwitcherScript />
