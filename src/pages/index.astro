@@ -44,13 +44,9 @@ const images = [
   <p class="lead-button-wrapper">
     <a href="/matteo" class="btn">Qualcosa in più su di me</a>
   </p>
-  <aside
-    class="hide-scrollbars"
-    id="js-home-carousel"
-    aria-labelledby="carousel-heading"
-  >
+  <aside class="hide-scrollbars images" aria-labelledby="carousel-heading">
     <h2 id="carousel-heading" class="visually-hidden">Alcune mie foto</h2>
-    <ul class="hide-scrollbars images-list" role="list">
+    <ul class="hide-scrollbars images-list" role="list" id="js-images">
       {
         images.map((image, i) => (
           <li>
@@ -105,8 +101,16 @@ const images = [
     margin-top: 3rem;
   }
 
-  .new-line {
-    display: block;
+  :global(.scroll-hint) {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  :global(.scroll-hint svg) {
+    width: 1rem;
+    height: 1rem;
   }
 
   @keyframes handAnimation {
@@ -146,3 +150,42 @@ const images = [
     }
   }
 </style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const imageslist = document.getElementById("js-images");
+    const hint = document.createElement("p");
+    const arrowSvg = `<svg 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor" 
+                        stroke-width="2" 
+                        fill="none" 
+                        stroke-linecap="round" 
+                        stroke-linejoin="round"
+                        aria-hidden="true">
+                        <polyline points="10 9 15 4 20 9"></polyline>
+                        <path d="M4 20h7a4 4 0 0 0 4-4V4"></path>
+                      </svg>`;
+    hint.innerHTML = `Scorri per altre foto ${arrowSvg}`;
+    hint.setAttribute("class", "scroll-hint");
+    hint.setAttribute("aria-hidden", "true");
+    function checkOverflow() {
+      const canscroll = imageslist.clientWidth < imageslist.scrollWidth;
+
+      if (canscroll) {
+        imageslist.parentNode.append(hint);
+      } else {
+        if (document.querySelector(".scroll-hint")) {
+          imageslist.parentNode.removeChild(hint);
+        }
+      }
+    }
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      checkOverflow();
+    });
+
+    checkOverflow();
+    resizeObserver.observe(imageslist);
+  });
+</script>

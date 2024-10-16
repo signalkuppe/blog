@@ -2,6 +2,7 @@
   // @ts-nocheck
   const THEME_STORAGE_KEY = "theme";
   const THEME_OWNER = document.documentElement;
+  let cachedTheme;
 
   function setTheme(theme) {
     if (theme === "auto") {
@@ -11,9 +12,13 @@
     }
   }
 
-  // Immediately set theme from localStorage
-  const cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-  setTheme(cachedTheme || "auto");
+  function loadTheme() {
+    // Immediately set theme from localStorage
+    cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    setTheme(cachedTheme || "auto");
+  }
+
+  loadTheme();
 
   document.addEventListener("astro:page-load", () => {
     const themePicker = document.getElementById("js-theme-picker");
@@ -35,6 +40,8 @@
       }
     });
   });
+
+  document.addEventListener("astro:after-swap", loadTheme);
 </script>
 <noscript>
   <style>
