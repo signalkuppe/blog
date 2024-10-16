@@ -1,9 +1,11 @@
 ---
-const url = Astro.url;
+import { ViewTransitions } from "astro:transitions";
 import GlobalStyles from "../components/GlobalStyles.astro";
 import ThemeSwitcherScript from "../components/ThemeSwitcher/ThemeSwitcherScript.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+
+const url = Astro.url.pathname;
 
 interface Props {
   title: string;
@@ -36,10 +38,11 @@ const { title, description, ogImage } = Astro.props;
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content={ogImage} />
     <meta name="og:image" content={ogImage} />
-    <meta name="og:url" content={url} />
+    <meta name="og:url" content={`https://www.signalkuppe.com${url}`} />
     <title>{title}</title>
     <GlobalStyles />
     <ThemeSwitcherScript />
+    <ViewTransitions />
   </head>
   <body>
     <a href="#main" class="visually-hidden skip-link"
