@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import image from "../images/signalkuppe-main.png";
+import MenuIcon from "../icons/MenuIcon.astro";
+import SearchIcon from "../icons/SearchIcon.astro";
+import avatar from "../images/matteo-leoni-signalkuppe.png";
 const url = Astro.url.pathname;
 const links = [
   { href: "/blog", text: "Uscite" },
@@ -13,7 +15,7 @@ const links = [
 <header>
   <a href="/" class="back-home-link" aria-label="Pagina principale">
     <Image
-      src={image}
+      src={avatar}
       alt=""
       width="200"
       height="200"
@@ -21,7 +23,16 @@ const links = [
       aria-hidden="true"
     /></a
   >
+  <div class="header-right">
+    <form role="search">
+      <SearchIcon />
+      <input type="text" />
+    </form>
 
+    <MenuIcon />
+  </div>
+
+  <!-- 
   <nav aria-label="Sito">
     <ul role="list">
       {
@@ -37,14 +48,19 @@ const links = [
         ))
       }
     </ul>
-  </nav>
+  </nav>-->
 </header>
-
 <style>
   header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header-right {
+    display: flex;
     align-items: center;
     gap: 1rem;
   }
@@ -84,5 +100,26 @@ const links = [
 
   a[aria-current="page"] {
     font-weight: bold;
+  }
+
+  form {
+    position: relative;
+  }
+
+  form svg {
+    position: absolute;
+    left: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  form input {
+    padding: 0.25rem;
+    text-indent: 2rem;
+    display: block;
+  }
+
+  svg {
+    height: 1rem;
   }
 </style>

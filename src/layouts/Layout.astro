@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import GlobalStyles from "../components/GlobalStyles.astro";
 import ThemeSwitcherScript from "../components/ThemeSwitcher/ThemeSwitcherScript.astro";
 import Header from "../components/Header.astro";
@@ -42,7 +41,6 @@ const { title, description, ogImage } = Astro.props;
     <title>{title}</title>
     <GlobalStyles />
     <ThemeSwitcherScript />
-    <ViewTransitions />
   </head>
   <body>
     <a href="#main" class="visually-hidden skip-link"
@@ -65,7 +63,9 @@ const { title, description, ogImage } = Astro.props;
   }
   main {
     margin-top: 3rem;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--outlines);
+    padding-bottom: 6rem;
   }
 
   .skip-link:focus-visible {

@@ -1,5 +1,4 @@
 <script is:inline>
-  // @ts-nocheck
   const THEME_STORAGE_KEY = "theme";
   const THEME_OWNER = document.documentElement;
   let cachedTheme;
@@ -20,7 +19,7 @@
 
   loadTheme();
 
-  document.addEventListener("astro:page-load", () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const themePicker = document.getElementById("js-theme-picker");
     if (!themePicker) return;
 
@@ -40,8 +39,6 @@
       }
     });
   });
-
-  document.addEventListener("astro:after-swap", loadTheme);
 </script>
 <noscript>
   <style>

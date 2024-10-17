@@ -1,0 +1,127 @@
+---
+import { union } from "underscore";
+import { contentfulClient } from "../../lib/contentful";
+import Layout from "../../layouts/Layout.astro";
+export async function getStaticPaths({ paginate }) {
+  const query = {
+    content_type: "post",
+    include: 1,
+    order: "-fields.date",
+    limit: 1,
+    skip: 0,
+  };
+  const perIteration = 20;
+  let iteration = 1;
+  let entries;
+  query.limit = perIteration;
+  query.skip = 0;
+  let chunk = await contentfulClient.getEntries(query);
+  entries = chunk.items;
+  while (chunk.total > query.limit * iteration) {
+    query.skip = query.limit * iteration;
+    chunk = await contentfulClient.getEntries(query);
+    entries = union(entries, chunk.items);
+    iteration++;
+  }
+  return paginate(entries, { pageSize: 20 });
+}
+
+interface Props {
+  page: any;
+}
+
+const { page } = Astro.props;
+---
+
+<Layout
+  title="Signalkuppe - Parole oltre i 4000m"
+  description="Blog personale di Matteo Leoni"
+  ogImage="/og-image.png"
+>
+  <h1>Uscite</h1>
+  <ul role="list">
+    {
+      page.data.map((post) => (
+        <li>
+          <div class="post">
+            <h2>
+              <a href={`/${post.fields.slug}`}>{post.fields.title}</a>
+            </h2>
+            <img
+              src={`${post.fields.cover.fields.file.url}?w=800&h=533&fit=thumb&q=90&fm=avif`}
+              alt=""
+              width="300"
+              height="200"
+            />
+            <div>
+              <p>{post.fields.description}</p>
+            </div>
+            <time
+              datetime={new Date(post.fields.date).toISOString().slice(0, 19)}
+            >
+              {new Date(post.fields.date).toLocaleDateString("it-IT")}
+            </time>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
+
+<style>
+  h1 {
+    margin-bottom: 3rem;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  li {
+    border-bottom: 1px solid rgba(var(--color), 0.2);
+    padding-bottom: 1.5rem;
+  }
+
+  .post {
+    display: flex;
+    flex-direction: column;
+    max-width: 55ch;
+  }
+
+  .post time {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .post h2 {
+    margin-bottom: 1rem;
+  }
+
+  .post h2 a {
+    text-decoration-thickness: 0.1em;
+  }
+
+  .post h2 a:hover {
+    text-decoration: underline;
+  }
+
+  .post img {
+    display: block;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 100%;
+  }
+
+  .post p {
+    max-width: 40ch;
+    margin: 0;
+    text-wrap: pretty;
+    line-height: 1.4;
+  }
+</style>

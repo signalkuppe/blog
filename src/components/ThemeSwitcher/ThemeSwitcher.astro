@@ -1,15 +1,23 @@
 ---
 const props = Astro.props;
-import RadioButton from "../../components/RadioButton.astro";
 ---
 
 <form id="js-theme-picker" {...props}>
   <fieldset>
     <legend>Tema</legend>
     <div class="radios">
-      <RadioButton name="theme" value="auto" checked>Automatico</RadioButton>
-      <RadioButton name="theme" value="light">Chiaro</RadioButton>
-      <RadioButton name="theme" value="dark">Scuro</RadioButton>
+      <label>
+        <input name="theme" type="radio" value="auto" checked />
+        <span>Automatico</span>
+      </label>
+      <label>
+        <input name="theme" type="radio" value="light" />
+        <span>Chiaro</span>
+      </label>
+      <label>
+        <input name="theme" type="radio" value="dark" />
+        <span>Scuro</span>
+      </label>
     </div>
   </fieldset>
 </form>
