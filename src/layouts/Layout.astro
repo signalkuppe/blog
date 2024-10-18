@@ -47,11 +47,11 @@ const { title, description, ogImage } = Astro.props;
       >Vai al contenuto principale</a
     >
     <div class="wrapper">
-      <Header />
+      <Header id="header" />
       <main id="main" class="main" tabindex="-1">
         <slot />
       </main>
-      <Footer />
+      <Footer id="footer" />
     </div>
   </body>
 </html>

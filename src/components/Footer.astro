@@ -2,6 +2,7 @@
 import Signature from "./Signature.astro";
 import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher.astro";
 const url = Astro.url.pathname;
+const props = Astro.props;
 const links = [
   {
     href: "/matteo",
@@ -37,7 +38,7 @@ const links = [
 ];
 ---
 
-<footer>
+<footer {...props}>
   <nav aria-labelledby="footer-links">
     <h2 id="footer-links">Link utili</h2>
     <ul role="list">
