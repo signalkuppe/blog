@@ -24,7 +24,6 @@ const { title, description, ogImage } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Signalkuppe" />
@@ -38,7 +37,22 @@ const { title, description, ogImage } = Astro.props;
     <meta name="twitter:image" content={ogImage} />
     <meta name="og:image" content={ogImage} />
     <meta name="og:url" content={`https://www.signalkuppe.com${url}`} />
+    <link
+      rel="preload"
+      href="/fonts/Atkinson-Hyperlegible-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Atkinson-Hyperlegible-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <title>{title}</title>
+    <slot name="head" />
     <GlobalStyles />
     <ThemeSwitcherScript />
   </head>
@@ -53,27 +67,26 @@ const { title, description, ogImage } = Astro.props;
       </main>
       <Footer id="footer" />
     </div>
-  </body>
-</html>
-<style>
-  .wrapper {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 1.5rem 1.5rem 6rem 1.5rem;
-  }
-  main {
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid var(--outlines);
-    padding-bottom: 6rem;
-  }
+  </body><style>
+    .wrapper {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 6rem 1.5rem;
+    }
+    main {
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--outlines);
+      padding-bottom: 6rem;
+    }
 
-  .skip-link:focus-visible {
-    display: block;
-    padding: 0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    background: var(--background);
-  }
-</style>
+    .skip-link:focus-visible {
+      display: block;
+      padding: 0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      background: var(--background);
+    }
+  </style>
+</html>

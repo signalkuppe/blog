@@ -6,7 +6,7 @@ const query = {
   content_type: "post",
   include: 1,
   order: "-fields.date",
-  limit: 5,
+  limit: 6,
   skip: 0,
 };
 const { items } = await contentfulClient.getEntries(query);
@@ -17,6 +17,9 @@ const { items } = await contentfulClient.getEntries(query);
   description="Blog personale di Matteo Leoni"
   ogImage="/og-image.png"
 >
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
+  </Fragment>
   <h1>Piacere Matteo <span aria-hidden="true">👋</span></h1>
   <p class="lead">
     Sono un appassionato di montagna. Questo sito vuole essere un <a
@@ -29,7 +32,9 @@ const { items } = await contentfulClient.getEntries(query);
     > trovate i dati in diretta.
   </p>
 
-  <a href="/matteo" class="btn lead-button">Conosciamoci meglio</a>
+  <a href="/matteo" class="btn lead-button" data-astro-prefetch
+    >Conosciamoci meglio</a
+  >
   <h2>Ultime uscite</h2>
   <ul role="list">
     {
@@ -65,7 +70,7 @@ const { items } = await contentfulClient.getEntries(query);
       ))
     }
   </ul>
-  <a href="/blog">Tutte le uscite</a>
+  <a href="/blog" class="read-more-link">Tutte le uscite</a>
 </Layout>
 
 <style>
@@ -83,6 +88,86 @@ const { items } = await contentfulClient.getEntries(query);
     margin-top: 1rem;
     display: inline-block;
     margin-bottom: 2rem;
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+    border-top: 1px solid var(--outlines);
+    padding-top: 2rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2rem;
+    list-style: none;
+  }
+
+  li {
+    border-bottom: 1px solid var(--outlines);
+    padding-bottom: 1.5rem;
+    break-inside: avoid-column;
+    margin-bottom: 1.5rem;
+  }
+
+  @media screen and (width < 80rem) {
+    li {
+      width: fit-content;
+    }
+  }
+
+  @media screen and (width >= 80rem) {
+    ul {
+      gap: 0;
+      columns: 2;
+      gap: 3rem;
+    }
+  }
+
+  .read-more-link {
+    display: block;
+    text-align: right;
+  }
+
+  article {
+    display: flex;
+    gap: 1rem;
+  }
+
+  article .article-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  article h3 {
+    font-size: 1rem;
+  }
+
+  article a:hover {
+    text-decoration: underline;
+  }
+  article img {
+    border-radius: 5px;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+  }
+
+  article time {
+    font-size: 0.75rem;
+  }
+
+  article p {
+    font-size: 0.85rem;
+    max-width: 50ch;
+    text-wrap: balance;
+    margin-top: 0.25rem;
+  }
+
+  article .category {
+    font-size: 0.75rem;
+    display: inline;
+    color: var(--textAccent);
   }
 
   @keyframes handAnimation {
@@ -120,76 +205,5 @@ const { items } = await contentfulClient.getEntries(query);
       animation-delay: 1s;
       transform-origin: 70% 70%;
     }
-  }
-
-  h2 {
-    margin-bottom: 1.5rem;
-    border-top: 1px solid var(--outlines);
-    padding-top: 2rem;
-  }
-
-  ul {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 4rem;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  li {
-    border-bottom: 1px solid var(--outlines);
-    padding-bottom: 1.5rem;
-    width: fit-content;
-  }
-
-  li:last-child {
-    border-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  article {
-    display: flex;
-    gap: 1rem;
-  }
-
-  article .article-right {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-
-  article h3 {
-    font-size: 1rem;
-  }
-
-  article a {
-  }
-  article a:hover {
-    text-decoration: underline;
-  }
-  article img {
-    border-radius: 5px;
-    aspect-ratio: 1 / 1;
-
-    flex-shrink: 0;
-  }
-
-  article time {
-    font-size: 0.75rem;
-  }
-
-  article p {
-    font-size: 0.85rem;
-    max-width: 50ch;
-    text-wrap: balance;
-    margin-top: 0.25rem;
-  }
-
-  article .category {
-    font-size: 0.75rem;
-    display: inline;
-    color: var(--textAccent);
   }
 </style>

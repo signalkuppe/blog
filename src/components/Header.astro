@@ -7,15 +7,20 @@ import avatar from "../images/matteo-leoni-signalkuppe.png";
 const props = Astro.props;
 const url = Astro.url.pathname;
 const links = [
-  { href: "/blog", text: "Uscite" },
-  { href: "/portfolio", text: "Foto" },
+  { href: "/blog", text: "Uscite", prefetch: true },
+  { href: "/portfolio", text: "Foto", prefetch: true },
   { href: "/meteo-concenedo", text: "Meteo" },
-  { href: "/contatti", text: "Contatti" },
+  { href: "/contatti", text: "Contatti", prefetch: true },
 ];
 ---
 
 <header {...props}>
-  <a href="/" class="back-home-link" aria-label="Pagina principale">
+  <a
+    href="/"
+    class="back-home-link"
+    aria-label="Pagina principale"
+    data-astro-prefetch
+  >
     <Image
       src={avatar}
       alt=""
@@ -28,7 +33,8 @@ const links = [
   <div class="header-right">
     <form role="search">
       <SearchIcon aria-hidden="true" />
-      <input type="text" />
+      <label for="search" class="visually-hidden">Cerca un’uscita</label>
+      <input type="text" id="search" />
     </form>
     <nav aria-label="Sito">
       <div class="nav-content" id="js-main-menu">
@@ -43,6 +49,7 @@ const links = [
                 <a
                   href={link.href}
                   aria-current={url === link.href ? "page" : false}
+                  data-astro-prefetch={link.prefetch}
                 >
                   {link.text}
                 </a>

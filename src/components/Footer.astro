@@ -8,6 +8,7 @@ const links = [
     href: "/matteo",
     text: "Conosciamoci meglio",
     description: "Qualcosa in più su di me e su cosa faccio",
+    prefetch: true,
   },
   {
     href: "https://signalkuppe.us17.list-manage.com/subscribe?u=c87438aa22d9c1bffb8b5e482&id=b177d839f1",
@@ -49,6 +50,7 @@ const links = [
               href={link.href}
               aria-current={url === link.href ? "page" : false}
               aria-describedby={`footer-link-${i + 1}`}
+              data-astro-prefetch={link.prefetch}
             >
               {link.text}
             </a>
