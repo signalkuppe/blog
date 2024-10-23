@@ -1,36 +1,19 @@
 ---
-import { union } from "underscore";
-import { contentfulClient } from "../../lib/contentful";
+import { getPosts } from "../../lib/contentful";
 import Layout from "../../layouts/Layout.astro";
-export async function getStaticPaths({ paginate }) {
-  const query = {
-    content_type: "post",
-    include: 1,
-    order: "-fields.date",
-    limit: 1,
-    skip: 0,
-  };
-  const perIteration = 20;
-  let iteration = 1;
-  let entries;
-  query.limit = perIteration;
-  query.skip = 0;
-  let chunk = await contentfulClient.getEntries(query);
-  entries = chunk.items;
-  while (chunk.total > query.limit * iteration) {
-    query.skip = query.limit * iteration;
-    chunk = await contentfulClient.getEntries(query);
-    entries = union(entries, chunk.items);
-    iteration++;
-  }
-  return paginate(entries, { pageSize: 20 });
-}
+import PostCard from "../../components/PostCard.astro";
+import MapPinIcon from "../../icons/MapPinIcon.astro";
 
 interface Props {
   page: any;
 }
 
 const { page } = Astro.props;
+const categories = page.data[0].allCategories;
+export async function getStaticPaths({ paginate }) {
+  const { posts } = await getPosts();
+  return paginate(posts, { pageSize: 12 });
+}
 ---
 
 <Layout
@@ -38,90 +21,133 @@ const { page } = Astro.props;
   description="Blog personale di Matteo Leoni"
   ogImage="/og-image.png"
 >
-  <h1>Uscite</h1>
-  <ul role="list">
-    {
-      page.data.map((post) => (
-        <li>
-          <div class="post">
-            <h2>
-              <a href={`/${post.fields.slug}`}>{post.fields.title}</a>
-            </h2>
-            <img
-              src={`${post.fields.cover.fields.file.url}?w=800&h=533&fit=thumb&q=90&fm=avif`}
-              alt=""
-              width="300"
-              height="200"
-            />
-            <div>
-              <p>{post.fields.description}</p>
-            </div>
-            <time
-              datetime={new Date(post.fields.date).toISOString().slice(0, 19)}
-            >
-              {new Date(post.fields.date).toLocaleDateString("it-IT")}
-            </time>
-          </div>
-        </li>
-      ))
-    }
-  </ul>
+  <h1>Tutte le uscite</h1>
+
+  <div class="container">
+    <nav aria-labelledby="cat-menu" class="post-nav">
+      <h2 id="cat-menu">Categorie</h2>
+      <ul class="categories-list hide-scrollbars" role="list">
+        {
+          categories.map((category) => (
+            <li>
+              <a href={`/blog/${category.toLowerCase()}`}>
+                <span aria-hidden="true">#</span>&nbsp;{category}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a href="/blog/mappa" class="map-link btn"
+        ><MapPinIcon aria-hidden="true" /><span class="">Vedi sulla mappa</span
+        ></a
+      >
+    </nav>
+
+    <ul role="list" class="post-list">
+      {
+        page.data.map((post) => (
+          <li>
+            <PostCard post={post} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </Layout>
 
 <style>
+  h1,
+  h2 {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
   h1 {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  .container {
     display: flex;
-    flex-direction: column;
+  }
+
+  .post-nav {
+    order: 2;
+  }
+
+  .post-list {
+    margin-bottom: 2rem;
+    display: grid;
     gap: 1.5rem;
+    order: 1;
   }
 
-  li {
-    border-bottom: 1px solid rgba(var(--color), 0.2);
+  .post-list li {
     padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
-  .post {
+  .categories-list {
     display: flex;
-    flex-direction: column;
-    max-width: 55ch;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
   }
 
-  .post time {
+  .categories-list a {
+    font-size: 0.75rem;
+    text-decoration: none;
     display: block;
-    margin-top: 1rem;
+    border: 3px solid var(--surfaceAccent);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
   }
 
-  .post h2 {
-    margin-bottom: 1rem;
+  .categories-list a:hover {
+    color: var(--textAccent);
+    border-color: var(--accent);
   }
 
-  .post h2 a {
-    text-decoration-thickness: 0.1em;
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0.25rem;
+    text-decoration: none;
   }
 
-  .post h2 a:hover {
-    text-decoration: underline;
+  .map-link svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    transform: translateY(-0.1em);
   }
 
-  .post img {
-    display: block;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    width: 100%;
-    height: 100%;
+  @media screen and (width < 60rem) {
+    .container {
+      flex-direction: column;
+    }
   }
 
-  .post p {
-    max-width: 40ch;
-    margin: 0;
-    text-wrap: pretty;
-    line-height: 1.4;
+  @media screen and (width > 60rem) {
+    .container {
+      flex-direction: row;
+      gap: 3rem;
+    }
+    .post-list {
+      grid-template-columns: repeat(2, 1fr);
+      flex: 3;
+    }
+    .post-nav {
+      flex: 1;
+      position: sticky;
+      height: fit-content;
+      z-index: 1;
+      top: 7rem;
+    }
   }
 </style>

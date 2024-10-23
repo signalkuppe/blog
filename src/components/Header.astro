@@ -72,6 +72,15 @@ const links = [
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    overflow: hidden;
+  }
+
+  header:not(.js-is-open) {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    z-index: 2;
   }
 
   .back-home-link {
@@ -80,13 +89,14 @@ const links = [
   }
 
   .back-home-link img {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
+    background: var(--surfaceAccent);
   }
 
-  .header-right {
+  .js-enabled .header-right {
     display: flex;
     align-items: center;
     gap: 2.5rem;
@@ -98,18 +108,24 @@ const links = [
   }
 
   ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .js-enabled ul {
+    margin: 0;
   }
 
   ul a {
-    color: currentColor;
+    color: var(--text);
     text-decoration: none;
     line-height: 1;
+  }
+
+  ul a:hover {
+    color: var(--textAccent);
   }
 
   a[aria-current="page"] {
@@ -148,16 +164,28 @@ const links = [
       gap: 1rem;
     }
 
-    .nav-content {
+    .open-menu {
+      display: none;
+    }
+
+    .js-enabled .header-right {
+      gap: 1.5rem;
+    }
+
+    .js-enabled .open-menu {
+      display: block;
+    }
+
+    .js-enabled .nav-content {
       position: fixed;
       right: 0;
       top: 0;
+      z-index: 3;
       height: 100%;
       padding: 1.5rem;
       padding-top: 3rem;
       width: 60%;
       background: var(--surfaceAccent);
-      z-index: 2;
       transform: translate3d(100%, 0, 0);
       display: flex;
       flex-direction: column;
@@ -167,7 +195,7 @@ const links = [
       transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
     }
 
-    .nav-content ul {
+    .js-enabled .nav-content ul {
       flex-direction: column;
       align-items: flex-start;
     }
@@ -182,13 +210,14 @@ const links = [
       font-size: 0.85rem;
     }
   }
+
   :global(.js-backdrop) {
     position: fixed;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    z-index: 1;
+    z-index: 2;
     backdrop-filter: blur(10px);
   }
 
@@ -199,16 +228,19 @@ const links = [
 
 <script>
   // @ts-nocheck
+
   const mqMobile = window.matchMedia("(max-width: 51.2rem)");
   const navPanel = document.getElementById(`js-main-menu`);
   const openMenuButton = document.getElementById("nav-open");
   const closeMenuButton = document.getElementById("nav-close");
-  const header = document.getElementById(`header`);
-  const main = document.getElementById("main");
-  const footer = document.getElementById("footer");
+  const wrapper = document.getElementById(`js-wrapper`);
+  const header = document.getElementById(`js-header`);
+  const main = document.getElementById("js-main");
+  const footer = document.getElementById("js-footer");
   const siblings = document.querySelectorAll(
-    "header > *:not(.header-right), a[href='#main']"
+    "#js-header > *:not(.header-right), a[href='#main']"
   );
+  header.classList.add("js-enabled");
   const backdrop = document.createElement("div");
   backdrop.setAttribute("aria-hidden", "true");
   backdrop.setAttribute("class", "js-backdrop");
@@ -256,7 +288,7 @@ const links = [
     for (var i = 0; i < siblings.length; i++) {
       siblings[i].setAttribute("inert", "true");
     }
-    document.body.append(backdrop);
+    wrapper.append(backdrop);
   }
 
   function unsetPageInert() {
@@ -266,7 +298,7 @@ const links = [
     for (var i = 0; i < siblings.length; i++) {
       siblings[i].removeAttribute("inert");
     }
-    document.body.removeChild(backdrop);
+    wrapper.removeChild(backdrop);
   }
 
   function checkViewPort() {

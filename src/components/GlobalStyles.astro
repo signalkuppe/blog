@@ -18,15 +18,17 @@
     --saturation: 50%;
     --lightness: 50%;
     --accent: hsl(var(--hue) 50% 40%);
-    --accentContrastColor: hsl(var(--hue) 70% 100%);
+    --accentContrastColor: hsl(var(--hue) 100% 100%);
   }
 
   html[data-theme="light"] {
     color-scheme: light;
-    --text: hsl(var(--hue) calc(var(--saturation) / 4) 50%);
+    --text: hsl(var(--hue) calc(var(--saturation) / 4) 30%);
     --textAccent: hsl(var(--hue) var(--saturation) 10%);
     --surface: hsl(var(--hue) var(--saturation) 95%);
     --surfaceAccent: hsl(var(--hue) var(--saturation) 85%);
+    --mountainsColor1: hsl(var(--hue) var(--saturation) 90%);
+    --mountainsColor2: hsl(var(--hue) var(--saturation) 85%);
     --outlines: var(--surfaceAccent);
   }
 
@@ -36,6 +38,8 @@
     --textAccent: hsl(var(--hue) var(--saturation) 90%);
     --surface: hsl(var(--hue) var(--saturation) 5%);
     --surfaceAccent: hsl(var(--hue) var(--saturation) 15%);
+    --mountainsColor1: hsl(var(--hue) var(--saturation) 10%);
+    --mountainsColor2: hsl(var(--hue) var(--saturation) 8%);
     --outlines: var(--surfaceAccent);
   }
 
@@ -47,6 +51,8 @@
       --textAccent: hsl(var(--hue) var(--saturation) 90%);
       --surface: hsl(var(--hue) var(--saturation) 5%);
       --surfaceAccent: hsl(var(--hue) var(--saturation) 15%);
+      --mountainsColor1: hsl(var(--hue) var(--saturation) 10%);
+      --mountainsColor2: hsl(var(--hue) var(--saturation) 8%);
       --outlines: var(--surfaceAccent);
     }
   }
@@ -153,20 +159,20 @@
     color: var(--textAccent);
   }
 
-  h1 {
-    font-size: 2.25rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
-  }
-
   a:focus-visible {
     text-decoration: none;
   }
 
   img {
-    background: var(--surfaceAccent);
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   html {
@@ -185,15 +191,9 @@
     font-size: 112.5%;
   }
 
-  @media screen and (min-width: 60rem) {
-    html {
-      font-size: 125%;
-    }
-  }
-
   @media screen and (min-width: 120rem) {
     html {
-      font-size: 150%;
+      font-size: 137.5%;
     }
   }
 
@@ -232,6 +232,12 @@
 
   .hidden {
     display: none;
+  }
+
+  .cage {
+    max-width: 70rem;
+    padding: 0 1.5rem;
+    margin: 0 auto;
   }
 
   .btn {

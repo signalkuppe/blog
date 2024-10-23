@@ -3,6 +3,7 @@ import GlobalStyles from "../components/GlobalStyles.astro";
 import ThemeSwitcherScript from "../components/ThemeSwitcher/ThemeSwitcherScript.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import BodyBackground from "../components/BodyBackground.astro";
 
 const url = Astro.url.pathname;
 
@@ -21,7 +22,6 @@ const { title, description, ogImage } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -60,33 +60,48 @@ const { title, description, ogImage } = Astro.props;
     <a href="#main" class="visually-hidden skip-link"
       >Vai al contenuto principale</a
     >
-    <div class="wrapper">
-      <Header id="header" />
-      <main id="main" class="main" tabindex="-1">
+    <div class="wrapper" id="js-wrapper">
+      <Header id="js-header" class="cage header" />
+      <main id="js-main" class="main cage" tabindex="-1">
         <slot />
       </main>
-      <Footer id="footer" />
+      <Footer id="js-footer" class="cage footer" />
     </div>
-  </body><style>
-    .wrapper {
-      max-width: 80rem;
-      margin: 0 auto;
-      padding: 1.5rem 1.5rem 6rem 1.5rem;
-    }
-    main {
-      margin-top: 3rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--outlines);
-      padding-bottom: 6rem;
-    }
-
-    .skip-link:focus-visible {
-      display: block;
-      padding: 0.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      background: var(--background);
-    }
-  </style>
+    <BodyBackground class="svg-background" aria-hidden="true" />
+  </body>
 </html>
+
+<style>
+  .wrapper {
+    position: relative;
+    z-index: 2;
+  }
+
+  .header {
+    padding: 1.5rem;
+  }
+  main {
+    padding-top: 1rem;
+    padding-bottom: 6rem;
+  }
+
+  .footer {
+    padding-bottom: 6rem;
+  }
+
+  .skip-link:focus-visible {
+    display: block;
+    padding: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: var(--background);
+  }
+
+  .svg-background {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+</style>

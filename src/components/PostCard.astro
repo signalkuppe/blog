@@ -1,0 +1,81 @@
+---
+interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+---
+
+<article>
+  <img
+    src={`${post.fields.cover.fields.file.url}?w=200&h=200&fit=thumb&q=90&fm=avif`}
+    alt=""
+    width="100"
+    height="100"
+    loading="lazy"
+  />
+  <div class="article-right">
+    <time datetime={new Date(post.fields.date).toISOString().slice(0, 19)}>
+      {new Date(post.fields.date).toLocaleDateString("it-IT")}
+    </time>
+    <h3>
+      <a href={`/${post.fields.slug}`}>{post.fields.title}</a>
+    </h3>
+    <p>{post.fields.description}</p>
+    <p>
+      in
+      <a href={`/${post.fields.categoty}`} class="category">
+        <span aria-hidden="true">#</span>{post.fields.category}
+      </a>
+    </p>
+  </div>
+</article>
+
+<style>
+  article {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  article .article-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  article h3 {
+    font-size: 1rem;
+  }
+
+  article a:hover {
+    text-decoration: underline;
+  }
+  article img {
+    border-radius: 5px;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    background: var(--surfaceAccent);
+  }
+
+  article time {
+    font-size: 0.75rem;
+  }
+
+  article p {
+    font-size: 0.85rem;
+    max-width: 50ch;
+    text-wrap: balance;
+    margin-top: 0.25rem;
+  }
+
+  article .category {
+    font-size: 0.75rem;
+    display: inline;
+    color: inherit;
+  }
+
+  article .category:hover {
+    color: var(--textAccent);
+  }
+</style>
