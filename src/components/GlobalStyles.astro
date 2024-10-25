@@ -17,7 +17,7 @@
     --hue: 200;
     --saturation: 50%;
     --lightness: 50%;
-    --accent: hsl(var(--hue) 50% 40%);
+    --accent: hsl(var(--hue) 80% 40%);
     --accentContrastColor: hsl(var(--hue) 100% 100%);
   }
 
@@ -60,6 +60,7 @@
   html {
     background-color: var(--surface);
     color: var(--text);
+    transition: background-color 0.2s ease-in-out;
   }
 
   * {
@@ -144,7 +145,7 @@
   h4,
   h5,
   h6 {
-    line-height: 1.1;
+    line-height: 1.3;
   }
 
   a,
@@ -157,10 +158,6 @@
   h5,
   h6 {
     color: var(--textAccent);
-  }
-
-  a:focus-visible {
-    text-decoration: none;
   }
 
   img {
@@ -235,9 +232,8 @@
   }
 
   .cage {
-    max-width: 70rem;
-    padding: 0 1.5rem;
-    margin: 0 auto;
+    width: min(70rem, 100% - 3rem);
+    margin-inline: auto;
   }
 
   .btn {

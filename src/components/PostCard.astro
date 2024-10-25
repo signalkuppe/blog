@@ -1,9 +1,10 @@
 ---
 interface Props {
   post: any;
+  TitleTag?: any;
 }
 
-const { post } = Astro.props;
+const { post, TitleTag = "h2" } = Astro.props;
 ---
 
 <article>
@@ -16,11 +17,13 @@ const { post } = Astro.props;
   />
   <div class="article-right">
     <time datetime={new Date(post.fields.date).toISOString().slice(0, 19)}>
-      {new Date(post.fields.date).toLocaleDateString("it-IT")}
+      <span class="visually-hidden">Pubblicato il </span>{
+        new Date(post.fields.date).toLocaleDateString("it-IT")
+      }
     </time>
-    <h3>
+    <TitleTag class="title">
       <a href={`/${post.fields.slug}`}>{post.fields.title}</a>
-    </h3>
+    </TitleTag>
     <p>{post.fields.description}</p>
     <p>
       in
@@ -44,7 +47,7 @@ const { post } = Astro.props;
     gap: 0.15rem;
   }
 
-  article h3 {
+  article .title {
     font-size: 1rem;
   }
 

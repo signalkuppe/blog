@@ -1,0 +1,184 @@
+---
+import { getPosts } from "../../../lib/contentful";
+import { categories } from "../../../constants";
+import Layout from "../../../layouts/Layout.astro";
+import BlogTabs from "../../../components/BlogTabs.astro";
+import BlogCategories from "../../../components/BlogCategories.astro";
+import BlogPager from "../../../components/BlogPager.astro";
+import PostCard from "../../../components/PostCard.astro";
+import DoubleChevronRightIcon from "../../../icons/DoubleChevronRightIcon.astro";
+import DoubleChevronLeftIcon from "../../../icons/DoubleChevronLeftIcon.astro";
+import ChevronRightIcon from "../../../icons/ChevronRightIcon.astro";
+import ChevronLeftIcon from "../../../icons/ChevronLeftIcon.astro";
+
+interface Props {
+  page: any;
+}
+
+const { page } = Astro.props;
+const { category } = Astro.params;
+
+export async function getStaticPaths({ paginate }) {
+  const { posts } = await getPosts();
+  return [undefined, ...categories].flatMap((cat) => {
+    const filteredPosts = posts.filter((post) => {
+      return cat ? post.fields.category[0] === cat.title : true;
+    });
+
+    return paginate(filteredPosts, {
+      params: { category: cat?.slug },
+      pageSize: 12,
+    });
+  });
+}
+
+const pageTitle = category
+  ? categories.find((c) => c.slug === category)?.title
+  : "Tutte le uscite";
+
+/**
+ *  {} start: 0,
+  end: 11,
+  size: 12,
+  total: 282,
+  currentPage: 1,
+  lastPage: 24,
+  url: {
+    current: '/blog',
+    next: '/blog/2',
+    prev: undefined,
+    first: undefined,
+    last: '/blog/24'
+  }
+}
+ */
+---
+
+<Layout
+  title="Signalkuppe - Parole oltre i 4000m"
+  description="Blog personale di Matteo Leoni"
+  ogImage="/og-image.png"
+>
+  <h1 class="visually-hidden">{pageTitle}</h1>
+  <nav aria-label="Visualizzazione" class="tabs-parent">
+    <BlogTabs activeTab="elenco" />
+  </nav>
+
+  <div class="container">
+    <ul role="list" class="post-list">
+      {
+        page.data.map((post) => (
+          <li>
+            <PostCard post={post} />
+          </li>
+        ))
+      }
+    </ul>
+
+    <nav aria-label="categorie" class="post-categories">
+      <BlogCategories activeCategory={category} />
+    </nav>
+  </div>
+
+  <nav aria-label="Pagine" class="post-pager">
+    <BlogPager page={page} />
+  </nav>
+</Layout>
+
+<style>
+  .pager {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .pager .icon-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    border: var(--surfaceAccent);
+  }
+  .pager .icon-button svg {
+    width: 1em;
+  }
+
+  .pager [aria-current="page"] {
+    color: var(--textAccent);
+    font-weight: bold;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  .tabs-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    z-index: 2;
+    top: 0;
+    padding-top: 1.5rem;
+    margin-top: -1.5rem;
+    padding-bottom: 3.5rem;
+    background: var(--surface);
+    --tabBorderWidth: 3px;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .post-list {
+    margin-bottom: 2rem;
+    display: grid;
+    row-gap: 1.5rem;
+    column-gap: 3rem;
+  }
+
+  .post-list li {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media screen and (width < 60rem) {
+    .container {
+      flex-direction: column;
+    }
+
+    .post-pager {
+      margin-top: 3rem;
+    }
+  }
+
+  @media screen and (width > 60rem) {
+    .container {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 3rem;
+    }
+    .post-list {
+      grid-template-columns: repeat(2, 1fr);
+      flex: 3;
+    }
+    .post-categories {
+      flex: 1;
+      position: sticky;
+      top: 6rem;
+      z-index: 1;
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementById(`js-header`);
+  const observer = new IntersectionObserver(
+    ([e]) =>
+      e.target.classList.toggle("js-remove-sticky", e.intersectionRatio < 1),
+    { threshold: [1] }
+  );
+
+  observer.observe(header);
+</script>

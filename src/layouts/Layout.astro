@@ -4,7 +4,6 @@ import ThemeSwitcherScript from "../components/ThemeSwitcher/ThemeSwitcherScript
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BodyBackground from "../components/BodyBackground.astro";
-
 const url = Astro.url.pathname;
 
 interface Props {
@@ -78,24 +77,15 @@ const { title, description, ogImage } = Astro.props;
   }
 
   .header {
-    padding: 1.5rem;
+    padding-block: 1.5rem;
   }
   main {
-    padding-top: 1rem;
-    padding-bottom: 6rem;
+    padding-top: 2rem;
+    padding-bottom: 10rem;
   }
 
   .footer {
     padding-bottom: 6rem;
-  }
-
-  .skip-link:focus-visible {
-    display: block;
-    padding: 0.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    background: var(--background);
   }
 
   .svg-background {
@@ -103,5 +93,6 @@ const { title, description, ogImage } = Astro.props;
     bottom: 0;
     left: 0;
     z-index: 1;
+    width: 100vw;
   }
 </style>

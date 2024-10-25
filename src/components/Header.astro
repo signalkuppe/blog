@@ -24,18 +24,13 @@ const links = [
     <Image
       src={avatar}
       alt=""
-      width="200"
-      height="200"
+      width="140"
+      height="140"
       loading="eager"
       aria-hidden="true"
     /></a
   >
   <div class="header-right">
-    <form role="search">
-      <SearchIcon aria-hidden="true" />
-      <label for="search" class="visually-hidden">Cerca un’uscita</label>
-      <input type="text" id="search" />
-    </form>
     <nav aria-label="Sito">
       <div class="nav-content" id="js-main-menu">
         <button id="nav-close" hidden>
@@ -63,320 +58,342 @@ const links = [
         <span class="visually-hidden">Menu</span>
       </button>
     </nav>
+    <form role="search">
+      <SearchIcon aria-hidden=" true" />
+      <label for="search" class="visually-hidden">Cerca un’uscita</label>
+      <input type="text" id="search" />
+    </form>
   </div>
-</header>
-<style>
-  header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    overflow: hidden;
-  }
 
-  header:not(.js-is-open) {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    backdrop-filter: blur(10px);
-    z-index: 2;
-  }
-
-  .back-home-link {
-    text-decoration: none;
-    display: block;
-  }
-
-  .back-home-link img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
-    background: var(--surfaceAccent);
-  }
-
-  .js-enabled .header-right {
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
-  }
-
-  ul {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .js-enabled ul {
-    margin: 0;
-  }
-
-  ul a {
-    color: var(--text);
-    text-decoration: none;
-    line-height: 1;
-  }
-
-  ul a:hover {
-    color: var(--textAccent);
-  }
-
-  a[aria-current="page"] {
-    font-weight: bold;
-  }
-
-  form {
-    position: relative;
-  }
-
-  form svg {
-    position: absolute;
-    left: 0.85rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  form input {
-    padding: 0.25rem;
-    text-indent: 2rem;
-    display: block;
-  }
-
-  svg {
-    height: 1.25rem;
-  }
-
-  button {
-    background: none;
-    border: none;
-    padding: 0;
-  }
-
-  @media screen and (max-width: 51rem) {
-    .header-right {
+  <style>
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
       gap: 1rem;
     }
 
-    .open-menu {
-      display: none;
+    header:not(.js-is-open):not(.js-remove-sticky) {
+      position: sticky;
+      top: -1px;
+      z-index: 3;
+      backdrop-filter: blur(15px);
+      overflow: hidden;
     }
 
-    .js-enabled .header-right {
-      gap: 1.5rem;
+    .header-right {
+      display: flex;
+      justify-content: flex-end;
+      flex: 1;
     }
 
-    .js-enabled .open-menu {
+    .back-home-link {
+      text-decoration: none;
       display: block;
     }
 
-    .js-enabled .nav-content {
-      position: fixed;
-      right: 0;
-      top: 0;
-      z-index: 3;
-      height: 100%;
-      padding: 1.5rem;
-      padding-top: 3rem;
-      width: 60%;
+    .back-home-link img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
       background: var(--surfaceAccent);
-      transform: translate3d(100%, 0, 0);
+    }
+
+    .js-enabled .header-right {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .js-enabled ul {
+      margin: 0;
+    }
+
+    ul a {
+      color: var(--text);
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    ul a:hover {
+      color: var(--textAccent);
+    }
+
+    a[aria-current="page"] {
+      font-weight: bold;
+    }
+
+    form {
+      position: relative;
+    }
+
+    form svg {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    form input {
+      padding: 0.25rem;
+      text-indent: 2rem;
+      display: block;
+    }
+
+    svg {
+      height: 1.25rem;
+    }
+
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    @media screen and (width < 51rem) {
+      .header-right {
+        gap: 1rem;
+      }
+
+      form {
+        order: 1;
+      }
+
+      nav {
+        order: 2;
+      }
+
+      .open-menu {
+        display: none;
+      }
+
+      .js-enabled .header-right {
+        gap: 1.5rem;
+      }
+
+      .js-enabled .open-menu {
+        display: block;
+      }
+
+      .js-enabled .nav-content {
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 3;
+        height: 100%;
+        padding: 1.5rem;
+        padding-top: 3rem;
+        width: 60%;
+        background: var(--surfaceAccent);
+        transform: translate3d(100%, 0, 0);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .js-is-open .nav-content {
+        transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+
+      .js-enabled .nav-content ul {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      #nav-close {
+        align-self: flex-end;
+      }
+    }
+
+    @media screen and (width > 51rem) {
+      header {
+        gap: 3rem;
+      }
+
+      nav {
+        font-size: 0.85rem;
+      }
+    }
+
+    :global(.js-backdrop) {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 2;
+      backdrop-filter: blur(10px);
     }
 
     .js-is-open .nav-content {
-      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform: translate3d(0, 0, 0);
     }
+  </style>
 
-    .js-enabled .nav-content ul {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+  <script>
+    // @ts-nocheck
 
-    #nav-close {
-      align-self: flex-end;
-    }
-  }
-
-  @media screen and (min-width: 51rem) {
-    nav {
-      font-size: 0.85rem;
-    }
-  }
-
-  :global(.js-backdrop) {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
-    backdrop-filter: blur(10px);
-  }
-
-  .js-is-open .nav-content {
-    transform: translate3d(0, 0, 0);
-  }
-</style>
-
-<script>
-  // @ts-nocheck
-
-  const mqMobile = window.matchMedia("(max-width: 51.2rem)");
-  const navPanel = document.getElementById(`js-main-menu`);
-  const openMenuButton = document.getElementById("nav-open");
-  const closeMenuButton = document.getElementById("nav-close");
-  const wrapper = document.getElementById(`js-wrapper`);
-  const header = document.getElementById(`js-header`);
-  const main = document.getElementById("js-main");
-  const footer = document.getElementById("js-footer");
-  const siblings = document.querySelectorAll(
-    "#js-header > *:not(.header-right), a[href='#main']"
-  );
-  header.classList.add("js-enabled");
-  const backdrop = document.createElement("div");
-  backdrop.setAttribute("aria-hidden", "true");
-  backdrop.setAttribute("class", "js-backdrop");
-
-  function trapFocus(element) {
-    // get all focusable elements
-    var focusableEls = element.querySelectorAll(
-      "a[href]:not([disabled]), button:not([disabled])"
+    const mqMobile = window.matchMedia("(max-width: 51.2rem)");
+    const navPanel = document.getElementById(`js-main-menu`);
+    const openMenuButton = document.getElementById("nav-open");
+    const closeMenuButton = document.getElementById("nav-close");
+    const wrapper = document.getElementById(`js-wrapper`);
+    const header = document.getElementById(`js-header`);
+    const main = document.getElementById("js-main");
+    const footer = document.getElementById("js-footer");
+    const siblings = document.querySelectorAll(
+      "#js-header > *:not(.header-right), a[href='#main']"
     );
-    // Save first and last focusable elements
-    var firstFocusableEl = focusableEls[0];
-    var lastFocusableEl = focusableEls[focusableEls.length - 1];
-    var KEYCODE_TAB = 9;
+    header.classList.add("js-enabled");
+    const backdrop = document.createElement("div");
+    backdrop.setAttribute("aria-hidden", "true");
+    backdrop.setAttribute("class", "js-backdrop");
 
-    // listen for a key press
-    element.addEventListener("keydown", function (e) {
-      var isTabPressed = e.key === "Tab" || e.keyCode === KEYCODE_TAB;
+    function trapFocus(element) {
+      // get all focusable elements
+      var focusableEls = element.querySelectorAll(
+        "a[href]:not([disabled]), button:not([disabled])"
+      );
+      // Save first and last focusable elements
+      var firstFocusableEl = focusableEls[0];
+      var lastFocusableEl = focusableEls[focusableEls.length - 1];
+      var KEYCODE_TAB = 9;
 
-      // if the key pressed is not TAB, stop function execution
-      if (!isTabPressed) {
-        return;
+      // listen for a key press
+      element.addEventListener("keydown", function (e) {
+        var isTabPressed = e.key === "Tab" || e.keyCode === KEYCODE_TAB;
+
+        // if the key pressed is not TAB, stop function execution
+        if (!isTabPressed) {
+          return;
+        }
+
+        // if shift + tab
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusableEl) {
+            lastFocusableEl.focus();
+            e.preventDefault();
+          }
+        }
+        // else if tab
+        else {
+          if (document.activeElement === lastFocusableEl) {
+            firstFocusableEl.focus();
+            e.preventDefault();
+          }
+        }
+      });
+    }
+
+    function setPageInert() {
+      document.body.style.overflow = "hidden";
+      main.setAttribute("inert", "");
+      footer.setAttribute("inert", "");
+      for (var i = 0; i < siblings.length; i++) {
+        siblings[i].setAttribute("inert", "true");
       }
+      wrapper.append(backdrop);
+    }
 
-      // if shift + tab
-      if (e.shiftKey) {
-        if (document.activeElement === firstFocusableEl) {
-          lastFocusableEl.focus();
-          e.preventDefault();
+    function unsetPageInert() {
+      document.body.style.overflow = "";
+      main.removeAttribute("inert");
+      footer.removeAttribute("inert");
+      for (var i = 0; i < siblings.length; i++) {
+        siblings[i].removeAttribute("inert");
+      }
+      wrapper.removeChild(backdrop);
+    }
+
+    function checkViewPort() {
+      if (mqMobile.matches) {
+        setMobileAttributes();
+      } else {
+        unsetMobileAttributes();
+        header.classList.remove("js-is-mobile");
+        navPanel.removeAttribute("inert");
+        if (document.body.contains(backdrop)) {
+          closeMenu();
         }
       }
-      // else if tab
-      else {
-        if (document.activeElement === lastFocusableEl) {
-          firstFocusableEl.focus();
-          e.preventDefault();
-        }
-      }
-    });
-  }
-
-  function setPageInert() {
-    document.body.style.overflow = "hidden";
-    main.setAttribute("inert", "");
-    footer.setAttribute("inert", "");
-    for (var i = 0; i < siblings.length; i++) {
-      siblings[i].setAttribute("inert", "true");
     }
-    wrapper.append(backdrop);
-  }
 
-  function unsetPageInert() {
-    document.body.style.overflow = "";
-    main.removeAttribute("inert");
-    footer.removeAttribute("inert");
-    for (var i = 0; i < siblings.length; i++) {
-      siblings[i].removeAttribute("inert");
+    function setMobileAttributes() {
+      header.classList.add("js-is-mobile");
+      navPanel.setAttribute("inert", "");
+      navPanel.setAttribute("aria-role", "dialog");
+      openMenuButton.removeAttribute("hidden");
+      openMenuButton.setAttribute("aria-controls", "js-main-menu");
+      openMenuButton.setAttribute("aria-expanded", "false");
     }
-    wrapper.removeChild(backdrop);
-  }
 
-  function checkViewPort() {
-    if (mqMobile.matches) {
-      setMobileAttributes();
-    } else {
-      unsetMobileAttributes();
+    function unsetMobileAttributes() {
       header.classList.remove("js-is-mobile");
       navPanel.removeAttribute("inert");
-      if (document.body.contains(backdrop)) {
-        closeMenu();
+      navPanel.removeAttribute("aria-role");
+      openMenuButton.setAttribute("hidden", "");
+      openMenuButton.removeAttribute("aria-controls");
+      openMenuButton.removeAttribute("aria-expanded");
+    }
+
+    function openMenu() {
+      navPanel.removeAttribute("inert");
+      openMenuButton.setAttribute("aria-expanded", "true");
+      closeMenuButton.removeAttribute("hidden");
+      closeMenuButton.focus();
+      header.classList.add("js-is-open");
+      setPageInert();
+      trapFocus(navPanel);
+      function handleKeydown(e) {
+        if (e.key === "Escape") {
+          closeMenu();
+        }
+      }
+      navPanel.addEventListener("keydown", handleKeydown);
+      navPanel._handleKeydown = handleKeydown;
+    }
+
+    function closeMenu() {
+      navPanel.setAttribute("inert", "");
+      openMenuButton.setAttribute("aria-expanded", "false");
+      openMenuButton.focus();
+      closeMenuButton.setAttribute("hidden", "");
+      header.classList.remove("js-is-open");
+      unsetPageInert();
+      if (navPanel._handleKeydown) {
+        navPanel.removeEventListener("keydown", navPanel._handleKeydown);
+        delete navPanel._handleKeydown;
       }
     }
-  }
 
-  function setMobileAttributes() {
-    header.classList.add("js-is-mobile");
-    navPanel.setAttribute("inert", "");
-    navPanel.setAttribute("aria-role", "dialog");
-    openMenuButton.removeAttribute("hidden");
-    openMenuButton.setAttribute("aria-controls", "js-main-menu");
-    openMenuButton.setAttribute("aria-expanded", "false");
-  }
+    const resizeObserver = new ResizeObserver(() => {
+      checkViewPort();
+    });
 
-  function unsetMobileAttributes() {
-    header.classList.remove("js-is-mobile");
-    navPanel.removeAttribute("inert");
-    navPanel.removeAttribute("aria-role");
-    openMenuButton.setAttribute("hidden", "");
-    openMenuButton.removeAttribute("aria-controls");
-    openMenuButton.removeAttribute("aria-expanded");
-  }
+    resizeObserver.observe(header);
 
-  function openMenu() {
-    navPanel.removeAttribute("inert");
-    openMenuButton.setAttribute("aria-expanded", "true");
-    closeMenuButton.removeAttribute("hidden");
-    closeMenuButton.focus();
-    header.classList.add("js-is-open");
-    setPageInert();
-    trapFocus(navPanel);
-    function handleKeydown(e) {
-      if (e.key === "Escape") {
-        closeMenu();
-      }
-    }
-    navPanel.addEventListener("keydown", handleKeydown);
-    navPanel._handleKeydown = handleKeydown;
-  }
-
-  function closeMenu() {
-    navPanel.setAttribute("inert", "");
-    openMenuButton.setAttribute("aria-expanded", "false");
-    openMenuButton.focus();
-    closeMenuButton.setAttribute("hidden", "");
-    header.classList.remove("js-is-open");
-    unsetPageInert();
-    if (navPanel._handleKeydown) {
-      navPanel.removeEventListener("keydown", navPanel._handleKeydown);
-      delete navPanel._handleKeydown;
-    }
-  }
-
-  const resizeObserver = new ResizeObserver(() => {
     checkViewPort();
-  });
 
-  resizeObserver.observe(header);
+    openMenuButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      openMenu();
+    });
 
-  checkViewPort();
-
-  openMenuButton.addEventListener("click", function (e) {
-    e.preventDefault();
-    openMenu();
-  });
-
-  closeMenuButton.addEventListener("click", function (e) {
-    e.preventDefault();
-    closeMenu();
-  });
-</script>
+    closeMenuButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      closeMenu();
+    });
+  </script>
+</header>

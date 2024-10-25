@@ -1,0 +1,78 @@
+---
+import GridIcon from "../icons/GridIcon.astro";
+import MapPinIcon from "../icons/MapPinIcon.astro";
+
+interface Props {
+  activeTab?: string;
+}
+
+const { activeTab } = Astro.props;
+
+const tabs = [
+  {
+    id: "elenco",
+    href: "/blog",
+    text: "Elenco",
+    icon: GridIcon,
+  },
+  {
+    id: "mappa",
+    href: "/mappa",
+    text: "Mappa",
+    icon: MapPinIcon,
+  },
+];
+---
+
+<ul role="list">
+  {
+    tabs.map((tab) => (
+      <li>
+        <a href={tab.href} aria-current={activeTab === tab.id ? "page" : null}>
+          <tab.icon aria-hidden="true" />
+          {tab.text}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    border-bottom: var(--tabBorderWidth) solid var(--outlines);
+    font-size: 0.85rem;
+    padding-left: 1rem;
+  }
+
+  ul a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    color: var(--text);
+    transform: translateY(var(--tabBorderWidth));
+    background: var(--surface);
+  }
+
+  ul a[aria-current="page"] {
+    border: var(--tabBorderWidth) solid var(--outlines);
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-weight: bold;
+  }
+
+  ul a:not([aria-current="page"]):hover {
+    color: var(--textAccent);
+  }
+
+  ul svg {
+    height: 1em;
+  }
+
+  ul a[aria-current="page"] svg {
+    color: var(--accent);
+  }
+</style>

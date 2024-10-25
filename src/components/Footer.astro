@@ -87,7 +87,7 @@ const links = [
   ul {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   ul p {
@@ -114,6 +114,17 @@ const links = [
     margin-top: 2rem;
     margin-left: -0.5rem;
     color: var(--textAccent);
+  }
+
+  @media screen and (width > 51rem) {
+    ul {
+      display: block;
+      columns: 2;
+    }
+
+    li {
+      padding-bottom: 1.5rem;
+    }
   }
 </style>
 

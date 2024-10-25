@@ -43,7 +43,7 @@ const { items: posts } = await contentfulClient.getEntries(query);
     {
       posts.map((post, i) => (
         <li>
-          <PostCard post={post} />
+          <PostCard post={post} TitleTag="h3" />
         </li>
       ))
     }

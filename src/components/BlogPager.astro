@@ -1,0 +1,81 @@
+---
+import DoubleChevronRightIcon from "../icons/DoubleChevronRightIcon.astro";
+import DoubleChevronLeftIcon from "../icons/DoubleChevronLeftIcon.astro";
+import ChevronRightIcon from "../icons/ChevronRightIcon.astro";
+import ChevronLeftIcon from "../icons/ChevronLeftIcon.astro";
+
+interface Props {
+  page: any;
+}
+const { page } = Astro.props;
+---
+
+<ul>
+  {
+    page.url.first && (
+      <li>
+        <a href={page.url.first}>
+          <DoubleChevronLeftIcon aria-hidden="true" />
+          <span class="visually-hidden">Pagina iniziale</span>
+        </a>
+      </li>
+    )
+  }
+  {
+    page.url.prev && (
+      <li>
+        <a href={page.url.prev}>
+          <ChevronLeftIcon aria-hidden="true" />
+          <span class="visually-hidden">Precedente</span>
+        </a>
+      </li>
+    )
+  }
+  <li>
+    Pagina <span aria-current="page">{page.currentPage}</span> di {
+      page.lastPage
+    }
+  </li>
+  {
+    page.url.next && (
+      <li>
+        <a href={page.url.next}>
+          <ChevronRightIcon aria-hidden="true" />
+          <span class="visually-hidden">Successiva</span>
+        </a>
+      </li>
+    )
+  }
+  {
+    page.url.last && (
+      <li>
+        <a href={page.url.last}>
+          <DoubleChevronRightIcon aria-hidden="true" />
+          <span class="visually-hidden">Ultima pagina</span>
+        </a>
+      </li>
+    )
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  ul a {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    border: var(--surfaceAccent);
+  }
+  ul svg {
+    width: 1em;
+  }
+
+  [aria-current="page"] {
+    color: var(--textAccent);
+    font-weight: bold;
+  }
+</style>

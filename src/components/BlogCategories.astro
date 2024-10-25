@@ -1,0 +1,49 @@
+---
+import { categories } from "../constants";
+
+interface Props {
+  activeCategory?: string;
+}
+
+const { activeCategory } = Astro.props;
+---
+
+<ul role="list">
+  {
+    categories?.map((category) => (
+      <li>
+        <a
+          href={`/blog/${category.slug}`}
+          aria-current={activeCategory === category.slug ? "page" : null}
+        >
+          <span aria-hidden="true">#</span>&nbsp;{category.title}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  ul a {
+    font-size: 0.75rem;
+    text-decoration: none;
+    display: block;
+    border: 3px solid var(--surfaceAccent);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+  }
+
+  ul a:hover,
+  ul a[aria-current="page"] {
+    color: var(--textAccent);
+    border-color: var(--accent);
+  }
+</style>

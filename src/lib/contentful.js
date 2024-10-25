@@ -1,5 +1,5 @@
 import * as contentful from "contentful";
-import { union, groupBy } from "underscore";
+import { union } from "underscore";
 
 export const contentfulClient = contentful.createClient({
   space: import.meta.env.SIGNALKUPPE_WEBSITE_CONTENTFUL_SPACE,
@@ -35,9 +35,5 @@ export async function getPosts() {
     iteration++;
   }
 
-  const categories = [
-    ...new Set(posts.flatMap((item) => item.fields.category)),
-  ];
-
-  return { posts: posts.map((p) => ({ ...p, allCategories: categories })) };
+  return { posts };
 }
