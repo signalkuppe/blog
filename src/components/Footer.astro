@@ -40,47 +40,54 @@ const links = [
 ---
 
 <footer {...props}>
-  <nav aria-labelledby="footer-links">
-    <h2 id="footer-links">Link utili</h2>
-    <ul role="list">
-      {
-        links.map((link, i) => (
-          <li>
-            <a
-              href={link.href}
-              aria-current={url === link.href ? "page" : false}
-              aria-describedby={`footer-link-${i + 1}`}
-              data-astro-prefetch={link.prefetch}
-            >
-              {link.text}
-            </a>
-            {link.description && (
-              <p id={`footer-link-${i + 1}`}>{link.description}</p>
-            )}
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+  <div class="cage">
+    <nav aria-labelledby="footer-links">
+      <h2 id="footer-links">Link utili</h2>
+      <ul role="list">
+        {
+          links.map((link, i) => (
+            <li>
+              <a
+                href={link.href}
+                aria-current={url === link.href ? "page" : false}
+                aria-describedby={`footer-link-${i + 1}`}
+                data-astro-prefetch={link.prefetch}
+              >
+                {link.text}
+              </a>
+              {link.description && (
+                <p id={`footer-link-${i + 1}`}>{link.description}</p>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
 
-  <ThemeSwitcher class="theme-switcher" />
+    <ThemeSwitcher class="theme-switcher" />
 
-  <p class="copyright">
-    2006 - <span id="js-year"></span>
-    <b>signalkuppe.com.</b>
-    <br />Contenuti pubblicati sotto licenza <a
-      href=""
-      rel="noreferrer"
-      href="https://choosealicense.com/licenses/agpl-3.0/"
-    >
-      Gnu AGPLv3.</a
-    ><br />
-    <a href="#top" class="go-top">Torna in cima</a>
-    <Signature aria-hidden="true" class="signature" />
-  </p>
+    <p class="copyright">
+      2006 - <span id="js-year"></span>
+      <b>signalkuppe.com.</b>
+      <br />Contenuti pubblicati sotto licenza <a
+        href=""
+        rel="noreferrer"
+        href="https://choosealicense.com/licenses/agpl-3.0/"
+      >
+        Gnu AGPLv3.</a
+      ><br />
+      <a href="#top" class="go-top">Torna in cima</a>
+      <Signature aria-hidden="true" class="signature" />
+    </p>
+  </div>
 </footer>
 <!--css and scripts for theme switcher in layout's head tag to avoid fuoc -->
 <style>
+  footer {
+    border-top: 1px solid var(--outlines);
+    padding-top: 3rem;
+  }
+
   h2 {
     margin-bottom: 1rem;
   }

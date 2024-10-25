@@ -1,10 +1,15 @@
 ---
+import { categories } from "../constants";
+
 interface Props {
   post: any;
   TitleTag?: any;
 }
 
 const { post, TitleTag = "h2" } = Astro.props;
+const categorySlug = categories.find(
+  (cat) => cat.title === post.fields.category[0]
+)?.slug;
 ---
 
 <article>
@@ -27,7 +32,7 @@ const { post, TitleTag = "h2" } = Astro.props;
     <p>{post.fields.description}</p>
     <p>
       in
-      <a href={`/${post.fields.categoty}`} class="category">
+      <a href={`/blog/${categorySlug}`} class="category">
         <span aria-hidden="true">#</span>{post.fields.category}
       </a>
     </p>

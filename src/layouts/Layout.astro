@@ -61,10 +61,10 @@ const { title, description, ogImage } = Astro.props;
     >
     <div class="wrapper" id="js-wrapper">
       <Header id="js-header" class="cage header" />
-      <main id="js-main" class="main cage" tabindex="-1">
+      <main id="js-main" class="main" tabindex="-1">
         <slot />
       </main>
-      <Footer id="js-footer" class="cage footer" />
+      <Footer id="js-footer" class="footer" />
     </div>
     <BodyBackground class="svg-background" aria-hidden="true" />
   </body>
@@ -79,6 +79,7 @@ const { title, description, ogImage } = Astro.props;
   .header {
     padding-block: 1.5rem;
   }
+
   main {
     padding-top: 2rem;
     padding-bottom: 10rem;

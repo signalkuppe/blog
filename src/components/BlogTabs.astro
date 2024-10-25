@@ -24,23 +24,33 @@ const tabs = [
 ];
 ---
 
-<ul role="list">
-  {
-    tabs.map((tab) => (
-      <li>
-        <a href={tab.href} aria-current={activeTab === tab.id ? "page" : null}>
-          <tab.icon aria-hidden="true" />
-          {tab.text}
-        </a>
-      </li>
-    ))
-  }
-</ul>
+<div>
+  <ul role="list" class="cage">
+    {
+      tabs.map((tab) => (
+        <li>
+          <a
+            href={tab.href}
+            aria-current={activeTab === tab.id ? "page" : null}
+          >
+            <tab.icon aria-hidden="true" />
+            {tab.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
 
 <style>
+  div {
+    --tabBorderWidth: 3px;
+    border-bottom: var(--tabBorderWidth) solid var(--outlines);
+  }
+
   ul {
     display: flex;
-    border-bottom: var(--tabBorderWidth) solid var(--outlines);
+
     font-size: 0.85rem;
     padding-left: 1rem;
   }

@@ -44,11 +44,11 @@ const tools = [
 ---
 
 <Layout
-  title="Signalkuppe - Parole oltre i 4000m"
-  description="Blog personale di Matteo Leoni"
+  title="Matteo - Signalkuppe"
+  description="Presento le mie passioni e il mio lavoro"
   ogImage="/og-image.png"
 >
-  <div class="wrapper">
+  <div class="wrapper cage">
     <Image src={Cover} width="1000" height="661" alt="" />
     <article>
       <h1>Matteo</h1>
@@ -118,18 +118,26 @@ const tools = [
 </Layout>
 
 <style>
-  @media screen and (width < 1170px) {
+  .wrapper {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  article {
+    max-width: 50ch;
+  }
+
+  @media screen and (width < 70rem) {
     .wrapper {
-      display: flex;
       flex-direction: column;
       gap: 2rem;
     }
   }
 
-  @media screen and (width > 1170px) {
+  @media screen and (width > 70rem) {
     .wrapper {
       display: flex;
-      align-items: flex-start;
+      flex-direction: row;
       gap: 4rem;
     }
 
@@ -141,7 +149,6 @@ const tools = [
     article {
       order: 1;
       min-width: 0;
-      max-width: 55ch;
     }
   }
 

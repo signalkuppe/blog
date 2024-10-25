@@ -23,34 +23,36 @@ const { items: posts } = await contentfulClient.getEntries(query);
   <Fragment slot="head">
     <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
   </Fragment>
-  <h1>Piacere Matteo <span aria-hidden="true">👋</span></h1>
-  <p class="lead">
-    Sono un appassionato di montagna. Questo sito vuole essere un <a
-      href="/blog">diario di tutte le mie uscite,</a
-    > spero possa esservi utile per scoprire nuovi itinerari. Vivo a Concenedo, dove
-    ho posizionato una stazione meteo, in
-    <a
-      href="/meteo-concenedo"
-      aria-description="Dati meteo in diretta da Concenedo">questa pagina</a
-    > trovate i dati in diretta.
-  </p>
+  <div class="cage">
+    <h1>Piacere Matteo <span aria-hidden="true">👋</span></h1>
+    <p class="lead">
+      Sono un appassionato di montagna. Questo sito vuole essere un <a
+        href="/blog">diario di tutte le mie uscite,</a
+      > spero possa esservi utile per scoprire nuovi itinerari. Vivo a Concenedo,
+      dove ho posizionato una stazione meteo, in
+      <a
+        href="/meteo-concenedo"
+        aria-description="Dati meteo in diretta da Concenedo">questa pagina</a
+      > trovate i dati in diretta.
+    </p>
 
-  <a href="/matteo" class="btn lead-button" data-astro-prefetch
-    >Conosciamoci meglio</a
-  >
-  <h2>Ultime uscite</h2>
-  <ul role="list">
-    {
-      posts.map((post, i) => (
-        <li>
-          <PostCard post={post} TitleTag="h3" />
-        </li>
-      ))
-    }
-  </ul>
-  <a href="/blog" class="read-more-link"
-    >Tutte le uscite <DoubleChevronRightIcon aria-hidden="true" /></a
-  >
+    <a href="/matteo" class="btn lead-button" data-astro-prefetch
+      >Conosciamoci meglio</a
+    >
+    <h2>Ultime uscite</h2>
+    <ul role="list">
+      {
+        posts.map((post, i) => (
+          <li>
+            <PostCard post={post} TitleTag="h3" />
+          </li>
+        ))
+      }
+    </ul>
+    <a href="/blog" class="read-more-link"
+      >Tutte le uscite <DoubleChevronRightIcon aria-hidden="true" /></a
+    >
+  </div>
 </Layout>
 
 <style>

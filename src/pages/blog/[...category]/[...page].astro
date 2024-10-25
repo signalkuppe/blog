@@ -6,17 +6,13 @@ import BlogTabs from "../../../components/BlogTabs.astro";
 import BlogCategories from "../../../components/BlogCategories.astro";
 import BlogPager from "../../../components/BlogPager.astro";
 import PostCard from "../../../components/PostCard.astro";
-import DoubleChevronRightIcon from "../../../icons/DoubleChevronRightIcon.astro";
-import DoubleChevronLeftIcon from "../../../icons/DoubleChevronLeftIcon.astro";
-import ChevronRightIcon from "../../../icons/ChevronRightIcon.astro";
-import ChevronLeftIcon from "../../../icons/ChevronLeftIcon.astro";
 
 interface Props {
   page: any;
 }
 
 const { page } = Astro.props;
-const { category } = Astro.params;
+const { category, page: categoryPage } = Astro.params;
 
 export async function getStaticPaths({ paginate }) {
   const { posts } = await getPosts();
@@ -32,57 +28,68 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 
-const pageTitle = category
-  ? categories.find((c) => c.slug === category)?.title
-  : "Tutte le uscite";
+let pageTitle = "Tutte le uscite";
 
-/**
- *  {} start: 0,
-  end: 11,
-  size: 12,
-  total: 282,
-  currentPage: 1,
-  lastPage: 24,
-  url: {
-    current: '/blog',
-    next: '/blog/2',
-    prev: undefined,
-    first: undefined,
-    last: '/blog/24'
+if (category) {
+  const c = categories.find((c) => c.slug === category);
+  if (c) {
+    pageTitle = categories.find((c) => c.slug === category)?.title;
   }
 }
- */
+
+if (page.currentPage > 1 || categoryPage > 1) {
+  pageTitle = `${pageTitle}, pagina ${page.currentPage || categoryPage}`;
+}
 ---
 
 <Layout
-  title="Signalkuppe - Parole oltre i 4000m"
+  title={`${pageTitle} - Signalkuppe`}
   description="Blog personale di Matteo Leoni"
   ogImage="/og-image.png"
 >
   <h1 class="visually-hidden">{pageTitle}</h1>
-  <nav aria-label="Visualizzazione" class="tabs-parent">
-    <BlogTabs activeTab="elenco" />
-  </nav>
-
-  <div class="container">
-    <ul role="list" class="post-list">
-      {
-        page.data.map((post) => (
-          <li>
-            <PostCard post={post} />
-          </li>
-        ))
-      }
-    </ul>
-
-    <nav aria-label="categorie" class="post-categories">
-      <BlogCategories activeCategory={category} />
+  <div class="tabs-parent">
+    <nav aria-label="Visualizzazione">
+      <BlogTabs activeTab="elenco" />
     </nav>
   </div>
 
-  <nav aria-label="Pagine" class="post-pager">
-    <BlogPager page={page} />
-  </nav>
+  <div class="cage">
+    <div class="container">
+      <ul role="list" class="post-list">
+        {
+          page.data.map((post) => (
+            <li>
+              <PostCard post={post} />
+            </li>
+          ))
+        }
+      </ul>
+
+      <nav aria-label="categorie" class="post-categories">
+        <BlogCategories activeCategory={category} />
+      </nav>
+    </div>
+
+    <nav aria-label="Pagine" class="post-pager">
+      <BlogPager page={page} />
+    </nav>
+  </div>
+  <Fragment slot="head">
+    <script is:inline>
+      const header = document.getElementById(`js-header`);
+      const observer = new IntersectionObserver(
+        ([e]) =>
+          e.target.classList.toggle(
+            "js-remove-sticky",
+            e.intersectionRatio < 1
+          ),
+        { threshold: [1] }
+      );
+
+      observer.observe(header);
+    </script>
+  </Fragment>
 </Layout>
 
 <style>
@@ -114,20 +121,16 @@ const pageTitle = category
   }
 
   .tabs-parent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     position: sticky;
     z-index: 2;
     top: 0;
     padding-top: 1.5rem;
     margin-top: -1.5rem;
-    padding-bottom: 3.5rem;
     background: var(--surface);
-    --tabBorderWidth: 3px;
   }
 
   .container {
+    padding-top: 4rem;
     display: flex;
   }
 
@@ -171,14 +174,3 @@ const pageTitle = category
     }
   }
 </style>
-
-<script>
-  const header = document.getElementById(`js-header`);
-  const observer = new IntersectionObserver(
-    ([e]) =>
-      e.target.classList.toggle("js-remove-sticky", e.intersectionRatio < 1),
-    { threshold: [1] }
-  );
-
-  observer.observe(header);
-</script>
