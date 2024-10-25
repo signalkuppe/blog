@@ -75,21 +75,6 @@ if (page.currentPage > 1 || categoryPage > 1) {
       <BlogPager page={page} />
     </nav>
   </div>
-  <Fragment slot="head">
-    <script is:inline>
-      const header = document.getElementById(`js-header`);
-      const observer = new IntersectionObserver(
-        ([e]) =>
-          e.target.classList.toggle(
-            "js-remove-sticky",
-            e.intersectionRatio < 1
-          ),
-        { threshold: [1] }
-      );
-
-      observer.observe(header);
-    </script>
-  </Fragment>
 </Layout>
 
 <style>
@@ -174,3 +159,16 @@ if (page.currentPage > 1 || categoryPage > 1) {
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const header = document.getElementById(`js-header`);
+    const observer = new IntersectionObserver(
+      ([e]) =>
+        e.target.classList.toggle("js-remove-sticky", e.intersectionRatio < 1),
+      { threshold: [1] }
+    );
+
+    observer.observe(header);
+  });
+</script>
