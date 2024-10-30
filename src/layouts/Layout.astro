@@ -70,8 +70,8 @@ const { title, description, ogImage } = Astro.props;
     </main>
     <footer id="footer">
       <div class="cage"><Footer /></div>
-      <BodyBackground class="svg-background" aria-hidden="true" />
     </footer>
+    <BodyBackground class="svg-background" aria-hidden="true" />
   </body>
 </html>
 
@@ -83,6 +83,11 @@ const { title, description, ogImage } = Astro.props;
     z-index: 2;
     backdrop-filter: blur(10px);
     overflow-x: clip;
+  }
+
+  header.menu-is-open {
+    backdrop-filter: none;
+    overflow: none;
   }
 
   header.remove-sticky {
@@ -124,6 +129,20 @@ const { title, description, ogImage } = Astro.props;
     "restore-sticky-header",
     (e) => {
       header.classList.remove("remove-sticky");
+    },
+    false
+  );
+  document.body.addEventListener(
+    "menu-is-open",
+    (e) => {
+      header.classList.add("menu-is-open");
+    },
+    false
+  );
+  document.body.addEventListener(
+    "menu-is-closed",
+    (e) => {
+      header.classList.remove("menu-is-open");
     },
     false
   );

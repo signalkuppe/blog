@@ -95,24 +95,30 @@ const { items: posts } = await contentfulClient.getEntries(query);
   @media screen and (min-width: 60rem) {
     ul {
       grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      grid-template-areas:
+        "a1 a4"
+        "a2 a5"
+        "a3 a6";
     }
 
+    li:nth-child(1) {
+      grid-area: a1;
+    }
     li:nth-child(2) {
-      order: 3;
+      grid-area: a2;
     }
     li:nth-child(3) {
-      order: 5;
+      grid-area: a3;
     }
     li:nth-child(4) {
-      order: 2;
+      grid-area: a4;
     }
-
     li:nth-child(5) {
-      order: 4;
+      grid-area: a5;
     }
-
     li:nth-child(6) {
-      order: 6;
+      grid-area: a6;
     }
   }
 
