@@ -162,10 +162,15 @@ if (page.currentPage > 1 || categoryPage > 1) {
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const header = document.getElementById(`js-header`);
+    const header = document.getElementById(`header`);
     const observer = new IntersectionObserver(
-      ([e]) =>
-        e.target.classList.toggle("js-remove-sticky", e.intersectionRatio < 1),
+      ([e]) => {
+        if (e.intersectionRatio < 1) {
+          document.body.dispatchEvent(new CustomEvent("remove-sticky-header"));
+        } else {
+          document.body.dispatchEvent(new CustomEvent("restore-sticky-header"));
+        }
+      },
       { threshold: [1] }
     );
 

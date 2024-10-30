@@ -1,0 +1,40 @@
+---
+const { links, currentUrl, navLabel } = Astro.props;
+---
+
+<nav aria-label={navLabel}>
+  <ul role="list">
+    {
+      links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={currentUrl === link.href ? "page" : false}
+            data-astro-prefetch={link.prefetch}
+          >
+            {link.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style>
+  ul {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+  }
+
+  [aria-current="page"] {
+    font-weight: bold;
+  }
+</style>

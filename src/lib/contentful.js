@@ -1,5 +1,6 @@
 import * as contentful from "contentful";
 import { union } from "underscore";
+import cache from "./cache";
 
 export const contentfulClient = contentful.createClient({
   space: import.meta.env.SIGNALKUPPE_WEBSITE_CONTENTFUL_SPACE,
@@ -14,6 +15,14 @@ export const contentfulClient = contentful.createClient({
 });
 
 export async function getPosts() {
+  const cached = cache.get("posts");
+  if (cached) {
+    console.log("posts from cache");
+    return {
+      posts: cached,
+    };
+  }
+  console.log("fetching posts from contentful");
   const query = {
     content_type: "post",
     include: 1,
@@ -34,6 +43,8 @@ export async function getPosts() {
     posts = union(posts, chunk.items);
     iteration++;
   }
+
+  cache.set("posts", posts);
 
   return { posts };
 }

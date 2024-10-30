@@ -1,0 +1,201 @@
+---
+import MenuIcon from "../icons/MenuIcon.astro";
+import CloseIcon from "../icons/CloseIcon.astro";
+const { links, currentUrl, navLabel } = Astro.props;
+---
+
+<nav aria-label={navLabel} id="nav">
+  <button id="nav-open">
+    <MenuIcon aria-hidden="true" />
+    <span class="visually-hidden">Menu</span>
+  </button>
+  <div id="nav-panel">
+    <button id="nav-close">
+      <CloseIcon aria-hidden="true" />
+      <span class="visually-hidden">Chiudi</span>
+    </button>
+    <ul role="list">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={currentUrl === link.href ? "page" : false}
+              data-astro-prefetch={link.prefetch}
+            >
+              {link.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<style>
+  button {
+    background: none;
+    border: none;
+    display: flex;
+    padding: 0.5rem;
+  }
+  button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  #nav-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding: 1.5rem;
+    padding-top: 3rem;
+    width: 60%;
+    height: 100svh;
+    background: var(--surfaceAccent);
+    transform: translate3d(100%, 0, 0);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+  }
+
+  [aria-current="page"] {
+    font-weight: bold;
+  }
+
+  #nav-close {
+    align-self: flex-end;
+  }
+
+  #nav-open[aria-expanded="true"] + #nav-panel {
+    transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+    z-index: 3;
+  }
+
+  :global(.js-backdrop) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100svh;
+    width: 100vw;
+    z-index: 2;
+    opacity: 0.75;
+    background: var(--surface);
+  }
+</style>
+
+<script>
+  const nav = document.getElementById(`nav`);
+  const navPanel = document.getElementById(`nav-panel`);
+  const openMenuButton = document.getElementById("nav-open");
+  const closeMenuButton = document.getElementById("nav-close");
+  const backdrop = document.createElement("div");
+  backdrop.setAttribute("aria-hidden", "true");
+  backdrop.setAttribute("class", "js-backdrop");
+  const menuFirstFocusableElement = navPanel.querySelector("a:first-child");
+  const openMenuEvent = new CustomEvent("menu-is-open");
+  const closeMenuEvent = new CustomEvent("menu-is-closed");
+
+  function setJsAttributes() {
+    navPanel.setAttribute("inert", "");
+    navPanel.setAttribute("aria-role", "dialog");
+    openMenuButton.setAttribute("aria-controls", "js-main-menu");
+    openMenuButton.setAttribute("aria-expanded", "false");
+  }
+
+  function trapFocus(element) {
+    // get all focusable elements
+    const focusableEls = element.querySelectorAll(
+      "a[href]:not([disabled]), button:not([disabled])"
+    );
+    // Save first and last focusable elements
+    const firstFocusableEl = focusableEls[0];
+    const lastFocusableEl = focusableEls[focusableEls.length - 1];
+    const KEYCODE_TAB = 9;
+
+    // listen for a key press
+    element.addEventListener("keydown", function (e) {
+      const isTabPressed = e.key === "Tab" || e.keyCode === KEYCODE_TAB;
+
+      // if the key pressed is not TAB, stop function execution
+      if (!isTabPressed) {
+        return;
+      }
+
+      // if shift + tab
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusableEl) {
+          lastFocusableEl.focus();
+          e.preventDefault();
+        }
+      }
+      // else if tab
+      else {
+        if (document.activeElement === lastFocusableEl) {
+          firstFocusableEl.focus();
+          e.preventDefault();
+        }
+      }
+    });
+  }
+
+  function openMenu() {
+    navPanel.removeAttribute("inert");
+    openMenuButton.setAttribute("aria-expanded", "true");
+    nav.appendChild(backdrop);
+    document.body.style.overflow = "hidden";
+    document.body.dispatchEvent(openMenuEvent);
+    trapFocus(navPanel);
+    // @ts-ignore
+    menuFirstFocusableElement.focus();
+    function handleKeydown(e) {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
+    }
+    navPanel.addEventListener("keydown", handleKeydown);
+    // @ts-ignore
+    navPanel._handleKeydown = handleKeydown;
+  }
+
+  function closeMenu() {
+    navPanel.setAttribute("inert", "");
+    openMenuButton.setAttribute("aria-expanded", "false");
+    openMenuButton.focus();
+    nav.removeChild(backdrop);
+    document.body.dispatchEvent(closeMenuEvent);
+    document.body.style.overflow = "";
+    // @ts-ignore
+    if (navPanel._handleKeydown) {
+      // @ts-ignore
+      navPanel.removeEventListener("keydown", navPanel._handleKeydown);
+      // @ts-ignore
+      delete navPanel._handleKeydown;
+    }
+  }
+
+  openMenuButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    openMenu();
+  });
+
+  closeMenuButton.addEventListener("click", function (e) {
+    e.preventDefault();
+    closeMenu();
+  });
+
+  setJsAttributes();
+</script>

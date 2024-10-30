@@ -59,25 +59,34 @@ const { title, description, ogImage } = Astro.props;
     <a href="#main" class="visually-hidden skip-link"
       >Vai al contenuto principale</a
     >
-    <div class="wrapper" id="js-wrapper">
-      <Header id="js-header" class="cage header" />
-      <main id="js-main" class="main" tabindex="-1">
-        <slot />
-      </main>
-      <Footer id="js-footer" class="footer" />
-    </div>
-    <BodyBackground class="svg-background" aria-hidden="true" />
+    <header id="header">
+      <div class="cage">
+        <Header />
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <footer id="footer">
+      <div class="cage"><Footer /></div>
+      <BodyBackground class="svg-background" aria-hidden="true" />
+    </footer>
   </body>
 </html>
 
 <style>
-  .wrapper {
-    position: relative;
+  header {
+    padding-block: 1.5rem;
+    position: sticky;
+    top: -1px;
     z-index: 2;
+    backdrop-filter: blur(10px);
+    overflow-x: clip;
   }
 
-  .header {
-    padding-block: 1.5rem;
+  header.remove-sticky {
+    position: static;
   }
 
   main {
@@ -85,7 +94,7 @@ const { title, description, ogImage } = Astro.props;
     padding-bottom: 10rem;
   }
 
-  .footer {
+  footer {
     padding-bottom: 6rem;
   }
 
@@ -93,7 +102,29 @@ const { title, description, ogImage } = Astro.props;
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: 1;
     width: 100vw;
+    z-index: -1;
+  }
+
+  .skip-link:focus {
+    z-index: 4;
   }
 </style>
+
+<script>
+  const header = document.getElementById("header");
+  document.body.addEventListener(
+    "remove-sticky-header",
+    (e) => {
+      header.classList.add("remove-sticky");
+    },
+    false
+  );
+  document.body.addEventListener(
+    "restore-sticky-header",
+    (e) => {
+      header.classList.remove("remove-sticky");
+    },
+    false
+  );
+</script>
