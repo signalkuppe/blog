@@ -31,7 +31,7 @@ const { activeCategory } = Astro.props;
     margin-bottom: 2rem;
   }
 
-  ul a {
+  a {
     font-size: 0.75rem;
     text-decoration: none;
     display: block;
@@ -41,9 +41,13 @@ const { activeCategory } = Astro.props;
     border-radius: 10px;
   }
 
-  ul a:hover,
-  ul a[aria-current="page"] {
+  a:hover,
+  a[aria-current="page"] {
     color: var(--textAccent);
     border-color: var(--accent);
+  }
+
+  a[aria-current="page"] {
+    font-weight: bold;
   }
 </style>

@@ -6,10 +6,35 @@ import DesktopMenu from "./DesktopMenu.astro";
 import MobileMenu from "./MobileMenu.astro";
 const url = Astro.url.pathname;
 const links = [
-  { href: "/blog", text: "Uscite", prefetch: true },
-  { href: "/portfolio", text: "Foto", prefetch: true },
-  { href: "/meteo-concenedo", text: "Meteo" },
-  { href: "/contatti", text: "Contatti", prefetch: true },
+  {
+    href: "/matteo",
+    text: "Matteo",
+    prefetch: true,
+    active: url.indexOf("/matteo") !== -1,
+  },
+  {
+    href: "/blog",
+    text: "Uscite",
+    prefetch: true,
+    active: url.indexOf("/blog") !== -1,
+  },
+  {
+    href: "/portfolio",
+    text: "Foto",
+    prefetch: true,
+    active: url.indexOf("/portfolio") !== -1,
+  },
+  {
+    href: "/meteo-concenedo",
+    text: "Meteo",
+    active: url.indexOf("/meteo-concenedo") !== -1,
+  },
+  {
+    href: "/contatti",
+    text: "Contatti",
+    prefetch: true,
+    active: url.indexOf("/contatti") !== -1,
+  },
 ];
 const navLabel = "Sito";
 ---
@@ -32,10 +57,10 @@ const navLabel = "Sito";
   >
   <div class="header-right">
     <div class="mobile-menu">
-      <MobileMenu links={links} currentUrl={url} navLabel={navLabel} />
+      <MobileMenu links={links} navLabel={navLabel} />
     </div>
     <div class="desktop-menu">
-      <DesktopMenu links={links} currentUrl={url} navLabel={navLabel} />
+      <DesktopMenu links={links} navLabel={navLabel} />
     </div>
     <form role="search">
       <label for="search" class="visually-hidden">Cerca un’uscita</label>

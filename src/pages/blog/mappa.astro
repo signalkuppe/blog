@@ -1,0 +1,13 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+const pageTitle = "Mappa delle uscite";
+---
+
+<Layout
+  title={`${pageTitle} - Signalkuppe`}
+  description="Blog personale di Matteo Leoni"
+  ogImage="/og-image.png"
+>
+  <BlogLayout pageTitle={pageTitle}> mappa </BlogLayout>
+</Layout>

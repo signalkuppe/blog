@@ -1,6 +1,8 @@
 ---
 import Signature from "./Signature.astro";
 import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher.astro";
+import ArrowUpIcon from "../icons/ArrowUpIcon.astro";
+
 const url = Astro.url.pathname;
 const links = [
   {
@@ -73,7 +75,9 @@ const links = [
   >
     Gnu AGPLv3.</a
   ><br />
-  <a href="#top" class="go-top">Torna in cima</a>
+  <a href="#top" class="go-top">
+    Torna in cima <ArrowUpIcon aria-hidden="true" /></a
+  >
   <Signature aria-hidden="true" class="signature" />
 </p>
 
@@ -109,9 +113,17 @@ const links = [
   }
 
   .go-top {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
     margin-top: 1rem;
   }
+
+  .go-top svg {
+    display: inline-block;
+    height: 1rem;
+  }
+
   .signature {
     width: 140px;
     margin-top: 2rem;

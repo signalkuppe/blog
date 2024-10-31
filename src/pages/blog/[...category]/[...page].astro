@@ -2,7 +2,7 @@
 import { getPosts } from "../../../lib/contentful";
 import { categories } from "../../../constants";
 import Layout from "../../../layouts/Layout.astro";
-import BlogTabs from "../../../components/BlogTabs.astro";
+import BlogLayout from "../../../layouts/BlogLayout.astro";
 import BlogCategories from "../../../components/BlogCategories.astro";
 import BlogPager from "../../../components/BlogPager.astro";
 import PostCard from "../../../components/PostCard.astro";
@@ -47,34 +47,29 @@ if (page.currentPage > 1 || categoryPage > 1) {
   description="Blog personale di Matteo Leoni"
   ogImage="/og-image.png"
 >
-  <h1 class="visually-hidden">{pageTitle}</h1>
-  <div class="tabs-parent">
-    <nav aria-label="Visualizzazione">
-      <BlogTabs activeTab="elenco" />
-    </nav>
-  </div>
+  <BlogLayout pageTitle={pageTitle}>
+    <div class="cage">
+      <div class="container">
+        <ul role="list" class="post-list">
+          {
+            page.data.map((post) => (
+              <li>
+                <PostCard post={post} />
+              </li>
+            ))
+          }
+        </ul>
 
-  <div class="cage">
-    <div class="container">
-      <ul role="list" class="post-list">
-        {
-          page.data.map((post) => (
-            <li>
-              <PostCard post={post} />
-            </li>
-          ))
-        }
-      </ul>
+        <nav aria-label="categorie" class="post-categories">
+          <BlogCategories activeCategory={category} />
+        </nav>
+      </div>
 
-      <nav aria-label="categorie" class="post-categories">
-        <BlogCategories activeCategory={category} />
+      <nav aria-label="Pagine" class="post-pager">
+        <BlogPager page={page} />
       </nav>
     </div>
-
-    <nav aria-label="Pagine" class="post-pager">
-      <BlogPager page={page} />
-    </nav>
-  </div>
+  </BlogLayout>
 </Layout>
 
 <style>
@@ -83,16 +78,6 @@ if (page.currentPage > 1 || categoryPage > 1) {
     font-size: 0.85rem;
     color: var(--text);
     margin-bottom: 1rem;
-  }
-
-  .tabs-parent {
-    position: sticky;
-    z-index: 1;
-    top: 0px;
-    padding-top: 1.5rem;
-    margin-top: -2rem;
-    padding-bottom: 3.5rem;
-    background: linear-gradient(var(--surface) 70%, transparent 90%);
   }
 
   .container {
@@ -204,21 +189,3 @@ if (page.currentPage > 1 || categoryPage > 1) {
     }
   }
 </style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const header = document.getElementById(`header`);
-    const observer = new IntersectionObserver(
-      ([e]) => {
-        if (e.intersectionRatio < 1) {
-          document.body.dispatchEvent(new CustomEvent("remove-sticky-header"));
-        } else {
-          document.body.dispatchEvent(new CustomEvent("restore-sticky-header"));
-        }
-      },
-      { threshold: [1], rootMargin: "-1px 0px 0px 0px" }
-    );
-
-    observer.observe(header);
-  });
-</script>

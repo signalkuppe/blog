@@ -17,7 +17,7 @@ const tabs = [
   },
   {
     id: "mappa",
-    href: "/mappa",
+    href: "/blog/mappa",
     text: "Mappa",
     icon: MapPinIcon,
   },
@@ -43,16 +43,11 @@ const tabs = [
 </div>
 
 <style>
-  div {
-    --tabBorderWidth: 3px;
-    border-bottom: var(--tabBorderWidth) solid var(--outlines);
-  }
-
   ul {
     display: flex;
-
+    gap: 1.5rem;
     font-size: 0.85rem;
-    padding-left: 1rem;
+    --borderWidth: 3px;
   }
 
   ul a {
@@ -60,18 +55,16 @@ const tabs = [
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 1rem;
     color: var(--text);
-    transform: translateY(var(--tabBorderWidth));
     background: var(--surface);
+    border-bottom: var(--borderWidth) solid transparent;
   }
 
   ul a[aria-current="page"] {
-    border: var(--tabBorderWidth) solid var(--outlines);
-    border-bottom: none;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
     font-weight: bold;
+    color: var(--textAccent);
+    border-color: var(--accent);
   }
 
   ul a:not([aria-current="page"]):hover {

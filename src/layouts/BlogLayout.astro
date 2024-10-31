@@ -1,0 +1,48 @@
+---
+import BlogTabs from "../components/BlogTabs.astro";
+
+interface Props {
+  pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<h1 class="visually-hidden">{pageTitle}</h1>
+<div class="tabs-parent">
+  <nav aria-label="Visualizzazione">
+    <BlogTabs activeTab="elenco" />
+  </nav>
+</div>
+
+<slot />
+
+<style>
+  .tabs-parent {
+    position: sticky;
+    z-index: 1;
+    top: 0px;
+    padding-top: 1.5rem;
+    margin-top: -2rem;
+    padding-bottom: 3.5rem;
+    background: linear-gradient(var(--surface) 70%, transparent 90%);
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const header = document.getElementById(`header`);
+    const observer = new IntersectionObserver(
+      ([e]) => {
+        if (e.intersectionRatio < 1) {
+          document.body.dispatchEvent(new CustomEvent("remove-sticky-header"));
+        } else {
+          document.body.dispatchEvent(new CustomEvent("restore-sticky-header"));
+        }
+      },
+      { threshold: [1], rootMargin: "-1px 0px 0px 0px" }
+    );
+
+    observer.observe(header);
+  });
+</script>
