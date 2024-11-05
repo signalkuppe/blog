@@ -47,7 +47,7 @@ if (page.currentPage > 1 || categoryPage > 1) {
   description="Blog personale di Matteo Leoni"
   ogImage="/og-image.png"
 >
-  <BlogLayout pageTitle={pageTitle}>
+  <BlogLayout pageTitle={pageTitle} activeTab="elenco">
     <div class="cage">
       <div class="container">
         <ul role="list" class="post-list">
@@ -86,14 +86,10 @@ if (page.currentPage > 1 || categoryPage > 1) {
 
   .post-list {
     margin-bottom: 2rem;
-    display: grid;
-    row-gap: 1.5rem;
-    column-gap: 3rem;
   }
 
   .post-list li {
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.5rem;
+    padding-bottom: 4rem;
   }
 
   .pager {
@@ -132,18 +128,7 @@ if (page.currentPage > 1 || categoryPage > 1) {
       align-items: flex-start;
       gap: 3rem;
     }
-    .post-list {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(6, 1fr);
-      grid-template-areas:
-        "a1 a7"
-        "a2 a8"
-        "a3 a9"
-        "a4 a10"
-        "a5 a11"
-        "a6 a12";
-      flex: 3;
-    }
+
     .post-categories {
       flex: 1;
       position: sticky;
@@ -151,41 +136,14 @@ if (page.currentPage > 1 || categoryPage > 1) {
       z-index: 1;
     }
 
-    .post-list li:nth-child(1) {
-      grid-area: a1;
+    .post-list {
+      flex: 3;
+      columns: 2;
+      column-gap: 3rem;
     }
-    .post-list li:nth-child(2) {
-      grid-area: a2;
-    }
-    .post-list li:nth-child(3) {
-      grid-area: a3;
-    }
-    .post-list li:nth-child(4) {
-      grid-area: a4;
-    }
-    .post-list li:nth-child(5) {
-      grid-area: a5;
-    }
-    .post-list li:nth-child(6) {
-      grid-area: a6;
-    }
-    .post-list li:nth-child(7) {
-      grid-area: a7;
-    }
-    .post-list li:nth-child(8) {
-      grid-area: a8;
-    }
-    .post-list li:nth-child(9) {
-      grid-area: a9;
-    }
-    .post-list li:nth-child(10) {
-      grid-area: a10;
-    }
-    .post-list li:nth-child(11) {
-      grid-area: a11;
-    }
-    .post-list li:nth-child(12) {
-      grid-area: a12;
+
+    .post-list li {
+      break-inside: avoid;
     }
   }
 </style>

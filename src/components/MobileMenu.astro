@@ -91,9 +91,9 @@ const { links, navLabel } = Astro.props;
     position: fixed;
     left: 0;
     top: 0;
-    z-index: 3;
+    z-index: 2;
     opacity: 0.75;
-    width: 40%;
+    width: 100%;
     background: var(--surface);
   }
 </style>
@@ -153,9 +153,8 @@ const { links, navLabel } = Astro.props;
 
   function lockBody() {
     document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
+    document.body.style.touchAction = "none";
     document.body.style.height = `${window.innerHeight}px`;
-    document.body.style.width = `${window.innerWidth}px`;
     navPanel.style.height = `${window.innerHeight}px`;
     backdrop.style.height = `${window.innerHeight}px`;
   }

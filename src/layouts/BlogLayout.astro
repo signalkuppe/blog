@@ -3,15 +3,16 @@ import BlogTabs from "../components/BlogTabs.astro";
 
 interface Props {
   pageTitle: string;
+  activeTab: string;
 }
 
-const { pageTitle } = Astro.props;
+const { pageTitle, activeTab } = Astro.props;
 ---
 
 <h1 class="visually-hidden">{pageTitle}</h1>
 <div class="tabs-parent">
   <nav aria-label="Visualizzazione">
-    <BlogTabs activeTab="elenco" />
+    <BlogTabs activeTab={activeTab} />
   </nav>
 </div>
 
@@ -24,7 +25,7 @@ const { pageTitle } = Astro.props;
     top: 0px;
     padding-top: 1.5rem;
     margin-top: -2rem;
-    padding-bottom: 3.5rem;
+    padding-bottom: 3rem;
     background: linear-gradient(var(--surface) 70%, transparent 90%);
   }
 </style>
