@@ -5,17 +5,20 @@ import BlogLayout from "../../layouts/BlogLayout.astro";
 import "leaflet/dist/leaflet.css";
 const { posts } = await getPosts();
 const pageTitle = "Mappa delle uscite";
-console.log(posts[0].fields);
 ---
 
 <Layout
   title={`${pageTitle} - Signalkuppe`}
-  description="Blog personale di Matteo Leoni"
-  ogImage="/og-image.png"
+  description="Mappa delle uscite"
+  ogImage="/og-image.jpg"
 >
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://tile.thunderforest.com/" crossorigin />
+  </Fragment>
   <BlogLayout pageTitle={pageTitle} activeTab="mappa">
-    <div
+    <section
       id="map"
+      aria-abel="Mappa"
       data-markers={JSON.stringify(
         posts.map((post) => ({
           id: post.sys.id,
@@ -31,7 +34,7 @@ console.log(posts[0].fields);
         }))
       )}
     >
-    </div>
+    </section>
   </BlogLayout>
 </Layout>
 
@@ -55,6 +58,7 @@ console.log(posts[0].fields);
   const markers = JSON.parse(mapDiv.dataset.markers);
 
   mymap.setView([lat, lng], zoom);
+
   L.tileLayer(
     "https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f890f7037bd243ee9602a36c56fc6dc2",
     {
@@ -70,11 +74,20 @@ console.log(posts[0].fields);
     })
     .addTo(mymap);
   mymap.scrollWheelZoom.disable();
+
   mymap.on("fullscreenchange", function () {
-    if (mymap.isFullscreen()) {
-      mapDiv.classList.add("fullscreen");
-    } else {
-      mapDiv.classList.remove("fullscreen");
+    if (!document.fullscreenElement) {
+      if (mymap.isFullscreen()) {
+        mapDiv.classList.add("fullscreen");
+        mapDiv.style.height = `${window.innerHeight}px`;
+        document.body.style.height = `${window.innerHeight}px`;
+        document.body.style.overflow = `hidden`;
+      } else {
+        mapDiv.classList.remove("fullscreen");
+        mapDiv.style.height = "";
+        document.body.removeAttribute("style");
+        mymap.setView([lat, lng], zoom);
+      }
     }
   });
 
@@ -95,7 +108,7 @@ console.log(posts[0].fields);
             <div class="popup-wrapper">
               <img width="80" height="80" src="${marker.image.url}?w=200&h=200&fit=thumb&q=90&fm=avif" alt="" />
               <div class="popup-right">
-                <a href="${marker.slug}" class="popup-title">${marker.title}</a>
+                <a href="/${marker.slug}" class="popup-title">${marker.title}</a>
                 <p>${marker.description}</p>
               </div>
              
@@ -118,7 +131,15 @@ console.log(posts[0].fields);
   #map {
     width: 100%;
     height: 100%;
-    min-height: 70vh;
+    min-height: 70svh;
+    background: var(--surfaceAccent);
+  }
+
+  #map.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 100 !important;
   }
 
   #map.fullscreen .leaflet-pane[style] {
@@ -134,9 +155,22 @@ console.log(posts[0].fields);
     z-index: 0 !important;
   }
 
+  .leaflet-right {
+    right: 32px !important;
+    top: 16px !important;
+  }
+
+  .leaflet-right .leaflet-control {
+    margin-right: 0 !important;
+  }
+
   .leaflet-control-fullscreen a {
     background: #fff url("/images/fullscreen@2x.png") no-repeat 2px 2px;
     background-size: 26px 52px;
+  }
+
+  #map.fullscreen .leaflet-control-fullscreen a {
+    background-position: 2px -24px;
   }
 
   .leaflet-div-icon[style] {
@@ -146,14 +180,12 @@ console.log(posts[0].fields);
     height: 1.25rem !important;
   }
 
-  html[data-theme="dark"] .leaflet-tile-pane {
+  .leaflet-tile-pane {
     filter: grayscale(1);
   }
 
-  @media (prefers-color-scheme: dark) {
-    html:not([data-theme]) .leaflet-tile-pane {
-      filter: grayscale(1);
-    }
+  html[data-theme="light"] .leaflet-tile-pane {
+    filter: grayscale(0);
   }
 
   .leaflet-popup-content-wrapper {
@@ -161,7 +193,7 @@ console.log(posts[0].fields);
   }
 
   .leaflet-popup-content {
-    font-family: inherit !important;
+    font-family: var(--fontFamily) !important;
     margin: 0 !important;
     color: black;
     width: max-content !important;

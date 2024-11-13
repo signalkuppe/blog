@@ -18,7 +18,7 @@ const { items: posts } = await contentfulClient.getEntries(query);
 <Layout
   title="Signalkuppe - Parole oltre i 4000m"
   description="Blog personale di Matteo Leoni"
-  ogImage="/og-image.png"
+  ogImage="/og-image.jpg"
 >
   <Fragment slot="head">
     <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
@@ -81,13 +81,23 @@ const { items: posts } = await contentfulClient.getEntries(query);
     text-transform: uppercase;
   }
 
-  li {
-    padding-bottom: 3rem;
+  ul {
+    margin-bottom: 5rem;
   }
 
-  @media screen and (min-width: 60rem) {
+  @media screen and (width < 60rem) {
     ul {
-      columns: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+
+  @media screen and (width > 60rem) {
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
     }
   }
 

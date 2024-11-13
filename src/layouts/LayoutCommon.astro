@@ -1,0 +1,58 @@
+---
+import ThemeSwitcherScript from "../components/ThemeSwitcher/ThemeSwitcherScript.astro";
+import GlobalStyles from "../components/GlobalStyles.astro";
+const url = Astro.url.pathname;
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+---
+
+<!doctype html>
+<html lang="it" id="top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Signalkuppe" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="og:image" content={ogImage} />
+    <meta name="og:url" content={`https://www.signalkuppe.com${url}`} />
+    <link
+      rel="preload"
+      href="/fonts/Atkinson-Hyperlegible-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Atkinson-Hyperlegible-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <title>{title}</title>
+    <slot name="head" />
+    <GlobalStyles />
+    <ThemeSwitcherScript />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

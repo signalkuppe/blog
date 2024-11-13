@@ -1,0 +1,17 @@
+---
+import LayoutCommon from "./LayoutCommon.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+---
+
+<LayoutCommon title={title} description={description} ogImage={ogImage}>
+  <main>
+    <slot />
+  </main>
+</LayoutCommon>

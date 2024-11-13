@@ -14,11 +14,21 @@
   }
 
   :root {
+    color-scheme: dark;
+    --fontFamily: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol";
     --hue: 200;
     --saturation: 50%;
     --lightness: 50%;
     --accent: hsl(var(--hue) 80% 40%);
     --accentContrastColor: hsl(var(--hue) 100% 100%);
+    --text: hsl(var(--hue) calc(var(--saturation) / 4) 70%);
+    --textAccent: hsl(var(--hue) var(--saturation) 95%);
+    --surface: hsl(var(--hue) var(--saturation) 5%);
+    --surfaceAccent: hsl(var(--hue) var(--saturation) 15%);
+    --mountainsColor: hsl(var(--hue) var(--saturation) 7%);
+    --outlines: var(--surfaceAccent);
   }
 
   html[data-theme="light"] {
@@ -27,31 +37,8 @@
     --textAccent: hsl(var(--hue) var(--saturation) 10%);
     --surface: hsl(var(--hue) var(--saturation) 98%);
     --surfaceAccent: hsl(var(--hue) var(--saturation) 85%);
-    --mountainsColor: hsl(var(--hue) var(--saturation) 92%);
+    --mountainsColor: hsl(var(--hue) var(--saturation) 95%);
     --outlines: var(--surfaceAccent);
-  }
-
-  html[data-theme="dark"] {
-    color-scheme: dark;
-    --text: hsl(var(--hue) calc(var(--saturation) / 4) 60%);
-    --textAccent: hsl(var(--hue) var(--saturation) 90%);
-    --surface: hsl(var(--hue) var(--saturation) 5%);
-    --surfaceAccent: hsl(var(--hue) var(--saturation) 15%);
-    --mountainsColor: hsl(var(--hue) var(--saturation) 7%);
-    --outlines: var(--surfaceAccent);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    /** needed for fuoc  */
-    html:not([data-theme]) {
-      color-scheme: dark;
-      --text: hsl(var(--hue) calc(var(--saturation) / 4) 60%);
-      --textAccent: hsl(var(--hue) var(--saturation) 90%);
-      --surface: hsl(var(--hue) var(--saturation) 5%);
-      --surfaceAccent: hsl(var(--hue) var(--saturation) 15%);
-      --mountainsColor: hsl(var(--hue) var(--saturation) 7%);
-      --outlines: var(--surfaceAccent);
-    }
   }
 
   html {
@@ -120,6 +107,8 @@
 
   button {
     color: inherit;
+    background: none;
+    border: none;
   }
 
   label input[type="radio"] {
@@ -147,7 +136,7 @@
   h4,
   h5,
   h6 {
-    line-height: 1.3;
+    line-height: 1.1;
   }
 
   a,
@@ -197,19 +186,8 @@
   }
 
   body {
-    font-family:
-      "Atkinson Hyperlegible",
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Helvetica,
-      Arial,
-      sans-serif,
-      "Apple Color Emoji",
-      "Segoe UI Emoji",
-      "Segoe UI Symbol";
-    line-height: 1.5;
+    font-family: var(--fontFamily);
+    line-height: 1.6;
     height: 100%;
     margin: 0;
     padding: 0;

@@ -4,17 +4,13 @@
   let cachedTheme;
 
   function setTheme(theme) {
-    if (theme === "auto") {
-      delete THEME_OWNER.dataset[THEME_STORAGE_KEY];
-    } else {
-      THEME_OWNER.dataset[THEME_STORAGE_KEY] = theme;
-    }
+    THEME_OWNER.dataset[THEME_STORAGE_KEY] = theme;
   }
 
   function loadTheme() {
     // Immediately set theme from localStorage
     cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-    setTheme(cachedTheme || "auto");
+    setTheme(cachedTheme || "dark");
   }
 
   loadTheme();
@@ -23,8 +19,7 @@
     const themePicker = document.getElementById("js-theme-picker");
     if (!themePicker) return;
 
-    const initialTheme = cachedTheme ?? "auto";
-    themePicker.querySelector("input[checked]").removeAttribute("checked");
+    const initialTheme = cachedTheme ?? "dark";
     themePicker
       .querySelector(`input[value="${initialTheme}"]`)
       .setAttribute("checked", "");
@@ -32,11 +27,8 @@
     themePicker.addEventListener("change", (e) => {
       const theme = e.target.value;
       setTheme(theme);
-      if (theme === "auto") {
-        localStorage.removeItem(THEME_STORAGE_KEY);
-      } else {
-        localStorage.setItem(THEME_STORAGE_KEY, theme);
-      }
+
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
     });
   });
 </script>

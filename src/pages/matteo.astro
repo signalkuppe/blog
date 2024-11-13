@@ -46,10 +46,17 @@ const tools = [
 <Layout
   title="Matteo - Signalkuppe"
   description="Presento le mie passioni e il mio lavoro"
-  ogImage="/og-image.png"
+  ogImage="/og-image.jpg"
 >
   <div class="wrapper cage">
-    <Image src={Cover} width="1000" height="661" alt="" />
+    <Image
+      src={Cover}
+      width="1000"
+      height="661"
+      alt=""
+      decoding="async"
+      loading="eager"
+    />
     <article>
       <h1>Matteo</h1>
       <p>

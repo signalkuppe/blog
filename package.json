@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.5",
+    "astro": "^4.16.10",
+    "hammerjs": "^2.0.8",
     "leaflet": "^1.9.4",
     "leaflet-fullscreen": "^1.0.2"
   },
@@ -19,6 +20,7 @@
     "autoprefixer": "^10.4.20",
     "contentful": "^11.1.4",
     "node-cache": "^5.1.2",
+    "slug": "^10.0.0",
     "underscore": "^1.13.7"
   }
 }

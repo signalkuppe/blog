@@ -44,8 +44,8 @@ if (page.currentPage > 1 || categoryPage > 1) {
 
 <Layout
   title={`${pageTitle} - Signalkuppe`}
-  description="Blog personale di Matteo Leoni"
-  ogImage="/og-image.png"
+  description="Elenco completo di tutte le uscite"
+  ogImage="/og-image.jpg"
 >
   <BlogLayout pageTitle={pageTitle} activeTab="elenco">
     <div class="cage">
@@ -84,14 +84,6 @@ if (page.currentPage > 1 || categoryPage > 1) {
     display: flex;
   }
 
-  .post-list {
-    margin-bottom: 2rem;
-  }
-
-  .post-list li {
-    padding-bottom: 4rem;
-  }
-
   .pager {
     display: flex;
     align-items: center;
@@ -120,6 +112,13 @@ if (page.currentPage > 1 || categoryPage > 1) {
     .post-pager {
       margin-top: 3rem;
     }
+
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      margin-bottom: 5rem;
+    }
   }
 
   @media screen and (width > 60rem) {
@@ -138,12 +137,10 @@ if (page.currentPage > 1 || categoryPage > 1) {
 
     .post-list {
       flex: 3;
-      columns: 2;
-      column-gap: 3rem;
-    }
-
-    .post-list li {
-      break-inside: avoid;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-bottom: 5rem;
     }
   }
 </style>

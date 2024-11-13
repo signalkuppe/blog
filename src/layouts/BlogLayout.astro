@@ -25,20 +25,35 @@ const { pageTitle, activeTab } = Astro.props;
     top: 0px;
     padding-top: 1.5rem;
     margin-top: -2rem;
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
     background: linear-gradient(var(--surface) 70%, transparent 90%);
+  }
+
+  @media screen and (width > 60rem) {
+    .tabs-parent {
+      padding-bottom: 3rem;
+    }
   }
 </style>
 
 <script>
+  function createHeaderEvent(isSticky) {
+    return new CustomEvent("header-sticky-change", {
+      detail: { isSticky: isSticky },
+    });
+  }
+
+  const stickyHeaderEvent = createHeaderEvent(true);
+  const unStickyHeaderEvent = createHeaderEvent(false);
+
   document.addEventListener("DOMContentLoaded", function () {
     const header = document.getElementById(`header`);
     const observer = new IntersectionObserver(
       ([e]) => {
         if (e.intersectionRatio < 1) {
-          document.body.dispatchEvent(new CustomEvent("remove-sticky-header"));
+          document.dispatchEvent(unStickyHeaderEvent);
         } else {
-          document.body.dispatchEvent(new CustomEvent("restore-sticky-header"));
+          document.dispatchEvent(stickyHeaderEvent);
         }
       },
       { threshold: [1], rootMargin: "-1px 0px 0px 0px" }

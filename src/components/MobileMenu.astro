@@ -105,8 +105,15 @@ const { links, navLabel } = Astro.props;
   const backdrop = document.createElement("div");
   backdrop.setAttribute("aria-hidden", "true");
   backdrop.setAttribute("class", "js-backdrop");
-  const openMenuEvent = new CustomEvent("menu-is-open");
-  const closeMenuEvent = new CustomEvent("menu-is-closed");
+
+  function createMenuEvent(isOpen) {
+    return new CustomEvent("menu-toggle", {
+      detail: { isOpen: isOpen },
+    });
+  }
+
+  const openMenuEvent = createMenuEvent(true); // Payload with isOpen: true
+  const closeMenuEvent = createMenuEvent(false); // Payload with isOpen: false
 
   function setJsAttributes() {
     navPanel.setAttribute("inert", "");
@@ -170,7 +177,7 @@ const { links, navLabel } = Astro.props;
     openMenuButton.setAttribute("aria-expanded", "true");
     document.body.appendChild(backdrop);
     lockBody();
-    document.body.dispatchEvent(openMenuEvent);
+    document.dispatchEvent(openMenuEvent);
     trapFocus(navPanel);
     // @ts-ignore
     function handleKeydown(e) {
@@ -188,7 +195,7 @@ const { links, navLabel } = Astro.props;
     openMenuButton.setAttribute("aria-expanded", "false");
     openMenuButton.focus();
     document.body.removeChild(backdrop);
-    document.body.dispatchEvent(closeMenuEvent);
+    document.dispatchEvent(closeMenuEvent);
     unLockBody();
     // @ts-ignore
     if (navPanel._handleKeydown) {

@@ -27,7 +27,9 @@ const categorySlug = categories.find(
       }
     </time>
     <TitleTag class="title">
-      <a href={`/${post.fields.slug}`}>{post.fields.title}</a>
+      <a href={`/${post.fields.slug}`} data-astro-prefetch
+        >{post.fields.title}</a
+      >
     </TitleTag>
     <p>{post.fields.description}</p>
     <p>
@@ -54,6 +56,7 @@ const categorySlug = categories.find(
 
   article .title {
     font-size: 1rem;
+    line-height: 1.5;
   }
 
   article a:hover {

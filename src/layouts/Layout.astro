@@ -1,10 +1,8 @@
 ---
-import GlobalStyles from "../components/GlobalStyles.astro";
-import ThemeSwitcherScript from "../components/ThemeSwitcher/ThemeSwitcherScript.astro";
+import LayoutCommon from "./LayoutCommon.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BodyBackground from "../components/BodyBackground.astro";
-const url = Astro.url.pathname;
 
 interface Props {
   title: string;
@@ -15,65 +13,24 @@ interface Props {
 const { title, description, ogImage } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="it" id="top">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Signalkuppe" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="og:title" content={title} />
-    <meta name="twitter:title" content={title} />
-    <meta name="description" content={description} />
-    <meta name="og:description" content={description} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:image" content={ogImage} />
-    <meta name="og:image" content={ogImage} />
-    <meta name="og:url" content={`https://www.signalkuppe.com${url}`} />
-    <link
-      rel="preload"
-      href="/fonts/Atkinson-Hyperlegible-Bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/Atkinson-Hyperlegible-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <title>{title}</title>
-    <slot name="head" />
-    <GlobalStyles />
-    <ThemeSwitcherScript />
-  </head>
-  <body>
-    <a href="#main" class="visually-hidden skip-link"
-      >Vai al contenuto principale</a
-    >
-    <header id="header">
-      <div class="cage">
-        <Header />
-      </div>
-    </header>
+<LayoutCommon title={title} description={description} ogImage={ogImage}>
+  <a href="#main" class="visually-hidden skip-link"
+    >Vai al contenuto principale</a
+  >
+  <header id="header">
+    <div class="cage">
+      <Header />
+    </div>
+  </header>
 
-    <main id="main" tabindex="-1">
-      <slot />
-    </main>
-    <footer id="footer">
-      <div class="cage"><Footer /></div>
-    </footer>
-    <BodyBackground class="svg-background" aria-hidden="true" />
-  </body>
-</html>
+  <main id="main" tabindex="-1">
+    <slot />
+  </main>
+  <footer id="footer">
+    <div class="cage"><Footer /></div>
+  </footer>
+  <BodyBackground class="svg-background" aria-hidden="true" />
+</LayoutCommon>
 
 <style>
   header {
@@ -95,9 +52,14 @@ const { title, description, ogImage } = Astro.props;
     position: static;
   }
 
+  header.darker {
+    backdrop-filter: none;
+    background: var(--surface);
+  }
+
   main {
     padding-top: 2rem;
-    padding-bottom: 10rem;
+    padding-bottom: 6rem;
   }
 
   footer {
@@ -115,36 +77,38 @@ const { title, description, ogImage } = Astro.props;
   .skip-link:focus {
     z-index: 4;
   }
+
+  @media screen and (width > 60rem) {
+    main {
+      padding-top: 3rem;
+    }
+  }
 </style>
 
 <script>
+  // @ts-nocheck
   const header = document.getElementById("header");
-  document.body.addEventListener(
-    "remove-sticky-header",
-    (e) => {
+  document.addEventListener("header-sticky-change", (event) => {
+    if (!event.detail.isSticky) {
       header.classList.add("remove-sticky");
-    },
-    false
-  );
-  document.body.addEventListener(
-    "restore-sticky-header",
-    (e) => {
+    } else {
       header.classList.remove("remove-sticky");
-    },
-    false
-  );
-  document.body.addEventListener(
-    "menu-is-open",
-    (e) => {
+    }
+  });
+
+  document.addEventListener("header-background-change", (event) => {
+    if (event.detail.isDark) {
+      header.classList.add("darker");
+    } else {
+      header.classList.remove("darker");
+    }
+  });
+
+  document.addEventListener("menu-toggle", (event) => {
+    if (event.detail.isOpen) {
       header.classList.add("menu-is-open");
-    },
-    false
-  );
-  document.body.addEventListener(
-    "menu-is-closed",
-    (e) => {
+    } else {
       header.classList.remove("menu-is-open");
-    },
-    false
-  );
+    }
+  });
 </script>

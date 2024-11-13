@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { categories } from "../constants";
 import avatar from "../images/matteo-leoni-signalkuppe.png";
 import SearchIcon from "../icons/SearchIcon.astro";
 import DesktopMenu from "./DesktopMenu.astro";
@@ -16,7 +17,9 @@ const links = [
     href: "/blog",
     text: "Uscite",
     prefetch: true,
-    active: url.indexOf("/blog") !== -1,
+    active:
+      url.indexOf("/blog") !== -1 ||
+      categories.find((c) => url.indexOf(c.slug) !== -1),
   },
   {
     href: "/portfolio",
