@@ -21,3 +21,19 @@ export const throttle = function (fn, wait) {
     }
   };
 };
+
+export const postGpxTrack = (post) => {
+  try {
+    return `https:${
+      post.fields.gpsTracks.find(
+        (t) => t.fields.file.fileName.indexOf(".gpx") !== -1
+      )?.fields.file.url
+    }`;
+  } catch (err) {
+    return false;
+  }
+};
+
+export const getCssVar = (varString) => {
+  return getComputedStyle(document.documentElement).getPropertyValue(varString);
+};

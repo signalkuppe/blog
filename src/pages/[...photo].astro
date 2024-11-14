@@ -274,10 +274,9 @@ const { photo, post, prev, next } = Astro.props;
   imageOverlayDiv.style.top = "0px";
   imageOverlayDiv.style.zIndex = "2";
   imageOverlayDiv.style.cursor = "help";
-  container.append(imageOverlayDiv);
   const hammertime = new Hammer(container);
 
-  function setImageOverlayStyles() {
+  function appendOverlay() {
     const shortest = Math.min(window.innerHeight, window.innerWidth);
 
     if (shortest === window.innerHeight) {
@@ -300,6 +299,8 @@ const { photo, post, prev, next } = Astro.props;
       imageOverlayDiv.style.width = `${window.innerWidth}px`;
       imageOverlayDiv.style.height = `${imageRealHeight}px`;
     }
+
+    container.append(imageOverlayDiv);
   }
 
   imageOverlayDiv.addEventListener("mouseenter", function () {
@@ -316,9 +317,9 @@ const { photo, post, prev, next } = Astro.props;
     }
   });
 
-  setImageOverlayStyles();
+  appendOverlay();
 
-  window.addEventListener("resize", throttle(setImageOverlayStyles, 100), {
+  window.addEventListener("resize", throttle(appendOverlay, 100), {
     passive: true,
   });
 

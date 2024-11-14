@@ -1,11 +1,12 @@
 ---
-import { categories } from "../constants";
+import { postGpxTrack } from "../lib/utils";
 import { getPosts } from "../lib/contentful";
 import Layout from "../layouts/Layout.astro";
 import PostHeader from "../components/PostHeader.astro";
 import PostCover from "../components/PostCover.astro";
 import PostBody from "../components/PostBody.astro";
 import PostGallery from "../components/PostGallery.astro";
+import PostGpx from "../components/PostGpx.astro";
 
 export async function getStaticPaths() {
   const { posts } = await getPosts();
@@ -23,9 +24,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const categorySlug = categories.find(
-  (cat) => cat.title === post.fields.category[0]
-)?.slug;
+const postGpx = postGpxTrack(post);
 ---
 
 <Layout
@@ -34,6 +33,7 @@ const categorySlug = categories.find(
   ogImage={`https:${post.fields.cover.fields.file.ur}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
 >
   <Fragment slot="head">
+    <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
     <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
   </Fragment>
   <div class="cage header">
@@ -49,170 +49,174 @@ const categorySlug = categories.find(
     </ul>
   </nav>
 
-  <section class="section body" aria-labelledby="post-body" id="post-body">
+  <section class="section body" aria-labelledby="post-body">
     <div class="cage">
-      <h2>Relazione</h2>
+      <h2 id="post-body">Relazione</h2>
       <PostBody post={post} />
-      <p>
-        Pubblicato in <a href={`/blog/${categorySlug}`} class="category">
-          <span aria-hidden="true">#</span>{post.fields.category}
-        </a>
-      </p>
     </div>
   </section>
   {
     post.fields.gallery.length > 0 && (
-      <section
-        class="section gallery"
-        aria-labelledby="post-gallery"
-        id="post-gallery"
-      >
+      <section class="section gallery" aria-labelledby="post-gallery">
         <div class="cage">
-          <h2>Galleria fotografica</h2>
+          <h2 id="post-gallery">Galleria fotografica</h2>
           <PostGallery post={post} />
         </div>
       </section>
     )
   }
-</Layout>
-
-<style>
-  .header {
-    margin-bottom: 3rem;
+  {
+    !!postGpx && (
+      <section class="section gpx" aria-labelledby="post-gpx" id="post-gpx">
+        <div class="cage">
+          <h2 id="post-gpx">Mappa e tracce</h2>
+        </div>
+        <PostGpx post={post} />
+      </section>
+    )
   }
 
-  .cover {
-    margin-bottom: 1rem;
-  }
-
-  .body {
-    margin-bottom: 3rem;
-  }
-
-  h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  #post-body h2 {
-    visibility: hidden;
-    margin: 0;
-  }
-
-  .section:target {
-    scroll-margin-top: 8rem;
-  }
-
-  nav {
-    position: sticky;
-    top: -1px;
-    padding: 2rem 0;
-  }
-
-  nav ul {
-    display: flex;
-    gap: 1rem;
-  }
-
-  nav.is-sticky {
-    background: var(--surface);
-  }
-
-  nav a {
-    color: var(--text);
-    text-decoration: none;
-    display: block;
-    padding-bottom: 0.1rem;
-    border-bottom: 3px solid transparent;
-  }
-
-  nav a:hover {
-    color: var(--textAccent);
-  }
-
-  nav a[aria-current="page"] {
-    font-weight: bold;
-    color: var(--textAccent);
-    border-color: var(--accent);
-  }
-
-  @media screen and (width > 60rem) {
+  <style>
     .header {
-      margin-bottom: 5rem;
-    }
-
-    .cover {
       margin-bottom: 3rem;
     }
 
-    nav {
+    .cover {
       margin-bottom: 1rem;
     }
-  }
-</style>
 
-<script>
-  import { throttle } from "../lib/utils";
-
-  const cover = document.querySelector(".cover");
-  const header = document.getElementById("header");
-  const sections = document.querySelectorAll(".section");
-  const nav = document.getElementById("post-nav");
-  const navLinks = nav.querySelectorAll("a");
-  const distance = cover.getBoundingClientRect().y;
-
-  const headerHeight = header.getBoundingClientRect().height;
-  function createHeaderEvent(isDark) {
-    return new CustomEvent("header-background-change", {
-      detail: { isDark: isDark },
-    });
-  }
-
-  const darkHeaderEvent = createHeaderEvent(true);
-  const lightHeaderEvent = createHeaderEvent(false);
-
-  let currentActive = 0;
-  const sectionMargin = 200;
-  const makeActive = (link) =>
-    navLinks[link]?.setAttribute("aria-current", "page");
-  const removeActive = (link) => navLinks[link].removeAttribute("aria-current");
-  const removeAllActive = () =>
-    [...Array(sections.length).keys()].forEach((link) => removeActive(link));
-
-  function handleScroll() {
-    if (window.scrollY > distance - headerHeight) {
-      document.dispatchEvent(darkHeaderEvent);
-    } else {
-      document.dispatchEvent(lightHeaderEvent);
+    .section {
+      margin-bottom: 5rem;
     }
 
-    const current =
-      sections.length -
-      [...sections].reverse().findIndex((section) => {
-        return window.scrollY >= section.offsetTop - sectionMargin;
-      }) -
-      1;
-
-    if (current !== currentActive && current !== 2) {
-      removeAllActive();
-      currentActive = current;
-      makeActive(current);
+    h2 {
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      font-size: 0.85rem;
     }
-  }
 
-  window.addEventListener("scroll", throttle(handleScroll, 100), {
-    passive: true,
-  }); // Runs every 100ms
+    #post-body h2 {
+      visibility: hidden;
+      margin: 0;
+    }
 
-  const navObserver = new IntersectionObserver(
-    ([e]) => {
-      if (e.intersectionRatio < 1) {
-        nav.classList.add("is-sticky");
-      } else {
-        nav.classList.remove("is-sticky");
+    .section:target {
+      scroll-margin-top: 8rem;
+    }
+
+    nav {
+      position: sticky;
+      top: -1px;
+      padding: 2rem 0;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav.is-sticky {
+      background: var(--surface);
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      padding-bottom: 0.1rem;
+      border-bottom: 3px solid transparent;
+    }
+
+    nav a:hover {
+      color: var(--textAccent);
+    }
+
+    nav a[aria-current="page"] {
+      font-weight: bold;
+      color: var(--textAccent);
+      border-color: var(--accent);
+    }
+
+    @media screen and (width > 60rem) {
+      .header {
+        margin-bottom: 5rem;
       }
-    },
-    { threshold: [1], rootMargin: "-1px 0px 0px 0px" }
-  );
 
-  navObserver.observe(nav);
-</script>
+      .cover {
+        margin-bottom: 3rem;
+      }
+
+      nav {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+
+  <script>
+    //@ts-nocheck
+    import { throttle } from "../lib/utils";
+    const cover = document.querySelector(".cover");
+    const header = document.getElementById("header");
+    const sections = document.querySelectorAll(".section");
+    const nav = document.getElementById("post-nav");
+    const navLinks = nav.querySelectorAll("a");
+    const distance = cover.getBoundingClientRect().y;
+
+    const headerHeight = header.getBoundingClientRect().height;
+    function createHeaderEvent(isDark) {
+      return new CustomEvent("header-background-change", {
+        detail: { isDark: isDark },
+      });
+    }
+
+    const darkHeaderEvent = createHeaderEvent(true);
+    const lightHeaderEvent = createHeaderEvent(false);
+
+    let currentActive = 0;
+    const sectionMargin = 200;
+    const makeActive = (link) =>
+      navLinks[link]?.setAttribute("aria-current", "page");
+    const removeActive = (link) =>
+      navLinks[link]?.removeAttribute("aria-current");
+    const removeAllActive = () =>
+      [...Array(sections.length).keys()]?.forEach((link) => removeActive(link));
+
+    function handleScroll() {
+      if (window.scrollY > distance - headerHeight) {
+        document.dispatchEvent(darkHeaderEvent);
+      } else {
+        document.dispatchEvent(lightHeaderEvent);
+      }
+
+      const current =
+        sections.length -
+        [...sections].reverse().findIndex((section) => {
+          return window.scrollY >= section.offsetTop - sectionMargin;
+        }) -
+        1;
+
+      if (current !== currentActive && current !== 2) {
+        removeAllActive();
+        currentActive = current;
+        makeActive(current);
+      }
+    }
+
+    window.addEventListener("scroll", throttle(handleScroll, 100), {
+      passive: true,
+    });
+
+    const navObserver = new IntersectionObserver(
+      ([e]) => {
+        if (e.intersectionRatio < 1) {
+          nav.classList.add("is-sticky");
+        } else {
+          nav.classList.remove("is-sticky");
+        }
+      },
+      { threshold: [1], rootMargin: "-1px 0px 0px 0px" }
+    );
+
+    navObserver.observe(nav);
+  </script>
+</Layout>

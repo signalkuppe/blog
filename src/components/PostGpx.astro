@@ -1,0 +1,108 @@
+---
+import "leaflet/dist/leaflet.css";
+import { postGpxTrack } from "../lib/utils";
+interface Props {
+  post: any;
+}
+const { post } = Astro.props;
+---
+
+<div
+  id="map"
+  data-gpx={postGpxTrack(post)}
+  data-elevation-gain={post.fields.elevationGain}
+  data-distance={post.fields.distance}
+  data-minimum-altitude={post.fields.minimumAltitude}
+  data-maximum-altitude={post.fields.maximumAltitude}
+>
+</div>
+
+<style>
+  #map {
+    width: 100%;
+    height: 50vmax;
+    background: var(--surfaceAccent);
+  }
+</style>
+
+<script>
+  import L from "leaflet";
+  import "leaflet-fullscreen";
+  import "leaflet-gpx";
+
+  const map = document.getElementById("map");
+
+  const showMap = function () {
+    const gpxUrl = map.getAttribute("data-gpx");
+    const correctedElevationGain = map.getAttribute("data-elevation-gain");
+    const correctedDistance = map.getAttribute("data-distance");
+    const correctedMimimumAltitude = map.getAttribute("data-minimum-altitude");
+    const correctedMaximumAltitude = map.getAttribute("data-maximum-altitude");
+    let mymap;
+    if (!mymap) {
+      mymap = L.map("map", {
+        renderer: L.canvas(),
+        attributionControl: false,
+        scrollWheelZoom: false,
+      });
+    }
+
+    mymap.addControl(new L.Control.Fullscreen());
+    const TILELAYER = L.tileLayer(
+      "https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f890f7037bd243ee9602a36c56fc6dc2",
+      {
+        attribution:
+          '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        zoom: 15,
+      }
+    );
+    TILELAYER.addTo(mymap);
+
+    new L.GPX(gpxUrl, {
+      async: true,
+      marker_options: {
+        startIconUrl: "/img/markers/start.svg",
+        endIconUrl: "/img/markers/end.svg",
+        shadowUrl: null,
+      },
+      polyline_options: {
+        color: getCssVar("--color-map-track"),
+        opacity: 1,
+        weight: 3,
+        lineCap: "round",
+      },
+    })
+      .on("loaded", function (e) {
+        mymap.fitBounds(e.target.getBounds());
+        const gain = Math.round(
+          correctedElevationGain || e.target.get_elevation_gain()
+        );
+        const distance = Math.round(
+          correctedDistance || e.target.get_distance() / 1000
+        );
+        const min =
+          correctedMimimumAltitude || Math.round(e.target.get_elevation_min());
+        const max =
+          correctedMaximumAltitude || Math.round(e.target.get_elevation_max());
+        const rawElevationData = e.target.get_elevation_data();
+        const elevationData = decimateArray(
+          rawElevationData.map((data) => ({
+            y: data[1],
+            x: data[0].toFixed(1),
+          })),
+          1,
+          20
+        );
+
+        setTimeout(() => {
+          animateValue(gainEl, 0, gain, 1500);
+          animateValue(distanceEl, 0, distance, 1500);
+          animateValue(minEl, 0, min, 1500);
+          animateValue(maxEl, 0, max, 1500);
+          loaded = true;
+          drawChart(elevationData);
+        }, 1000);
+      })
+      .addTo(mymap);
+  };
+</script>
