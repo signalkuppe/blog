@@ -72,7 +72,7 @@ const postGpx = postGpxTrack(post);
 
   <section class="section body" aria-labelledby="post-body">
     <div class="cage">
-      <h2 id="post-body">Relazione</h2>
+      <h2 id="post-body" class="visually-hidden">Relazione</h2>
       <PostBody post={post} />
     </div>
   </section>
@@ -88,7 +88,7 @@ const postGpx = postGpxTrack(post);
   }
   {
     !!postGpx && (
-      <section class="section gpx" aria-labelledby="post-gpx" id="post-gpx">
+      <section class="section gpx" aria-labelledby="post-gpx">
         <div class="cage">
           <h2 id="post-gpx">Mappa e tracce</h2>
         </div>
@@ -96,7 +96,7 @@ const postGpx = postGpxTrack(post);
       </section>
     )
   }
-  <section class="section share" aria-labelledby="post-share" id="post-share">
+  <section class="section share" aria-labelledby="post-share">
     <div class="cage">
       <h2 id="post-share">Stampa e condividi</h2>
       <PostShare post={post} />
@@ -155,11 +155,6 @@ const postGpx = postGpxTrack(post);
 
     h2:target {
       scroll-margin-top: 7rem;
-    }
-
-    .body h2 {
-      visibility: hidden;
-      margin: 0;
     }
 
     #post-nav {
