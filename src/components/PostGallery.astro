@@ -32,8 +32,14 @@ const { post } = Astro.props;
     ))
   }
 </ul>
+<p class="disclaimer">
+  Potete usare le foto come volete, ci dedico tempo e passione quindi una <b
+    >citazione</b
+  > con il <b>link al mio blog</b> è opzionale ma <b>tanto gradita.</b> In questo
+  caso <a href="/contatti/">scrivetemi</a> per dirmi dove l’avete usata 🙂
+</p>
 
-<style>
+<style media="screen">
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
@@ -45,6 +51,12 @@ const { post } = Astro.props;
     width: 100%;
     aspect-ratio: 1/1;
     background: var(--surfaceAccent);
+  }
+
+  .disclaimer {
+    font-size: 0.75rem;
+    margin-top: 2.5rem;
+    max-width: 70ch;
   }
 
   @media screen and (width > 60rem) {

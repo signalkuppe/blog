@@ -1,6 +1,5 @@
 ---
 import BlogTabs from "../components/BlogTabs.astro";
-
 interface Props {
   pageTitle: string;
   activeTab: string;
@@ -18,7 +17,7 @@ const { pageTitle, activeTab } = Astro.props;
 
 <slot />
 
-<style>
+<style media="screen">
   .tabs-parent {
     position: sticky;
     z-index: 1;
@@ -37,23 +36,16 @@ const { pageTitle, activeTab } = Astro.props;
 </style>
 
 <script>
-  function createHeaderEvent(isSticky) {
-    return new CustomEvent("header-sticky-change", {
-      detail: { isSticky: isSticky },
-    });
-  }
-
-  const stickyHeaderEvent = createHeaderEvent(true);
-  const unStickyHeaderEvent = createHeaderEvent(false);
+  import { emitter } from "../lib/utils";
 
   document.addEventListener("DOMContentLoaded", function () {
     const header = document.getElementById(`header`);
     const observer = new IntersectionObserver(
       ([e]) => {
         if (e.intersectionRatio < 1) {
-          document.dispatchEvent(unStickyHeaderEvent);
+          emitter.emit("header-sticky-change", false);
         } else {
-          document.dispatchEvent(stickyHeaderEvent);
+          emitter.emit("header-sticky-change", true);
         }
       },
       { threshold: [1], rootMargin: "-1px 0px 0px 0px" }

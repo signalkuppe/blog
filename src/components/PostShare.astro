@@ -1,0 +1,86 @@
+---
+import FacebookIcon from "../icons/FacebookIcon.astro";
+import TwitterIcon from "../icons/TwitterIcon.astro";
+import WhatsappIcon from "../icons/WhatsappIcon.astro";
+import PrintIcon from "../icons/PrintIcon.astro";
+
+interface Props {
+  post: any;
+}
+const { post } = Astro.props;
+const title = post.fields.title;
+const fullPermalink = new URL(Astro.url.pathname, Astro.site);
+const shareLinks = [
+  {
+    id: "facebook",
+    title: "Condividi su Facebook",
+    url: `https://www.facebook.com/sharer/sharer.php?u=${fullPermalink}&title=${title}`,
+    icon: FacebookIcon,
+  },
+  {
+    id: "twitter",
+    title: "Condividi su X",
+    url: `https://twitter.com/intent/tweet?url=${fullPermalink}&text=${title}&via=signalkuppe`,
+    icon: TwitterIcon,
+  },
+  {
+    id: "whatsapp",
+    title: "Condividi su Whatsapp",
+    url: `whatsapp://send?text=${fullPermalink}`,
+    icon: WhatsappIcon,
+  },
+];
+---
+
+<ul>
+  {
+    shareLinks.map((link) => (
+      <li>
+        <a href={link.url} class="social-link">
+          <link.icon /> <span class="visually-hidden">{link.title}</span>
+        </a>
+      </li>
+    ))
+  }
+  <li>
+    <button class="print"
+      ><PrintIcon /><span class="visually-hidden">Stampa la relazione</span>
+    </button>
+  </li>
+</ul>
+
+<script>
+  const links = document.querySelectorAll(".social-link");
+  const print = document.querySelector(".print");
+  [...links].forEach((link) => {
+    const social = link.getAttribute("data-social");
+    const url = link.getAttribute("href");
+    link.addEventListener("click", (e) => {
+      if (social !== "whatsapp") {
+        e.preventDefault();
+
+        window.open(url, "condividi", `status=0,toolbar=0,menubar=0`);
+      }
+    });
+  });
+
+  print.addEventListener("click", function () {
+    window.print();
+  });
+</script>
+
+<style media="screen">
+  ul {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  li svg {
+    height: 1.5rem;
+  }
+
+  button {
+    appearance: none;
+    color: var(--textAccent);
+  }
+</style>

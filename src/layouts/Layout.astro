@@ -14,6 +14,7 @@ const { title, description, ogImage } = Astro.props;
 ---
 
 <LayoutCommon title={title} description={description} ogImage={ogImage}>
+  <Fragment slot="head"><slot name="head" /></Fragment>
   <a href="#main" class="visually-hidden skip-link"
     >Vai al contenuto principale</a
   >
@@ -32,7 +33,7 @@ const { title, description, ogImage } = Astro.props;
   <BodyBackground class="svg-background" aria-hidden="true" />
 </LayoutCommon>
 
-<style>
+<style media="screen">
   header {
     padding-block: 1.5rem;
     position: sticky;
@@ -87,28 +88,30 @@ const { title, description, ogImage } = Astro.props;
 
 <script>
   // @ts-nocheck
+  import { emitter } from "../lib/utils";
   const header = document.getElementById("header");
-  document.addEventListener("header-sticky-change", (event) => {
-    if (!event.detail.isSticky) {
-      header.classList.add("remove-sticky");
-    } else {
-      header.classList.remove("remove-sticky");
-    }
-  });
 
-  document.addEventListener("header-background-change", (event) => {
-    if (event.detail.isDark) {
+  emitter.on("header-background-change", (isDark) => {
+    if (isDark) {
       header.classList.add("darker");
     } else {
       header.classList.remove("darker");
     }
   });
 
-  document.addEventListener("menu-toggle", (event) => {
-    if (event.detail.isOpen) {
+  emitter.on("menu-toggle", (isOpen) => {
+    if (isOpen) {
       header.classList.add("menu-is-open");
     } else {
       header.classList.remove("menu-is-open");
+    }
+  });
+
+  emitter.on("header-sticky-change", (isSticky) => {
+    if (!isSticky) {
+      header.classList.add("remove-sticky");
+    } else {
+      header.classList.remove("remove-sticky");
     }
   });
 </script>

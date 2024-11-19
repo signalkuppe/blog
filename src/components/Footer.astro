@@ -2,6 +2,12 @@
 import Signature from "./Signature.astro";
 import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher.astro";
 import ArrowUpIcon from "../icons/ArrowUpIcon.astro";
+import {
+  newsletterUrl,
+  githubUrl,
+  instagramUrl,
+  stravaUrl,
+} from "../constants";
 
 const url = Astro.url.pathname;
 const links = [
@@ -12,7 +18,7 @@ const links = [
     prefetch: true,
   },
   {
-    href: "https://signalkuppe.us17.list-manage.com/subscribe?u=c87438aa22d9c1bffb8b5e482&id=b177d839f1",
+    href: newsletterUrl,
     text: "Newsletter",
     description: "Iscriviti per ricevere le ultime uscite pubblicate",
   },
@@ -23,17 +29,17 @@ const links = [
       "Iscriviti al mio feed RSS per ricevere gli ultimi aggiornamenti.",
   },
   {
-    href: "https://github.com/signalkuppe",
+    href: githubUrl,
     text: "Github",
     description: "Seguimi su Github",
   },
   {
-    href: "https://www.instagram.com/signalkuppe/",
+    href: instagramUrl,
     text: "Instagram",
     description: "Il mio canale Instagram",
   },
   {
-    href: "https://www.strava.com/athletes/9211798",
+    href: stravaUrl,
     text: "Strava",
     description: "Segui i miei allenamenti su Strava",
   },
@@ -82,7 +88,7 @@ const links = [
 </p>
 
 <!--css and scripts for theme switcher in layout's head tag to avoid fuoc -->
-<style>
+<style media="screen">
   footer {
     border-top: 1px solid var(--outlines);
     padding-top: 3rem;

@@ -18,7 +18,10 @@ const { post } = Astro.props;
 <h1>{post.fields.title}</h1>
 <p>{post.fields.description}</p>
 
-<style>
+<style media="screen">
+  time {
+    text-transform: capitalize;
+  }
   p {
     font-size: 0.85rem;
     margin-top: 0.5rem;

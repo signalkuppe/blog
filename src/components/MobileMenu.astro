@@ -32,12 +32,13 @@ const { links, navLabel } = Astro.props;
   </div>
 </nav>
 
-<style>
+<style media="screen">
   button {
     background: none;
     border: none;
     display: flex;
     padding: 0.5rem;
+    color: var(--textAccent);
   }
   button svg {
     width: 1.25rem;
@@ -99,21 +100,13 @@ const { links, navLabel } = Astro.props;
 </style>
 
 <script>
+  import { emitter } from "../lib/utils";
   const navPanel = document.getElementById(`nav-panel`);
   const openMenuButton = document.getElementById("nav-open");
   const closeMenuButton = document.getElementById("nav-close");
   const backdrop = document.createElement("div");
   backdrop.setAttribute("aria-hidden", "true");
   backdrop.setAttribute("class", "js-backdrop");
-
-  function createMenuEvent(isOpen) {
-    return new CustomEvent("menu-toggle", {
-      detail: { isOpen: isOpen },
-    });
-  }
-
-  const openMenuEvent = createMenuEvent(true); // Payload with isOpen: true
-  const closeMenuEvent = createMenuEvent(false); // Payload with isOpen: false
 
   function setJsAttributes() {
     navPanel.setAttribute("inert", "");
@@ -177,7 +170,7 @@ const { links, navLabel } = Astro.props;
     openMenuButton.setAttribute("aria-expanded", "true");
     document.body.appendChild(backdrop);
     lockBody();
-    document.dispatchEvent(openMenuEvent);
+    emitter.emit("menu-toggle", true);
     trapFocus(navPanel);
     // @ts-ignore
     function handleKeydown(e) {
@@ -195,7 +188,7 @@ const { links, navLabel } = Astro.props;
     openMenuButton.setAttribute("aria-expanded", "false");
     openMenuButton.focus();
     document.body.removeChild(backdrop);
-    document.dispatchEvent(closeMenuEvent);
+    emitter.emit("menu-toggle", false);
     unLockBody();
     // @ts-ignore
     if (navPanel._handleKeydown) {

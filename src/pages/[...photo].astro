@@ -103,7 +103,7 @@ const { photo, post, prev, next } = Astro.props;
         media="(max-width: 1600px)"
       />
       <img
-        src={`${photo.fields.file.url}?w=2560&q=70&fm=avif`}
+        src={`${photo.fields.file.url}?w=2560&q=50&fm=avif`}
         alt={photo.fields.title || ""}
         width={photo.fields.file.details.image.width}
         height={photo.fields.file.details.image.height}
@@ -116,7 +116,7 @@ const { photo, post, prev, next } = Astro.props;
   </div>
 </PhotoLayout>
 
-<style>
+<style media="screen">
   .photo-container {
     overflow: hidden;
   }

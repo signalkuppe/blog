@@ -1,0 +1,75 @@
+<style is:global is:inline media="print">
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    color: black;
+    background: white;
+    letter-spacing: normal;
+    font-size: 6pt !important;
+  }
+
+  * {
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 100% !important;
+  }
+
+  @page {
+    margin: 1.5cm;
+  }
+
+  #header,
+  #footer,
+  a[href="#main"],
+  .cover,
+  #post-nav,
+  .gallery,
+  .gpx,
+  .share,
+  .post-html img,
+  .img-caption,
+  h2[id] {
+    display: none;
+  }
+
+  #main {
+    margin: 0;
+  }
+  .post-html {
+    max-width: 15cm !important;
+  }
+  .post-html > p:first-of-type::first-letter {
+    initial-letter: 1 !important;
+    -webkit-initial-letter: 1 !important;
+    padding: 0 !important;
+  }
+
+  .post-html img {
+    display: none !important;
+  }
+
+  h3,
+  p {
+    margin-bottom: 1em !important;
+  }
+
+  h1 {
+    font-size: 10pt !important;
+    margin-bottom: 5pt !important;
+  }
+
+  h3 {
+    font-size: 8pt !important;
+  }
+  .post-html .body {
+    margin-top: 2em !important;
+  }
+
+  .print-only {
+    display: block;
+    border: 1pt solid black;
+    padding: 8pt;
+    max-width: 15cm;
+  }
+</style>

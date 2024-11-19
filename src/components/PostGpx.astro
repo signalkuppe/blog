@@ -1,6 +1,8 @@
 ---
 import "leaflet/dist/leaflet.css";
 import { postGpxTrack } from "../lib/utils";
+import Spinner from "../components/Spinner.astro";
+import DownloadIcon from "../icons/DownloadIcon.astro";
 interface Props {
   post: any;
 }
@@ -15,22 +17,201 @@ const { post } = Astro.props;
   data-minimum-altitude={post.fields.minimumAltitude}
   data-maximum-altitude={post.fields.maximumAltitude}
 >
+  <div class="spinner-container">
+    <Spinner size="2rem" />
+    <span aria-hidden="true">Carico la mappa</span>
+  </div>
+</div>
+<div class="cage">
+  <dl>
+    <dt>Quota minima</dt>
+    <dd><span id="postGps-min">0</span>m</dd>
+    <dt>Quota massima</dt>
+    <dd><span id="postGps-max">0</span>m</dd>
+    <dt>Dislivello</dt>
+    <dd><span id="postGps-gain">0</span>m</dd>
+    <dt>Distanza</dt>
+    <dd><span id="postGps-distance">0</span>km</dd>
+  </dl>
+  <div class="chart">
+    <canvas id="postChart"></canvas>
+    <div class="spinner-container">
+      <Spinner size="2rem" />
+      <span aria-hidden="true">Carico il grafico</span>
+    </div>
+  </div>
+  <button
+    class="btn download-button"
+    data-gpx={postGpxTrack(post)}
+    data-slug={post.fields.slug}
+    ><DownloadIcon aria-hidden="true" class="download-icon" />
+    <Spinner color="var(--textAccent)" class="download-spinner" />
+    <span class="download-text">Scarica la traccia .gpx </span><span
+      class="downloading-text"
+      >Scarico il file...
+    </span></button
+  >
+  <p class="notice">
+    NB: La rilevazione gps potrebbe non essere sempre precisa e riportare valori
+    errati
+  </p>
 </div>
 
-<style>
+<style media="screen">
   #map {
-    width: 100%;
-    height: 50vmax;
     background: var(--surfaceAccent);
+    height: 50vmax;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .spinner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  dl {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  dt {
+    font-size: 0.85rem;
+  }
+
+  dd {
+    color: var(--textAccent);
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .chart {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    border: 1px solid var(--surfaceAccent);
+    position: relative;
+    aspect-ratio: 4/3;
+  }
+
+  .chart .spinner-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .chart canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: attr(width) / attr(height);
+  }
+
+  .chart.is-loaded {
+    border: none;
+  }
+
+  .is-loaded .spinner-container {
+    display: none;
+  }
+
+  .notice {
+    font-size: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .download-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .download-icon {
+    height: 1rem;
+  }
+
+  .download-spinner,
+  .downloading-text {
+    display: none;
+  }
+
+  @media screen and (width > 60rem) {
+    dl {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      grid-auto-flow: dense;
+    }
+
+    dd {
+      margin-top: -2rem;
+      margin-bottom: 0;
+    }
+
+    dt:first-of-type,
+    dd:first-of-type {
+      grid-column: 1;
+    }
+
+    dt:nth-of-type(2),
+    dd:nth-of-type(2) {
+      grid-column: 2;
+    }
+    dt:nth-of-type(3),
+    dd:nth-of-type(3) {
+      grid-column: 3;
+    }
+    dt:nth-of-type(4),
+    dd:nth-of-type(4) {
+      grid-column: 4;
+    }
+
+    .chart {
+      aspect-ratio: 16/9;
+    }
   }
 </style>
 
 <script>
+  //@ts-nocheck
   import L from "leaflet";
   import "leaflet-fullscreen";
   import "leaflet-gpx";
+  import Chart from "chart.js/auto";
+  import JSZip from "jszip";
+  import simplify from "simplify-js";
+  import {
+    animateValue,
+    getCssVar,
+    artificialDelay,
+    emitter,
+    throttle,
+  } from "../lib/utils";
 
+  const chartContainer = document.querySelector(".chart");
+  const downloadButton = document.querySelector(".download-button");
   const map = document.getElementById("map");
+  const minEl = document.getElementById("postGps-min");
+  const maxEl = document.getElementById("postGps-max");
+  const gainEl = document.getElementById("postGps-gain");
+  const distanceEl = document.getElementById("postGps-distance");
+  let mapLoaded;
+  let isDesktop;
+
+  function checkWindowSize() {
+    isDesktop = window.matchMedia("(width > 60rem)").matches;
+  }
+
+  checkWindowSize();
+
+  window.addEventListener("resize", throttle(checkWindowSize, 100), {
+    passive: true,
+  });
 
   const showMap = function () {
     const gpxUrl = map.getAttribute("data-gpx");
@@ -41,9 +222,12 @@ const { post } = Astro.props;
     let mymap;
     if (!mymap) {
       mymap = L.map("map", {
-        renderer: L.canvas(),
+        tap: false,
         attributionControl: false,
-        scrollWheelZoom: false,
+        zoomControl: false,
+        fullscreenControl: {
+          position: "topright",
+        },
       });
     }
 
@@ -58,17 +242,42 @@ const { post } = Astro.props;
     );
     TILELAYER.addTo(mymap);
 
+    L.control
+      .zoom({
+        position: "topright",
+      })
+      .addTo(mymap);
+    mymap.scrollWheelZoom.disable();
+
+    mymap.on("fullscreenchange", function () {
+      if (!document.fullscreenElement) {
+        if (mymap.isFullscreen()) {
+          map.classList.add("fullscreen");
+          map.style.height = `${window.innerHeight}px`;
+          document.body.style.height = `${window.innerHeight}px`;
+          document.body.style.overflow = `hidden`;
+          mymap.invalidateSize();
+        } else {
+          map.classList.remove("fullscreen");
+          map.style.height = "";
+          document.body.removeAttribute("style");
+        }
+      }
+    });
+
     new L.GPX(gpxUrl, {
       async: true,
+      markers: {
+        startIcon: "/images/start-marker.png",
+        endIcon: "/images/end-marker.png",
+      },
       marker_options: {
-        startIconUrl: "/img/markers/start.svg",
-        endIconUrl: "/img/markers/end.svg",
-        shadowUrl: null,
+        iconSize: [38, 38],
       },
       polyline_options: {
-        color: getCssVar("--color-map-track"),
+        color: "red",
         opacity: 1,
-        weight: 3,
+        weight: 4,
         lineCap: "round",
       },
     })
@@ -85,24 +294,209 @@ const { post } = Astro.props;
         const max =
           correctedMaximumAltitude || Math.round(e.target.get_elevation_max());
         const rawElevationData = e.target.get_elevation_data();
-        const elevationData = decimateArray(
-          rawElevationData.map((data) => ({
-            y: data[1],
-            x: data[0].toFixed(1),
-          })),
-          1,
-          20
-        );
+        const elevationData = rawElevationData.map((data) => ({
+          y: data[1],
+          x: parseFloat(data[0]),
+        }));
+
+        map.classList.add("is-loaded");
 
         setTimeout(() => {
           animateValue(gainEl, 0, gain, 1500);
           animateValue(distanceEl, 0, distance, 1500);
           animateValue(minEl, 0, min, 1500);
           animateValue(maxEl, 0, max, 1500);
-          loaded = true;
+          mapLoaded = true;
           drawChart(elevationData);
         }, 1000);
       })
       .addTo(mymap);
   };
+
+  function drawChart(elevationData) {
+    // Simplify dataset using Simplify.js
+    const tolerance = 0.1;
+    const highQuality = true;
+    const simplifiedPoints = simplify(elevationData, tolerance, highQuality);
+
+    const data = {
+      labels: elevationData.map((d) => d.x),
+      datasets: [
+        {
+          label: "",
+          borderColor: getCssVar("--accent"),
+          borderWidth: 2,
+          data: simplifiedPoints,
+          pointRadius: 0,
+        },
+      ],
+    };
+
+    console.log(isDesktop);
+
+    const config = {
+      type: "line",
+      data,
+      options: {
+        responsive: true,
+        aspectRatio: isDesktop ? 1.7 : 1.3,
+        plugins: {
+          legend: false,
+        },
+        animations: {
+          tension: {
+            duration: 1000,
+            easing: "linear",
+            from: 1,
+            to: 0,
+          },
+        },
+        scales: {
+          x: {
+            type: "linear",
+            title: {
+              display: true,
+              text: "(Km)",
+              color: getCssVar("--text"),
+            },
+            grid: {
+              color: getCssVar("--surfaceAccent"),
+            },
+            max: Math.floor(elevationData[elevationData.length - 1].x),
+            min: Math.floor(elevationData[0].x),
+          },
+          y: {
+            type: "linear",
+            grid: {
+              color: getCssVar("--surfaceAccent"),
+            },
+            ticks: {
+              // Include a dollar sign in the ticks
+              callback: function (value) {
+                return `${value}m`;
+              },
+            },
+          },
+        },
+        animation: {
+          onProgress: function ({ currentStep }) {
+            if (currentStep) {
+              chartContainer.classList.add("is-loaded");
+              return;
+            }
+          },
+        },
+      },
+    };
+
+    new Chart(document.getElementById("postChart"), config);
+  }
+
+  async function downloadAndCompress(file, filename, type) {
+    const remoteFileUrl = file;
+    const name = `${filename}.${type}`;
+
+    try {
+      await artificialDelay(1000);
+      const response = await fetch(remoteFileUrl);
+      const fileData = await response.text();
+      const fileName = `${filename}.zip`;
+      const zip = new JSZip();
+      zip.file(name, fileData);
+      const zipContent = await zip.generateAsync({
+        type: "blob",
+        compression: "DEFLATE",
+        compressionOptions: { level: 9 },
+      });
+      const zipUrl = URL.createObjectURL(zipContent);
+      const link = document.createElement("a");
+      link.href = zipUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(zipUrl);
+    } catch (error) {
+      console.error(
+        "Errore durante il download o la compressione del file:",
+        error
+      );
+    }
+  }
+
+  downloadButton.addEventListener("click", async function (e) {
+    e.preventDefault();
+    downloadButton.querySelector(".download-icon").style.display = "none";
+    downloadButton.querySelector(".download-spinner").style.display = "block";
+    downloadButton.querySelector(".download-text").style.display = "none";
+    downloadButton.querySelector(".downloading-text").style.display = "block";
+    downloadButton.setAttribute("disabled", "");
+    await downloadAndCompress(
+      downloadButton.getAttribute("data-gpx"),
+      downloadButton.getAttribute("data-slug").split("/").pop(),
+      "gpx"
+    );
+    downloadButton.querySelector(".download-text").style.display = "block";
+    downloadButton.querySelector(".downloading-text").style.display = "none";
+    downloadButton.querySelector(".download-icon").style.display = "block";
+    downloadButton.querySelector(".download-spinner").style.display = "none";
+    downloadButton.removeAttribute("disabled");
+  });
+
+  emitter.on("post-section-reached", ({ sectionId }) => {
+    if (sectionId === "post-gpx" && !mapLoaded) {
+      showMap();
+    }
+  });
 </script>
+
+<style is:global>
+  /** leaflet overrides */
+  #map {
+    width: 100%;
+    height: 100%;
+    min-height: 50vmax;
+    background: var(--surfaceAccent);
+  }
+
+  #map.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 100 !important;
+  }
+
+  #map.fullscreen .leaflet-pane[style] {
+    z-index: 100 !important;
+  }
+
+  #map.fullscreen .leaflet-right {
+    z-index: 100 !important;
+  }
+
+  .leaflet-pane[style],
+  .leaflet-right {
+    z-index: 0 !important;
+  }
+
+  .leaflet-right {
+    right: 32px !important;
+    top: 16px !important;
+  }
+
+  .leaflet-right .leaflet-control {
+    margin-right: 0 !important;
+  }
+
+  .leaflet-left {
+    display: none;
+  }
+  .leaflet-control-fullscreen a {
+    background: #fff url("/images/fullscreen@2x.png") no-repeat 2px 2px;
+    background-size: 26px 52px;
+  }
+
+  #map.fullscreen .leaflet-control-fullscreen a {
+    background-position: 2px -24px;
+  }
+</style>

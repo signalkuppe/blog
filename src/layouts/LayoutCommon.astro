@@ -1,7 +1,7 @@
 ---
 import ThemeSwitcherScript from "../components/ThemeSwitcher/ThemeSwitcherScript.astro";
 import GlobalStyles from "../components/GlobalStyles.astro";
-const url = Astro.url.pathname;
+import PrintStyles from "../components/PrintStyles.astro";
 
 interface Props {
   title: string;
@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { title, description, ogImage } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!doctype html>
@@ -32,7 +33,7 @@ const { title, description, ogImage } = Astro.props;
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content={ogImage} />
     <meta name="og:image" content={ogImage} />
-    <meta name="og:url" content={`https://www.signalkuppe.com${url}`} />
+    <meta name="og:url" content={canonicalURL} />
     <link
       rel="preload"
       href="/fonts/Atkinson-Hyperlegible-Bold.woff2"
@@ -50,6 +51,7 @@ const { title, description, ogImage } = Astro.props;
     <title>{title}</title>
     <slot name="head" />
     <GlobalStyles />
+    <PrintStyles />
     <ThemeSwitcherScript />
   </head>
   <body>

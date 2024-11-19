@@ -73,8 +73,8 @@ const body = htmlRenderer.documentToHtmlString(post.fields.body, options);
 
 <div set:html={body} class="post-html" />
 
-<style>
-  :global(.post-html) {
+<style media="screen">
+  .post-html {
     max-width: 60ch;
   }
   :global(.post-html p) {
@@ -98,15 +98,14 @@ const body = htmlRenderer.documentToHtmlString(post.fields.body, options);
   }
   :global(.post-html h3) {
     margin-top: 2rem;
-    font-size: 1.15rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
   }
 
   :global(.post-html .img-caption) {
     font-size: 0.75rem;
-    margin-top: 0.5rem;
-    color: var(--textAccent);
-    font-weight: bold;
+    margin-top: 0.4rem;
+
     text-align: right;
   }
 
