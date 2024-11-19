@@ -10,7 +10,7 @@ const { post } = Astro.props;
 const renderInlineAsset = (node) => {
   if (node.nodeType === "embedded-asset-block") {
     const imgUrl = node.data.target.fields.file.url;
-    const img = `${imgUrl}?fit=thumb&w=1440&fm=webp&q=70`;
+    const img = `${imgUrl}?fit=thumb&w=1170&fm=avif&q=70`;
     const imgTitle = node.data.target.fields.title;
     const imgWidth = node.data.target.fields.file.details.image.width;
     const imgHeight = node.data.target.fields.file.details.image.height;
