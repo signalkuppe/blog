@@ -40,8 +40,8 @@ const { post, coverImages, coverSrcSet } = Astro.props;
     color: white;
     padding: 0.25rem 0.85rem;
     place-self: end;
-    transform: translate(-0.85rem, -0.5rem);
     font-weight: bold;
+    background: var(--surface);
   }
 
   @keyframes gradient {
@@ -69,6 +69,7 @@ const { post, coverImages, coverSrcSet } = Astro.props;
     }
     .caption {
       font-size: 1.5rem;
+      padding: 0.75rem 1.5rem;
     }
   }
 </style>
