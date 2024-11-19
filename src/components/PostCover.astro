@@ -1,30 +1,19 @@
 ---
 interface Props {
   post: any;
+  coverImages: any;
+  coverSrcSet: any;
 }
-const { post } = Astro.props;
+const { post, coverImages, coverSrcSet } = Astro.props;
 ---
 
-<picture>
-  <source
-    srcset={`${post.fields.cover.fields.file.url}?w=800&h=600&fit=thumb&q=50&fm=avif`}
-    media="(max-width: 800px)"
-  />
-  <source
-    srcset={`${post.fields.cover.fields.file.url}?w=1600&h=900&fit=thumb&q=50&fm=avif`}
-    media="(max-width: 1280px)"
-  />
-  <img
-    src={`${post.fields.cover.fields.file.url}?w=2000&h=1125&fit=thumb&q=60&fm=avif`}
-    alt={post.fields.cover.fields.title || ""}
-    loading="eager"
-    decoding="async"
-  />
+<div class="cover">
+  <img srcset={coverSrcSet} src={coverImages.small.url} alt="" />
   <p aria-hidden="true" class="caption">{post.fields.cover.fields.title}</p>
-</picture>
+</div>
 
 <style media="screen">
-  picture {
+  .cover {
     width: 100%;
     background: var(--surfaceAccent);
     background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
@@ -38,7 +27,7 @@ const { post } = Astro.props;
     grid-area: 1/1;
   }
 
-  picture,
+  .cover,
   img {
     aspect-ratio: 4 / 3;
   }
@@ -68,13 +57,13 @@ const { post } = Astro.props;
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    picture {
+    .cover {
       animation: gradient 2s ease infinite;
     }
   }
 
   @media screen and (width > 60rem) {
-    picture,
+    .cover,
     img {
       aspect-ratio: 16 / 9;
     }

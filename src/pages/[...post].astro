@@ -31,6 +31,26 @@ interface Props {
 
 const { post, prev, next } = Astro.props;
 const postGpx = postGpxTrack(post);
+const coverImages = {
+  small: {
+    url: `${post.fields.cover.fields.file.url}?w=600&h=450&fit=thumb&q=60&fm=avif`,
+    size: 600,
+  },
+  medium: {
+    url: `${post.fields.cover.fields.file.url}?w=1200&h=705&fit=thumb&q=60&fm=avif`,
+    size: 1280,
+  },
+  large: {
+    url: `${post.fields.cover.fields.file.url}?w=2000&h=1125&fit=thumb&q=60&fm=avif`,
+    size: 1920,
+  },
+  xlarge: {
+    url: `${post.fields.cover.fields.file.url}?w=3000&h=1687&fit=thumb&q=60&fm=avif`,
+    size: 2560,
+  },
+};
+
+const coverSrcSet = `${coverImages.medium.url} ${coverImages.medium.size}w, ${coverImages.large.url} ${coverImages.large.size}w, ${coverImages.xlarge.url} ${coverImages.xlarge.size}w`;
 ---
 
 <Layout
@@ -40,13 +60,25 @@ const postGpx = postGpxTrack(post);
 >
   <Fragment slot="head">
     <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
+
+    <link
+      rel="preload"
+      as="image"
+      href={coverImages.small.url}
+      imagesrcset={coverSrcSet}
+      crossorigin
+    />
   </Fragment>
   <div class="cage header">
     <PostHeader post={post} />
   </div>
 
   <div class="cover">
-    <PostCover post={post} />
+    <PostCover
+      post={post}
+      coverImages={coverImages}
+      coverSrcSet={coverSrcSet}
+    />
   </div>
 
   <nav aria-label="sezioni" id="post-nav">
@@ -136,7 +168,7 @@ const postGpx = postGpxTrack(post);
     }
 
     .cover {
-      margin-bottom: 1rem;
+      margin-bottom: 3rem;
     }
 
     .section {
@@ -144,7 +176,7 @@ const postGpx = postGpxTrack(post);
     }
 
     .body {
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
 
     h2 {
