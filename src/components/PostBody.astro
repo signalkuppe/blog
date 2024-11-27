@@ -10,20 +10,36 @@ const { post } = Astro.props;
 const renderInlineAsset = (node) => {
   if (node.nodeType === "embedded-asset-block") {
     const imgUrl = node.data.target.fields.file.url;
-    const img = `${imgUrl}?fit=thumb&w=800&fm=avif&q=60`;
     const imgTitle = node.data.target.fields.title;
     const imgWidth = node.data.target.fields.file.details.image.width;
     const imgHeight = node.data.target.fields.file.details.image.height;
+    const postImage = {
+      small: {
+        url: `${imgUrl}?w=400&q=80&fm=avif`,
+        size: 400,
+      },
+      medium: {
+        url: `${imgUrl}?w=800&h=705&q=80&fm=avif`,
+        size: 800,
+      },
+      large: {
+        url: `${imgUrl}?w=1200&q=80&fm=avif`,
+        size: 1200,
+      },
+    };
+
+    const postImageSrcSet = `${postImage.medium.url} ${postImage.medium.size}w, ${postImage.large.url} ${postImage.large.size}w`;
     return ` 
             <img 
-              src="${img}" 
-              alt="${imgTitle || ""}" 
+              srcset="${postImageSrcSet}"
+              src="${postImage.small.url}" 
               width="${imgWidth}"
               height="${imgHeight}"
+              alt="" 
               loading="lazy" 
               decoding="async"
             />
-            <p aria-hidden="true" class="img-caption">${imgTitle}</p>
+            <p class="img-caption">${imgTitle}</p>
           `;
   }
   if (node.nodeType === "asset-hyperlink") {

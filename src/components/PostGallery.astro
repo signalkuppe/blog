@@ -15,18 +15,13 @@ const { post } = Astro.props;
           data-caption={photo.fields.title || ""}
           data-group="gallery"
         >
-          <picture>
-            <source
-              srcset={`${photo.fields.file.url}?w=160&h=160&fit=thumb&q=70&fm=avif`}
-              media="(max-width: 800px)"
-            />
-            <img
-              src={`${photo.fields.file.url}?w=400&h=400&fit=thumb&q=70&fm=avif`}
-              alt={photo.fields.title || ""}
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
+          <img
+            srcset={`${photo.fields.file.url}?w=160&h=160&fit=thumb&q=70&fm=avif 160w, ${photo.fields.file.url}?w=400&h=400&fit=thumb&q=70&fm=avif 400w`}
+            src={`${photo.fields.file.url}?w=80&h=80&fit=thumb&q=70&fm=avif`}
+            alt={photo.fields.title || ""}
+            loading="lazy"
+            decoding="async"
+          />
         </a>
       </li>
     ))

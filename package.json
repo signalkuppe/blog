@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.10",
+    "astro": "^4.16.15",
     "chart.js": "^4.4.6",
     "hammerjs": "^2.0.8",
     "jszip": "^3.10.1",
