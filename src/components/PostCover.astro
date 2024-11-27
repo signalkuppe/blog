@@ -13,6 +13,8 @@ const { post, coverImages, coverSrcSet } = Astro.props;
     sizes="100vw"
     src={coverImages.small.url}
     alt={post.fields.cover.fields.title}
+    loading="eager"
+    fetchpriority="high"
   />
   <p aria-hidden="true" class="caption">{post.fields.cover.fields.title}</p>
 </div>

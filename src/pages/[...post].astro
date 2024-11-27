@@ -34,24 +34,28 @@ const postGpx = postGpxTrack(post);
 const coverUrl = `https:${post.fields.cover.fields.file.url}`;
 const coverImages = {
   small: {
-    url: `${coverUrl}?w=600&h=450&fit=thumb&q=50&fm=avif`,
-    size: 600,
+    url: `${coverUrl}?w=300&h=170&fit=thumb&q=50&fm=avif`,
+    size: 300,
   },
   medium: {
-    url: `${coverUrl}?w=1200&h=705&fit=thumb&q=50&fm=avif`,
-    size: 1280,
+    url: `${coverUrl}?w=800&h=451&fit=thumb&q=50&fm=avif`,
+    size: 800,
   },
   large: {
-    url: `${coverUrl}?w=2000&h=1125&fit=thumb&q=50&fm=avif`,
-    size: 1920,
+    url: `${coverUrl}?w=1400&h=790&fit=thumb&q=50&fm=avif`,
+    size: 1400,
   },
   xlarge: {
-    url: `${coverUrl}?w=3000&h=1687&fit=thumb&q=50&fm=avif`,
-    size: 2560,
+    url: `${coverUrl}?w=2000&h=1125&fit=thumb&q=50&fm=avif`,
+    size: 2000,
+  },
+  xxlarge: {
+    url: `${coverUrl}?w=3000&h=1694&fit=thumb&q=50&fm=avif`,
+    size: 3000,
   },
 };
 
-const coverSrcSet = `${coverImages.medium.url} ${coverImages.medium.size}w, ${coverImages.large.url} ${coverImages.large.size}w, ${coverImages.xlarge.url} ${coverImages.xlarge.size}w`;
+const coverSrcSet = `${coverImages.medium.url} ${coverImages.medium.size}w, ${coverImages.large.url} ${coverImages.large.size}w, ${coverImages.xlarge.url} ${coverImages.xlarge.size}w,, ${coverImages.xxlarge.url} ${coverImages.xxlarge.size}w`;
 ---
 
 <Layout
