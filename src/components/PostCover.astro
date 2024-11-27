@@ -1,21 +1,18 @@
 ---
 interface Props {
   post: any;
-  coverImages: any;
-  coverSrcSet: any;
 }
-const { post, coverImages, coverSrcSet } = Astro.props;
+const { post } = Astro.props;
 ---
 
 <div class="cover">
   <img
-    srcset={coverSrcSet}
-    sizes="100vw"
-    src={coverImages.small.url}
+    src={`${post.fields.cover.fields.file.url}?w=600&q=50&fm=avif`}
     alt={post.fields.cover.fields.title}
     loading="eager"
     fetchpriority="high"
   />
+
   <p aria-hidden="true" class="caption">{post.fields.cover.fields.title}</p>
 </div>
 
@@ -49,6 +46,10 @@ const { post, coverImages, coverSrcSet } = Astro.props;
     place-self: end;
     font-weight: bold;
     background: var(--surface);
+  }
+
+  img.desktop {
+    display: none;
   }
 
   @keyframes gradient {

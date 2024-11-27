@@ -31,60 +31,22 @@ interface Props {
 
 const { post, prev, next } = Astro.props;
 const postGpx = postGpxTrack(post);
-const coverUrl = `https:${post.fields.cover.fields.file.url}`;
-const coverImages = {
-  small: {
-    url: `${coverUrl}?w=300&h=170&fit=thumb&q=50&fm=avif`,
-    size: 300,
-  },
-  medium: {
-    url: `${coverUrl}?w=800&h=451&fit=thumb&q=50&fm=avif`,
-    size: 800,
-  },
-  large: {
-    url: `${coverUrl}?w=1400&h=790&fit=thumb&q=50&fm=avif`,
-    size: 1400,
-  },
-  xlarge: {
-    url: `${coverUrl}?w=2000&h=1125&fit=thumb&q=50&fm=avif`,
-    size: 2000,
-  },
-  xxlarge: {
-    url: `${coverUrl}?w=3000&h=1694&fit=thumb&q=50&fm=avif`,
-    size: 3000,
-  },
-};
-
-const coverSrcSet = `${coverImages.medium.url} ${coverImages.medium.size}w, ${coverImages.large.url} ${coverImages.large.size}w, ${coverImages.xlarge.url} ${coverImages.xlarge.size}w,, ${coverImages.xxlarge.url} ${coverImages.xxlarge.size}w`;
 ---
 
 <Layout
   title={`${post.fields.title} - Signalkuppe`}
   description="Mappa delle uscite"
-  ogImage={`${coverUrl}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
+  ogImage={`https:${post.fields.cover.fields.file.url}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
 >
   <Fragment slot="head">
     <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
-
-    <link
-      rel="preload"
-      as="image"
-      href={coverImages.small.url}
-      imagesrcset={coverSrcSet}
-      imagesizes="100vw"
-      crossorigin
-    />
   </Fragment>
   <div class="cage header">
     <PostHeader post={post} />
   </div>
 
   <div class="cover">
-    <PostCover
-      post={post}
-      coverImages={coverImages}
-      coverSrcSet={coverSrcSet}
-    />
+    <PostCover post={post} />
   </div>
 
   <nav aria-label="sezioni" id="post-nav">
