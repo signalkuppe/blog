@@ -1,4 +1,5 @@
 ---
+import ResponsiveImage from "./ResponsiveImage.astro";
 import { postPhotoSlug } from "../lib/utils";
 interface Props {
   post: any;
@@ -15,13 +16,16 @@ const { post } = Astro.props;
           data-caption={photo.fields.title || ""}
           data-group="gallery"
         >
-          <img
-            srcset={`${photo.fields.file.url}?w=160&h=160&fit=thumb&q=70&fm=avif 160w, ${photo.fields.file.url}?w=400&h=400&fit=thumb&q=70&fm=avif 400w`}
-            sizes="(max-width: 600px) 25vw, 250px"
-            src={`${photo.fields.file.url}?w=80&h=80&fit=thumb&q=70&fm=avif`}
-            alt={photo.fields.title || ""}
+          <ResponsiveImage
+            src={`${photo.fields.file.url}?w=400&h=400&fit=thumb&q=60&fm=avif`}
+            sizes={{
+              "600": `${photo.fields.file.url}?w=160&h=160&fit=thumb&q=60&fm=avif`,
+            }}
+            alt={post.fields.title || ""}
             loading="lazy"
             decoding="async"
+            width="200"
+            height="200"
           />
         </a>
       </li>

@@ -34,23 +34,3 @@ const { pageTitle, activeTab } = Astro.props;
     }
   }
 </style>
-
-<script>
-  import { emitter } from "../lib/utils";
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const header = document.getElementById(`header`);
-    const observer = new IntersectionObserver(
-      ([e]) => {
-        if (e.intersectionRatio < 1) {
-          emitter.emit("header-sticky-change", false);
-        } else {
-          emitter.emit("header-sticky-change", true);
-        }
-      },
-      { threshold: [1], rootMargin: "-1px 0px 0px 0px" }
-    );
-
-    observer.observe(header);
-  });
-</script>

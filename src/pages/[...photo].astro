@@ -1,4 +1,5 @@
 ---
+import ResponsiveImage from "../components/ResponsiveImage.astro";
 import { flatten } from "underscore";
 import { postPhotoSlug } from "../lib/utils";
 import { getPosts } from "../lib/contentful";
@@ -41,34 +42,13 @@ interface Props {
 
 const { photo, post, prev, next } = Astro.props;
 
-const imgUrl = photo.fields.file.url;
-
-const coverImages = {
-  small: {
-    url: `${imgUrl}?w=600&q=60&fm=avif`,
-    size: 600,
-  },
-  medium: {
-    url: `${imgUrl}?w=1200&q=60&fm=avif`,
-    size: 1200,
-  },
-  large: {
-    url: `${imgUrl}?w=2000&q=60&fm=avif`,
-    size: 2000,
-  },
-  xlarge: {
-    url: `${imgUrl}?w=3000&q=60&fm=avif`,
-    size: 3000,
-  },
-};
-
-const coverSrcSet = `${coverImages.medium.url} ${coverImages.medium.size}w, ${coverImages.large.url} ${coverImages.large.size}w, ${coverImages.xlarge.url} ${coverImages.xlarge.size}w`;
+const imgUrl = `https:${photo.fields.file.url}`;
 ---
 
 <PhotoLayout
   title={`${photo.fields.title} - Signalkuppe`}
   description={photo.fields.title}
-  ogImage={`https:${photo.fields.file.url}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
+  ogImage={`${imgUrl}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
 >
   <div class="photo-container">
     <nav>
@@ -116,14 +96,18 @@ const coverSrcSet = `${coverImages.medium.url} ${coverImages.medium.size}w, ${co
         <Spinner size="2rem" />
         <p>Carico la foto</p>
       </div>
-      <img
-        srcset={coverSrcSet}
-        sizes="100vw"
-        src={coverImages.small.url}
-        alt={photo.fields.title || ""}
-        loading="lazy"
-        decoding="async"
-        class="photo-image"
+      <ResponsiveImage
+        src={`${imgUrl}?w=3000&q=60&fm=avif`}
+        sizes={{
+          "600": `${imgUrl}?w=600&q=60&fm=avif`,
+          "1024": `${imgUrl}?w=1400&q=60&fm=avif`,
+          "1600": `${imgUrl}?w=2000&q=60&fm=avif`,
+        }}
+        alt={post.fields.cover.fields.title || ""}
+        loading="eager"
+        fetchpriority="high"
+        width={photo.fields.file.details.image.width}
+        height={photo.fields.file.details.image.height}
       />
     </div>
     <p class="photo-caption" aria-hidden="true">{photo.fields.title}</p>
@@ -254,7 +238,7 @@ const coverSrcSet = `${coverImages.medium.url} ${coverImages.medium.size}w, ${co
   import { throttle } from "../lib/utils";
 
   const container = document.querySelector(".photo-container");
-  const image = document.querySelector(".photo-image");
+  const image = document.querySelector(".picture img");
   const downloadButton = document.querySelector(".photo-download");
   const nextPhoto = document.querySelector(".photo-next");
   const prevPhoto = document.querySelector(".photo-prev");
@@ -282,6 +266,7 @@ const coverSrcSet = `${coverImages.medium.url} ${coverImages.medium.size}w, ${co
   const imageHeight = parseInt(image.getAttribute("height"));
   const imageRatio = imageHeight / imageWidth;
   const imageOverlayDiv = document.createElement("div");
+
   imageOverlayDiv.setAttribute("aria-hidden", "true");
   imageOverlayDiv.setAttribute("class", "photo-overlay");
   imageOverlayDiv.style.position = "absolute";

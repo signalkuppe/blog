@@ -9,38 +9,17 @@ const { post } = Astro.props;
 
 const renderInlineAsset = (node) => {
   if (node.nodeType === "embedded-asset-block") {
-    const imgUrl = node.data.target.fields.file.url;
+    const imgUrl = `https:${node.data.target.fields.file.url}`;
     const imgTitle = node.data.target.fields.title;
     const imgWidth = node.data.target.fields.file.details.image.width;
     const imgHeight = node.data.target.fields.file.details.image.height;
-    const postImage = {
-      small: {
-        url: `${imgUrl}?w=400&q=80&fm=avif`,
-        size: 400,
-      },
-      medium: {
-        url: `${imgUrl}?w=800&h=705&q=80&fm=avif`,
-        size: 800,
-      },
-      large: {
-        url: `${imgUrl}?w=1200&q=80&fm=avif`,
-        size: 1200,
-      },
-    };
 
-    const postImageSrcSet = `${postImage.medium.url} ${postImage.medium.size}w, ${postImage.large.url} ${postImage.large.size}w`;
     return ` 
-            <img 
-              srcset="${postImageSrcSet}"
-              sizes="(max-width: 600px) 100vw, 800px" 
-              src="${postImage.small.url}" 
-              width="${imgWidth}"
-              height="${imgHeight}"
-              alt="${imgTitle}" 
-              loading="lazy" 
-              decoding="async"
-              
-            />
+            <picture>
+              <source srcset="${imgUrl}?w=500&q=70&fm=avif" media="(max-width: 600px)" />
+              <source srcset="${imgUrl}?w=800&q=70&fm=avif" media="(max-width: 1024px)" />
+              <img src="${imgUrl}?w=1600&q=70&fm=avif" alt="${imgTitle || ""}" width="${imgWidth} "height="${imgHeight}" loading="lazy" decoding="async" />
+            </picture>
             <p class="img-caption" aria-hidden="true">${imgTitle}</p>
           `;
   }

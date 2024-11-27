@@ -136,7 +136,7 @@ const postGpx = postGpxTrack(post);
     }
 
     .cover {
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     .section {
@@ -144,7 +144,7 @@ const postGpx = postGpxTrack(post);
     }
 
     .body {
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
 
     h2 {
@@ -160,7 +160,7 @@ const postGpx = postGpxTrack(post);
     #post-nav {
       position: sticky;
       top: -1px;
-      padding: 1.5rem 0;
+      padding: 2rem 0;
       z-index: 2;
       font-size: 0.85rem;
     }
@@ -276,7 +276,7 @@ const postGpx = postGpxTrack(post);
           nav.classList.remove("is-sticky");
         }
       },
-      { threshold: [1], rootMargin: "-1px 0px 0px 0px" }
+      { threshold: [1], rootMargin: `-${headerHeight}px 0px 0px 0px` }
     );
 
     navObserver.observe(nav);
