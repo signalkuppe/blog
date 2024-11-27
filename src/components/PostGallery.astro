@@ -17,6 +17,7 @@ const { post } = Astro.props;
         >
           <img
             srcset={`${photo.fields.file.url}?w=160&h=160&fit=thumb&q=70&fm=avif 160w, ${photo.fields.file.url}?w=400&h=400&fit=thumb&q=70&fm=avif 400w`}
+            sizes="(max-width: 600px) 25vw, 250px"
             src={`${photo.fields.file.url}?w=80&h=80&fit=thumb&q=70&fm=avif`}
             alt={photo.fields.title || ""}
             loading="lazy"

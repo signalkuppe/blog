@@ -8,7 +8,12 @@ const { post, coverImages, coverSrcSet } = Astro.props;
 ---
 
 <div class="cover">
-  <img srcset={coverSrcSet} src={coverImages.small.url} alt="" />
+  <img
+    srcset={coverSrcSet}
+    sizes="100vw"
+    src={coverImages.small.url}
+    alt={post.fields.cover.fields.title}
+  />
   <p aria-hidden="true" class="caption">{post.fields.cover.fields.title}</p>
 </div>
 

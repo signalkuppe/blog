@@ -32,14 +32,16 @@ const renderInlineAsset = (node) => {
     return ` 
             <img 
               srcset="${postImageSrcSet}"
+              sizes="(max-width: 600px) 100vw, 800px" 
               src="${postImage.small.url}" 
               width="${imgWidth}"
               height="${imgHeight}"
-              alt="" 
+              alt="${imgTitle}" 
               loading="lazy" 
               decoding="async"
+              
             />
-            <p class="img-caption">${imgTitle}</p>
+            <p class="img-caption" aria-hidden="true">${imgTitle}</p>
           `;
   }
   if (node.nodeType === "asset-hyperlink") {

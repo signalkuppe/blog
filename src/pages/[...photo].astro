@@ -40,6 +40,29 @@ interface Props {
 }
 
 const { photo, post, prev, next } = Astro.props;
+
+const imgUrl = photo.fields.file.url;
+
+const coverImages = {
+  small: {
+    url: `${imgUrl}?w=600&q=60&fm=avif`,
+    size: 600,
+  },
+  medium: {
+    url: `${imgUrl}?w=1200&q=60&fm=avif`,
+    size: 1200,
+  },
+  large: {
+    url: `${imgUrl}?w=2000&q=60&fm=avif`,
+    size: 2000,
+  },
+  xlarge: {
+    url: `${imgUrl}?w=3000&q=60&fm=avif`,
+    size: 3000,
+  },
+};
+
+const coverSrcSet = `${coverImages.medium.url} ${coverImages.medium.size}w, ${coverImages.large.url} ${coverImages.large.size}w, ${coverImages.xlarge.url} ${coverImages.xlarge.size}w`;
 ---
 
 <PhotoLayout
@@ -88,31 +111,22 @@ const { photo, post, prev, next } = Astro.props;
       >
     </nav>
 
-    <picture>
+    <div class="picture">
       <div class="loader">
         <Spinner size="2rem" />
         <p>Carico la foto</p>
       </div>
-
-      <source
-        srcset={`${photo.fields.file.url}?w=1024&q=70&fm=avif`}
-        media="(max-width: 800px)"
-      />
-      <source
-        srcset={`${photo.fields.file.url}?w=2048&q=70&fm=avif`}
-        media="(max-width: 1600px)"
-      />
       <img
-        src={`${photo.fields.file.url}?w=2560&q=50&fm=avif`}
+        srcset={coverSrcSet}
+        sizes="100vw"
+        src={coverImages.small.url}
         alt={photo.fields.title || ""}
-        width={photo.fields.file.details.image.width}
-        height={photo.fields.file.details.image.height}
         loading="lazy"
         decoding="async"
         class="photo-image"
       />
-    </picture>
-    <p class="photo-caption">{photo.fields.title}</p>
+    </div>
+    <p class="photo-caption" aria-hidden="true">{photo.fields.title}</p>
   </div>
 </PhotoLayout>
 
@@ -120,7 +134,7 @@ const { photo, post, prev, next } = Astro.props;
   .photo-container {
     overflow: hidden;
   }
-  picture {
+  .picture {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
