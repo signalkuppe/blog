@@ -11,13 +11,14 @@ const coverBaseUrl = `https:${post.fields.cover.fields.file.url}`;
   <ResponsiveImage
     src={`${coverBaseUrl}?w=3000&q=60&fm=avif`}
     sizes={{
-      "600": `${coverBaseUrl}?w=600&q=60&fm=avif`,
-      "1024": `${coverBaseUrl}?w=1400&q=60&fm=avif`,
-      "1600": `${coverBaseUrl}?w=2000&q=60&fm=avif`,
+      "600": `${coverBaseUrl}?w=500&q=50&fm=avif`,
+      "1024": `${coverBaseUrl}?w=1400&q=50&fm=avif`,
+      "1600": `${coverBaseUrl}?w=2000&q=50&fm=avif`,
     }}
     alt={post.fields.cover.fields.title || ""}
     loading="eager"
     fetchpriority="high"
+    class="cover-picture"
   />
   <p aria-hidden="true" class="caption">{post.fields.cover.fields.title}</p>
 </div>
@@ -31,10 +32,14 @@ const coverBaseUrl = `https:${post.fields.cover.fields.file.url}`;
     display: grid;
   }
 
+  :global(.cover-picture) {
+    display: grid;
+    grid-area: 1/1;
+  }
+
   img {
     object-fit: cover;
     width: 100%;
-    grid-area: 1/1;
   }
 
   .cover,

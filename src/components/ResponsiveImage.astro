@@ -8,6 +8,7 @@ interface Props {
   loading?: any;
   fetchpriority?: any;
   decoding?: any;
+  class?: any;
 }
 const {
   src,
@@ -18,11 +19,12 @@ const {
   loading,
   fetchpriority,
   decoding,
+  class: className = "",
   ...props
 } = Astro.props;
 ---
 
-<picture>
+<picture class={className}>
   {
     Object.entries(sizes).map(([media, url]) => {
       /** @ts-ignore */
@@ -41,9 +43,3 @@ const {
     {...props}
   />
 </picture>
-
-<style>
-  picture {
-    display: contents;
-  }
-</style>

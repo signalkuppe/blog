@@ -56,7 +56,11 @@ const imgUrl = `https:${photo.fields.file.url}`;
         {
           prev && (
             <li>
-              <a href={`/${postPhotoSlug(post, prev)}`} class="photo-prev">
+              <a
+                href={`/${postPhotoSlug(post, prev)}`}
+                class="photo-prev"
+                data-astro-prefetch
+              >
                 <ChevronLeftIcon aria-hidden="true" />
                 <span class="visually-hidden">Foto precedente</span>
               </a>
@@ -66,7 +70,11 @@ const imgUrl = `https:${photo.fields.file.url}`;
         {
           next && (
             <li>
-              <a href={`/${postPhotoSlug(post, next)}`} class="photo-next">
+              <a
+                href={`/${postPhotoSlug(post, next)}`}
+                class="photo-next"
+                data-astro-prefetch
+              >
                 <ChevronRightIcon aria-hidden="true" />
                 <span class="visually-hidden">Foto successiva</span>
               </a>
@@ -108,6 +116,7 @@ const imgUrl = `https:${photo.fields.file.url}`;
         fetchpriority="high"
         width={photo.fields.file.details.image.width}
         height={photo.fields.file.details.image.height}
+        class="photo-picture"
       />
     </div>
     <p class="photo-caption" aria-hidden="true">{photo.fields.title}</p>
@@ -137,10 +146,15 @@ const imgUrl = `https:${photo.fields.file.url}`;
     z-index: 1;
   }
 
-  img {
-    display: block;
+  :global(.photo-picture) {
+    display: grid;
     grid-area: 1/1;
     place-self: center;
+  }
+
+  img {
+    display: block;
+
     aspect-ratio: attr(width) / attr(height);
     width: 100vw;
     max-height: 100svh;

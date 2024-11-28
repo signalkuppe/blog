@@ -15,6 +15,7 @@ const { post } = Astro.props;
           href={`/${postPhotoSlug(post, photo)}`}
           data-caption={photo.fields.title || ""}
           data-group="gallery"
+          data-astro-prefetch
         >
           <ResponsiveImage
             src={`${photo.fields.file.url}?w=400&h=400&fit=thumb&q=60&fm=avif`}
