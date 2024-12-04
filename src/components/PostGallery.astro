@@ -1,5 +1,6 @@
 ---
 import ResponsiveImage from "./ResponsiveImage.astro";
+import PhotoDisclaimer from "./PhotoDisclaimer.astro";
 import { postPhotoSlug } from "../lib/utils";
 interface Props {
   post: any;
@@ -34,10 +35,7 @@ const { post } = Astro.props;
   }
 </ul>
 <p class="disclaimer">
-  Potete usare le foto come volete, ci dedico tempo e passione quindi una <b
-    >citazione</b
-  > con il <b>link al mio blog</b> è opzionale ma <b>tanto gradita.</b> In questo
-  caso <a href="/contatti/">scrivetemi</a> per dirmi dove l’avete usata 🙂
+  <PhotoDisclaimer />
 </p>
 
 <style media="screen">

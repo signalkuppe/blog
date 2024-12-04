@@ -1,131 +1,108 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+import LayoutCommon from "../layouts/LayoutCommon.astro";
 import ResponsiveImage from "../components/ResponsiveImage.astro";
-import { flatten } from "underscore";
-import { postPhotoSlug } from "../lib/utils";
-import { getPosts } from "../lib/contentful";
-import PhotoLayout from "../layouts/PhotoLayout.astro";
 import Spinner from "../components/Spinner.astro";
 import ChevronLeftIcon from "../icons/ChevronLeftIcon.astro";
 import ChevronRightIcon from "../icons/ChevronRightIcon.astro";
 import CloseIcon from "../icons/CloseIcon.astro";
 import DownloadIcon from "../icons/DownloadIcon.astro";
 
-export async function getStaticPaths() {
-  const { posts } = await getPosts();
-
-  const pages = flatten(
-    posts.map((post) => {
-      const postPhotos = post.fields.gallery;
-      return postPhotos.map((photo, i) => {
-        return {
-          params: { photo: postPhotoSlug(post, photo) },
-          props: {
-            photo,
-            post,
-            prev: postPhotos[i - 1],
-            next: postPhotos[i + 1],
-          },
-        };
-      });
-    })
-  );
-
-  return pages;
-}
-
 interface Props {
   photo: any;
-  post: any;
-  prev;
-  next;
+  backLink;
+  backLinkText;
+  prevLink;
+  nextLink;
 }
 
-const { photo, post, prev, next } = Astro.props;
+const { photo, backLink, backLinkText, prevLink, nextLink } = Astro.props;
 
 const imgUrl = `https:${photo.fields.file.url}`;
 ---
 
-<PhotoLayout
+<LayoutCommon
   title={`${photo.fields.title} - Signalkuppe`}
   description={photo.fields.title}
   ogImage={`${imgUrl}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
 >
-  <div class="photo-container">
-    <nav>
-      <ul>
-        {
-          prev && (
-            <li>
-              <a
-                href={`/${postPhotoSlug(post, prev)}`}
-                class="photo-prev"
-                data-astro-prefetch
-              >
-                <ChevronLeftIcon aria-hidden="true" />
-                <span class="visually-hidden">Foto precedente</span>
-              </a>
-            </li>
-          )
-        }
-        {
-          next && (
-            <li>
-              <a
-                href={`/${postPhotoSlug(post, next)}`}
-                class="photo-next"
-                data-astro-prefetch
-              >
-                <ChevronRightIcon aria-hidden="true" />
-                <span class="visually-hidden">Foto successiva</span>
-              </a>
-            </li>
-          )
-        }
-        <li>
-          <a href={`/${post.fields.slug}#post-gallery`} class="photo-back">
-            <CloseIcon aria-hidden="true" /><span class="visually-hidden"
-              >Torna a {post.fields.title}</span
-            ></a
-          >
-        </li>
-      </ul>
-      <button
-        class="photo-download"
-        data-file={photo.fields.file.url}
-        data-name={photo.fields.file.fileName}
-        ><DownloadIcon aria-hidden="true" class="download-icon" />
-        <Spinner class="loading-indicator" size="1.5rem" />
-        <span class="visually-hidden">Scarica la foto</span></button
-      >
-    </nav>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
+    <ViewTransitions />
+  </Fragment>
+  <main>
+    <div class="photo-container">
+      <nav>
+        <ul>
+          {
+            prevLink && (
+              <li>
+                <a href={prevLink} class="photo-prev" data-astro-prefetch>
+                  <ChevronLeftIcon aria-hidden="true" />
+                  <span class="visually-hidden">Foto precedente</span>
+                </a>
+              </li>
+            )
+          }
+          {
+            nextLink && (
+              <li>
+                <a href={nextLink} class="photo-next" data-astro-prefetch>
+                  <ChevronRightIcon aria-hidden="true" />
+                  <span class="visually-hidden">Foto successiva</span>
+                </a>
+              </li>
+            )
+          }
+          <li>
+            <a href={backLink} class="photo-back">
+              <CloseIcon aria-hidden="true" /><span class="visually-hidden"
+                >{backLinkText}</span
+              ></a
+            >
+          </li>
+        </ul>
+        <button
+          class="photo-download"
+          data-file={photo.fields.file.url}
+          data-name={photo.fields.file.fileName}
+          ><DownloadIcon aria-hidden="true" class="download-icon" />
+          <Spinner class="loading-indicator" size="1.5rem" />
+          <span class="visually-hidden">Scarica la foto</span></button
+        >
+      </nav>
 
-    <div class="picture">
-      <div class="loader">
-        <Spinner size="2rem" />
-        <p>Carico la foto</p>
+      <div class="picture">
+        <div class="loader">
+          <Spinner size="2rem" />
+          <p>Carico la foto</p>
+        </div>
+        <ResponsiveImage
+          src={`${imgUrl}?w=3000&q=60&fm=avif`}
+          sizes={{
+            "600": `${imgUrl}?w=600&q=60&fm=avif`,
+            "1024": `${imgUrl}?w=1400&q=60&fm=avif`,
+            "1600": `${imgUrl}?w=2000&q=60&fm=avif`,
+          }}
+          alt={photo.fields.title || ""}
+          loading="eager"
+          fetchpriority="high"
+          width={photo.fields.file.details.image.width}
+          height={photo.fields.file.details.image.height}
+          class="photo-picture"
+        />
       </div>
-      <ResponsiveImage
-        src={`${imgUrl}?w=3000&q=60&fm=avif`}
-        sizes={{
-          "600": `${imgUrl}?w=600&q=60&fm=avif`,
-          "1024": `${imgUrl}?w=1400&q=60&fm=avif`,
-          "1600": `${imgUrl}?w=2000&q=60&fm=avif`,
-        }}
-        alt={post.fields.cover.fields.title || ""}
-        loading="eager"
-        fetchpriority="high"
-        width={photo.fields.file.details.image.width}
-        height={photo.fields.file.details.image.height}
-        class="photo-picture"
-      />
+      <p class="photo-caption" aria-hidden="true">{photo.fields.title}</p>
     </div>
-    <p class="photo-caption" aria-hidden="true">{photo.fields.title}</p>
-  </div>
-</PhotoLayout>
+  </main>
+</LayoutCommon>
 
 <style media="screen">
   .photo-container {
     overflow: hidden;
+    position: fixed;
+    width: 100vw;
+    height: 100svh;
   }
   .picture {
     display: grid;
@@ -259,6 +236,7 @@ const imgUrl = `https:${photo.fields.file.url}`;
 
   downloadButton.addEventListener("click", async function (e) {
     e.preventDefault();
+
     downloadButton.classList.add("is-downloading");
     const fileName = downloadButton.getAttribute("data-name");
     const remoteFileUrl = `https:${downloadButton.getAttribute("data-file")}`;

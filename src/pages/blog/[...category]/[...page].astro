@@ -1,10 +1,10 @@
 ---
-import { getPosts } from "../../../lib/contentful";
+import { getData } from "../../../lib/contentful";
 import { categories } from "../../../constants";
 import Layout from "../../../layouts/Layout.astro";
 import BlogLayout from "../../../layouts/BlogLayout.astro";
 import BlogCategories from "../../../components/BlogCategories.astro";
-import BlogPager from "../../../components/BlogPager.astro";
+import Pager from "../../../components/Pager.astro";
 import PostCard from "../../../components/PostCard.astro";
 
 interface Props {
@@ -15,7 +15,7 @@ const { page } = Astro.props;
 const { category, page: categoryPage } = Astro.params;
 
 export async function getStaticPaths({ paginate }) {
-  const { posts } = await getPosts();
+  const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
   return [undefined, ...categories].flatMap((cat) => {
     const filteredPosts = posts.filter((post) => {
       return cat ? post.fields.category[0] === cat.title : true;
@@ -66,7 +66,7 @@ if (page.currentPage > 1 || categoryPage > 1) {
       </div>
 
       <nav aria-label="Pagine" class="post-pager">
-        <BlogPager page={page} />
+        <Pager page={page} />
       </nav>
     </div>
   </BlogLayout>

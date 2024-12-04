@@ -92,6 +92,7 @@ const { title, description, ogImage } = Astro.props;
   const header = document.getElementById("header");
 
   emitter.on("header-background-change", (isDark) => {
+    console.log("!!!");
     if (isDark) {
       header.classList.add("darker");
     } else {

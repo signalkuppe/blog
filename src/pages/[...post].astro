@@ -1,6 +1,6 @@
 ---
 import { postGpxTrack } from "../lib/utils";
-import { getPosts } from "../lib/contentful";
+import { getData } from "../lib/contentful";
 import { newsletterUrl } from "../constants";
 import Layout from "../layouts/Layout.astro";
 import PostHeader from "../components/PostHeader.astro";
@@ -11,7 +11,7 @@ import PostGpx from "../components/PostGpx.astro";
 import PostShare from "../components/PostShare.astro";
 
 export async function getStaticPaths() {
-  const { posts } = await getPosts();
+  const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
   const pages = posts.map((post, i) => ({
     params: { post: post.fields.slug },
     props: {
@@ -35,7 +35,7 @@ const postGpx = postGpxTrack(post);
 
 <Layout
   title={`${post.fields.title} - Signalkuppe`}
-  description="Mappa delle uscite"
+  description={post.fields.description}
   ogImage={`https:${post.fields.cover.fields.file.url}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
 >
   <Fragment slot="head">

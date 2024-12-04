@@ -9,7 +9,7 @@ const coverBaseUrl = `https:${post.fields.cover.fields.file.url}`;
 
 <div class="cover">
   <ResponsiveImage
-    src={`${coverBaseUrl}?w=3000&q=60&fm=avif`}
+    src={`${coverBaseUrl}?w=3000&q=50&fm=avif`}
     sizes={{
       "600": `${coverBaseUrl}?w=500&q=50&fm=avif`,
       "1024": `${coverBaseUrl}?w=1400&q=50&fm=avif`,
@@ -26,7 +26,6 @@ const coverBaseUrl = `https:${post.fields.cover.fields.file.url}`;
 <style media="screen">
   .cover {
     width: 100%;
-    background: var(--surfaceAccent);
     background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
     background-size: 400% 400%;
     display: grid;
@@ -52,7 +51,7 @@ const coverBaseUrl = `https:${post.fields.cover.fields.file.url}`;
     grid-area: 1/1;
     z-index: 1;
     background: rgba(0, 0, 0, 0.7);
-    color: white;
+    color: var(--textAccent);
     padding: 0.25rem 0.85rem;
     place-self: end;
     font-weight: bold;

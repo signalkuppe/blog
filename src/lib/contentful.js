@@ -14,37 +14,39 @@ export const contentfulClient = contentful.createClient({
       : "cdn.contentful.com",
 });
 
-export async function getPosts() {
-  const cached = cache.get("posts");
+export async function getData({ type, sort }) {
+  const cached = cache.get(type);
   if (cached) {
-    console.log("posts from cache");
+    console.log(`${type} from cache`);
     return {
-      posts: cached,
+      [type]: cached,
     };
   }
-  console.log("fetching posts from contentful");
+
   const query = {
-    content_type: "post",
+    content_type: type,
     include: 1,
-    order: "-fields.date",
+    order: sort,
     limit: 1,
     skip: 0,
   };
+
+  console.log(`fetching ${type} from contentful`);
   const perIteration = 20;
   let iteration = 1;
-  let posts;
+  let items;
   query.limit = perIteration;
   query.skip = 0;
   let chunk = await contentfulClient.getEntries(query);
-  posts = chunk.items;
+  items = chunk.items;
   while (chunk.total > query.limit * iteration) {
     query.skip = query.limit * iteration;
     chunk = await contentfulClient.getEntries(query);
-    posts = union(posts, chunk.items);
+    items = union(items, chunk.items);
     iteration++;
   }
 
-  cache.set("posts", posts);
+  cache.set(type, items);
 
-  return { posts };
+  return { [type]: items };
 }

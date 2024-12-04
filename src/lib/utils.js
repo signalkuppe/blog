@@ -1,11 +1,22 @@
 import slug from "slug";
 import mitt from "mitt";
 
+export const photoSlug = (photo) => {
+  return slug(`${photo.fields.title}-${photo.sys.id}`);
+};
+
 export const postPhotoSlug = (post, photo) => {
   try {
-    return `${post.fields.slug}/${slug(
-      `${photo.fields.title}-${photo.sys.id}`
-    )}`;
+    return `${post.fields.slug}/${photoSlug(photo)}`;
+  } catch (err) {
+    console.log(err);
+    return "";
+  }
+};
+
+export const portfolioPhotoSlug = (photo) => {
+  try {
+    return `/portfolio/${photoSlug(photo)}`;
   } catch (err) {
     console.log(err);
     return "";

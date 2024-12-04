@@ -6,4 +6,7 @@ export default defineConfig({
   outDir: ".site",
   devToolbar: { enabled: false },
   prefetch: true,
+  redirects: {
+    "/portfolio": "/portfolio/1",
+  },
 });
