@@ -1,8 +1,8 @@
 ---
+import PhotoCard from "../../components/PhotoCard.astro";
 import { portfolioPhotoSlug } from "../../lib/utils";
 import { getData } from "../../lib/contentful";
 import Layout from "../../layouts/Layout.astro";
-import ResponsiveImage from "../../components/ResponsiveImage.astro";
 import Pager from "../../components/Pager.astro";
 import PhotoDisclaimer from "../../components/PhotoDisclaimer.astro";
 
@@ -56,29 +56,7 @@ const description = "Una raccolta delle mie foto più belle";
             return (
               <li>
                 <a href={portfolioPhotoSlug(photo)} data-astro-prefetch>
-                  <ResponsiveImage
-                    src={`${imgUrl}?w=1280&q=50&fm=avif`}
-                    sizes={{
-                      "600": `${photo}?w=400&q=50&fm=avif`,
-                    }}
-                    alt={photo.fields.photo.fields.title || ""}
-                    loading="lazy"
-                    width={photo.fields.photo.fields.file.details.image.width}
-                    height={photo.fields.photo.fields.file.details.image.height}
-                  />
-                  <div class="caption">
-                    <time
-                      datetime={new Date(photo.fields.date)
-                        .toISOString()
-                        .slice(0, 19)}
-                    >
-                      <span class="visually-hidden">Scattata il </span>
-                      {new Date(photo.fields.date).toLocaleDateString("it-IT")}
-                    </time>
-                    <h2 aria-hidden="true">
-                      {photo.fields.photo.fields.title}
-                    </h2>
-                  </div>
+                  <PhotoCard photo={photo} />
                 </a>
               </li>
             );
@@ -109,40 +87,6 @@ const description = "Una raccolta delle mie foto più belle";
 
     a {
       text-decoration: none;
-      position: relative;
-      display: block;
-      width: 100%;
-      background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
-      background-size: 400% 400%;
-    }
-
-    a:hover .caption {
-      background: rgba(0, 0, 0, 1);
-    }
-
-    .caption {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.6);
-      width: 100%;
-      padding: 0.5rem 1rem;
-      transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-      color: white;
-    }
-
-    time {
-      font-size: 0.85rem;
-    }
-
-    h2 {
-      font-size: 1rem;
-      line-height: 1.2;
-      color: inherit;
-    }
-
-    img {
-      grid-area: 1 / 1;
     }
 
     .bottom {
@@ -156,24 +100,6 @@ const description = "Una raccolta delle mie foto più belle";
       margin-top: 3rem;
       max-width: 70ch;
       font-size: 0.75rem;
-    }
-
-    @keyframes gradient {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      a {
-        animation: gradient 2s ease infinite;
-      }
     }
 
     @media screen and (width > 30rem) {

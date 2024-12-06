@@ -1,0 +1,94 @@
+---
+import ResponsiveImage from "../components/ResponsiveImage.astro";
+
+interface Props {
+  photo: any;
+}
+
+const { photo } = Astro.props;
+const imgUrl = photo.fields.photo.fields.file.url;
+---
+
+<article>
+  <ResponsiveImage
+    src={`${imgUrl}?w=1210&q=50&fm=avif`}
+    sizes={{
+      "600": `${photo}?w=400&q=50&fm=avif`,
+    }}
+    alt={photo.fields.photo.fields.title || ""}
+    loading="lazy"
+    width={photo.fields.photo.fields.file.details.image.width}
+    height={photo.fields.photo.fields.file.details.image.height}
+  />
+  <div class="caption">
+    <time datetime={new Date(photo.fields.date).toISOString().slice(0, 19)}>
+      <span class="visually-hidden">Scattata il </span>
+      {new Date(photo.fields.date).toLocaleDateString("it-IT")}
+    </time>
+    <h2 aria-hidden="true">
+      {photo.fields.photo.fields.title}
+    </h2>
+  </div>
+</article>
+<style media="screen">
+  article {
+    width: 100%;
+  }
+
+  .caption {
+    line-height: 1;
+    width: 100%;
+    padding: 0.75rem 0;
+    border-bottom: 3px solid transparent;
+  }
+
+  article:hover .caption {
+    border-color: var(--accent);
+  }
+
+  time {
+    font-size: 0.7rem;
+    display: block;
+    padding-bottom: 0.25rem;
+  }
+
+  h2 {
+    font-size: 0.85rem;
+    line-height: 1.2;
+    color: inherit;
+  }
+
+  img {
+    grid-area: 1 / 1;
+    background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
+    background-size: 400% 400%;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    img {
+      animation: gradient 2s ease infinite;
+    }
+  }
+
+  @media screen and (width > 60rem) {
+    time {
+      font-size: 0.85rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+    }
+  }
+</style>

@@ -29,6 +29,7 @@
     --surfaceAccent: hsl(var(--hue) var(--saturation) 15%);
     --mountainsColor: hsl(var(--hue) var(--saturation) 7%);
     --outlines: var(--surfaceAccent);
+    --focusOutlineWidth: 3px;
   }
 
   html[data-theme="light"] {
@@ -57,8 +58,8 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 3px;
+    outline: var(--focusOutlineWidth) solid var(--accent);
+    outline-offset: var(--focusOutlineWidth);
   }
 
   img,

@@ -2,9 +2,9 @@
 import { Image } from "astro:assets";
 import { categories } from "../constants";
 import avatar from "../images/matteo-leoni-signalkuppe.png";
-import SearchIcon from "../icons/SearchIcon.astro";
 import DesktopMenu from "./DesktopMenu.astro";
 import MobileMenu from "./MobileMenu.astro";
+import Search from "./Search.astro";
 const url = Astro.url.pathname;
 const links = [
   {
@@ -65,11 +65,9 @@ const navLabel = "Sito";
     <div class="desktop-menu">
       <DesktopMenu links={links} navLabel={navLabel} />
     </div>
-    <form role="search">
-      <label for="search" class="visually-hidden">Cerca un’uscita</label>
-      <input type="text" id="search" />
-      <SearchIcon aria-hidden="true" />
-    </form>
+    <div class="search">
+      <Search />
+    </div>
   </div>
 </div>
 <style media="screen">
@@ -97,24 +95,6 @@ const navLabel = "Sito";
     background: var(--surfaceAccent);
   }
 
-  form {
-    display: grid;
-  }
-
-  form svg {
-    height: 1em;
-    grid-area: 1 / 1;
-    transform: translate(0.5rem, 0.5rem);
-  }
-
-  form input {
-    grid-area: 1 / 1;
-    padding: 0.25rem;
-    text-indent: 2rem;
-    display: block;
-    width: 11rem;
-  }
-
   @media screen and (width < 51rem) {
     .mobile-menu {
       display: block;
@@ -124,7 +104,7 @@ const navLabel = "Sito";
       display: none;
     }
 
-    form {
+    .search {
       order: 1;
     }
 

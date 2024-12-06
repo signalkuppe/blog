@@ -122,4 +122,9 @@ const body = htmlRenderer.documentToHtmlString(post.fields.body, options);
   :global(.post-html li::marker) {
     color: var(--textAccent);
   }
+
+  :global([data-youtube-embed]) {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
 </style>
