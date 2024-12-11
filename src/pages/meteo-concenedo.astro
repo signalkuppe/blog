@@ -1,0 +1,75 @@
+---
+export const prerender = false;
+import { siteTitle } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import weatherlink from "../lib/weatherlink";
+import Layout from "../layouts/Layout.astro";
+import PageTitle from "../components/PageTitle.astro";
+import MeteoWebCam from "../components/MeteoWebCam.astro";
+import MeteoDataGrid from "../components/MeteoDataGrid.astro";
+import MeteoGraphGrid from "../components/MeteoGraphGrid.astro";
+const title = "Meteo Concenedo";
+const description =
+  "Dati meteo in diretta e webcam da Concenedo (Barzio) in Valsassina";
+const { hasLostSignal, current, day, ok } = await weatherlink();
+const webcam = current?.webcam;
+---
+
+<Layout
+  title={headPageTitle(title, siteTitle)}
+  description={description}
+  ogImage="https://images.ctfassets.net/rotmy72mdop6/3Qy2Qb0G2cePauRLnhCb5U/8caa3ae7eb25d77cee90be9278524877/2.jpg"
+>
+  <div class="cage">
+    <PageTitle subTitle={description}>{title}</PageTitle>
+    {
+      ok && (
+        <>
+          <section class="webcam" aria-labelledby="webcam">
+            <h2 id="webcam" class="visually-hidden">
+              Webcam
+            </h2>
+            <MeteoWebCam webcam={webcam.url} />
+            <p class="updated">
+              Ultimo aggiornamento: <strong>{current.last_data_day}</strong>{" "}
+              alle <strong>{current.last_data_hour}</strong>
+            </p>
+          </section>
+          <section class="dati" aria-labelledby="dati">
+            <h2 id="dati" class="visually-hidden">
+              Dati attuali
+            </h2>
+            <MeteoDataGrid current={current} day={day} />
+          </section>
+          <section class="grafici" aria-labelledby="grafici">
+            <h2 id="grafici" class="visually-hidden">
+              Grafici
+            </h2>
+            <MeteoGraphGrid day={day} />
+          </section>
+        </>
+      )
+    }
+  </div>
+</Layout>
+
+<style media="screen">
+  .updated {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .updated strong {
+    font-family: var(--fontFamilyMono);
+    font-size: 0.75rem;
+    color: var(--textAccent);
+  }
+
+  .dati {
+    margin-top: 3rem;
+  }
+
+  .grafici {
+    margin-top: 3rem;
+  }
+</style>

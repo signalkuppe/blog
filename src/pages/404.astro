@@ -1,0 +1,31 @@
+---
+import Image from "astro/components/Image.astro";
+import picture from "../images/404.jpg";
+import { siteTitle, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import { ClientRouter } from "astro:transitions";
+import PageTitle from "../components/PageTitle.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title={headPageTitle("Pagina non trovata", siteTitle)}
+  description=""
+  ogImage={defaultOgImage}
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+    <ClientRouter />
+  </Fragment>
+  <div class="cage">
+    <PageTitle> Pagina non trovata 🥲 </PageTitle>
+    <Image
+      src={picture}
+      width="1000"
+      height="661"
+      alt=""
+      decoding="async"
+      loading="eager"
+    />
+  </div>
+</Layout>

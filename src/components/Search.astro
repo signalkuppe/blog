@@ -15,7 +15,7 @@ const dataset = posts.map((post) => ({
 
 <form id="search-form" role="search" data-posts={JSON.stringify(dataset)}>
   <label for="search-input" class="visually-hidden">Cerca un’uscita</label>
-  <input type="text" id="search-input" autocomplete="off" aria-c />
+  <input type="text" id="search-input" autocomplete="off" />
   <SearchIcon aria-hidden="true" />
   <div id="results"><div id="arrow" aria-hidden="true"></div></div>
 </form>
@@ -247,6 +247,7 @@ const dataset = posts.map((post) => ({
   }
 
   function showResults() {
+    document.body.appendChild(results);
     results.style.display = "block";
     results.removeAttribute("inert");
     trigger.setAttribute("aria-expanded", "true");

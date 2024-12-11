@@ -1,4 +1,6 @@
 ---
+import { siteSlogan, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
 import Image from "astro/components/Image.astro";
 import Layout from "../layouts/Layout.astro";
 import ReactLogo from "../logos/react.astro";
@@ -8,6 +10,7 @@ import TailwindLogo from "../logos/tailwind.astro";
 import Astrologo from "../logos/astrologo.astro";
 import ContentfulLogo from "../logos/contentful.astro";
 import Cover from "../images/matteo-leoni.png";
+import PageTitle from "../components/PageTitle.astro";
 
 const tools = [
   {
@@ -44,9 +47,9 @@ const tools = [
 ---
 
 <Layout
-  title="Matteo - Signalkuppe"
+  title={headPageTitle("Matteo", siteSlogan)}
   description="Presento le mie passioni e il mio lavoro"
-  ogImage="/og-image.jpg"
+  ogImage={defaultOgImage}
 >
   <div class="wrapper cage">
     <Image
@@ -58,7 +61,7 @@ const tools = [
       loading="eager"
     />
     <article>
-      <h1>Matteo</h1>
+      <PageTitle>Matteo</PageTitle>
       <p>
         La <b>montagna</b> è una delle mie più grandi passioni, trasmessami da mio
         padre, che mi ha introdotto a questo affascinante universo. Da quel momento,
@@ -159,11 +162,6 @@ const tools = [
       order: 1;
       min-width: 0;
     }
-  }
-
-  h1 {
-    font-size: 2.25rem;
-    margin-bottom: 1rem;
   }
 
   h2 {

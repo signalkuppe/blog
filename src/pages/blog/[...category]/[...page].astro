@@ -1,11 +1,12 @@
 ---
 import { getData } from "../../../lib/contentful";
-import { categories } from "../../../constants";
+import { categories, defaultOgImage, siteTitle } from "../../../constants";
 import Layout from "../../../layouts/Layout.astro";
 import BlogLayout from "../../../layouts/BlogLayout.astro";
 import BlogCategories from "../../../components/BlogCategories.astro";
 import Pager from "../../../components/Pager.astro";
 import PostCard from "../../../components/PostCard.astro";
+import { headPageTitle } from "../../../lib/utils";
 
 interface Props {
   page: any;
@@ -43,9 +44,9 @@ if (page.currentPage > 1 || categoryPage > 1) {
 ---
 
 <Layout
-  title={`${pageTitle} - Signalkuppe`}
+  title={headPageTitle(pageTitle, siteTitle)}
   description="Elenco completo di tutte le uscite"
-  ogImage="/og-image.jpg"
+  ogImage={defaultOgImage}
 >
   <BlogLayout pageTitle={pageTitle} activeTab="elenco">
     <div class="cage">

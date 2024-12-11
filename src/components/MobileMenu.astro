@@ -100,8 +100,7 @@ const { links, navLabel } = Astro.props;
 </style>
 
 <script>
-  import { emitter, trapFocus } from "../lib/utils";
-
+  import { emitter } from "../lib/utils";
   const navPanel = document.getElementById(`nav-panel`);
   const openMenuButton = document.getElementById("nav-open");
   const closeMenuButton = document.getElementById("nav-close");
@@ -114,6 +113,42 @@ const { links, navLabel } = Astro.props;
     navPanel.setAttribute("aria-role", "dialog");
     openMenuButton.setAttribute("aria-controls", "js-main-menu");
     openMenuButton.setAttribute("aria-expanded", "false");
+  }
+
+  function trapFocus(element) {
+    // get all focusable elements
+    const focusableEls = element.querySelectorAll(
+      "a[href]:not([disabled]), button:not([disabled])"
+    );
+    // Save first and last focusable elements
+    const firstFocusableEl = focusableEls[0];
+    const lastFocusableEl = focusableEls[focusableEls.length - 1];
+    const KEYCODE_TAB = 9;
+
+    // listen for a key press
+    element.addEventListener("keydown", function (e) {
+      const isTabPressed = e.key === "Tab" || e.keyCode === KEYCODE_TAB;
+
+      // if the key pressed is not TAB, stop function execution
+      if (!isTabPressed) {
+        return;
+      }
+
+      // if shift + tab
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusableEl) {
+          lastFocusableEl.focus();
+          e.preventDefault();
+        }
+      }
+      // else if tab
+      else {
+        if (document.activeElement === lastFocusableEl) {
+          firstFocusableEl.focus();
+          e.preventDefault();
+        }
+      }
+    });
   }
 
   function lockBody() {

@@ -1,0 +1,24 @@
+<div>
+  <span class="label">
+    <slot name="label" />
+  </span>
+  <span class="input">
+    <slot name="input" />
+  </span>
+</div>
+
+<style media="screen">
+  span {
+    display: block;
+    width: fit-content;
+  }
+
+  .label {
+    transform: translate(25px, 50%);
+    line-height: 1;
+    background: linear-gradient(transparent 50%, var(--surfaceAccent) 50%);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    overflow: clip;
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  subTitle?: string;
+}
+
+const { subTitle } = Astro.props;
+---
+
+<div>
+  <h1><slot /></h1>
+  {subTitle && <p>{subTitle}</p>}
+</div>
+
+<style media="screen">
+  div {
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 0.8rem;
+    padding-top: 0.25rem;
+  }
+</style>

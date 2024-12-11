@@ -1,0 +1,137 @@
+---
+const { data } = Astro.props;
+---
+
+<canvas
+  class="meteo-wind-pie-chart"
+  width="400"
+  height="200"
+  data-points={JSON.stringify(data)}></canvas>
+
+<script>
+  // @ts-nocheck
+  import { getCssVar } from "../lib/utils";
+  import { WEATHER_CONSTANTS } from "../constants";
+  import { Chart } from "chart.js";
+  import ChartDataLabels from "chartjs-plugin-datalabels";
+  const canvas = document.querySelector(".meteo-wind-pie-chart");
+
+  function drawChart(ctx, dataset) {
+    var total = dataset.reduce(function (sum, item) {
+      return sum + item.value;
+    }, 0);
+    new Chart(ctx, {
+      type: "pie",
+      data: {
+        labels: dataset.map(function (item) {
+          return item.label;
+        }),
+        datasets: [
+          {
+            data: dataset.map(function (item) {
+              return item.value;
+            }),
+          },
+        ],
+      },
+      plugins: [ChartDataLabels],
+      options: {
+        responsive: true,
+        layout: {
+          padding: {
+            top: 80,
+            bottom: 80,
+            left: 80,
+            right: 80,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          datalabels: {
+            color: "white",
+            font: {
+              weight: "bold",
+            },
+            formatter: function (value, context) {
+              var percentage = Math.round((value / total) * 100);
+              var label = context.chart.data.labels[context.dataIndex];
+              return label + " " + percentage + "%";
+            },
+          },
+          tooltip: {
+            enabled: false, // Disable tooltips
+          },
+        },
+      },
+      plugins: [
+        {
+          id: "customLegend",
+          afterDraw: function (chart) {
+            var ctx = chart.ctx;
+            var chartArea = chart.chartArea;
+            var width = chartArea.right - chartArea.left;
+            var height = chartArea.bottom - chartArea.top;
+            var centerX = chartArea.left + width / 2;
+            var centerY = chartArea.top + height / 2;
+
+            chart.data.datasets[0].data.forEach(function (value, index) {
+              // Get the slice's arc
+              var meta = chart.getDatasetMeta(0);
+              var arc = meta.data[index];
+
+              // Calculate percentage
+              var percentage = Math.round((value / total) * 100);
+
+              // Get the slice's label
+              var label = chart.data.labels[index];
+
+              // Get the slice's color
+              var color = chart.data.datasets[0].backgroundColor[index];
+
+              // Calculate angle and position
+              var startAngle = arc.startAngle;
+              var endAngle = arc.endAngle;
+              var middleAngle = (startAngle + endAngle) / 2;
+
+              // Radius of the pie and additional offset
+              var radius = arc.outerRadius;
+              var offset = radius + 20;
+
+              // Calculate point on the arc's circumference
+              var x = centerX + Math.cos(middleAngle) * radius;
+              var y = centerY + Math.sin(middleAngle) * radius;
+
+              // Calculate external point
+              var externalX = centerX + Math.cos(middleAngle) * offset;
+              var externalY = centerY + Math.sin(middleAngle) * offset;
+
+              // Draw line
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              ctx.lineTo(externalX, externalY);
+              ctx.lineWidth = 4;
+              ctx.strokeStyle = color;
+
+              ctx.stroke();
+
+              // Draw text
+              ctx.fillStyle = getCssVar("--text");
+              ctx.textAlign = externalX > centerX ? "left" : "right";
+              ctx.fillText(
+                `${label} ${percentage}%`,
+                externalX + (externalX > centerX ? 10 : -10),
+                externalY
+              );
+            });
+          },
+        },
+      ],
+    });
+  }
+
+  const ctx = canvas.getContext("2d");
+  const dataset = JSON.parse(canvas.getAttribute("data-points"));
+  drawChart(ctx, dataset);
+</script>

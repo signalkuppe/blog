@@ -1,5 +1,7 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { siteTitle } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import { ClientRouter } from "astro:transitions";
 import LayoutCommon from "../layouts/LayoutCommon.astro";
 import ResponsiveImage from "../components/ResponsiveImage.astro";
 import Spinner from "../components/Spinner.astro";
@@ -22,13 +24,13 @@ const imgUrl = `https:${photo.fields.file.url}`;
 ---
 
 <LayoutCommon
-  title={`${photo.fields.title} - Signalkuppe`}
+  title={headPageTitle(photo.fields.title, siteTitle)}
   description={photo.fields.title}
   ogImage={`${imgUrl}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
 >
   <Fragment slot="head">
     <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
-    <ViewTransitions />
+    <ClientRouter />
   </Fragment>
   <main>
     <div class="photo-container">

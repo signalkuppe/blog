@@ -1,0 +1,27 @@
+---
+import { siteTitle, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import { ClientRouter } from "astro:transitions";
+import PageTitle from "../components/PageTitle.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title={headPageTitle("Messaggio inviato", siteTitle)}
+  description=""
+  ogImage={defaultOgImage}
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+    <ClientRouter />
+  </Fragment>
+  <div class="cage">
+    <div class="animation">
+      <PageTitle subTitle="Cercherò di risponderti il prima possibile 🙂">
+        Messaggio ricevuto!
+      </PageTitle>
+    </div>
+  </div>
+</Layout>
+
+ì

@@ -1,14 +1,13 @@
 ---
 import PhotoPage from "../../components/PhotoPage.astro";
-import { photoSlug, portfolioPhotoSlug } from "../../lib/utils";
+import { photoSlug, portfolioPhotoSlug, validPhotos } from "../../lib/utils";
 import { getData } from "../../lib/contentful";
-import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
   const { portfolio: photos } = await getData({
     type: "portfolio",
     sort: "-fields.date",
   });
-  const pages = photos.map((photo, i) => ({
+  const pages = validPhotos(photos).map((photo, i) => ({
     params: { portfolioPhoto: photoSlug(photo) },
     props: {
       photo: photo,
@@ -32,6 +31,6 @@ const { photo, prev, next } = Astro.props;
   photo={photo.fields.photo}
   backLink={"/portfolio"}
   backLinkText="Portfolio"
-  nextLink={portfolioPhotoSlug(next)}
-  prevLink={portfolioPhotoSlug(prev)}
+  nextLink={next ? portfolioPhotoSlug(next) : null}
+  prevLink={prev ? portfolioPhotoSlug(prev) : null}
 />

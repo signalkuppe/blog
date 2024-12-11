@@ -1,0 +1,73 @@
+---
+import MeteoGraphCard from "./MeteoGraphCard.astro";
+import MeteoLineChart from "./MeteoLineChart.astro";
+import MeteoWindLineChart from "./MeteoWindLineChart.astro";
+import MeteoTettoPratoLineChart from "./MeteoTettoPratoLineChart.astro";
+import MeteoWindPieChart from "./MeteoWindPieChart.astro";
+import { WEATHER_CONSTANTS } from "../constants";
+const { day } = Astro.props;
+---
+
+<ul>
+  <li>
+    <MeteoGraphCard
+      title={`Temperatura (${WEATHER_CONSTANTS.TEMPERATURE_UNIT})`}
+    >
+      <MeteoLineChart data={day.graph_temperature} />
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard title={`Umidità (${WEATHER_CONSTANTS.HUMIDITY_UNIT})`}>
+      <MeteoLineChart data={day.graph_humidity} />
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard title={`Pressione (${WEATHER_CONSTANTS.PRESSURE_UNIT})`}>
+      <MeteoLineChart data={day.graph_pressure} />
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard
+      title={`Velocità del vento (${WEATHER_CONSTANTS.WIND_UNIT})`}
+    >
+      <MeteoLineChart data={day.graph_wind} />
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard title={`Direzione del vento`}>
+      <MeteoWindLineChart data={day.graph_wind_dir} />
+    </MeteoGraphCard>
+  </li>
+
+  <li>
+    <MeteoGraphCard
+      title={`Intensità della pioggia (${WEATHER_CONSTANTS.RAIN_RATE_UNIT})`}
+    >
+      <MeteoLineChart data={day.graph_rain_rate} />
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard title={`Radiazione solare (W/m2)`}>
+      <MeteoLineChart data={day.graph_solar_radiation} />
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard
+      title={`Temperatura 2m/12m ${WEATHER_CONSTANTS.TEMPERATURE_UNIT}`}
+    >
+      <MeteoTettoPratoLineChart data={day.graph_temperature_tetto_prato} />
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard title={`Distribuzione del vento`}>
+      <MeteoWindPieChart data={day.graph_wind_dir_pie} />
+    </MeteoGraphCard>
+  </li>
+</ul>
+<style media="screen">
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 2rem;
+  }
+</style>

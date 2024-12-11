@@ -1,10 +1,16 @@
 ---
+import PageTitle from "../../components/PageTitle.astro";
 import PhotoCard from "../../components/PhotoCard.astro";
-import { portfolioPhotoSlug } from "../../lib/utils";
+import {
+  headPageTitle,
+  portfolioPhotoSlug,
+  validPhotos,
+} from "../../lib/utils";
 import { getData } from "../../lib/contentful";
 import Layout from "../../layouts/Layout.astro";
 import Pager from "../../components/Pager.astro";
 import PhotoDisclaimer from "../../components/PhotoDisclaimer.astro";
+import { siteSlogan } from "../../constants";
 
 export async function getStaticPaths({ paginate }) {
   const { portfolio: photos } = await getData({
@@ -12,7 +18,7 @@ export async function getStaticPaths({ paginate }) {
     sort: "-fields.date",
   });
 
-  return paginate(photos, {
+  return paginate(validPhotos(photos), {
     pageSize: 12,
   });
 }
@@ -33,7 +39,7 @@ const description = "Una raccolta delle mie foto più belle";
 ---
 
 <Layout
-  title={`${pageTitle} - Signalkuppe`}
+  title={headPageTitle(pageTitle, siteSlogan)}
   description={description}
   ogImage="/og-image.jpg"
 >
@@ -41,26 +47,22 @@ const description = "Una raccolta delle mie foto più belle";
     <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
   </Fragment>
 
-  <div class="cage title">
-    <h1>{pageTitle}</h1>
-    <p>{description}</p>
+  <div class="cage">
+    <PageTitle subTitle={description}>{pageTitle}</PageTitle>
   </div>
 
   <div class="container">
     <ul>
       {
-        page.data
-          .filter((photo) => photo?.fields?.title)
-          .map((photo) => {
-            const imgUrl = photo.fields.photo.fields.file.url;
-            return (
-              <li>
-                <a href={portfolioPhotoSlug(photo)} data-astro-prefetch>
-                  <PhotoCard photo={photo} />
-                </a>
-              </li>
-            );
-          })
+        page.data.map((photo) => {
+          return (
+            <li>
+              <a href={portfolioPhotoSlug(photo)} data-astro-prefetch>
+                <PhotoCard photo={photo} />
+              </a>
+            </li>
+          );
+        })
       }
     </ul>
     <div class="cage bottom">
@@ -72,9 +74,6 @@ const description = "Una raccolta delle mie foto più belle";
   </div>
 
   <style media="screen">
-    .title {
-      margin-bottom: 2rem;
-    }
     .container {
       --space: 1.5rem;
       padding: var(--space);

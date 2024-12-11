@@ -4,14 +4,16 @@ import Layout from "../../layouts/Layout.astro";
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import Spinner from "../../components/Spinner.astro";
 import "leaflet/dist/leaflet.css";
+import { headPageTitle } from "../../lib/utils";
+import { defaultOgImage, siteTitle } from "../../constants";
 const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
 const pageTitle = "Mappa delle uscite";
 ---
 
 <Layout
-  title={`${pageTitle} - Signalkuppe`}
+  title={headPageTitle(pageTitle, siteTitle)}
   description="Mappa delle uscite"
-  ogImage="/og-image.jpg"
+  ogImage={defaultOgImage}
 >
   <Fragment slot="head">
     <link rel="preconnect" href="https://tile.thunderforest.com/" crossorigin />

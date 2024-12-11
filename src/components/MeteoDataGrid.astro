@@ -1,0 +1,516 @@
+---
+import MeteoCard from "./MeteoCard.astro";
+import MeteoCardFooterRow from "./MeteoCardFooterRow.astro";
+import MaxIcon from "../icons/MaxIcon.astro";
+import MinIcon from "../icons/MinIcon.astro";
+import PaperIcon from "../icons/PaperIcon.astro";
+import ArrowDiagonalUpIcon from "../icons/ArrowDiagonalUpIcon.astro";
+import { WEATHER_CONSTANTS } from "../constants";
+const { current, day } = Astro.props;
+---
+
+<ul>
+  <li>
+    <MeteoCard title="Temperatura">
+      {current?.temperature}
+      {WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+      <Fragment slot="sub-value"
+        >{current.temperature_tetto}{WEATHER_CONSTANTS.TEMPERATURE_UNIT} a 12m</Fragment
+      >
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={WEATHER_CONSTANTS.MIN_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MIN_LABEL_ABBR}
+        value={day.temperature_min}
+        unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+        time={day.temperature_min_at}
+        valueColor={WEATHER_CONSTANTS.MIN_VALUE_COLOR}
+      >
+        <MinIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label={WEATHER_CONSTANTS.MAX_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
+        value={day.temperature_max}
+        unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+        time={day.temperature_max_at}
+        valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          La temperatura principale è misurata a 180cm dal suolo su terreno
+          erboso.
+        </p>
+        <p>
+          Il sensore è schermato da uno
+          <strong>schermo solare</strong> con ventilazione forzata durante il giorno,
+          per migliorare l’accuratezza della misura
+        </p>
+        <p>
+          <strong>La temperatura a 12m</strong> è misurata da un secondo sensore,
+          sempre in schermo ventilato, posizionato sul tetto.
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Umidità">
+      {current?.humidity}
+      {WEATHER_CONSTANTS.HUMIDITY_UNIT}
+      <Fragment slot="sub-value"
+        >{current.humidity_tetto}{WEATHER_CONSTANTS.HUMIDITY_UNIT} a 12m</Fragment
+      >
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={WEATHER_CONSTANTS.MIN_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MIN_LABEL_ABBR}
+        value={day.humidity_min}
+        unit={WEATHER_CONSTANTS.HUMIDITY_UNIT}
+        time={day.humidity_min_at}
+        valueColor={WEATHER_CONSTANTS.MIN_VALUE_COLOR}
+      >
+        <MinIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label={WEATHER_CONSTANTS.MAX_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
+        value={day.humidity_max}
+        unit={WEATHER_CONSTANTS.HUMIDITY_UNIT}
+        time={day.humidity_max_at}
+        valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          È il <strong>rapporto</strong> tra la
+          <strong> quantità di vapore acqueo </strong>
+          contenuto in una massa d’aria e la
+          <strong> quantità massima di vapore acqueo </strong>
+          che la stessa massa d’aria riesce a contenere nelle stesse condizioni di
+          temperatura e pressione.
+        </p>
+        <p>
+          <strong> L’umidità relativa a 12m </strong>
+          è misurata da un secondo sensore, posizionato sul tetto.
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Pressione">
+      {current?.pressure}
+      {WEATHER_CONSTANTS.PRESSURE_UNIT}
+      <Fragment slot="sub-value">{current.pressure_trend}</Fragment>
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={WEATHER_CONSTANTS.MIN_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MIN_LABEL_ABBR}
+        value={day.humidity_min}
+        unit={WEATHER_CONSTANTS.PRESSURE_UNIT}
+        time={day.humidity_min_at}
+        valueColor={WEATHER_CONSTANTS.MIN_VALUE_COLOR}
+      >
+        <MinIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label={WEATHER_CONSTANTS.MAX_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
+        value={day.pressure_max}
+        unit={WEATHER_CONSTANTS.PRESSURE_UNIT}
+        time={day.pressure_max_at}
+        valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          È la{" "}
+          <strong> forza esercitata dal peso di una colonna d’aria </strong>
+          sulla superficie terrestre, che ha come base l’unità di superficie e come
+          altezza il limite superiore dell’atmosfera a partire dal livello del mare.
+        </p>
+        <p>
+          Si misura con il barometro e si esprime in hPa, unità pari ad una
+          forza di 100 Newton su una superficie di un metro quadrato.
+        </p>
+        <p>
+          <strong>
+            Mediamente, al livello del mare, essa vale 1013,25 hPa.
+          </strong>
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Vento">
+      {current?.wind}
+      {WEATHER_CONSTANTS.WIND_UNIT}
+      <span style="margin-left:0.25em;">{current.wind_direction}</span>
+
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={WEATHER_CONSTANTS.MAX_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
+        value={day.wind_max}
+        unit={WEATHER_CONSTANTS.WIND_UNIT}
+        time={day.wind_max_at}
+        valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label="Direzione prevalente"
+        labelAbbr="Dir. prevalente"
+        value={day.wind_prevailing_dir}
+        valueColor={WEATHER_CONSTANTS.ALT_COLOR}
+      >
+        <ArrowDiagonalUpIcon slot="icon" />
+      </MeteoCardFooterRow>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Pioggia odierna">
+      {current?.rain}
+      {WEATHER_CONSTANTS.RAIN_UNIT}
+
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label="Mese"
+        value={current.rain_month}
+        unit={WEATHER_CONSTANTS.RAIN_UNIT}
+        valueColor={WEATHER_CONSTANTS.ALT_COLOR_2}
+      >
+        <PaperIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label="Anno"
+        value={current.rain_year}
+        unit={WEATHER_CONSTANTS.RAIN_UNIT}
+        valueColor={WEATHER_CONSTANTS.ALT_COLOR_2}
+      >
+        <PaperIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          La misura in millimetri corrisponde alla così detta “altezza
+          pluviometrica o altezza di pioggia”.
+        </p>
+        <p>
+          <strong> Un millimetro di pioggia </strong>
+          misurato all’interno del pluviometro è pari come quantità a
+          <strong>
+            1 litro caduto su una superficie di 1 metro quadrato
+          </strong>
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Intensità pioggia">
+      {current.rain_rate}
+      {WEATHER_CONSTANTS.RAIN_RATE_UNIT}
+
+      <Fragment slot={current.rain_rate > 0 ? "sub-value" : null}
+        >{current.rain_rate_text}</Fragment
+      >
+
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={"Intensità massima"}
+        labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
+        value={day.rain_rate_max > 0 ? day.rain_rate_max : "-"}
+        unit={day.rain_rate_max > 0 ? WEATHER_CONSTANTS.RAIN_RATE_UNIT : ""}
+        time={day.rain_rate_max > 0 ? day.rain_rate_max_at : null}
+        valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={"Ultimi 15 minuti"}
+        value={current.rain_rate_last_15_min > 0
+          ? current.rain_rate_last_15_min
+          : "-"}
+        unit={current.rain_rate_last_15_min > 0
+          ? WEATHER_CONSTANTS.RAIN_RATE_UNIT
+          : ""}
+        valueColor={WEATHER_CONSTANTS.ALT_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          I millimetri di pioggia caduti in un’ora definiscono quella che viene
+          chiamata dai meteorologi intensità della pioggia
+        </p>
+        <p>
+          <ul>
+            <li>
+              <strong>pioviggine debole</strong>
+              ({"i < 0.1"})
+            </li>
+            <li>
+              <strong>pioviggine moderata</strong>
+              ({"0.1 <= i < 0.5"})
+            </li>
+            <li>
+              <strong>pioviggine forte</strong>
+              ({"0.5 <= i < 1"})
+            </li>
+            <li>
+              <strong>pioggia debole</strong>
+              ({"1 <= i <2.5"})
+            </li>
+            <li>
+              <strong>pioggia moderata</strong>
+              ({"2.5 <= i <10"})
+            </li>
+            <li>
+              <strong>pioggia forte</strong>
+              ({"10 <= i < 50"})
+            </li>
+            <li>
+              <strong>nubifragio</strong>
+              ({"i > 50"})
+            </li>
+          </ul>
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Punto di rugiada">
+      {current?.dew_point}
+      {WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={WEATHER_CONSTANTS.MIN_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MIN_LABEL_ABBR}
+        value={day.dew_point_min}
+        unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+        time={day.dew_point_min_at}
+        valueColor={WEATHER_CONSTANTS.MIN_VALUE_COLOR}
+      >
+        <MinIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label={WEATHER_CONSTANTS.MAX_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
+        value={day.dew_point_max}
+        unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+        time={day.dew_point_max_at}
+        valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          È la temperatura alla quale l’aria deve raffreddarsi affinché il
+          vapore acqueo presente inizi a condensare. Il punto di rugiada
+          fornisce informazioni sull’umidità dell’aria.
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Bulbo umido">
+      {current?.wet_bulb}
+      {WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={WEATHER_CONSTANTS.MIN_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MIN_LABEL_ABBR}
+        value={day.wet_bulb_min}
+        unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+        time={day.wet_bulb_min_at}
+        valueColor={WEATHER_CONSTANTS.MIN_VALUE_COLOR}
+      >
+        <MinIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label={WEATHER_CONSTANTS.MAX_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
+        value={day.wet_bulb_max}
+        unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+        time={day.wet_bulb_max_at}
+        valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          Indica la
+          <strong> temperatura più bassa che potremo raggiungere, </strong>
+          per effetto dell’evaporazione dell’acqua nell’aria a pressione costante.
+          Utile per capire se la pioggia può trasformarsi in neve
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Indice di calore">
+      {current?.heat_index}
+      {WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={WEATHER_CONSTANTS.MAX_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
+        value={day.heat_index_max}
+        unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+        time={day.heat_index_max_at}
+        valueColor={WEATHER_CONSTANTS.MIN_VALUE_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label="Wind chill minimo"
+        labelAbbr="Wind chill min"
+        value={day.wind_chill_min}
+        unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+        time={day.wind_chill_min_at}
+        valueColor={WEATHER_CONSTANTS.ALT_COLOR}
+      >
+        <MinIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          Indica la
+          <strong> temperatura effettiva da noi avvertita </strong> e si calcola
+          conoscendo i valori di temperatura e umidità relativa dell’aria.
+        </p>
+        <p>
+          Il <strong>wind chill</strong> invece e si calcola conoscendo i valori
+          di
+          <strong> temperatura e velocità del vento </strong>
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Radiazione solare">
+      {current?.rain}
+      W/m<sup>2</sup>
+
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label="Evapotraspirazione giornaliera"
+        labelAbbr="ETP giornaliera"
+        value={current.et_day}
+        unit={WEATHER_CONSTANTS.RAIN_UNIT}
+        valueColor={WEATHER_CONSTANTS.ALT_COLOR_2}
+      >
+        <PaperIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label="Evapotraspirazione annuale"
+        labelAbbr="ETP annuale"
+        value={current.et_year}
+        unit={WEATHER_CONSTANTS.RAIN_UNIT}
+        valueColor={WEATHER_CONSTANTS.ALT_COLOR_2}
+      >
+        <PaperIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          <strong> La radiazione solare </strong>
+          indica l’energia emessa dal sole per unità di area.
+          <strong> L’Etp o evapotraspirazione potenziale </strong>
+          Consiste nella quantità d’acqua che dal terreno passa nell’aria allo stato
+          di vapore. Viene stimata grazie alla misura della
+          <strong>radiazione solare</strong>
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Temperatura a 12m">
+      {current?.temperature_tetto}
+      {WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={WEATHER_CONSTANTS.MIN_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MIN_LABEL_ABBR}
+        value={day.temperature_tetto_min}
+        unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+        time={day.temperature_tetto_min_at}
+        valueColor={WEATHER_CONSTANTS.MIN_VALUE_COLOR}
+      >
+        <MinIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label={WEATHER_CONSTANTS.MAX_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
+        value={day.temperature_tetto_max}
+        unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+        time={day.temperature_tetto_max_at}
+        valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          La
+          <strong> temperatura rilevata dal secondo sensore, </strong>
+          posto a 12m sul tetto. In inverno, grazie all’inversione termica, i valori
+          possono risultare più alti rispetto al sensore posto a 180cm su prato
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+  <li>
+    <MeteoCard title="Umidità a 12m">
+      {current?.humidity_tetto}
+      {WEATHER_CONSTANTS.HUMIDITY_UNIT}
+
+      <MeteoCardFooterRow
+        slot="footer-top"
+        label={WEATHER_CONSTANTS.MIN_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MIN_LABEL_ABBR}
+        value={day.humidity_tetto_min}
+        unit={WEATHER_CONSTANTS.HUMIDITY_UNIT}
+        time={day.humidity_tetto_min_at}
+        valueColor={WEATHER_CONSTANTS.MIN_VALUE_COLOR}
+      >
+        <MinIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <MeteoCardFooterRow
+        slot="footer-bottom"
+        label={WEATHER_CONSTANTS.MAX_LABEL}
+        labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
+        value={day.humidity_tetto_max}
+        unit={WEATHER_CONSTANTS.HUMIDITY_UNIT}
+        time={day.humidity_tetto_max_at}
+        valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
+      >
+        <MaxIcon slot="icon" />
+      </MeteoCardFooterRow>
+      <Fragment slot="tooltip">
+        <p>
+          <strong>L’umidità relativa</strong> rilevata dal secondo sensore
+        </p>
+      </Fragment>
+    </MeteoCard>
+  </li>
+</ul>
+<style media="screen">
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+
+    gap: 1rem;
+  }
+</style>

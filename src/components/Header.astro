@@ -22,21 +22,21 @@ const links = [
       categories.find((c) => url.indexOf(c.slug) !== -1),
   },
   {
-    href: "/portfolio",
+    href: "/portfolio/1",
     text: "Foto",
     prefetch: true,
     active: url.indexOf("/portfolio") !== -1,
   },
   {
     href: "/meteo-concenedo",
-    text: "Meteo",
+    text: "Meteo Concenedo",
     active: url.indexOf("/meteo-concenedo") !== -1,
   },
   {
     href: "/contatti",
     text: "Contatti",
     prefetch: true,
-    active: url.indexOf("/contatti") !== -1,
+    active: url.indexOf("/contatti") !== -1 || url.indexOf("/contatti") !== -1,
   },
 ];
 const navLabel = "Sito";

@@ -1,0 +1,86 @@
+---
+import { siteTitle, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import LabelledInput from "../components/LabelledInput.astro";
+import PageTitle from "../components/PageTitle.astro";
+import Layout from "../layouts/Layout.astro";
+const description = "Scrivimi per parlare di un vostro progetto o di montagna";
+---
+
+<Layout
+  title={headPageTitle("Contatti", siteTitle)}
+  description={description}
+  ogImage={defaultOgImage}
+>
+  <div class="cage">
+    <PageTitle subTitle={description}> Inviami un messaggio </PageTitle>
+
+    <form
+      action="/grazie"
+      name="contact"
+      method="POST"
+      autocomplete="off"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <label class="visually-hidden">
+        Non compilarlo se sei umano: <input name="bot-field" />
+      </label>
+
+      <div>
+        <LabelledInput>
+          <label for="email" slot="label">Email</label>
+          <input
+            id="email"
+            required
+            name="email"
+            type="email"
+            autocapitalize="off"
+            placeholder="es: info@miaemail.it"
+            slot="input"
+          />
+        </LabelledInput>
+      </div>
+      <div>
+        <LabelledInput>
+          <label for="message" slot="label">Messaggio</label>
+          <textarea
+            required
+            id="message"
+            name="message"
+            spellcheck="false"
+            autocorrect="off"
+            autocomplete="off"
+            autocapitalize="off"
+            rows="5"
+            cols="50"
+            slot="input"></textarea>
+        </LabelledInput>
+      </div>
+      <button type="submit" class="btn">Invia il messaggio</button>
+    </form>
+  </div>
+</Layout>
+
+<style media="screen">
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 50ch;
+  }
+
+  label {
+    display: block;
+  }
+
+  form input,
+  form textarea {
+    display: block;
+    width: 100%;
+  }
+
+  button {
+    align-self: flex-start;
+  }
+</style>

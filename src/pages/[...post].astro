@@ -1,5 +1,6 @@
 ---
-import { postGpxTrack } from "../lib/utils";
+import { siteTitle } from "../constants";
+import { postGpxTrack, headPageTitle } from "../lib/utils";
 import { getData } from "../lib/contentful";
 import { newsletterUrl } from "../constants";
 import Layout from "../layouts/Layout.astro";
@@ -34,7 +35,7 @@ const postGpx = postGpxTrack(post);
 ---
 
 <Layout
-  title={`${post.fields.title} - Signalkuppe`}
+  title={headPageTitle(post.fields.title, siteTitle)}
   description={post.fields.description}
   ogImage={`https:${post.fields.cover.fields.file.url}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
 >
@@ -226,7 +227,6 @@ const postGpx = postGpxTrack(post);
     const sections = document.querySelectorAll(".section");
     const nav = document.getElementById("post-nav");
     const navLinks = nav.querySelectorAll("a");
-    const distance = cover.getBoundingClientRect().y;
     const headerHeight = header.getBoundingClientRect().height;
 
     let currentActive = 0;
@@ -239,12 +239,6 @@ const postGpx = postGpxTrack(post);
       [...Array(sections.length).keys()]?.forEach((link) => removeActive(link));
 
     function handleScroll() {
-      if (window.scrollY > distance - headerHeight) {
-        emitter.emit("header-background-change", true);
-      } else {
-        emitter.emit("header-background-change", false);
-      }
-
       let current = 0;
 
       current =

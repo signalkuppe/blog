@@ -39,21 +39,22 @@ const { title, description, ogImage } = Astro.props;
     position: sticky;
     top: -1px;
     z-index: 2;
+    overflow-x: clip;
+    background: light-dark(
+      hsla(var(--hue), var(--saturation), 98%, 80%),
+      hsla(var(--hue), var(--saturation), 5%, 80%)
+    );
     backdrop-filter: blur(10px);
   }
 
   header.menu-is-open {
-    backdrop-filter: none;
+    overflow: none;
     position: static;
+    backdrop-filter: none;
   }
 
   header.remove-sticky {
     position: static;
-  }
-
-  header.darker {
-    backdrop-filter: none;
-    background: var(--surface);
   }
 
   main {
@@ -88,15 +89,6 @@ const { title, description, ogImage } = Astro.props;
   // @ts-nocheck
   import { emitter } from "../lib/utils";
   const header = document.getElementById("header");
-
-  emitter.on("header-background-change", (isDark) => {
-    console.log("!!!");
-    if (isDark) {
-      header.classList.add("darker");
-    } else {
-      header.classList.remove("darker");
-    }
-  });
 
   emitter.on("menu-toggle", (isOpen) => {
     if (isOpen) {

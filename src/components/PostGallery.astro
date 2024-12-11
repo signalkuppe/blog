@@ -1,7 +1,7 @@
 ---
 import ResponsiveImage from "./ResponsiveImage.astro";
 import PhotoDisclaimer from "./PhotoDisclaimer.astro";
-import { postPhotoSlug } from "../lib/utils";
+import { postPhotoSlug, validPhotos } from "../lib/utils";
 interface Props {
   post: any;
 }
@@ -10,7 +10,7 @@ const { post } = Astro.props;
 
 <ul>
   {
-    post.fields.gallery.map((photo) => (
+    validPhotos(post.fields.gallery).map((photo) => (
       <li>
         <a
           href={`/${postPhotoSlug(post, photo)}`}

@@ -1,0 +1,90 @@
+---
+const { data } = Astro.props;
+---
+
+<canvas
+  class="meteo-wind-chart"
+  width="400"
+  height="200"
+  data-points={JSON.stringify(data)}></canvas>
+
+<script>
+  // @ts-nocheck
+  import { WEATHER_CONSTANTS } from "../constants";
+  import "chartjs-adapter-dayjs-4/dist/chartjs-adapter-dayjs-4.esm";
+  import { Chart, registerables } from "chart.js";
+  import { getCssVar } from "../lib/utils";
+  Chart.register(...registerables);
+
+  const canvas = document.querySelector(".meteo-wind-chart");
+
+  function drawChart(ctx, dataset) {
+    const uniqueDirections = [...new Set(dataset.map((item) => item.dir))];
+
+    const chartData = dataset.map((item) => ({
+      x: item.x,
+      y: item.dir, // Use direction directly as category label
+    }));
+    const chart = new Chart(ctx, {
+      type: "line", // Specify chart type
+      data: {
+        datasets: [
+          {
+            label: "Gradi (°C)",
+            data: chartData, // Use your data here
+            borderColor: getCssVar(WEATHER_CONSTANTS.GRAPH_LINE_COLOR),
+            backgroundColor: "none",
+            borderWidth: 2,
+            tension: 0.4, // Optional: adds smooth curves
+            pointRadius: 0, // Remove the dots
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        aspectRatio: 1.5,
+        plugins: {
+          legend: false,
+        },
+        scales: {
+          x: {
+            type: "time", // Use the time scale
+            time: {
+              parser: "YYYY-MM-DD HH:mm", // Format of your time data
+              unit: "hour", // Granularity (e.g., minute, hour, day)
+              round: "minute",
+              displayFormats: {
+                hour: "HH", // Format for displaying labels
+              },
+            },
+            ticks: {
+              stepSize: 2, // Sample every two hours
+            },
+            title: {
+              display: false,
+              text: "Ora",
+            },
+            grid: {
+              color: getCssVar(WEATHER_CONSTANTS.GRAPH_GRID_COLOR),
+            },
+          },
+          y: {
+            type: "category", // Use category scale for distinct labels
+            labels: uniqueDirections,
+            title: {
+              display: false,
+              text: "Temperatura (°C)",
+            },
+            grid: {
+              color: getCssVar(WEATHER_CONSTANTS.GRAPH_GRID_COLOR),
+            },
+          },
+        },
+      },
+    });
+  }
+
+  const ctx = canvas.getContext("2d");
+  const dataset = JSON.parse(canvas.getAttribute("data-points"));
+  drawChart(ctx, dataset);
+</script>
