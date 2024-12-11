@@ -12,7 +12,7 @@
   "dependencies": {
     "@astrojs/netlify": "^6.0.0",
     "@floating-ui/dom": "^1.6.12",
-    "astro": "^5.0.3",
+    "astro": "^5.0.4",
     "chart.js": "^4.4.6",
     "chartjs-adapter-dayjs-4": "^1.0.4",
     "chartjs-plugin-datalabels": "^2.2.0",

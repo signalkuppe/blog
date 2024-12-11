@@ -1,9 +1,0 @@
-[[redirects]]
-  from = "/portfolio"
-  to = "/portfolio/1"
-  status = 301
-  
-[[headers]]
-  for = "/meteo-concenedo"
-  [headers.values]
-    Cache-Control = "public, max-age=300"

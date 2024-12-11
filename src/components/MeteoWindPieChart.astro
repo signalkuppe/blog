@@ -34,7 +34,6 @@ const { data } = Astro.props;
           },
         ],
       },
-      plugins: [ChartDataLabels],
       options: {
         responsive: true,
         layout: {
@@ -66,6 +65,7 @@ const { data } = Astro.props;
         },
       },
       plugins: [
+        ChartDataLabels,
         {
           id: "customLegend",
           afterDraw: function (chart) {
