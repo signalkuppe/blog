@@ -119,7 +119,5 @@ export const trapFocus = (element) => {
         e.preventDefault();
       }
     }
-
-    console.log(document.activeElement, lastFocusableEl);
   });
 };

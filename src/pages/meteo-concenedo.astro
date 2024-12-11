@@ -145,12 +145,11 @@ Astro.response.headers.set(
 <style media="screen">
   .updated {
     margin-top: 0.5rem;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
   }
 
   .updated strong {
     font-family: var(--fontFamilyMono);
-    font-size: 0.75rem;
     color: var(--textAccent);
   }
 
@@ -167,8 +166,19 @@ Astro.response.headers.set(
     font-size: 0.85rem;
   }
 
+  details {
+    border: 2px solid var(--accent);
+    border-radius: 5px;
+    padding: 1rem;
+  }
+
   summary {
     cursor: pointer;
+  }
+
+  summary::marker,
+  summary::-webkit-details-marker {
+    color: var(--accent);
   }
 
   summary h2 {
@@ -182,9 +192,17 @@ Astro.response.headers.set(
     max-width: 75ch;
   }
 
+  .details-body img {
+    background: var(--surfaceAccent);
+  }
+
   details p {
     margin-bottom: 1.5rem;
     font-size: 0.8rem;
+  }
+
+  details p:last-child {
+    margin-bottom: 0;
   }
 
   details h3 {
@@ -203,12 +221,13 @@ Astro.response.headers.set(
       flex-direction: column;
       gap: 1rem;
     }
-
-    .details-right {
-    }
   }
 
   @media screen and (width > 60rem) {
+    .updated {
+      font-size: 0.85rem;
+    }
+
     details article {
       display: flex;
       gap: 2rem;

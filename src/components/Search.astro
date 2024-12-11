@@ -129,6 +129,7 @@ const dataset = posts.map((post) => ({
   let searchResults = [];
 
   trigger.addEventListener("keyup", function (e) {
+    console.log(e.key);
     const query = e.target.value;
 
     showResults();
@@ -152,10 +153,25 @@ const dataset = posts.map((post) => ({
     search(query);
   });
 
-  trigger.addEventListener("blur", function () {
+  trigger.addEventListener("blur", function (e) {
     if (!searchResults.length) {
       hideResults();
       trigger.value = "";
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (
+      event.key === "Tab" &&
+      searchResults.length > 0 &&
+      document.activeElement === trigger
+    ) {
+      event.preventDefault();
+      const firstFocusableElement = results.querySelectorAll("a")[0];
+      if (firstFocusableElement) {
+        firstFocusableElement.focus();
+        trapFocus(results);
+      }
     }
   });
 
@@ -208,7 +224,7 @@ const dataset = posts.map((post) => ({
             </li>`
           );
         });
-        trapFocus(results);
+
         results.addEventListener("keyup", function (e) {
           if (e.key === "Escape") {
             hideResults();
