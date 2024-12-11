@@ -2,6 +2,7 @@
 import ThemeSwitcherScript from "../components/ThemeSwitcher/ThemeSwitcherScript.astro";
 import GlobalStyles from "../components/GlobalStyles.astro";
 import PrintStyles from "../components/PrintStyles.astro";
+import { prodSiteUrl } from "../constants";
 
 interface Props {
   title: string;
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const { title, description, ogImage } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const canonicalURL = new URL(Astro.url.pathname, prodSiteUrl).href;
 ---
 
 <!doctype html>

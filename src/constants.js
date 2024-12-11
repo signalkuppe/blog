@@ -1,5 +1,7 @@
 export const siteTitle = "Signalkuppe";
 
+export const prodSiteUrl = "https://www.signalkuppe.com";
+
 export const siteSlogan = "Parole oltre i 4000m";
 
 export const defaultOgImage = "/og-image.jpg";

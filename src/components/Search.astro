@@ -128,6 +128,8 @@ const dataset = posts.map((post) => ({
   noResults.textContent = "Nessun Risultato";
   let searchResults = [];
 
+  document.body.appendChild(results); // move out the dom
+
   trigger.addEventListener("keyup", function (e) {
     console.log(e.key);
     const query = e.target.value;
@@ -178,6 +180,7 @@ const dataset = posts.map((post) => ({
   function update() {
     computePosition(trigger, results, {
       placement: "bottom-left",
+      strategy: "fixed",
       middleware: [offset(20), arrow({ element: arrowElement })],
     }).then(({ x, y, placement, middlewareData }) => {
       Object.assign(results.style, {
@@ -263,7 +266,6 @@ const dataset = posts.map((post) => ({
   }
 
   function showResults() {
-    document.body.appendChild(results);
     results.style.display = "block";
     results.removeAttribute("inert");
     trigger.setAttribute("aria-expanded", "true");
