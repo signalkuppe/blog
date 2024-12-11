@@ -16,8 +16,8 @@ const renderInlineAsset = (node) => {
 
     return ` 
             <picture>
-              <source srcset="${imgUrl}?w=500&q=70&fm=avif" media="(max-width: 600px)" />
-              <source srcset="${imgUrl}?w=800&q=70&fm=avif" media="(max-width: 1024px)" />
+              <source srcset="${imgUrl}?w=800&q=70&fm=avif" media="(max-width: 600px)" />
+              <source srcset="${imgUrl}?w=1440&q=70&fm=avif" media="(max-width: 1024px)" />
               <img src="${imgUrl}?w=1600&q=70&fm=avif" alt="${imgTitle || ""}" width="${imgWidth} "height="${imgHeight}" loading="lazy" decoding="async" />
             </picture>
             <p class="img-caption" aria-hidden="true">${imgTitle}</p>

@@ -11,9 +11,9 @@ const imgUrl = photo.fields.photo.fields.file.url;
 
 <article>
   <ResponsiveImage
-    src={`${imgUrl}?w=1210&q=50&fm=avif`}
+    src={`${imgUrl}?w=1210&q=70&fm=avif`}
     sizes={{
-      "600": `${photo}?w=400&q=50&fm=avif`,
+      "600": `${photo}?w=1000&q=70&fm=avif`,
     }}
     alt={photo.fields.photo.fields.title || ""}
     loading="lazy"

@@ -82,9 +82,9 @@ const imgUrl = `https:${photo.fields.file.url}`;
         <ResponsiveImage
           src={`${imgUrl}?w=3000&q=60&fm=avif`}
           sizes={{
-            "600": `${imgUrl}?w=600&q=60&fm=avif`,
-            "1024": `${imgUrl}?w=1400&q=60&fm=avif`,
-            "1600": `${imgUrl}?w=2000&q=60&fm=avif`,
+            "600": `${imgUrl}?w=1000&q=70&fm=avif`,
+            "1024": `${imgUrl}?w=1400&q=70&fm=avif`,
+            "1600": `${imgUrl}?w=2000&q=70&fm=avif`,
           }}
           alt={photo.fields.title || ""}
           loading="eager"
