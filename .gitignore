@@ -5,6 +5,7 @@ dist/
 .astro/
 .site/
 .cache/
+.netlify/
 
 # dependencies
 node_modules/

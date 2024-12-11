@@ -8,5 +8,4 @@ export default defineConfig({
   devToolbar: { enabled: false },
   prefetch: true,
   adapter: netlify(),
-  outDir: "./site",
 });
