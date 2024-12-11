@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import Spinner from "../components/Spinner.astro";
 const { webcam } = Astro.props;
 ---
@@ -8,7 +7,7 @@ const { webcam } = Astro.props;
   {
     webcam ? (
       <>
-        <Image
+        <img
           src={webcam}
           alt="Webcam in diretta da Concenedo (Barzio)"
           width="3840"

@@ -67,7 +67,13 @@ const { day } = Astro.props;
 <style media="screen">
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2rem;
+  }
+
+  @media screen and (width > 60rem) {
+    ul {
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    }
   }
 </style>

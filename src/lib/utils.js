@@ -60,20 +60,6 @@ export const postGpxTrack = (post) => {
 };
 
 export const getCssVar = (varString) => {
-  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  function handleDarkModeChange(e) {
-    if (e.matches) {
-      // Dark mode is active
-      console.log("Dark mode enabled");
-      document.body.classList.add("dark-mode");
-      document.body.classList.remove("light-mode");
-    } else {
-      // Light mode is active
-      console.log("Light mode enabled");
-      document.body.classList.add("light-mode");
-      document.body.classList.remove("dark-mode");
-    }
-  }
   return getComputedStyle(document.documentElement).getPropertyValue(varString);
 };
 

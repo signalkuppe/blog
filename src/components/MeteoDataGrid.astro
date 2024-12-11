@@ -510,7 +510,16 @@ const { current, day } = Astro.props;
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-
     gap: 1rem;
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (width > 60rem) {
+    ul {
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    }
   }
 </style>

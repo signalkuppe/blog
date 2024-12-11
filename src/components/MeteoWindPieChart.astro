@@ -49,15 +49,7 @@ const { data } = Astro.props;
             display: false,
           },
           datalabels: {
-            color: "white",
-            font: {
-              weight: "bold",
-            },
-            formatter: function (value, context) {
-              var percentage = Math.round((value / total) * 100);
-              var label = context.chart.data.labels[context.dataIndex];
-              return label + " " + percentage + "%";
-            },
+            display: false,
           },
           tooltip: {
             enabled: false, // Disable tooltips

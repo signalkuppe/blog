@@ -13,10 +13,11 @@ const { data } = Astro.props;
   import { WEATHER_CONSTANTS } from "../constants";
   import "chartjs-adapter-dayjs-4/dist/chartjs-adapter-dayjs-4.esm";
   import { Chart, registerables } from "chart.js";
-  import { getCssVar } from "../lib/utils";
+  import { getCssVar, emitter } from "../lib/utils";
   Chart.register(...registerables);
 
   const canvas = document.querySelector(".meteo-wind-chart");
+  let charts = [];
 
   function drawChart(ctx, dataset) {
     const uniqueDirections = [...new Set(dataset.map((item) => item.dir))];
@@ -82,9 +83,24 @@ const { data } = Astro.props;
         },
       },
     });
+
+    charts.push(chart);
   }
 
-  const ctx = canvas.getContext("2d");
-  const dataset = JSON.parse(canvas.getAttribute("data-points"));
-  drawChart(ctx, dataset);
+  function init() {
+    if (charts.length) {
+      charts.forEach((chart) => chart.destroy());
+    }
+
+    const ctx = canvas.getContext("2d");
+    const dataset = JSON.parse(canvas.getAttribute("data-points"));
+    drawChart(ctx, dataset);
+  }
+
+  init();
+
+  emitter.on("dark-mode-change", (mode) => {
+    // otherwise getCssVar is not re-evaluated
+    init();
+  });
 </script>

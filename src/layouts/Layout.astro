@@ -105,4 +105,19 @@ const { title, description, ogImage } = Astro.props;
       header.classList.remove("remove-sticky");
     }
   });
+
+  const root = document.documentElement;
+  var observer = new MutationObserver(function (event) {
+    emitter.emit(
+      "dark-mode-change",
+      event[0].target.getAttribute("data-theme")
+    );
+  });
+
+  observer.observe(root, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+    childList: false,
+    characterData: false,
+  });
 </script>

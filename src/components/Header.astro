@@ -36,7 +36,7 @@ const links = [
     href: "/contatti",
     text: "Contatti",
     prefetch: true,
-    active: url.indexOf("/contatti") !== -1 || url.indexOf("/contatti") !== -1,
+    active: url.indexOf("/contatti") !== -1 || url.indexOf("/grazie") !== -1,
   },
 ];
 const navLabel = "Sito";
@@ -95,7 +95,7 @@ const navLabel = "Sito";
     background: var(--surfaceAccent);
   }
 
-  @media screen and (width < 51rem) {
+  @media screen and (width < 60rem) {
     .mobile-menu {
       display: block;
       order: 2;
@@ -113,7 +113,7 @@ const navLabel = "Sito";
     }
   }
 
-  @media screen and (width > 51rem) {
+  @media screen and (width > 60rem) {
     .mobile-menu {
       display: none;
     }

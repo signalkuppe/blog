@@ -2,21 +2,18 @@
 const { data } = Astro.props;
 ---
 
-<canvas
-  class="meteo-chart"
-  width="400"
-  height="200"
-  data-points={JSON.stringify(data)}></canvas>
+<canvas class="meteo-chart" data-points={JSON.stringify(data)}></canvas>
 
 <script>
   // @ts-nocheck
   import { WEATHER_CONSTANTS } from "../constants";
   import "chartjs-adapter-dayjs-4/dist/chartjs-adapter-dayjs-4.esm";
   import { Chart, registerables } from "chart.js";
-  import { getCssVar } from "../lib/utils";
+  import { getCssVar, emitter } from "../lib/utils";
   Chart.register(...registerables);
 
   const canvas = document.querySelectorAll(".meteo-chart");
+  let charts = [];
 
   function drawChart(ctx, dataset) {
     const chart = new Chart(ctx, {
@@ -77,11 +74,24 @@ const { data } = Astro.props;
         },
       },
     });
+    charts.push(chart);
   }
 
-  canvas.forEach((canva) => {
-    const ctx = canva.getContext("2d");
-    const dataset = JSON.parse(canva.getAttribute("data-points"));
-    drawChart(ctx, dataset);
+  function init() {
+    if (charts.length) {
+      charts.forEach((chart) => chart.destroy());
+    }
+    canvas.forEach((canva) => {
+      const ctx = canva.getContext("2d");
+      const dataset = JSON.parse(canva.getAttribute("data-points"));
+      drawChart(ctx, dataset);
+    });
+  }
+
+  init();
+
+  emitter.on("dark-mode-change", (mode) => {
+    // otherwise getCssVar is not re-evaluated
+    init();
   });
 </script>

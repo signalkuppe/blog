@@ -13,10 +13,11 @@ const { data } = Astro.props;
   import { WEATHER_CONSTANTS } from "../constants";
   import "chartjs-adapter-dayjs-4/dist/chartjs-adapter-dayjs-4.esm";
   import { Chart, registerables } from "chart.js";
-  import { getCssVar } from "../lib/utils";
+  import { getCssVar, emitter } from "../lib/utils";
   Chart.register(...registerables);
 
   const canvas = document.querySelector(".meteo-tetto-prato-chart");
+  let charts = [];
 
   function drawChart(ctx, dataset) {
     const chartData = {
@@ -37,7 +38,7 @@ const { data } = Astro.props;
       })),
     };
 
-    new Chart(ctx, {
+    const chart = new Chart(ctx, {
       type: "line",
       data: chartData,
       options: {
@@ -91,9 +92,22 @@ const { data } = Astro.props;
         },
       },
     });
+    charts.push(chart);
+  }
+  function init() {
+    if (charts.length) {
+      charts.forEach((chart) => chart.destroy());
+    }
+
+    const ctx = canvas.getContext("2d");
+    const dataset = JSON.parse(canvas.getAttribute("data-points"));
+    drawChart(ctx, dataset);
   }
 
-  const ctx = canvas.getContext("2d");
-  const dataset = JSON.parse(canvas.getAttribute("data-points"));
-  drawChart(ctx, dataset);
+  init();
+
+  emitter.on("dark-mode-change", (mode) => {
+    // otherwise getCssVar is not re-evaluated
+    init();
+  });
 </script>
