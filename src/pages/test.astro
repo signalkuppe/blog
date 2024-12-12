@@ -1,0 +1,24 @@
+---
+// @ts-nocheck
+import Layout from "../layouts/Layout.astro";
+import { siteSlogan } from "../constants";
+import { headPageTitle } from "../lib/utils";
+---
+
+<Layout title={headPageTitle("Test page", siteSlogan)} description="Test">
+  <Fragment slot="head">
+    <meta name="”robots”" content="”noindex," nofollow” />
+  </Fragment>
+  <div class="cage">
+    <button id="error-button">Throw test error</button>
+  </div>
+</Layout>
+
+<script>
+  function handleClick() {
+    throw new Error("This is a test error");
+  }
+  document
+    .querySelector("#error-button")
+    .addEventListener("click", handleClick);
+</script>

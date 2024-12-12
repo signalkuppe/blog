@@ -1,0 +1,68 @@
+---
+import Spinner from "../components/Spinner.astro";
+const { webcam } = Astro.props;
+---
+
+<div class="webcam-wrapper">
+  {
+    webcam ? (
+      <>
+        <img
+          src={webcam}
+          alt="Webcam in diretta da Concenedo (Barzio)"
+          width="3840"
+          height="2160"
+        />
+        <div class="spinner">
+          <Spinner size="2rem" />
+          <span aria-hidden="true">Carico la webcam</span>
+        </div>
+      </>
+    ) : (
+      <span class="not-available">Webcam non disponibile 🫤</span>
+    )
+  }
+</div>
+
+<style media="screen">
+  .webcam-wrapper {
+    background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
+    background-size: 400% 400%;
+    aspect-ratio: 3840 / 2160;
+    display: grid;
+  }
+
+  img {
+    grid-area: 1 / 1;
+    z-index: 1;
+  }
+
+  .spinner,
+  .not-available {
+    grid-area: 1 / 1;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .webcam-wrapper:not(:has(.not-available)) {
+      animation: gradient 2s ease infinite;
+    }
+  }
+</style>

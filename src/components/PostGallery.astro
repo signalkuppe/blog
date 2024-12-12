@@ -1,0 +1,66 @@
+---
+import ResponsiveImage from "./ResponsiveImage.astro";
+import PhotoDisclaimer from "./PhotoDisclaimer.astro";
+import { postPhotoSlug, validPhotos } from "../lib/utils";
+interface Props {
+  post: any;
+}
+const { post } = Astro.props;
+---
+
+<ul>
+  {
+    validPhotos(post.fields.gallery).map((photo) => (
+      <li>
+        <a
+          href={`/${postPhotoSlug(post, photo)}`}
+          data-caption={photo.fields.title || ""}
+          data-group="gallery"
+          data-astro-prefetch
+        >
+          <ResponsiveImage
+            src={`${photo.fields.file.url}?w=400&h=400&fit=thumb&q=60&fm=avif`}
+            sizes={{
+              "600": `${photo.fields.file.url}?w=160&h=160&fit=thumb&q=60&fm=avif`,
+            }}
+            alt={post.fields.title || ""}
+            loading="lazy"
+            decoding="async"
+            width="200"
+            height="200"
+          />
+        </a>
+      </li>
+    ))
+  }
+</ul>
+<p class="disclaimer">
+  <PhotoDisclaimer />
+</p>
+
+<style media="screen">
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: var(--surfaceAccent);
+  }
+
+  .disclaimer {
+    font-size: 0.75rem;
+    margin-top: 2.5rem;
+    max-width: 70ch;
+  }
+
+  @media screen and (width > 60rem) {
+    ul {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+</style>

@@ -1,0 +1,128 @@
+---
+import { Image } from "astro:assets";
+import { categories } from "../constants";
+import avatar from "../images/matteo-leoni-signalkuppe.png";
+import DesktopMenu from "./DesktopMenu.astro";
+import MobileMenu from "./MobileMenu.astro";
+import Search from "./Search.astro";
+const url = Astro.url.pathname;
+const links = [
+  {
+    href: "/matteo",
+    text: "Matteo",
+    prefetch: true,
+    active: url.indexOf("/matteo") !== -1,
+  },
+  {
+    href: "/blog",
+    text: "Uscite",
+    prefetch: true,
+    active:
+      url.indexOf("/blog") !== -1 ||
+      categories.find((c) => url.indexOf(c.slug) !== -1),
+  },
+  {
+    href: "/portfolio/1",
+    text: "Foto",
+    prefetch: true,
+    active: url.indexOf("/portfolio") !== -1,
+  },
+  {
+    href: "/meteo-concenedo",
+    text: "Meteo Concenedo",
+    active: url.indexOf("/meteo-concenedo") !== -1,
+  },
+  {
+    href: "/contatti",
+    text: "Contatti",
+    prefetch: true,
+    active: url.indexOf("/contatti") !== -1 || url.indexOf("/grazie") !== -1,
+  },
+];
+const navLabel = "Sito";
+---
+
+<div class="header">
+  <a
+    href="/"
+    class="back-home-link"
+    aria-label="Pagina principale"
+    data-astro-prefetch
+  >
+    <Image
+      src={avatar}
+      alt=""
+      width="140"
+      height="140"
+      loading="eager"
+      aria-hidden="true"
+    /></a
+  >
+  <div class="header-right">
+    <div class="mobile-menu">
+      <MobileMenu links={links} navLabel={navLabel} />
+    </div>
+    <div class="desktop-menu">
+      <DesktopMenu links={links} navLabel={navLabel} />
+    </div>
+    <div class="search">
+      <Search />
+    </div>
+  </div>
+</div>
+<style media="screen">
+  .header,
+  .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header {
+    gap: 1rem;
+  }
+
+  .back-home-link {
+    text-decoration: none;
+    display: block;
+  }
+
+  .back-home-link img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--surfaceAccent);
+  }
+
+  @media screen and (width < 60rem) {
+    .mobile-menu {
+      display: block;
+      order: 2;
+    }
+    .desktop-menu {
+      display: none;
+    }
+
+    .search {
+      order: 1;
+    }
+
+    .header-right {
+      gap: 1rem;
+    }
+  }
+
+  @media screen and (width > 60rem) {
+    .mobile-menu {
+      display: none;
+    }
+    .desktop-menu {
+      display: block;
+    }
+
+    .header-right {
+      gap: 3rem;
+    }
+  }
+</style>

@@ -1,0 +1,113 @@
+---
+const { data } = Astro.props;
+---
+
+<canvas
+  class="meteo-tetto-prato-chart"
+  width="400"
+  height="200"
+  data-points={JSON.stringify(data)}></canvas>
+
+<script>
+  // @ts-nocheck
+  import { WEATHER_CONSTANTS } from "../constants";
+  import "chartjs-adapter-dayjs-4/dist/chartjs-adapter-dayjs-4.esm";
+  import { Chart, registerables } from "chart.js";
+  import { getCssVar, emitter } from "../lib/utils";
+  Chart.register(...registerables);
+
+  const canvas = document.querySelector(".meteo-tetto-prato-chart");
+  let charts = [];
+
+  function drawChart(ctx, dataset) {
+    const chartData = {
+      datasets: dataset.map((dataset, index) => ({
+        label: dataset.id,
+        data: dataset.data,
+        borderColor:
+          index === 0
+            ? getCssVar("--accent")
+            : WEATHER_CONSTANTS.GRAPH_ALT_LINE_COLOR, // Different colors
+        backgroundColor:
+          index === 0
+            ? getCssVar("--accent")
+            : WEATHER_CONSTANTS.GRAPH_ALT_LINE_COLOR, // Different colors
+        borderWidth: 2,
+        tension: 0.1, // Optional: adds smooth curves
+        pointRadius: 0, // Remove the dots
+      })),
+    };
+
+    const chart = new Chart(ctx, {
+      type: "line",
+      data: chartData,
+      options: {
+        responsive: true,
+        aspectRatio: 1.33,
+        scales: {
+          x: {
+            type: "time", // Use the time scale
+            time: {
+              parser: "YYYY-MM-DD HH:mm", // Format of your time data
+              unit: "hour", // Granularity (e.g., minute, hour, day)
+              round: "minute",
+              displayFormats: {
+                hour: "HH", // Format for displaying labels
+              },
+            },
+            ticks: {
+              stepSize: 2, // Sample every two hours
+            },
+            title: {
+              display: false,
+              text: "Ora",
+            },
+            grid: {
+              color: getCssVar(WEATHER_CONSTANTS.GRAPH_GRID_COLOR),
+            },
+          },
+          y: {
+            title: {
+              display: false,
+            },
+            grid: {
+              color: getCssVar(WEATHER_CONSTANTS.GRAPH_GRID_COLOR),
+            },
+            ticks: {
+              callback: function (value) {
+                return value;
+              },
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            position: "bottom",
+            labels: {
+              usePointStyle: true, // This ensures the legend uses pointStyle instead of the default rectangle
+              pointStyle: "circle", // Set the point style to 'circle'
+              radius: 6, // Adjust the size of the circle in the legend
+            },
+          },
+        },
+      },
+    });
+    charts.push(chart);
+  }
+  function init() {
+    if (charts.length) {
+      charts.forEach((chart) => chart.destroy());
+    }
+
+    const ctx = canvas.getContext("2d");
+    const dataset = JSON.parse(canvas.getAttribute("data-points"));
+    drawChart(ctx, dataset);
+  }
+
+  init();
+
+  emitter.on("dark-mode-change", (mode) => {
+    // otherwise getCssVar is not re-evaluated
+    init();
+  });
+</script>

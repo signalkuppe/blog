@@ -1,0 +1,93 @@
+---
+import ResponsiveImage from "./ResponsiveImage.astro";
+interface Props {
+  post: any;
+}
+const { post } = Astro.props;
+const coverBaseUrl = `https:${post.fields.cover.fields.file.url}`;
+---
+
+<div class="cover">
+  <ResponsiveImage
+    src={`${coverBaseUrl}?w=3000&q=50&fm=avif`}
+    sizes={{
+      "600": `${coverBaseUrl}?w=1000&q=70&fm=avif`,
+      "1024": `${coverBaseUrl}?w=1400&q=70&fm=avif`,
+      "1600": `${coverBaseUrl}?w=2000&q=70&fm=avif`,
+    }}
+    alt={post.fields.cover.fields.title || ""}
+    loading="eager"
+    fetchpriority="high"
+    class="cover-picture"
+  />
+  <p aria-hidden="true" class="caption">{post.fields.cover.fields.title}</p>
+</div>
+
+<style media="screen">
+  .cover {
+    width: 100%;
+    background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
+    background-size: 400% 400%;
+    display: grid;
+  }
+
+  :global(.cover-picture) {
+    display: grid;
+    grid-area: 1/1;
+  }
+
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .cover,
+  img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .caption {
+    font-size: 0.85rem;
+    grid-area: 1/1;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--textAccent);
+    padding: 0.25rem 0.85rem;
+    place-self: end;
+    font-weight: bold;
+    background: var(--surface);
+  }
+
+  img.desktop {
+    display: none;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .cover {
+      animation: gradient 2s ease infinite;
+    }
+  }
+
+  @media screen and (width > 60rem) {
+    .cover,
+    img {
+      aspect-ratio: 16 / 9;
+    }
+    .caption {
+      font-size: 1.5rem;
+      padding: 0.75rem 1.5rem;
+    }
+  }
+</style>

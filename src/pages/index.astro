@@ -1,0 +1,153 @@
+---
+// @ts-nocheck
+import Layout from "../layouts/Layout.astro";
+import { contentfulClient } from "../lib/contentful";
+import PostCard from "../components/PostCard.astro";
+import { siteTitle, siteSlogan, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import DoubleChevronRightIcon from "../icons/DoubleChevronRight.svg";
+
+const query = {
+  content_type: "post",
+  include: 1,
+  order: "-fields.date",
+  limit: 6,
+  skip: 0,
+};
+const { items: posts } = await contentfulClient.getEntries(query);
+---
+
+<Layout
+  title={headPageTitle(siteTitle, siteSlogan)}
+  description="Blog personale di Matteo Leoni"
+  ogImage={defaultOgImage}
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
+  </Fragment>
+  <div class="cage">
+    <h1>Piacere Matteo <span aria-hidden="true">👋</span></h1>
+    <p class="lead">
+      Sono un appassionato di montagna. Questo sito vuole essere un <a
+        href="/blog">diario di tutte le mie uscite,</a
+      > spero possa esservi utile per scoprire nuovi itinerari. Vivo a Concenedo,
+      dove ho posizionato una stazione meteo, in
+      <a
+        href="/meteo-concenedo"
+        aria-description="Dati meteo in diretta da Concenedo">questa pagina</a
+      > trovate i dati in diretta.
+    </p>
+
+    <a href="/matteo" class="btn lead-button" data-astro-prefetch
+      >Conosciamoci meglio</a
+    >
+    <h2>Ultime uscite</h2>
+    <ul role="list">
+      {
+        posts.map((post, i) => (
+          <li>
+            <PostCard post={post} TitleTag="h3" />
+          </li>
+        ))
+      }
+    </ul>
+    <a href="/blog" class="read-more-link"
+      >Tutte le uscite <DoubleChevronRightIcon aria-hidden="true" /></a
+    >
+  </div>
+</Layout>
+
+<style media="screen">
+  h1 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    text-wrap: pretty;
+    max-width: 55ch;
+    color: var(--textLight);
+    margin-bottom: 1rem;
+  }
+
+  .lead-button {
+    margin-top: 1rem;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    padding-top: 3rem;
+    text-transform: uppercase;
+  }
+
+  ul {
+    margin-bottom: 5rem;
+  }
+
+  @media screen and (width < 60rem) {
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+  }
+
+  @media screen and (width > 60rem) {
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .read-more-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+  }
+
+  .read-more-link svg {
+    height: 1em;
+  }
+
+  @keyframes handAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    h1 span {
+      display: inline-block;
+      animation-name: handAnimation;
+      animation-duration: 1.2s;
+      animation-delay: 1s;
+      transform-origin: 70% 70%;
+    }
+  }
+</style>

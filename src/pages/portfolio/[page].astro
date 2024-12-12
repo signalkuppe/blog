@@ -1,0 +1,129 @@
+---
+import PageTitle from "../../components/PageTitle.astro";
+import PhotoCard from "../../components/PhotoCard.astro";
+import {
+  headPageTitle,
+  portfolioPhotoSlug,
+  validPhotos,
+} from "../../lib/utils";
+import { getData } from "../../lib/contentful";
+import Layout from "../../layouts/Layout.astro";
+import Pager from "../../components/Pager.astro";
+import PhotoDisclaimer from "../../components/PhotoDisclaimer.astro";
+import { siteSlogan } from "../../constants";
+
+export async function getStaticPaths({ paginate }) {
+  const { portfolio: photos } = await getData({
+    type: "portfolio",
+    sort: "-fields.date",
+  });
+
+  return paginate(validPhotos(photos), {
+    pageSize: 12,
+  });
+}
+
+interface Props {
+  page?: any;
+}
+
+const { page } = Astro.props;
+
+let pageTitle = "Portfolio";
+
+if (page.currentPage > 1) {
+  pageTitle = `${pageTitle}, pagina ${page.currentPage}`;
+}
+
+const description = "Una raccolta delle mie foto più belle";
+---
+
+<Layout
+  title={headPageTitle(pageTitle, siteSlogan)}
+  description={description}
+  ogImage="/og-image.jpg"
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
+  </Fragment>
+
+  <div class="cage">
+    <PageTitle subTitle={description}>{pageTitle}</PageTitle>
+  </div>
+
+  <div class="container">
+    <ul>
+      {
+        page.data.map((photo) => {
+          return (
+            <li>
+              <a href={portfolioPhotoSlug(photo)} data-astro-prefetch>
+                <PhotoCard photo={photo} />
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+    <div class="cage bottom">
+      <nav aria-label="Pagine">
+        <Pager page={page} />
+      </nav>
+      <p class="disclaimer"><PhotoDisclaimer /></p>
+    </div>
+  </div>
+
+  <style media="screen">
+    .container {
+      --space: 1.5rem;
+      padding: var(--space);
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space);
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .bottom {
+      margin: 8rem auto 4rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .disclaimer {
+      margin-top: 3rem;
+      max-width: 70ch;
+      font-size: 0.75rem;
+    }
+
+    @media screen and (width > 30rem) {
+      ul {
+        display: block;
+        columns: 2;
+        column-gap: var(--space);
+      }
+      li {
+        margin-bottom: var(--space);
+        break-inside: avoid;
+      }
+    }
+
+    @media screen and (width > 60rem) {
+      ul {
+        columns: 3;
+      }
+    }
+  </style>
+
+  <script>
+    import { emitter } from "../../lib/utils";
+    document.addEventListener("DOMContentLoaded", () => {
+      emitter.emit("header-background-change", true);
+    });
+  </script>
+</Layout>

@@ -1,0 +1,215 @@
+---
+import { siteSlogan, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import Image from "astro/components/Image.astro";
+import Layout from "../layouts/Layout.astro";
+import ReactLogo from "../logos/react.astro";
+import StyledComponentLogo from "../logos/styled-components.astro";
+import FigmaLogo from "../logos/figma.astro";
+import TailwindLogo from "../logos/tailwind.astro";
+import Astrologo from "../logos/astrologo.astro";
+import ContentfulLogo from "../logos/contentful.astro";
+import Cover from "../images/matteo-leoni.png";
+import PageTitle from "../components/PageTitle.astro";
+
+const tools = [
+  {
+    text: "Figma",
+    icon: FigmaLogo,
+    href: "https://figma.com/",
+  },
+  {
+    text: "React",
+    icon: ReactLogo,
+    href: "https://react.dev/",
+  },
+  {
+    text: "Styled Components",
+    icon: StyledComponentLogo,
+    href: "https://styled-components.com/",
+  },
+  {
+    text: "Tailwind",
+    icon: TailwindLogo,
+    href: "https://tailwindcss.com/",
+  },
+  {
+    text: "Astro",
+    icon: Astrologo,
+    href: "https://astro.build/",
+  },
+  {
+    text: "Contentful",
+    icon: ContentfulLogo,
+    href: "https://www.contentful.com/",
+  },
+];
+---
+
+<Layout
+  title={headPageTitle("Matteo", siteSlogan)}
+  description="Presento le mie passioni e il mio lavoro"
+  ogImage={defaultOgImage}
+>
+  <div class="wrapper cage">
+    <Image
+      src={Cover}
+      width="1000"
+      height="661"
+      alt=""
+      decoding="async"
+      loading="eager"
+    />
+    <article>
+      <PageTitle>Matteo</PageTitle>
+      <p>
+        La <b>montagna</b> è una delle mie più grandi passioni, trasmessami da mio
+        padre, che mi ha introdotto a questo affascinante universo. Da quel momento,
+        ho continuato a cercare nuove avventure senza sosta. Tra tutte le attività,
+        lo scialpinismo è quella che mi coinvolge di più: affrontare la montagna
+        d'inverno, lontano dai percorsi battuti, scivolando sulla neve. Anche la
+        corsa in montagna e l'alpinismo classico mi regalano una sensazione unica
+        di libertà.
+      </p>
+      <p>
+        La mia passione per la <b>meteorologia</b> è iniziata da bambino, quando
+        mi alzavo nel cuore della notte per guardare dalla finestra la neve cadere.
+        Devo ammettere che ancora oggi non ho perso questa abitudine. Ho posizionato
+        una stazione meteo, <a href="/meteo-concenedo" data-astro-prefetch
+          >qui trovate la pagina con i dati in diretta.</a
+        >
+      </p>
+      <p>
+        Amo la <b>fotografia,</b> senza alcuna ambizione professionale. Sentitevi
+        liberi di usare tutte le mie foto come preferite. Non è necessario citare
+        la fonte, anche se un gesto di cortesia sarebbe certamente apprezzato.
+      </p>
+      <p>
+        <a href="https://it.wikipedia.org/wiki/Punta_Gnifetti" rel="noopener"
+          >Signalkuppe</a
+        ><em> — il mio nickname — </em> è il nome in tedesco della Punta Gnifetti.
+      </p>
+
+      <h2>Il mio lavoro</h2>
+      <p>
+        Lavoro come <b>front-end engineer,</b> trasformando i design in applicazioni
+        web con un focus particolare sulle performance, l’usabilità e l’accessibilità.
+        Il mio obiettivo è quello di mantenere le cose semplici, cercando di usare
+        il più possibile gli standard del web. <a
+          aria-label="Il codice sorgente di questo sito su Github"
+          href="https://github.com/signalkuppe/blog">Su Github</a
+        > potete spluciare il sorgente di questo sito, realizzato con Astro. Solo
+        html, css e javascript, sembra quasi un’eresia di questi tempi 😛
+      </p>
+      <h3>Lavoro con</h3>
+      <ul role="list">
+        {
+          tools.map((Tool) => (
+            <li>
+              <a href={Tool.href}>
+                <span>{Tool.text}</span>
+                <Tool.icon aria-hidden="true" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <h2>Per rimanere in contatto</h2>
+      <p>
+        Esiste <a href="http://eepurl.com/dgiWQH">una newsletter</a> con gli ultimi
+        aggiornamenti del sito, e un <a href="/rss.xml">feed rss</a> con l’elenco
+        completo delle relazioni.
+      </p>
+      <p>
+        <a href="/contatti" data-astro-prefetch>Scrivetemi</a> per parlare di un
+        vostro progetto o di montagna!
+      </p>
+    </article>
+  </div>
+</Layout>
+
+<style media="screen">
+  .wrapper {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  article {
+    max-width: 50ch;
+  }
+
+  @media screen and (width < 70rem) {
+    .wrapper {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+
+  @media screen and (width > 70rem) {
+    .wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 4rem;
+    }
+
+    img {
+      order: 2;
+      min-width: 0;
+      position: sticky;
+      top: 7rem;
+    }
+
+    article {
+      order: 1;
+      min-width: 0;
+    }
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    margin-top: 2rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    gap: 1.5rem;
+    max-width: 40ch;
+    columns: 2;
+    gap: 2rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  li svg {
+    height: 3rem;
+    width: 3rem;
+    order: 1;
+    flex-shrink: 0;
+  }
+
+  ul span {
+    order: 2;
+  }
+  ul a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+</style>

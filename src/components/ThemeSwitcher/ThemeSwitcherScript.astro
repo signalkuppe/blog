@@ -1,0 +1,41 @@
+<script is:inline>
+  const THEME_STORAGE_KEY = "theme";
+  const THEME_OWNER = document.documentElement;
+  let cachedTheme;
+
+  function setTheme(theme) {
+    THEME_OWNER.dataset[THEME_STORAGE_KEY] = theme;
+  }
+
+  function loadTheme() {
+    // Immediately set theme from localStorage
+    cachedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    setTheme(cachedTheme || "dark");
+  }
+
+  loadTheme();
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const themePicker = document.getElementById("js-theme-picker");
+    if (!themePicker) return;
+
+    const initialTheme = cachedTheme ?? "dark";
+    themePicker
+      .querySelector(`input[value="${initialTheme}"]`)
+      .setAttribute("checked", "");
+
+    themePicker.addEventListener("change", (e) => {
+      const theme = e.target.value;
+      setTheme(theme);
+
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
+    });
+  });
+</script>
+<noscript>
+  <style media="screen">
+    #js-theme-picker {
+      display: none;
+    }
+  </style>
+</noscript>

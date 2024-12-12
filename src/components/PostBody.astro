@@ -1,0 +1,130 @@
+---
+import htmlRenderer from "@contentful/rich-text-html-renderer";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+
+const renderInlineAsset = (node) => {
+  if (node.nodeType === "embedded-asset-block") {
+    const imgUrl = `https:${node.data.target.fields.file.url}`;
+    const imgTitle = node.data.target.fields.title;
+    const imgWidth = node.data.target.fields.file.details.image.width;
+    const imgHeight = node.data.target.fields.file.details.image.height;
+
+    return ` 
+            <picture>
+              <source srcset="${imgUrl}?w=800&q=70&fm=avif" media="(max-width: 600px)" />
+              <source srcset="${imgUrl}?w=1440&q=70&fm=avif" media="(max-width: 1024px)" />
+              <img src="${imgUrl}?w=1600&q=70&fm=avif" alt="${imgTitle || ""}" width="${imgWidth} "height="${imgHeight}" loading="lazy" decoding="async" />
+            </picture>
+            <p class="img-caption" aria-hidden="true">${imgTitle}</p>
+          `;
+  }
+  if (node.nodeType === "asset-hyperlink") {
+    return `<a href="${node.data.target.fields.file.url}" download="${node.data.target.fields.file.filename}">${node.content[0].value}</a>`;
+  }
+};
+
+const options = {
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      return renderInlineAsset(node);
+    },
+    [INLINES.HYPERLINK]: (node) => {
+      if (
+        node.data.uri.indexOf("youtube") !== -1 &&
+        node.content[0].value.indexOf("youtube") !== -1 // only if we embed it with youtube text will be rendered as an iframe
+      ) {
+        // embed video
+        return `	
+							<iframe
+								data-youtube-embed
+								src="${node.data.uri}"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope;"
+                                allowfullscreen
+							></iframe>
+						`;
+      } else {
+        // how to render plain links in text
+        return `<a href="${node.data.uri}">${node.content[0].value}</a>`;
+      }
+    },
+    [INLINES.ASSET_HYPERLINK]: (node) => {
+      return renderInlineAsset(node);
+    },
+    [BLOCKS.HEADING_2]: (node) => {
+      return `<h3>${node.content[0].value}</h3>`;
+    },
+    [INLINES.ENTRY_HYPERLINK]: (node) => {
+      // inline links to other entries
+      return `<a href="/${node.data.target.fields.slug}" title="${node.data.target.fields.description}">${node.content[0].value}</a>`;
+    },
+  },
+};
+const body = htmlRenderer.documentToHtmlString(post.fields.body, options);
+---
+
+<div set:html={body} class="post-html" />
+
+<style media="screen">
+  .post-html {
+    max-width: 60ch;
+  }
+  :global(.post-html p) {
+    margin-bottom: 2rem;
+  }
+
+  :global(.post-html img) {
+    display: block;
+    background: var(--surfaceAccent);
+  }
+
+  :global(.post-html > p:first-of-type::first-letter) {
+    color: var(--textAccent);
+    initial-letter: 3;
+    -webkit-initial-letter: 3;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    line-height: 0.8em;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.25rem;
+  }
+  :global(.post-html h3) {
+    margin-top: 2rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.post-html .img-caption) {
+    font-size: 0.75rem;
+    margin-top: 0.4rem;
+
+    text-align: right;
+  }
+
+  :global(.post-html ul) {
+    padding-left: 1rem;
+    list-style: disc;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  :global(.post-html ul p) {
+    margin: 0;
+  }
+
+  :global(.post-html li::marker) {
+    color: var(--textAccent);
+  }
+
+  :global([data-youtube-embed]) {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+</style>

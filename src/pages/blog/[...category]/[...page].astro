@@ -1,0 +1,147 @@
+---
+import { getData } from "../../../lib/contentful";
+import { categories, defaultOgImage, siteTitle } from "../../../constants";
+import Layout from "../../../layouts/Layout.astro";
+import BlogLayout from "../../../layouts/BlogLayout.astro";
+import BlogCategories from "../../../components/BlogCategories.astro";
+import Pager from "../../../components/Pager.astro";
+import PostCard from "../../../components/PostCard.astro";
+import { headPageTitle } from "../../../lib/utils";
+
+interface Props {
+  page: any;
+}
+
+const { page } = Astro.props;
+const { category, page: categoryPage } = Astro.params;
+
+export async function getStaticPaths({ paginate }) {
+  const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
+  return [undefined, ...categories].flatMap((cat) => {
+    const filteredPosts = posts.filter((post) => {
+      return cat ? post.fields.category[0] === cat.title : true;
+    });
+
+    return paginate(filteredPosts, {
+      params: { category: cat?.slug },
+      pageSize: 12,
+    });
+  });
+}
+
+let pageTitle = "Tutte le uscite";
+
+if (category) {
+  const c = categories.find((c) => c.slug === category);
+  if (c) {
+    pageTitle = categories.find((c) => c.slug === category)?.title;
+  }
+}
+
+if (page.currentPage > 1 || categoryPage > 1) {
+  pageTitle = `${pageTitle}, pagina ${page.currentPage || categoryPage}`;
+}
+---
+
+<Layout
+  title={headPageTitle(pageTitle, siteTitle)}
+  description="Elenco completo di tutte le uscite"
+  ogImage={defaultOgImage}
+>
+  <BlogLayout pageTitle={pageTitle} activeTab="elenco">
+    <div class="cage">
+      <div class="container">
+        <ul role="list" class="post-list">
+          {
+            page.data.map((post) => (
+              <li>
+                <PostCard post={post} />
+              </li>
+            ))
+          }
+        </ul>
+
+        <nav aria-label="categorie" class="post-categories">
+          <BlogCategories activeCategory={category} />
+        </nav>
+      </div>
+
+      <nav aria-label="Pagine" class="post-pager">
+        <Pager page={page} />
+      </nav>
+    </div>
+  </BlogLayout>
+</Layout>
+
+<style media="screen">
+  h2 {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .pager {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .pager .icon-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    border: var(--surfaceAccent);
+  }
+  .pager .icon-button svg {
+    width: 1em;
+  }
+
+  .pager [aria-current="page"] {
+    color: var(--textAccent);
+    font-weight: bold;
+  }
+
+  @media screen and (width < 60rem) {
+    .container {
+      flex-direction: column;
+    }
+
+    .post-pager {
+      margin-top: 3rem;
+    }
+
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      margin-bottom: 5rem;
+    }
+  }
+
+  @media screen and (width > 60rem) {
+    .container {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 3rem;
+    }
+
+    .post-categories {
+      flex: 1;
+      position: sticky;
+      top: 6.5rem;
+      z-index: 1;
+    }
+
+    .post-list {
+      flex: 3;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-bottom: 5rem;
+    }
+  }
+</style>

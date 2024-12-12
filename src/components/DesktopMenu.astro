@@ -1,0 +1,49 @@
+---
+const { links, navLabel } = Astro.props;
+---
+
+<nav aria-label={navLabel}>
+  <ul role="list">
+    {
+      links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={link.active ? "page" : null}
+            data-astro-prefetch={link.prefetch}
+          >
+            {link.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style media="screen">
+  ul {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transform: translateY(0.1rem);
+  }
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+    display: block;
+    padding-bottom: 0.1rem;
+    border-bottom: 3px solid transparent;
+  }
+
+  a:hover {
+    color: var(--textAccent);
+  }
+
+  [aria-current="page"] {
+    font-weight: bold;
+    color: var(--textAccent);
+    border-color: var(--accent);
+  }
+</style>

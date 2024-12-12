@@ -1,0 +1,220 @@
+---
+import InfoIcon from "../icons/Info.svg";
+const { title } = Astro.props;
+const _id = crypto.randomUUID();
+---
+
+<article>
+  <header>
+    <h3>{title}</h3>
+    {
+      Astro.slots.has("tooltip") && (
+        <>
+          <button
+            class="tooltip-trigger"
+            aria-controls={`tooltip-${_id}`}
+            aria-expanded="false"
+          >
+            <span class="visually-hidden">Cos'è questa grandezza?</span>
+            <InfoIcon aria-hidden="true" width="20" />
+          </button>
+          <div class="tooltip" role="tooltip" id={`tooltip-${_id}`}>
+            <div class="arrow" aria-hidden="true" />
+            <div class="tooltip-text">
+              <slot name="tooltip" />
+            </div>
+          </div>
+        </>
+      )
+    }
+  </header>
+  <div class="body">
+    <span class="value"><slot /></span>
+    {
+      Astro.slots.has("sub-value") && (
+        <span class="subvalue">
+          <slot name="sub-value" />
+        </span>
+      )
+    }
+  </div>
+  <footer>
+    <div>
+      <slot name="footer-top" />
+    </div>
+    <div>
+      <slot name="footer-bottom" />
+    </div>
+  </footer>
+</article>
+
+<style media="screen">
+  article {
+    --headerFooterPadding: 0.8rem 1rem;
+    --tooltipBg: black;
+    --tooltipColor: white;
+    font-family: var(--fontFamilyMono);
+    background: var(--surfaceAccent);
+    border-radius: 15px;
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--headerFooterPadding);
+  }
+
+  h3 {
+    line-height: 1;
+    font-size: 0.75rem;
+  }
+
+  .body {
+    background: var(--mountainsColor);
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
+    padding: 1rem;
+    border-left: 2px solid var(--surfaceAccent);
+    border-right: 2px solid var(--surfaceAccent);
+  }
+
+  .value {
+    font-weight: bold;
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--textAccent);
+  }
+
+  .subvalue {
+    font-size: 0.5rem;
+    line-height: 1;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    padding: var(--headerFooterPadding);
+  }
+
+  .tooltip {
+    display: none;
+    font-family: var(--fontFamily);
+    background: var(--tooltipBg);
+    color: var(--tooltipColor);
+    padding: 1rem;
+    border-radius: 4px;
+    width: max-content;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 320px;
+    z-index: 2;
+  }
+
+  .tooltip-trigger {
+    color: var(--text);
+  }
+
+  .tooltip-trigger[aria-expanded="true"] + .tooltip {
+    display: block;
+  }
+
+  .tooltip-text {
+    font-size: 0.75rem;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  .tooltip-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tooltip-text strong {
+    color: var(--textAccent);
+  }
+
+  .arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid var(--tooltipBg);
+  }
+</style>
+
+<script>
+  //@ts-nocheck
+  import {
+    computePosition,
+    offset,
+    arrow,
+    flip,
+    shift,
+    autoPlacement,
+  } from "@floating-ui/dom";
+  const buttons = document.querySelectorAll(".tooltip-trigger");
+
+  function update(button, tooltip, arrowElement) {
+    computePosition(button, tooltip, {
+      placement: "bottom",
+      middleware: [offset(16), arrow({ element: arrowElement })],
+    }).then(({ x, y, placement, middlewareData }) => {
+      Object.assign(tooltip.style, {
+        left: `${x}px`,
+        top: `${y}px`,
+      });
+      if (middlewareData.arrow) {
+        const { x: arrowX, y: arrowY } = middlewareData.arrow;
+        const staticSide = {
+          top: "bottom",
+          right: "left",
+          bottom: "top",
+          left: "right",
+        }[placement.split("-")[0]];
+        const { x, y } = middlewareData.arrow;
+
+        Object.assign(arrowElement.style, {
+          left: arrowX != null ? `${arrowX}px` : "",
+          top: arrowY != null ? `${arrowY}px` : "",
+          right: "",
+          bottom: "",
+          [staticSide]: "-12px",
+        });
+      }
+    });
+  }
+
+  function showTooltip(button) {
+    button.setAttribute("aria-expanded", "true");
+    const tooltip = button.nextElementSibling;
+    const arrowElement = tooltip.querySelector(".arrow");
+    update(button, tooltip, arrowElement);
+  }
+
+  function hideTooltip(button) {
+    button.setAttribute("aria-expanded", "false");
+  }
+
+  [
+    ["mouseenter", (button) => showTooltip(button)],
+    ["mouseleave", (button) => hideTooltip(button)],
+    ["focus", (button) => showTooltip(button)],
+    ["blur", (button) => hideTooltip(button)],
+  ].forEach(([event, listener]) => {
+    buttons.forEach((button) =>
+      button.addEventListener(event, () => listener(button))
+    );
+  });
+</script>

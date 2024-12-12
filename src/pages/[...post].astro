@@ -1,0 +1,296 @@
+---
+import { siteTitle } from "../constants";
+import { postGpxTrack, headPageTitle } from "../lib/utils";
+import { getData } from "../lib/contentful";
+import { newsletterUrl } from "../constants";
+import Layout from "../layouts/Layout.astro";
+import PostHeader from "../components/PostHeader.astro";
+import PostCover from "../components/PostCover.astro";
+import PostBody from "../components/PostBody.astro";
+import PostGallery from "../components/PostGallery.astro";
+import PostGpx from "../components/PostGpx.astro";
+import PostShare from "../components/PostShare.astro";
+
+export async function getStaticPaths() {
+  const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
+  const pages = posts.map((post, i) => ({
+    params: { post: post.fields.slug },
+    props: {
+      post,
+      prev: posts[i - 1],
+      next: posts[i + 1],
+    },
+  }));
+  return pages;
+}
+
+interface Props {
+  post: any;
+  prev: any;
+  next: any;
+}
+
+const { post, prev, next } = Astro.props;
+const postGpx = postGpxTrack(post);
+---
+
+<Layout
+  title={headPageTitle(post.fields.title, siteTitle)}
+  description={post.fields.description}
+  ogImage={`https:${post.fields.cover.fields.file.url}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
+>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
+  </Fragment>
+  <div class="cage header">
+    <PostHeader post={post} />
+  </div>
+
+  <div class="cover">
+    <PostCover post={post} />
+  </div>
+
+  <nav aria-label="sezioni" id="post-nav">
+    <ul role="list" class="cage">
+      <li><a href="#post-body" aria-current="page">Relazione</a></li>
+      {
+        post.fields.gallery.length > 0 && (
+          <li>
+            <a href="#post-gallery">Foto</a>
+          </li>
+        )
+      }
+      {
+        !!postGpx && (
+          <li>
+            <a href="#post-gpx">Traccia</a>
+          </li>
+        )
+      }
+      <li><a href="#post-share">Stampa e condividi</a></li>
+    </ul>
+  </nav>
+
+  <section class="section body" aria-labelledby="post-body">
+    <div class="cage">
+      <h2 id="post-body" class="visually-hidden">Relazione</h2>
+      <PostBody post={post} />
+    </div>
+  </section>
+  {
+    post.fields.gallery.length > 0 && (
+      <section class="section gallery" aria-labelledby="post-gallery">
+        <div class="cage">
+          <h2 id="post-gallery">Galleria fotografica</h2>
+          <PostGallery post={post} />
+        </div>
+      </section>
+    )
+  }
+  {
+    !!postGpx && (
+      <section class="section gpx" aria-labelledby="post-gpx">
+        <div class="cage">
+          <h2 id="post-gpx">Mappa e tracce</h2>
+        </div>
+        <PostGpx post={post} />
+      </section>
+    )
+  }
+  <section class="section share" aria-labelledby="post-share">
+    <div class="cage">
+      <h2 id="post-share">Stampa e condividi</h2>
+      <PostShare post={post} />
+      <p class="post-newsletter">
+        Vuoi rimanere aggiornato sulle nuove uscite? <br /><a
+          href={newsletterUrl}>Iscriviti alla newsletter</a
+        >
+      </p>
+      <nav class="post-pager">
+        <ul role="list">
+          {
+            prev && (
+              <li>
+                <span>Uscita precedente</span>
+                <a href={`/${prev.fields.slug}`}>{prev.fields.title}</a>
+              </li>
+            )
+          }
+          {
+            next && (
+              <li>
+                <span>Uscita successiva</span>
+                <a href={`/${next.fields.slug}`}>{next.fields.title}</a>
+              </li>
+            )
+          }
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <p class="print-only">👋 Grazie per aver stampato la pagina. buona uscita!</p>
+
+  <style media="screen">
+    .header {
+      margin-bottom: 3rem;
+    }
+
+    .cover {
+      margin-bottom: 2rem;
+    }
+
+    .section {
+      margin-bottom: 7rem;
+    }
+
+    .body {
+      margin-top: 2rem;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    h2:target {
+      scroll-margin-top: 7rem;
+    }
+
+    #post-nav {
+      position: sticky;
+      top: -1px;
+      padding: 2rem 0;
+      z-index: 2;
+      font-size: 0.85rem;
+    }
+
+    #post-nav ul {
+      display: flex;
+      gap: 1rem;
+    }
+
+    #post-nav.is-sticky {
+      background: var(--surface);
+    }
+
+    #post-nav a {
+      display: block;
+      padding-bottom: 0.1rem;
+      border-bottom: 3px solid transparent;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .post-newsletter {
+      margin-top: 3rem;
+    }
+
+    #post-nav a:hover {
+      color: var(--textAccent);
+    }
+
+    #post-nav a[aria-current="page"] {
+      font-weight: bold;
+      color: var(--textAccent);
+      border-color: var(--accent);
+    }
+
+    .post-pager ul {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .post-pager span {
+      display: block;
+    }
+
+    @media screen and (width > 60rem) {
+      .header {
+        margin-bottom: 5rem;
+      }
+
+      #post-nav {
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+
+  <script>
+    //@ts-nocheck
+    import { emitter, throttle } from "../lib/utils";
+    const cover = document.querySelector(".cover");
+    const header = document.getElementById("header");
+    const sections = document.querySelectorAll(".section");
+    const nav = document.getElementById("post-nav");
+    const navLinks = nav.querySelectorAll("a");
+    const headerHeight = header.getBoundingClientRect().height;
+
+    let currentActive = 0;
+    const sectionMargin = 200;
+    const makeActive = (link) =>
+      navLinks[link]?.setAttribute("aria-current", "page");
+    const removeActive = (link) =>
+      navLinks[link]?.removeAttribute("aria-current");
+    const removeAllActive = () =>
+      [...Array(sections.length).keys()]?.forEach((link) => removeActive(link));
+
+    function handleScroll() {
+      let current = 0;
+
+      current =
+        sections.length -
+        [...sections].reverse().findIndex((section) => {
+          return window.scrollY >= section.offsetTop - sectionMargin;
+        }) -
+        1;
+
+      if (current !== currentActive && current !== sections.length) {
+        removeAllActive();
+        currentActive = current;
+        emitter.emit("post-section-reached", {
+          sectionId: sections[current]?.getAttribute("aria-labelledby"),
+        });
+        makeActive(current);
+      }
+    }
+
+    window.addEventListener("scroll", throttle(handleScroll, 100), {
+      passive: true,
+    });
+
+    const navObserver = new IntersectionObserver(
+      ([e]) => {
+        if (e.intersectionRatio < 1) {
+          nav.classList.add("is-sticky");
+        } else {
+          nav.classList.remove("is-sticky");
+        }
+      },
+      { threshold: [1], rootMargin: `-${headerHeight}px 0px 0px 0px` }
+    );
+
+    navObserver.observe(nav);
+
+    [...navLinks].forEach((link, i) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          const offset = -100; // Adjust for header height
+          const targetPosition =
+            target.getBoundingClientRect().top + window.pageYOffset + offset;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
+  </script>
+</Layout>

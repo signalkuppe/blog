@@ -1,0 +1,45 @@
+---
+interface Props {
+  src: any;
+  sizes: any;
+  alt: any;
+  width?: any;
+  height?: any;
+  loading?: any;
+  fetchpriority?: any;
+  decoding?: any;
+  class?: any;
+}
+const {
+  src,
+  sizes,
+  alt,
+  width,
+  height,
+  loading,
+  fetchpriority,
+  decoding,
+  class: className = "",
+  ...props
+} = Astro.props;
+---
+
+<picture class={className}>
+  {
+    Object.entries(sizes).map(([media, url]) => {
+      /** @ts-ignore */
+      return <source srcset={url} media={`(max-width: ${media}px)`} />;
+    })
+  }
+
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding={decoding}
+    {...props}
+  />
+</picture>

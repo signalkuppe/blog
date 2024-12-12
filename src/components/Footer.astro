@@ -1,0 +1,153 @@
+---
+import Signature from "./Signature.astro";
+import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher.astro";
+import ArrowUpIcon from "../icons/ArrowUp.svg";
+import {
+  newsletterUrl,
+  githubUrl,
+  instagramUrl,
+  stravaUrl,
+} from "../constants";
+
+const url = Astro.url.pathname;
+const links = [
+  {
+    href: "/matteo",
+    text: "Conosciamoci meglio",
+    description: "Qualcosa in più su di me e su cosa faccio",
+    prefetch: true,
+  },
+  {
+    href: newsletterUrl,
+    text: "Newsletter",
+    description: "Iscriviti per ricevere le ultime uscite pubblicate",
+  },
+  {
+    href: "/rss.xml",
+    text: "Feed Rss",
+    description:
+      "Iscriviti al mio feed RSS per ricevere gli ultimi aggiornamenti.",
+  },
+  {
+    href: githubUrl,
+    text: "Github",
+    description: "Seguimi su Github",
+  },
+  {
+    href: instagramUrl,
+    text: "Instagram",
+    description: "Il mio canale Instagram",
+  },
+  {
+    href: stravaUrl,
+    text: "Strava",
+    description: "Segui i miei allenamenti su Strava",
+  },
+];
+---
+
+<nav aria-labelledby="footer-links">
+  <h2 id="footer-links">Link utili</h2>
+  <ul role="list">
+    {
+      links.map((link, i) => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={url === link.href ? "page" : false}
+            aria-describedby={`footer-link-${i + 1}`}
+            data-astro-prefetch={link.prefetch}
+          >
+            {link.text}
+          </a>
+          {link.description && (
+            <p id={`footer-link-${i + 1}`}>{link.description}</p>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<ThemeSwitcher class="theme-switcher" />
+
+<p class="copyright">
+  2006 - <span id="js-year"></span>
+  <b>signalkuppe.com.</b>
+  <br />Contenuti pubblicati sotto licenza <a
+    href=""
+    rel="noreferrer"
+    href="https://choosealicense.com/licenses/agpl-3.0/"
+  >
+    Gnu AGPLv3.</a
+  ><br />
+  <a href="#top" class="go-top">
+    Torna in cima <ArrowUpIcon aria-hidden="true" /></a
+  >
+  <Signature aria-hidden="true" class="signature" />
+</p>
+
+<!--css and scripts for theme switcher in layout's head tag to avoid fuoc -->
+<style media="screen">
+  footer {
+    padding-top: 3rem;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  ul p {
+    color: var(--textLight);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
+  .theme-switcher {
+    padding: 4rem 0;
+  }
+
+  .copyright {
+    margin-bottom: 3rem;
+    font-size: 0.85rem;
+  }
+
+  .go-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 1rem;
+  }
+
+  .go-top svg {
+    display: inline-block;
+    height: 1rem;
+  }
+
+  .signature {
+    width: 140px;
+    margin-top: 2rem;
+    margin-left: -0.5rem;
+    color: var(--textAccent);
+  }
+
+  @media screen and (width > 51rem) {
+    ul {
+      display: block;
+      columns: 2;
+    }
+
+    li {
+      padding-bottom: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  document.getElementById("js-year").innerText = `${new Date().getFullYear()}`;
+</script>

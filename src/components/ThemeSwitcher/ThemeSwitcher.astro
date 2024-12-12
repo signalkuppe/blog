@@ -1,0 +1,35 @@
+---
+const props = Astro.props;
+---
+
+<form id="js-theme-picker" {...props}>
+  <fieldset>
+    <legend>Tema</legend>
+    <div class="radios">
+      <label>
+        <input name="theme" type="radio" value="dark" />
+        <span>Scuro</span>
+      </label>
+      <label>
+        <input name="theme" type="radio" value="light" />
+        <span>Chiaro</span>
+      </label>
+    </div>
+  </fieldset>
+</form>
+
+<style media="screen">
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  legend {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  .radios {
+    display: flex;
+    gap: 1rem;
+  }
+</style>

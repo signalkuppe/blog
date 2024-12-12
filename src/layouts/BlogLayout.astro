@@ -1,0 +1,36 @@
+---
+import BlogTabs from "../components/BlogTabs.astro";
+interface Props {
+  pageTitle: string;
+  activeTab: string;
+}
+
+const { pageTitle, activeTab } = Astro.props;
+---
+
+<h1 class="visually-hidden">{pageTitle}</h1>
+<div class="tabs-parent">
+  <nav aria-label="Visualizzazione">
+    <BlogTabs activeTab={activeTab} />
+  </nav>
+</div>
+
+<slot />
+
+<style media="screen">
+  .tabs-parent {
+    position: sticky;
+    z-index: 1;
+    top: 0px;
+    padding-top: 1.5rem;
+    margin-top: -2rem;
+    padding-bottom: 2rem;
+    background: linear-gradient(var(--surface) 70%, transparent 90%);
+  }
+
+  @media screen and (width > 60rem) {
+    .tabs-parent {
+      padding-bottom: 3rem;
+    }
+  }
+</style>

@@ -1,0 +1,123 @@
+---
+import LayoutCommon from "./LayoutCommon.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BodyBackground from "../components/BodyBackground.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+---
+
+<LayoutCommon title={title} description={description} ogImage={ogImage}>
+  <Fragment slot="head"><slot name="head" /></Fragment>
+  <a href="#main" class="visually-hidden skip-link"
+    >Vai al contenuto principale</a
+  >
+  <header id="header">
+    <div class="cage">
+      <Header />
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <slot />
+  </main>
+  <footer id="footer">
+    <div class="cage"><Footer /></div>
+  </footer>
+  <BodyBackground class="svg-background" aria-hidden="true" />
+</LayoutCommon>
+
+<style media="screen">
+  header {
+    padding-block: 1.5rem;
+    position: sticky;
+    top: -1px;
+    z-index: 2;
+    overflow-x: clip;
+    background: light-dark(
+      hsla(var(--hue), var(--saturation), 98%, 80%),
+      hsla(var(--hue), var(--saturation), 5%, 80%)
+    );
+    backdrop-filter: blur(10px);
+  }
+
+  header.menu-is-open {
+    overflow: none;
+    position: static;
+    backdrop-filter: none;
+  }
+
+  header.remove-sticky {
+    position: static;
+  }
+
+  main {
+    padding-top: 2rem;
+    padding-bottom: 6rem;
+  }
+
+  footer {
+    padding-bottom: 6rem;
+  }
+
+  .svg-background {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    z-index: -1;
+  }
+
+  .skip-link:focus {
+    z-index: 4;
+  }
+
+  @media screen and (width > 60rem) {
+    main {
+      padding-top: 3rem;
+    }
+  }
+</style>
+
+<script>
+  // @ts-nocheck
+  import { emitter } from "../lib/utils";
+  const header = document.getElementById("header");
+
+  emitter.on("menu-toggle", (isOpen) => {
+    if (isOpen) {
+      header.classList.add("menu-is-open");
+    } else {
+      header.classList.remove("menu-is-open");
+    }
+  });
+
+  emitter.on("header-sticky-change", (isSticky) => {
+    if (!isSticky) {
+      header.classList.add("remove-sticky");
+    } else {
+      header.classList.remove("remove-sticky");
+    }
+  });
+
+  const root = document.documentElement;
+  var observer = new MutationObserver(function (event) {
+    emitter.emit(
+      "dark-mode-change",
+      event[0].target.getAttribute("data-theme")
+    );
+  });
+
+  observer.observe(root, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+    childList: false,
+    characterData: false,
+  });
+</script>

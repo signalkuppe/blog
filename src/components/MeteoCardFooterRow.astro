@@ -1,0 +1,85 @@
+---
+let { time, label, labelAbbr, value, valueColor, unit } = Astro.props;
+
+let valueColorStyle;
+
+if (typeof valueColor === "string") {
+  valueColorStyle = `color: ${valueColor}`;
+}
+// light-dark
+if (typeof valueColor === "object") {
+  valueColorStyle = `color: light-dark(${valueColor.light}, ${valueColor.dark})`;
+}
+---
+
+<div class="container">
+  <div class="left">
+    <span class="label">
+      <span class="icon" style={valueColorStyle} aria-hidden="true">
+        <slot name="icon" />
+      </span>
+      {labelAbbr && <abbr title={label}>{labelAbbr}</abbr>}
+      {!labelAbbr && label}
+    </span>
+  </div>
+  <div class="right">
+    <span class="value" style={valueColorStyle}>
+      {value}{unit}
+    </span>
+    {
+      time && (
+        <span class="time">
+          <span class="visually-hidden">alle: </span>
+          {time}
+        </span>
+      )
+    }
+  </div>
+</div>
+
+<style media="screen">
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.7rem;
+  }
+
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+  }
+
+  .time {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+  }
+
+  abbr {
+    text-decoration: none;
+  }
+
+  :global(.icon svg) {
+    height: 16px;
+  }
+
+  .value {
+    min-height: 2em;
+    line-height: 2em;
+    display: block;
+  }
+</style>
+
+<script>
+  //@ts-nocheck
+</script>
