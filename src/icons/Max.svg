@@ -1,12 +1,9 @@
----
-const props = Astro.props;
----
 
 <svg
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 24 24"
-  {...props}
+  focusable="false"
   ><path
     d="m2.095 19.882 9.248-16.5a.753.753 0 0 1 1.313 0l9.248 16.5a.75.75 0 0 1-.656 1.116H2.752a.75.75 0 0 1-.657-1.116Z"
     fill="currentColor"></path></svg

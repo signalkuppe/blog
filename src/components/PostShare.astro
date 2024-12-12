@@ -1,8 +1,8 @@
 ---
-import FacebookIcon from "../icons/FacebookIcon.astro";
-import TwitterIcon from "../icons/TwitterIcon.astro";
-import WhatsappIcon from "../icons/WhatsappIcon.astro";
-import PrintIcon from "../icons/PrintIcon.astro";
+import FacebookIcon from "../icons/Facebook.svg";
+import TwitterIcon from "../icons/Twitter.svg";
+import WhatsappIcon from "../icons/Whatsapp.svg";
+import PrintIcon from "../icons/Print.svg";
 import { prodSiteUrl } from "../constants";
 
 interface Props {
@@ -38,14 +38,17 @@ const shareLinks = [
     shareLinks.map((link) => (
       <li>
         <a href={link.url} class="social-link">
-          <link.icon /> <span class="visually-hidden">{link.title}</span>
+          <link.icon aria-hidden="true" />{" "}
+          <span class="visually-hidden">{link.title}</span>
         </a>
       </li>
     ))
   }
   <li>
     <button class="print"
-      ><PrintIcon /><span class="visually-hidden">Stampa la relazione</span>
+      ><PrintIcon aria-hidden="true" /><span class="visually-hidden"
+        >Stampa la relazione</span
+      >
     </button>
   </li>
 </ul>

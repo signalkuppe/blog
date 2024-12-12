@@ -1,6 +1,6 @@
 ---
 import { getData } from "../lib/contentful";
-import SearchIcon from "../icons/SearchIcon.astro";
+import SearchIcon from "../icons/Search.svg";
 
 const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
 const dataset = posts.map((post) => ({

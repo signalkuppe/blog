@@ -1,12 +1,12 @@
 ---
-import MenuIcon from "../icons/MenuIcon.astro";
-import CloseIcon from "../icons/CloseIcon.astro";
+import Menu from "../icons/Menu.svg";
+import CloseIcon from "../icons/Close.svg";
 const { links, navLabel } = Astro.props;
 ---
 
 <nav aria-label={navLabel}>
   <button id="nav-open">
-    <MenuIcon aria-hidden="true" />
+    <Menu aria-hidden="true" />
     <span class="visually-hidden">Menu</span>
   </button>
   <div id="nav-panel">

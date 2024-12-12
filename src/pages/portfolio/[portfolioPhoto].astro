@@ -29,7 +29,7 @@ const { photo, prev, next } = Astro.props;
 
 <PhotoPage
   photo={photo.fields.photo}
-  backLink={"/portfolio"}
+  backLink={"/portfolio/1"}
   backLinkText="Portfolio"
   nextLink={next ? portfolioPhotoSlug(next) : null}
   prevLink={prev ? portfolioPhotoSlug(prev) : null}

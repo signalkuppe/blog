@@ -5,7 +5,7 @@ import { contentfulClient } from "../lib/contentful";
 import PostCard from "../components/PostCard.astro";
 import { siteTitle, siteSlogan, defaultOgImage } from "../constants";
 import { headPageTitle } from "../lib/utils";
-import DoubleChevronRightIcon from "../icons/DoubleChevronRightIcon.astro";
+import DoubleChevronRightIcon from "../icons/DoubleChevronRight.svg";
 
 const query = {
   content_type: "post",
@@ -108,6 +108,10 @@ const { items: posts } = await contentfulClient.getEntries(query);
     align-items: center;
     justify-content: flex-end;
     gap: 0.25rem;
+  }
+
+  .read-more-link svg {
+    height: 1em;
   }
 
   @keyframes handAnimation {

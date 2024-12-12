@@ -1,7 +1,3 @@
----
-const props = Astro.props;
----
-
 <svg
   viewBox="0 0 24 24"
   stroke="currentColor"
@@ -9,5 +5,6 @@ const props = Astro.props;
   fill="none"
   stroke-linecap="round"
   stroke-linejoin="round"
-  {...props}><polyline points="15 18 9 12 15 6"></polyline></svg
+  focusable="false" 
+  ><polyline points="15 18 9 12 15 6"></polyline></svg
 >

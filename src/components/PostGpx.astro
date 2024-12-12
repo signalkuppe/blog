@@ -2,7 +2,7 @@
 import "leaflet/dist/leaflet.css";
 import { postGpxTrack } from "../lib/utils";
 import Spinner from "../components/Spinner.astro";
-import DownloadIcon from "../icons/DownloadIcon.astro";
+import DownloadIcon from "../icons/Download.svg";
 interface Props {
   post: any;
 }
@@ -185,6 +185,7 @@ const { post } = Astro.props;
   import Chart from "chart.js/auto";
   import JSZip from "jszip";
   import simplify from "simplify-js";
+  import { max, min } from "underscore";
   import {
     animateValue,
     getCssVar,
@@ -360,8 +361,11 @@ const { post } = Astro.props;
             grid: {
               color: getCssVar("--surfaceAccent"),
             },
-            max: Math.floor(elevationData[elevationData.length - 1].x),
-            min: Math.floor(elevationData[0].x),
+            ticks: {
+              stepSize: 2, // Step size in kilometers
+            },
+            max: Math.ceil(elevationData[elevationData.length - 1].x / 2) * 2,
+            min: Math.floor(elevationData[0].x / 2) * 2,
           },
           y: {
             type: "linear",
@@ -373,7 +377,10 @@ const { post } = Astro.props;
               callback: function (value) {
                 return `${value}m`;
               },
+              stepSize: 100,
             },
+            max: Math.ceil(max(elevationData, (d) => d.y).y / 100) * 100,
+            min: Math.floor(min(elevationData, (d) => d.y).y / 100) * 100,
           },
         },
         animation: {
