@@ -4,16 +4,16 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BodyBackground from "../components/BodyBackground.astro";
 
-interface Props {
-  title: string;
-  description: string;
-  ogImage: string;
-}
-
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogImage, ogType, canonical } = Astro.props;
 ---
 
-<LayoutCommon title={title} description={description} ogImage={ogImage}>
+<LayoutCommon
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  canonical={canonical}
+  ogType={ogType}
+>
   <Fragment slot="head"><slot name="head" /></Fragment>
   <a href="#main" class="visually-hidden skip-link"
     >Vai al contenuto principale</a

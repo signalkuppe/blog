@@ -14,7 +14,6 @@
     "@astrojs/rss": "^4.0.10",
     "@contentful/rich-text-html-renderer": "^17.0.0",
     "@floating-ui/dom": "^1.6.12",
-    "@sentry/astro": "^8.44.0",
     "astro": "^5.0.5",
     "autoprefixer": "^10.4.20",
     "chart.js": "^4.4.6",

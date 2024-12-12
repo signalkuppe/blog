@@ -1,6 +1,6 @@
 import slug from "slug";
 import mitt from "mitt";
-import { pageTitleSeparator } from "../constants";
+import { pageTitleSeparator, prodSiteUrl } from "../constants";
 
 export const headPageTitle = (title, slogan) => {
   return `${title} ${pageTitleSeparator} ${slogan}`;
@@ -34,6 +34,10 @@ export const portfolioPhotoSlug = (photo) => {
     console.log(err);
     return "";
   }
+};
+
+export const canonicalUrl = (path) => {
+  return `${prodSiteUrl}${path}`;
 };
 
 export const throttle = function (fn, wait) {

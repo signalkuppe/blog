@@ -38,6 +38,7 @@ const postGpx = postGpxTrack(post);
   title={headPageTitle(post.fields.title, siteTitle)}
   description={post.fields.description}
   ogImage={`https:${post.fields.cover.fields.file.url}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
+  ogType="article"
 >
   <Fragment slot="head">
     <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />

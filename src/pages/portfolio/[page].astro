@@ -5,6 +5,7 @@ import {
   headPageTitle,
   portfolioPhotoSlug,
   validPhotos,
+  canonicalUrl,
 } from "../../lib/utils";
 import { getData } from "../../lib/contentful";
 import Layout from "../../layouts/Layout.astro";
@@ -42,6 +43,8 @@ const description = "Una raccolta delle mie foto più belle";
   title={headPageTitle(pageTitle, siteSlogan)}
   description={description}
   ogImage="/og-image.jpg"
+  ogType="gallery"
+  canonical={canonicalUrl("/portfolio/1")}
 >
   <Fragment slot="head">
     <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />

@@ -39,11 +39,10 @@ const imgUrl = photo.fields.photo.fields.file.url;
     line-height: 1;
     width: 100%;
     padding: 0.75rem 0;
-    border-bottom: 3px solid transparent;
   }
 
-  article:hover .caption {
-    border-color: var(--accent);
+  article:hover img {
+    opacity: 0.8;
   }
 
   time {
@@ -62,6 +61,7 @@ const imgUrl = photo.fields.photo.fields.file.url;
     grid-area: 1 / 1;
     background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
     background-size: 400% 400%;
+    transition: opacity 0.2s ease-in-out;
   }
 
   @keyframes gradient {

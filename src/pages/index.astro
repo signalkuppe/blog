@@ -15,6 +15,7 @@ const query = {
   skip: 0,
 };
 const { items: posts } = await contentfulClient.getEntries(query);
+const currentPath = Astro.url.pathname;
 ---
 
 <Layout

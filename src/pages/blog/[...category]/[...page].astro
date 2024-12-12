@@ -6,11 +6,7 @@ import BlogLayout from "../../../layouts/BlogLayout.astro";
 import BlogCategories from "../../../components/BlogCategories.astro";
 import Pager from "../../../components/Pager.astro";
 import PostCard from "../../../components/PostCard.astro";
-import { headPageTitle } from "../../../lib/utils";
-
-interface Props {
-  page: any;
-}
+import { headPageTitle, canonicalUrl } from "../../../lib/utils";
 
 const { page } = Astro.props;
 const { category, page: categoryPage } = Astro.params;
@@ -47,6 +43,7 @@ if (page.currentPage > 1 || categoryPage > 1) {
   title={headPageTitle(pageTitle, siteTitle)}
   description="Elenco completo di tutte le uscite"
   ogImage={defaultOgImage}
+  canonical={canonicalUrl("/blog")}
 >
   <BlogLayout pageTitle={pageTitle} activeTab="elenco">
     <div class="cage">
