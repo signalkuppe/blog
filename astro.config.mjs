@@ -6,6 +6,9 @@ import sentry from "@sentry/astro";
 export default defineConfig({
   devToolbar: { enabled: false },
   prefetch: true,
+  experimental: {
+    svg: true,
+  },
   adapter: netlify(),
   integrations: [
     sentry({
@@ -17,7 +20,4 @@ export default defineConfig({
       },
     }),
   ],
-  experimental: {
-    svg: true,
-  },
 });
