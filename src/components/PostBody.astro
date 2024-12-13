@@ -78,6 +78,10 @@ const body = htmlRenderer.documentToHtmlString(post.fields.body, options);
     margin-bottom: 2rem;
   }
 
+  :global(.post-html b) {
+    color: var(--textAccent);
+  }
+
   :global(.post-html img) {
     display: block;
     background: var(--surfaceAccent);
@@ -95,7 +99,7 @@ const body = htmlRenderer.documentToHtmlString(post.fields.body, options);
   }
   :global(.post-html h3) {
     margin-top: 2rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
   }
 

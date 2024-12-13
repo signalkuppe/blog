@@ -18,9 +18,11 @@ const { category, page: categoryPage } = Astro.params;
 export async function getStaticPaths({ paginate }) {
   const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
   return [undefined, ...categories].flatMap((cat) => {
-    const filteredPosts = posts.filter((post) => {
-      return cat ? post.fields.category[0] === cat.title : true;
-    });
+    const filteredPosts = posts
+      .filter((post) => {
+        return cat ? post.fields.category[0] === cat.title : true;
+      })
+      .map((p) => ({ ...p, postsCount: posts.length }));
 
     return paginate(filteredPosts, {
       params: { category: cat?.slug },
@@ -68,6 +70,7 @@ if (page.currentPage > 1 || categoryPage > 1) {
 
       <nav aria-label="Pagine" class="post-pager">
         <Pager page={page} />
+        <p class="count">{page.data[0].postsCount} Relazioni</p>
       </nav>
     </div>
   </BlogLayout>
@@ -103,6 +106,11 @@ if (page.currentPage > 1 || categoryPage > 1) {
   .pager [aria-current="page"] {
     color: var(--textAccent);
     font-weight: bold;
+  }
+
+  .count {
+    margin-top: 1rem;
+    font-size: 0.75rem;
   }
 
   @media screen and (width < 60rem) {
@@ -142,6 +150,11 @@ if (page.currentPage > 1 || categoryPage > 1) {
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
       margin-bottom: 5rem;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem;
     }
   }
 </style>

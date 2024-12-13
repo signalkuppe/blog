@@ -67,7 +67,9 @@ const postGpx = postGpxTrack(post);
           </li>
         )
       }
-      <li><a href="#post-share">Stampa e condividi</a></li>
+      <li>
+        <a href="#post-share">Stampa <span class="extra">e condividi</span></a>
+      </li>
     </ul>
   </nav>
 
@@ -206,6 +208,12 @@ const postGpx = postGpxTrack(post);
 
     .post-pager span {
       display: block;
+    }
+
+    @media screen and (width < 24rem) {
+      .extra {
+        display: none;
+      }
     }
 
     @media screen and (width > 60rem) {

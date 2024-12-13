@@ -10,16 +10,19 @@ const imgUrl = photo.fields.photo.fields.file.url;
 ---
 
 <article>
-  <ResponsiveImage
-    src={`${imgUrl}?w=1210&q=70&fm=avif`}
-    sizes={{
-      "600": `${photo}?w=1000&q=70&fm=avif`,
-    }}
-    alt={photo.fields.photo.fields.title || ""}
-    loading="lazy"
-    width={photo.fields.photo.fields.file.details.image.width}
-    height={photo.fields.photo.fields.file.details.image.height}
-  />
+  <aside>
+    <ResponsiveImage
+      src={`${imgUrl}?w=1210&q=70&fm=avif`}
+      sizes={{
+        "600": `${photo}?w=1000&q=70&fm=avif`,
+      }}
+      alt={photo.fields.photo.fields.title || ""}
+      loading="lazy"
+      width={photo.fields.photo.fields.file.details.image.width}
+      height={photo.fields.photo.fields.file.details.image.height}
+    />
+  </aside>
+
   <div class="caption">
     <time datetime={new Date(photo.fields.date).toISOString().slice(0, 19)}>
       <span class="visually-hidden">Scattata il </span>
@@ -39,11 +42,14 @@ const imgUrl = photo.fields.photo.fields.file.url;
     line-height: 1;
     width: 100%;
     padding: 0.75rem 0;
-    border-bottom: 3px solid transparent;
   }
 
-  article:hover .caption {
-    border-color: var(--accent);
+  article:hover img {
+    transform: scale(1.1);
+  }
+
+  aside {
+    overflow: hidden;
   }
 
   time {
@@ -62,6 +68,7 @@ const imgUrl = photo.fields.photo.fields.file.url;
     grid-area: 1 / 1;
     background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
     background-size: 400% 400%;
+    transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
   @keyframes gradient {
