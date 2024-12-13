@@ -34,15 +34,17 @@ const { links, navLabel } = Astro.props;
 
 <style media="screen">
   button {
+    --buttonWidth: 1.5rem;
     background: none;
     border: none;
     display: flex;
-    padding: 0.5rem;
+    width: var(--buttonWidth);
+    height: var(--buttonWidth);
     color: var(--textAccent);
   }
   button svg {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: var(--buttonWidth);
+    height: var(--buttonWidth);
   }
 
   #nav-panel {
@@ -50,8 +52,8 @@ const { links, navLabel } = Astro.props;
     right: 0;
     top: 0;
     padding: 1.5rem;
-    padding-top: 2.5rem;
-    width: 60%;
+
+    width: 70%;
     background: var(--surfaceAccent);
     transform: translate3d(100%, 0, 0);
     display: flex;
@@ -62,20 +64,30 @@ const { links, navLabel } = Astro.props;
   ul {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
   }
 
   a {
     color: var(--text);
     text-decoration: none;
     display: inline-block;
+    padding: 0.85rem;
+    padding-left: 0;
+    position: relative;
   }
 
   [aria-current="page"] {
     font-weight: bold;
     color: var(--textAccent);
-    padding-bottom: 0.1rem;
-    border-bottom: 3px solid var(--accent);
+  }
+
+  [aria-current="page"]::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: var(--accent);
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0;
   }
 
   #nav-close {

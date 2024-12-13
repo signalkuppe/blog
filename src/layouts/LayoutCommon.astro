@@ -4,28 +4,22 @@ import GlobalStyles from "../components/GlobalStyles.astro";
 import PrintStyles from "../components/PrintStyles.astro";
 import { prodSiteUrl } from "../constants";
 
-interface Props {
-  title: string;
-  description: string;
-  ogImage: string;
-}
-
-const { title, description, ogImage } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, prodSiteUrl).href;
+const { title, description, ogImage, ogType, canonical } = Astro.props;
+const canonicalURL = canonical || new URL(Astro.url.pathname, prodSiteUrl).href;
 ---
 
 <!doctype html>
 <html lang="it" id="top">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="apple-mobile-web-app-title" content="Signalkuppe" />
     <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Signalkuppe" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={canonicalURL} />
     <meta name="og:title" content={title} />
     <meta name="twitter:title" content={title} />
     <meta name="description" content={description} />
@@ -35,6 +29,8 @@ const canonicalURL = new URL(Astro.url.pathname, prodSiteUrl).href;
     <meta name="twitter:image" content={ogImage} />
     <meta name="og:image" content={ogImage} />
     <meta name="og:url" content={canonicalURL} />
+    <meta property="og:type" content={ogType || "website"} />
+
     <link
       rel="preload"
       href="/fonts/Atkinson-Hyperlegible-Bold.woff2"

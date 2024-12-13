@@ -19,8 +19,15 @@ const { subTitle } = Astro.props;
   h1 {
     font-size: 2rem;
   }
+
   p {
     font-size: 0.8rem;
     padding-top: 0.25rem;
+  }
+
+  @media screen and (width < 60rem) {
+    div {
+      margin-bottom: 1rem;
+    }
   }
 </style>

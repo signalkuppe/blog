@@ -27,6 +27,7 @@ const imgUrl = `https:${photo.fields.file.url}`;
   title={headPageTitle(photo.fields.title, siteTitle)}
   description={photo.fields.title}
   ogImage={`${imgUrl}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
+  ogType="image"
 >
   <Fragment slot="head">
     <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
@@ -133,12 +134,12 @@ const imgUrl = `https:${photo.fields.file.url}`;
 
   img {
     display: block;
-
     aspect-ratio: attr(width) / attr(height);
     width: 100vw;
     max-height: 100svh;
     object-fit: contain;
     z-index: 2;
+    transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
 
   nav a,
@@ -174,7 +175,7 @@ const imgUrl = `https:${photo.fields.file.url}`;
   }
 
   .photo-download {
-    right: 2.5rem;
+    right: 3.5rem;
     transform: translateX(5%);
     cursor: pointer;
   }
@@ -224,9 +225,32 @@ const imgUrl = `https:${photo.fields.file.url}`;
       opacity: 1;
     }
   }
+
+  @keyframes wobble {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-10px);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    75% {
+      transform: translateX(-5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  img.wobble {
+    animation: wobble 0.5s ease;
+  }
 </style>
 
 <script>
+  //@ts-nocheck
   import Hammer from "hammerjs";
   import { throttle } from "../lib/utils";
 
@@ -316,17 +340,39 @@ const imgUrl = `https:${photo.fields.file.url}`;
     passive: true,
   });
 
-  hammertime.get("swipe").set({ direction: Hammer.DIRECTION_HORIZONTAL });
+  document.body.style.touchAction = "pan-x"; // prevent others
+
+  function triggerWobble() {
+    image.classList.add("wobble");
+    setTimeout(() => {
+      image.classList.remove("wobble");
+    }, 500); // Duration of the animation
+  }
+
+  hammertime.get("swipe").set({
+    direction: Hammer.DIRECTION_HORIZONTAL,
+    threshold: 5,
+  });
 
   hammertime.on("swipeleft", function () {
     if (nextPhoto) {
-      window.location.href = nextPhoto.getAttribute("href");
+      image.style.transform = "translateX(-100%)";
+      setTimeout(() => {
+        window.location.href = nextPhoto.getAttribute("href");
+      }, 200);
+    } else {
+      triggerWobble();
     }
   });
 
   hammertime.on("swiperight", function () {
     if (prevPhoto) {
-      window.location.href = prevPhoto.getAttribute("href");
+      image.style.transform = "translateX(100%)";
+      setTimeout(() => {
+        window.location.href = prevPhoto.getAttribute("href");
+      }, 200);
+    } else {
+      triggerWobble();
     }
   });
 </script>

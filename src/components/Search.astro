@@ -15,7 +15,12 @@ const dataset = posts.map((post) => ({
 
 <form id="search-form" role="search" data-posts={JSON.stringify(dataset)}>
   <label for="search-input" class="visually-hidden">Cerca un’uscita</label>
-  <input type="text" id="search-input" autocomplete="off" />
+  <input
+    type="text"
+    id="search-input"
+    autocomplete="off"
+    aria-autocomplete="none"
+  />
   <SearchIcon aria-hidden="true" />
   <div id="results"><div id="arrow" aria-hidden="true"></div></div>
 </form>
@@ -40,6 +45,12 @@ const dataset = posts.map((post) => ({
     color: var(--text);
   }
 
+  @media screen and (width < 24rem) {
+    form input {
+      width: 9rem;
+    }
+  }
+
   #results {
     --borderColor: var(--accent);
     --borderWidth: var(--focusOutlineWidth);
@@ -52,7 +63,7 @@ const dataset = posts.map((post) => ({
     display: none;
     border: var(--borderWidth) solid var(--borderColor);
     border-radius: 15px;
-    max-width: 30ch;
+    max-width: min(30ch, 75vw);
     z-index: 1000;
   }
 
@@ -284,7 +295,7 @@ const dataset = posts.map((post) => ({
     results.setAttribute("tabindex", "-1");
     results.setAttribute("inert", "");
     results.setAttribute("aria-role", "dialog");
-    trigger.setAttribute("aria-controls", "#results");
+    trigger.setAttribute("aria-controls", "results");
     trigger.setAttribute("aria-expanded", "false");
   }
 

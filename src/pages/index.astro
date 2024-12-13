@@ -15,6 +15,7 @@ const query = {
   skip: 0,
 };
 const { items: posts } = await contentfulClient.getEntries(query);
+const currentPath = Astro.url.pathname;
 ---
 
 <Layout
@@ -85,6 +86,15 @@ const { items: posts } = await contentfulClient.getEntries(query);
 
   ul {
     margin-bottom: 5rem;
+  }
+
+  @media screen and (width < 24rem) {
+    h1 {
+      font-size: 2rem;
+    }
+    .lead {
+      font-size: 0.85rem;
+    }
   }
 
   @media screen and (width < 60rem) {
