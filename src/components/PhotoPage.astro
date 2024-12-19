@@ -259,6 +259,7 @@ const imgUrl = `https:${photo.fields.file.url}`;
   const downloadButton = document.querySelector(".photo-download");
   const nextPhoto = document.querySelector(".photo-next");
   const prevPhoto = document.querySelector(".photo-prev");
+  const loader = document.querySelector(".loader");
 
   downloadButton.addEventListener("click", async function (e) {
     e.preventDefault();
@@ -357,7 +358,9 @@ const imgUrl = `https:${photo.fields.file.url}`;
   hammertime.on("swipeleft", function () {
     if (nextPhoto) {
       image.style.transform = "translateX(-100%)";
+      loader.style.opacity = 0;
       setTimeout(() => {
+        loader.style.opacity = 1;
         window.location.href = nextPhoto.getAttribute("href");
       }, 200);
     } else {
@@ -367,9 +370,11 @@ const imgUrl = `https:${photo.fields.file.url}`;
 
   hammertime.on("swiperight", function () {
     if (prevPhoto) {
+      loader.style.opacity = 0;
       image.style.transform = "translateX(100%)";
       setTimeout(() => {
         window.location.href = prevPhoto.getAttribute("href");
+        loader.style.opacity = 1;
       }, 200);
     } else {
       triggerWobble();

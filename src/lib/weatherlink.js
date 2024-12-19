@@ -25,7 +25,14 @@ export default async function weatherlink() {
       NOW
     );
 
-    const webcam = await fetchWebcam();
+    // Handle fetchWebcam separately
+    let webcam = null;
+    try {
+      webcam = await fetchWebcam();
+    } catch (err) {
+      console.error("Webcam fetch failed:", err.message);
+      webcam = null; // Fallback
+    }
 
     const weatherlinkConsole = sensorData(currentSensors, CONSOLE_SENSOR_ID);
     const pratoCurrent = sensorData(currentSensors, PRATO_SENSOR_ID);
@@ -299,13 +306,26 @@ async function fetchHistoricData(startTimeStamp, endTimeStamp) {
 }
 
 async function fetchWebcam() {
-  const response = await fetch(
-    `https://www.caiseregno.it/webcam_concenedo/webcam.php`
+  const timeoutPromise = new Promise(
+    (_, reject) =>
+      setTimeout(
+        () => reject(new Error("Timeout while fetching webcam data")),
+        5000
+      ) // 5 seconds timeout
   );
 
-  const jsonData = await response.json();
+  try {
+    const response = await Promise.race([
+      fetch(`https://www.caiseregno.it/webcam_concenedo/webcam_with_logs.php`),
+      timeoutPromise,
+    ]);
 
-  return jsonData;
+    const jsonData = await response.json();
+    return jsonData;
+  } catch (error) {
+    console.error("Error fetching webcam data:", error.message);
+    return null; // Fallback value
+  }
 }
 
 function sensorData(sensors, sensorId, historic) {
