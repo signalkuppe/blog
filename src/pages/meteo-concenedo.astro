@@ -1,6 +1,5 @@
 ---
 export const prerender = false;
-import Image from "astro/components/Image.astro";
 import { siteTitle } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import weatherlink from "../lib/weatherlink";
@@ -9,6 +8,7 @@ import PageTitle from "../components/PageTitle.astro";
 import MeteoWebCam from "../components/MeteoWebCam.astro";
 import MeteoDataGrid from "../components/MeteoDataGrid.astro";
 import MeteoGraphGrid from "../components/MeteoGraphGrid.astro";
+import RefreshIcon from "../icons/Refresh.svg";
 import image1 from "../images/stazione-meteo-1.jpg";
 import image2 from "../images/stazione-meteo-2.jpg";
 const title = "Meteo Concenedo";
@@ -28,7 +28,7 @@ Astro.response.headers.set(
   ogImage="https://images.ctfassets.net/rotmy72mdop6/3Qy2Qb0G2cePauRLnhCb5U/8caa3ae7eb25d77cee90be9278524877/2.jpg"
 >
   <div class="cage">
-    <PageTitle>{title}</PageTitle>
+    <PageTitle>{title} </PageTitle>
     {
       ok && (
         <>
@@ -147,10 +147,38 @@ Astro.response.headers.set(
         </>
       )
     }
+    <a href="#" onclick="location.reload(true);" class="refresh"
+      ><RefreshIcon aria-hidden="true" /><span class="visually-hidden"
+        >Aggiorna</span
+      ></a
+    >
   </div>
 </Layout>
 
 <style media="screen">
+  .refresh {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    text-decoration: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem;
+    background: var(--accent);
+    color: var(--accentContrastColor);
+    border-radius: 50%;
+    transition: translate 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .refresh:active {
+    transform: translate(2px, 2px);
+  }
+
+  .refresh svg {
+    height: 1rem;
+  }
+
   .updated {
     margin-top: 0.5rem;
     font-size: 0.7rem;

@@ -19,7 +19,6 @@ const _id = crypto.randomUUID();
             <InfoIcon aria-hidden="true" width="20" />
           </button>
           <div class="tooltip" role="tooltip" id={`tooltip-${_id}`}>
-            <div class="arrow" aria-hidden="true" />
             <div class="tooltip-text">
               <slot name="tooltip" />
             </div>
@@ -114,8 +113,6 @@ const _id = crypto.randomUUID();
     border-radius: 4px;
     width: max-content;
     position: absolute;
-    top: 0;
-    left: 0;
     max-width: 320px;
     z-index: 2;
   }
@@ -143,15 +140,6 @@ const _id = crypto.randomUUID();
   .tooltip-text strong {
     color: var(--textAccent);
   }
-
-  .arrow {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 12px solid var(--tooltipBg);
-  }
 </style>
 
 <script>
@@ -166,44 +154,28 @@ const _id = crypto.randomUUID();
   } from "@floating-ui/dom";
   const buttons = document.querySelectorAll(".tooltip-trigger");
 
-  function update(button, tooltip, arrowElement) {
+  function update(button, tooltip) {
     computePosition(button, tooltip, {
       placement: "bottom",
-      middleware: [offset(16), arrow({ element: arrowElement })],
+      middleware: [offset(16), flip(), shift(5)],
     }).then(({ x, y, placement, middlewareData }) => {
       Object.assign(tooltip.style, {
         left: `${x}px`,
         top: `${y}px`,
       });
-      if (middlewareData.arrow) {
-        const { x: arrowX, y: arrowY } = middlewareData.arrow;
-        const staticSide = {
-          top: "bottom",
-          right: "left",
-          bottom: "top",
-          left: "right",
-        }[placement.split("-")[0]];
-        const { x, y } = middlewareData.arrow;
-
-        Object.assign(arrowElement.style, {
-          left: arrowX != null ? `${arrowX}px` : "",
-          top: arrowY != null ? `${arrowY}px` : "",
-          right: "",
-          bottom: "",
-          [staticSide]: "-12px",
-        });
-      }
     });
   }
 
   function showTooltip(button) {
     button.setAttribute("aria-expanded", "true");
     const tooltip = button.nextElementSibling;
-    const arrowElement = tooltip.querySelector(".arrow");
-    update(button, tooltip, arrowElement);
+    tooltip.style.display = "block";
+    update(button, tooltip);
   }
 
   function hideTooltip(button) {
+    const tooltip = button.nextElementSibling;
+    tooltip.style.display = "none";
     button.setAttribute("aria-expanded", "false");
   }
 
