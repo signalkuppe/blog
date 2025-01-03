@@ -156,7 +156,9 @@ const dataset = posts.map((post) => ({
         .filter(
           (post) =>
             post.title.toLowerCase().includes(query.toLowerCase()) ||
-            post.tags.map((t) => t.toLowerCase()).includes(query.toLowerCase())
+            (post.tags || [])
+              .map((t) => t.toLowerCase())
+              .includes(query.toLowerCase())
         )
         .slice(0, 5);
     } else {
