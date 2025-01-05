@@ -57,6 +57,12 @@ const description = "Scrivimi per parlare di un vostro progetto o di montagna";
             slot="input"></textarea>
         </LabelledInput>
       </div>
+      <div>
+        <label>
+          <input type="checkbox" required name="policy" />
+          Ho letto la <a href="/privacy">la privacy policy</a>
+        </label>
+      </div>
       <button type="submit" class="btn">Invia il messaggio</button>
     </form>
   </div>
@@ -74,7 +80,7 @@ const description = "Scrivimi per parlare di un vostro progetto o di montagna";
     display: block;
   }
 
-  form input,
+  form input[type="text"],
   form textarea {
     display: block;
     width: 100%;
@@ -82,5 +88,19 @@ const description = "Scrivimi per parlare di un vostro progetto o di montagna";
 
   button {
     align-self: flex-start;
+  }
+
+  input[type="checkbox"] {
+    background: var(--surfaceAccent);
+    border: 1px solid var(--text);
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    transform: translateY(0.1rem);
+    margin-right: 0.5rem;
+    appearance: none; /* Rimuove lo stile nativo */
+  }
+  input[type="checkbox"]:checked {
+    appearance: checkbox;
   }
 </style>

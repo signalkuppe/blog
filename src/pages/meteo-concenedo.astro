@@ -38,11 +38,12 @@ Astro.response.headers.set(
               Webcam
             </h2>
             {/**<MeteoWebCam webcam={webcam?.url} /> */}
-            <p>Webcam in manutenzione</p>
+
             <p class="updated">
               Ultimo aggiornamento: <strong>{current.last_data_day}</strong>{" "}
               alle <strong>{current.last_data_hour}</strong>
             </p>
+            <p class="webcam-maintenance">Webcam in manutenzione ⚠️</p>
           </section>
           <section class="dati" aria-labelledby="dati">
             <h2 id="dati" class="visually-hidden">
@@ -285,5 +286,10 @@ Astro.response.headers.set(
     .details-right {
       flex: 1;
     }
+  }
+
+  .webcam-maintenance {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
   }
 </style>

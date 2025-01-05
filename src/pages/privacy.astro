@@ -1,0 +1,181 @@
+---
+import { siteTitle, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import PageTitle from "../components/PageTitle.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title={headPageTitle("Privacy policy", siteTitle)}
+  description=""
+  ogImage={defaultOgImage}
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+  </Fragment>
+  <div class="cage">
+    <PageTitle> Privacy policy</PageTitle>
+    <div class="content">
+      <p>
+        La presente Privacy Policy descrive le modalità di trattamento dei dati
+        personali raccolti tramite il nostro sito web
+        <strong>signalkuppe.com</strong> in conformità con il Regolamento (UE) 2016/679
+        (GDPR). Il titolare del trattamento dei dati è
+        <strong>Matteo Leoni</strong>.
+      </p>
+
+      <h2>Tipologie di dati raccolti e finalità del trattamento</h2>
+      <h3>1. Modulo di Contatto</h3>
+      <ul>
+        <li>
+          <strong>Dati raccolti:</strong> Indirizzo email e contenuto del messaggio.
+        </li>
+        <li>
+          <strong>Finalità:</strong> Rispondere alle richieste inviate dagli utenti
+          tramite il modulo di contatto.
+        </li>
+        <li>
+          <strong>Base giuridica:</strong> Esecuzione di misure precontrattuali richieste
+          dall’interessato (art. 6, par. 1, lett. b GDPR).
+        </li>
+        <li>
+          <strong>Fornitore di servizi:</strong> I dati del modulo di contatto vengono
+          gestiti tramite <strong>Netlify</strong>, una piattaforma che
+          garantisce conformità al GDPR.
+        </li>
+      </ul>
+
+      <h3>2. Modulo di Iscrizione alla Newsletter</h3>
+      <ul>
+        <li><strong>Dati raccolti:</strong> Nome, cognome, indirizzo email.</li>
+        <li>
+          <strong>Finalità:</strong> Invio di comunicazioni informative, promozionali
+          e aggiornamenti tramite newsletter.
+        </li>
+        <li>
+          <strong>Base giuridica:</strong> Consenso dell’interessato (art. 6, par.
+          1, lett. a GDPR).
+        </li>
+        <li>
+          <strong>Fornitore di servizi:</strong> I dati sono gestiti tramite <strong
+            >Mailchimp</strong
+          >, un servizio fornito da The Rocket Science Group LLC, con sede negli
+          Stati Uniti.
+        </li>
+      </ul>
+
+      <h2>Modalità di trattamento dei dati</h2>
+      <p>
+        I dati personali saranno trattati con strumenti elettronici e manuali,
+        garantendo la sicurezza e la riservatezza. I fornitori di servizi come
+        Netlify e Mailchimp agiscono come responsabili del trattamento dei dati
+        in base a specifici accordi sottoscritti con il titolare.
+      </p>
+
+      <h2>
+        Trasferimento dei dati al di fuori dello Spazio Economico Europeo (SEE)
+      </h2>
+      <ul>
+        <li>
+          <strong>Netlify:</strong> I dati potrebbero essere trasferiti al di fuori
+          dello SEE, ma la società garantisce la conformità al GDPR attraverso misure
+          contrattuali adeguate.
+        </li>
+        <li>
+          <strong>Mailchimp:</strong> I dati vengono trasferiti negli Stati Uniti.
+          Mailchimp assicura il rispetto del GDPR attraverso le <strong
+            >Clausole Contrattuali Standard (SCC)</strong
+          >.
+        </li>
+      </ul>
+
+      <h2>Conservazione dei dati</h2>
+      <ul>
+        <li>
+          <strong>Modulo di Contatto:</strong> I dati saranno conservati su Netlify
+          per il tempo necessario a rispondere alla richiesta.
+        </li>
+        <li>
+          <strong>Newsletter:</strong> I dati saranno conservati in Mailchimp fino
+          alla revoca del consenso, che può essere esercitata in qualsiasi momento
+          cliccando sul link di disiscrizione presente in ogni email.
+        </li>
+      </ul>
+
+      <h2>Diritti degli interessati</h2>
+      <p>
+        Gli utenti possono esercitare i seguenti diritti in relazione ai dati
+        trattati:
+      </p>
+      <ul>
+        <li>
+          Accesso, rettifica, cancellazione, limitazione del trattamento,
+          opposizione al trattamento, portabilità dei dati.
+        </li>
+      </ul>
+      <p>
+        Per esercitare i propri diritti, l’utente può contattare il titolare del
+        trattamento all’indirizzo email:
+        <a class="email-link"></a>.
+      </p>
+
+      <h2>Cookie</h2>
+      <p>Il sito non tuilizza cookies</p>
+
+      <h2>Destinatari dei dati</h2>
+      <p>
+        I dati personali potranno essere comunicati a fornitori di servizi
+        tecnici (come Netlify e Mailchimp) esclusivamente per le finalità sopra
+        indicate. Non saranno diffusi o ceduti a terzi senza esplicito consenso
+        dell’utente, salvo obblighi di legge.
+      </p>
+
+      <h2>Modifiche alla Privacy Policy</h2>
+      <p>
+        Ci riserviamo il diritto di aggiornare la presente Privacy Policy per
+        adeguarla a eventuali modifiche normative o funzionali. La versione
+        aggiornata sarà pubblicata su questa pagina con la relativa data di
+        revisione.
+      </p>
+
+      <h2>Contatti</h2>
+      <p>Per domande o richieste relative alla presente Privacy Policy:</p>
+      <ul>
+        <li><strong>Matteo Leoni</strong></li>
+        <li>Email: <a class="email-link"></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const email = "leoni.matteo";
+      const domain = "gmail.com";
+
+      document.querySelectorAll(".email-link").forEach((el) => {
+        el.innerHTML = email + "@" + domain;
+        el.href = "mailto:" + email + "@" + domain;
+      });
+    });
+  </script>
+
+  <style>
+    .content {
+      max-width: 60ch;
+      font-size: 0.75rem;
+    }
+    .content h2 {
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      margin-top: 1rem;
+    }
+    .content h3 {
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+      margin-top: 1rem;
+    }
+    .content p {
+      margin-bottom: 1rem;
+    }
+  </style></Layout
+>
