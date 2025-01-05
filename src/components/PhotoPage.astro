@@ -146,7 +146,7 @@ const imgUrl = `https:${photo.fields.file.url}`;
   nav button {
     position: absolute;
     z-index: 3;
-    padding: 1rem;
+    padding: 0.85rem;
   }
 
   nav svg {
@@ -170,12 +170,12 @@ const imgUrl = `https:${photo.fields.file.url}`;
   }
 
   .photo-back {
-    right: 0;
+    right: 1rem;
     transform: translateX(5%);
   }
 
   .photo-download {
-    right: 3.5rem;
+    right: 4rem;
     transform: translateX(5%);
     cursor: pointer;
   }
@@ -292,7 +292,7 @@ const imgUrl = `https:${photo.fields.file.url}`;
   imageOverlayDiv.style.top = "0px";
   imageOverlayDiv.style.zIndex = "2";
   imageOverlayDiv.style.cursor = "help";
-  const hammertime = new Hammer(container);
+  const hammertime = new Hammer(container, { touchAction: "auto" });
 
   function appendOverlay() {
     const shortest = Math.min(window.innerHeight, window.innerWidth);
