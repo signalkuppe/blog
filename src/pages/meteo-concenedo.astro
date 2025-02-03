@@ -40,10 +40,12 @@ Astro.response.headers.set(
             </h2>
             <MeteoWebCam webcam={webcam?.url} />
 */}
+
             <p class="updated">
               Ultimo aggiornamento: <strong>{current.last_data_day}</strong>{" "}
               alle <strong>{current.last_data_hour}</strong>
             </p>
+            <p class="maintenance">La webcam è in manutenzione</p>
           </section>
           <section class="dati" aria-labelledby="dati">
             <h2 id="dati" class="visually-hidden">
@@ -190,6 +192,11 @@ Astro.response.headers.set(
   .updated strong {
     font-family: var(--fontFamilyMono);
     color: var(--textAccent);
+  }
+
+  .maintenance {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
   }
 
   .dati {
