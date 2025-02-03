@@ -254,130 +254,132 @@ const imgUrl = `https:${photo.fields.file.url}`;
   import Hammer from "hammerjs";
   import { throttle } from "../lib/utils";
 
-  const container = document.querySelector(".photo-container");
-  const image = document.querySelector(".picture img");
-  const downloadButton = document.querySelector(".photo-download");
-  const nextPhoto = document.querySelector(".photo-next");
-  const prevPhoto = document.querySelector(".photo-prev");
-  const loader = document.querySelector(".loader");
+  document.addEventListener("astro:page-load", () => {
+    const container = document.querySelector(".photo-container");
+    const image = document.querySelector(".picture img");
+    const downloadButton = document.querySelector(".photo-download");
+    const nextPhoto = document.querySelector(".photo-next");
+    const prevPhoto = document.querySelector(".photo-prev");
+    const loader = document.querySelector(".loader");
 
-  downloadButton.addEventListener("click", async function (e) {
-    e.preventDefault();
+    downloadButton.addEventListener("click", async function (e) {
+      e.preventDefault();
 
-    downloadButton.classList.add("is-downloading");
-    const fileName = downloadButton.getAttribute("data-name");
-    const remoteFileUrl = `https:${downloadButton.getAttribute("data-file")}`;
-    const response = await fetch(remoteFileUrl);
-    const fileData = await response.blob();
-    const photoUrl = URL.createObjectURL(fileData);
-    const link = document.createElement("a");
-    link.href = photoUrl;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(photoUrl);
-    downloadButton.classList.remove("is-downloading");
-  });
+      downloadButton.classList.add("is-downloading");
+      const fileName = downloadButton.getAttribute("data-name");
+      const remoteFileUrl = `https:${downloadButton.getAttribute("data-file")}`;
+      const response = await fetch(remoteFileUrl);
+      const fileData = await response.blob();
+      const photoUrl = URL.createObjectURL(fileData);
+      const link = document.createElement("a");
+      link.href = photoUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(photoUrl);
+      downloadButton.classList.remove("is-downloading");
+    });
 
-  // create a div over the real size of the image to trigger an hover effect and show the caption
-  const imageWidth = parseInt(image.getAttribute("width"));
-  const imageHeight = parseInt(image.getAttribute("height"));
-  const imageRatio = imageHeight / imageWidth;
-  const imageOverlayDiv = document.createElement("div");
+    // create a div over the real size of the image to trigger an hover effect and show the caption
+    const imageWidth = parseInt(image.getAttribute("width"));
+    const imageHeight = parseInt(image.getAttribute("height"));
+    const imageRatio = imageHeight / imageWidth;
+    const imageOverlayDiv = document.createElement("div");
 
-  imageOverlayDiv.setAttribute("aria-hidden", "true");
-  imageOverlayDiv.setAttribute("class", "photo-overlay");
-  imageOverlayDiv.style.position = "absolute";
-  imageOverlayDiv.style.top = "0px";
-  imageOverlayDiv.style.zIndex = "2";
-  imageOverlayDiv.style.cursor = "help";
-  const hammertime = new Hammer(container, { touchAction: "auto" });
+    imageOverlayDiv.setAttribute("aria-hidden", "true");
+    imageOverlayDiv.setAttribute("class", "photo-overlay");
+    imageOverlayDiv.style.position = "absolute";
+    imageOverlayDiv.style.top = "0px";
+    imageOverlayDiv.style.zIndex = "2";
+    imageOverlayDiv.style.cursor = "help";
+    const hammertime = new Hammer(container, { touchAction: "auto" });
 
-  function appendOverlay() {
-    const shortest = Math.min(window.innerHeight, window.innerWidth);
+    function appendOverlay() {
+      const shortest = Math.min(window.innerHeight, window.innerWidth);
 
-    if (shortest === window.innerHeight) {
-      // landscape
-      const imageRealWidth = shortest / imageRatio;
-      imageOverlayDiv.style.left = `${
-        (window.innerWidth - imageRealWidth) / 2
-      }px`;
-      imageOverlayDiv.style.top = "0px";
-      imageOverlayDiv.style.width = `${imageRealWidth}px`;
-      imageOverlayDiv.style.height = `${window.innerHeight}px`;
-    } else {
-      // portrait
-      const imageRealHeight = window.innerWidth * imageRatio;
+      if (shortest === window.innerHeight) {
+        // landscape
+        const imageRealWidth = shortest / imageRatio;
+        imageOverlayDiv.style.left = `${
+          (window.innerWidth - imageRealWidth) / 2
+        }px`;
+        imageOverlayDiv.style.top = "0px";
+        imageOverlayDiv.style.width = `${imageRealWidth}px`;
+        imageOverlayDiv.style.height = `${window.innerHeight}px`;
+      } else {
+        // portrait
+        const imageRealHeight = window.innerWidth * imageRatio;
 
-      imageOverlayDiv.style.left = "0px";
-      imageOverlayDiv.style.top = `${
-        (window.innerHeight - imageRealHeight) / 2
-      }px`;
-      imageOverlayDiv.style.width = `${window.innerWidth}px`;
-      imageOverlayDiv.style.height = `${imageRealHeight}px`;
+        imageOverlayDiv.style.left = "0px";
+        imageOverlayDiv.style.top = `${
+          (window.innerHeight - imageRealHeight) / 2
+        }px`;
+        imageOverlayDiv.style.width = `${window.innerWidth}px`;
+        imageOverlayDiv.style.height = `${imageRealHeight}px`;
+      }
+
+      container.append(imageOverlayDiv);
     }
 
-    container.append(imageOverlayDiv);
-  }
-
-  imageOverlayDiv.addEventListener("mouseenter", function () {
-    container.classList.add("is-hovering");
-    imageOverlayDiv.focus();
-  });
-  imageOverlayDiv.addEventListener("mouseleave", function () {
-    container.classList.remove("is-hovering");
-  });
-
-  container.addEventListener("click", function (e) {
-    if (e.target !== imageOverlayDiv) {
+    imageOverlayDiv.addEventListener("mouseenter", function () {
+      container.classList.add("is-hovering");
+      imageOverlayDiv.focus();
+    });
+    imageOverlayDiv.addEventListener("mouseleave", function () {
       container.classList.remove("is-hovering");
-    }
-  });
+    });
 
-  appendOverlay();
+    container.addEventListener("click", function (e) {
+      if (e.target !== imageOverlayDiv) {
+        container.classList.remove("is-hovering");
+      }
+    });
 
-  window.addEventListener("resize", throttle(appendOverlay, 100), {
-    passive: true,
-  });
+    appendOverlay();
 
-  document.body.style.touchAction = "pan-x"; // prevent others
+    window.addEventListener("resize", throttle(appendOverlay, 100), {
+      passive: true,
+    });
 
-  function triggerWobble() {
-    image.classList.add("wobble");
-    setTimeout(() => {
-      image.classList.remove("wobble");
-    }, 500); // Duration of the animation
-  }
+    document.body.style.touchAction = "pan-x"; // prevent others
 
-  hammertime.get("swipe").set({
-    direction: Hammer.DIRECTION_HORIZONTAL,
-    threshold: 5,
-  });
-
-  hammertime.on("swipeleft", function () {
-    if (nextPhoto) {
-      image.style.transform = "translateX(-100%)";
-      loader.style.opacity = 0;
+    function triggerWobble() {
+      image.classList.add("wobble");
       setTimeout(() => {
-        loader.style.opacity = 1;
-        window.location.href = nextPhoto.getAttribute("href");
-      }, 200);
-    } else {
-      triggerWobble();
+        image.classList.remove("wobble");
+      }, 500); // Duration of the animation
     }
-  });
 
-  hammertime.on("swiperight", function () {
-    if (prevPhoto) {
-      loader.style.opacity = 0;
-      image.style.transform = "translateX(100%)";
-      setTimeout(() => {
-        window.location.href = prevPhoto.getAttribute("href");
-        loader.style.opacity = 1;
-      }, 200);
-    } else {
-      triggerWobble();
-    }
+    hammertime.get("swipe").set({
+      direction: Hammer.DIRECTION_HORIZONTAL,
+      threshold: 5,
+    });
+
+    hammertime.on("swipeleft", function () {
+      if (nextPhoto) {
+        image.style.transform = "translateX(-100%)";
+        loader.style.opacity = 0;
+        setTimeout(() => {
+          loader.style.opacity = 1;
+          window.location.href = nextPhoto.getAttribute("href");
+        }, 200);
+      } else {
+        triggerWobble();
+      }
+    });
+
+    hammertime.on("swiperight", function () {
+      if (prevPhoto) {
+        loader.style.opacity = 0;
+        image.style.transform = "translateX(100%)";
+        setTimeout(() => {
+          window.location.href = prevPhoto.getAttribute("href");
+          loader.style.opacity = 1;
+        }, 200);
+      } else {
+        triggerWobble();
+      }
+    });
   });
 </script>
