@@ -1,4 +1,5 @@
 ---
+import "photoswipe/dist/photoswipe.css";
 import ResponsiveImage from "./ResponsiveImage.astro";
 import PhotoDisclaimer from "./PhotoDisclaimer.astro";
 import { postPhotoSlug, validPhotos } from "../lib/utils";
@@ -6,28 +7,31 @@ interface Props {
   post: any;
 }
 const { post } = Astro.props;
+// https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/1-600x400.png 600w, https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/1-1200x800.png 1200w, https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/1-1500x1000.png 1500w
 ---
 
-<ul>
+<ul id="post-gallery">
   {
     validPhotos(post.fields.gallery).map((photo) => (
       <li>
         <a
           href={`/${postPhotoSlug(post, photo)}`}
-          data-caption={photo.fields.title || ""}
-          data-group="gallery"
-          data-astro-prefetch
+          data-download={photo.fields.file.url}
+          data-pswp-src={`${photo.fields.file.url}?w=1024&fit=thumb&q=60&fm=avif`}
+          data-pswp-width={photo.fields.file.details.image.width}
+          data-pswp-height={photo.fields.file.details.image.height}
+          data-pswp-srcset={`${photo.fields.file.url}?w=1200&fit=thumb&q=60&fm=avif 1000w, ${photo.fields.file.url}?w=2500&fit=thumb&q=60&fm=avif 2000w`}
         >
           <ResponsiveImage
-            src={`${photo.fields.file.url}?w=400&h=400&fit=thumb&q=60&fm=avif`}
+            src={`${photo.fields.file.url}?w=600&fit=thumb&q=60&fm=avif`}
             sizes={{
-              "600": `${photo.fields.file.url}?w=160&h=160&fit=thumb&q=60&fm=avif`,
+              "600": `${photo.fields.file.url}?w=300&fit=thumb&q=60&fm=avif`,
             }}
             alt={post.fields.title || ""}
             loading="lazy"
             decoding="async"
-            width="200"
-            height="200"
+            width={photo.fields.file.details.image.width}
+            height={photo.fields.file.details.image.height}
           />
         </a>
       </li>
@@ -38,17 +42,51 @@ const { post } = Astro.props;
   <PhotoDisclaimer />
 </p>
 
-<style media="screen">
-  ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 1rem;
-  }
+<script>
+  //@ts-nocheck
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import PhotoSwipe from "photoswipe";
+  document.addEventListener("DOMContentLoaded", () => {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: "#post-gallery",
+      children: "a",
+      pswpModule: PhotoSwipe,
+      showHideAnimationType: "zoom",
+      showAnimationDuration: 500,
+      hideAnimationDuration: 250,
+    });
+    lightbox.on("uiRegister", function () {
+      lightbox.pswp.ui.registerElement({
+        name: "download-button",
+        order: 8,
+        isButton: true,
+        tagName: "a",
+        html: {
+          isCustomSVG: true,
+          inner:
+            '<path d="M20.5 14.3 17.1 18V10h-2.2v7.9l-3.4-3.6L10 16l6 6.1 6-6.1ZM23 23H9v2h14Z" id="pswp__icn-download"/>',
+          outlineID: "pswp__icn-download",
+        },
 
+        onInit: (el, pswp) => {
+          el.setAttribute("download", "");
+          el.setAttribute("target", "_blank");
+          el.setAttribute("rel", "noopener");
+
+          pswp.on("change", () => {
+            el.href = pswp.currSlide.data.element.getAttribute("data-download");
+          });
+        },
+      });
+    });
+    lightbox.init();
+  });
+</script>
+
+<style media="screen">
   img {
     display: block;
-    width: 100%;
-    aspect-ratio: 1/1;
+
     background: var(--surfaceAccent);
   }
 
@@ -58,9 +96,26 @@ const { post } = Astro.props;
     max-width: 70ch;
   }
 
-  @media screen and (width > 60rem) {
+  ul {
+    --space: 1.5rem;
+    display: block;
+    columns: 2;
+    column-gap: var(--space);
+  }
+  li {
+    margin-bottom: var(--space);
+    break-inside: avoid;
+  }
+
+  @media screen and (width > 40rem) {
     ul {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      columns: 3;
+    }
+  }
+
+  @media screen and (width > 70rem) {
+    ul {
+      columns: 4;
     }
   }
 </style>

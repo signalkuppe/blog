@@ -1,4 +1,5 @@
 ---
+import "photoswipe/dist/photoswipe.css";
 import PageTitle from "../../components/PageTitle.astro";
 import PhotoCard from "../../components/PhotoCard.astro";
 import {
@@ -52,12 +53,23 @@ const description = "Una raccolta delle mie foto più belle";
   </div>
 
   <div class="container">
-    <ul>
+    <ul id="photo-gallery">
       {
         page.data.map((photo) => {
           return (
             <li>
-              <a href={portfolioPhotoSlug(photo)} data-astro-prefetch>
+              <a
+                href={`/${portfolioPhotoSlug(photo)}`}
+                data-download={photo.fields.photo.fields.file.url}
+                data-pswp-src={`${photo.fields.photo.fields.file.url}?w=1024&fit=thumb&q=60&fm=avif`}
+                data-pswp-width={
+                  photo.fields.photo.fields.file.details.image.width
+                }
+                data-pswp-height={
+                  photo.fields.photo.fields.file.details.image.height
+                }
+                data-pswp-srcset={`${photo.fields.photo.fields.file.url}?w=1200&fit=thumb&q=60&fm=avif 1000w, ${photo.fields.photo.fields.file.url}?w=2500&fit=thumb&q=60&fm=avif 2000w`}
+              >
                 <PhotoCard photo={photo} />
               </a>
             </li>
@@ -121,9 +133,48 @@ const description = "Una raccolta delle mie foto più belle";
   </style>
 
   <script>
+    //@ts-nocheck
     import { emitter } from "../../lib/utils";
+    import PhotoSwipeLightbox from "photoswipe/lightbox";
+    import PhotoSwipe from "photoswipe";
+
     document.addEventListener("DOMContentLoaded", () => {
       emitter.emit("header-background-change", true);
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: "#photo-gallery",
+        children: "a",
+        pswpModule: PhotoSwipe,
+        showHideAnimationType: "zoom",
+        showAnimationDuration: 500,
+        hideAnimationDuration: 250,
+      });
+      lightbox.on("uiRegister", function () {
+        lightbox.pswp.ui.registerElement({
+          name: "download-button",
+          order: 8,
+          isButton: true,
+          tagName: "a",
+          html: {
+            isCustomSVG: true,
+            inner:
+              '<path d="M20.5 14.3 17.1 18V10h-2.2v7.9l-3.4-3.6L10 16l6 6.1 6-6.1ZM23 23H9v2h14Z" id="pswp__icn-download"/>',
+            outlineID: "pswp__icn-download",
+          },
+
+          onInit: (el, pswp) => {
+            el.setAttribute("download", "");
+            el.setAttribute("target", "_blank");
+            el.setAttribute("rel", "noopener");
+
+            pswp.on("change", () => {
+              el.href =
+                pswp.currSlide.data.element.getAttribute("data-download");
+            });
+          },
+        });
+      });
+
+      lightbox.init();
     });
   </script>
 </Layout>

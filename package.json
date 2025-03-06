@@ -29,6 +29,7 @@
     "lodash": "^4.17.21",
     "mitt": "^3.0.1",
     "node-cache": "^5.1.2",
+    "photoswipe": "^5.4.4",
     "simplify-js": "^1.2.4",
     "slug": "^10.0.0",
     "underscore": "^1.13.7"

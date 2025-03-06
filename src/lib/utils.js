@@ -29,7 +29,7 @@ export const postPhotoSlug = (post, photo) => {
 
 export const portfolioPhotoSlug = (photo) => {
   try {
-    return `/portfolio/${photoSlug(photo)}`;
+    return `portfolio/${photoSlug(photo)}`;
   } catch (err) {
     console.log(err);
     return "";
