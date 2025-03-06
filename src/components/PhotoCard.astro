@@ -68,6 +68,11 @@ const imgUrl = photo.fields.photo.fields.file.url;
     background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
     background-size: 400% 400%;
     transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    display: block;
+  }
+
+  article:hover aside {
+    outline: 4px solid var(--textAccent);
   }
 
   @keyframes gradient {

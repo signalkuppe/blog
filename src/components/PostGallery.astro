@@ -7,7 +7,6 @@ interface Props {
   post: any;
 }
 const { post } = Astro.props;
-// https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/1-600x400.png 600w, https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/1-1200x800.png 1200w, https://cdn.photoswipe.com/photoswipe-demo-images/photos/srcset-test/1-1500x1000.png 1500w
 ---
 
 <ul id="post-gallery">
@@ -27,7 +26,7 @@ const { post } = Astro.props;
             sizes={{
               "600": `${photo.fields.file.url}?w=300&fit=thumb&q=60&fm=avif`,
             }}
-            alt={post.fields.title || ""}
+            alt={photo.fields.title || ""}
             loading="lazy"
             decoding="async"
             width={photo.fields.file.details.image.width}
@@ -78,6 +77,25 @@ const { post } = Astro.props;
           });
         },
       });
+      lightbox.pswp.ui.registerElement({
+        name: "custom-caption",
+        order: 9,
+        isButton: false,
+        appendTo: "root",
+        html: "Caption text",
+        onInit: (el, pswp) => {
+          lightbox.pswp.on("change", () => {
+            const currSlideElement = lightbox.pswp.currSlide.data.element;
+            let captionHTML = "";
+            if (currSlideElement) {
+              captionHTML = currSlideElement
+                .querySelector("img")
+                .getAttribute("alt");
+            }
+            el.innerHTML = captionHTML || "";
+          });
+        },
+      });
     });
     lightbox.init();
   });
@@ -117,5 +135,23 @@ const { post } = Astro.props;
     ul {
       columns: 4;
     }
+  }
+
+  :global(.pswp__custom-caption) {
+    background: black;
+    font-size: 16px;
+    color: white;
+    width: fit-content;
+    padding: 2px 8px;
+    border-radius: 4px;
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  a:hover img {
+    outline: 4px solid var(--textAccent);
   }
 </style>

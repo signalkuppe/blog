@@ -84,97 +84,134 @@ const description = "Una raccolta delle mie foto più belle";
       <p class="disclaimer"><PhotoDisclaimer /></p>
     </div>
   </div>
-
-  <style media="screen">
-    .container {
-      --space: 1.5rem;
-      padding: var(--space);
-    }
-    ul {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space);
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    .bottom {
-      margin: 8rem auto 4rem auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .disclaimer {
-      margin-top: 3rem;
-      max-width: 70ch;
-      font-size: 0.75rem;
-    }
-
-    @media screen and (width > 30rem) {
-      ul {
-        display: block;
-        columns: 2;
-        column-gap: var(--space);
-      }
-      li {
-        margin-bottom: var(--space);
-        break-inside: avoid;
-      }
-    }
-
-    @media screen and (width > 60rem) {
-      ul {
-        columns: 3;
-      }
-    }
-  </style>
-
-  <script>
-    //@ts-nocheck
-    import { emitter } from "../../lib/utils";
-    import PhotoSwipeLightbox from "photoswipe/lightbox";
-    import PhotoSwipe from "photoswipe";
-
-    document.addEventListener("DOMContentLoaded", () => {
-      emitter.emit("header-background-change", true);
-      const lightbox = new PhotoSwipeLightbox({
-        gallery: "#photo-gallery",
-        children: "a",
-        pswpModule: PhotoSwipe,
-        showHideAnimationType: "zoom",
-        showAnimationDuration: 500,
-        hideAnimationDuration: 250,
-      });
-      lightbox.on("uiRegister", function () {
-        lightbox.pswp.ui.registerElement({
-          name: "download-button",
-          order: 8,
-          isButton: true,
-          tagName: "a",
-          html: {
-            isCustomSVG: true,
-            inner:
-              '<path d="M20.5 14.3 17.1 18V10h-2.2v7.9l-3.4-3.6L10 16l6 6.1 6-6.1ZM23 23H9v2h14Z" id="pswp__icn-download"/>',
-            outlineID: "pswp__icn-download",
-          },
-
-          onInit: (el, pswp) => {
-            el.setAttribute("download", "");
-            el.setAttribute("target", "_blank");
-            el.setAttribute("rel", "noopener");
-
-            pswp.on("change", () => {
-              el.href =
-                pswp.currSlide.data.element.getAttribute("data-download");
-            });
-          },
-        });
-      });
-
-      lightbox.init();
-    });
-  </script>
 </Layout>
+
+<script>
+  //@ts-nocheck
+  import { emitter } from "../../lib/utils";
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+  import PhotoSwipe from "photoswipe";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    emitter.emit("header-background-change", true);
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: "#photo-gallery",
+      children: "a",
+      pswpModule: PhotoSwipe,
+      showHideAnimationType: "zoom",
+      showAnimationDuration: 500,
+      hideAnimationDuration: 250,
+    });
+    lightbox.on("uiRegister", function () {
+      lightbox.pswp.ui.registerElement({
+        name: "download-button",
+        order: 8,
+        isButton: true,
+        tagName: "a",
+        html: {
+          isCustomSVG: true,
+          inner:
+            '<path d="M20.5 14.3 17.1 18V10h-2.2v7.9l-3.4-3.6L10 16l6 6.1 6-6.1ZM23 23H9v2h14Z" id="pswp__icn-download"/>',
+          outlineID: "pswp__icn-download",
+        },
+
+        onInit: (el, pswp) => {
+          el.setAttribute("download", "");
+          el.setAttribute("target", "_blank");
+          el.setAttribute("rel", "noopener");
+
+          pswp.on("change", () => {
+            el.href = pswp.currSlide.data.element.getAttribute("data-download");
+          });
+        },
+      });
+      lightbox.pswp.ui.registerElement({
+        name: "custom-caption",
+        order: 9,
+        isButton: false,
+        appendTo: "root",
+        html: "Caption text",
+        onInit: (el, pswp) => {
+          lightbox.pswp.on("change", () => {
+            const currSlideElement = lightbox.pswp.currSlide.data.element;
+            let captionHTML = "";
+            if (currSlideElement) {
+              captionHTML = currSlideElement
+                .querySelector("img")
+                .getAttribute("alt");
+            }
+            el.innerHTML = captionHTML || "";
+          });
+        },
+      });
+    });
+
+    lightbox.init();
+  });
+</script>
+
+<style media="screen">
+  .container {
+    --space: 1.5rem;
+    padding: var(--space);
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space);
+  }
+
+  a {
+    text-decoration: none;
+    display: block;
+  }
+
+  a:focus-visible {
+    outline: none;
+  }
+
+  .bottom {
+    margin: 8rem auto 4rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .disclaimer {
+    margin-top: 3rem;
+    max-width: 70ch;
+    font-size: 0.75rem;
+  }
+
+  @media screen and (width > 30rem) {
+    ul {
+      display: block;
+      columns: 2;
+      column-gap: var(--space);
+    }
+    li {
+      margin-bottom: var(--space);
+      break-inside: avoid;
+    }
+  }
+
+  @media screen and (width > 60rem) {
+    ul {
+      columns: 3;
+    }
+  }
+
+  :global(.pswp__custom-caption) {
+    background: black;
+    font-size: 16px;
+    color: white;
+    width: fit-content;
+    padding: 2px 8px;
+    border-radius: 4px;
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+</style>
