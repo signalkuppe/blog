@@ -14,23 +14,44 @@ const { pageTitle, activeTab } = Astro.props;
     <BlogTabs activeTab={activeTab} />
   </nav>
 </div>
-
-<slot />
+<div class="cage">
+  <div class="blog-layout">
+    <div class="blog-layout-left"><main><slot name="left" /></main></div>
+    <div class="blog-layout-right"><aside><slot name="right" /></aside></div>
+  </div>
+</div>
 
 <style media="screen">
-  .tabs-parent {
-    position: sticky;
-    z-index: 1;
-    top: 0px;
-    padding-top: 1.5rem;
-    margin-top: -2rem;
-    padding-bottom: 2rem;
-    background: linear-gradient(var(--surface) 70%, transparent 90%);
+  .blog-layout {
+    display: flex;
+    margin-top: 3rem;
+  }
+
+  @media screen and (width < 60rem) {
+    .blog-layout {
+      flex-direction: column;
+      gap: 3rem;
+    }
   }
 
   @media screen and (width > 60rem) {
-    .tabs-parent {
-      padding-bottom: 3rem;
+    .blog-layout {
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+    .blog-layout-left {
+      flex: 4;
+    }
+    .blog-layout-right {
+      flex: 1;
+      justify-self: flex-end;
+    }
+    aside {
+      position: sticky;
+      top: 7.5rem;
+      z-index: 1;
+      min-width: 10rem;
+      justify-self: flex-end;
     }
   }
 </style>

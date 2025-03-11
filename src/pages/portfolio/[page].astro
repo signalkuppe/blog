@@ -59,6 +59,7 @@ const description = "Una raccolta delle mie foto più belle";
           return (
             <li>
               <a
+                aria-label={photo.fields.photo.fields.title}
                 href={`/${portfolioPhotoSlug(photo)}`}
                 data-download={photo.fields.photo.fields.file.url}
                 data-pswp-src={`${photo.fields.photo.fields.file.url}?w=1024&fit=thumb&q=60&fm=avif`}

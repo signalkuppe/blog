@@ -1,13 +1,47 @@
 ---
-import { getData } from "../../lib/contentful";
-import Layout from "../../layouts/Layout.astro";
-import BlogLayout from "../../layouts/BlogLayout.astro";
-import Spinner from "../../components/Spinner.astro";
 import "leaflet/dist/leaflet.css";
-import { headPageTitle } from "../../lib/utils";
-import { defaultOgImage, siteTitle } from "../../constants";
-const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
-const pageTitle = "Mappa delle uscite";
+import { getData } from "../../../../lib/contentful";
+import { categories, defaultOgImage, siteTitle } from "../../../../constants";
+import Spinner from "../../../../components/Spinner.astro";
+import BlogCategories from "../../../../components/BlogCategories.astro";
+import Pager from "../../../../components/Pager.astro";
+import Layout from "../../../../layouts/Layout.astro";
+import BlogLayout from "../../../../layouts/BlogLayout.astro";
+import { headPageTitle } from "../../../../lib/utils";
+
+interface Props {
+  page: any;
+}
+
+const { page } = Astro.props;
+const { category, page: categoryPage } = Astro.params;
+
+export async function getStaticPaths({ paginate }) {
+  const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
+  return [undefined, ...categories].flatMap((cat) => {
+    const filteredPosts = posts.filter((post) => {
+      return cat ? post.fields.category[0] === cat.title : true;
+    });
+    const output = filteredPosts.map((p) => ({
+      ...p,
+      postsCount: filteredPosts.length,
+    }));
+
+    return paginate(output, {
+      params: { category: cat?.slug },
+      pageSize: 1000,
+    });
+  });
+}
+
+let pageTitle = "Mappa delle uscite";
+
+if (category) {
+  const c = categories.find((c) => c.slug === category);
+  if (c) {
+    pageTitle = `${pageTitle}, ${categories.find((c) => c.slug === category)?.title}`;
+  }
+}
 ---
 
 <Layout
@@ -19,26 +53,38 @@ const pageTitle = "Mappa delle uscite";
     <link rel="preconnect" href="https://tile.thunderforest.com/" crossorigin />
   </Fragment>
   <BlogLayout pageTitle={pageTitle} activeTab="mappa">
-    <section
-      id="map"
-      aria-abel="Mappa"
-      data-markers={JSON.stringify(
-        posts.map((post) => ({
-          id: post.sys.id,
-          title: post.fields.title,
-          description: post.fields.description,
-          slug: post.fields.slug,
-          category: post.fields.category[0],
-          lat: post.fields.location.lat,
-          lon: post.fields.location.lon,
-          image: {
-            url: post.fields.cover.fields.file.url,
-          },
-        }))
-      )}
-    >
-      <Spinner size="2rem" />
-    </section>
+    <div slot="left">
+      <div class="map-container">
+        <section
+          id="map"
+          aria-abel="Mappa"
+          data-markers={JSON.stringify(
+            page.data.map((post) => ({
+              id: post.sys.id,
+              title: post.fields.title,
+              description: post.fields.description,
+              slug: post.fields.slug,
+              category: post.fields.category[0],
+              lat: post.fields.location.lat,
+              lon: post.fields.location.lon,
+              image: {
+                url: post.fields.cover.fields.file.url,
+              },
+            }))
+          )}
+        >
+          <Spinner size="2rem" />
+        </section>
+      </div>
+
+      <nav aria-label="Pagine" class="post-pager">
+        <Pager page={page} />
+        <p class="count">{page.data[0].postsCount} Relazioni</p>
+      </nav>
+    </div>
+    <nav aria-label="categorie" class="post-categories" slot="right">
+      <BlogCategories activeCategory={category} isMap />
+    </nav>
   </BlogLayout>
 </Layout>
 
@@ -126,12 +172,27 @@ const pageTitle = "Mappa delle uscite";
   });
 </script>
 
+<style>
+  .post-pager {
+    margin-top: 3rem;
+  }
+  .count {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+  }
+
+  @media screen and (width < 60rem) {
+    .map-container {
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+    }
+  }
+</style>
 <style is:global>
   /** leaflet overrides */
   #map {
     width: 100%;
-    height: 100%;
-    min-height: 70svh;
+    height: 70svh;
     background: var(--surfaceAccent);
     display: flex;
     justify-content: center;

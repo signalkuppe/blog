@@ -1,32 +1,37 @@
 ---
 import { categories } from "../constants";
 
-interface Props {
-  activeCategory?: string;
-}
-
-const { activeCategory } = Astro.props;
+const { activeCategory, isMap } = Astro.props;
+const isWithoutCategory = !categories.find((c) => c.slug === activeCategory);
 ---
 
 <ul role="list">
   {
-    categories?.map((category) => (
+    categories.map((category) => (
       <li>
         <a
-          href={`/blog/${category.slug}`}
+          href={`/blog/${isMap ? "mappa/" : ""}${category.slug}`}
           aria-current={activeCategory === category.slug ? "page" : null}
         >
-          <span aria-hidden="true">#</span>&nbsp;{category.title}
+          {category.title}
         </a>
       </li>
     ))
   }
+  <li>
+    <a
+      href={`/blog${isMap ? `/mappa` : ""}`}
+      aria-current={isWithoutCategory ? "page" : null}
+    >
+      Tutte
+    </a>
+  </li>
 </ul>
 
 <style media="screen">
   ul {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 1rem;
     margin-bottom: 2rem;
   }
@@ -35,10 +40,9 @@ const { activeCategory } = Astro.props;
     font-size: 0.75rem;
     text-decoration: none;
     display: block;
-    border: 3px solid var(--surfaceAccent);
+    border-bottom: 3px solid transparent;
     color: var(--text);
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
+    width: min-content;
   }
 
   a:hover,
@@ -49,5 +53,13 @@ const { activeCategory } = Astro.props;
 
   a[aria-current="page"] {
     font-weight: bold;
+  }
+
+  @media screen and (width < 60rem) {
+    ul {
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
   }
 </style>

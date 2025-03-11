@@ -18,13 +18,15 @@ const { category, page: categoryPage } = Astro.params;
 export async function getStaticPaths({ paginate }) {
   const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
   return [undefined, ...categories].flatMap((cat) => {
-    const filteredPosts = posts
-      .filter((post) => {
-        return cat ? post.fields.category[0] === cat.title : true;
-      })
-      .map((p) => ({ ...p, postsCount: posts.length }));
+    const filteredPosts = posts.filter((post) => {
+      return cat ? post.fields.category[0] === cat.title : true;
+    });
+    const output = filteredPosts.map((p) => ({
+      ...p,
+      postsCount: filteredPosts.length,
+    }));
 
-    return paginate(filteredPosts, {
+    return paginate(output, {
       params: { category: cat?.slug },
       pageSize: 12,
     });
@@ -51,110 +53,50 @@ if (page.currentPage > 1 || categoryPage > 1) {
   ogImage={defaultOgImage}
 >
   <BlogLayout pageTitle={pageTitle} activeTab="elenco">
-    <div class="cage">
-      <div class="container">
-        <ul role="list" class="post-list">
-          {
-            page.data.map((post) => (
-              <li>
-                <PostCard post={post} />
-              </li>
-            ))
-          }
-        </ul>
-
-        <nav aria-label="categorie" class="post-categories">
-          <BlogCategories activeCategory={category} />
-        </nav>
-      </div>
-
+    <div slot="left">
+      <ul role="list" class="post-list">
+        {
+          page.data.map((post) => (
+            <li>
+              <PostCard post={post} />
+            </li>
+          ))
+        }
+      </ul>
       <nav aria-label="Pagine" class="post-pager">
         <Pager page={page} />
         <p class="count">{page.data[0].postsCount} Relazioni</p>
       </nav>
     </div>
+    <nav aria-label="categorie" class="post-categories" slot="right">
+      <BlogCategories activeCategory={category} />
+    </nav>
   </BlogLayout>
 </Layout>
 
 <style media="screen">
-  h2 {
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    color: var(--text);
-    margin-bottom: 1rem;
+  .post-pager {
+    margin-top: 3rem;
   }
-
-  .container {
-    display: flex;
-  }
-
-  .pager {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-  }
-  .pager .icon-button {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    border: var(--surfaceAccent);
-  }
-  .pager .icon-button svg {
-    width: 1em;
-  }
-
-  .pager [aria-current="page"] {
-    color: var(--textAccent);
-    font-weight: bold;
-  }
-
   .count {
     margin-top: 1rem;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
   }
 
   @media screen and (width < 60rem) {
-    .container {
-      flex-direction: column;
-    }
-
-    .post-pager {
-      margin-top: 3rem;
-    }
-
     .post-list {
       display: flex;
       flex-direction: column;
       gap: 3rem;
-      margin-bottom: 5rem;
     }
   }
 
   @media screen and (width > 60rem) {
-    .container {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 3rem;
-    }
-
-    .post-categories {
-      flex: 1;
-      position: sticky;
-      top: 6.5rem;
-      z-index: 1;
-    }
-
     .post-list {
-      flex: 3;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 5rem;
       margin-bottom: 5rem;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0rem;
     }
   }
 </style>
