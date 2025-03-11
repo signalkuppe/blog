@@ -77,10 +77,7 @@ if (category) {
         </section>
       </div>
 
-      <nav aria-label="Pagine" class="post-pager">
-        <Pager page={page} />
-        <p class="count">{page.data[0].postsCount} Relazioni</p>
-      </nav>
+      <p class="count">{page.data[0].postsCount} Relazioni</p>
     </div>
     <nav aria-label="categorie" class="post-categories" slot="right">
       <BlogCategories activeCategory={category} isMap />
