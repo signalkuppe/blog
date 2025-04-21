@@ -17,10 +17,6 @@ const description =
 const { hasLostSignal, current, day, ok } = await weatherlink();
 const webcam = current?.webcam;
 
-Astro.response.headers.set(
-  "Cache-Control",
-  "public, max-age=3600, s-maxage=3600"
-);
 ---
 
 <Layout
