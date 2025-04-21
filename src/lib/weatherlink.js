@@ -316,7 +316,7 @@ async function fetchWebcam() {
 
   try {
     const response = await Promise.race([
-      fetch(`https://www.caiseregno.it/webcam_concenedo/webcam_with_logs.php`),
+      fetch(`https://www.caiseregno.it/webcam_concenedo/webcam.php`),
       timeoutPromise,
     ]);
 
