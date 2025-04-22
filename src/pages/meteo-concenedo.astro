@@ -62,7 +62,7 @@ const webcam = current?.webcam;
           </section>
           <details>
             <summary>
-              <h2>La stazione e il clima di Concenedo</h2>
+              <h2>La stazione e il microclima di Concenedo</h2>
             </summary>
             <article class="details-body">
               <aside>
@@ -153,37 +153,11 @@ const webcam = current?.webcam;
         </>
       )
     }
-    <a href="#" onclick="location.reload(true);" class="refresh"
-      ><RefreshIcon aria-hidden="true" /><span class="visually-hidden"
-        >Aggiorna</span
-      ></a
-    >
+   
   </div>
 </Layout>
 
 <style media="screen">
-  .refresh {
-    display: flex;
-    align-items: center;
-    gap: 0.3em;
-    text-decoration: none;
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    padding: 1rem;
-    background: var(--accent);
-    color: var(--accentContrastColor);
-    border-radius: 50%;
-    transition: translate 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-
-  .refresh:active {
-    transform: translate(2px, 2px);
-  }
-
-  .refresh svg {
-    height: 1rem;
-  }
 
   .updated {
     margin-top: 0.5rem;
