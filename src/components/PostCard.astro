@@ -19,24 +19,34 @@ const categorySlug = categories.find(
     width="100"
     height="100"
     loading="lazy"
+    class="mobile-cover"
   />
-  <div class="article-right">
+  <img
+    src={`${post.fields.cover.fields.file.url}?w=800&h=533&fit=thumb&q=90&fm=avif`}
+    alt=""
+    width="800"
+    height="533"
+    loading="lazy"
+    class="desktop-cover"
+  />
+  <div class="article-body">
     <time datetime={new Date(post.fields.date).toISOString().slice(0, 19)}>
       <span class="visually-hidden">Pubblicato il </span>{
         new Date(post.fields.date).toLocaleDateString("it-IT")
       }
     </time>
     <TitleTag class="title">
-      <a href={`/${post.fields.slug}`} data-astro-prefetch
+      <a href={`/${post.fields.slug}`} class="post-link" cdata-astro-prefetch
         >{post.fields.title}</a
       >
     </TitleTag>
-    <p>{post.fields.description}</p>
+    <p class="abstract">{post.fields.description}</p>
     <p>
-      in
-      <a href={`/blog/${categorySlug}`} class="category">
-        <span aria-hidden="true">#</span>{post.fields.category}
-      </a>
+      <object>
+        <a href={`/blog/${categorySlug}`} class="category">
+          <span aria-hidden="true">#</span>{post.fields.category}
+        </a>
+      </object>
     </p>
   </div>
 </article>
@@ -46,9 +56,22 @@ const categorySlug = categories.find(
     display: flex;
     align-items: flex-start;
     gap: 1rem;
+    position: relative;
   }
 
-  article .article-right {
+  article a.post-link:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  @media (hover: hover) {
+    article:hover img {
+      outline: 4px solid var(--textAccent);
+    }
+  }
+
+  article .article-body {
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
@@ -59,34 +82,54 @@ const categorySlug = categories.find(
     line-height: 1.5;
   }
 
-  article a:hover {
-    text-decoration: underline;
-  }
   article img {
+    background: var(--surfaceAccent);
+  }
+
+  article img.mobile-cover {
+    display: block;
     border-radius: 5px;
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
-    background: var(--surfaceAccent);
+  }
+
+  article img.desktop-cover {
+    display: none;
+    border-radius: 5px;
   }
 
   article time {
     font-size: 0.75rem;
   }
 
-  article p {
-    font-size: 0.85rem;
+  article .abstract {
+    font-size: 0.75rem;
     max-width: 50ch;
     text-wrap: balance;
     margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
   }
 
-  article .category {
-    font-size: 0.75rem;
-    display: inline;
+  article a.category {
+    font-size: 0.65rem;
+    display: inline-block;
     color: inherit;
+    position: absolute;
   }
 
   article .category:hover {
     color: var(--textAccent);
+  }
+
+  @media screen and (width > 60rem) {
+    article {
+      flex-direction: column;
+    }
+    article img.desktop-cover {
+      display: block;
+    }
+    article img.mobile-cover {
+      display: none;
+    }
   }
 </style>

@@ -83,20 +83,28 @@ if (page.currentPage > 1 || categoryPage > 1) {
     font-size: 0.85rem;
   }
 
-  @media screen and (width < 60rem) {
+  @media screen and (width < 40rem) {
     .post-list {
       display: flex;
       flex-direction: column;
       gap: 3rem;
+      margin-bottom: 8rem;
+    }
+  }
+
+  @media screen and (width > 40rem) {
+    .post-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 3rem;
+      row-gap: 5rem;
+      margin-bottom: 8rem;
     }
   }
 
   @media screen and (width > 60rem) {
     .post-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      margin-bottom: 5rem;
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 </style>
