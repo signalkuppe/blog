@@ -322,7 +322,7 @@ const { post } = Astro.props;
 
   function drawChart(elevationData) {
     // Simplify dataset using Simplify.js
-    const tolerance = 0.1;
+    const tolerance = 0.05;
     const highQuality = true;
     const simplifiedPoints = simplify(elevationData, tolerance, highQuality);
 
