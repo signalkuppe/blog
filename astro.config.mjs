@@ -5,8 +5,5 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   devToolbar: { enabled: false },
   prefetch: true,
-  experimental: {
-    svg: true,
-  },
   adapter: netlify(),
 });
