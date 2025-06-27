@@ -104,7 +104,6 @@ const { post } = Astro.props;
 <style media="screen">
   img {
     display: block;
-
     background: var(--surfaceAccent);
   }
 
@@ -149,6 +148,10 @@ const { post } = Astro.props;
     bottom: 16px;
     transform: translateX(-50%);
     text-align: center;
+  }
+
+  :global(.pswp__bg[style]) {
+    opacity: 0.9 !important;
   }
 
   a:hover img {

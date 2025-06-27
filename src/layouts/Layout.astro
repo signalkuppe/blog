@@ -2,7 +2,6 @@
 import LayoutCommon from "./LayoutCommon.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import BodyBackground from "../components/BodyBackground.astro";
 
 interface Props {
   title: string;
@@ -30,7 +29,6 @@ const { title, description, ogImage } = Astro.props;
   <footer id="footer">
     <div class="cage"><Footer /></div>
   </footer>
-  <BodyBackground class="svg-background" aria-hidden="true" />
 </LayoutCommon>
 
 <style media="screen">
