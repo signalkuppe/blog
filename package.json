@@ -10,11 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.3.3",
-    "@astrojs/rss": "^4.0.11",
+    "@astrojs/netlify": "^6.4.0",
+    "@astrojs/rss": "^4.0.12",
     "@contentful/rich-text-html-renderer": "^17.0.0",
     "@floating-ui/dom": "^1.6.12",
-    "astro": "^5.7.13",
+    "astro": "^5.10.1",
     "autoprefixer": "^10.4.20",
     "chart.js": "^4.4.6",
     "chartjs-adapter-dayjs-4": "^1.0.4",
