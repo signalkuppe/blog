@@ -38,6 +38,7 @@
     --saturation: 50%;
     --lightness: 50%;
     --accent: hsl(var(--hue) 100% 30%);
+    --accentHover: hsl(var(--hue) 100% 20%);
     --accentContrastColor: hsl(var(--hue) 100% 100%);
     --text: hsl(var(--hue) calc(var(--saturation) / 4) 75%);
     --textAccent: hsl(var(--hue) var(--saturation) 95%);
@@ -98,7 +99,7 @@
   label,
   a {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    color: var(--textAccent);
+    color: var(--text);
   }
 
   input[type="text"],
@@ -126,6 +127,11 @@
   a {
     text-decoration-thickness: 0.1em;
     text-underline-offset: 0.2em;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--textAccent);
   }
 
   button {
@@ -163,7 +169,6 @@
     line-height: 1.1;
   }
 
-  a,
   legend,
   label,
   h1,
@@ -250,6 +255,10 @@
 
   .btn:disabled {
     opacity: 0.5;
+  }
+
+  .btn:hover {
+    background: var(--accentHover);
   }
 
   .hide-scrollbars {
