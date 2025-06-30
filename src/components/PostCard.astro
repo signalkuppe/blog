@@ -43,7 +43,11 @@ const categorySlug = categories.find(
     <p class="abstract">{post.fields.description}</p>
     <p>
       <object>
-        <a href={`/blog/${categorySlug}`} class="category">
+        <a
+          href={`/blog/${categorySlug}`}
+          class="category"
+          aria-label={`Categoria: {post.fields.category}`}
+        >
           <span aria-hidden="true">#</span>{post.fields.category}
         </a>
       </object>

@@ -15,12 +15,7 @@ const dataset = posts.map((post) => ({
 
 <form id="search-form" role="search" data-posts={JSON.stringify(dataset)}>
   <label for="search-input" class="visually-hidden">Cerca un’uscita</label>
-  <input
-    type="text"
-    id="search-input"
-    autocomplete="off"
-    aria-autocomplete="none"
-  />
+  <input type="text" id="search-input" autocomplete="off" />
   <SearchIcon aria-hidden="true" />
   <div id="results"><div id="arrow" aria-hidden="true"></div></div>
 </form>
