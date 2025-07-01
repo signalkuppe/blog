@@ -34,11 +34,7 @@ const { title, description, ogImage } = Astro.props;
 <style media="screen">
   header {
     padding-block: 1.5rem;
-    position: sticky;
-    top: -1px;
-    z-index: 2;
     overflow-x: clip;
-    backdrop-filter: blur(10px);
   }
 
   header.menu-is-open {
@@ -90,14 +86,6 @@ const { title, description, ogImage } = Astro.props;
       header.classList.add("menu-is-open");
     } else {
       header.classList.remove("menu-is-open");
-    }
-  });
-
-  emitter.on("header-sticky-change", (isSticky) => {
-    if (!isSticky) {
-      header.classList.add("remove-sticky");
-    } else {
-      header.classList.remove("remove-sticky");
     }
   });
 
