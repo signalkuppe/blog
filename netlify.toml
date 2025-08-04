@@ -2,3 +2,6 @@
   from = "/portfolio"
   to = "/portfolio/1"
   status = 301
+
+[functions]
+  directory = "src/api"
