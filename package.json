@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "api": "npx netlify functions:serve"
   },
   "dependencies": {
     "@astrojs/netlify": "^6.4.1",
@@ -33,5 +34,8 @@
     "simplify-js": "^1.2.4",
     "slug": "^11.0.0",
     "underscore": "^1.13.7"
+  },
+  "devDependencies": {
+    "netlify-cli": "^23.0.0"
   }
 }

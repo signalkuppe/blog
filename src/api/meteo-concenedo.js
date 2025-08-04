@@ -7,6 +7,7 @@ export const handler = async function (event) {
   try {
     data = await weatherlinkData();
   } catch (error) {
+    errorMessage = JSON.stringify(error);
     throw new Error(`Error fetching weather data: ${errorMessage}`);
   }
 
@@ -17,7 +18,7 @@ export const handler = async function (event) {
     body: JSON.stringify({
       ok: !errorMessage,
       data: response,
-      error: errorMessage ? { message: errorMessage } : null,
+      error: errorMessage || null,
     }),
     headers: {
       "Access-Control-Allow-Origin": "*",
