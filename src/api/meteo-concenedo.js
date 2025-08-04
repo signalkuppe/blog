@@ -1,6 +1,6 @@
 // api per meteo-valsassina
 
-import weatherlinkData from "../lib/weatherlink.js";
+import weatherlinkData from "../../lib/weatherlink.js";
 export const handler = async function (event) {
   let data;
   let errorMessage;
