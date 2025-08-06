@@ -23,6 +23,7 @@ export async function GET() {
     JSON.stringify({
       name: "Concenedo",
       lastUpdate: `${data.current.last_data_day} ${data.current.last_data_hour}`,
+      pressure: parseFloat(data.current.pressure),
       temperature: parseFloat(data.current.temperature),
       temperatureMin: parseFloat(data.day.temperature_min),
       temperatureMinTime: data.day.temperature_min_at,
@@ -38,6 +39,10 @@ export async function GET() {
       windGustTime: data.day.wind_max_at,
       windGustDirection: data.day.wind_max_dir,
       windGustDirectionTime: data.day.wind_max_at,
+      rainDaily: parseFloat(data.current.rain),
+      rainMonthly: parseFloat(data.current.rain_month),
+      rainYearly: parseFloat(data.current.rain_year),
+      rainRate: parseFloat(data.current.rain_rate),
       cords: [45.942644, 9.478628],
     }),
     {
