@@ -35,6 +35,7 @@ export async function GET() {
       humidityMin: parseFloat(data.day.humidity_min),
       humidityMinTime: data.day.humidity_min_at,
       windSpeed: parseFloat(data.current.wind),
+      windDirection: data.current.wind_direction,
       windGust: parseFloat(data.day.wind_max),
       windGustTime: data.day.wind_max_at,
       windGustDirection: data.day.wind_max_dir,
