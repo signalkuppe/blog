@@ -34,7 +34,7 @@ export async function GET() {
       windGustTime: data.day.wind_max_at,
       windGustDirection: data.day.wind_max_dir,
       windGustDirectionTime: data.day.wind_max_at,
-      coords: [45.5631, 9.2842],
+      cords: [45.942644, 9.478628],
     }),
     {
       status: 200,
