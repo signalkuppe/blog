@@ -43,6 +43,7 @@ export async function GET() {
       rainMonthly: parseFloat(data.current.rain_month),
       rainYearly: parseFloat(data.current.rain_year),
       rainRate: parseFloat(data.current.rain_rate),
+      dewPoint: parseFloat(data.current.dew_point),
       cords: [45.942644, 9.478628],
     }),
     {
