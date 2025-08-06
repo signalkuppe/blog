@@ -51,9 +51,11 @@ export async function GET() {
       status: 200,
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0",
         Pragma: "no-cache",
         Expires: "0",
+        "Last-Modified": new Date().toUTCString(),
+        ETag: `"${Date.now()}"`, // Unique ETag for each response
       },
     }
   );
