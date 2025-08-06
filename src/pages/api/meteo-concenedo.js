@@ -1,16 +1,20 @@
 // api per meteo-valsassina
 
 import weatherlinkData from "../../lib/weatherlink.js";
+
 export async function GET() {
   let data;
   try {
     data = await weatherlinkData();
   } catch (error) {
-    console.error("Weatherlink error:", error); // Log the error for debugging
+    console.error("Weatherlink error:", error);
     return new Response(JSON.stringify(error), {
       status: 400,
       headers: {
         "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
       },
     });
   }
@@ -40,6 +44,9 @@ export async function GET() {
       status: 200,
       headers: {
         "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        Pragma: "no-cache",
+        Expires: "0",
       },
     }
   );
