@@ -34,8 +34,5 @@
     "simplify-js": "^1.2.4",
     "slug": "^11.0.0",
     "underscore": "^1.13.7"
-  },
-  "devDependencies": {
-    "netlify-cli": "^23.0.0"
   }
 }
