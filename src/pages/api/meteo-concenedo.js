@@ -1,5 +1,5 @@
 // api per meteo-valsassina
-
+export const prerender = false;
 import weatherlinkData from "../../lib/weatherlink.js";
 
 export async function GET() {
@@ -21,6 +21,7 @@ export async function GET() {
 
   return new Response(
     JSON.stringify({
+      timestamp: Date.now(), // Add this to verify freshness
       name: "Concenedo",
       lastUpdate: `${data.current.last_data_day} ${data.current.last_data_hour}`,
       pressure: parseFloat(data.current.pressure),
