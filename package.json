@@ -11,11 +11,11 @@
     "api": "npx netlify functions:serve"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.4.1",
+    "@astrojs/netlify": "^6.5.7",
     "@astrojs/rss": "^4.0.12",
     "@contentful/rich-text-html-renderer": "^17.0.1",
     "@floating-ui/dom": "^1.7.1",
-    "astro": "^5.11.0",
+    "astro": "^5.13.2",
     "autoprefixer": "^10.4.21",
     "chart.js": "^4.5.0",
     "chartjs-adapter-dayjs-4": "^1.0.4",
