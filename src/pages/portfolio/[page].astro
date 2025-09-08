@@ -101,7 +101,8 @@ const description = "Una raccolta delle mie foto più belle";
       pswpModule: PhotoSwipe,
       showHideAnimationType: "zoom",
       showAnimationDuration: 500,
-      hideAnimationDuration: 250,
+      hideAnimationDuration: 500, // Match durations for a smoother feel
+      bgOpacity: 0.9, // Set background opacity here
     });
     lightbox.on("uiRegister", function () {
       lightbox.pswp.ui.registerElement({
