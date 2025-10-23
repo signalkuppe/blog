@@ -8,7 +8,11 @@ interface Props {
 const { post } = Astro.props;
 
 const renderInlineAsset = (node) => {
-  if (node.nodeType === "embedded-asset-block") {
+  // image
+  if (
+    node.nodeType === "embedded-asset-block" &&
+    node.data.target.fields.file.contentType.startsWith("image/")
+  ) {
     const imgUrl = `https:${node.data.target.fields.file.url}`;
     const imgTitle = node.data.target.fields.title;
     const imgWidth = node.data.target.fields.file.details.image.width;
@@ -24,8 +28,53 @@ const renderInlineAsset = (node) => {
           `;
   }
   if (node.nodeType === "asset-hyperlink") {
-    return `<a href="${node.data.target.fields.file.url}" download="${node.data.target.fields.file.filename}">${node.content[0].value}</a>`;
+    return `
+    <a href="${node.data.target.fields.file.url}" download="${node.data.target.fields.title}" class="download-file">
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        stroke="currentColor"
+        stroke-width="2"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="download-icon"
+      >
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        class="download-spinner"
+      >
+        <style>
+          .download-spinner-animation {
+            transform-origin: center;
+            animation: spinner_svv2 0.75s infinite linear;
+          }
+          @keyframes spinner_svv2 {
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+        </style>
+        <path
+          d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
+          class="download-spinner-animation"
+          fill="currentColor"
+        />
+      </svg>
+      <span>
+      ${node.content[0].value}
+      </span>
+    </a>`;
   }
+  return "";
 };
 
 const options = {
@@ -131,4 +180,79 @@ const body = htmlRenderer.documentToHtmlString(post.fields.body, options);
     aspect-ratio: 16 / 9;
     width: 100%;
   }
+
+  :global(.download-file) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  :global(.download-file .download-spinner) {
+    display: none;
+  }
+
+  :global(.download-file.is-downloading .download-icon) {
+    display: none;
+  }
+  :global(.download-file.is-downloading .download-spinner) {
+    display: block;
+  }
 </style>
+
+<script>
+  import JSZip from "jszip";
+  import { artificialDelay } from "../lib/utils";
+
+  const downloadButton = document.querySelectorAll(".download-file");
+
+  async function downloadAndCompress(file, filename, type) {
+    const remoteFileUrl = file;
+    const name = `${filename}.${type}`;
+
+    try {
+      await artificialDelay(1000);
+      const response = await fetch(remoteFileUrl);
+      const fileData = await response.text();
+      const fileName = `${filename}.zip`;
+      const zip = new JSZip();
+      zip.file(name, fileData);
+      const zipContent = await zip.generateAsync({
+        type: "blob",
+        compression: "DEFLATE",
+        compressionOptions: { level: 9 },
+      });
+      const zipUrl = URL.createObjectURL(zipContent);
+      const link = document.createElement("a");
+      link.href = zipUrl;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(zipUrl);
+    } catch (error) {
+      console.error(
+        "Errore durante il download o la compressione del file:",
+        error
+      );
+    }
+  }
+
+  if (downloadButton.length > 0) {
+    downloadButton.forEach((button) => {
+      button.addEventListener("click", async function (e) {
+        e.preventDefault();
+        const oldText = button.querySelector("span").textContent;
+        button.querySelector("span").textContent = "Scarico il file...";
+        ("Preparo il download...");
+        button.classList.add("is-downloading");
+        await downloadAndCompress(
+          button.getAttribute("href"),
+          button.getAttribute("download"),
+          "gpx"
+        );
+        button.classList.remove("is-downloading");
+        button.querySelector("span").textContent = oldText;
+      });
+    });
+  }
+</script>

@@ -19,7 +19,7 @@ const { post } = Astro.props;
           data-pswp-src={`${photo.fields.file.url}?w=1024&fit=thumb&q=60&fm=avif`}
           data-pswp-width={photo.fields.file.details.image.width}
           data-pswp-height={photo.fields.file.details.image.height}
-          data-pswp-srcset={`${photo.fields.file.url}?w=1200&fit=thumb&q=60&fm=avif 1000w, ${photo.fields.file.url}?w=2500&fit=thumb&q=60&fm=avif 2000w`}
+          data-pswp-srcset={`${photo.fields.file.url}?w=1200&fit=thumb&q=60&fm=avif 1000w, ${photo.fields.file.url}?w=4000&fit=thumb&q=60&fm=avif 2000w`}
         >
           <ResponsiveImage
             src={`${photo.fields.file.url}?w=600&fit=thumb&q=60&fm=avif`}
