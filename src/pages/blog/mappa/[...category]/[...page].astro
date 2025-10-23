@@ -2,9 +2,9 @@
 import "leaflet/dist/leaflet.css";
 import { getData } from "../../../../lib/contentful";
 import { categories, defaultOgImage, siteTitle } from "../../../../constants";
+import InfoIcon from "../../../../icons/Info.svg";
 import Spinner from "../../../../components/Spinner.astro";
 import BlogCategories from "../../../../components/BlogCategories.astro";
-import Pager from "../../../../components/Pager.astro";
 import Layout from "../../../../layouts/Layout.astro";
 import BlogLayout from "../../../../layouts/BlogLayout.astro";
 import { headPageTitle } from "../../../../lib/utils";
@@ -54,6 +54,9 @@ if (category) {
   </Fragment>
   <BlogLayout pageTitle={pageTitle} activeTab="mappa">
     <div slot="left">
+      <p class="hint">
+        <InfoIcon />Usa lo zoom per vedere le attività all'estero
+      </p>
       <div class="map-container">
         <section
           id="map"
@@ -176,6 +179,22 @@ if (category) {
   .count {
     margin-top: 1rem;
     font-size: 0.85rem;
+  }
+
+  .hint {
+    font-size: 0.75rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hint svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    vertical-align: middle;
+    margin-top: -0.15em;
   }
 
   @media screen and (width < 60rem) {
