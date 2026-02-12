@@ -8,7 +8,4 @@ export default defineConfig({
   prefetch: true,
   adapter: netlify(),
   integrations: [mdx()],
-  image: {
-    service: { entrypoint: 'astro/assets/services/noop' }
-  },
 });
