@@ -1,6 +1,6 @@
 ---
 import "leaflet/dist/leaflet.css";
-import { getData } from "../../../../lib/contentful";
+import { getCollection } from 'astro:content';
 import { categories, defaultOgImage, siteTitle } from "../../../../constants";
 import InfoIcon from "../../../../icons/Info.svg";
 import Spinner from "../../../../components/Spinner.astro";
@@ -17,10 +17,15 @@ const { page } = Astro.props;
 const { category, page: categoryPage } = Astro.params;
 
 export async function getStaticPaths({ paginate }) {
-  const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
+  const posts = await getCollection('posts');
+  posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  // Filter posts with location data
+  const postsWithLocation = posts.filter(p => p.data.location);
+
   return [undefined, ...categories].flatMap((cat) => {
-    const filteredPosts = posts.filter((post) => {
-      return cat ? post.fields.category[0] === cat.title : true;
+    const filteredPosts = postsWithLocation.filter((post) => {
+      return cat ? post.data.category[0] === cat.title : true;
     });
     const output = filteredPosts.map((p) => ({
       ...p,
@@ -63,15 +68,15 @@ if (category) {
           aria-abel="Mappa"
           data-markers={JSON.stringify(
             page.data.map((post) => ({
-              id: post.sys.id,
-              title: post.fields.title,
-              description: post.fields.description,
-              slug: post.fields.slug,
-              category: post.fields.category[0],
-              lat: post.fields.location.lat,
-              lon: post.fields.location.lon,
+              id: post.id,
+              title: post.data.title,
+              description: post.data.description,
+              slug: post.slug,
+              category: post.data.category[0],
+              lat: post.data.location.lat,
+              lon: post.data.location.lon,
               image: {
-                url: post.fields.cover.fields.file.url,
+                url: post.data.cover.src.src,
               },
             }))
           )}

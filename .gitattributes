@@ -1,0 +1,2 @@
+src/content/posts/**/*.avif filter=lfs diff=lfs merge=lfs -text
+public/gpx/*.gpx filter=lfs diff=lfs merge=lfs -text

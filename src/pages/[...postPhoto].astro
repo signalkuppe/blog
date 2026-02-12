@@ -1,28 +1,29 @@
 ---
 import PhotoPage from "../components/PhotoPage.astro";
-import { flatten } from "underscore";
-import { postPhotoSlug, validPhotos } from "../lib/utils";
-import { getData } from "../lib/contentful";
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
+  const posts = await getCollection('posts');
 
-  const pages = flatten(
-    posts.map((post) => {
-      const postPhotos = validPhotos(post.fields.gallery);
-      return postPhotos.map((photo, i) => {
-        return {
-          params: { postPhoto: postPhotoSlug(post, photo) },
+  const pages = [];
+
+  for (const post of posts) {
+    if (post.data.gallery && post.data.gallery.length > 0) {
+      const postPhotos = post.data.gallery;
+      postPhotos.forEach((photo, i) => {
+        pages.push({
+          params: { postPhoto: `${post.slug}/photo-${i + 1}` },
           props: {
             photo,
             post,
+            photoIndex: i,
             prev: postPhotos[i - 1],
             next: postPhotos[i + 1],
           },
-        };
+        });
       });
-    })
-  );
+    }
+  }
 
   return pages;
 }
@@ -30,17 +31,18 @@ export async function getStaticPaths() {
 interface Props {
   photo: any;
   post: any;
-  prev;
-  next;
+  photoIndex: number;
+  prev: any;
+  next: any;
 }
 
-const { photo, post, prev, next } = Astro.props;
+const { photo, post, photoIndex, prev, next } = Astro.props;
 ---
 
 <PhotoPage
   photo={photo}
-  backLink={`/${post.fields.slug}#post-gallery`}
-  backLinkText={post.fields.title}
-  nextLink={next ? `/${postPhotoSlug(post, next)}` : null}
-  prevLink={prev ? `/${postPhotoSlug(post, prev)}` : null}
+  backLink={`/${post.slug}#post-gallery`}
+  backLinkText={post.data.title}
+  nextLink={next ? `/${post.slug}/photo-${photoIndex + 2}` : null}
+  prevLink={prev ? `/${post.slug}/photo-${photoIndex}` : null}
 />

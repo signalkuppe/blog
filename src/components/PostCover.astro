@@ -1,26 +1,30 @@
 ---
-import ResponsiveImage from "./ResponsiveImage.astro";
+import { Image } from 'astro:assets';
+
 interface Props {
-  post: any;
+  cover: {
+    src: ImageMetadata;
+    alt: string;
+    width: number;
+    height: number;
+  };
 }
-const { post } = Astro.props;
-const coverBaseUrl = `https:${post.fields.cover.fields.file.url}`;
+
+const { cover } = Astro.props;
 ---
 
 <div class="cover">
-  <ResponsiveImage
-    src={`${coverBaseUrl}?w=4000&q=50&fm=avif`}
-    sizes={{
-      "600": `${coverBaseUrl}?w=1000&q=70&fm=avif`,
-      "1024": `${coverBaseUrl}?w=1400&q=70&fm=avif`,
-      "1600": `${coverBaseUrl}?w=2000&q=70&fm=avif`,
-    }}
-    alt={post.fields.cover.fields.title || ""}
+  <Image
+    src={cover.src}
+    alt={cover.alt}
+    widths={[1000, 1400, 2000, 4000]}
+    formats={['avif', 'webp', 'jpg']}
+    quality={70}
     loading="eager"
     fetchpriority="high"
     class="cover-picture"
   />
-  <p aria-hidden="true" class="caption">{post.fields.cover.fields.title}</p>
+  <p aria-hidden="true" class="caption">{cover.alt}</p>
 </div>
 
 <style media="screen">

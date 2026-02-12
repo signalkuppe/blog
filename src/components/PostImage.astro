@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+}
+
+const { src, alt } = Astro.props;
+const sizes = `(max-width: 720px) 540px, (max-width: 1600px) 1024px, ${src.width}px`;
+---
+
+<picture>
+  <Image
+    src={src}
+    alt={alt}
+    sizes={sizes}
+    widths={[800, 1440, 1600]}
+    formats={['avif', 'webp', 'jpg']}
+    quality={70}
+    loading="lazy"
+    decoding="async"
+  />
+</picture>
+{alt && <p class="img-caption" aria-hidden="true">{alt}</p>}
+
+<style>
+  .img-caption {
+    font-size: 0.75rem;
+    margin-top: 0.4rem;
+    text-align: right;
+  }
+</style>

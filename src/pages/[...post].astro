@@ -1,7 +1,7 @@
 ---
 import { siteTitle } from "../constants";
-import { postGpxTrack, headPageTitle } from "../lib/utils";
-import { getData } from "../lib/contentful";
+import { headPageTitle } from "../lib/utils";
+import { getCollection } from 'astro:content';
 import { newsletterUrl } from "../constants";
 import Layout from "../layouts/Layout.astro";
 import PostHeader from "../components/PostHeader.astro";
@@ -12,9 +12,11 @@ import PostGpx from "../components/PostGpx.astro";
 import PostShare from "../components/PostShare.astro";
 
 export async function getStaticPaths() {
-  const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
+  const posts = await getCollection('posts');
+  posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
   const pages = posts.map((post, i) => ({
-    params: { post: post.fields.slug },
+    params: { post: post.slug },
     props: {
       post,
       prev: posts[i - 1],
@@ -31,37 +33,39 @@ interface Props {
 }
 
 const { post, prev, next } = Astro.props;
-const postGpx = postGpxTrack(post);
+const { Content } = await post.render();
+const postGpxTrack = post.data.gpxTracks?.[0];
 ---
 
 <Layout
-  title={headPageTitle(post.fields.title, siteTitle)}
-  description={post.fields.description}
-  ogImage={`https:${post.fields.cover.fields.file.url}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
+  title={headPageTitle(post.data.title, siteTitle)}
+  description={post.data.description}
+  ogImage={post.data.cover.src.src}
 >
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
-  </Fragment>
   <div class="cage header">
-    <PostHeader post={post} />
+    <PostHeader
+      title={post.data.title}
+      description={post.data.description}
+      date={post.data.date}
+    />
   </div>
 
   <div class="cover">
-    <PostCover post={post} />
+    <PostCover cover={post.data.cover} />
   </div>
 
   <nav aria-label="sezioni" id="post-nav">
     <ul role="list" class="cage">
       <li><a href="#post-body" aria-current="page">Relazione</a></li>
       {
-        post.fields.gallery.length > 0 && (
+        post.data.gallery && post.data.gallery.length > 0 && (
           <li>
             <a href="#post-gallery">Foto</a>
           </li>
         )
       }
       {
-        !!postGpx && (
+        postGpxTrack && (
           <li>
             <a href="#post-gpx">Traccia</a>
           </li>
@@ -76,33 +80,45 @@ const postGpx = postGpxTrack(post);
   <section class="section body" aria-labelledby="post-body">
     <div class="cage">
       <h2 id="post-body" class="visually-hidden">Relazione</h2>
-      <PostBody post={post} />
+      <PostBody>
+        <Content />
+      </PostBody>
     </div>
   </section>
   {
-    post.fields.gallery.length > 0 && (
+    post.data.gallery && post.data.gallery.length > 0 && (
       <section class="section gallery" aria-labelledby="post-gallery">
         <div class="cage">
           <h2 id="post-gallery">Galleria fotografica</h2>
-          <PostGallery post={post} />
+          <PostGallery
+            gallery={post.data.gallery}
+            postSlug={post.slug}
+          />
         </div>
       </section>
     )
   }
   {
-    !!postGpx && (
+    postGpxTrack && (
       <section class="section gpx" aria-labelledby="post-gpx">
         <div class="cage">
           <h2 id="post-gpx">Mappa e tracce</h2>
         </div>
-        <PostGpx post={post} />
+        <PostGpx
+          gpxFile={postGpxTrack.src}
+          slug={post.slug}
+          elevationGain={post.data.elevationGain}
+          distance={post.data.distance}
+          minimumAltitude={post.data.minimumAltitude}
+          maximumAltitude={post.data.maximumAltitude}
+        />
       </section>
     )
   }
   <section class="section share" aria-labelledby="post-share">
     <div class="cage">
       <h2 id="post-share">Stampa e condividi</h2>
-      <PostShare post={post} />
+      <PostShare slug={post.slug} title={post.data.title} />
       <p class="post-newsletter">
         Vuoi rimanere aggiornato sulle nuove uscite? <br /><a
           href={newsletterUrl}>Iscriviti alla newsletter</a
@@ -114,7 +130,7 @@ const postGpx = postGpxTrack(post);
             prev && (
               <li>
                 <span>Uscita precedente</span>
-                <a href={`/${prev.fields.slug}`}>{prev.fields.title}</a>
+                <a href={`/${prev.slug}`}>{prev.data.title}</a>
               </li>
             )
           }
@@ -122,7 +138,7 @@ const postGpx = postGpxTrack(post);
             next && (
               <li>
                 <span>Uscita successiva</span>
-                <a href={`/${next.fields.slug}`}>{next.fields.title}</a>
+                <a href={`/${next.slug}`}>{next.data.title}</a>
               </li>
             )
           }

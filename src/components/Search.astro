@@ -1,15 +1,17 @@
 ---
-import { getData } from "../lib/contentful";
+import { getCollection } from 'astro:content';
 import SearchIcon from "../icons/Search.svg";
 
-const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
+const posts = await getCollection('posts');
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
 const dataset = posts.map((post) => ({
-  title: post.fields.title,
-  slug: post.fields.slug,
-  tags: post.fields.tags,
-  date: post.fields.date,
-  description: post.fields.description,
-  image: post.fields.cover.fields.file.url,
+  title: post.data.title,
+  slug: post.slug,
+  tags: post.data.tags || [],
+  date: post.data.date.toISOString(),
+  description: post.data.description,
+  image: post.data.cover.src.src,
 }));
 ---
 

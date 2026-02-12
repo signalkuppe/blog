@@ -1,18 +1,20 @@
 import rss from "@astrojs/rss";
 import { siteTitle, siteSlogan, prodSiteUrl } from "../constants";
-import { getData } from "../lib/contentful";
-const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
+import { getCollection } from 'astro:content';
 
-export function GET() {
+export async function GET() {
+  const posts = await getCollection('posts');
+  posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
   return rss({
     title: siteTitle,
     description: "Lista delle uscite pubblicate",
     site: prodSiteUrl,
     items: posts.map((post) => ({
-      title: post.fields.title,
-      pubDate: post.fields.date,
-      description: post.fields.description,
-      link: `${prodSiteUrl}/${post.fields.slug}/`,
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: post.data.description,
+      link: `${prodSiteUrl}/${post.slug}/`,
     })),
     customData: `<language>it</language>`,
   });
