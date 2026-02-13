@@ -1,12 +1,10 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 interface Props {
   cover: {
     src: ImageMetadata;
     alt: string;
-    width: number;
-    height: number;
   };
 }
 
@@ -18,7 +16,6 @@ const { cover } = Astro.props;
     src={cover.src}
     alt={cover.alt}
     widths={[1000, 1400, 2000, 4000]}
-    formats={['avif', 'webp', 'jpg']}
     quality={70}
     loading="eager"
     fetchpriority="high"

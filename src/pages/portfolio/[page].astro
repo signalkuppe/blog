@@ -56,8 +56,8 @@ const description = "Una raccolta delle mie foto più belle";
                 href={`/${portfolioPhotoSlug(photo)}`}
                 data-download={photo.data.photo.src.src}
                 data-pswp-src={photo.data.photo.src.src}
-                data-pswp-width={photo.data.photo.width}
-                data-pswp-height={photo.data.photo.height}
+                data-pswp-width={photo.data.photo.src.width}
+                data-pswp-height={photo.data.photo.src.height}
                 data-pswp-srcset={`${photo.data.photo.src.src}?w=1200 1000w, ${photo.data.photo.src.src}?w=2500 2000w`}
               >
                 <PhotoCard photo={photo} />

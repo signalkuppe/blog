@@ -125,7 +125,7 @@ const { links, navLabel } = Astro.props;
 
   function setJsAttributes() {
     navPanel.setAttribute("inert", "");
-    navPanel.setAttribute("aria-role", "dialog");
+    navPanel.setAttribute("role", "dialog");
     openMenuButton.setAttribute("aria-controls", "js-main-menu");
     openMenuButton.setAttribute("aria-expanded", "false");
   }

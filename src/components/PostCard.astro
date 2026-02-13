@@ -1,35 +1,27 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import { categories } from "../constants";
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  post: CollectionEntry<'posts'>;
+  post: CollectionEntry<"posts">;
   TitleTag?: any;
 }
 
 const { post, TitleTag = "h2" } = Astro.props;
 const categorySlug = categories.find(
-  (cat) => cat.title === post.data.category[0]
+  (cat) => cat.title === post.data.category[0],
 )?.slug;
 ---
 
 <article>
   <Image
     src={post.data.cover.src}
-    alt=""
-    width={200}
-    height={200}
+    alt={post.data.cover.alt}
+    widths={[100, 150, 200, 400, 600, 800]}
+    sizes="(max-width: 30rem) 100px, (max-width: 60rem) 120px, 600px"
     loading="lazy"
-    class="mobile-cover"
-  />
-  <Image
-    src={post.data.cover.src}
-    alt=""
-    width={800}
-    height={533}
-    loading="lazy"
-    class="desktop-cover"
+    class="post-cover"
   />
   <div class="article-body">
     <time datetime={post.data.date.toISOString().slice(0, 19)}>
@@ -44,15 +36,13 @@ const categorySlug = categories.find(
     </TitleTag>
     <p class="abstract">{post.data.description}</p>
     <p>
-      <object>
-        <a
-          href={`/blog/${categorySlug}`}
-          class="category"
-          aria-label={`Categoria: ${post.data.category}`}
-        >
-          <span aria-hidden="true">#</span>{post.data.category}
-        </a>
-      </object>
+      <a
+        href={`/blog/${categorySlug}`}
+        class="category"
+        aria-label={`Categoria: ${post.data.category}`}
+      >
+        <span aria-hidden="true">#</span>{post.data.category}
+      </a>
     </p>
   </div>
 </article>
@@ -96,16 +86,21 @@ const categorySlug = categories.find(
     background: var(--surfaceAccent);
   }
 
-  article img.mobile-cover {
+  article img.post-cover {
     display: block;
     border-radius: 5px;
-    aspect-ratio: 1 / 1;
     flex-shrink: 0;
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    aspect-ratio: 1 / 1;
   }
 
-  article img.desktop-cover {
-    display: none;
-    border-radius: 5px;
+  @media screen and (width < 30rem) {
+    article img.post-cover {
+      width: 100px;
+      height: 100px;
+    }
   }
 
   article time {
@@ -135,11 +130,17 @@ const categorySlug = categories.find(
     article {
       flex-direction: column;
     }
-    article img.desktop-cover {
-      display: block;
+    article img.post-cover {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 3;
+      max-width: 600px;
     }
-    article img.mobile-cover {
-      display: none;
+  }
+
+  @media screen and (width > 80rem) {
+    article img.post-cover {
+      max-width: 500px;
     }
   }
 </style>

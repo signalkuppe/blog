@@ -2,7 +2,7 @@
 import { siteTitle } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import { ClientRouter } from "astro:transitions";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import LayoutCommon from "../layouts/LayoutCommon.astro";
 import Spinner from "../components/Spinner.astro";
 import ChevronLeftIcon from "../icons/ChevronLeft.svg";
@@ -68,7 +68,7 @@ const imgSrc = photo.src.src;
         <button
           class="photo-download"
           data-file={imgSrc}
-          data-name={`${photo.alt.replace(/[^a-z0-9]/gi, '-').toLowerCase()}.jpg`}
+          data-name={`${photo.alt.replace(/[^a-z0-9]/gi, "-").toLowerCase()}.jpg`}
           ><DownloadIcon aria-hidden="true" class="download-icon" />
           <Spinner class="loading-indicator" size="1.5rem" />
           <span class="visually-hidden">Scarica la foto</span></button
@@ -84,7 +84,6 @@ const imgSrc = photo.src.src;
           src={photo.src}
           alt={photo.alt}
           widths={[1000, 1400, 2000, photo.width]}
-          formats={['avif', 'webp', 'jpg']}
           quality={70}
           loading="eager"
           fetchpriority="high"

@@ -9,12 +9,48 @@ export const defaultOgImage = "/og-image.jpg";
 export const pageTitleSeparator = "-";
 
 export const categories = [
-  { title: "Alpinismo", slug: "alpinismo" },
-  { title: "Escursionismo", slug: "escursionismo" },
-  { title: "Trail", slug: "trail" },
-  { title: "Trekking", slug: "trekking" },
-  { title: "Scialpinismo", slug: "scialpinismo" },
-  { title: "Viaggi", slug: "viaggi" },
+  {
+    title: "Alpinismo",
+    slug: "alpinismo",
+    icon: "Mountain",
+    emoji: "🧗🏼",
+    color: "white",
+  },
+  {
+    title: "Escursionismo",
+    slug: "escursionismo",
+    icon: "Hiking",
+    emoji: "🥾",
+    color: "white",
+  },
+  {
+    title: "Trail",
+    slug: "trail",
+    icon: "Running",
+    emoji: "🏃",
+    color: "white",
+  },
+  {
+    title: "Trekking",
+    slug: "trekking",
+    icon: "Backpack",
+    emoji: "🏕️",
+    color: "white",
+  },
+  {
+    title: "Scialpinismo",
+    slug: "scialpinismo",
+    icon: "Skiing",
+    emoji: "⛷️",
+    color: "white",
+  },
+  {
+    title: "Viaggi",
+    slug: "viaggi",
+    icon: "Globe",
+    emoji: "🌍",
+    color: "white",
+  },
 ];
 
 export const newsletterUrl =

@@ -11,14 +11,10 @@ const postsCollection = defineCollection({
     cover: z.object({
       src: image(),
       alt: z.string(),
-      width: z.number(),
-      height: z.number(),
-    }).optional(),
+    }),
     gallery: z.array(z.object({
       src: image(),
       alt: z.string(),
-      width: z.number(),
-      height: z.number(),
     })).optional(),
     gpxTracks: z.array(z.object({
       src: z.string(),
@@ -43,8 +39,6 @@ const portfolioCollection = defineCollection({
     photo: z.object({
       src: image(),
       alt: z.string(),
-      width: z.number(),
-      height: z.number(),
     }),
   }),
 });

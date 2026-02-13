@@ -9,6 +9,8 @@ import FigmaLogo from "../logos/figma.astro";
 import TailwindLogo from "../logos/tailwind.astro";
 import Astrologo from "../logos/astrologo.astro";
 import ContentfulLogo from "../logos/contentful.astro";
+import ClaudeLogo from "../logos/claude.astro";
+import OpenAiLogo from "../logos/openai.astro";
 import Cover from "../images/matteo-leoni.png";
 import PageTitle from "../components/PageTitle.astro";
 
@@ -43,6 +45,16 @@ const tools = [
     icon: ContentfulLogo,
     href: "https://www.contentful.com/",
   },
+  {
+    text: "Claude Code",
+    icon: ClaudeLogo,
+    href: "https://claude.com/product/claude-code",
+  },
+  {
+    text: "Codex",
+    icon: OpenAiLogo,
+    href: "https://codexapp.io/",
+  },
 ];
 ---
 
@@ -56,7 +68,7 @@ const tools = [
       src={Cover}
       width="1000"
       height="661"
-      alt=""
+      alt="Ritratto di Matteo, autore di signalkuppe.com"
       decoding="async"
       loading="eager"
     />
@@ -66,16 +78,15 @@ const tools = [
         La <b>montagna</b> è una delle mie più grandi passioni, trasmessami da mio
         padre, che mi ha introdotto a questo affascinante universo. Da quel momento,
         ho continuato a cercare nuove avventure senza sosta. Tra tutte le attività,
-        lo scialpinismo è quella che mi coinvolge di più: affrontare la montagna
-        d'inverno, lontano dai percorsi battuti, scivolando sulla neve. Anche la
-        corsa in montagna e l'alpinismo classico mi regalano una sensazione unica
-        di libertà.
+        lo scialpinismo è quella che mi coinvolge di più: affrontare la montagna d'inverno,
+        lontano dai percorsi battuti, scivolando sulla neve. Anche la corsa in montagna
+        e l'alpinismo classico mi regalano una sensazione unica di libertà.
       </p>
       <p>
-        La mia passione per la <b>meteorologia</b> è iniziata da bambino, quando
-        mi alzavo nel cuore della notte per guardare dalla finestra la neve cadere.
-        Devo ammettere che ancora oggi non ho perso questa abitudine. Ho posizionato
-        una stazione meteo, <a href="/meteo-concenedo" data-astro-prefetch
+        La mia passione per la <b>meteorologia</b> è iniziata da bambino, quando mi
+        alzavo nel cuore della notte per guardare dalla finestra la neve cadere. Devo
+        ammettere che ancora oggi non ho perso questa abitudine. Ho posizionato una
+        stazione meteo, <a href="/meteo-concenedo" data-astro-prefetch
           >qui trovate la pagina con i dati in diretta.</a
         >
       </p>
@@ -92,14 +103,17 @@ const tools = [
 
       <h2>Il mio lavoro</h2>
       <p>
-        Lavoro come <b>front-end engineer,</b> trasformando i design in applicazioni
-        web con un focus particolare sulle performance, l’usabilità e l’accessibilità.
-        Il mio obiettivo è quello di mantenere le cose semplici, cercando di usare
-        il più possibile gli standard del web. <a
+        Lavoro come <b>Front-End Engineer,</b> trasformando i design in applicazioni
+        web con particolare attenzione a performance, usabilità e accessibilità. Il
+        mio obiettivo è mantenere la semplicità, scegliendo di volta in volta la tecnologia
+        più adatta al contesto e alle esigenze del progetto. <br /><br />Integro
+        i nuovi strumenti di <b>intelligenza artificiale</b> nel mio workflow per
+        lavorare in modo più efficiente e offrire soluzioni di maggiore qualità.
+        <a
           aria-label="Il codice sorgente di questo sito su Github"
           href="https://github.com/signalkuppe/blog">Su Github</a
         > potete spluciare il sorgente di questo sito, realizzato con Astro. Solo
-        html, css e javascript, sembra quasi un’eresia di questi tempi 😛
+        html, css e javascript, per un blog rimane la scelta migliore 😉
       </p>
       <h3>Lavoro con</h3>
       <ul role="list">
@@ -121,8 +135,8 @@ const tools = [
         completo delle relazioni.
       </p>
       <p>
-        <a href="/contatti" data-astro-prefetch>Scrivetemi</a> per parlare di un
-        vostro progetto o di montagna!
+        <a href="/contatti" data-astro-prefetch>Scrivetemi</a> per parlare di un vostro
+        progetto o di montagna!
       </p>
     </article>
   </div>
@@ -176,7 +190,7 @@ const tools = [
     font-size: 0.85rem;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 
   p {

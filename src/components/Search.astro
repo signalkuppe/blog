@@ -97,6 +97,20 @@ const dataset = posts.map((post) => ({
     gap: 0.75rem;
     text-decoration: none;
     color: var(--text);
+    padding: 0.5rem;
+    margin: -0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.15s ease;
+  }
+
+  :global(#results a:hover),
+  :global(#results a:focus) {
+    background-color: var(--surfaceAccent);
+    outline: none;
+  }
+
+  :global(#results a.highlighted) {
+    background-color: var(--surfaceAccent);
   }
 
   :global(#results img) {
@@ -104,6 +118,8 @@ const dataset = posts.map((post) => ({
     flex-shrink: 0;
     width: 60px;
     height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
   }
 
   :global(#results div) {
@@ -150,18 +166,48 @@ const dataset = posts.map((post) => ({
   noResults.classList.add("no-results");
   noResults.textContent = "Nessun Risultato";
   let searchResults = [];
+  let selectedIndex = -1; // Track keyboard selection
 
   document.body.appendChild(results); // move out the dom
 
-  trigger.addEventListener("keyup", function (e) {
-    console.log(e.key);
-    const query = e.target.value;
+  trigger.addEventListener("keydown", function (e) {
+    const resultLinks = results.querySelectorAll("a");
 
-    showResults();
-    if (e.key === "Escape") {
+    // Handle arrow key navigation
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (resultLinks.length > 0) {
+        selectedIndex = Math.min(selectedIndex + 1, resultLinks.length - 1);
+        updateHighlight(resultLinks);
+      }
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (resultLinks.length > 0) {
+        selectedIndex = Math.max(selectedIndex - 1, -1);
+        updateHighlight(resultLinks);
+      }
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (selectedIndex >= 0 && resultLinks[selectedIndex]) {
+        resultLinks[selectedIndex].click();
+      }
+    } else if (e.key === "Escape") {
       trigger.value = "";
       hideResults();
+      selectedIndex = -1;
     }
+  });
+
+  trigger.addEventListener("keyup", function (e) {
+    // Skip if it's a navigation key
+    if (["ArrowDown", "ArrowUp", "Enter", "Escape"].includes(e.key)) {
+      return;
+    }
+
+    const query = e.target.value;
+    selectedIndex = -1; // Reset selection on new input
+
+    showResults();
 
     if (query.length > 2) {
       searchResults = posts
@@ -201,6 +247,27 @@ const dataset = posts.map((post) => ({
       }
     }
   });
+
+  function updateHighlight(resultLinks) {
+    // Remove highlight from all items
+    resultLinks.forEach((link, index) => {
+      link.classList.remove("highlighted");
+      link.removeAttribute("id");
+    });
+
+    // Add highlight to selected item
+    if (selectedIndex >= 0 && resultLinks[selectedIndex]) {
+      resultLinks[selectedIndex].classList.add("highlighted");
+      resultLinks[selectedIndex].id = "selected-result";
+      resultLinks[selectedIndex].scrollIntoView({
+        block: "nearest",
+        behavior: "smooth",
+      });
+      trigger.setAttribute("aria-activedescendant", "selected-result");
+    } else {
+      trigger.removeAttribute("aria-activedescendant");
+    }
+  }
 
   function update() {
     computePosition(trigger, results, {
@@ -242,20 +309,29 @@ const dataset = posts.map((post) => ({
         hideNoResults();
         results.appendChild(resultList);
         resultList.innerHTML = "";
-        searchResults.forEach((post) => {
+        searchResults.forEach((post, index) => {
           resultList.insertAdjacentHTML(
             "beforeend",
-            `<li>
-              <a href="/${post.slug}">
+            `<li role="option">
+              <a href="/${post.slug}" data-index="${index}">
                 <img src="${post.image}?w=100&h=100&fm=avif&fit=thumb&q=50" width="60" height="60" alt="" />
                 <div>
                   <p>${post.title}</p>
                   <p>${post.description}</p>
                 </div>
-                
+
               </a>
             </li>`
           );
+        });
+
+        // Add mouse hover support
+        const resultLinks = results.querySelectorAll("a");
+        resultLinks.forEach((link) => {
+          link.addEventListener("mouseenter", function () {
+            selectedIndex = parseInt(this.getAttribute("data-index"));
+            updateHighlight(resultLinks);
+          });
         });
 
         results.addEventListener("keyup", function (e) {
@@ -308,12 +384,14 @@ const dataset = posts.map((post) => ({
     results.setAttribute("inert", "");
     results.blur();
     trigger.setAttribute("aria-expanded", "false");
+    trigger.removeAttribute("aria-activedescendant");
+    selectedIndex = -1; // Reset selection
   }
 
   function setAriaAttributes() {
     results.setAttribute("tabindex", "-1");
     results.setAttribute("inert", "");
-    results.setAttribute("aria-role", "dialog");
+    results.setAttribute("role", "dialog");
     trigger.setAttribute("aria-controls", "results");
     trigger.setAttribute("aria-expanded", "false");
   }

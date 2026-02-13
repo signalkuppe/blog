@@ -1,14 +1,12 @@
 ---
 import "photoswipe/dist/photoswipe.css";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import PhotoDisclaimer from "./PhotoDisclaimer.astro";
 
 interface Props {
   gallery: Array<{
     src: ImageMetadata;
     alt: string;
-    width: number;
-    height: number;
   }>;
   postSlug: string;
 }
@@ -21,18 +19,17 @@ const { gallery, postSlug } = Astro.props;
     gallery.map((photo, index) => (
       <li>
         <a
-          href={`/${postSlug}/photo-${index + 1}`}
+          href={photo.src.src}
           data-download={photo.src.src}
           data-pswp-src={photo.src.src}
-          data-pswp-width={photo.width}
-          data-pswp-height={photo.height}
+          data-pswp-width={photo.src.width}
+          data-pswp-height={photo.src.height}
           data-pswp-srcset={`${photo.src.src}?w=1200 1000w, ${photo.src.src}?w=2000 2000w`}
         >
           <Image
             src={photo.src}
             alt={photo.alt}
             widths={[300, 600]}
-            formats={['avif', 'webp', 'jpg']}
             quality={60}
             loading="lazy"
             decoding="async"

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 interface Props {
   src: ImageMetadata;
@@ -16,13 +16,18 @@ const sizes = `(max-width: 720px) 540px, (max-width: 1600px) 1024px, ${src.width
     alt={alt}
     sizes={sizes}
     widths={[800, 1440, 1600]}
-    formats={['avif', 'webp', 'jpg']}
     quality={70}
     loading="lazy"
     decoding="async"
   />
 </picture>
-{alt && <p class="img-caption" aria-hidden="true">{alt}</p>}
+{
+  alt && (
+    <p class="img-caption" aria-hidden="true">
+      {alt}
+    </p>
+  )
+}
 
 <style>
   .img-caption {
