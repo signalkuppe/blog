@@ -10,7 +10,8 @@
     "astro": "astro",
     "api": "npx netlify functions:serve",
     "deploy:test": "npm run build && netlify deploy --alias test",
-    "deploy:prod": "npm run build && netlify deploy --prod"
+    "deploy:prod": "npm run build && netlify deploy --prod",
+    "generate-post": "node scripts/generate-post.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
@@ -36,6 +37,8 @@
     "underscore": "^1.13.7"
   },
   "devDependencies": {
-    "netlify-cli": "^23.15.1"
+    "glob": "^13.0.3",
+    "netlify-cli": "^23.15.1",
+    "sharp": "^0.34.5"
   }
 }
