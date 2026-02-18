@@ -6,21 +6,18 @@ export const headPageTitle = (title, slogan) => {
   return `${title} ${pageTitleSeparator} ${slogan}`;
 };
 
-export const validPhotos = (photos) =>
-  photos.filter((p) => p && p?.fields && p?.fields?.title);
-
 export const photoSlug = (photo) => {
   try {
-    return slug(`${photo.fields.title}-${photo.sys.id}`);
+    return slug(`${photo.data.title}-${photo.id}`);
   } catch (err) {
     console.log(err);
     return "";
   }
 };
 
-export const postPhotoSlug = (post, photo) => {
+export const postPhotoSlug = (post, photoIndex) => {
   try {
-    return `${post.fields.slug}/${photoSlug(photo)}`;
+    return `${post.data.slug}/photo-${photoIndex + 1}`;
   } catch (err) {
     console.log(err);
     return "";
@@ -29,7 +26,7 @@ export const postPhotoSlug = (post, photo) => {
 
 export const portfolioPhotoSlug = (photo) => {
   try {
-    return `portfolio/${photoSlug(photo)}`;
+    return photoSlug(photo);
   } catch (err) {
     console.log(err);
     return "";
@@ -47,17 +44,7 @@ export const throttle = function (fn, wait) {
   };
 };
 
-export const postGpxTrack = (post) => {
-  try {
-    return `https:${
-      post.fields.gpsTracks.find(
-        (t) => t.fields.file.fileName.indexOf(".gpx") !== -1
-      )?.fields.file.url
-    }`;
-  } catch (err) {
-    return false;
-  }
-};
+// postGpxTrack removed - GPX tracks now handled directly via post.data.gpxTracks
 
 export const getCssVar = (varString) => {
   return getComputedStyle(document.documentElement).getPropertyValue(varString);

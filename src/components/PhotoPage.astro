@@ -2,8 +2,8 @@
 import { siteTitle } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import { ClientRouter } from "astro:transitions";
+import { Image } from "astro:assets";
 import LayoutCommon from "../layouts/LayoutCommon.astro";
-import ResponsiveImage from "../components/ResponsiveImage.astro";
 import Spinner from "../components/Spinner.astro";
 import ChevronLeftIcon from "../icons/ChevronLeft.svg";
 import ChevronRightIcon from "../icons/ChevronRight.svg";
@@ -12,25 +12,25 @@ import DownloadIcon from "../icons/Download.svg";
 
 interface Props {
   photo: any;
-  backLink;
-  backLinkText;
-  prevLink;
-  nextLink;
+  backLink: string;
+  backLinkText: string;
+  prevLink: string | null;
+  nextLink: string | null;
 }
 
 const { photo, backLink, backLinkText, prevLink, nextLink } = Astro.props;
 
-const imgUrl = `https:${photo.fields.file.url}`;
+// Get the image src URL for OG image
+const imgSrc = photo.src.src;
 ---
 
 <LayoutCommon
-  title={headPageTitle(photo.fields.title, siteTitle)}
-  description={photo.fields.title}
-  ogImage={`${imgUrl}?w=1200&h=600&fit=thumb&q=70&fm=jpg`}
+  title={headPageTitle(photo.alt, siteTitle)}
+  description={photo.alt}
+  ogImage={imgSrc}
   ogType="image"
 >
   <Fragment slot="head">
-    <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
     <ClientRouter />
   </Fragment>
   <main>
@@ -67,8 +67,8 @@ const imgUrl = `https:${photo.fields.file.url}`;
         </ul>
         <button
           class="photo-download"
-          data-file={photo.fields.file.url}
-          data-name={photo.fields.file.fileName}
+          data-file={imgSrc}
+          data-name={`${photo.alt.replace(/[^a-z0-9]/gi, "-").toLowerCase()}.jpg`}
           ><DownloadIcon aria-hidden="true" class="download-icon" />
           <Spinner class="loading-indicator" size="1.5rem" />
           <span class="visually-hidden">Scarica la foto</span></button
@@ -80,22 +80,17 @@ const imgUrl = `https:${photo.fields.file.url}`;
           <Spinner size="2rem" />
           <p>Carico la foto</p>
         </div>
-        <ResponsiveImage
-          src={`${imgUrl}?w=&q=60&fm=avif`}
-          sizes={{
-            "600": `${imgUrl}?w=1000&q=70&fm=avif`,
-            "1024": `${imgUrl}?w=1400&q=70&fm=avif`,
-            "1600": `${imgUrl}?w=2000&q=70&fm=avif`,
-          }}
-          alt={photo.fields.title || ""}
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          widths={[1000, 1400, 2000, photo.width]}
+          quality={70}
           loading="eager"
           fetchpriority="high"
-          width={photo.fields.file.details.image.width}
-          height={photo.fields.file.details.image.height}
           class="photo-picture"
         />
       </div>
-      <p class="photo-caption" aria-hidden="true">{photo.fields.title}</p>
+      <p class="photo-caption" aria-hidden="true">{photo.alt}</p>
     </div>
   </main>
 </LayoutCommon>
@@ -267,7 +262,7 @@ const imgUrl = `https:${photo.fields.file.url}`;
 
       downloadButton.classList.add("is-downloading");
       const fileName = downloadButton.getAttribute("data-name");
-      const remoteFileUrl = `https:${downloadButton.getAttribute("data-file")}`;
+      const remoteFileUrl = downloadButton.getAttribute("data-file");
       const response = await fetch(remoteFileUrl);
       const fileData = await response.blob();
       const photoUrl = URL.createObjectURL(fileData);

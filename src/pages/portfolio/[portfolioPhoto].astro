@@ -1,14 +1,14 @@
 ---
 import PhotoPage from "../../components/PhotoPage.astro";
-import { photoSlug, portfolioPhotoSlug, validPhotos } from "../../lib/utils";
-import { getData } from "../../lib/contentful";
+import { portfolioPhotoSlug } from "../../lib/utils";
+import { getCollection } from 'astro:content';
+
 export async function getStaticPaths() {
-  const { portfolio: photos } = await getData({
-    type: "portfolio",
-    sort: "-fields.date",
-  });
-  const pages = validPhotos(photos).map((photo, i) => ({
-    params: { portfolioPhoto: photoSlug(photo) },
+  const photos = await getCollection('portfolio');
+  photos.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  const pages = photos.map((photo, i) => ({
+    params: { portfolioPhoto: portfolioPhotoSlug(photo) },
     props: {
       photo: photo,
       prev: photos[i - 1],
@@ -20,17 +20,17 @@ export async function getStaticPaths() {
 
 interface Props {
   photo: any;
-  next;
-  prev;
+  next: any;
+  prev: any;
 }
 
 const { photo, prev, next } = Astro.props;
 ---
 
 <PhotoPage
-  photo={photo.fields.photo}
+  photo={photo.data.photo}
   backLink={"/portfolio/1"}
   backLinkText="Portfolio"
-  nextLink={next ? portfolioPhotoSlug(next) : null}
-  prevLink={prev ? portfolioPhotoSlug(prev) : null}
+  nextLink={next ? `/portfolio/${portfolioPhotoSlug(next)}` : null}
+  prevLink={prev ? `/portfolio/${portfolioPhotoSlug(prev)}` : null}
 />

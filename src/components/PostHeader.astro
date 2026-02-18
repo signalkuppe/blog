@@ -1,22 +1,24 @@
 ---
 interface Props {
-  post: any;
+  title: string;
+  description: string;
+  date: Date;
 }
 
-const { post } = Astro.props;
+const { title, description, date } = Astro.props;
 ---
 
-<time datetime={new Date(post.fields.date).toISOString().slice(0, 19)}>
+<time datetime={date.toISOString().slice(0, 19)}>
   <span class="visually-hidden">Pubblicato il </span>{
-    new Date(post.fields.date).toLocaleDateString("it-IT", {
+    date.toLocaleDateString("it-IT", {
       year: "numeric",
       month: "long",
       day: "2-digit",
     })
   }
 </time>
-<h1>{post.fields.title}</h1>
-<p>{post.fields.description}</p>
+<h1>{title}</h1>
+<p>{description}</p>
 
 <style media="screen">
   time {

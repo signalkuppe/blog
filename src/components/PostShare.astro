@@ -6,10 +6,10 @@ import PrintIcon from "../icons/Print.svg";
 import { prodSiteUrl } from "../constants";
 
 interface Props {
-  post: any;
+  slug: string;
+  title: string;
 }
-const { post } = Astro.props;
-const title = post.fields.title;
+const { slug, title } = Astro.props;
 const fullPermalink = new URL(Astro.url.pathname, prodSiteUrl);
 const shareLinks = [
   {

@@ -5,21 +5,18 @@ import PhotoCard from "../../components/PhotoCard.astro";
 import {
   headPageTitle,
   portfolioPhotoSlug,
-  validPhotos,
 } from "../../lib/utils";
-import { getData } from "../../lib/contentful";
+import { getCollection } from 'astro:content';
 import Layout from "../../layouts/Layout.astro";
 import Pager from "../../components/Pager.astro";
 import PhotoDisclaimer from "../../components/PhotoDisclaimer.astro";
 import { siteSlogan } from "../../constants";
 
 export async function getStaticPaths({ paginate }) {
-  const { portfolio: photos } = await getData({
-    type: "portfolio",
-    sort: "-fields.date",
-  });
+  const photos = await getCollection('portfolio');
+  photos.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-  return paginate(validPhotos(photos), {
+  return paginate(photos, {
     pageSize: 12,
   });
 }
@@ -44,10 +41,6 @@ const description = "Una raccolta delle mie foto più belle";
   description={description}
   ogImage="/og-image.jpg"
 >
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
-  </Fragment>
-
   <div class="cage">
     <PageTitle subTitle={description}>{pageTitle}</PageTitle>
   </div>
@@ -59,17 +52,13 @@ const description = "Una raccolta delle mie foto più belle";
           return (
             <li>
               <a
-                aria-label={photo.fields.photo.fields.title}
+                aria-label={photo.data.title}
                 href={`/${portfolioPhotoSlug(photo)}`}
-                data-download={photo.fields.photo.fields.file.url}
-                data-pswp-src={`${photo.fields.photo.fields.file.url}?w=1024&fit=thumb&q=60&fm=avif`}
-                data-pswp-width={
-                  photo.fields.photo.fields.file.details.image.width
-                }
-                data-pswp-height={
-                  photo.fields.photo.fields.file.details.image.height
-                }
-                data-pswp-srcset={`${photo.fields.photo.fields.file.url}?w=1200&fit=thumb&q=60&fm=avif 1000w, ${photo.fields.photo.fields.file.url}?w=2500&fit=thumb&q=60&fm=avif 2000w`}
+                data-download={photo.data.photo.src.src}
+                data-pswp-src={photo.data.photo.src.src}
+                data-pswp-width={photo.data.photo.src.width}
+                data-pswp-height={photo.data.photo.src.height}
+                data-pswp-srcset={`${photo.data.photo.src.src}?w=1200 1000w, ${photo.data.photo.src.src}?w=2500 2000w`}
               >
                 <PhotoCard photo={photo} />
               </a>

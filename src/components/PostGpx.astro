@@ -1,21 +1,28 @@
 ---
 import "leaflet/dist/leaflet.css";
-import { postGpxTrack } from "../lib/utils";
 import Spinner from "../components/Spinner.astro";
 import DownloadIcon from "../icons/Download.svg";
+
 interface Props {
-  post: any;
+  gpxFile: string; // e.g., "track.gpx" - filename only
+  slug: string;
+  elevationGain?: number;
+  distance?: number;
+  minimumAltitude?: number;
+  maximumAltitude?: number;
 }
-const { post } = Astro.props;
+
+const { gpxFile, slug, elevationGain, distance, minimumAltitude, maximumAltitude } = Astro.props;
+const gpxUrl = `/gpx/${gpxFile}`;
 ---
 
 <div
   id="map"
-  data-gpx={postGpxTrack(post)}
-  data-elevation-gain={post.fields.elevationGain}
-  data-distance={post.fields.distance}
-  data-minimum-altitude={post.fields.minimumAltitude}
-  data-maximum-altitude={post.fields.maximumAltitude}
+  data-gpx={gpxUrl}
+  data-elevation-gain={elevationGain}
+  data-distance={distance}
+  data-minimum-altitude={minimumAltitude}
+  data-maximum-altitude={maximumAltitude}
 >
   <div class="spinner-container">
     <Spinner size="2rem" />
@@ -42,8 +49,8 @@ const { post } = Astro.props;
   </div>
   <button
     class="btn download-button"
-    data-gpx={postGpxTrack(post)}
-    data-slug={post.fields.slug}
+    data-gpx={gpxUrl}
+    data-slug={slug}
     ><DownloadIcon aria-hidden="true" class="download-icon" />
     <Spinner color="var(--textAccent)" class="download-spinner" />
     <span class="download-text">Scarica la traccia .gpx </span><span

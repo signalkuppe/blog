@@ -1,36 +1,38 @@
 ---
 import "photoswipe/dist/photoswipe.css";
-import ResponsiveImage from "./ResponsiveImage.astro";
+import { Image } from "astro:assets";
 import PhotoDisclaimer from "./PhotoDisclaimer.astro";
-import { postPhotoSlug, validPhotos } from "../lib/utils";
+
 interface Props {
-  post: any;
+  gallery: Array<{
+    src: ImageMetadata;
+    alt: string;
+  }>;
+  postSlug: string;
 }
-const { post } = Astro.props;
+
+const { gallery, postSlug } = Astro.props;
 ---
 
 <ul id="post-gallery">
   {
-    validPhotos(post.fields.gallery).map((photo) => (
+    gallery.map((photo, index) => (
       <li>
         <a
-          href={`/${postPhotoSlug(post, photo)}`}
-          data-download={photo.fields.file.url}
-          data-pswp-src={`${photo.fields.file.url}?w=1024&fit=thumb&q=60&fm=avif`}
-          data-pswp-width={photo.fields.file.details.image.width}
-          data-pswp-height={photo.fields.file.details.image.height}
-          data-pswp-srcset={`${photo.fields.file.url}?w=1200&fit=thumb&q=60&fm=avif 1000w, ${photo.fields.file.url}?w=4000&fit=thumb&q=60&fm=avif 2000w`}
+          href={photo.src.src}
+          data-download={photo.src.src}
+          data-pswp-src={photo.src.src}
+          data-pswp-width={photo.src.width}
+          data-pswp-height={photo.src.height}
+          data-pswp-srcset={`${photo.src.src}?w=1200 1000w, ${photo.src.src}?w=2000 2000w`}
         >
-          <ResponsiveImage
-            src={`${photo.fields.file.url}?w=600&fit=thumb&q=60&fm=avif`}
-            sizes={{
-              "600": `${photo.fields.file.url}?w=300&fit=thumb&q=60&fm=avif`,
-            }}
-            alt={photo.fields.title || ""}
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            widths={[300, 600]}
+            quality={60}
             loading="lazy"
             decoding="async"
-            width={photo.fields.file.details.image.width}
-            height={photo.fields.file.details.image.height}
           />
         </a>
       </li>
@@ -52,8 +54,8 @@ const { post } = Astro.props;
       pswpModule: PhotoSwipe,
       showHideAnimationType: "zoom",
       showAnimationDuration: 500,
-      hideAnimationDuration: 500, // Match durations for a smoother feel
-      bgOpacity: 0.9, // Set background opacity here
+      hideAnimationDuration: 500,
+      bgOpacity: 0.9,
     });
     lightbox.on("uiRegister", function () {
       lightbox.pswp.ui.registerElement({

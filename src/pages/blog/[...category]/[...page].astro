@@ -1,5 +1,5 @@
 ---
-import { getData } from "../../../lib/contentful";
+import { getCollection } from 'astro:content';
 import { categories, defaultOgImage, siteTitle } from "../../../constants";
 import Layout from "../../../layouts/Layout.astro";
 import BlogLayout from "../../../layouts/BlogLayout.astro";
@@ -16,10 +16,12 @@ const { page } = Astro.props;
 const { category, page: categoryPage } = Astro.params;
 
 export async function getStaticPaths({ paginate }) {
-  const { post: posts } = await getData({ type: "post", sort: "-fields.date" });
+  const posts = await getCollection('posts');
+  posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
   return [undefined, ...categories].flatMap((cat) => {
     const filteredPosts = posts.filter((post) => {
-      return cat ? post.fields.category[0] === cat.title : true;
+      return cat ? post.data.category[0] === cat.title : true;
     });
     const output = filteredPosts.map((p) => ({
       ...p,

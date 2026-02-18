@@ -7,16 +7,18 @@ const isWithoutCategory = !categories.find((c) => c.slug === activeCategory);
 
 <ul role="list">
   {
-    categories.map((category) => (
-      <li>
-        <a
-          href={`/blog/${isMap ? "mappa/" : ""}${category.slug}`}
-          aria-current={activeCategory === category.slug ? "page" : null}
-        >
-          {category.title}
-        </a>
-      </li>
-    ))
+    categories.map((category) => {
+      return (
+        <li>
+          <a
+            href={`/blog/${isMap ? "mappa/" : ""}${category.slug}`}
+            aria-current={activeCategory === category.slug ? "page" : null}
+          >
+            {category.title}
+          </a>
+        </li>
+      );
+    })
   }
   <li>
     <a
@@ -48,7 +50,7 @@ const isWithoutCategory = !categories.find((c) => c.slug === activeCategory);
   a:hover,
   a[aria-current="page"] {
     color: var(--textAccent);
-    border-color: var(--accent);
+    border-bottom-color: var(--accent);
   }
 
   a[aria-current="page"] {

@@ -1,38 +1,36 @@
 ---
-import ResponsiveImage from "../components/ResponsiveImage.astro";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  photo: any;
+  photo: CollectionEntry<"portfolio">;
 }
 
 const { photo } = Astro.props;
-const imgUrl = photo.fields.photo.fields.file.url;
 ---
 
 <article>
   <aside>
-    <ResponsiveImage
-      src={`${imgUrl}?w=1210&q=70&fm=avif`}
-      sizes={{
-        "600": `${photo}?w=1000&q=70&fm=avif`,
-      }}
-      alt={photo.fields.photo.fields.title || ""}
+    <Image
+      src={photo.data.photo.src}
+      alt={photo.data.photo.alt}
+      widths={[1000, 1210]}
+      quality={70}
       loading="lazy"
-      width={photo.fields.photo.fields.file.details.image.width}
-      height={photo.fields.photo.fields.file.details.image.height}
     />
   </aside>
 
   <div class="caption">
-    <time datetime={new Date(photo.fields.date).toISOString().slice(0, 19)}>
+    <time datetime={photo.data.date.toISOString().slice(0, 19)}>
       <span class="visually-hidden">Scattata il </span>
-      {new Date(photo.fields.date).toLocaleDateString("it-IT")}
+      {photo.data.date.toLocaleDateString("it-IT")}
     </time>
     <h2 aria-hidden="true">
-      {photo.fields.title}
+      {photo.data.title}
     </h2>
   </div>
 </article>
+
 <style media="screen">
   article {
     width: 100%;

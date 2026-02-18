@@ -1,20 +1,15 @@
 ---
 // @ts-nocheck
 import Layout from "../layouts/Layout.astro";
-import { contentfulClient } from "../lib/contentful";
+import { getCollection } from 'astro:content';
 import PostCard from "../components/PostCard.astro";
 import { siteTitle, siteSlogan, defaultOgImage } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import DoubleChevronRightIcon from "../icons/DoubleChevronRight.svg";
 
-const query = {
-  content_type: "post",
-  include: 1,
-  order: "-fields.date",
-  limit: 6,
-  skip: 0,
-};
-const { items: posts } = await contentfulClient.getEntries(query);
+const allPosts = await getCollection('posts');
+allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = allPosts.slice(0, 6);
 const currentPath = Astro.url.pathname;
 ---
 
@@ -23,9 +18,6 @@ const currentPath = Astro.url.pathname;
   description="Blog personale di Matteo Leoni"
   ogImage={defaultOgImage}
 >
-  <Fragment slot="head">
-    <link rel="preconnect" href="https://images.ctfassets.net/" crossorigin />
-  </Fragment>
   <div class="cage">
     <h1>Piacere Matteo <span aria-hidden="true">👋</span></h1>
     <p class="lead">
