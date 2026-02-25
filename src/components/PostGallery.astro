@@ -107,6 +107,8 @@ const { gallery, postSlug } = Astro.props;
 <style media="screen">
   img {
     display: block;
+    width: 100%;
+    height: 100%;
     background: var(--surfaceAccent);
   }
 
@@ -117,7 +119,7 @@ const { gallery, postSlug } = Astro.props;
   }
 
   ul {
-    --space: 1.5rem;
+    --space: calc(1.5rem - 3px);
     display: block;
     columns: 2;
     column-gap: var(--space);
@@ -153,7 +155,12 @@ const { gallery, postSlug } = Astro.props;
     text-align: center;
   }
 
-  a:hover img {
-    outline: 4px solid var(--textAccent);
+  a {
+    display: block;
+    border: 3px solid transparent;
+  }
+
+  a:hover {
+    border: 3px solid var(--textAccent);
   }
 </style>

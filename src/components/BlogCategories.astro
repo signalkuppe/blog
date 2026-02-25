@@ -14,6 +14,7 @@ const isWithoutCategory = !categories.find((c) => c.slug === activeCategory);
             href={`/blog/${isMap ? "mappa/" : ""}${category.slug}`}
             aria-current={activeCategory === category.slug ? "page" : null}
           >
+            <span aria-hidden="true">#</span>
             {category.title}
           </a>
         </li>
@@ -25,6 +26,7 @@ const isWithoutCategory = !categories.find((c) => c.slug === activeCategory);
       href={`/blog${isMap ? `/mappa` : ""}`}
       aria-current={isWithoutCategory ? "page" : null}
     >
+      <span aria-hidden="true">#</span>
       Tutte
     </a>
   </li>
@@ -41,10 +43,12 @@ const isWithoutCategory = !categories.find((c) => c.slug === activeCategory);
   a {
     font-size: 0.85rem;
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
     border-bottom: 3px solid transparent;
-    color: var(--text);
     width: min-content;
+    color: var(--text);
   }
 
   a:hover,

@@ -87,7 +87,7 @@ const _id = crypto.randomUUID();
   }
 
   .value {
-    font-weight: bold;
+    font-weight: var(--font-bold);
     font-size: 1.25rem;
     line-height: 1;
     color: var(--textAccent);
@@ -186,7 +186,7 @@ const _id = crypto.randomUUID();
     ["blur", (button) => hideTooltip(button)],
   ].forEach(([event, listener]) => {
     buttons.forEach((button) =>
-      button.addEventListener(event, () => listener(button))
+      button.addEventListener(event, () => listener(button)),
     );
   });
 </script>

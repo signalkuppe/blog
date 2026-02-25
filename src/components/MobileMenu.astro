@@ -52,8 +52,8 @@ const { links, navLabel } = Astro.props;
     right: 0;
     top: 0;
     padding: 1.5rem;
-    width: 70%;
-    background: var(--accent);
+    width: 100%;
+    background: var(--surface);
     transform: translate3d(100%, 0, 0);
     display: flex;
     flex-direction: column;
@@ -66,7 +66,7 @@ const { links, navLabel } = Astro.props;
   }
 
   a {
-    color: var(--accentContrastColor);
+    color: var(--text);
     text-decoration: none;
     display: inline-block;
     padding: 0.85rem;
@@ -75,7 +75,7 @@ const { links, navLabel } = Astro.props;
   }
 
   [aria-current="page"] {
-    font-weight: bold;
+    font-weight: var(--font-bold);
     color: var(--textAccent);
     text-decoration-thickness: 3px;
     text-underline-offset: 0.5rem;
@@ -116,6 +116,7 @@ const { links, navLabel } = Astro.props;
 
 <script>
   import { emitter } from "../lib/utils";
+
   const navPanel = document.getElementById(`nav-panel`);
   const openMenuButton = document.getElementById("nav-open");
   const closeMenuButton = document.getElementById("nav-close");
@@ -133,7 +134,7 @@ const { links, navLabel } = Astro.props;
   function trapFocus(element) {
     // get all focusable elements
     const focusableEls = element.querySelectorAll(
-      "a[href]:not([disabled]), button:not([disabled])"
+      "a[href]:not([disabled]), button:not([disabled])",
     );
     // Save first and last focusable elements
     const firstFocusableEl = focusableEls[0];

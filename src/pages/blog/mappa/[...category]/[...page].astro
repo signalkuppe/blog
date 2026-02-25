@@ -1,6 +1,6 @@
 ---
 import "leaflet/dist/leaflet.css";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import { categories, defaultOgImage, siteTitle } from "../../../../constants";
 import InfoIcon from "../../../../icons/Info.svg";
 import Spinner from "../../../../components/Spinner.astro";
@@ -17,11 +17,11 @@ const { page } = Astro.props;
 const { category, page: categoryPage } = Astro.params;
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await getCollection('posts');
+  const posts = await getCollection("posts");
   posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   // Filter posts with location data
-  const postsWithLocation = posts.filter(p => p.data.location);
+  const postsWithLocation = posts.filter((p) => p.data.location);
 
   return [undefined, ...categories].flatMap((cat) => {
     const filteredPosts = postsWithLocation.filter((post) => {
@@ -78,7 +78,7 @@ if (category) {
               image: {
                 url: post.data.cover.src.src,
               },
-            }))
+            })),
           )}
         >
           <Spinner size="2rem" />
@@ -120,7 +120,7 @@ if (category) {
         '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       apikey: "f890f7037bd243ee9602a36c56fc6dc2",
       maxZoom: 22,
-    }
+    },
   ).addTo(mymap);
   L.control
     .zoom({
@@ -278,7 +278,7 @@ if (category) {
 
   .leaflet-popup-content a {
     color: inherit;
-    font-weight: bold;
+    font-weight: var(--font-bold);
   }
 
   .leaflet-container a.leaflet-popup-close-button {

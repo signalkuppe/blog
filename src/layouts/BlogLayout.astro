@@ -27,14 +27,17 @@ const { pageTitle, activeTab } = Astro.props;
     margin-top: 3rem;
   }
 
-  @media screen and (width < 60rem) {
+  @media screen and (width < 65rem) {
     .blog-layout {
       flex-direction: column;
       gap: 3rem;
     }
+    .tabs-parent {
+      padding-bottom: 1rem;
+    }
   }
 
-  @media screen and (width > 60rem) {
+  @media screen and (width > 65rem) {
     .blog-layout {
       gap: 3rem;
       margin-top: 4rem;

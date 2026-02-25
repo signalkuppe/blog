@@ -11,4 +11,9 @@ export default defineConfig({
   image: {
     service: { entrypoint: "astro/assets/services/noop" }, // Disable Astro's built-in image optimization we already use avif
   },
+  vite: {
+    server: {
+      allowedHosts: [".ngrok-free.app"],
+    },
+  },
 });

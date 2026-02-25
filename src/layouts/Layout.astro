@@ -35,6 +35,7 @@ const { title, description, ogImage } = Astro.props;
   header {
     padding-block: 1.5rem;
     overflow-x: clip;
+    border-bottom: 1px solid var(--surfaceAccent);
   }
 
   header.menu-is-open {
@@ -54,6 +55,8 @@ const { title, description, ogImage } = Astro.props;
 
   footer {
     padding-bottom: 6rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--surfaceAccent);
   }
 
   .svg-background {
@@ -79,6 +82,7 @@ const { title, description, ogImage } = Astro.props;
 <script>
   // @ts-nocheck
   import { emitter } from "../lib/utils";
+
   const header = document.getElementById("header");
 
   emitter.on("menu-toggle", (isOpen) => {
@@ -93,7 +97,7 @@ const { title, description, ogImage } = Astro.props;
   var observer = new MutationObserver(function (event) {
     emitter.emit(
       "dark-mode-change",
-      event[0].target.getAttribute("data-theme")
+      event[0].target.getAttribute("data-theme"),
     );
   });
 

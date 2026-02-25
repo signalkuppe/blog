@@ -1,8 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import SearchIcon from "../icons/Search.svg";
 
-const posts = await getCollection('posts');
+const posts = await getCollection("posts");
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const dataset = posts.map((post) => ({
@@ -69,7 +69,8 @@ const dataset = posts.map((post) => ({
     display: none;
     border: var(--borderWidth) solid var(--borderColor);
     border-radius: 15px;
-    max-width: min(30ch, 75vw);
+    max-width: min(40ch, 75vw);
+
     z-index: 1000;
   }
 
@@ -84,6 +85,12 @@ const dataset = posts.map((post) => ({
     border-top-style: solid;
     border-left-width: var(--borderWidth);
     border-left-style: solid;
+  }
+
+  @media screen and (orientation: portrait) {
+    #arrow {
+      transform: rotate(45deg) translateY(-0.5rem);
+    }
   }
 
   :global(#results ul) {
@@ -101,6 +108,7 @@ const dataset = posts.map((post) => ({
     margin: -0.5rem;
     border-radius: 8px;
     transition: background-color 0.15s ease;
+    max-width: 350px;
   }
 
   :global(#results a:hover),
@@ -132,13 +140,22 @@ const dataset = posts.map((post) => ({
   }
 
   :global(#results div p:first-child) {
-    font-weight: bold;
+    font-weight: var(--font-bold);
     font-size: 0.8rem;
     color: var(--textAccent);
     line-height: 1.4;
   }
   :global(#results div p:nth-child(2)) {
     font-size: 0.6rem;
+  }
+
+  :global(#results .results-footer) {
+    font-size: 0.7rem;
+    color: var(--textLight);
+    text-align: center;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--surfaceAccent);
   }
 </style>
 
@@ -166,7 +183,14 @@ const dataset = posts.map((post) => ({
   noResults.classList.add("no-results");
   noResults.textContent = "Nessun Risultato";
   let searchResults = [];
+  let totalResults = 0;
   let selectedIndex = -1; // Track keyboard selection
+  const resultsFooter = document.createElement("p");
+  resultsFooter.classList.add("results-footer");
+
+  function getMaxResults() {
+    return window.matchMedia("(max-width: 40rem)").matches ? 2 : 5;
+  }
 
   document.body.appendChild(results); // move out the dom
 
@@ -210,17 +234,18 @@ const dataset = posts.map((post) => ({
     showResults();
 
     if (query.length > 2) {
-      searchResults = posts
-        .filter(
-          (post) =>
-            post.title.toLowerCase().includes(query.toLowerCase()) ||
-            (post.tags || [])
-              .map((t) => t.toLowerCase())
-              .includes(query.toLowerCase())
-        )
-        .slice(0, 5);
+      const allMatches = posts.filter(
+        (post) =>
+          post.title.toLowerCase().includes(query.toLowerCase()) ||
+          (post.tags || [])
+            .map((t) => t.toLowerCase())
+            .includes(query.toLowerCase()),
+      );
+      totalResults = allMatches.length;
+      searchResults = allMatches.slice(0, getMaxResults());
     } else {
       searchResults = [];
+      totalResults = 0;
     }
 
     search(query);
@@ -321,9 +346,18 @@ const dataset = posts.map((post) => ({
                 </div>
 
               </a>
-            </li>`
+            </li>`,
           );
         });
+
+        // Show footer if there are more results
+        hideFooter();
+        const maxResults = getMaxResults();
+        if (totalResults > maxResults) {
+          const remaining = totalResults - maxResults;
+          resultsFooter.textContent = `Sii più specifico, ci sono ${remaining} risultat${remaining === 1 ? "o" : "i"} in più`;
+          results.appendChild(resultsFooter);
+        }
 
         // Add mouse hover support
         const resultLinks = results.querySelectorAll("a");
@@ -368,6 +402,12 @@ const dataset = posts.map((post) => ({
   function hideResultList() {
     if (results.contains(resultList)) {
       results.removeChild(resultList);
+    }
+  }
+
+  function hideFooter() {
+    if (results.contains(resultsFooter)) {
+      results.removeChild(resultsFooter);
     }
   }
 

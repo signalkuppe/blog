@@ -45,41 +45,46 @@ const categorySlug = categories.find(
       </a>
     </p>
   </div>
+  <a
+    class="card-overlay"
+    href={`/${post.slug}`}
+    aria-label={`Apri il post ${post.data.title}`}></a>
 </article>
 
 <style media="screen">
   article {
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
     gap: 1rem;
     position: relative;
-  }
-
-  article a.post-link:after {
-    content: "";
-    position: absolute;
-    inset: 0;
-  }
-
-  @media (hover: hover) {
-    article:hover img {
-      outline: 4px solid var(--textAccent);
-    }
+    z-index: 0;
+    isolation: isolate;
+    height: 100%;
+    border-bottom: 1px solid var(--surfaceAccent);
+    padding-bottom: 2rem;
   }
 
   article .article-body {
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
+    flex: 1;
   }
 
   article .title {
-    font-size: 1.15rem;
-    line-height: 1.5;
+    font-size: 1.25rem;
+    line-height: 1.25;
+    text-wrap: balance;
   }
 
   .title a {
     color: var(--textAccent);
+    text-decoration: none;
+    font-weight: var(--font-bolder);
+    position: relative;
+    z-index: 2;
+    display: inline-block;
   }
 
   article img {
@@ -96,45 +101,59 @@ const categorySlug = categories.find(
     aspect-ratio: 1 / 1;
   }
 
-  @media screen and (width < 30rem) {
-    article img.post-cover {
-      width: 100px;
-      height: 100px;
-    }
-  }
-
   article time {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
   }
 
   article .abstract {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     max-width: 50ch;
     text-wrap: balance;
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
+    flex: 1;
   }
 
-  article a.category {
+  article .category {
     font-size: 0.65rem;
     display: inline-block;
     color: inherit;
-    position: absolute;
+    font-weight: 400;
+    position: relative;
+    z-index: 2;
   }
 
   article .category:hover {
     color: var(--textAccent);
   }
 
-  @media screen and (width > 60rem) {
+  article .card-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 1;
+  }
+
+  @media screen and (width > 65rem) {
     article {
       flex-direction: column;
+      border: 1px solid var(--surfaceAccent);
+      border-radius: 8px;
+      padding: 1rem;
     }
     article img.post-cover {
       width: 100%;
       height: auto;
       aspect-ratio: 3 / 2;
       max-width: 600px;
+    }
+
+    article:hover {
+      border-color: var(--accent);
+    }
+
+    article .abstract {
+      margin-top: 0.85rem;
     }
   }
 

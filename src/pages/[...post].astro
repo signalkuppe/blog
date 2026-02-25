@@ -1,7 +1,7 @@
 ---
 import { siteTitle } from "../constants";
 import { headPageTitle } from "../lib/utils";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import { newsletterUrl } from "../constants";
 import Layout from "../layouts/Layout.astro";
 import PostHeader from "../components/PostHeader.astro";
@@ -12,7 +12,7 @@ import PostGpx from "../components/PostGpx.astro";
 import PostShare from "../components/PostShare.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  const posts = await getCollection("posts");
   posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   const pages = posts.map((post, i) => ({
@@ -90,10 +90,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
       <section class="section gallery" aria-labelledby="post-gallery">
         <div class="cage">
           <h2 id="post-gallery">Galleria fotografica</h2>
-          <PostGallery
-            gallery={post.data.gallery}
-            postSlug={post.slug}
-          />
+          <PostGallery gallery={post.data.gallery} postSlug={post.slug} />
         </div>
       </section>
     )
@@ -155,7 +152,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
     }
 
     .cover {
-      margin-bottom: 2rem;
+      margin-bottom: 0rem;
     }
 
     .section {
@@ -163,7 +160,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
     }
 
     .body {
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
 
     h2 {
@@ -182,15 +179,17 @@ const postGpxTrack = post.data.gpxTracks?.[0];
       padding: 2rem 0;
       z-index: 2;
       font-size: 0.85rem;
+      border-bottom: 1px solid var(--surfaceAccent);
     }
 
     #post-nav ul {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     #post-nav.is-sticky {
       background: var(--surface);
+      z-index: 10;
     }
 
     #post-nav a {
@@ -245,6 +244,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
   <script>
     //@ts-nocheck
     import { emitter, throttle } from "../lib/utils";
+
     const cover = document.querySelector(".cover");
     const header = document.getElementById("header");
     const sections = document.querySelectorAll(".section");
@@ -293,7 +293,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
           nav.classList.remove("is-sticky");
         }
       },
-      { threshold: [1], rootMargin: `-${headerHeight}px 0px 0px 0px` }
+      { threshold: [1], rootMargin: `-${headerHeight}px 0px 0px 0px` },
     );
 
     navObserver.observe(nav);

@@ -1,15 +1,15 @@
 ---
 // @ts-nocheck
 import Layout from "../layouts/Layout.astro";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import PostCard from "../components/PostCard.astro";
 import { siteTitle, siteSlogan, defaultOgImage } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import DoubleChevronRightIcon from "../icons/DoubleChevronRight.svg";
 
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection("posts");
 allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-const posts = allPosts.slice(0, 6);
+const posts = allPosts.slice(0, 8);
 const currentPath = Astro.url.pathname;
 ---
 
@@ -52,8 +52,8 @@ const currentPath = Astro.url.pathname;
 
 <style media="screen">
   h1 {
-    font-size: 2.25rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
   }
 
   .lead {
@@ -89,25 +89,52 @@ const currentPath = Astro.url.pathname;
     }
   }
 
-  @media screen and (width < 40rem) {
+  @media screen and (width < 48rem) {
     ul {
       display: flex;
       flex-direction: column;
-      gap: 4rem;
+      gap: 2rem;
     }
   }
 
-  @media screen and (width > 40rem) {
+  @media screen and (width > 48rem) {
     ul {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: 1.5rem;
+      align-items: stretch;
     }
   }
 
-  @media screen and (width > 60rem) {
+  @media screen and (width > 65rem) {
     ul {
       grid-template-columns: 1fr 1fr 1fr;
+      align-items: stretch;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    ul li:nth-child(7),
+    ul li:nth-child(8) {
+      display: none;
+    }
+  }
+
+  @media screen and (width > 100rem) {
+    ul {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      align-items: stretch;
+    }
+
+    ul li:nth-child(7),
+    ul li:nth-child(8) {
+      display: block;
+    }
+
+    h1 {
+      font-size: 3rem;
     }
   }
 

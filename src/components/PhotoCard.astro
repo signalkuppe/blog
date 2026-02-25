@@ -34,6 +34,17 @@ const { photo } = Astro.props;
 <style media="screen">
   article {
     width: 100%;
+    border: 1px solid var(--surfaceAccent);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  article:hover {
+    border-color: var(--accent);
   }
 
   .caption {
@@ -42,17 +53,15 @@ const { photo } = Astro.props;
     padding: 0.75rem 0;
   }
 
-  article:hover img {
-  }
-
   aside {
     overflow: hidden;
   }
 
   time {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     display: block;
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.5rem;
+    font-weight: 400;
   }
 
   h2 {
@@ -67,10 +76,7 @@ const { photo } = Astro.props;
     background-size: 400% 400%;
     transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
     display: block;
-  }
-
-  article:hover aside {
-    outline: 4px solid var(--textAccent);
+    border-radius: 5px;
   }
 
   @keyframes gradient {

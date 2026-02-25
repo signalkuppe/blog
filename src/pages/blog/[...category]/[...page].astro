@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import { categories, defaultOgImage, siteTitle } from "../../../constants";
 import Layout from "../../../layouts/Layout.astro";
 import BlogLayout from "../../../layouts/BlogLayout.astro";
@@ -16,7 +16,7 @@ const { page } = Astro.props;
 const { category, page: categoryPage } = Astro.params;
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await getCollection('posts');
+  const posts = await getCollection("posts");
   posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return [undefined, ...categories].flatMap((cat) => {
@@ -85,26 +85,26 @@ if (page.currentPage > 1 || categoryPage > 1) {
     font-size: 0.85rem;
   }
 
-  @media screen and (width < 40rem) {
+  @media screen and (width < 48rem) {
     .post-list {
       display: flex;
       flex-direction: column;
-      gap: 5rem;
+      gap: 1.5rem;
       margin-bottom: 8rem;
     }
   }
 
-  @media screen and (width > 40rem) {
+  @media screen and (width > 48rem) {
     .post-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap: 3rem;
-      row-gap: 5rem;
+      column-gap: 1.5rem;
+      row-gap: 1.5rem;
       margin-bottom: 8rem;
     }
   }
 
-  @media screen and (width > 60rem) {
+  @media screen and (width > 80rem) {
     .post-list {
       grid-template-columns: 1fr 1fr 1fr;
     }

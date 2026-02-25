@@ -48,15 +48,16 @@ const { cover } = Astro.props;
   }
 
   .caption {
-    font-size: 0.85rem;
+    font-size: 1rem;
     grid-area: 1/1;
     z-index: 1;
     background: rgba(0, 0, 0, 0.7);
     color: var(--textAccent);
     padding: 0.25rem 0.85rem;
     place-self: end;
-    font-weight: bold;
+    font-weight: var(--font-bolder);
     background: var(--surface);
+    transform: translate(-0.5rem, -0.5rem);
   }
 
   img.desktop {
@@ -87,8 +88,9 @@ const { cover } = Astro.props;
       aspect-ratio: 16 / 9;
     }
     .caption {
-      font-size: 1.5rem;
+      font-size: 2rem;
       padding: 0.75rem 1.5rem;
+      transform: translate(-1rem, -1rem);
     }
   }
 </style>

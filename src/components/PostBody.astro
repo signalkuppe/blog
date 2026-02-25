@@ -11,10 +11,10 @@
     max-width: 60ch;
   }
   :global(.post-html p) {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
 
-  :global(.post-html b) {
+  :global(.post-html strong) {
     color: var(--textAccent);
   }
 
@@ -35,14 +35,16 @@
   }
   :global(.post-html h3) {
     margin-top: 2rem;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.85rem;
+    color: var(--textAccent);
   }
 
   :global(.post-html .img-caption) {
     font-size: 0.75rem;
     margin-top: 0.4rem;
-
+    font-weight: var(--font-bold);
+    color: var(--textAccent);
     text-align: right;
   }
 
@@ -119,7 +121,7 @@
     } catch (error) {
       console.error(
         "Errore durante il download o la compressione del file:",
-        error
+        error,
       );
     }
   }
@@ -135,7 +137,7 @@
         await downloadAndCompress(
           button.getAttribute("href"),
           button.getAttribute("download"),
-          "gpx"
+          "gpx",
         );
         button.classList.remove("is-downloading");
         button.querySelector("span").textContent = oldText;

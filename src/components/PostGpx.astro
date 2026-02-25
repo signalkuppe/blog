@@ -12,7 +12,14 @@ interface Props {
   maximumAltitude?: number;
 }
 
-const { gpxFile, slug, elevationGain, distance, minimumAltitude, maximumAltitude } = Astro.props;
+const {
+  gpxFile,
+  slug,
+  elevationGain,
+  distance,
+  minimumAltitude,
+  maximumAltitude,
+} = Astro.props;
 const gpxUrl = `/gpx/${gpxFile}`;
 ---
 
@@ -47,10 +54,7 @@ const gpxUrl = `/gpx/${gpxFile}`;
       <span aria-hidden="true">Carico il grafico</span>
     </div>
   </div>
-  <button
-    class="btn download-button"
-    data-gpx={gpxUrl}
-    data-slug={slug}
+  <button class="btn download-button" data-gpx={gpxUrl} data-slug={slug}
     ><DownloadIcon aria-hidden="true" class="download-icon" />
     <Spinner color="var(--textAccent)" class="download-spinner" />
     <span class="download-text">Scarica la traccia .gpx </span><span
@@ -93,7 +97,7 @@ const gpxUrl = `/gpx/${gpxFile}`;
 
   dd {
     color: var(--textAccent);
-    font-weight: bold;
+    font-weight: var(--font-bold);
     font-size: 1.5rem;
     margin-top: -0.5rem;
     margin-bottom: 1rem;
@@ -252,7 +256,7 @@ const gpxUrl = `/gpx/${gpxFile}`;
         attribution:
           '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         zoom: 15,
-      }
+      },
     );
     TILELAYER.addTo(mymap);
 
@@ -299,10 +303,10 @@ const gpxUrl = `/gpx/${gpxFile}`;
       .on("loaded", function (e) {
         mymap.fitBounds(e.target.getBounds());
         const gain = Math.round(
-          correctedElevationGain || e.target.get_elevation_gain()
+          correctedElevationGain || e.target.get_elevation_gain(),
         );
         const distance = Math.round(
-          correctedDistance || e.target.get_distance() / 1000
+          correctedDistance || e.target.get_distance() / 1000,
         );
         const min =
           correctedMimimumAltitude || Math.round(e.target.get_elevation_min());
@@ -438,7 +442,7 @@ const gpxUrl = `/gpx/${gpxFile}`;
     } catch (error) {
       console.error(
         "Errore durante il download o la compressione del file:",
-        error
+        error,
       );
     }
   }
@@ -453,7 +457,7 @@ const gpxUrl = `/gpx/${gpxFile}`;
     await downloadAndCompress(
       downloadButton.getAttribute("data-gpx"),
       downloadButton.getAttribute("data-slug").split("/").pop(),
-      "gpx"
+      "gpx",
     );
     downloadButton.querySelector(".download-text").style.display = "block";
     downloadButton.querySelector(".downloading-text").style.display = "none";
