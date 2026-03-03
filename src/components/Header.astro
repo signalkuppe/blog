@@ -80,6 +80,7 @@ const navLabel = "Sito";
 
   .header {
     gap: 1rem;
+    min-height: 70px;
   }
 
   .back-home-link {
@@ -96,10 +97,23 @@ const navLabel = "Sito";
     background: var(--surfaceAccent);
   }
 
+  .search {
+    min-width: 12rem;
+    min-height: 2.25rem;
+  }
+
+  @media screen and (width < 24rem) {
+    .search {
+      min-width: 9rem;
+    }
+  }
+
   @media screen and (width < 60rem) {
     .mobile-menu {
       display: block;
       order: 2;
+      min-width: 1.5rem;
+      min-height: 1.5rem;
     }
     .desktop-menu {
       display: none;
