@@ -34,6 +34,7 @@ const dataset = posts.map((post) => ({
 <style media="screen">
   form {
     display: grid;
+    width: 12rem;
   }
 
   form svg {
@@ -47,12 +48,12 @@ const dataset = posts.map((post) => ({
     padding: 0.5rem;
     text-indent: 2rem;
     display: block;
-    width: 11rem;
+    width: 100%;
     color: var(--text);
   }
 
   @media screen and (width < 24rem) {
-    form input {
+    form {
       width: 9rem;
     }
   }
