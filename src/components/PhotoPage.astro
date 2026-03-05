@@ -2,7 +2,7 @@
 import { siteTitle } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import { ClientRouter } from "astro:transitions";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import LayoutCommon from "../layouts/LayoutCommon.astro";
 import Spinner from "../components/Spinner.astro";
 import ChevronLeftIcon from "../icons/ChevronLeft.svg";
@@ -22,6 +22,12 @@ const { photo, backLink, backLinkText, prevLink, nextLink } = Astro.props;
 
 // Get the image src URL for OG image
 const imgSrc = photo.src.src;
+const downloadAsset = await getImage({
+  src: photo.src,
+  width: photo.src.width,
+  format: "jpg",
+  quality: 90,
+});
 ---
 
 <LayoutCommon
@@ -67,7 +73,7 @@ const imgSrc = photo.src.src;
         </ul>
         <button
           class="photo-download"
-          data-file={imgSrc}
+          data-file={downloadAsset.src}
           data-name={`${photo.alt.replace(/[^a-z0-9]/gi, "-").toLowerCase()}.jpg`}
           ><DownloadIcon aria-hidden="true" class="download-icon" />
           <Spinner class="loading-indicator" size="1.5rem" />

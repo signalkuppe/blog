@@ -1,5 +1,6 @@
 ---
 import "photoswipe/dist/photoswipe.css";
+import { getImage } from "astro:assets";
 import PageTitle from "../../components/PageTitle.astro";
 import PhotoCard from "../../components/PhotoCard.astro";
 import {
@@ -34,6 +35,24 @@ if (page.currentPage > 1) {
 }
 
 const description = "Una raccolta delle mie foto più belle";
+const galleryItems = await Promise.all(
+  page.data.map(async (photo) => {
+    const lightbox = await getImage({
+      src: photo.data.photo.src,
+      width: 2000,
+      format: "avif",
+      quality: 55,
+    });
+    const download = await getImage({
+      src: photo.data.photo.src,
+      format: "jpg",
+      width: photo.data.photo.src.width,
+      quality: 90,
+    });
+
+    return { photo, lightbox, download };
+  }),
+);
 ---
 
 <Layout
@@ -46,19 +65,18 @@ const description = "Una raccolta delle mie foto più belle";
   </div>
 
   <div class="container">
-    <ul id="photo-gallery">
+      <ul id="photo-gallery">
       {
-        page.data.map((photo) => {
+        galleryItems.map(({ photo, lightbox, download }) => {
           return (
             <li>
               <a
                 aria-label={photo.data.title}
                 href={`/${portfolioPhotoSlug(photo)}`}
-                data-download={photo.data.photo.src.src}
-                data-pswp-src={photo.data.photo.src.src}
-                data-pswp-width={photo.data.photo.src.width}
-                data-pswp-height={photo.data.photo.src.height}
-                data-pswp-srcset={`${photo.data.photo.src.src}?w=1200 1000w, ${photo.data.photo.src.src}?w=2500 2000w`}
+                data-download={download.src}
+                data-pswp-src={lightbox.src}
+                data-pswp-width={lightbox.attributes.width}
+                data-pswp-height={lightbox.attributes.height}
               >
                 <PhotoCard photo={photo} />
               </a>

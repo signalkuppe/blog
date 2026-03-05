@@ -8,9 +8,6 @@ export default defineConfig({
   prefetch: true,
   adapter: netlify(),
   integrations: [mdx()],
-  image: {
-    service: { entrypoint: "astro/assets/services/noop" }, // Disable Astro's built-in image optimization we already use avif
-  },
   vite: {
     server: {
       allowedHosts: [".ngrok-free.app"],

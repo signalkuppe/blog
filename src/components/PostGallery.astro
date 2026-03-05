@@ -1,6 +1,6 @@
 ---
 import "photoswipe/dist/photoswipe.css";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import PhotoDisclaimer from "./PhotoDisclaimer.astro";
 
 interface Props {
@@ -12,19 +12,36 @@ interface Props {
 }
 
 const { gallery, postSlug } = Astro.props;
+const galleryItems = await Promise.all(
+  gallery.map(async (photo) => {
+    const lightbox = await getImage({
+      src: photo.src,
+      width: 2000,
+      format: "avif",
+      quality: 55,
+    });
+    const download = await getImage({
+      src: photo.src,
+      format: "jpg",
+      width: photo.src.width,
+      quality: 90,
+    });
+
+    return { ...photo, lightbox, download };
+  }),
+);
 ---
 
 <ul id="post-gallery">
   {
-    gallery.map((photo, index) => (
+    galleryItems.map((photo) => (
       <li>
         <a
-          href={photo.src.src}
-          data-download={photo.src.src}
-          data-pswp-src={photo.src.src}
-          data-pswp-width={photo.src.width}
-          data-pswp-height={photo.src.height}
-          data-pswp-srcset={`${photo.src.src}?w=1200 1000w, ${photo.src.src}?w=2000 2000w`}
+          href={photo.lightbox.src}
+          data-download={photo.download.src}
+          data-pswp-src={photo.lightbox.src}
+          data-pswp-width={photo.lightbox.attributes.width}
+          data-pswp-height={photo.lightbox.attributes.height}
         >
           <Image
             src={photo.src}
