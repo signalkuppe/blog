@@ -27,9 +27,16 @@ const galleryItems = await Promise.all(
       quality: 90,
     });
 
-    return { ...photo, lightbox, download };
+    const thumbMaxWidth = Math.min(photo.src.width, 720);
+    const thumbWidths = [240, 360, 480, 720, thumbMaxWidth]
+      .filter((width) => width <= thumbMaxWidth)
+      .filter((width, index, arr) => arr.indexOf(width) === index)
+      .sort((a, b) => a - b);
+
+    return { ...photo, lightbox, download, thumbMaxWidth, thumbWidths };
   }),
 );
+const galleryThumbSizes = "(max-width: 40rem) 50vw, (max-width: 70rem) 33vw, 25vw";
 ---
 
 <ul id="post-gallery">
@@ -46,7 +53,9 @@ const galleryItems = await Promise.all(
           <Image
             src={photo.src}
             alt={photo.alt}
-            widths={[300, 600]}
+            width={photo.thumbMaxWidth}
+            widths={photo.thumbWidths}
+            sizes={galleryThumbSizes}
             quality={60}
             loading="lazy"
             decoding="async"

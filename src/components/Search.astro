@@ -341,7 +341,7 @@ const dataset = posts.map((post) => ({
             "beforeend",
             `<li role="option">
               <a href="/${post.slug}" data-index="${index}">
-                <img src="${post.image}?w=100&h=100&fm=avif&fit=thumb&q=50" width="60" height="60" alt="" />
+                <img src="${post.image}?w=80&h=80&fm=avif&fit=thumb&q=45" width="60" height="60" loading="lazy" decoding="async" alt="" />
                 <div>
                   <p>${post.title}</p>
                   <p>${post.description}</p>

@@ -157,7 +157,7 @@ if (category) {
 
     const popupHtml = `
             <div class="popup-wrapper">
-              <img width="80" height="80" src="${marker.image.url}?w=200&h=200&fit=thumb&q=90&fm=avif" alt="" />
+              <img width="80" height="80" loading="lazy" decoding="async" src="${marker.image.url}?w=96&h=96&fit=thumb&q=70&fm=avif" alt="" />
               <div class="popup-right">
                 <a href="/${marker.slug}" class="popup-title">${marker.title}</a>
                 <p>${marker.description}</p>

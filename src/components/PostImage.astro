@@ -7,16 +7,22 @@ interface Props {
 }
 
 const { src, alt } = Astro.props;
-const sizes = `(max-width: 720px) 540px, (max-width: 1600px) 1024px, ${src.width}px`;
+const inlineMaxWidth = Math.min(src.width, 1400);
+const inlineSizes = "(max-width: 720px) calc(100vw - 3rem), (max-width: 1200px) 90vw, 1100px";
+const inlineWidths = [640, 960, 1200, 1400, inlineMaxWidth]
+  .filter((width) => width <= inlineMaxWidth)
+  .filter((width, index, arr) => arr.indexOf(width) === index)
+  .sort((a, b) => a - b);
 ---
 
 <picture>
   <Image
     src={src}
     alt={alt}
-    sizes={sizes}
-    widths={[800, 1440, 1600]}
-    quality={70}
+    width={inlineMaxWidth}
+    sizes={inlineSizes}
+    widths={inlineWidths}
+    quality={65}
     loading="lazy"
     decoding="async"
   />

@@ -7,6 +7,11 @@ interface Props {
 }
 
 const { photo } = Astro.props;
+const cardMaxWidth = Math.min(photo.data.photo.src.width, 900);
+const cardWidths = [320, 480, 640, 800, 900, cardMaxWidth]
+  .filter((width) => width <= cardMaxWidth)
+  .filter((width, index, arr) => arr.indexOf(width) === index)
+  .sort((a, b) => a - b);
 ---
 
 <article>
@@ -14,8 +19,10 @@ const { photo } = Astro.props;
     <Image
       src={photo.data.photo.src}
       alt={photo.data.photo.alt}
-      widths={[1000, 1210]}
-      quality={70}
+      width={cardMaxWidth}
+      widths={cardWidths}
+      sizes="(max-width: 30rem) calc(100vw - 3rem), (max-width: 60rem) calc(50vw - 3rem), calc(33vw - 3rem)"
+      quality={65}
       loading="lazy"
     />
   </aside>

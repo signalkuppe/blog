@@ -28,6 +28,11 @@ const downloadAsset = await getImage({
   format: "jpg",
   quality: 90,
 });
+const displayMaxWidth = Math.min(photo.src.width, 2800);
+const displayWidths = [1000, 1400, 1800, 2200, 2800, displayMaxWidth]
+  .filter((width) => width <= displayMaxWidth)
+  .filter((width, index, arr) => arr.indexOf(width) === index)
+  .sort((a, b) => a - b);
 ---
 
 <LayoutCommon
@@ -89,8 +94,10 @@ const downloadAsset = await getImage({
         <Image
           src={photo.src}
           alt={photo.alt}
-          widths={[1000, 1400, 2000, photo.width]}
-          quality={70}
+          width={displayMaxWidth}
+          widths={displayWidths}
+          sizes="100vw"
+          quality={65}
           loading="eager"
           fetchpriority="high"
           class="photo-picture"
