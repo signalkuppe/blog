@@ -8,7 +8,8 @@ interface Props {
 
 const { src, alt } = Astro.props;
 const inlineMaxWidth = Math.min(src.width, 1400);
-const inlineSizes = "(max-width: 720px) calc(100vw - 3rem), (max-width: 1200px) 90vw, 1100px";
+const inlineSizes =
+  "(max-width: 720px) calc(100vw - 3rem), (max-width: 1200px) 90vw, 1100px";
 const inlineWidths = [640, 960, 1200, 1400, inlineMaxWidth]
   .filter((width) => width <= inlineMaxWidth)
   .filter((width, index, arr) => arr.indexOf(width) === index)
@@ -23,8 +24,7 @@ const inlineWidths = [640, 960, 1200, 1400, inlineMaxWidth]
     sizes={inlineSizes}
     widths={inlineWidths}
     quality={65}
-    loading="lazy"
-    decoding="async"
+    priority
   />
 </picture>
 {

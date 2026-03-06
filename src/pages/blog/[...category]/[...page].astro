@@ -58,9 +58,9 @@ if (page.currentPage > 1 || categoryPage > 1) {
     <div slot="left">
       <ul role="list" class="post-list">
         {
-          page.data.map((post) => (
+          page.data.map((post, i) => (
             <li>
-              <PostCard post={post} />
+              <PostCard post={post} imageProps={{ priority: i <= 5 }} />
             </li>
           ))
         }

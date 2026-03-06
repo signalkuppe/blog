@@ -13,43 +13,31 @@ export const categories = [
     title: "Alpinismo",
     slug: "alpinismo",
     icon: "Mountain",
-    emoji: "🧗🏼",
-    color: "white",
   },
   {
     title: "Escursionismo",
     slug: "escursionismo",
     icon: "Hiking",
-    emoji: "🥾",
-    color: "white",
   },
   {
     title: "Trail",
     slug: "trail",
     icon: "Running",
-    emoji: "🏃",
-    color: "white",
   },
   {
     title: "Trekking",
     slug: "trekking",
     icon: "Backpack",
-    emoji: "🏕️",
-    color: "white",
   },
   {
     title: "Scialpinismo",
     slug: "scialpinismo",
     icon: "Skiing",
-    emoji: "⛷️",
-    color: "white",
   },
   {
     title: "Viaggi",
     slug: "viaggi",
     icon: "Globe",
-    emoji: "🌍",
-    color: "white",
   },
 ];
 

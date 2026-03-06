@@ -3,18 +3,15 @@ import "photoswipe/dist/photoswipe.css";
 import { getImage } from "astro:assets";
 import PageTitle from "../../components/PageTitle.astro";
 import PhotoCard from "../../components/PhotoCard.astro";
-import {
-  headPageTitle,
-  portfolioPhotoSlug,
-} from "../../lib/utils";
-import { getCollection } from 'astro:content';
+import { headPageTitle, portfolioPhotoSlug } from "../../lib/utils";
+import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Pager from "../../components/Pager.astro";
 import PhotoDisclaimer from "../../components/PhotoDisclaimer.astro";
 import { siteSlogan } from "../../constants";
 
 export async function getStaticPaths({ paginate }) {
-  const photos = await getCollection('portfolio');
+  const photos = await getCollection("portfolio");
   photos.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return paginate(photos, {
@@ -65,9 +62,9 @@ const galleryItems = await Promise.all(
   </div>
 
   <div class="container">
-      <ul id="photo-gallery">
+    <ul id="photo-gallery">
       {
-        galleryItems.map(({ photo, lightbox, download }) => {
+        galleryItems.map(({ photo, lightbox, download }, i) => {
           return (
             <li>
               <a
@@ -78,7 +75,7 @@ const galleryItems = await Promise.all(
                 data-pswp-width={lightbox.attributes.width}
                 data-pswp-height={lightbox.attributes.height}
               >
-                <PhotoCard photo={photo} />
+                <PhotoCard photo={photo} imageProps={{ priority: i <= 5 }} />
               </a>
             </li>
           );

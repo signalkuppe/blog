@@ -5,10 +5,11 @@ import type { CollectionEntry } from "astro:content";
 
 interface Props {
   post: CollectionEntry<"posts">;
+  imageProps?: any;
   TitleTag?: any;
 }
 
-const { post, TitleTag = "h2" } = Astro.props;
+const { post, TitleTag = "h2", imageProps = {} } = Astro.props;
 const categorySlug = categories.find(
   (cat) => cat.title === post.data.category[0],
 )?.slug;
@@ -21,8 +22,8 @@ const categorySlug = categories.find(
     widths={[100, 150, 200, 300, 450, 600]}
     sizes="(max-width: 30rem) 100px, (max-width: 65rem) 120px, (max-width: 80rem) 600px, 500px"
     quality={65}
-    loading="lazy"
     class="post-cover"
+    {...imageProps}
   />
   <div class="article-body">
     <time datetime={post.data.date.toISOString().slice(0, 19)}>

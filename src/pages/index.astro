@@ -39,7 +39,11 @@ const currentPath = Astro.url.pathname;
       {
         posts.map((post, i) => (
           <li>
-            <PostCard post={post} TitleTag="h3" />
+            <PostCard
+              post={post}
+              TitleTag="h3"
+              imageProps={{ priority: true }}
+            />
           </li>
         ))
       }

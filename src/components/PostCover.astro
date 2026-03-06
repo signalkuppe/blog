@@ -23,9 +23,8 @@ const heroWidths = [640, 960, 1280, 1600, 2000, 2800].filter(
     widths={heroWidths}
     sizes="100vw"
     quality={60}
-    loading="eager"
-    fetchpriority="high"
     class="cover-picture"
+    priority
   />
   <p aria-hidden="true" class="caption">{cover.alt}</p>
 </div>
