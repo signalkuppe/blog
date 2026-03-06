@@ -58,13 +58,12 @@ const categorySlug = categories.find(
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 1rem;
+
     position: relative;
     z-index: 0;
     isolation: isolate;
     height: 100%;
     border-bottom: 1px solid var(--surfaceAccent);
-    padding-bottom: 2rem;
   }
 
   article .article-body {
@@ -117,12 +116,15 @@ const categorySlug = categories.find(
   }
 
   article .category {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     display: inline-block;
     color: inherit;
     font-weight: 400;
     position: relative;
     z-index: 2;
+    display: block;
+    padding: 1rem;
+    margin: -0.5rem -1rem -0.5rem -1rem;
   }
 
   article .category:hover {
@@ -136,12 +138,23 @@ const categorySlug = categories.find(
     z-index: 1;
   }
 
+  @media screen and (width < 65rem) {
+    article {
+      padding: 1rem;
+      gap: 1.5rem;
+    }
+    article img {
+      margin-left: -1rem;
+    }
+  }
+
   @media screen and (width > 65rem) {
     article {
       flex-direction: column;
       border: 1px solid var(--surfaceAccent);
       border-radius: 8px;
       padding: 1rem;
+      gap: 1rem;
     }
     article img.post-cover {
       width: 100%;

@@ -39,22 +39,23 @@ const { pageTitle, activeTab } = Astro.props;
 
   @media screen and (width > 65rem) {
     .blog-layout {
-      gap: 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(11rem, 18vw, 13rem);
+      column-gap: 3rem;
       margin-top: 4rem;
     }
     .blog-layout-left {
-      flex: 4;
+      min-width: 0;
     }
     .blog-layout-right {
-      flex: 1;
-      justify-self: flex-end;
+      min-width: 0;
+      padding-left: 1.5rem;
     }
     aside {
       position: sticky;
       top: 7.5rem;
       z-index: 1;
-      min-width: 10rem;
-      justify-self: flex-end;
+      width: 100%;
     }
   }
 </style>
