@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "postbuild": "node scripts/generate-lite-gpx.js",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -11,7 +12,8 @@
     "api": "npx netlify functions:serve",
     "deploy:test": "npm run build && netlify deploy --alias test",
     "deploy:prod": "npm run build && netlify deploy --prod",
-    "generate-post": "node scripts/generate-post.js"
+    "generate-post": "node scripts/generate-post.js",
+    "generate-lite-gpx": "node scripts/generate-lite-gpx.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",

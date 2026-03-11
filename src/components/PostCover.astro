@@ -9,8 +9,8 @@ interface Props {
 }
 
 const { cover } = Astro.props;
-const heroMaxWidth = Math.min(cover.src.width, 2800);
-const heroWidths = [640, 960, 1280, 1600, 2000, 2800].filter(
+const heroMaxWidth = Math.min(cover.src.width, 2200);
+const heroWidths = [640, 960, 1280, 1600, 2000, 2200].filter(
   (width) => width <= heroMaxWidth,
 );
 ---
@@ -22,7 +22,7 @@ const heroWidths = [640, 960, 1280, 1600, 2000, 2800].filter(
     width={heroMaxWidth}
     widths={heroWidths}
     sizes="100vw"
-    quality={60}
+    quality={55}
     class="cover-picture"
     priority
   />

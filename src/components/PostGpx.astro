@@ -21,11 +21,12 @@ const {
   maximumAltitude,
 } = Astro.props;
 const gpxUrl = `/gpx/${gpxFile}`;
+const liteGpxUrl = gpxUrl.replace(/\.gpx$/i, "-lite.gpx");
 ---
 
 <div
   id="map"
-  data-gpx={gpxUrl}
+  data-gpx={liteGpxUrl}
   data-elevation-gain={elevationGain}
   data-distance={distance}
   data-minimum-altitude={minimumAltitude}
