@@ -90,7 +90,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
       <section class="section gallery" aria-labelledby="post-gallery">
         <div class="cage">
           <h2 id="post-gallery">Galleria fotografica</h2>
-          <PostGallery gallery={post.data.gallery} postSlug={post.slug} />
+          <PostGallery gallery={post.data.gallery} postId={post.id.split("/")[0]} />
         </div>
       </section>
     )

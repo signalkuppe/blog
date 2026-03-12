@@ -5,10 +5,11 @@ Personal blog about mountain adventures, ski touring, hiking, and alpine photogr
 ## 🏔️ Tech Stack
 
 - **Framework**: [Astro 5](https://astro.build) - Static site generation with content collections
-- **Content**: MDX files with frontmatter, stored in Git with LFS for images
+- **Content**: MDX files with frontmatter and co-located media
 - **Styling**: Custom CSS with CSS variables for theming (dark/light mode)
-- **Hosting**: Netlify (manual deployment from local build)
+- **Hosting**: Netlify
 - **Image Format**: AVIF for optimized file sizes
+- **Original Downloads**: Cloudinary (JPG conversion + attachment delivery)
 - **Maps**: Leaflet with GPX track visualization
 - **Charts**: Chart.js for elevation profiles
 
@@ -109,12 +110,96 @@ maximumAltitude: 2700
 - **Optimization**: Disabled in build (images are pre-optimized)
 - **Alt Text**: Required for accessibility
 
+Why AVIF is kept in Git:
+
+1. AVIF files are the canonical, optimized assets used for page rendering
+2. Keeping them versioned makes local builds deterministic and reproducible
+3. Content and media stay synchronized in the same commit history
+4. Repository size and clone time stay lower than storing large original JPGs
+5. Original-download bandwidth is handled by Cloudinary instead of Netlify
+
 ### GPX Tracks
 
 - **Location**: `public/gpx/`
 - **Format**: Standard GPX files
 - **Usage**: Referenced in post frontmatter via filename
 - **Features**: Interactive map + elevation chart
+
+## 🤖 Script Workflows
+
+### Generate a New Post From JPG Files
+
+Use `scripts/generate-post.js` through:
+
+```bash
+# From project root
+npm run generate-post src/content/posts/YYYY-MM-DD-post-slug
+
+# Or from inside a post folder
+cd src/content/posts/YYYY-MM-DD-post-slug
+npm run generate-post
+```
+
+What it does:
+
+1. Converts JPG files to AVIF (quality 85)
+2. Renames output files to `gallery-0.avif`, `gallery-1.avif`, ...
+3. Picks a random cover image from gallery files
+4. Picks a random inline image from gallery files
+5. Generates a starter MDX file with frontmatter and placeholder sections
+6. Deletes original JPG files after successful conversion
+
+After running the script, update title/description, category, tags, slug, alt text, and optional GPX/location metadata.
+
+### Cloudinary Upload Sync
+
+Use `scripts/upload-originals-cloudinary.js` through:
+
+```bash
+npm run upload-cloudinary-originals
+```
+
+What it does:
+
+1. Scans `src/content/posts` and `src/content/portfolio`
+2. Skips unchanged files when `sha1` + `bytes` + `publicId` match mapping
+3. Uploads only new/changed files
+4. Auto-resizes/compresses files over upload limit (default 10MB) before upload
+5. Retries failed uploads with exponential backoff
+6. Supports chunked uploads for large payloads
+7. Can retry only failed files from the previous run
+8. Writes mapping to `src/data/cloudinary-originals.json`
+9. Writes a run report to `tmp/cloudinary-upload-report.json`
+
+Useful commands:
+
+```bash
+# Full sync
+npm run upload-cloudinary-originals
+
+# Retry only previously failed files
+npm run upload-cloudinary-originals -- --only-failures
+
+# Tune retries/timeouts if needed
+npm run upload-cloudinary-originals -- --max-retries=6 --request-timeout-ms=180000
+```
+
+Required environment variables:
+
+- `CLOUDINARY_CLOUD_NAME`
+- `CLOUDINARY_API_KEY`
+- `CLOUDINARY_API_SECRET`
+
+Optional environment variables:
+
+- `CLOUDINARY_POSTS_FOLDER` (default: `signalkuppe.com/posts`)
+- `CLOUDINARY_PORTFOLIO_FOLDER` (default: `signalkuppe.com/portoflio`)
+- `CLOUDINARY_MAX_RETRIES` (default: `4`)
+- `CLOUDINARY_RETRY_BASE_MS` (default: `1500`)
+- `CLOUDINARY_REQUEST_TIMEOUT_MS` (default: `120000`)
+- `CLOUDINARY_LARGE_FILE_THRESHOLD_BYTES` (default: `10485760`)
+- `CLOUDINARY_CHUNK_SIZE_BYTES` (default: `6291456`)
+- `CLOUDINARY_MAX_UPLOAD_FILE_BYTES` (default: `10485760`)
 
 ## 🎨 Features
 
@@ -155,28 +240,21 @@ maximumAltitude: 2700
 |---------|-------------|
 | `npm run dev` | Start dev server at `localhost:4321` |
 | `npm run build` | Build production site to `./dist/` |
+| `npm run build:deploy` | Upload Cloudinary originals, then build |
 | `npm run preview` | Preview production build locally |
 | `npm run astro` | Run Astro CLI commands |
+| `npm run deploy:test` | Upload originals, build, deploy test alias |
+| `npm run deploy:prod` | Upload originals, build, deploy production |
+| `npm run generate-post` | Generate post starter content from JPG files |
+| `npm run upload-cloudinary-originals` | Upload/sync originals to Cloudinary |
 
 ## 🚢 Deployment
 
-The site uses **manual deployment** to Netlify to avoid build timeouts with large image assets.
-
-### Initial Setup
-
-The Netlify CLI is installed locally:
-
-```bash
-# Already installed in package.json
-npm install
-```
+Deployment is done with Netlify CLI from the local machine.
 
 ### Deploy Commands
 
 ```bash
-# Draft deploy (temporary preview URL)
-npm run deploy:draft
-
 # Test deploy (stable alias URL: test--signalkuppe.netlify.app)
 npm run deploy:test
 
@@ -186,32 +264,22 @@ npm run deploy:prod
 
 ### Deployment Process
 
-1. **Local Build**: Site builds locally with full Node.js resources (4GB memory)
-2. **Netlify CLI**: Uploads only changed files (delta uploads)
-3. **First Deploy**: ~7GB upload (all images)
-4. **Subsequent Deploys**: Only changed files (~10-50MB typically)
+1. `upload-originals-cloudinary` syncs new/changed originals to Cloudinary
+2. `astro build` creates `dist/`
+3. Netlify CLI deploys the generated output
 
-### Deploy Scripts Explained
+### Why Cloudinary for Original Downloads
 
-- **`deploy:draft`**: Creates temporary preview with random URL
-  - Use for: Quick testing
-  - URL format: `[random-hash]--signalkuppe.netlify.app`
+1. Netlify bandwidth was dominated by large original photo downloads from lightbox
+2. Astro-generated page images remain optimized for viewing (AVIF/WebP)
+3. Original download traffic is offloaded to Cloudinary CDN
+4. Download links use Cloudinary transformations to force JPG and attachment behavior
+5. Upload script is incremental, so deploys do not re-upload unchanged media
 
-- **`deploy:test`**: Creates stable test environment
-  - Use for: Extended testing, sharing with others
-  - URL format: `test--signalkuppe.netlify.app`
-  - Same URL on every deploy
+Cloudinary folder strategy:
 
-- **`deploy:prod`**: Deploys to production
-  - Use for: Going live
-  - URL: `www.signalkuppe.com`
-
-### Why Manual Deployment?
-
-- **Build Timeouts**: Netlify's build environment times out with 7GB of images
-- **Memory Limits**: Local machine has more memory for image processing
-- **Faster Iterations**: Build locally, test, then deploy
-- **Delta Uploads**: Only changed files upload (much faster after first deploy)
+- Posts: `signalkuppe.com/posts/<post-folder>/<file>`
+- Portfolio: `signalkuppe.com/portoflio/<id>/photo`
 
 ## ⚙️ Configuration
 
@@ -219,7 +287,7 @@ npm run deploy:prod
 
 ```toml
 [build]
-  command = "npm run build"
+  command = "npm run build:deploy"
   publish = "dist"
 
 [build.environment]
@@ -296,7 +364,7 @@ npm run build
 - **Lazy Loading**: Images below fold
 - **Code Splitting**: Automatic via Astro
 - **CSS**: Scoped component styles
-- **Prefetch**: Automatic link prefetching
+- **Original Downloads**: Served from Cloudinary (JPG attachment delivery)
 
 ## 📄 License
 

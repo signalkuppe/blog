@@ -9,6 +9,11 @@ import Layout from "../../layouts/Layout.astro";
 import Pager from "../../components/Pager.astro";
 import PhotoDisclaimer from "../../components/PhotoDisclaimer.astro";
 import { siteSlogan } from "../../constants";
+import {
+  cloudinaryResponsiveImage,
+  getCloudinaryPortfolioOriginalUrl,
+  getCloudinaryPortfolioViewUrl,
+} from "../../lib/cloudinary-originals";
 
 export async function getStaticPaths({ paginate }) {
   const photos = await getCollection("portfolio");
@@ -34,18 +39,36 @@ if (page.currentPage > 1) {
 const description = "Una raccolta delle mie foto più belle";
 const galleryItems = await Promise.all(
   page.data.map(async (photo) => {
-    const lightbox = await getImage({
-      src: photo.data.photo.src,
-      width: 2000,
-      format: "avif",
-      quality: 55,
-    });
-    const download = await getImage({
-      src: photo.data.photo.src,
-      format: "jpg",
-      width: photo.data.photo.src.width,
-      quality: 90,
-    });
+    const cloudinaryView = getCloudinaryPortfolioViewUrl(photo.id);
+    const lightboxMaxWidth = Math.min(photo.data.photo.src.width, 2400);
+    const lightboxWidths = [720, 1080, 1440, 1800, 2200, lightboxMaxWidth]
+      .filter((width) => width <= lightboxMaxWidth)
+      .filter((width, itemIndex, arr) => arr.indexOf(width) === itemIndex)
+      .sort((a, b) => a - b);
+    const lightbox = cloudinaryView
+      ? {
+          ...cloudinaryResponsiveImage(cloudinaryView, lightboxWidths, "auto"),
+          attributes: {
+            width: photo.data.photo.src.width,
+            height: photo.data.photo.src.height,
+          },
+          sizes: "100vw",
+        }
+      : await getImage({
+          src: photo.data.photo.src,
+          width: 2000,
+          format: "avif",
+          quality: 55,
+        });
+    const cloudinaryDownload = getCloudinaryPortfolioOriginalUrl(photo.id);
+    const download = cloudinaryDownload
+      ? { src: cloudinaryDownload }
+      : await getImage({
+          src: photo.data.photo.src,
+          format: "jpg",
+          width: photo.data.photo.src.width,
+          quality: 90,
+        });
 
     return { photo, lightbox, download };
   }),
@@ -72,6 +95,8 @@ const galleryItems = await Promise.all(
                 href={`/${portfolioPhotoSlug(photo)}`}
                 data-download={download.src}
                 data-pswp-src={lightbox.src}
+                data-pswp-srcset={lightbox.srcset}
+                data-pswp-sizes={lightbox.sizes}
                 data-pswp-width={lightbox.attributes.width}
                 data-pswp-height={lightbox.attributes.height}
               >
