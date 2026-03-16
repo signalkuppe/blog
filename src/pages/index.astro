@@ -6,7 +6,6 @@ import PostCard from "../components/PostCard.astro";
 import { siteTitle, siteSlogan, defaultOgImage } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import DoubleChevronRightIcon from "../icons/DoubleChevronRight.svg";
-
 const allPosts = await getCollection("posts");
 allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const posts = allPosts.slice(0, 8);

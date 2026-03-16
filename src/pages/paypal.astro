@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { headPageTitle } from "../lib/utils";
+import { siteTitle, defaultOgImage } from "../constants";
+---
+
+<Layout
+  title={headPageTitle("Grazie per il supporto", siteTitle)}
+  description="Grazie per aver supportato il progetto con una donazione."
+  ogImage={defaultOgImage}
+>
+  <div class="cage">
+    <h1>Grazie di cuore!</h1>
+    <p>
+      Il tuo supporto aiuta a mantenere questo sito online, senza pubblicita e
+      sempre aggiornato.
+    </p>
+    <p>
+      Ogni contributo, anche piccolo, fa davvero la differenza per coprire i
+      costi di gestione e continuare a pubblicare nuovi contenuti.
+    </p>
+    <p>
+      Grazie ancora per il tuo aiuto e per far parte di questa comunita.
+    </p>
+    <p><a href="/">Torna alla homepage</a></p>
+  </div>
+</Layout>
+
+<style>
+  .cage {
+    max-width: 70ch;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 0.9rem;
+  }
+</style>

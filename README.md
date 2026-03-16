@@ -5,9 +5,9 @@ Personal blog about mountain adventures, ski touring, hiking, and alpine photogr
 ## 🏔️ Tech Stack
 
 - **Framework**: [Astro 5](https://astro.build) - Static site generation with content collections
-- **Content**: MDX files with frontmatter, stored in Git with LFS for images
+- **Content**: MDX files with frontmatter and co-located media
 - **Styling**: Custom CSS with CSS variables for theming (dark/light mode)
-- **Hosting**: Netlify (manual deployment from local build)
+- **Hosting**: Netlify
 - **Image Format**: AVIF for optimized file sizes
 - **Maps**: Leaflet with GPX track visualization
 - **Charts**: Chart.js for elevation profiles
@@ -109,12 +109,45 @@ maximumAltitude: 2700
 - **Optimization**: Disabled in build (images are pre-optimized)
 - **Alt Text**: Required for accessibility
 
+Why AVIF is kept in Git:
+
+1. AVIF files are the canonical, optimized assets used for page rendering
+2. Keeping them versioned makes local builds deterministic and reproducible
+3. Content and media stay synchronized in the same commit history
+4. Repository size and clone time stay lower than storing large original JPGs
+
 ### GPX Tracks
 
 - **Location**: `public/gpx/`
 - **Format**: Standard GPX files
 - **Usage**: Referenced in post frontmatter via filename
 - **Features**: Interactive map + elevation chart
+
+## 🤖 Script Workflows
+
+### Generate a New Post From JPG Files
+
+Use `scripts/generate-post.js` through:
+
+```bash
+# From project root
+npm run generate-post src/content/posts/YYYY-MM-DD-post-slug
+
+# Or from inside a post folder
+cd src/content/posts/YYYY-MM-DD-post-slug
+npm run generate-post
+```
+
+What it does:
+
+1. Converts JPG files to AVIF (quality 85)
+2. Renames output files to `gallery-0.avif`, `gallery-1.avif`, ...
+3. Picks a random cover image from gallery files
+4. Picks a random inline image from gallery files
+5. Generates a starter MDX file with frontmatter and placeholder sections
+6. Deletes original JPG files after successful conversion
+
+After running the script, update title/description, category, tags, slug, alt text, and optional GPX/location metadata.
 
 ## 🎨 Features
 
@@ -157,26 +190,17 @@ maximumAltitude: 2700
 | `npm run build` | Build production site to `./dist/` |
 | `npm run preview` | Preview production build locally |
 | `npm run astro` | Run Astro CLI commands |
+| `npm run deploy:test` | Build and deploy test alias |
+| `npm run generate-post` | Generate post starter content from JPG files |
+| `npm run deploy:prod` | Build and deploy production |
 
 ## 🚢 Deployment
 
-The site uses **manual deployment** to Netlify to avoid build timeouts with large image assets.
-
-### Initial Setup
-
-The Netlify CLI is installed locally:
-
-```bash
-# Already installed in package.json
-npm install
-```
+Deployment is done with Netlify CLI from the local machine.
 
 ### Deploy Commands
 
 ```bash
-# Draft deploy (temporary preview URL)
-npm run deploy:draft
-
 # Test deploy (stable alias URL: test--signalkuppe.netlify.app)
 npm run deploy:test
 
@@ -186,32 +210,8 @@ npm run deploy:prod
 
 ### Deployment Process
 
-1. **Local Build**: Site builds locally with full Node.js resources (4GB memory)
-2. **Netlify CLI**: Uploads only changed files (delta uploads)
-3. **First Deploy**: ~7GB upload (all images)
-4. **Subsequent Deploys**: Only changed files (~10-50MB typically)
-
-### Deploy Scripts Explained
-
-- **`deploy:draft`**: Creates temporary preview with random URL
-  - Use for: Quick testing
-  - URL format: `[random-hash]--signalkuppe.netlify.app`
-
-- **`deploy:test`**: Creates stable test environment
-  - Use for: Extended testing, sharing with others
-  - URL format: `test--signalkuppe.netlify.app`
-  - Same URL on every deploy
-
-- **`deploy:prod`**: Deploys to production
-  - Use for: Going live
-  - URL: `www.signalkuppe.com`
-
-### Why Manual Deployment?
-
-- **Build Timeouts**: Netlify's build environment times out with 7GB of images
-- **Memory Limits**: Local machine has more memory for image processing
-- **Faster Iterations**: Build locally, test, then deploy
-- **Delta Uploads**: Only changed files upload (much faster after first deploy)
+1. `astro build` creates `dist/`
+2. Netlify CLI deploys the generated output
 
 ## ⚙️ Configuration
 
@@ -296,7 +296,6 @@ npm run build
 - **Lazy Loading**: Images below fold
 - **Code Splitting**: Automatic via Astro
 - **CSS**: Scoped component styles
-- **Prefetch**: Automatic link prefetching
 
 ## 📄 License
 

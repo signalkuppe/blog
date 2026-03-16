@@ -1,0 +1,173 @@
+---
+const paypalDonateUrl =
+  "https://www.paypal.com/donate/?hosted_button_id=77MXKAB84XP8L";
+---
+
+<aside id="donation-banner" class="donation-banner" hidden>
+  <div class="donation-banner-inner">
+    <button
+      type="button"
+      id="donation-banner-close"
+      class="donation-banner-close"
+      aria-label="Chiudi banner donazione"
+    >
+      ×
+    </button>
+    <p class="donation-banner-title"><strong>Ciao!</strong></p>
+    <p>
+      Mantengo questo sito <b>senza pubblicità</b> perché preferisco che rimanga pulito,
+      veloce e piacevole da usare per tutti. Ogni giorno riceve molti visitatori e
+      questo mi fa davvero piacere, ma allo stesso tempo comporta anche <b
+        >costi di gestione</b
+      > (server, manutenzione, aggiornamenti).
+    </p>
+    <p>
+      Per questo motivo ho deciso di aggiungere la possibilità di fare una
+      <b>donazione tramite PayPal</b>. Non è assolutamente obbligatorio, ma se
+      il sito ti è utile e vuoi contribuire a mantenerlo online e senza
+      pubblicità, anche un piccolo contributo può fare la differenza.
+    </p>
+    <p>
+      Grazie di cuore a chi deciderà di supportare il progetto, <b
+        >non ti mosterò più questo banner in futuro.</b
+      >
+    </p>
+    <div class="donation-banner-actions">
+      <a href={paypalDonateUrl} target="_blank" rel="noopener" class="btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154.728 190.5">
+          <path
+            fill="#001c64"
+            d="M60.529 38.103a5.49 5.49 0 0 0-5.423 4.633l-9.013 57.15-8.281 52.514-.005.044.01-.044 8.281-52.514c.421-2.669 2.719-4.633 5.42-4.633h26.404c26.573 0 49.127-19.387 53.246-45.658.314-1.996.482-3.973.52-5.924v-.003h-.003c-6.753-3.543-14.683-5.565-23.372-5.565z"
+          ></path>
+          <path
+            fill="#0070e0"
+            d="M131.686 43.669c-.037 1.951-.207 3.93-.52 5.926-4.119 26.271-26.673 45.658-53.246 45.658H51.516c-2.701 0-4.999 1.964-5.42 4.633L37.815 152.4l-5.197 32.947a4.46 4.46 0 0 0 4.405 5.153h28.66a5.49 5.49 0 0 0 5.423-4.633l7.55-47.881c.423-2.669 2.722-4.636 5.423-4.636h16.876c26.573 0 49.124-19.386 53.243-45.655 2.924-18.649-6.46-35.614-22.511-44.026z"
+          ></path>
+          <path
+            fill="#003087"
+            d="M27.967 0a5.49 5.49 0 0 0-5.423 4.636L.055 147.244A4.46 4.46 0 0 0 4.46 152.4h33.351l8.281-52.514 9.013-57.15a5.49 5.49 0 0 1 5.423-4.633h47.782c8.691 0 16.621 2.025 23.375 5.563C132.145 19.749 112.41 0 85.273 0z"
+          ></path>
+        </svg> Dona con PayPal</a
+      >
+    </div>
+  </div>
+</aside>
+
+<style>
+  .donation-banner {
+    position: fixed;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 50;
+    transform: translateY(120%);
+    opacity: 0;
+    transition:
+      transform 0.35s ease,
+      opacity 0.35s ease;
+    pointer-events: none;
+  }
+
+  .donation-banner-title {
+    font-size: 1.25rem;
+  }
+
+  .donation-banner.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .donation-banner-inner {
+    position: relative;
+    margin-inline: auto;
+    max-width: 70ch;
+    background: #ffc439;
+    color: #111111;
+    border: 1px solid #111111;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .donation-banner-brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .donation-banner-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .donation-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .donation-banner-actions a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .donation-banner-actions a svg {
+    height: 1rem;
+  }
+
+  .donation-banner p {
+    margin-bottom: 0.6rem;
+  }
+
+  .donation-banner :global(.btn) {
+    background: #111111;
+    color: #ffffff;
+    border: 1px solid #111111;
+  }
+
+  .donation-banner :global(.btn:hover) {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .donation-banner a:not(.btn) {
+    color: #111111;
+    text-decoration-color: #111111;
+  }
+
+  @media screen and (width > 60rem) {
+    .donation-banner-inner {
+      padding: 1.25rem;
+    }
+  }
+</style>
+
+<script>
+  const storageKey = "donation-banner-seen-v1";
+  const banner = document.getElementById("donation-banner");
+  const closeBtn = document.getElementById("donation-banner-close");
+
+  if (banner && !localStorage.getItem(storageKey)) {
+    banner.hidden = false;
+    requestAnimationFrame(() => banner.classList.add("is-visible"));
+    localStorage.setItem(storageKey, "1");
+  }
+
+  closeBtn?.addEventListener("click", () => {
+    banner?.classList.remove("is-visible");
+    setTimeout(() => {
+      if (banner) banner.hidden = true;
+    }, 350);
+  });
+</script>

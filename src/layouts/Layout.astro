@@ -2,6 +2,7 @@
 import LayoutCommon from "./LayoutCommon.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import DonationBanner from "../components/DonationBanner.astro";
 
 interface Props {
   title: string;
@@ -26,6 +27,7 @@ const { title, description, ogImage } = Astro.props;
   <main id="main" tabindex="-1">
     <slot />
   </main>
+  <DonationBanner />
   <footer id="footer">
     <div class="cage"><Footer /></div>
   </footer>
