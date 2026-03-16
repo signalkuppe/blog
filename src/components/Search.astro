@@ -1,18 +1,32 @@
 ---
 import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
 import SearchIcon from "../icons/Search.svg";
 
 const posts = await getCollection("posts");
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const dataset = posts.map((post) => ({
-  title: post.data.title,
-  slug: post.slug,
-  tags: post.data.tags || [],
-  date: post.data.date.toISOString(),
-  description: post.data.description,
-  image: post.data.cover.src.src,
-}));
+const dataset = await Promise.all(
+  posts.map(async (post) => {
+    const thumbnail = await getImage({
+      src: post.data.cover.src,
+      width: 120,
+      height: 120,
+      fit: "cover",
+      format: "avif",
+      quality: 45,
+    });
+
+    return {
+      title: post.data.title,
+      slug: post.slug,
+      tags: post.data.tags || [],
+      date: post.data.date.toISOString(),
+      description: post.data.description,
+      image: thumbnail.src,
+    };
+  }),
+);
 ---
 
 <form id="search-form" role="search" data-posts={JSON.stringify(dataset)}>
@@ -341,7 +355,7 @@ const dataset = posts.map((post) => ({
             "beforeend",
             `<li role="option">
               <a href="/${post.slug}" data-index="${index}">
-                <img src="${post.image}?w=80&h=80&fm=avif&fit=thumb&q=45" width="60" height="60" loading="lazy" decoding="async" alt="" />
+                <img src="${post.image}" width="60" height="60" loading="lazy" decoding="async" alt="" />
                 <div>
                   <p>${post.title}</p>
                   <p>${post.description}</p>
