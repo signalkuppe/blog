@@ -9,7 +9,6 @@ Personal blog about mountain adventures, ski touring, hiking, and alpine photogr
 - **Styling**: Custom CSS with CSS variables for theming (dark/light mode)
 - **Hosting**: Netlify
 - **Image Format**: AVIF for optimized file sizes
-- **Original Downloads**: Cloudinary (JPG conversion + attachment delivery)
 - **Maps**: Leaflet with GPX track visualization
 - **Charts**: Chart.js for elevation profiles
 
@@ -116,7 +115,6 @@ Why AVIF is kept in Git:
 2. Keeping them versioned makes local builds deterministic and reproducible
 3. Content and media stay synchronized in the same commit history
 4. Repository size and clone time stay lower than storing large original JPGs
-5. Original-download bandwidth is handled by Cloudinary instead of Netlify
 
 ### GPX Tracks
 
@@ -150,56 +148,6 @@ What it does:
 6. Deletes original JPG files after successful conversion
 
 After running the script, update title/description, category, tags, slug, alt text, and optional GPX/location metadata.
-
-### Cloudinary Upload Sync
-
-Use `scripts/upload-originals-cloudinary.js` through:
-
-```bash
-npm run upload-cloudinary-originals
-```
-
-What it does:
-
-1. Scans `src/content/posts` and `src/content/portfolio`
-2. Skips unchanged files when `sha1` + `bytes` + `publicId` match mapping
-3. Uploads only new/changed files
-4. Auto-resizes/compresses files over upload limit (default 10MB) before upload
-5. Retries failed uploads with exponential backoff
-6. Supports chunked uploads for large payloads
-7. Can retry only failed files from the previous run
-8. Writes mapping to `src/data/cloudinary-originals.json`
-9. Writes a run report to `tmp/cloudinary-upload-report.json`
-
-Useful commands:
-
-```bash
-# Full sync
-npm run upload-cloudinary-originals
-
-# Retry only previously failed files
-npm run upload-cloudinary-originals -- --only-failures
-
-# Tune retries/timeouts if needed
-npm run upload-cloudinary-originals -- --max-retries=6 --request-timeout-ms=180000
-```
-
-Required environment variables:
-
-- `CLOUDINARY_CLOUD_NAME`
-- `CLOUDINARY_API_KEY`
-- `CLOUDINARY_API_SECRET`
-
-Optional environment variables:
-
-- `CLOUDINARY_POSTS_FOLDER` (default: `signalkuppe.com/posts`)
-- `CLOUDINARY_PORTFOLIO_FOLDER` (default: `signalkuppe.com/portoflio`)
-- `CLOUDINARY_MAX_RETRIES` (default: `4`)
-- `CLOUDINARY_RETRY_BASE_MS` (default: `1500`)
-- `CLOUDINARY_REQUEST_TIMEOUT_MS` (default: `120000`)
-- `CLOUDINARY_LARGE_FILE_THRESHOLD_BYTES` (default: `10485760`)
-- `CLOUDINARY_CHUNK_SIZE_BYTES` (default: `6291456`)
-- `CLOUDINARY_MAX_UPLOAD_FILE_BYTES` (default: `10485760`)
 
 ## 🎨 Features
 
@@ -240,13 +188,11 @@ Optional environment variables:
 |---------|-------------|
 | `npm run dev` | Start dev server at `localhost:4321` |
 | `npm run build` | Build production site to `./dist/` |
-| `npm run build:deploy` | Upload Cloudinary originals, then build |
 | `npm run preview` | Preview production build locally |
 | `npm run astro` | Run Astro CLI commands |
-| `npm run deploy:test` | Upload originals, build, deploy test alias |
-| `npm run deploy:prod` | Upload originals, build, deploy production |
+| `npm run deploy:test` | Build and deploy test alias |
 | `npm run generate-post` | Generate post starter content from JPG files |
-| `npm run upload-cloudinary-originals` | Upload/sync originals to Cloudinary |
+| `npm run deploy:prod` | Build and deploy production |
 
 ## 🚢 Deployment
 
@@ -264,22 +210,8 @@ npm run deploy:prod
 
 ### Deployment Process
 
-1. `upload-originals-cloudinary` syncs new/changed originals to Cloudinary
-2. `astro build` creates `dist/`
-3. Netlify CLI deploys the generated output
-
-### Why Cloudinary for Original Downloads
-
-1. Netlify bandwidth was dominated by large original photo downloads from lightbox
-2. Astro-generated page images remain optimized for viewing (AVIF/WebP)
-3. Original download traffic is offloaded to Cloudinary CDN
-4. Download links use Cloudinary transformations to force JPG and attachment behavior
-5. Upload script is incremental, so deploys do not re-upload unchanged media
-
-Cloudinary folder strategy:
-
-- Posts: `signalkuppe.com/posts/<post-folder>/<file>`
-- Portfolio: `signalkuppe.com/portoflio/<id>/photo`
+1. `astro build` creates `dist/`
+2. Netlify CLI deploys the generated output
 
 ## ⚙️ Configuration
 
@@ -287,7 +219,7 @@ Cloudinary folder strategy:
 
 ```toml
 [build]
-  command = "npm run build:deploy"
+  command = "npm run build"
   publish = "dist"
 
 [build.environment]
@@ -364,7 +296,6 @@ npm run build
 - **Lazy Loading**: Images below fold
 - **Code Splitting**: Automatic via Astro
 - **CSS**: Scoped component styles
-- **Original Downloads**: Served from Cloudinary (JPG attachment delivery)
 
 ## 📄 License
 

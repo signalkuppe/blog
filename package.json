@@ -7,15 +7,13 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "build:deploy": "npm run upload-cloudinary-originals && npm run build",
     "preview": "astro preview",
     "astro": "astro",
     "api": "npx netlify functions:serve",
-    "deploy:test": "npm run build:deploy && netlify deploy --alias test",
-    "deploy:prod": "npm run build:deploy && netlify deploy --prod",
+    "deploy:test": "npm run build && netlify deploy --alias test",
+    "deploy:prod": "npm run build && netlify deploy --prod",
     "generate-post": "node scripts/generate-post.js",
-    "generate-lite-gpx": "node scripts/generate-lite-gpx.js",
-    "upload-cloudinary-originals": "node scripts/upload-originals-cloudinary.js"
+    "generate-lite-gpx": "node scripts/generate-lite-gpx.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",

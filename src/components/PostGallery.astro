@@ -2,61 +2,30 @@
 import "photoswipe/dist/photoswipe.css";
 import { Image, getImage } from "astro:assets";
 import PhotoDisclaimer from "./PhotoDisclaimer.astro";
-import {
-  cloudinaryResponsiveImage,
-  getCloudinaryPostGalleryOriginalUrl,
-  getCloudinaryPostGalleryViewUrl,
-} from "../lib/cloudinary-originals";
 
 interface Props {
   gallery: Array<{
     src: ImageMetadata;
     alt: string;
   }>;
-  postId: string;
+  postSlug: string;
 }
 
-const { gallery, postId } = Astro.props;
+const { gallery, postSlug } = Astro.props;
 const galleryItems = await Promise.all(
-  gallery.map(async (photo, index) => {
-    const cloudinaryView = getCloudinaryPostGalleryViewUrl(
-      postId,
-      index,
-      photo.src.format,
-    );
-    const lightboxMaxWidth = Math.min(photo.src.width, 2400);
-    const lightboxWidths = [720, 1080, 1440, 1800, 2200, lightboxMaxWidth]
-      .filter((width) => width <= lightboxMaxWidth)
-      .filter((width, itemIndex, arr) => arr.indexOf(width) === itemIndex)
-      .sort((a, b) => a - b);
-    const lightbox = cloudinaryView
-      ? {
-          ...cloudinaryResponsiveImage(cloudinaryView, lightboxWidths, "auto"),
-          attributes: {
-            width: photo.src.width,
-            height: photo.src.height,
-          },
-          sizes: "100vw",
-        }
-      : await getImage({
-          src: photo.src,
-          width: 2000,
-          format: "avif",
-          quality: 55,
-        });
-    const cloudinaryDownload = getCloudinaryPostGalleryOriginalUrl(
-      postId,
-      index,
-      photo.src.format,
-    );
-    const download = cloudinaryDownload
-      ? { src: cloudinaryDownload }
-      : await getImage({
-          src: photo.src,
-          format: "jpg",
-          width: photo.src.width,
-          quality: 90,
-        });
+  gallery.map(async (photo) => {
+    const lightbox = await getImage({
+      src: photo.src,
+      width: 2000,
+      format: "avif",
+      quality: 55,
+    });
+    const download = await getImage({
+      src: photo.src,
+      format: "jpg",
+      width: photo.src.width,
+      quality: 90,
+    });
 
     const thumbMaxWidth = Math.min(photo.src.width, 720);
     const thumbWidths = [240, 360, 480, 720, thumbMaxWidth]
@@ -78,8 +47,6 @@ const galleryThumbSizes = "(max-width: 40rem) 50vw, (max-width: 70rem) 33vw, 25v
           href={photo.lightbox.src}
           data-download={photo.download.src}
           data-pswp-src={photo.lightbox.src}
-          data-pswp-srcset={photo.lightbox.srcset}
-          data-pswp-sizes={photo.lightbox.sizes}
           data-pswp-width={photo.lightbox.attributes.width}
           data-pswp-height={photo.lightbox.attributes.height}
         >
