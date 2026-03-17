@@ -1,9 +1,9 @@
 ---
-date: "2023-08-06T00:00+02:00"
-title: "La Valvarrone dal Pizzo Varrone"
+date: "2014-08-25T00:00+01:00"
+title: "Moulton Barn"
 photo:
   src: "./photo.jpg"
-  alt: "La Valvarrone dal Pizzo Varrone"
-  width: 5472
-  height: 3648
+  alt: "Moulton Barn"
+  width: 1024
+  height: 768
 ---

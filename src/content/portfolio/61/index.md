@@ -1,9 +1,9 @@
 ---
-date: "2022-11-12T00:00+01:00"
-title: "Giovane stambecco al Passo del Toro"
+date: "2015-10-17T00:00+02:00"
+title: "Il Lago d’Arza"
 photo:
   src: "./photo.jpg"
-  alt: "Giovane stambecco"
-  width: 5184
-  height: 3888
+  alt: "Il Lago d’Arza"
+  width: 4608
+  height: 3456
 ---

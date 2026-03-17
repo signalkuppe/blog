@@ -1,9 +1,9 @@
 ---
-date: "2022-07-24T00:00+02:00"
-title: "Il Dom all’alba"
+date: "2017-06-03T00:00+01:00"
+title: "Il torrente Barbera"
 photo:
   src: "./photo.jpg"
-  alt: "Il Dom all‘alba"
-  width: 5472
-  height: 3648
+  alt: "Il torrente Barbera"
+  width: 1280
+  height: 960
 ---

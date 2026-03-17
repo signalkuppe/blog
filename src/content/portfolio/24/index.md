@@ -1,9 +1,9 @@
 ---
-date: "2024-04-21T00:00+02:00"
-title: "Raggiungendo la vetta del Tritonfjellet"
+date: "2013-10-13T00:00+02:00"
+title: "Predarossa in autunno"
 photo:
   src: "./photo.jpg"
-  alt: "Raggiungendo la vetta del Tritonfjellet"
-  width: 5184
-  height: 3888
+  alt: "Predarossa in Autunno"
+  width: 4608
+  height: 3456
 ---

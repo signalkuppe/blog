@@ -1,9 +1,9 @@
 ---
-date: "2021-02-10T00:02+01:00"
-title: "Il Resegone al tramonto dal Cimone di Margno"
+date: "2018-07-07T00:00+02:00"
+title: "La vena di marmo della Sassa d’Entova"
 photo:
   src: "./photo.jpg"
-  alt: "Tramonto sul Resegone"
-  width: 5472
-  height: 3648
+  alt: "La vena di marmo"
+  width: 1920
+  height: 1280
 ---

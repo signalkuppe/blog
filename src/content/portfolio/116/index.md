@@ -1,9 +1,9 @@
 ---
-date: "2020-08-09T00:02+02:00"
-title: "Il traverso esposto per la vetta della Cima di Castello"
+date: "2018-12-15T00:00+02:00"
+title: "La Punta di Terrarossa"
 photo:
   src: "./photo.jpg"
-  alt: "Il traverso esposto per la vetta"
-  width: 5184
-  height: 3888
+  alt: "La Punta di Terrarossa"
+  width: 2560
+  height: 1707
 ---

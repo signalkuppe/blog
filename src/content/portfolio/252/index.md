@@ -1,9 +1,9 @@
 ---
-date: "2014-10-19T00:00+02:00"
-title: "Alba al Rifugio Locatelli"
+date: "2023-04-24T00:00+02:00"
+title: "Arrivo al Bivacco Cà Bianca"
 photo:
   src: "./photo.jpg"
-  alt: "Alba al Rifugio Locatelli"
-  width: 1024
-  height: 768
+  alt: "Arrivo al Bivacco Cà Bianca"
+  width: 5472
+  height: 3648
 ---

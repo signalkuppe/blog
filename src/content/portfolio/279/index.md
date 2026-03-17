@@ -1,9 +1,9 @@
 ---
-date: "2013-08-02T00:00+02:00"
-title: "Ninfea al Lago della Mordina"
+date: "2024-12-14T00:00+01:00"
+title: "Sulla cima del Monte Vaccaro"
 photo:
   src: "./photo.jpg"
-  alt: "Ninfea al Lago della Mordina"
-  width: 4608
-  height: 3456
+  alt: "Sulla cima del Monte Vaccaro"
+  width: 5184
+  height: 3888
 ---

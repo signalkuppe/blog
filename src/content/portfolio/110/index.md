@@ -1,9 +1,9 @@
 ---
-date: "2020-09-14T00:02+02:00"
-title: "La parete nord dell’Ortles"
+date: "2018-09-22T00:00+02:00"
+title: "Sulla cresta del Similaun"
 photo:
   src: "./photo.jpg"
-  alt: "La parete nord"
-  width: 5184
-  height: 3888
+  alt: "Tratto finale della cresta"
+  width: 1920
+  height: 1280
 ---

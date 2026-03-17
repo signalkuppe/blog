@@ -1,9 +1,9 @@
 ---
-date: "2022-08-14T00:00+02:00"
-title: "Il Pizzo Cavregasco dalla vetta del Pizzo Paglia"
+date: "2016-12-11T00:00+02:00"
+title: "La Capanna Al Legn"
 photo:
   src: "./photo.jpg"
-  alt: "Il Pizzo Cavregasco dalla vetta del Pizzo Paglia"
-  width: 5184
-  height: 3888
+  alt: "Capanna Al Legn"
+  width: 1024
+  height: 757
 ---

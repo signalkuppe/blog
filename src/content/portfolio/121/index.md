@@ -1,9 +1,9 @@
 ---
-date: "2020-06-20T00:00+02:00"
-title: "Sulla cresta della Presolana"
+date: "2019-02-09T00:00+02:00"
+title: "ll Piz Kesch dalla cresta del Griatschouls"
 photo:
   src: "./photo.jpg"
-  alt: "Sulla cresta finale"
-  width: 5000
-  height: 3337
+  alt: "Il Piz Ketsch dalla cresta"
+  width: 2560
+  height: 1707
 ---

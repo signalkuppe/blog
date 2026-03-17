@@ -1,9 +1,9 @@
 ---
-date: "2018-10-13T00:00+02:00"
-title: "Il Bivacco Volta nella Valle dei Ratti"
+date: "2020-08-15T00:00+02:00"
+title: "A pochi metri dalla vetta del Lagginhorn"
 photo:
   src: "./photo.jpg"
-  alt: "Il Bivacco Volta"
-  width: 1920
-  height: 1280
+  alt: "A pochi metri dalla vetta"
+  width: 5054
+  height: 3790
 ---

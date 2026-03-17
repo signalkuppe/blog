@@ -1,9 +1,9 @@
 ---
-date: "2020-05-24T00:00+02:00"
-title: "L’Alpe Motta sul sentiero verso il Monte Duria"
+date: "2019-02-19T00:00+02:00"
+title: "Sciara delle ginestre esposte al sole"
 photo:
   src: "./photo.jpg"
-  alt: "l’Alpe Motta"
-  width: 5000
-  height: 3336
+  alt: "Sciara delle ginestre esposte al sole"
+  width: 2560
+  height: 1707
 ---

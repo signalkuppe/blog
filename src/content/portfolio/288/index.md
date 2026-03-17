@@ -1,9 +1,9 @@
 ---
-date: "2012-08-12T00:00+01:00"
-title: "La Valtellina dal Lago di Inferno"
+date: "2025-04-26T00:00+02:00"
+title: "A picco sul Lago di Oeschinen"
 photo:
   src: "./photo.jpg"
-  alt: "La Valtellina dal Lago di Inferno"
-  width: 3456
-  height: 4608
+  alt: "A picco sul Lago di Oeschinen"
+  width: 5472
+  height: 3648
 ---

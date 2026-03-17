@@ -1,9 +1,9 @@
 ---
-date: "2014-08-26T00:00+01:00"
-title: "Un crotalo a Yosemite"
+date: "2023-08-06T00:00+02:00"
+title: "Discesa verso il Varrone delle Vacche"
 photo:
   src: "./photo.jpg"
-  alt: "Il crotalo di Yosemite"
-  width: 3960
-  height: 2920
+  alt: "Discesa verso il Varrone delle Vacche"
+  width: 5472
+  height: 3648
 ---

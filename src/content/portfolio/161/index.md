@@ -1,9 +1,9 @@
 ---
-date: "2019-05-01T00:00+02:00"
-title: "Scialpinisti sul Galehorn"
+date: "2020-02-15T00:00+01:00"
+title: "Discesa dal Piz Vadret"
 photo:
   src: "./photo.jpg"
-  alt: "Il Boshorn dal Galehorn"
-  width: 2560
-  height: 1607
+  alt: "In discesa dalla vetta"
+  width: 5472
+  height: 3648
 ---

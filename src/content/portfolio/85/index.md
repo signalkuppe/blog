@@ -1,9 +1,9 @@
 ---
-date: "2022-03-20T00:00+01:00"
-title: "Salendo al Monte Sissone"
+date: "2018-01-21T00:00+02:00"
+title: "L’ora viola"
 photo:
   src: "./photo.jpg"
-  alt: "Ambiente grandioso"
-  width: 5472
-  height: 3648
+  alt: "La grignetta all’alba"
+  width: 1440
+  height: 966
 ---

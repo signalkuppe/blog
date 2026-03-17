@@ -1,9 +1,9 @@
 ---
-date: "2020-05-24T00:02+02:00"
-title: "Pizzo Cavregasco, Pizzo Rabbi e Pizzo Ledù"
+date: "2019-02-19T00:00+02:00"
+title: "Volcano skitouring!"
 photo:
   src: "./photo.jpg"
-  alt: "A picco sulla Val Darengo"
-  width: 5000
-  height: 3337
+  alt: "Splendido firn sulla Montagnola"
+  width: 2560
+  height: 1707
 ---

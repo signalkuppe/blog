@@ -1,9 +1,9 @@
 ---
-date: "2021-07-18T00:00+02:00"
-title: "Tramonto sulle Dolomiti di Brenta"
+date: "2018-06-09T00:00+02:00"
+title: "Rientro al Rifugio Berni"
 photo:
   src: "./photo.jpg"
-  alt: "Tramonto sulle Dolomiti di Brenta"
-  width: 5472
-  height: 3648
+  alt: "Rientro al Rifugio Berni"
+  width: 1600
+  height: 1067
 ---

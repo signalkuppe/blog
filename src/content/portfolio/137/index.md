@@ -1,9 +1,9 @@
 ---
-date: "2020-01-11T00:00+01:00"
-title: "Pendio finale del Piz de Mucia"
+date: "2019-07-15T00:00+01:00"
+title: "Salendo al Rifugio Vittorio Sella"
 photo:
   src: "./photo.jpg"
-  alt: "Il ripido pendio finale"
-  width: 5472
-  height: 3648
+  alt: "L’Asina del Vittorio Sella"
+  width: 2560
+  height: 1707
 ---

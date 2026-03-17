@@ -1,9 +1,9 @@
 ---
-date: "2023-07-09T00:00+02:00"
-title: "Il Monte Bianco dal Rifugio Gonella"
+date: "2014-08-28T00:00+01:00"
+title: "Temprale a Kayenta, Arizona"
 photo:
   src: "./photo.jpg"
-  alt: "Il Monte Bianco dal Rifugio Gonella"
-  width: 5472
-  height: 3648
+  alt: "Temporale a Kayenta, Arizona"
+  width: 4608
+  height: 3456
 ---

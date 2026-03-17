@@ -1,9 +1,9 @@
 ---
-date: "2014-08-29T00:00+01:00"
-title: "Delicate Arch"
+date: "2023-04-30T00:00+02:00"
+title: "Il Piz Linard dal Piz Champatsch"
 photo:
   src: "./photo.jpg"
-  alt: "Delicate Arch"
-  width: 3456
-  height: 4608
+  alt: "Il Piz Linard dal Piz Champatsch"
+  width: 5472
+  height: 3648
 ---

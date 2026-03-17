@@ -1,9 +1,9 @@
 ---
-date: "2019-10-26T03:00+01:00"
-title: "Val Grande, betulle in fiamme"
+date: "2019-08-12T00:00+02:00"
+title: "Alba sul Cevedale"
 photo:
   src: "./photo.jpg"
-  alt: "Bellissime betulle all’Alpe Colletta"
+  alt: "Alba sul Cevedale"
   width: 5472
   height: 3648
 ---

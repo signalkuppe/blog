@@ -1,9 +1,9 @@
 ---
-date: "2025-02-27T00:00+02:00"
-title: "Battendo traccia verso la Capanna Cristallina"
+date: "2012-11-15T00:00+01:00"
+title: "Bancarella di Namche"
 photo:
   src: "./photo.jpg"
-  alt: "Battendo traccia verso la Capanna Cristallina"
-  width: 5472
-  height: 3648
+  alt: "Bancarella di Namche"
+  width: 4608
+  height: 3456
 ---

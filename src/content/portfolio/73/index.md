@@ -1,9 +1,9 @@
 ---
-date: "2022-08-14T00:00+02:00"
-title: "Lasciando il Bivacco Zeb"
+date: "2016-07-10T00:05+02:00"
+title: "Il Sasso Manduino"
 photo:
   src: "./photo.jpg"
-  alt: "Lasciando il Bivacco Zeb"
-  width: 5184
-  height: 3888
+  alt: "Il Sasso Manduino tra gli alberi"
+  width: 5472
+  height: 3648
 ---

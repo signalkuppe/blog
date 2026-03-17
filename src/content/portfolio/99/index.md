@@ -1,9 +1,9 @@
 ---
-date: "2021-05-06T00:00+02:00"
-title: "Scialpinismo al Torrione di Mezzaluna"
+date: "2018-06-16T00:00+02:00"
+title: "Il Dammastock dallo Schneestock"
 photo:
   src: "./photo.jpg"
-  alt: "Ambiente grandioso"
-  width: 5472
-  height: 3648
+  alt: "Il Dammastock dallo Schneestock"
+  width: 2560
+  height: 1440
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2014-01-01T00:00+01:00"
-title: "Una guida del Rwenzori"
+date: "2024-01-31T00:00+01:00"
+title: "Dalla vetta del Chli Spannort"
 photo:
   src: "./photo.jpg"
-  alt: "Una guida del parco"
-  width: 4608
-  height: 3456
+  alt: "Engelberg dalla vetta del Chli Spannort"
+  width: 5088
+  height: 3392
 ---

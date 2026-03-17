@@ -1,9 +1,9 @@
 ---
-date: "2020-03-06T00:00+01:00"
-title: "Alba sul Resegone"
+date: "2019-03-23T00:00+02:00"
+title: "Il Diavolo di Tenda dalla Cima Soliva"
 photo:
   src: "./photo.jpg"
-  alt: "Alba sul Resegone"
-  width: 5472
-  height: 3648
+  alt: "Il Diavolo di Tenda"
+  width: 2560
+  height: 1707
 ---

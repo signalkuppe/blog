@@ -1,9 +1,9 @@
 ---
-date: "2024-01-03T00:00+01:00"
-title: "Discesa dalla Punta del Segnale"
+date: "2014-01-01T00:00+01:00"
+title: "Distesa di lobelie nel Parco del Rwenzori"
 photo:
   src: "./photo.jpg"
-  alt: "L’ex Rifugio Bernasconi"
-  width: 5472
-  height: 3648
+  alt: "Distesa di lobelie"
+  width: 4608
+  height: 3456
 ---

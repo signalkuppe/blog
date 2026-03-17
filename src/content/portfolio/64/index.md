@@ -1,9 +1,9 @@
 ---
-date: "2022-09-19T00:00+02:00"
-title: "Nel mercato di Arusha"
+date: "2015-10-24T00:00+02:00"
+title: "La cascata di In La Piana"
 photo:
   src: "./photo.jpg"
-  alt: "Nel mercato di Arusha"
-  width: 5184
-  height: 3888
+  alt: "La cascata di In La Piana"
+  width: 4608
+  height: 3456
 ---

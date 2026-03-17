@@ -1,9 +1,9 @@
 ---
-date: "2020-08-15T00:02+02:00"
-title: "Dal Lagginhorn verso l’Italia"
+date: "2018-10-13T00:00+02:00"
+title: "Bosco di betulle in Val Ladrogno"
 photo:
   src: "./photo.jpg"
-  alt: "Dalla vetta verso l’Italia"
-  width: 5088
-  height: 3814
+  alt: "Nel bosco di betulle"
+  width: 1920
+  height: 1280
 ---

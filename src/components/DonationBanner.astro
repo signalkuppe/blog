@@ -13,7 +13,7 @@ const paypalDonateUrl =
     >
       ×
     </button>
-    <p class="donation-banner-title"><strong>Ciao!</strong></p>
+    <p class="donation-banner-title">Ti rubo solo un minuto</p>
     <p>
       Mantengo questo sito <b>senza pubblicità</b> perché preferisco che rimanga pulito,
       veloce e piacevole da usare per tutti. Ogni giorno riceve molti visitatori e
@@ -49,6 +49,13 @@ const paypalDonateUrl =
           ></path>
         </svg> Dona con PayPal</a
       >
+      <button
+        type="button"
+        id="donation-banner-no-thanks"
+        class="donation-banner-no-thanks"
+      >
+        <b>No grazie</b>
+      </button>
     </div>
   </div>
 </aside>
@@ -69,7 +76,9 @@ const paypalDonateUrl =
   }
 
   .donation-banner-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    padding-bottom: 0.75rem;
+    font-weight: 800;
   }
 
   .donation-banner.is-visible {
@@ -86,7 +95,7 @@ const paypalDonateUrl =
     color: #111111;
     border: 1px solid #111111;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
-    padding: 1rem;
+    padding: 1.5rem;
     font-size: 0.9rem;
   }
 
@@ -98,8 +107,8 @@ const paypalDonateUrl =
 
   .donation-banner-close {
     position: absolute;
-    top: 0.5rem;
-    right: 1rem;
+    top: 1.5rem;
+    right: 1.5rem;
     border: 0;
     background: transparent;
     color: inherit;
@@ -111,9 +120,9 @@ const paypalDonateUrl =
   .donation-banner-actions {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     flex-wrap: wrap;
-    margin-top: 0.75rem;
+    margin-top: 2rem;
   }
 
   .donation-banner-actions a {
@@ -124,6 +133,20 @@ const paypalDonateUrl =
 
   .donation-banner-actions a svg {
     height: 1rem;
+  }
+
+  .donation-banner-no-thanks {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .donation-banner-no-thanks:hover {
+    text-decoration: none;
   }
 
   .donation-banner p {
@@ -157,6 +180,15 @@ const paypalDonateUrl =
   const storageKey = "donation-banner-seen-v1";
   const banner = document.getElementById("donation-banner");
   const closeBtn = document.getElementById("donation-banner-close");
+  const noThanksBtn = document.getElementById("donation-banner-no-thanks");
+
+  const closeBanner = () => {
+    if (!banner) return;
+    banner.classList.remove("is-visible");
+    setTimeout(() => {
+      banner.hidden = true;
+    }, 350);
+  };
 
   if (banner && !localStorage.getItem(storageKey)) {
     banner.hidden = false;
@@ -164,10 +196,6 @@ const paypalDonateUrl =
     localStorage.setItem(storageKey, "1");
   }
 
-  closeBtn?.addEventListener("click", () => {
-    banner?.classList.remove("is-visible");
-    setTimeout(() => {
-      if (banner) banner.hidden = true;
-    }, 350);
-  });
+  closeBtn?.addEventListener("click", closeBanner);
+  noThanksBtn?.addEventListener("click", closeBanner);
 </script>

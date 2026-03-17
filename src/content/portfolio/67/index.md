@@ -1,9 +1,9 @@
 ---
-date: "2022-09-14T00:00+02:00"
-title: "Tramonto sul Monte Meru"
+date: "2015-10-26T00:00+02:00"
+title: " Patqueso, Val Loana"
 photo:
   src: "./photo.jpg"
-  alt: "Tramonto sul Meru"
-  width: 5184
-  height: 3888
+  alt: " Patqueso, Val Loana"
+  width: 4332
+  height: 3109
 ---

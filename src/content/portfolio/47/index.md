@@ -1,9 +1,9 @@
 ---
-date: "2023-02-07T00:00+01:00"
-title: "Alba invernale ai Piani di Artavaggio"
+date: "2015-01-21T00:00+01:00"
+title: "Bufera sul Cevedale"
 photo:
   src: "./photo.jpg"
-  alt: "Alba invernale ai Piani di Artavaggio"
+  alt: "Bufera in cresta"
   width: 5472
   height: 3648
 ---

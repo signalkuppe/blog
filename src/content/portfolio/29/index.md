@@ -1,9 +1,9 @@
 ---
-date: "2024-01-27T00:00+01:00"
-title: "Pizzo Suretta, Punta Rossa"
+date: "2014-01-01T00:00+01:00"
+title: "Un portatore del Rwenzori"
 photo:
   src: "./photo.jpg"
-  alt: "La Punta Rossa salendo alla Punta Nera"
-  width: 5472
-  height: 3648
+  alt: "Un portatore si riposa con del tè"
+  width: 4178
+  height: 3134
 ---

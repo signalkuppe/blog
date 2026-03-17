@@ -1,9 +1,9 @@
 ---
-date: "2017-05-06T00:00+01:00"
-title: "Il Grignone solitario"
+date: "2022-07-31T00:00+02:00"
+title: "Dalla Cima dell’Uomo verso il Pizzo di Vogorno"
 photo:
   src: "./photo.jpg"
-  alt: "Il Grignone solitario"
-  width: 1024
-  height: 676
+  alt: "La vetta della Cima dell’Uomo"
+  width: 5472
+  height: 3648
 ---

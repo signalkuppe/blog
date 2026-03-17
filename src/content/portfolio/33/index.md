@@ -1,9 +1,9 @@
 ---
-date: "2023-12-03T00:00+01:00"
-title: "I boschi sopra Arnoga"
+date: "2014-02-09T00:00+01:00"
+title: "Traccia per il Passo del San Bernardino"
 photo:
   src: "./photo.jpg"
-  alt: "I boschi sopra Arnoga"
-  width: 5472
-  height: 3648
+  alt: "Ormai al passo"
+  width: 4608
+  height: 3456
 ---

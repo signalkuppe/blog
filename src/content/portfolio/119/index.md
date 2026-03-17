@@ -1,9 +1,9 @@
 ---
-date: "2020-07-09T00:01+02:00"
-title: "Sulla cresta del Monte Due Mani"
+date: "2019-01-21T00:00+02:00"
+title: "Alba ai Resinelli"
 photo:
   src: "./photo.jpg"
-  alt: "Sulla cresta del Monte Due Mani"
-  width: 5000
-  height: 3337
+  alt: "Alba ai Resinelli"
+  width: 2560
+  height: 1440
 ---

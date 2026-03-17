@@ -1,9 +1,9 @@
 ---
-date: "2014-01-01T00:00+01:00"
-title: "La capanna John Matte sul Rwenzori"
+date: "2024-03-12T00:00+02:00"
+title: "Bregagno, discesa dal Dosso di Naro"
 photo:
   src: "./photo.jpg"
-  alt: "La capanna John Matte a 3550m"
-  width: 4608
-  height: 3456
+  alt: "Full gas!"
+  width: 5472
+  height: 3648
 ---

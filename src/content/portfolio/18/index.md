@@ -1,9 +1,9 @@
 ---
-date: "2024-11-01T00:00+01:00"
-title: "La faggeta di In la Piana"
+date: "2013-08-06T00:00+01:00"
+title: "Dentro il seracco della Nordend"
 photo:
   src: "./photo.jpg"
-  alt: "Verso la Val Gabbio"
-  width: 5184
-  height: 3888
+  alt: "Dentro il seracco della Nordend"
+  width: 4608
+  height: 3456
 ---

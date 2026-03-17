@@ -1,9 +1,9 @@
 ---
-date: "2009-06-14T00:00+02:00"
-title: "Sul ghiacciaio della Bresciana"
+date: "2025-08-10T00:00+02:00"
+title: "Discesa dall'Argentera"
 photo:
-  src: "./photo.jpeg"
-  alt: "Sul ghiacciaio della Bresciana"
-  width: 2560
-  height: 1440
+  src: "./photo.jpg"
+  alt: "Discesa dal Canale dei Detriti"
+  width: 5184
+  height: 3888
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2022-12-01T00:00+01:00"
-title: "Alba al Monte Due Mani"
+date: "2015-08-07T00:00+02:00"
+title: "Majella, Bivacco pelino"
 photo:
   src: "./photo.jpg"
-  alt: "Alba al Monte Due Mani"
-  width: 5184
-  height: 3888
+  alt: "Majella, Bivacco pelino"
+  width: 3360
+  height: 4500
 ---

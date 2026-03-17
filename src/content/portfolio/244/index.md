@@ -1,9 +1,9 @@
 ---
-date: "2015-05-21T00:00+02:00"
-title: "Dal Bolettone"
+date: "2023-01-09T00:00+01:00"
+title: "Discesa in neve fresca dalla Cima della Rosetta"
 photo:
   src: "./photo.jpg"
-  alt: "Dal Bolettone"
-  width: 5472
-  height: 3648
+  alt: "Discesa in neve fresca dalla Cima della Rosetta"
+  width: 4766
+  height: 3177
 ---

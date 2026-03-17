@@ -12,7 +12,16 @@ import { siteSlogan } from "../../constants";
 
 export async function getStaticPaths({ paginate }) {
   const photos = await getCollection("portfolio");
-  photos.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  const getFolderNumber = (entry) =>
+    Number.parseInt(entry.id.split("/")[0], 10);
+  photos.sort((a, b) => {
+    const aFolder = getFolderNumber(a);
+    const bFolder = getFolderNumber(b);
+    if (Number.isFinite(aFolder) && Number.isFinite(bFolder)) {
+      return bFolder - aFolder;
+    }
+    return b.data.date.getTime() - a.data.date.getTime();
+  });
 
   return paginate(photos, {
     pageSize: 12,
@@ -204,6 +213,12 @@ const galleryItems = await Promise.all(
   @media screen and (width > 60rem) {
     ul {
       columns: 3;
+    }
+  }
+
+  @media screen and (width > 80rem) {
+    ul {
+      columns: 4;
     }
   }
 

@@ -1,9 +1,9 @@
 ---
-date: "2022-12-31T00:00+01:00"
-title: "Scialpinismo nella Valle delle Messi"
+date: "2015-05-23T00:00+01:00"
+title: "Nubi lenticolari ai Piani Della Rossa"
 photo:
   src: "./photo.jpg"
-  alt: "La bellissima Punta di Pietrarossa"
+  alt: "Nubi lenticolari ai Piani Della Rossa"
   width: 5472
   height: 3648
 ---

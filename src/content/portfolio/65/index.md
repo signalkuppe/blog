@@ -1,9 +1,9 @@
 ---
-date: "2022-09-18T00:00+02:00"
-title: "Vetta del Kilimanjaro"
+date: "2015-10-24T00:00+02:00"
+title: "Panorama dal Gerenpass"
 photo:
   src: "./photo.jpg"
-  alt: "Uhuru Peak"
-  width: 5184
-  height: 3888
+  alt: "Ometto"
+  width: 4608
+  height: 3456
 ---

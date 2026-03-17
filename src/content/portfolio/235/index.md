@@ -1,9 +1,9 @@
 ---
-date: "2015-10-10T00:00+02:00"
-title: "Bivacco Petazzi"
+date: "2022-11-12T00:03+01:00"
+title: "Una giovane Amanita Muscaria sopra Introbio"
 photo:
   src: "./photo.jpg"
-  alt: "Bivacco Petazzi"
-  width: 4608
-  height: 3456
+  alt: "Una giovane Amanita Muscaria"
+  width: 5184
+  height: 3888
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2023-07-10T00:00+02:00"
-title: "Monte Bianco, attacco della Cresta delle Bosses"
+date: "2014-08-27T00:00+01:00"
+title: "Il Villaggio di Bodie"
 photo:
   src: "./photo.jpg"
-  alt: "Attacco della Cresta delle Bosses"
-  width: 5267
-  height: 3511
+  alt: "Bodie"
+  width: 4608
+  height: 3456
 ---

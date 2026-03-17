@@ -1,9 +1,9 @@
 ---
-date: "2019-03-16T00:00+02:00"
-title: "Il Mellasc dal Pizzo Cassera"
+date: "2020-05-18T00:00+02:00"
+title: "Temporale dal Cornizzolo"
 photo:
   src: "./photo.jpg"
-  alt: "Il Mellasc dalla vetta"
-  width: 2560
-  height: 1305
+  alt: "Temporale dal Cornizzolo"
+  width: 5000
+  height: 3333
 ---

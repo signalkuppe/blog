@@ -1,9 +1,9 @@
 ---
-date: "2016-01-10T00:00+02:00"
-title: "La Cima di Malvedello dalla vetta del Monte Brusada"
+date: "2022-09-13T00:00+02:00"
+title: "Verso il Machame Camp"
 photo:
   src: "./photo.jpg"
-  alt: "La Cima di Malvedello dal Monte Brusada"
-  width: 5472
-  height: 3648
+  alt: "Verso il Machame Camp"
+  width: 5184
+  height: 3888
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2019-02-19T00:00+02:00"
-title: "Verso la vetta dell’Etna"
+date: "2020-05-28T00:00+02:00"
+title: "Splendide fioriture sul Monte Barro"
 photo:
   src: "./photo.jpg"
-  alt: "Ecco la vetta!"
-  width: 2560
-  height: 1707
+  alt: "Splendide fioriture sul Monte Barro"
+  width: 5000
+  height: 3337
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2021-11-04T00:00+01:00"
-title: "Nevicata di inizio Novembre ad Artavaggio"
+date: "2018-04-04T00:00+02:00"
+title: "La Cermenati prende fuoco"
 photo:
   src: "./photo.jpg"
-  alt: "Nevicata di inizio Novembre ad Artavaggio"
-  width: 5472
-  height: 3648
+  alt: "La Cermenati prende fuoco"
+  width: 2560
+  height: 1440
 ---

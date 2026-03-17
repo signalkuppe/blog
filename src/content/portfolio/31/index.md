@@ -1,9 +1,9 @@
 ---
-date: "2023-12-27T00:00+01:00"
-title: "Il Piz Forcellina"
+date: "2014-02-09T00:00+01:00"
+title: "L’ospizio del San Bernardino"
 photo:
   src: "./photo.jpg"
-  alt: "Il Pizzo Forcellina"
-  width: 5472
-  height: 3648
+  alt: "L’Ospizio del Passo"
+  width: 4608
+  height: 3456
 ---

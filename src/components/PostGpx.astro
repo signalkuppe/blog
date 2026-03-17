@@ -22,11 +22,12 @@ const {
 } = Astro.props;
 const gpxUrl = `/gpx/${gpxFile}`;
 const liteGpxUrl = gpxUrl.replace(/\.gpx$/i, "-lite.gpx");
+const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
 ---
 
 <div
   id="map"
-  data-gpx={liteGpxUrl}
+  data-gpx={mapGpxUrl}
   data-elevation-gain={elevationGain}
   data-distance={distance}
   data-minimum-altitude={minimumAltitude}

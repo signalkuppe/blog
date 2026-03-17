@@ -1,9 +1,9 @@
 ---
-date: "2013-10-12T00:00+01:00"
-title: "Il Lago Cavloc"
+date: "2024-04-22T00:00+02:00"
+title: "Svalbard, in marcia sul Ghiacciaio Veteranen"
 photo:
   src: "./photo.jpg"
-  alt: "Lago Cavloc"
-  width: 4608
-  height: 3456
+  alt: "In marcia sul Veteranen"
+  width: 5184
+  height: 3888
 ---

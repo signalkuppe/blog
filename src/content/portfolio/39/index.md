@@ -1,9 +1,9 @@
 ---
-date: "2023-07-10T00:00+02:00"
-title: "Il Maudit dalla Cresta delle Bosses"
+date: "2014-08-27T00:00+01:00"
+title: "Tramonto a Yosemite"
 photo:
   src: "./photo.jpg"
-  alt: "Il Maudit dalla Cresta delle Bosses"
-  width: 5472
-  height: 3648
+  alt: "L-ex albero di Ansel Adams"
+  width: 4608
+  height: 3456
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2022-07-24T00:00+02:00"
-title: "Sulla cresta del Bietschhorn"
+date: "2017-06-11T00:00+01:00"
+title: "Il Lago Maggiore dal Pizzo di Vogorno"
 photo:
   src: "./photo.jpg"
-  alt: "L’alba ci coglie sul primo tratto della cresta"
-  width: 5472
-  height: 3648
+  alt: "Panorama sul Lago Maggiore"
+  width: 2560
+  height: 1440
 ---

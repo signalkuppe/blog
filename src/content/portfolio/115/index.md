@@ -1,9 +1,9 @@
 ---
-date: "2020-08-09T00:04+02:00"
-title: "Il Disgrazia dalla vetta della Cima di Castello"
+date: "2018-10-13T00:00+02:00"
+title: "Il Bivacco Casorate-Sempione"
 photo:
   src: "./photo.jpg"
-  alt: "Il Disgrazia dalla vetta"
-  width: 5184
-  height: 3888
+  alt: "Il Bivacco Casorate-Sempione"
+  width: 1920
+  height: 1280
 ---

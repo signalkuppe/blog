@@ -1,9 +1,9 @@
 ---
-date: "2025-04-05T00:00+02:00"
-title: "Sulla cresta dell'Aiguille du Tour"
+date: "2012-11-15T00:00+01:00"
+title: "Khumjung e l’Ama Dablam"
 photo:
   src: "./photo.jpg"
-  alt: "Sulla cresta dell'Aiguille du Tour"
-  width: 3648
-  height: 5472
+  alt: "Khumjung e l’Ama Dablam"
+  width: 4608
+  height: 3456
 ---

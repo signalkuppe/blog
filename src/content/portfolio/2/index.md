@@ -1,9 +1,9 @@
 ---
-date: "2025-10-27T00:00+01:00"
-title: "Autunno a Pedrarossa"
+date: "2008-08-31T00:00+02:00"
+title: "La magnifica Barre des Écrins"
 photo:
   src: "./photo.jpg"
-  alt: "Autunno a Pedrarossa"
-  width: 8064
-  height: 6048
+  alt: "La magnifica Bar Des Ecrins"
+  width: 2558
+  height: 3764
 ---

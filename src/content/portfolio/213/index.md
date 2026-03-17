@@ -1,9 +1,9 @@
 ---
-date: "2017-07-20T00:00+01:00"
-title: "Alba a 5000m"
+date: "2022-07-04T00:00+02:00"
+title: "Alba sulla Cresta Signal"
 photo:
   src: "./photo.jpg"
-  alt: "Alba a 5000m"
-  width: 1280
-  height: 960
+  alt: "Alba sulla Cresta Signal dalla Capanna Margherita"
+  width: 5535
+  height: 3743
 ---

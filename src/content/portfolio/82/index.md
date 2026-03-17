@@ -1,9 +1,9 @@
 ---
-date: "2022-07-04T00:00+02:00"
-title: "Il Gendarme della Cresta Signal"
+date: "2017-07-20T00:00+01:00"
+title: "Il mercatino di Terskol"
 photo:
   src: "./photo.jpg"
-  alt: "Il gendarme della Signal"
-  width: 5472
-  height: 3648
+  alt: "Dentro al mercatino di Terskol"
+  width: 1280
+  height: 969
 ---

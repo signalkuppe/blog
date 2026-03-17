@@ -1,9 +1,9 @@
 ---
-date: "2023-03-18T00:00+02:00"
-title: "Discesa dal Monte Gelè"
+date: "2014-10-19T00:00+02:00"
+title: "Le Tre Cime di Lavaredo e la Via Lattea"
 photo:
   src: "./photo.jpg"
-  alt: "Bellissima sciata nella parte alta"
-  width: 5472
-  height: 3648
+  alt: "Tre cime fisheye"
+  width: 4608
+  height: 3456
 ---

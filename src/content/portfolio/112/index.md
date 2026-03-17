@@ -1,9 +1,9 @@
 ---
-date: "2020-08-15T00:03+02:00"
-title: "Il Weissmies dal Lagginhorn"
+date: "2018-09-22T00:00+02:00"
+title: "Le Alpi Venoste"
 photo:
   src: "./photo.jpg"
-  alt: "Il Weissmies dalla vetta"
-  width: 5084
-  height: 3812
+  alt: "Le Alpi Venoste"
+  width: 2560
+  height: 1440
 ---

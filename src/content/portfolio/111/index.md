@@ -1,9 +1,9 @@
 ---
-date: "2020-09-14T00:01+02:00"
-title: "Sulla vetta dell’Ortles"
+date: "2018-09-22T00:00+02:00"
+title: "La Valle di Vent"
 photo:
   src: "./photo.jpg"
-  alt: "Arrivo in vetta"
-  width: 5012
-  height: 3760
+  alt: "La Valle di Vent"
+  width: 1920
+  height: 1280
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2023-10-15T00:00+02:00"
-title: "Rientro alla Bocchetta di Scaredi"
+date: "2014-05-04T00:00+01:00"
+title: "Vecchio larice sotto la Cima d'Olino"
 photo:
   src: "./photo.jpg"
-  alt: "Rientro alla Bocchetta di Scaredi"
-  width: 5184
-  height: 3888
+  alt: "Vecchio larice sotto la Cima d-Olino"
+  width: 4608
+  height: 3456
 ---

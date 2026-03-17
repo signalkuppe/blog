@@ -1,9 +1,9 @@
 ---
-date: "2018-04-28T00:00+02:00"
-title: "Verso il Gletscherhorn"
+date: "2021-08-15T00:00+02:00"
+title: "Le meravigliose Alpi Giulie alla luce della sera"
 photo:
   src: "./photo.jpg"
-  alt: "La pala finale"
-  width: 1600
-  height: 1200
+  alt: "Le meravigliose Giulie alla luce della sera"
+  width: 5472
+  height: 3648
 ---

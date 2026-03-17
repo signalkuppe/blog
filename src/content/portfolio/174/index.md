@@ -1,9 +1,9 @@
 ---
-date: "2019-02-09T00:00+02:00"
-title: "Picozza di vetta"
+date: "2020-07-05T00:00+02:00"
+title: "Il Diavolo di Tenda dal Rifugio Brunone"
 photo:
   src: "./photo.jpg"
-  alt: "Picozza di vetta"
-  width: 2560
-  height: 1707
+  alt: "Il Diavolo di Tenda"
+  width: 5000
+  height: 3336
 ---

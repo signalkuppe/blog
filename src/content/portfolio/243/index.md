@@ -1,9 +1,9 @@
 ---
-date: "2015-05-23T00:00+01:00"
-title: "Dal Cervandone verso l’Oberland"
+date: "2023-01-02T00:00+01:00"
+title: "Il Mont Nery dall’Alta Luce"
 photo:
   src: "./photo.jpg"
-  alt: "Uno sguardo verso nord"
+  alt: "Il Mont Nery"
   width: 5472
   height: 3648
 ---

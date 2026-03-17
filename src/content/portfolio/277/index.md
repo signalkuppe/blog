@@ -1,9 +1,9 @@
 ---
-date: "2013-08-05T00:00+01:00"
-title: "Zumstein e Gnifetti dalla Dufour"
+date: "2024-11-16T00:00+01:00"
+title: "Discesa dal Piz Cam"
 photo:
   src: "./photo.jpg"
-  alt: "Margherita"
-  width: 4608
-  height: 3456
+  alt: "Alpe Sdarva"
+  width: 5184
+  height: 3888
 ---

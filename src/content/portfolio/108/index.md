@@ -1,9 +1,9 @@
 ---
-date: "2020-09-19T00:02+02:00"
-title: "Strani incontri sulle creste"
+date: "2018-09-15T00:00+02:00"
+title: "Arrivo in vetta al Breithorn"
 photo:
   src: "./photo.jpg"
-  alt: "Chi è questa capra con due zampe?"
-  width: 5184
-  height: 3888
+  alt: "Arrivo in vetta"
+  width: 1920
+  height: 1280
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2023-01-16T00:00+01:00"
-title: "Il Monte Barro dal Monte Due Mani"
+date: "2015-02-22T00:00+02:00"
+title: "Starleggia dall’alto"
 photo:
   src: "./photo.jpg"
-  alt: "Il Monte Barro dal Monte Due Mani"
-  width: 4187
-  height: 3140
+  alt: "Starleggia dall'alto"
+  width: 5472
+  height: 3648
 ---

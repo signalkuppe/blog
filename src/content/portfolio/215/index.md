@@ -1,9 +1,9 @@
 ---
-date: "2017-06-24T00:00+01:00"
-title: "La paretina finale della Cima Piazzi"
+date: "2022-07-09T00:00+02:00"
+title: "Dalla vetta della Cima Viola verso il Bernina"
 photo:
   src: "./photo.jpg"
-  alt: "Le roccette finali"
-  width: 2560
-  height: 1440
+  alt: "Dalla vetta della Cima Viola"
+  width: 5472
+  height: 3648
 ---

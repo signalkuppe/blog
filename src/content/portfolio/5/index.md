@@ -1,9 +1,9 @@
 ---
-date: "2025-05-18T00:00+02:00"
-title: "Il Grand Combin dal Ghiacciao Corbassiere"
+date: "2012-03-31T00:00+01:00"
+title: "Premana, Alpe Piancauda"
 photo:
   src: "./photo.jpg"
-  alt: "Che montagnone!"
-  width: 5472
-  height: 3648
+  alt: "Premana, Alpe Piancauda"
+  width: 3872
+  height: 2592
 ---

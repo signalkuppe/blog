@@ -1,9 +1,9 @@
 ---
-date: "2016-06-26T00:00+02:00"
-title: "Il Rifugio Vittorio Emanuele"
+date: "2022-08-19T00:00+02:00"
+title: "La Rocca Meja dal Colle d’Ancoccia"
 photo:
   src: "./photo.jpg"
-  alt: "Il Rifugio Vittorio Emanuele"
-  width: 2560
-  height: 1440
+  alt: "La Rocca Meja dal Colle d’Ancoccia"
+  width: 5184
+  height: 3888
 ---

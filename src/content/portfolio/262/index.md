@@ -1,9 +1,9 @@
 ---
-date: "2014-02-09T00:00+01:00"
-title: "Il Passo del San Bernardino"
+date: "2023-12-16T00:00+01:00"
+title: "Verso il Gerenpass"
 photo:
   src: "./photo.jpg"
-  alt: "Il passo sommerso dalla neve"
-  width: 4608
-  height: 3456
+  alt: "Verso il Gerenpass"
+  width: 5472
+  height: 3648
 ---

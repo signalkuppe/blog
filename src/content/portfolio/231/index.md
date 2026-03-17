@@ -1,9 +1,9 @@
 ---
-date: "2015-10-23T00:00+02:00"
-title: "Vetta del Cervandone"
+date: "2022-11-06T00:00+01:00"
+title: "Il Monte Rosa dai Corni del Nibbio"
 photo:
   src: "./photo.jpg"
-  alt: "Vetta del Cervandone"
-  width: 5472
-  height: 3648
+  alt: "Il Monte Rosa dalla cresta"
+  width: 5184
+  height: 3888
 ---

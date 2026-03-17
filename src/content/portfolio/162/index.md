@@ -1,9 +1,9 @@
 ---
-date: "2019-04-13T00:00+02:00"
-title: "Van life"
+date: "2020-03-06T00:00+01:00"
+title: "Legnone e Grigne visti dalla vetta del Cornizzolo"
 photo:
   src: "./photo.jpg"
-  alt: "Van Life"
-  width: 2560
-  height: 1707
+  alt: "Grigne e Legnone si risvegliano"
+  width: 5472
+  height: 3648
 ---

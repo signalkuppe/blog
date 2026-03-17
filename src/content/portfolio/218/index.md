@@ -1,9 +1,9 @@
 ---
-date: "2017-06-03T00:00+01:00"
-title: "Vipera Berus (Marasso)"
+date: "2022-07-24T00:00+02:00"
+title: "La cresta finale del Bietschhorn"
 photo:
   src: "./photo.jpg"
-  alt: "Viper Berus"
-  width: 1280
-  height: 922
+  alt: "La cresta finale"
+  width: 5472
+  height: 3648
 ---

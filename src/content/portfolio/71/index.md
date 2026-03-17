@@ -1,9 +1,9 @@
 ---
-date: "2022-08-22T00:00+02:00"
-title: "Dalla vetta della Tete de l’Homme"
+date: "2016-04-06T00:00+02:00"
+title: "Il Bernina dal Piz Chalchagn"
 photo:
   src: "./photo.jpg"
-  alt: "Dalla vetta della Tete de l’Homme"
-  width: 5184
-  height: 3888
+  alt: "Al cospetto del Bernina"
+  width: 4608
+  height: 3456
 ---

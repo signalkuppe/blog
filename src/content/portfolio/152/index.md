@@ -1,9 +1,9 @@
 ---
-date: "2019-08-12T00:00+02:00"
-title: "Alba sulla cima del Vioz"
+date: "2019-10-26T02:00+01:00"
+title: "Il Bivacco Alpe Mottac"
 photo:
   src: "./photo.jpg"
-  alt: "La vetta del Vioz"
-  width: 5401
-  height: 3554
+  alt: "Il Bivacco Alpe Mottac"
+  width: 5472
+  height: 3648
 ---

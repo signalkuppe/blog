@@ -1,9 +1,9 @@
 ---
-date: "2014-10-27T00:00+02:00"
-title: "Autunno all’Alpe Devero"
+date: "2023-03-05T00:00+01:00"
+title: "Il nevaio superiore del Piz Fenga"
 photo:
   src: "./photo.jpg"
-  alt: "Autunno all’Alpe Devero"
-  width: 4608
-  height: 3456
+  alt: "Il nevaio superiore del Piz Fenga"
+  width: 5472
+  height: 3648
 ---

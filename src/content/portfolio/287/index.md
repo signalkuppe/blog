@@ -1,9 +1,9 @@
 ---
-date: "2012-10-02T00:00+02:00"
-title: "Vista autunnale del Pizzo Tre Signori"
+date: "2025-04-26T00:00+02:00"
+title: "Discesa dal Doldenhorn"
 photo:
   src: "./photo.jpg"
-  alt: "Vista autunnale del Pizzo Tre Signori"
-  width: 4608
-  height: 3456
+  alt: "Pronti per la discesa"
+  width: 5472
+  height: 3648
 ---

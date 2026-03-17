@@ -1,9 +1,9 @@
 ---
-date: "2024-11-16T00:00+01:00"
-title: "La Val Bregaglia dal Piz Cam"
+date: "2013-08-05T00:00+01:00"
+title: "La Nordend dalla Dufour"
 photo:
   src: "./photo.jpg"
-  alt: "La Val Bregaglia dal Piz Cam"
-  width: 5184
-  height: 3888
+  alt: "Nordend"
+  width: 4608
+  height: 3072
 ---

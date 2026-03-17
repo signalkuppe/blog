@@ -1,9 +1,9 @@
 ---
-date: "2020-07-09T00:02+02:00"
-title: "Tramonto sulle Grigne dal Monte Due Mani"
+date: "2019-01-20T00:00+02:00"
+title: "Un balcone sulle Alpi dell’Albula"
 photo:
   src: "./photo.jpg"
-  alt: "Tramonto sulle Grigne dal Monte Due Mani"
-  width: 5000
-  height: 3337
+  alt: "Un balcone sulle alpi dell’Albula"
+  width: 1920
+  height: 1280
 ---

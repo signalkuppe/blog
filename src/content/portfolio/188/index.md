@@ -1,9 +1,9 @@
 ---
-date: "2018-07-14T00:00+02:00"
-title: "Cascata nei pressi della Capanna Campo Tencia"
+date: "2021-01-03T00:00+01:00"
+title: "Premana dopo una nevicata"
 photo:
   src: "./photo.jpg"
-  alt: "Una bellissima cascata lungo la salita"
-  width: 1080
-  height: 1620
+  alt: "Premana dopo una nevicata"
+  width: 5472
+  height: 3648
 ---

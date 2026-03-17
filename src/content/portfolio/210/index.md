@@ -1,9 +1,9 @@
 ---
-date: "2017-10-22T00:00+01:00"
-title: "L’Alpe Lut"
+date: "2022-03-20T00:00+01:00"
+title: "Il Disgrazia dal Monte Sissone"
 photo:
   src: "./photo.jpg"
-  alt: "La chiesetta dell’Alpe Lut"
-  width: 1280
-  height: 960
+  alt: "Il Disgrazia"
+  width: 5472
+  height: 3648
 ---

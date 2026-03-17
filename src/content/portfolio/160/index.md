@@ -1,9 +1,9 @@
 ---
-date: "2019-06-08T00:00+02:00"
-title: "La cresta della Punta Ormelune"
+date: "2020-01-25T00:00+02:00"
+title: "La scala del Piz Beverin"
 photo:
   src: "./photo.jpg"
-  alt: "Il tratto più ripido della cresta"
-  width: 2560
-  height: 1707
+  alt: "La discesa dalla scala"
+  width: 5472
+  height: 3648
 ---

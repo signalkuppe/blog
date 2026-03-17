@@ -1,9 +1,9 @@
 ---
-date: "2025-01-26T00:00+01:00"
-title: "La magnifica Bisisthal"
+date: "2012-11-15T00:00+01:00"
+title: "L’Ama Dablam"
 photo:
   src: "./photo.jpg"
-  alt: "Ci addentriamo nella Bisisthal"
-  width: 5472
-  height: 3648
+  alt: "L’Ama Dablam"
+  width: 3456
+  height: 4608
 ---

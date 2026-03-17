@@ -1,9 +1,9 @@
 ---
-date: "2022-12-06T00:00+01:00"
-title: "I Magnaghi dopo una forte nevicata"
+date: "2015-06-06T00:00+01:00"
+title: "Alba di luna sul Cengalo"
 photo:
   src: "./photo.jpg"
-  alt: "I Magnaghi dopo una forte nevicata"
-  width: 5184
-  height: 3888
+  alt: "Il Cengalo Illuminato dalla luna"
+  width: 5472
+  height: 3648
 ---

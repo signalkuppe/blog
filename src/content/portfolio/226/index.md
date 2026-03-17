@@ -1,9 +1,9 @@
 ---
-date: "2015-11-08T00:00+02:00"
-title: "Tramonto alle Strette del Casè"
+date: "2022-09-14T00:00+02:00"
+title: "Tramonto allo Shira Camp"
 photo:
   src: "./photo.jpg"
-  alt: "Tramonto alle Strette del Casè"
-  width: 4608
-  height: 3456
+  alt: "Tramonto allo Shira Camp"
+  width: 5184
+  height: 3888
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2020-09-14T00:04+02:00"
-title: "Lo Stelvio all’altezza del Bivacco Lombardi"
+date: "2018-09-22T00:00+02:00"
+title: "Sul Ghiacciaio del Similaun"
 photo:
   src: "./photo.jpg"
-  alt: "Lo Stelvio all’altezza del Bivacco Lombardi"
-  width: 5184
-  height: 3888
+  alt: "Sul ghiacciaio"
+  width: 1920
+  height: 1280
 ---

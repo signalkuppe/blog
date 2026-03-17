@@ -1,9 +1,9 @@
 ---
-date: "2024-04-20T00:00+02:00"
-title: "Svalbard, Ghiacciaio Manebreen"
+date: "2013-11-30T00:00+01:00"
+title: "Resegone, Canalone Comera"
 photo:
   src: "./photo.jpg"
-  alt: "Bel pendio sopra il Ghiacciaio Manebreen"
-  width: 5472
-  height: 3648
+  alt: "Risalendo il primo tratto del Canalone Comera"
+  width: 3648
+  height: 2736
 ---

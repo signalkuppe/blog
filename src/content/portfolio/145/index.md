@@ -1,9 +1,9 @@
 ---
-date: "2019-10-07T02:00+02:00"
-title: "Lagginhorn e Fletschorn dalla vetta del Tossenhorn"
+date: "2019-08-28T20:00+02:00"
+title: "Tramonto sulla cima della Grignetta"
 photo:
   src: "./photo.jpg"
-  alt: "Lagginhorn e Fletschorn dalla vetta"
+  alt: "Tramonto sulla cima della Grignetta"
   width: 5472
   height: 3648
 ---

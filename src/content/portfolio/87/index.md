@@ -1,9 +1,9 @@
 ---
-date: "2022-02-13T00:00+01:00"
-title: "L’arrivo in vetta al Blüemberg"
+date: "2018-02-03T02:00+02:00"
+title: "Il Pizzo Tre Signori dal Mellasc"
 photo:
   src: "./photo.jpg"
-  alt: "L’arrivo in vetta al Blüemberg"
-  width: 5472
-  height: 3648
+  alt: "Il Pizzo Tre Signori dalla vetta"
+  width: 2560
+  height: 1440
 ---

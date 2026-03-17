@@ -1,9 +1,9 @@
 ---
-date: "2021-03-13T00:00+02:00"
-title: "Uscita di un Canale in Val Fontana"
+date: "2018-06-23T00:00+02:00"
+title: "L’Alpe Flix"
 photo:
   src: "./photo.jpg"
-  alt: "All’uscita"
-  width: 3434
-  height: 5150
+  alt: "La magia dell'Alpe Flix "
+  width: 2560
+  height: 1440
 ---

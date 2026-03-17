@@ -1,9 +1,9 @@
 ---
-date: "2013-09-09T00:00+01:00"
-title: "La discesa verso la Valle della Sancia"
+date: "2024-05-25T00:00+02:00"
+title: "Al cospetto della parete nord della Presanella"
 photo:
   src: "./photo.jpg"
-  alt: "La discesa verso la Valle della Sancia"
-  width: 4608
-  height: 3456
+  alt: "Al cospetto della nord della Presanella"
+  width: 5472
+  height: 3648
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2018-04-04T00:00+02:00"
-title: "Oro"
+date: "2021-11-04T00:00+01:00"
+title: "Valsassina imbiancata ad inizio Novembre"
 photo:
   src: "./photo.jpg"
-  alt: "Oro"
-  width: 1600
-  height: 1067
+  alt: "Valsassina imbiancata ad inizio Novembre"
+  width: 5472
+  height: 3648
 ---

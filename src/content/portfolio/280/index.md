@@ -1,9 +1,9 @@
 ---
-date: "2013-05-11T00:00+01:00"
-title: "Prospettiva di betulle"
+date: "2024-12-14T00:00+01:00"
+title: "Le Orobie dal Monte Vaccaro"
 photo:
   src: "./photo.jpg"
-  alt: "Prospettiva di betulle"
-  width: 4608
-  height: 3456
+  alt: "Le Orobie dal Monte Vaccaro"
+  width: 5065
+  height: 3799
 ---

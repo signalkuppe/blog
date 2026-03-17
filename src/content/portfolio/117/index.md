@@ -1,9 +1,9 @@
 ---
-date: "2020-08-08T00:02+02:00"
-title: "Il “Pianone“ prima del Rifugio Allievi"
+date: "2019-01-19T00:00+02:00"
+title: "Sciata con vista!"
 photo:
   src: "./photo.jpg"
-  alt: "Il “Pianone“ prima del Rifugio Allievi"
-  width: 5184
-  height: 3888
+  alt: "Polvere!"
+  width: 2560
+  height: 1440
 ---

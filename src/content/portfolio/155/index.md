@@ -1,9 +1,9 @@
 ---
-date: "2019-08-04T13:00+02:00"
-title: "Una cordata sull’Iswändli"
+date: "2020-01-03T00:00+01:00"
+title: "Alba sul Grignone"
 photo:
   src: "./photo.jpg"
-  alt: "Una cordata sull’Iswändli"
-  width: 5350
-  height: 3566
+  alt: "Alba sul Grignone"
+  width: 5329
+  height: 3553
 ---

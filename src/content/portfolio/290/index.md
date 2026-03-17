@@ -1,9 +1,9 @@
 ---
-date: "2009-06-27T00:00+02:00"
-title: "La Capanna Monte Leone"
+date: "2025-05-18T00:00+02:00"
+title: "Discesa con gli sci dal Corridor"
 photo:
-  src: "./photo.jpeg"
-  alt: "La Capanna Monte Leone"
-  width: 2560
-  height: 1440
+  src: "./photo.jpg"
+  alt: "Bello ma spaventoso"
+  width: 5472
+  height: 3648
 ---

@@ -1,9 +1,9 @@
 ---
-date: "2019-06-16T00:00+02:00"
-title: "La Val d’Osura"
+date: "2020-01-19T00:00+01:00"
+title: "Il Monte Cadelle dalla Cima dei Lupi"
 photo:
   src: "./photo.jpg"
-  alt: "La Val d’Osura"
-  width: 5472
-  height: 3648
+  alt: "Il Monte Cadelle dalla vetta"
+  width: 5383
+  height: 3588
 ---

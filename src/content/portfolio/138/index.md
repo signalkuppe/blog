@@ -1,9 +1,9 @@
 ---
-date: "2020-01-06T00:00+01:00"
-title: "Arrivo in vetta al Bärenhorn"
+date: "2019-08-04T00:00+02:00"
+title: "Urner Boden"
 photo:
   src: "./photo.jpg"
-  alt: "L’arrivo in vetta"
+  alt: "Panorama sulla Urner Boden"
   width: 5472
   height: 3648
 ---

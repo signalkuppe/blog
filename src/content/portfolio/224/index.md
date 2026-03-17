@@ -1,9 +1,9 @@
 ---
-date: "2016-01-10T00:04+02:00"
-title: "Il Legnone visto dall'Alpe Bassetta "
+date: "2022-09-07T00:00+02:00"
+title: "Sulla cresta Segantini"
 photo:
   src: "./photo.jpg"
-  alt: "L’Alpe Bassetta"
+  alt: "Sopra il Canalone della Lingua"
   width: 5472
   height: 3648
 ---

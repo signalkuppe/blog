@@ -1,9 +1,9 @@
 ---
-date: "2015-07-30T00:00+01:00"
-title: "La fatica dei portatori"
+date: "2022-12-06T00:00+01:00"
+title: "Alba verso il Resegone dalla Grignetta"
 photo:
   src: "./photo.jpg"
-  alt: "La fatica dei portatori"
-  width: 5472
-  height: 3648
+  alt: "Alba verso il Resegone dalla Grignetta"
+  width: 5184
+  height: 3888
 ---

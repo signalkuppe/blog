@@ -1,9 +1,9 @@
 ---
-date: "2022-11-12T00:02+01:00"
-title: "Il Pizzo Tre Signori dallo Zucco di Cam"
+date: "2015-10-10T00:00+01:00"
+title: "Il Pizzo Cavregasco"
 photo:
   src: "./photo.jpg"
-  alt: "Il Pizzo Tre Signori dalla vetta"
-  width: 5184
-  height: 3888
+  alt: "Pizzo Cavregasco"
+  width: 4608
+  height: 3456
 ---

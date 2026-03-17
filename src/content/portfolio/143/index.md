@@ -1,9 +1,9 @@
 ---
-date: "2019-10-07T02:00+02:00"
-title: "La cresta finale del Tossenhorn"
+date: "2019-08-18T00:00+02:00"
+title: "Un gregge sotto il Cengalo"
 photo:
   src: "./photo.jpg"
-  alt: "La cresta finale del Tossenhorn"
-  width: 4988
-  height: 3326
+  alt: "Un gregge sotto il Cengalo"
+  width: 5472
+  height: 3648
 ---

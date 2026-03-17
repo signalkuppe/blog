@@ -1,9 +1,9 @@
 ---
-date: "2013-08-26T00:00+02:00"
-title: "Il Susten Pass"
+date: "2024-08-03T00:00+02:00"
+title: "La cresta del Lyskamm Orientale"
 photo:
   src: "./photo.jpg"
-  alt: "Il Susten Pass"
-  width: 4608
-  height: 3456
+  alt: "Dettaglio della cresta del Lyskamm Orientale"
+  width: 5472
+  height: 3648
 ---

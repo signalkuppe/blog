@@ -1,9 +1,9 @@
 ---
-date: "2022-02-13T00:00+01:00"
-title: "Il Chronenstock dalla vetta del Blüemberg"
+date: "2018-03-04T02:00+02:00"
+title: "Discesa dal Surgonda"
 photo:
   src: "./photo.jpg"
-  alt: "Il Chronenstock dalla vetta del Blüemberg"
-  width: 5472
-  height: 3648
+  alt: "Pronti per iniziare la discesa"
+  width: 1600
+  height: 1200
 ---

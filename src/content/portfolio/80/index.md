@@ -1,9 +1,9 @@
 ---
-date: "2022-07-04T00:00+02:00"
-title: "Balcone con vista"
+date: "2017-07-20T00:00+01:00"
+title: "The Barrels"
 photo:
   src: "./photo.jpg"
-  alt: "Il balcone più bello del mondo"
-  width: 5472
-  height: 3648
+  alt: "The Barrels"
+  width: 2560
+  height: 1440
 ---

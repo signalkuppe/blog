@@ -1,9 +1,9 @@
 ---
-date: "2015-02-22T00:00+02:00"
-title: "Ciaspolata a Starleggia"
+date: "2023-01-18T00:00+01:00"
+title: "La Valsassina dalla Corna Rossa"
 photo:
   src: "./photo.jpg"
-  alt: "Starleggia"
-  width: 5472
-  height: 3648
+  alt: "La Valsassina dalla Corna Rossa"
+  width: 5184
+  height: 3888
 ---

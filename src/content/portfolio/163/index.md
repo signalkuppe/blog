@@ -1,9 +1,9 @@
 ---
-date: "2019-04-13T00:00+02:00"
-title: "Eyjafjörður"
+date: "2020-03-06T00:00+01:00"
+title: "Alba sulla pianura dal Cornizzolo"
 photo:
   src: "./photo.jpg"
-  alt: "Eyjafjörður"
-  width: 2560
-  height: 1707
+  alt: "Albeggia sulla pianura"
+  width: 5472
+  height: 3648
 ---

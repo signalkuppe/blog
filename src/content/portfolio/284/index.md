@@ -1,9 +1,9 @@
 ---
-date: "2012-11-15T00:00+01:00"
-title: "Venditrice d’aglio"
+date: "2025-03-21T00:00+02:00"
+title: "Avvicinamento alla Cima di Lago Spalmo"
 photo:
   src: "./photo.jpg"
-  alt: "Venditrice d’aglio"
-  width: 4608
-  height: 3456
+  alt: "Nella parte bassa prima del ghiacciaio"
+  width: 5472
+  height: 3648
 ---
