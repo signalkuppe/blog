@@ -112,6 +112,8 @@ const galleryItems = await Promise.all(
       gallery: "#photo-gallery",
       children: "a",
       pswpModule: PhotoSwipe,
+      preloadFirstSlide: false,
+      preload: [0, 0],
       showHideAnimationType: "zoom",
       showAnimationDuration: 500,
       hideAnimationDuration: 500, // Match durations for a smoother feel

@@ -36,7 +36,8 @@ const galleryItems = await Promise.all(
     return { ...photo, lightbox, download, thumbMaxWidth, thumbWidths };
   }),
 );
-const galleryThumbSizes = "(max-width: 40rem) 50vw, (max-width: 70rem) 33vw, 25vw";
+const galleryThumbSizes =
+  "(max-width: 40rem) 50vw, (max-width: 70rem) 33vw, 25vw";
 ---
 
 <ul id="post-gallery">
@@ -78,6 +79,8 @@ const galleryThumbSizes = "(max-width: 40rem) 50vw, (max-width: 70rem) 33vw, 25v
       gallery: "#post-gallery",
       children: "a",
       pswpModule: PhotoSwipe,
+      preloadFirstSlide: false,
+      preload: [0, 0],
       showHideAnimationType: "zoom",
       showAnimationDuration: 500,
       hideAnimationDuration: 500,

@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import Spinner from "./Spinner.astro";
 
 interface Props {
   cover: {
@@ -16,6 +17,10 @@ const heroWidths = [640, 960, 1280, 1600, 2000, 2200].filter(
 ---
 
 <div class="cover">
+  <div class="spinner-container" aria-live="polite">
+    <Spinner size="2rem" />
+    <span>Carico la copertina...</span>
+  </div>
   <Image
     src={cover.src}
     alt={cover.alt}
@@ -35,11 +40,25 @@ const heroWidths = [640, 960, 1280, 1600, 2000, 2200].filter(
     background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
     background-size: 400% 400%;
     display: grid;
+    position: relative;
+  }
+
+  .spinner-container {
+    grid-area: 1/1;
+    z-index: 0;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
   }
 
   :global(.cover-picture) {
     display: grid;
     grid-area: 1/1;
+    z-index: 1;
   }
 
   img {
@@ -55,7 +74,7 @@ const heroWidths = [640, 960, 1280, 1600, 2000, 2200].filter(
   .caption {
     font-size: 1rem;
     grid-area: 1/1;
-    z-index: 1;
+    z-index: 2;
     background: rgba(0, 0, 0, 0.7);
     color: var(--textAccent);
     padding: 0.25rem 0.85rem;
@@ -63,6 +82,10 @@ const heroWidths = [640, 960, 1280, 1600, 2000, 2200].filter(
     font-weight: var(--font-bolder);
     background: var(--surface);
     transform: translate(-0.5rem, -0.5rem);
+  }
+
+  .cover.is-loaded .spinner-container {
+    display: none;
   }
 
   img.desktop {
@@ -99,3 +122,23 @@ const heroWidths = [640, 960, 1280, 1600, 2000, 2200].filter(
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cover = document.querySelector(".cover");
+    if (!cover) return;
+
+    const image = cover.querySelector("img");
+    if (!image) return;
+
+    const setLoaded = () => cover.classList.add("is-loaded");
+
+    if (image.complete && image.naturalWidth > 0) {
+      setLoaded();
+      return;
+    }
+
+    image.addEventListener("load", setLoaded, { once: true });
+    image.addEventListener("error", setLoaded, { once: true });
+  });
+</script>
