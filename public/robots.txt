@@ -38,3 +38,13 @@ Disallow: /
 
 User-agent: Applebot-Extended
 Disallow: /
+
+# Block Bing crawlers
+User-agent: Bingbot
+Disallow: /
+
+User-agent: AdIdxBot
+Disallow: /
+
+User-agent: MSNBot
+Disallow: /
