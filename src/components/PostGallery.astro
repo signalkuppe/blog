@@ -1,5 +1,4 @@
 ---
-import "photoswipe/dist/photoswipe.css";
 import { Image, getImage } from "astro:assets";
 import PhotoDisclaimer from "./PhotoDisclaimer.astro";
 
@@ -27,8 +26,8 @@ const galleryItems = await Promise.all(
       quality: 90,
     });
 
-    const thumbMaxWidth = Math.min(photo.src.width, 720);
-    const thumbWidths = [240, 360, 480, 720, thumbMaxWidth]
+    const thumbMaxWidth = Math.min(photo.src.width, 640);
+    const thumbWidths = [180, 240, 320, 400, 520, 640, thumbMaxWidth]
       .filter((width) => width <= thumbMaxWidth)
       .filter((width, index, arr) => arr.indexOf(width) === index)
       .sort((a, b) => a - b);
@@ -37,7 +36,7 @@ const galleryItems = await Promise.all(
   }),
 );
 const galleryThumbSizes =
-  "(max-width: 40rem) 50vw, (max-width: 70rem) 33vw, 25vw";
+  "(max-width: 40rem) 50vw, (max-width: 70rem) 33vw, (max-width: 90rem) 25vw, 280px";
 ---
 
 <ul id="post-gallery">
@@ -72,64 +71,96 @@ const galleryThumbSizes =
 
 <script>
   //@ts-nocheck
-  import PhotoSwipeLightbox from "photoswipe/lightbox";
-  import PhotoSwipe from "photoswipe";
+  let lightboxPromise;
+
+  async function getLightbox() {
+    if (lightboxPromise) return lightboxPromise;
+    lightboxPromise = (async () => {
+      const [{ default: PhotoSwipeLightbox }, { default: PhotoSwipe }] =
+        await Promise.all([
+          import("photoswipe/lightbox"),
+          import("photoswipe"),
+          import("photoswipe/dist/photoswipe.css"),
+        ]);
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: "#post-gallery",
+        children: "a",
+        pswpModule: PhotoSwipe,
+        preloadFirstSlide: false,
+        preload: [0, 0],
+        showHideAnimationType: "zoom",
+        showAnimationDuration: 500,
+        hideAnimationDuration: 500,
+        bgOpacity: 0.9,
+      });
+      lightbox.on("uiRegister", function () {
+        lightbox.pswp.ui.registerElement({
+          name: "download-button",
+          order: 8,
+          isButton: true,
+          tagName: "a",
+          html: {
+            isCustomSVG: true,
+            inner:
+              '<path d="M20.5 14.3 17.1 18V10h-2.2v7.9l-3.4-3.6L10 16l6 6.1 6-6.1ZM23 23H9v2h14Z" id="pswp__icn-download"/>',
+            outlineID: "pswp__icn-download",
+          },
+
+          onInit: (el, pswp) => {
+            el.setAttribute("download", "");
+            el.setAttribute("target", "_blank");
+            el.setAttribute("rel", "noopener");
+
+            pswp.on("change", () => {
+              el.href =
+                pswp.currSlide.data.element.getAttribute("data-download");
+            });
+          },
+        });
+        lightbox.pswp.ui.registerElement({
+          name: "custom-caption",
+          order: 9,
+          isButton: false,
+          appendTo: "root",
+          html: "Caption text",
+          onInit: (el, pswp) => {
+            lightbox.pswp.on("change", () => {
+              const currSlideElement = lightbox.pswp.currSlide.data.element;
+              let captionHTML = "";
+              if (currSlideElement) {
+                captionHTML = currSlideElement
+                  .querySelector("img")
+                  .getAttribute("alt");
+              }
+              el.innerHTML = captionHTML || "";
+            });
+          },
+        });
+      });
+      lightbox.init();
+      return lightbox;
+    })();
+    return lightboxPromise;
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: "#post-gallery",
-      children: "a",
-      pswpModule: PhotoSwipe,
-      preloadFirstSlide: false,
-      preload: [0, 0],
-      showHideAnimationType: "zoom",
-      showAnimationDuration: 500,
-      hideAnimationDuration: 500,
-      bgOpacity: 0.9,
-    });
-    lightbox.on("uiRegister", function () {
-      lightbox.pswp.ui.registerElement({
-        name: "download-button",
-        order: 8,
-        isButton: true,
-        tagName: "a",
-        html: {
-          isCustomSVG: true,
-          inner:
-            '<path d="M20.5 14.3 17.1 18V10h-2.2v7.9l-3.4-3.6L10 16l6 6.1 6-6.1ZM23 23H9v2h14Z" id="pswp__icn-download"/>',
-          outlineID: "pswp__icn-download",
-        },
+    const gallery = document.getElementById("post-gallery");
+    if (!gallery) return;
 
-        onInit: (el, pswp) => {
-          el.setAttribute("download", "");
-          el.setAttribute("target", "_blank");
-          el.setAttribute("rel", "noopener");
+    gallery.addEventListener("pointerenter", () => {
+      getLightbox();
+    }, { once: true });
 
-          pswp.on("change", () => {
-            el.href = pswp.currSlide.data.element.getAttribute("data-download");
-          });
-        },
-      });
-      lightbox.pswp.ui.registerElement({
-        name: "custom-caption",
-        order: 9,
-        isButton: false,
-        appendTo: "root",
-        html: "Caption text",
-        onInit: (el, pswp) => {
-          lightbox.pswp.on("change", () => {
-            const currSlideElement = lightbox.pswp.currSlide.data.element;
-            let captionHTML = "";
-            if (currSlideElement) {
-              captionHTML = currSlideElement
-                .querySelector("img")
-                .getAttribute("alt");
-            }
-            el.innerHTML = captionHTML || "";
-          });
-        },
-      });
+    gallery.addEventListener("click", async (event) => {
+      const link = event.target.closest("a");
+      if (!link) return;
+      event.preventDefault();
+      const lightbox = await getLightbox();
+      const items = [...gallery.querySelectorAll("a")];
+      const index = items.indexOf(link);
+      lightbox.loadAndOpen(index >= 0 ? index : 0);
     });
-    lightbox.init();
   });
 </script>
 

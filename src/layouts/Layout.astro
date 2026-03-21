@@ -82,13 +82,11 @@ const { title, description, ogImage } = Astro.props;
 </style>
 
 <script>
-  // @ts-nocheck
-  import { emitter } from "../lib/utils";
-
   const header = document.getElementById("header");
 
-  emitter.on("menu-toggle", (isOpen) => {
-    if (isOpen) {
+  document.addEventListener("menu-toggle", (event) => {
+    if (!header) return;
+    if (event.detail?.isOpen) {
       header.classList.add("menu-is-open");
     } else {
       header.classList.remove("menu-is-open");
@@ -96,10 +94,11 @@ const { title, description, ogImage } = Astro.props;
   });
 
   const root = document.documentElement;
-  var observer = new MutationObserver(function (event) {
-    emitter.emit(
-      "dark-mode-change",
-      event[0].target.getAttribute("data-theme"),
+  const observer = new MutationObserver((event) => {
+    document.dispatchEvent(
+      new CustomEvent("theme-change", {
+        detail: { mode: event[0].target.getAttribute("data-theme") },
+      }),
     );
   });
 

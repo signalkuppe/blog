@@ -12,6 +12,12 @@ import {
 const url = Astro.url.pathname;
 const links = [
   {
+    href: "#sostieni-questo-progetto",
+    text: "Sostieni questo progetto",
+    description: "Fai una donazione",
+    modalTrigger: true,
+  },
+  {
     href: "/matteo",
     text: "Conosciamoci meglio",
     description: "Qualcosa in più su di me e su cosa faccio",
@@ -52,14 +58,24 @@ const links = [
     {
       links.map((link, i) => (
         <li>
-          <a
-            href={link.href}
-            aria-current={url === link.href ? "page" : false}
-            aria-describedby={`footer-link-${i + 1}`}
-            data-astro-prefetch={link.prefetch}
-          >
-            {link.text}
-          </a>
+          {link.modalTrigger ? (
+            <a
+              href={link.href}
+              aria-describedby={`footer-link-${i + 1}`}
+              data-donation-modal-trigger
+            >
+              {link.text}
+            </a>
+          ) : (
+            <a
+              href={link.href}
+              aria-current={url === link.href ? "page" : false}
+              aria-describedby={`footer-link-${i + 1}`}
+              data-astro-prefetch={link.prefetch}
+            >
+              {link.text}
+            </a>
+          )}
           {link.description && (
             <p id={`footer-link-${i + 1}`}>{link.description}</p>
           )}
@@ -141,10 +157,14 @@ const links = [
   @media screen and (width > 51rem) {
     ul {
       display: block;
+
       columns: 2;
     }
 
     li {
+      break-inside: avoid;
+      page-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
       padding-bottom: 1.5rem;
     }
   }
@@ -152,4 +172,11 @@ const links = [
 
 <script>
   document.getElementById("js-year").innerText = `${new Date().getFullYear()}`;
+
+  document.querySelectorAll("[data-donation-modal-trigger]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      document.dispatchEvent(new CustomEvent("donation-modal:open"));
+    });
+  });
 </script>

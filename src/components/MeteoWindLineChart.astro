@@ -13,7 +13,7 @@ const { data } = Astro.props;
   import { WEATHER_CONSTANTS } from "../constants";
   import "chartjs-adapter-dayjs-4/dist/chartjs-adapter-dayjs-4.esm";
   import { Chart, registerables } from "chart.js";
-  import { getCssVar, emitter } from "../lib/utils";
+  import { getCssVar } from "../lib/utils";
   Chart.register(...registerables);
 
   const canvas = document.querySelector(".meteo-wind-chart");
@@ -99,7 +99,7 @@ const { data } = Astro.props;
 
   init();
 
-  emitter.on("dark-mode-change", (mode) => {
+  document.addEventListener("theme-change", () => {
     // otherwise getCssVar is not re-evaluated
     init();
   });

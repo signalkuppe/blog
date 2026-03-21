@@ -1,5 +1,4 @@
 ---
-import "leaflet/dist/leaflet.css";
 import Spinner from "../components/Spinner.astro";
 import DownloadIcon from "../icons/Download.svg";
 
@@ -198,13 +197,6 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
 
 <script>
   //@ts-nocheck
-  import L from "leaflet";
-  import "leaflet-fullscreen";
-  import "leaflet-gpx";
-  import Chart from "chart.js/auto";
-  import JSZip from "jszip";
-  import simplify from "simplify-js";
-  import { max, min } from "underscore";
   import {
     animateValue,
     getCssVar,
@@ -221,7 +213,11 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
   const gainEl = document.getElementById("postGps-gain");
   const distanceEl = document.getElementById("postGps-distance");
   let mapLoaded;
+  let mapLoading;
   let isDesktop;
+  let L;
+  let Chart;
+  let simplify;
 
   function checkWindowSize() {
     isDesktop = window.matchMedia("(width > 60rem)").matches;
@@ -233,34 +229,54 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
     passive: true,
   });
 
-  const showMap = function () {
-    const gpxUrl = map.getAttribute("data-gpx");
-    const correctedElevationGain = map.getAttribute("data-elevation-gain");
-    const correctedDistance = map.getAttribute("data-distance");
-    const correctedMimimumAltitude = map.getAttribute("data-minimum-altitude");
-    const correctedMaximumAltitude = map.getAttribute("data-maximum-altitude");
-    let mymap;
-    if (!mymap) {
-      mymap = L.map("map", {
-        tap: false,
-        attributionControl: false,
-        zoomControl: false,
-        fullscreenControl: {
-          position: "topright",
-        },
-      });
-    }
+  async function loadMapDependencies() {
+    if (L && Chart && simplify) return;
+    const [{ default: Leaflet }, { default: ChartJs }, { default: simplifyJs }] =
+      await Promise.all([
+        import("leaflet"),
+        import("chart.js/auto"),
+        import("simplify-js"),
+        import("leaflet-fullscreen"),
+        import("leaflet-gpx"),
+        import("leaflet/dist/leaflet.css"),
+      ]);
+    L = Leaflet;
+    Chart = ChartJs;
+    simplify = simplifyJs;
+  }
 
-    mymap.addControl(new L.Control.Fullscreen());
-    const TILELAYER = L.tileLayer(
-      "https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f890f7037bd243ee9602a36c56fc6dc2",
-      {
-        attribution:
-          '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        zoom: 15,
-      },
-    );
-    TILELAYER.addTo(mymap);
+  const showMap = async function () {
+    if (mapLoaded || mapLoading) return;
+    mapLoading = true;
+    try {
+      await loadMapDependencies();
+      const gpxUrl = map.getAttribute("data-gpx");
+      const correctedElevationGain = map.getAttribute("data-elevation-gain");
+      const correctedDistance = map.getAttribute("data-distance");
+      const correctedMimimumAltitude = map.getAttribute("data-minimum-altitude");
+      const correctedMaximumAltitude = map.getAttribute("data-maximum-altitude");
+      let mymap;
+      if (!mymap) {
+        mymap = L.map("map", {
+          tap: false,
+          attributionControl: false,
+          zoomControl: false,
+          fullscreenControl: {
+            position: "topright",
+          },
+        });
+      }
+
+      mymap.addControl(new L.Control.Fullscreen());
+      const TILELAYER = L.tileLayer(
+        "https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=f890f7037bd243ee9602a36c56fc6dc2",
+        {
+          attribution:
+            '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          zoom: 15,
+        },
+      );
+      TILELAYER.addTo(mymap);
 
     L.control
       .zoom({
@@ -285,53 +301,58 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
       }
     });
 
-    new L.GPX(gpxUrl, {
-      async: true,
-      markers: {
-        startIcon: "/images/start-marker.png",
-        endIcon: "/images/end-marker.png",
-        wptIcons: false,
-      },
-      marker_options: {
-        iconSize: [38, 38],
-      },
-      polyline_options: {
-        color: "red",
-        opacity: 1,
-        weight: 4,
-        lineCap: "round",
-      },
-    })
-      .on("loaded", function (e) {
-        mymap.fitBounds(e.target.getBounds());
-        const gain = Math.round(
-          correctedElevationGain || e.target.get_elevation_gain(),
-        );
-        const distance = Math.round(
-          correctedDistance || e.target.get_distance() / 1000,
-        );
-        const min =
-          correctedMimimumAltitude || Math.round(e.target.get_elevation_min());
-        const max =
-          correctedMaximumAltitude || Math.round(e.target.get_elevation_max());
-        const rawElevationData = e.target.get_elevation_data();
-        const elevationData = rawElevationData.map((data) => ({
-          y: data[1],
-          x: parseFloat(data[0]),
-        }));
-
-        map.classList.add("is-loaded");
-
-        setTimeout(() => {
-          animateValue(gainEl, 0, gain, 1500);
-          animateValue(distanceEl, 0, distance, 1500);
-          animateValue(minEl, 0, min, 1500);
-          animateValue(maxEl, 0, max, 1500);
-          mapLoaded = true;
-          drawChart(elevationData);
-        }, 1000);
+      new L.GPX(gpxUrl, {
+        async: true,
+        markers: {
+          startIcon: "/images/start-marker.png",
+          endIcon: "/images/end-marker.png",
+          wptIcons: false,
+        },
+        marker_options: {
+          iconSize: [38, 38],
+        },
+        polyline_options: {
+          color: "red",
+          opacity: 1,
+          weight: 4,
+          lineCap: "round",
+        },
       })
-      .addTo(mymap);
+        .on("loaded", function (e) {
+          mymap.fitBounds(e.target.getBounds());
+          const gain = Math.round(
+            correctedElevationGain || e.target.get_elevation_gain(),
+          );
+          const distance = Math.round(
+            correctedDistance || e.target.get_distance() / 1000,
+          );
+          const min =
+            correctedMimimumAltitude || Math.round(e.target.get_elevation_min());
+          const max =
+            correctedMaximumAltitude || Math.round(e.target.get_elevation_max());
+          const rawElevationData = e.target.get_elevation_data();
+          const elevationData = rawElevationData.map((data) => ({
+            y: data[1],
+            x: parseFloat(data[0]),
+          }));
+
+          map.classList.add("is-loaded");
+
+          setTimeout(() => {
+            animateValue(gainEl, 0, gain, 1500);
+            animateValue(distanceEl, 0, distance, 1500);
+            animateValue(minEl, 0, min, 1500);
+            animateValue(maxEl, 0, max, 1500);
+            mapLoaded = true;
+            mapLoading = false;
+            drawChart(elevationData);
+          }, 1000);
+        })
+        .addTo(mymap);
+    } catch (error) {
+      mapLoading = false;
+      console.error("Errore nel caricamento mappa GPX:", error);
+    }
   };
 
   function drawChart(elevationData) {
@@ -399,8 +420,14 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
               },
               stepSize: 100,
             },
-            max: Math.ceil(max(elevationData, (d) => d.y).y / 100) * 100,
-            min: Math.floor(min(elevationData, (d) => d.y).y / 100) * 100,
+            max:
+              Math.ceil(
+                Math.max(...elevationData.map((point) => point.y)) / 100,
+              ) * 100,
+            min:
+              Math.floor(
+                Math.min(...elevationData.map((point) => point.y)) / 100,
+              ) * 100,
           },
         },
         animation: {
@@ -418,6 +445,7 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
   }
 
   async function downloadAndCompress(file, filename, type) {
+    const { default: JSZip } = await import("jszip");
     const remoteFileUrl = file;
     const name = `${filename}.${type}`;
 

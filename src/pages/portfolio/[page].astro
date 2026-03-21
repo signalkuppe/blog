@@ -1,5 +1,4 @@
 ---
-import "photoswipe/dist/photoswipe.css";
 import { getImage } from "astro:assets";
 import PageTitle from "../../components/PageTitle.astro";
 import PhotoCard from "../../components/PhotoCard.astro";
@@ -45,9 +44,9 @@ const galleryItems = await Promise.all(
   page.data.map(async (photo) => {
     const lightbox = await getImage({
       src: photo.data.photo.src,
-      width: 2000,
+      width: 1800,
       format: "avif",
-      quality: 55,
+      quality: 50,
     });
     const download = await getImage({
       src: photo.data.photo.src,
@@ -84,7 +83,7 @@ const galleryItems = await Promise.all(
                 data-pswp-width={lightbox.attributes.width}
                 data-pswp-height={lightbox.attributes.height}
               >
-                <PhotoCard photo={photo} imageProps={{ priority: i <= 5 }} />
+                <PhotoCard photo={photo} imageProps={{ priority: i === 0 }} />
               </a>
             </li>
           );
@@ -102,68 +101,115 @@ const galleryItems = await Promise.all(
 
 <script>
   //@ts-nocheck
-  import { emitter } from "../../lib/utils";
-  import PhotoSwipeLightbox from "photoswipe/lightbox";
-  import PhotoSwipe from "photoswipe";
-
   document.addEventListener("DOMContentLoaded", () => {
-    emitter.emit("header-background-change", true);
-    const lightbox = new PhotoSwipeLightbox({
-      gallery: "#photo-gallery",
-      children: "a",
-      pswpModule: PhotoSwipe,
-      preloadFirstSlide: false,
-      preload: [0, 0],
-      showHideAnimationType: "zoom",
-      showAnimationDuration: 500,
-      hideAnimationDuration: 500, // Match durations for a smoother feel
-      bgOpacity: 0.9, // Set background opacity here
-    });
-    lightbox.on("uiRegister", function () {
-      lightbox.pswp.ui.registerElement({
-        name: "download-button",
-        order: 8,
-        isButton: true,
-        tagName: "a",
-        html: {
-          isCustomSVG: true,
-          inner:
-            '<path d="M20.5 14.3 17.1 18V10h-2.2v7.9l-3.4-3.6L10 16l6 6.1 6-6.1ZM23 23H9v2h14Z" id="pswp__icn-download"/>',
-          outlineID: "pswp__icn-download",
-        },
+    const gallery = document.getElementById("photo-gallery");
+    if (!gallery) return;
 
-        onInit: (el, pswp) => {
-          el.setAttribute("download", "");
-          el.setAttribute("target", "_blank");
-          el.setAttribute("rel", "noopener");
+    let lightbox;
+    let lightboxPromise;
 
-          pswp.on("change", () => {
-            el.href = pswp.currSlide.data.element.getAttribute("data-download");
+    const setupLightbox = async () => {
+      if (lightboxPromise) return lightboxPromise;
+
+      lightboxPromise = (async () => {
+        const [{ default: PhotoSwipeLightbox }, { default: PhotoSwipe }] =
+          await Promise.all([
+            import("photoswipe/lightbox"),
+            import("photoswipe"),
+            import("photoswipe/dist/photoswipe.css"),
+          ]);
+
+        lightbox = new PhotoSwipeLightbox({
+          gallery: "#photo-gallery",
+          children: "a",
+          pswpModule: PhotoSwipe,
+          preloadFirstSlide: false,
+          preload: [0, 0],
+          showHideAnimationType: "zoom",
+          showAnimationDuration: 500,
+          hideAnimationDuration: 500,
+          bgOpacity: 0.9,
+        });
+
+        lightbox.on("uiRegister", function () {
+          lightbox.pswp.ui.registerElement({
+            name: "download-button",
+            order: 8,
+            isButton: true,
+            tagName: "a",
+            html: {
+              isCustomSVG: true,
+              inner:
+                '<path d="M20.5 14.3 17.1 18V10h-2.2v7.9l-3.4-3.6L10 16l6 6.1 6-6.1ZM23 23H9v2h14Z" id="pswp__icn-download"/>',
+              outlineID: "pswp__icn-download",
+            },
+            onInit: (el, pswp) => {
+              el.setAttribute("download", "");
+              el.setAttribute("target", "_blank");
+              el.setAttribute("rel", "noopener");
+
+              pswp.on("change", () => {
+                el.href =
+                  pswp.currSlide.data.element.getAttribute("data-download");
+              });
+            },
           });
-        },
-      });
-      lightbox.pswp.ui.registerElement({
-        name: "custom-caption",
-        order: 9,
-        isButton: false,
-        appendTo: "root",
-        html: "Caption text",
-        onInit: (el, pswp) => {
-          lightbox.pswp.on("change", () => {
-            const currSlideElement = lightbox.pswp.currSlide.data.element;
-            let captionHTML = "";
-            if (currSlideElement) {
-              captionHTML = currSlideElement
-                .querySelector("img")
-                .getAttribute("alt");
-            }
-            el.innerHTML = captionHTML || "";
-          });
-        },
-      });
-    });
 
-    lightbox.init();
+          lightbox.pswp.ui.registerElement({
+            name: "custom-caption",
+            order: 9,
+            isButton: false,
+            appendTo: "root",
+            html: "Caption text",
+            onInit: (el) => {
+              lightbox.pswp.on("change", () => {
+                const currSlideElement = lightbox.pswp.currSlide.data.element;
+                let captionHTML = "";
+                if (currSlideElement) {
+                  captionHTML = currSlideElement
+                    .querySelector("img")
+                    .getAttribute("alt");
+                }
+                el.innerHTML = captionHTML || "";
+              });
+            },
+          });
+        });
+
+        lightbox.init();
+        return lightbox;
+      })();
+
+      return lightboxPromise;
+    };
+
+    gallery.addEventListener(
+      "pointerenter",
+      () => {
+        void setupLightbox();
+      },
+      { once: true, passive: true },
+    );
+
+    gallery.addEventListener(
+      "focusin",
+      () => {
+        void setupLightbox();
+      },
+      { once: true },
+    );
+
+    gallery.addEventListener("click", async (event) => {
+      const anchor = event.target?.closest?.("a");
+      if (!anchor || !gallery.contains(anchor)) return;
+
+      event.preventDefault();
+      const instance = await setupLightbox();
+      const anchors = Array.from(gallery.querySelectorAll("a"));
+      const index = anchors.indexOf(anchor);
+      if (index < 0) return;
+      instance.loadAndOpen(index, { gallery });
+    });
   });
 </script>
 

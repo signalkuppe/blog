@@ -8,8 +8,8 @@ interface Props {
 }
 
 const { photo, imageProps } = Astro.props;
-const cardMaxWidth = Math.min(photo.data.photo.src.width, 900);
-const cardWidths = [320, 480, 640, 800, 900, cardMaxWidth]
+const cardMaxWidth = Math.min(photo.data.photo.src.width, 720);
+const cardWidths = [240, 320, 400, 480, 560, 640, 720, cardMaxWidth]
   .filter((width) => width <= cardMaxWidth)
   .filter((width, index, arr) => arr.indexOf(width) === index)
   .sort((a, b) => a - b);
@@ -22,8 +22,8 @@ const cardWidths = [320, 480, 640, 800, 900, cardMaxWidth]
       alt={photo.data.photo.alt}
       width={cardMaxWidth}
       widths={cardWidths}
-      sizes="(max-width: 30rem) calc(100vw - 3rem), (max-width: 60rem) calc(50vw - 3rem), calc(33vw - 3rem)"
-      quality={65}
+      sizes="(max-width: 30rem) calc(100vw - 3rem), (max-width: 60rem) calc(50vw - 3rem), (max-width: 80rem) calc(33vw - 3rem), calc(25vw - 3rem)"
+      quality={55}
       {...imageProps}
     />
   </aside>
@@ -80,29 +80,10 @@ const cardWidths = [320, 480, 640, 800, 900, cardMaxWidth]
 
   img {
     grid-area: 1 / 1;
-    background: linear-gradient(-45deg, var(--surface), var(--surfaceAccent));
-    background-size: 400% 400%;
     transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
     display: block;
     border-radius: 5px;
-  }
-
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    img {
-      animation: gradient 2s ease infinite;
-    }
+    background: var(--surfaceAccent);
   }
 
   @media screen and (width > 60rem) {

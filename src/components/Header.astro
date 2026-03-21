@@ -141,3 +141,27 @@ const navLabel = "Sito";
     }
   }
 </style>
+
+<script>
+  let searchInitPromise;
+
+  function initSearchOnDemand() {
+    if (searchInitPromise) return searchInitPromise;
+    searchInitPromise = import("../lib/search-autocomplete.js").then(
+      ({ initSearchAutocomplete }) => initSearchAutocomplete(),
+    );
+    return searchInitPromise;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector("#search-input");
+    if (!searchInput) return;
+
+    searchInput.addEventListener("focus", initSearchOnDemand, { once: true });
+    searchInput.addEventListener("pointerdown", initSearchOnDemand, {
+      once: true,
+      passive: true,
+    });
+    searchInput.addEventListener("keydown", initSearchOnDemand, { once: true });
+  });
+</script>

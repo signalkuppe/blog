@@ -3,17 +3,24 @@ const paypalDonateUrl =
   "https://www.paypal.com/donate/?hosted_button_id=77MXKAB84XP8L";
 ---
 
-<aside id="donation-banner" class="donation-banner" hidden>
-  <div class="donation-banner-inner">
+<dialog
+  id="donation-modal"
+  class="donation-modal"
+  aria-labelledby="donation-modal-title"
+>
+  <div class="donation-modal-backdrop" data-donation-modal-close></div>
+  <div class="donation-modal-inner">
     <button
       type="button"
-      id="donation-banner-close"
-      class="donation-banner-close"
-      aria-label="Chiudi banner donazione"
+      id="donation-modal-close"
+      class="donation-modal-close"
+      aria-label="Chiudi finestra donazione"
     >
       ×
     </button>
-    <p class="donation-banner-title">Ti rubo solo un minuto</p>
+    <p id="donation-modal-title" class="donation-modal-title">
+      Ti rubo solo un minuto
+    </p>
     <p>
       Mantengo questo sito <b>senza pubblicità</b> perché preferisco che rimanga pulito,
       veloce e piacevole da usare per tutti. Ogni giorno riceve molti visitatori e
@@ -27,12 +34,8 @@ const paypalDonateUrl =
       il sito ti è utile e vuoi contribuire a mantenerlo online e senza
       pubblicità, anche un piccolo contributo può fare la differenza.
     </p>
-    <p>
-      Grazie di cuore a chi deciderà di supportare il progetto, <b
-        >non ti mosterò più questo banner in futuro.</b
-      >
-    </p>
-    <div class="donation-banner-actions">
+    <p>Grazie di cuore a chi deciderà di supportare il progetto.</p>
+    <div class="donation-modal-actions">
       <a href={paypalDonateUrl} target="_blank" rel="noopener" class="btn">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154.728 190.5">
           <path
@@ -51,61 +54,72 @@ const paypalDonateUrl =
       >
       <button
         type="button"
-        id="donation-banner-no-thanks"
-        class="donation-banner-no-thanks"
+        id="donation-modal-no-thanks"
+        class="donation-modal-no-thanks"
       >
         <b>No grazie</b>
       </button>
     </div>
   </div>
-</aside>
+</dialog>
 
 <style>
-  .donation-banner {
-    position: fixed;
-    left: 1rem;
-    right: 1rem;
-    bottom: 1rem;
-    z-index: 50;
-    transform: translateY(120%);
-    opacity: 0;
-    transition:
-      transform 0.35s ease,
-      opacity 0.35s ease;
-    pointer-events: none;
+  .donation-modal {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    max-width: none;
+    max-height: none;
+    width: min(70ch, calc(100vw - 2rem));
+    margin: auto;
+    overflow: visible;
   }
 
-  .donation-banner-title {
+  .donation-modal::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .donation-modal[open] .donation-modal-inner {
+    animation: donation-modal-enter 0.3s ease-out;
+  }
+
+  .donation-modal-title {
     font-size: 1.5rem;
     padding-bottom: 0.75rem;
     font-weight: 800;
   }
 
-  .donation-banner.is-visible {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+  .donation-modal-backdrop {
+    position: fixed;
+    inset: 0;
   }
 
-  .donation-banner-inner {
+  .donation-modal-inner {
     position: relative;
-    margin-inline: auto;
-    max-width: 70ch;
+    width: 100%;
     background: #ffc439;
     color: #111111;
     border: 1px solid #111111;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
     padding: 1.5rem;
     font-size: 0.9rem;
+    z-index: 1;
+    will-change: transform, opacity;
   }
 
-  .donation-banner-brand {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.6rem;
+  @keyframes donation-modal-enter {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 2.5rem, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
   }
 
-  .donation-banner-close {
+  .donation-modal-close {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
@@ -117,7 +131,7 @@ const paypalDonateUrl =
     cursor: pointer;
   }
 
-  .donation-banner-actions {
+  .donation-modal-actions {
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -125,17 +139,17 @@ const paypalDonateUrl =
     margin-top: 2rem;
   }
 
-  .donation-banner-actions a {
+  .donation-modal-actions a {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
 
-  .donation-banner-actions a svg {
+  .donation-modal-actions a svg {
     height: 1rem;
   }
 
-  .donation-banner-no-thanks {
+  .donation-modal-no-thanks {
     border: 0;
     padding: 0;
     background: transparent;
@@ -145,57 +159,85 @@ const paypalDonateUrl =
     font: inherit;
   }
 
-  .donation-banner-no-thanks:hover {
+  .donation-modal-no-thanks:hover {
     text-decoration: none;
   }
 
-  .donation-banner p {
+  .donation-modal p {
     margin-bottom: 0.6rem;
   }
 
-  .donation-banner :global(.btn) {
+  .donation-modal :global(.btn) {
     background: #111111;
     color: #ffffff;
     border: 1px solid #111111;
   }
 
-  .donation-banner :global(.btn:hover) {
+  .donation-modal :global(.btn:hover) {
     background: #000000;
     color: #ffffff;
   }
 
-  .donation-banner a:not(.btn) {
+  .donation-modal a:not(.btn) {
     color: #111111;
     text-decoration-color: #111111;
   }
 
   @media screen and (width > 60rem) {
-    .donation-banner-inner {
+    .donation-modal-inner {
       padding: 1.25rem;
     }
   }
 </style>
 
-<script>
-  const storageKey = "donation-banner-seen-v1";
-  const banner = document.getElementById("donation-banner");
-  const closeBtn = document.getElementById("donation-banner-close");
-  const noThanksBtn = document.getElementById("donation-banner-no-thanks");
+<style is:global>
+  body.donation-modal-open {
+    overflow: hidden;
+    padding-right: var(--donation-modal-scrollbar-width, 0);
+  }
+</style>
 
-  const closeBanner = () => {
-    if (!banner) return;
-    banner.classList.remove("is-visible");
-    setTimeout(() => {
-      banner.hidden = true;
-    }, 350);
+<script>
+  const modal = document.getElementById("donation-modal");
+  const closeBtn = document.getElementById("donation-modal-close");
+  const noThanksBtn = document.getElementById("donation-modal-no-thanks");
+  const backdrop = modal?.querySelector("[data-donation-modal-close]");
+  const body = document.body;
+
+  const lockPageScroll = () => {
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+    body.style.setProperty(
+      "--donation-modal-scrollbar-width",
+      `${Math.max(scrollbarWidth, 0)}px`,
+    );
+    body.classList.add("donation-modal-open");
   };
 
-  if (banner && !localStorage.getItem(storageKey)) {
-    banner.hidden = false;
-    requestAnimationFrame(() => banner.classList.add("is-visible"));
-    localStorage.setItem(storageKey, "1");
-  }
+  const unlockPageScroll = () => {
+    body.classList.remove("donation-modal-open");
+    body.style.removeProperty("--donation-modal-scrollbar-width");
+  };
 
-  closeBtn?.addEventListener("click", closeBanner);
-  noThanksBtn?.addEventListener("click", closeBanner);
+  const closeModal = () => {
+    if (!(modal instanceof HTMLDialogElement)) return;
+    modal.close();
+    unlockPageScroll();
+  };
+
+  const openModal = () => {
+    if (!(modal instanceof HTMLDialogElement) || modal.open) return;
+    lockPageScroll();
+    modal.showModal();
+  };
+
+  document.addEventListener("donation-modal:open", openModal);
+  closeBtn?.addEventListener("click", closeModal);
+  noThanksBtn?.addEventListener("click", closeModal);
+  backdrop?.addEventListener("click", closeModal);
+  modal?.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeModal();
+  });
+  modal?.addEventListener("close", unlockPageScroll);
 </script>
