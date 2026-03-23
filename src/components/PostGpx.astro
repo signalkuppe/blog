@@ -231,18 +231,23 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
 
   async function loadMapDependencies() {
     if (L && Chart && simplify) return;
-    const [{ default: Leaflet }, { default: ChartJs }, { default: simplifyJs }] =
-      await Promise.all([
-        import("leaflet"),
-        import("chart.js/auto"),
-        import("simplify-js"),
-        import("leaflet-fullscreen"),
-        import("leaflet-gpx"),
-        import("leaflet/dist/leaflet.css"),
-      ]);
+    const [
+      { default: Leaflet },
+      { default: ChartJs },
+      { default: simplifyJs },
+    ] = await Promise.all([
+      import("leaflet"),
+      import("chart.js/auto"),
+      import("simplify-js"),
+      import("leaflet/dist/leaflet.css"),
+    ]);
     L = Leaflet;
     Chart = ChartJs;
     simplify = simplifyJs;
+    globalThis.L = Leaflet;
+    window.L = Leaflet;
+    await import("leaflet-fullscreen");
+    await import("leaflet-gpx");
   }
 
   const showMap = async function () {
