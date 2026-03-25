@@ -39,7 +39,7 @@ const galleryThumbSizes =
   "(max-width: 40rem) 50vw, (max-width: 70rem) 33vw, (max-width: 90rem) 25vw, 280px";
 ---
 
-<ul id="post-gallery">
+<ul id="post-gallery-list" aria-labelledby="post-gallery">
   {
     galleryItems.map((photo) => (
       <li>
@@ -71,10 +71,12 @@ const galleryThumbSizes =
 
 <script>
   //@ts-nocheck
-  let lightboxPromise;
+  const lightboxes = new WeakMap();
 
-  async function getLightbox() {
+  async function getLightbox(gallery) {
+    let lightboxPromise = lightboxes.get(gallery);
     if (lightboxPromise) return lightboxPromise;
+
     lightboxPromise = (async () => {
       const [{ default: PhotoSwipeLightbox }, { default: PhotoSwipe }] =
         await Promise.all([
@@ -84,7 +86,7 @@ const galleryThumbSizes =
         ]);
 
       const lightbox = new PhotoSwipeLightbox({
-        gallery: "#post-gallery",
+        gallery,
         children: "a",
         pswpModule: PhotoSwipe,
         preloadFirstSlide: false,
@@ -141,27 +143,21 @@ const galleryThumbSizes =
       lightbox.init();
       return lightbox;
     })();
+
+    lightboxes.set(gallery, lightboxPromise);
     return lightboxPromise;
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const gallery = document.getElementById("post-gallery");
-    if (!gallery) return;
+  function initPostGallery() {
+    const gallery = document.getElementById("post-gallery-list");
+    if (!gallery || gallery.dataset.lightboxBound === "true") return;
 
-    gallery.addEventListener("pointerenter", () => {
-      getLightbox();
-    }, { once: true });
+    gallery.dataset.lightboxBound = "true";
+    void getLightbox(gallery);
+  }
 
-    gallery.addEventListener("click", async (event) => {
-      const link = event.target.closest("a");
-      if (!link) return;
-      event.preventDefault();
-      const lightbox = await getLightbox();
-      const items = [...gallery.querySelectorAll("a")];
-      const index = items.indexOf(link);
-      lightbox.loadAndOpen(index >= 0 ? index : 0);
-    });
-  });
+  initPostGallery();
+  document.addEventListener("astro:page-load", initPostGallery);
 </script>
 
 <style media="screen">
