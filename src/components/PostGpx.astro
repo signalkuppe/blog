@@ -63,10 +63,16 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
       >Scarico il file...
     </span></button
   >
-  <p class="notice">
-    NB: La rilevazione gps potrebbe non essere sempre precisa e riportare valori
-    errati
-  </p>
+  <div class="notice">
+    <p>
+      <strong>Disclaimer</strong>
+      La rilevazione gps potrebbe non essere sempre precisa e riportare valori errati.
+      Le attività in montagna sono pericolose, informati bene prima di affrontarle
+      e non fare affidamento solo sui dati riportati in questa pagina. Non mi assumo
+      alcuna responsabilità per eventuali incidenti o problemi che potrebbero verificarsi
+      durante una delle attività descritte in questo blog.
+    </p>
+  </div>
 </div>
 
 <style media="screen">
@@ -135,11 +141,18 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
 
   .notice {
     font-size: 0.75rem;
-    margin-top: 1.5rem;
+    margin-top: 4rem;
+    max-width: 400px;
+  }
+
+  .notice strong {
+    display: block;
+    color: var(--textAccent);
+    margin-top: 0.75rem;
   }
 
   .download-button {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 0.5rem;
   }
@@ -258,8 +271,12 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
       const gpxUrl = map.getAttribute("data-gpx");
       const correctedElevationGain = map.getAttribute("data-elevation-gain");
       const correctedDistance = map.getAttribute("data-distance");
-      const correctedMimimumAltitude = map.getAttribute("data-minimum-altitude");
-      const correctedMaximumAltitude = map.getAttribute("data-maximum-altitude");
+      const correctedMimimumAltitude = map.getAttribute(
+        "data-minimum-altitude",
+      );
+      const correctedMaximumAltitude = map.getAttribute(
+        "data-maximum-altitude",
+      );
       let mymap;
       if (!mymap) {
         mymap = L.map("map", {
@@ -283,28 +300,28 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
       );
       TILELAYER.addTo(mymap);
 
-    L.control
-      .zoom({
-        position: "topright",
-      })
-      .addTo(mymap);
-    mymap.scrollWheelZoom.disable();
+      L.control
+        .zoom({
+          position: "topright",
+        })
+        .addTo(mymap);
+      mymap.scrollWheelZoom.disable();
 
-    mymap.on("fullscreenchange", function () {
-      if (!document.fullscreenElement) {
-        if (mymap.isFullscreen()) {
-          map.classList.add("fullscreen");
-          map.style.height = `${window.innerHeight}px`;
-          document.body.style.height = `${window.innerHeight}px`;
-          document.body.style.overflow = `hidden`;
-          mymap.invalidateSize();
-        } else {
-          map.classList.remove("fullscreen");
-          map.style.height = "";
-          document.body.removeAttribute("style");
+      mymap.on("fullscreenchange", function () {
+        if (!document.fullscreenElement) {
+          if (mymap.isFullscreen()) {
+            map.classList.add("fullscreen");
+            map.style.height = `${window.innerHeight}px`;
+            document.body.style.height = `${window.innerHeight}px`;
+            document.body.style.overflow = `hidden`;
+            mymap.invalidateSize();
+          } else {
+            map.classList.remove("fullscreen");
+            map.style.height = "";
+            document.body.removeAttribute("style");
+          }
         }
-      }
-    });
+      });
 
       new L.GPX(gpxUrl, {
         async: true,
@@ -332,9 +349,11 @@ const mapGpxUrl = import.meta.env.PROD ? liteGpxUrl : gpxUrl;
             correctedDistance || e.target.get_distance() / 1000,
           );
           const min =
-            correctedMimimumAltitude || Math.round(e.target.get_elevation_min());
+            correctedMimimumAltitude ||
+            Math.round(e.target.get_elevation_min());
           const max =
-            correctedMaximumAltitude || Math.round(e.target.get_elevation_max());
+            correctedMaximumAltitude ||
+            Math.round(e.target.get_elevation_max());
           const rawElevationData = e.target.get_elevation_data();
           const elevationData = rawElevationData.map((data) => ({
             y: data[1],
