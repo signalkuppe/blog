@@ -15,24 +15,17 @@ const galleryItems = await Promise.all(
   gallery.map(async (photo) => {
     const lightbox = await getImage({
       src: photo.src,
-      width: 2000,
+      width: 2500,
       format: "avif",
-      quality: 55,
-    });
-    const download = await getImage({
-      src: photo.src,
-      format: "jpg",
-      width: photo.src.width,
-      quality: 90,
+      quality: 85,
     });
 
     const thumbMaxWidth = Math.min(photo.src.width, 640);
-    const thumbWidths = [180, 240, 320, 400, 520, 640, thumbMaxWidth]
-      .filter((width) => width <= thumbMaxWidth)
-      .filter((width, index, arr) => arr.indexOf(width) === index)
-      .sort((a, b) => a - b);
+    const thumbWidths = [280, 400, 640].filter(
+      (width) => width <= thumbMaxWidth,
+    );
 
-    return { ...photo, lightbox, download, thumbMaxWidth, thumbWidths };
+    return { ...photo, lightbox, thumbMaxWidth, thumbWidths };
   }),
 );
 const galleryThumbSizes =
@@ -45,7 +38,6 @@ const galleryThumbSizes =
       <li>
         <a
           href={photo.lightbox.src}
-          data-download={photo.download.src}
           data-pswp-src={photo.lightbox.src}
           data-pswp-width={photo.lightbox.attributes.width}
           data-pswp-height={photo.lightbox.attributes.height}
@@ -56,6 +48,7 @@ const galleryThumbSizes =
             width={photo.thumbMaxWidth}
             widths={photo.thumbWidths}
             sizes={galleryThumbSizes}
+            format="webp"
             quality={60}
             loading="lazy"
             decoding="async"
@@ -97,29 +90,6 @@ const galleryThumbSizes =
         bgOpacity: 0.9,
       });
       lightbox.on("uiRegister", function () {
-        lightbox.pswp.ui.registerElement({
-          name: "download-button",
-          order: 8,
-          isButton: true,
-          tagName: "a",
-          html: {
-            isCustomSVG: true,
-            inner:
-              '<path d="M20.5 14.3 17.1 18V10h-2.2v7.9l-3.4-3.6L10 16l6 6.1 6-6.1ZM23 23H9v2h14Z" id="pswp__icn-download"/>',
-            outlineID: "pswp__icn-download",
-          },
-
-          onInit: (el, pswp) => {
-            el.setAttribute("download", "");
-            el.setAttribute("target", "_blank");
-            el.setAttribute("rel", "noopener");
-
-            pswp.on("change", () => {
-              el.href =
-                pswp.currSlide.data.element.getAttribute("data-download");
-            });
-          },
-        });
         lightbox.pswp.ui.registerElement({
           name: "custom-caption",
           order: 9,

@@ -4,7 +4,7 @@ Personal blog about mountain adventures, ski touring, hiking, and alpine photogr
 
 ## 🏔️ Tech Stack
 
-- **Framework**: [Astro 5](https://astro.build) - Static site generation with content collections
+- **Framework**: [Astro 5](https://astro.build) - SSR via Netlify adapter with content collections
 - **Content**: MDX files with frontmatter and co-located media
 - **Styling**: Custom CSS with CSS variables for theming (dark/light mode)
 - **Hosting**: Netlify
@@ -106,7 +106,7 @@ maximumAltitude: 2700
 
 - **Format**: AVIF (optimized for web)
 - **Location**: Co-located with posts in content collections
-- **Optimization**: Disabled in build (images are pre-optimized)
+- **Optimization**: Sharp at build time (generates all size variants during `astro build`)
 - **Alt Text**: Required for accessibility
 
 Why AVIF is kept in Git:
@@ -194,6 +194,21 @@ After running the script, update title/description, category, tags, slug, alt te
 | `npm run generate-post` | Generate post starter content from JPG files |
 | `npm run deploy:prod` | Build and deploy production |
 
+### Cleanup Unreferenced AVIF Files (`scripts/cleanup-avif.js`)
+
+Astro emits the original source file for every imported image alongside the processed variants (resized WebP thumbnails). These originals are never linked in any HTML — they are dead weight that inflates deploy size by ~5 GB.
+
+This script runs automatically as part of `postbuild`:
+
+1. Collects all `*.avif` files from `dist/_astro/`
+2. Scans all HTML and JS output files for `/_astro/*.avif` references
+3. Deletes any AVIF not referenced anywhere
+
+Output example:
+```
+cleanup-avif: removed 4348 files, saved 5400.0 MB
+```
+
 ## 🚢 Deployment
 
 Deployment is done with Netlify CLI from the local machine.
@@ -233,9 +248,9 @@ npm run deploy:prod
 
 ### Astro Configuration (`astro.config.mjs`)
 
-- **Adapter**: `@astrojs/netlify` for serverless deployment
+- **Adapter**: `@astrojs/netlify` for serverless deployment (`imageCDN: false` — uses Sharp at build time instead of Netlify's on-demand image CDN)
 - **Integrations**: `@astrojs/mdx` for MDX support
-- **Image Service**: Disabled (images are pre-optimized as AVIF)
+- **Image Service**: Sharp (build-time processing, static output)
 
 ### Content Collections Schema
 
@@ -247,7 +262,7 @@ Located in `src/content/config.ts`:
 
 - **Size**: ~7GB (mostly images)
 - **Files**: ~6,000 files
-- **Build Time**: ~2-3 minutes locally
+- **Build Time**: First build: 10–20+ minutes locally (Sharp generates all image variants); subsequent builds: fast thanks to Astro's image cache
 - **Upload Time**: First deploy: varies by connection; subsequent: <2 minutes
 
 ## 🔧 Troubleshooting
@@ -292,7 +307,7 @@ npm run build
 ## 🎯 Performance
 
 - **Image Format**: AVIF (50-80% smaller than JPEG)
-- **Image Optimization**: Disabled (pre-optimized)
+- **Image Optimization**: Sharp at build time (all size variants pre-generated as static files)
 - **Lazy Loading**: Images below fold
 - **Code Splitting**: Automatic via Astro
 - **CSS**: Scoped component styles

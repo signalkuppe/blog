@@ -19,8 +19,9 @@ const categorySlug = categories.find(
   <Image
     src={post.data.cover.src}
     alt={post.data.cover.alt}
-    widths={[100, 150, 200, 300, 450, 600]}
+    widths={[100, 200, 500, 600]}
     sizes="(max-width: 30rem) 100px, (max-width: 65rem) 120px, (max-width: 80rem) 600px, 500px"
+    format="webp"
     quality={65}
     class="post-cover"
     {...imageProps}

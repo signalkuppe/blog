@@ -9,10 +9,7 @@ interface Props {
 
 const { photo, imageProps } = Astro.props;
 const cardMaxWidth = Math.min(photo.data.photo.src.width, 720);
-const cardWidths = [240, 320, 400, 480, 560, 640, 720, cardMaxWidth]
-  .filter((width) => width <= cardMaxWidth)
-  .filter((width, index, arr) => arr.indexOf(width) === index)
-  .sort((a, b) => a - b);
+const cardWidths = [320, 480, 720].filter((width) => width <= cardMaxWidth);
 ---
 
 <article>
@@ -23,6 +20,7 @@ const cardWidths = [240, 320, 400, 480, 560, 640, 720, cardMaxWidth]
       width={cardMaxWidth}
       widths={cardWidths}
       sizes="(max-width: 30rem) calc(100vw - 3rem), (max-width: 60rem) calc(50vw - 3rem), (max-width: 80rem) calc(33vw - 3rem), calc(25vw - 3rem)"
+      format="webp"
       quality={55}
       {...imageProps}
     />

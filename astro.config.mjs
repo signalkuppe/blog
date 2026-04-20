@@ -6,7 +6,7 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   devToolbar: { enabled: false },
   prefetch: false,
-  adapter: netlify(),
+  adapter: netlify({ imageCDN: false }),
   integrations: [mdx()],
   vite: {
     server: {
