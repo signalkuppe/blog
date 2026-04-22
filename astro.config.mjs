@@ -5,9 +5,12 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   devToolbar: { enabled: false },
-  prefetch: false,
+  prefetch: true,
   adapter: netlify({ imageCDN: false }),
   integrations: [mdx()],
+  build: {
+    inlineStylesheets: "auto",
+  },
   vite: {
     server: {
       allowedHosts: [".ngrok-free.app"],
