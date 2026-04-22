@@ -8,6 +8,9 @@ export default defineConfig({
   prefetch: true,
   adapter: netlify({ imageCDN: false }),
   integrations: [mdx()],
+  build: {
+    inlineStylesheets: "auto",
+  },
   vite: {
     server: {
       allowedHosts: [".ngrok-free.app"],
