@@ -1,7 +1,5 @@
 ---
-import { Image } from "astro:assets";
 import { categories } from "../constants";
-import avatar from "../images/matteo-leoni-signalkuppe.png";
 import DesktopMenu from "./DesktopMenu.astro";
 import MobileMenu from "./MobileMenu.astro";
 import Search from "./Search.astro";
@@ -49,15 +47,16 @@ const navLabel = "Sito";
     aria-label="Pagina principale"
     data-astro-prefetch
   >
-    <Image
-      src={avatar}
+    <img
+      src="/images/matteo-leoni-signalkuppe.png"
       alt=""
       width="140"
       height="140"
       loading="eager"
+      decoding="async"
       aria-hidden="true"
-    /></a
-  >
+    />
+  </a>
   <div class="header-right">
     <div class="mobile-menu">
       <MobileMenu links={links} navLabel={navLabel} />
