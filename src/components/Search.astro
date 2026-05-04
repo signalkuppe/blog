@@ -1,32 +1,18 @@
 ---
 import { getCollection } from "astro:content";
-import { getImage } from "astro:assets";
 import SearchIcon from "../icons/Search.svg";
 
 const posts = await getCollection("posts");
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const dataset = await Promise.all(
-  posts.map(async (post) => {
-    const thumbnail = await getImage({
-      src: post.data.cover.src,
-      width: 120,
-      height: 120,
-      fit: "cover",
-      format: "avif",
-      quality: 45,
-    });
-
-    return {
-      title: post.data.title,
-      slug: post.slug,
-      tags: post.data.tags || [],
-      date: post.data.date.toISOString(),
-      description: post.data.description,
-      image: thumbnail.src,
-    };
-  }),
-);
+const dataset = posts.map((post) => ({
+  title: post.data.title,
+  slug: (post.id ?? "").replace(/\.(md|mdx)$/i, ""),
+  tags: post.data.tags || [],
+  date: post.data.date.toISOString(),
+  description: post.data.description,
+  image: post.data.cover.src.src,
+}));
 ---
 
 <form id="search-form" role="search" data-posts={JSON.stringify(dataset)}>

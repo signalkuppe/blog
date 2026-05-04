@@ -1,9 +1,10 @@
 import rss from "@astrojs/rss";
 import { siteTitle, siteSlogan, prodSiteUrl } from "../constants";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import { contentEntrySlug } from "../lib/utils";
 
 export async function GET() {
-  const posts = await getCollection('posts');
+  const posts = await getCollection("posts");
   posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return rss({
@@ -14,7 +15,7 @@ export async function GET() {
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.description,
-      link: `${prodSiteUrl}/${post.slug}/`,
+      link: `${prodSiteUrl}/${contentEntrySlug(post)}/`,
     })),
     customData: `<language>it</language>`,
   });

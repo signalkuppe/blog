@@ -1,7 +1,7 @@
 ---
 import { siteTitle } from "../constants";
 import { headPageTitle } from "../lib/utils";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { newsletterUrl } from "../constants";
 import Layout from "../layouts/Layout.astro";
 import PostHeader from "../components/PostHeader.astro";
@@ -10,13 +10,14 @@ import PostBody from "../components/PostBody.astro";
 import PostGallery from "../components/PostGallery.astro";
 import PostGpx from "../components/PostGpx.astro";
 import PostShare from "../components/PostShare.astro";
+import { contentEntrySlug } from "../lib/utils";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   const pages = posts.map((post, i) => ({
-    params: { post: post.slug },
+    params: { post: contentEntrySlug(post) },
     props: {
       post,
       prev: posts[i - 1],
@@ -33,8 +34,11 @@ interface Props {
 }
 
 const { post, prev, next } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 const postGpxTrack = post.data.gpxTracks?.[0];
+const postSlug = contentEntrySlug(post);
+const prevSlug = prev ? contentEntrySlug(prev) : "";
+const nextSlug = next ? contentEntrySlug(next) : "";
 ---
 
 <Layout
@@ -90,7 +94,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
       <section class="section gallery" aria-labelledby="post-gallery">
         <div class="cage">
           <h2 id="post-gallery">Galleria fotografica</h2>
-          <PostGallery gallery={post.data.gallery} postSlug={post.slug} />
+          <PostGallery gallery={post.data.gallery} postSlug={postSlug} />
         </div>
       </section>
     )
@@ -103,7 +107,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
         </div>
         <PostGpx
           gpxFile={postGpxTrack.src}
-          slug={post.slug}
+          slug={postSlug}
           elevationGain={post.data.elevationGain}
           distance={post.data.distance}
           minimumAltitude={post.data.minimumAltitude}
@@ -115,7 +119,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
   <section class="section share" aria-labelledby="post-share">
     <div class="cage">
       <h2 id="post-share">Stampa e condividi</h2>
-      <PostShare slug={post.slug} title={post.data.title} />
+      <PostShare slug={postSlug} title={post.data.title} />
       <p class="post-newsletter">
         Vuoi rimanere aggiornato sulle nuove uscite? <br /><a
           href={newsletterUrl}>Iscriviti alla newsletter</a
@@ -127,7 +131,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
             prev && (
               <li>
                 <span>Uscita precedente</span>
-                <a href={`/${prev.slug}`}>{prev.data.title}</a>
+                <a href={`/${prevSlug}`}>{prev.data.title}</a>
               </li>
             )
           }
@@ -135,7 +139,7 @@ const postGpxTrack = post.data.gpxTracks?.[0];
             next && (
               <li>
                 <span>Uscita successiva</span>
-                <a href={`/${next.slug}`}>{next.data.title}</a>
+                <a href={`/${nextSlug}`}>{next.data.title}</a>
               </li>
             )
           }

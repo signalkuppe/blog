@@ -173,10 +173,14 @@ export async function initSearchAutocomplete(root = document) {
         results.appendChild(resultList);
         resultList.innerHTML = "";
         searchResults.forEach((post, index) => {
+          const hrefSlug = (post.slug ?? post.id ?? "")
+            .toString()
+            .replace(/^\/+/, "")
+            .replace(/\.(md|mdx)$/i, "");
           resultList.insertAdjacentHTML(
             "beforeend",
             `<li role="option">
-              <a href="/${post.slug}" data-index="${index}">
+              <a href="/${hrefSlug}" data-index="${index}">
                 <img src="${post.image}" width="60" height="60" loading="lazy" decoding="async" alt="" />
                 <div>
                   <p>${post.title}</p>
