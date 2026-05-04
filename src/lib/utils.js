@@ -6,6 +6,18 @@ export const headPageTitle = (title, slogan) => {
   return `${title} ${pageTitleSeparator} ${slogan}`;
 };
 
+export const contentEntrySlug = (entry) => {
+  try {
+    return (entry?.slug ?? entry?.id ?? "")
+      .toString()
+      .replace(/\.(md|mdx)$/i, "")
+      .replace(/^\/+/, "");
+  } catch (err) {
+    console.log(err);
+    return "";
+  }
+};
+
 export const photoSlug = (photo) => {
   try {
     return slug(`${photo.data.title}-${photo.id}`);
@@ -76,7 +88,7 @@ export const emitter = mitt();
 export const trapFocus = (element) => {
   // get all focusable elements
   const focusableEls = element.querySelectorAll(
-    "a[href]:not([disabled]), button:not([disabled])"
+    "a[href]:not([disabled]), button:not([disabled])",
   );
   // Save first and last focusable elements
   const firstFocusableEl = focusableEls[0];

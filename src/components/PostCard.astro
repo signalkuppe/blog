@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { categories } from "../constants";
 import type { CollectionEntry } from "astro:content";
+import { contentEntrySlug } from "../lib/utils";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -13,6 +14,7 @@ const { post, TitleTag = "h2", imageProps = {} } = Astro.props;
 const categorySlug = categories.find(
   (cat) => cat.title === post.data.category[0],
 )?.slug;
+const postPath = `/${contentEntrySlug(post)}`;
 ---
 
 <article>
@@ -33,7 +35,7 @@ const categorySlug = categories.find(
       }
     </time>
     <TitleTag class="title">
-      <a href={`/${post.slug}`} class="post-link" data-astro-prefetch
+      <a href={postPath} class="post-link" data-astro-prefetch
         >{post.data.title}</a
       >
     </TitleTag>
@@ -50,7 +52,7 @@ const categorySlug = categories.find(
   </div>
   <a
     class="card-overlay"
-    href={`/${post.slug}`}
+    href={postPath}
     aria-label={`Apri il post ${post.data.title}`}></a>
 </article>
 

@@ -8,6 +8,7 @@ import BlogCategories from "../../../../components/BlogCategories.astro";
 import Layout from "../../../../layouts/Layout.astro";
 import BlogLayout from "../../../../layouts/BlogLayout.astro";
 import { headPageTitle } from "../../../../lib/utils";
+import { contentEntrySlug } from "../../../../lib/utils";
 
 interface Props {
   page: any;
@@ -71,7 +72,7 @@ if (category) {
               id: post.id,
               title: post.data.title,
               description: post.data.description,
-              slug: post.slug,
+              slug: contentEntrySlug(post),
               category: post.data.category[0],
               lat: post.data.location.lat,
               lon: post.data.location.lon,
@@ -304,6 +305,8 @@ if (category) {
     aspect-ratio: 1 / 1;
     width: 80px;
     height: 80px;
+    object-fit: cover;
+    object-position: center;
     flex-shrink: 0;
     background: #eee;
   }
