@@ -15,11 +15,11 @@
     "generate-post": "node scripts/generate-post.js"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
-    "@astrojs/netlify": "^6.6.4",
-    "@astrojs/rss": "^4.0.15",
+    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/netlify": "^7.0.8",
+    "@astrojs/rss": "^4.0.18",
     "@floating-ui/dom": "^1.7.1",
-    "astro": "^5.17.1",
+    "astro": "^6.2.2",
     "autoprefixer": "^10.4.21",
     "chart.js": "^4.5.0",
     "chartjs-adapter-dayjs-4": "^1.0.4",
