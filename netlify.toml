@@ -4,6 +4,8 @@
 
 [build.environment]
   NODE_OPTIONS = "--max-old-space-size=4096"
+  NODE_VERSION = "20"
+  AWS_LAMBDA_JS_RUNTIME = "nodejs20.x"
 
 [[redirects]]
   from = "/portfolio"

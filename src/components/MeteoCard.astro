@@ -1,7 +1,9 @@
 ---
 import InfoIcon from "../icons/Info.svg";
 const { title } = Astro.props;
-const _id = crypto.randomUUID();
+const _id =
+  globalThis.crypto?.randomUUID?.() ??
+  `id-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
 ---
 
 <article>
