@@ -1,6 +1,7 @@
 ---
 import { Image, getImage } from "astro:assets";
 import PhotoDisclaimer from "./PhotoDisclaimer.astro";
+import "photoswipe/dist/photoswipe.css";
 
 interface Props {
   gallery: Array<{
@@ -64,7 +65,6 @@ const galleryThumbSizes =
 
 <script>
   //@ts-nocheck
-  import "photoswipe/dist/photoswipe.css";
   const lightboxes = new WeakMap();
 
   async function getLightbox(gallery) {

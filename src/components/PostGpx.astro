@@ -1,6 +1,7 @@
 ---
 import Spinner from "../components/Spinner.astro";
 import DownloadIcon from "../icons/Download.svg";
+import "leaflet/dist/leaflet.css";
 
 interface Props {
   gpxFile: string; // e.g., "track.gpx" - filename only
@@ -208,7 +209,6 @@ const gpxUrl = `/gpx/${gpxFile}`;
 
 <script>
   //@ts-nocheck
-  import "leaflet/dist/leaflet.css";
   import {
     animateValue,
     getCssVar,
