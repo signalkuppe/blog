@@ -6,12 +6,12 @@
     "postbuild": "node scripts/cleanup-avif.js",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "rm -rf dist .astro && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "api": "npx netlify functions:serve",
-    "deploy:test": "npm run build && netlify deploy --alias test",
-    "deploy:prod": "npm run build && netlify deploy --prod",
+    "deploy:test": "npm run build && netlify deploy --dir=dist --functions=.netlify/functions --alias test",
+    "deploy:prod": "npm run build && netlify deploy --dir=dist --functions=.netlify/functions --prod",
     "generate-post": "node scripts/generate-post.js"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "@astrojs/netlify": "^7.0.8",
     "@astrojs/rss": "^4.0.18",
     "@floating-ui/dom": "^1.7.1",
+    "@sentry/astro": "^10.51.0",
     "astro": "^6.2.2",
     "autoprefixer": "^10.4.21",
     "chart.js": "^4.5.0",
