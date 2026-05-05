@@ -3,6 +3,7 @@ import { getImage } from "astro:assets";
 import PageTitle from "../../components/PageTitle.astro";
 import PhotoCard from "../../components/PhotoCard.astro";
 import { headPageTitle, portfolioPhotoSlug } from "../../lib/utils";
+import "photoswipe/dist/photoswipe.css";
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Pager from "../../components/Pager.astro";
@@ -112,7 +113,6 @@ const galleryItems = await Promise.all(
         await Promise.all([
           import("photoswipe/lightbox"),
           import("photoswipe"),
-          import("photoswipe/dist/photoswipe.css"),
         ]);
 
       const lightbox = new PhotoSwipeLightbox({
