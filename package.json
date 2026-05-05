@@ -10,8 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "api": "npx netlify functions:serve",
-    "deploy:test": "npm run build && netlify deploy --dir=dist --functions=.netlify/functions --alias test",
-    "deploy:prod": "npm run build && netlify deploy --dir=dist --functions=.netlify/functions --prod",
+    "deploy:test": "netlify deploy --build --alias test",
+    "deploy:prod": "netlify deploy --build --prod",
     "generate-post": "node scripts/generate-post.js"
   },
   "dependencies": {

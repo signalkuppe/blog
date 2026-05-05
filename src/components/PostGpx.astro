@@ -208,6 +208,7 @@ const gpxUrl = `/gpx/${gpxFile}`;
 
 <script>
   //@ts-nocheck
+  import "leaflet/dist/leaflet.css";
   import {
     animateValue,
     getCssVar,
@@ -250,7 +251,6 @@ const gpxUrl = `/gpx/${gpxFile}`;
       import("leaflet"),
       import("chart.js/auto"),
       import("simplify-js"),
-      import("leaflet/dist/leaflet.css"),
     ]);
     L = Leaflet;
     Chart = ChartJs;

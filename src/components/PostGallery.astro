@@ -64,6 +64,7 @@ const galleryThumbSizes =
 
 <script>
   //@ts-nocheck
+  import "photoswipe/dist/photoswipe.css";
   const lightboxes = new WeakMap();
 
   async function getLightbox(gallery) {
@@ -75,7 +76,6 @@ const galleryThumbSizes =
         await Promise.all([
           import("photoswipe/lightbox"),
           import("photoswipe"),
-          import("photoswipe/dist/photoswipe.css"),
         ]);
 
       const lightbox = new PhotoSwipeLightbox({
