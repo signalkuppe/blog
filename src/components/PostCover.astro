@@ -10,8 +10,10 @@ interface Props {
 }
 
 const { cover } = Astro.props;
-const heroMaxWidth = Math.min(cover.src.width, 2200);
-const heroWidths = [640, 1280, 1920].filter((width) => width <= heroMaxWidth);
+const heroMaxWidth = Math.min(cover.src.width, 2560);
+const heroWidths = [640, 1280, 1920, 2500].filter(
+  (width) => width <= heroMaxWidth,
+);
 ---
 
 <div class="cover">
@@ -112,7 +114,7 @@ const heroWidths = [640, 1280, 1920].filter((width) => width <= heroMaxWidth);
   @media screen and (width > 60rem) {
     .cover,
     img {
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 16 / 10;
     }
     .caption {
       font-size: 2rem;
