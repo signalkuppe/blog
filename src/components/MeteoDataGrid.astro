@@ -14,9 +14,7 @@ const { current, day } = Astro.props;
     <MeteoCard title="Temperatura">
       {current?.temperature}
       {WEATHER_CONSTANTS.TEMPERATURE_UNIT}
-      <Fragment slot="sub-value"
-        >{current.temperature_tetto}{WEATHER_CONSTANTS.TEMPERATURE_UNIT} a 12m</Fragment
-      >
+
       <MeteoCardFooterRow
         slot="footer-top"
         label={WEATHER_CONSTANTS.MIN_LABEL}
@@ -40,18 +38,11 @@ const { current, day } = Astro.props;
         <MaxIcon slot="icon" />
       </MeteoCardFooterRow>
       <Fragment slot="tooltip">
-        <p>
-          La temperatura principale è misurata a 180cm dal suolo su terreno
-          erboso.
-        </p>
+        <p>La temperatura principale è misurata a 12m dal suolo.</p>
         <p>
           Il sensore è schermato da uno
           <strong>schermo solare</strong> con ventilazione forzata durante il giorno,
           per migliorare l’accuratezza della misura
-        </p>
-        <p>
-          <strong>La temperatura a 12m</strong> è misurata da un secondo sensore,
-          sempre in schermo ventilato, posizionato sul tetto.
         </p>
       </Fragment>
     </MeteoCard>
@@ -60,9 +51,7 @@ const { current, day } = Astro.props;
     <MeteoCard title="Umidità">
       {current?.humidity}
       {WEATHER_CONSTANTS.HUMIDITY_UNIT}
-      <Fragment slot="sub-value"
-        >{current.humidity_tetto}{WEATHER_CONSTANTS.HUMIDITY_UNIT} a 12m</Fragment
-      >
+
       <MeteoCardFooterRow
         slot="footer-top"
         label={WEATHER_CONSTANTS.MIN_LABEL}
@@ -386,12 +375,11 @@ const { current, day } = Astro.props;
       <Fragment slot="tooltip">
         <p>
           Indica la
-          <strong> temperatura effettiva da noi avvertita </strong> e si calcola
-          conoscendo i valori di temperatura e umidità relativa dell’aria.
+          <strong> temperatura effettiva da noi avvertita </strong> e si calcola conoscendo
+          i valori di temperatura e umidità relativa dell’aria.
         </p>
         <p>
-          Il <strong>wind chill</strong> invece e si calcola conoscendo i valori
-          di
+          Il <strong>wind chill</strong> invece e si calcola conoscendo i valori di
           <strong> temperatura e velocità del vento </strong>
         </p>
       </Fragment>
@@ -435,17 +423,17 @@ const { current, day } = Astro.props;
     </MeteoCard>
   </li>
   <li>
-    <MeteoCard title="Temperatura a 12m">
-      {current?.temperature_tetto}
+    <MeteoCard title="Temperatura a 2m">
+      {current?.temperature_prato}
       {WEATHER_CONSTANTS.TEMPERATURE_UNIT}
 
       <MeteoCardFooterRow
         slot="footer-top"
         label={WEATHER_CONSTANTS.MIN_LABEL}
         labelAbbr={WEATHER_CONSTANTS.MIN_LABEL_ABBR}
-        value={day.temperature_tetto_min}
+        value={day.temperature_prato_min}
         unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
-        time={day.temperature_tetto_min_at}
+        time={day.temperature_prato_min_at}
         valueColor={WEATHER_CONSTANTS.MIN_VALUE_COLOR}
       >
         <MinIcon slot="icon" />
@@ -454,9 +442,9 @@ const { current, day } = Astro.props;
         slot="footer-bottom"
         label={WEATHER_CONSTANTS.MAX_LABEL}
         labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
-        value={day.temperature_tetto_max}
+        value={day.temperature_prato_max}
         unit={WEATHER_CONSTANTS.TEMPERATURE_UNIT}
-        time={day.temperature_tetto_max_at}
+        time={day.temperature_prato_max_at}
         valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
       >
         <MaxIcon slot="icon" />
@@ -465,8 +453,8 @@ const { current, day } = Astro.props;
         <p>
           La
           <strong> temperatura rilevata dal secondo sensore, </strong>
-          posto a 12m sul tetto. In inverno, grazie all’inversione termica, i valori
-          possono risultare più alti rispetto al sensore posto a 180cm su prato
+          posto a 2m sul prato. In inverno, grazie all’inversione termica, i valori
+          possono risultare più bassi rispetto al sensore posto a 12m sul tetto.
         </p>
       </Fragment>
     </MeteoCard>
@@ -480,9 +468,9 @@ const { current, day } = Astro.props;
         slot="footer-top"
         label={WEATHER_CONSTANTS.MIN_LABEL}
         labelAbbr={WEATHER_CONSTANTS.MIN_LABEL_ABBR}
-        value={day.humidity_tetto_min}
+        value={day.humidity_prato_min}
         unit={WEATHER_CONSTANTS.HUMIDITY_UNIT}
-        time={day.humidity_tetto_min_at}
+        time={day.humidity_prato_min_at}
         valueColor={WEATHER_CONSTANTS.MIN_VALUE_COLOR}
       >
         <MinIcon slot="icon" />
@@ -491,16 +479,17 @@ const { current, day } = Astro.props;
         slot="footer-bottom"
         label={WEATHER_CONSTANTS.MAX_LABEL}
         labelAbbr={WEATHER_CONSTANTS.MAX_LABEL_ABBR}
-        value={day.humidity_tetto_max}
+        value={day.humidity_prato_max}
         unit={WEATHER_CONSTANTS.HUMIDITY_UNIT}
-        time={day.humidity_tetto_max_at}
+        time={day.humidity_prato_max_at}
         valueColor={WEATHER_CONSTANTS.MAX_VALUE_COLOR}
       >
         <MaxIcon slot="icon" />
       </MeteoCardFooterRow>
       <Fragment slot="tooltip">
         <p>
-          <strong>L’umidità relativa</strong> rilevata dal secondo sensore
+          <strong>L’umidità relativa</strong> rilevata dal secondo sensore, posto
+          a 2m sul prato.
         </p>
       </Fragment>
     </MeteoCard>
