@@ -58,6 +58,6 @@ export async function GET() {
         "Last-Modified": new Date().toUTCString(),
         ETag: `"${Date.now()}"`, // Unique ETag for each response
       },
-    }
+    },
   );
 }

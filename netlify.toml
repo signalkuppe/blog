@@ -12,3 +12,27 @@
   to = "/portfolio/1"
   status = 301
 
+# Astro-generated assets have content hashes in filenames — cache forever
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Fonts never change
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# GPX files rarely change — cache for 7 days
+[[headers]]
+  for = "/gpx/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Public images (og, favicon, etc.)
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+

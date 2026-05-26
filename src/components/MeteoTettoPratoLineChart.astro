@@ -25,13 +25,13 @@ const { data } = Astro.props;
         label: dataset.id,
         data: dataset.data,
         borderColor:
-          index === 0
+          index === 1
             ? getCssVar("--accent")
-            : WEATHER_CONSTANTS.GRAPH_ALT_LINE_COLOR, // Different colors
+            : WEATHER_CONSTANTS.GRAPH_ALT_LINE_COLOR,
         backgroundColor:
-          index === 0
+          index === 1
             ? getCssVar("--accent")
-            : WEATHER_CONSTANTS.GRAPH_ALT_LINE_COLOR, // Different colors
+            : WEATHER_CONSTANTS.GRAPH_ALT_LINE_COLOR,
         borderWidth: 2,
         tension: 0.1, // Optional: adds smooth curves
         pointRadius: 0, // Remove the dots

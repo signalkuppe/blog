@@ -19,20 +19,18 @@ const GRAPH_DATE_FORMAT = "YYYY-MM-DD HH:mm";
 
 export default async function weatherlink() {
   try {
-    const { sensors: currentSensors } = await fetchCurrentData();
-    const { sensors: oneDayBeforeSensors } = await fetchHistoricData(
-      ONE_DAY_BEFORE,
-      NOW,
-    );
-
-    // Handle fetchWebcam separately
-    let webcam = null;
-    try {
-      webcam = await fetchWebcam();
-    } catch (err) {
-      console.error("Webcam fetch failed:", err.message);
-      webcam = null; // Fallback
-    }
+    const [
+      { sensors: currentSensors },
+      { sensors: oneDayBeforeSensors },
+      webcam,
+    ] = await Promise.all([
+      fetchCurrentData(),
+      fetchHistoricData(ONE_DAY_BEFORE, NOW),
+      fetchWebcam().catch((err) => {
+        console.error("Webcam fetch failed:", err.message);
+        return null;
+      }),
+    ]);
 
     const weatherlinkConsole = sensorData(currentSensors, CONSOLE_SENSOR_ID);
     const pratoCurrent = sensorData(currentSensors, PRATO_SENSOR_ID);
