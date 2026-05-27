@@ -3,6 +3,7 @@ export const prerender = false;
 import { siteTitle } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import weatherlink from "../lib/weatherlink";
+import Image from "astro/components/Image.astro";
 import Layout from "../layouts/Layout.astro";
 import PageTitle from "../components/PageTitle.astro";
 import MeteoWebCam from "../components/MeteoWebCam.astro";
@@ -65,16 +66,16 @@ const webcam = current?.webcam;
             </summary>
             <article class="details-body">
               <aside>
-                <img
-                  src={image1.src}
+                <Image
+                  src={image1}
                   alt="La stazione meteo posizionata sul prato"
                   loading="lazy"
                   decoding="async"
                   width="2000"
                   height="2667"
                 />
-                <img
-                  src={image2.src}
+                <Image
+                  src={image2}
                   alt="La stazione meteo posizionata sul tetto"
                   loading="lazy"
                   decoding="async"
