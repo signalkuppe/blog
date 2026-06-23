@@ -12,8 +12,20 @@ const title = "Meteo Concenedo";
 const description =
   "Dati meteo in diretta e webcam da Concenedo (Barzio) in Valsassina";
 const { hasLostSignal, current, day, ok } = await weatherlink();
-const webcam = current?.webcam;
 
+// Edge-cache the rendered page so most visitors get an instant CDN hit and only
+// ~1 request per s-maxage window actually hits the upstream WeatherLink APIs.
+// Successful renders cache for 5 min (serving stale for 10 more while
+// revalidating); failures cache only briefly so a broken upstream self-heals.
+if (ok) {
+  Astro.response.headers.set(
+    "Netlify-CDN-Cache-Control",
+    "public, durable, s-maxage=300, stale-while-revalidate=600",
+  );
+} else {
+  Astro.response.headers.set("Netlify-CDN-Cache-Control", "public, s-maxage=30");
+}
+Astro.response.headers.set("Cache-Control", "public, max-age=0, must-revalidate");
 ---
 
 <Layout
@@ -31,7 +43,7 @@ const webcam = current?.webcam;
             <h2 id="webcam" class="visually-hidden">
               Webcam
             </h2>
-            <MeteoWebCam webcam={webcam?.url} />}
+            <MeteoWebCam />}
 
             <p class="updated">
               Ultimo aggiornamento: <strong>{current.last_data_day}</strong>{" "}

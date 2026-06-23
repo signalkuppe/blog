@@ -11,12 +11,13 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
-        "npm:@astrojs/mdx@^5.0.4",
-        "npm:@astrojs/netlify@^7.0.8",
+        "npm:@astrojs/markdown-satteri@~0.3.1",
+        "npm:@astrojs/mdx@7",
+        "npm:@astrojs/netlify@8",
         "npm:@astrojs/rss@^4.0.18",
         "npm:@floating-ui/dom@^1.7.1",
-        "npm:@sentry/astro@^10.51.0",
-        "npm:astro@^6.2.2",
+        "npm:@sentry/astro@^10.60.0",
+        "npm:astro@7",
         "npm:autoprefixer@^10.4.21",
         "npm:chart.js@^4.5.0",
         "npm:chartjs-adapter-dayjs-4@^1.0.4",

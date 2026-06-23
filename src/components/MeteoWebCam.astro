@@ -1,28 +1,62 @@
 ---
 import Spinner from "../components/Spinner.astro";
-const { webcam } = Astro.props;
+// The webcam image URL is loaded client-side from /api/webcam (a cached proxy)
+// so the slow third-party source never blocks the server render of the page.
+// Visibility is driven by a single `data-state` on the wrapper: loading | ready
+// | error — so exactly one child is ever shown.
 ---
 
-<div class="webcam-wrapper">
-  {
-    webcam ? (
-      <>
-        <img
-          src={webcam}
-          alt="Webcam in diretta da Concenedo (Barzio)"
-          width="3840"
-          height="2160"
-        />
-        <div class="spinner">
-          <Spinner size="2rem" />
-          <span aria-hidden="true">Carico la webcam</span>
-        </div>
-      </>
-    ) : (
-      <span class="not-available">Webcam non disponibile 🫤</span>
-    )
-  }
+<div class="webcam-wrapper" data-webcam-endpoint="/api/webcam" data-state="loading">
+  <img alt="Webcam in diretta da Concenedo (Barzio)" width="3840" height="2160" />
+  <div class="spinner">
+    <Spinner size="2rem" />
+    <span aria-hidden="true">Carico la webcam</span>
+  </div>
+  <span class="not-available">Webcam non disponibile 🫤</span>
 </div>
+
+<script>
+  function initWebcam() {
+    const wrappers = document.querySelectorAll<HTMLElement>(
+      ".webcam-wrapper[data-webcam-endpoint]",
+    );
+    wrappers.forEach((wrapper) => {
+      if (wrapper.dataset.webcamBound === "true") return;
+      wrapper.dataset.webcamBound = "true";
+
+      const endpoint = wrapper.dataset.webcamEndpoint;
+      const img = wrapper.querySelector("img");
+
+      const setState = (state: string) => {
+        wrapper.dataset.state = state;
+      };
+
+      if (!img) {
+        setState("error");
+        return;
+      }
+
+      fetch(endpoint)
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data?.url) {
+            setState("error");
+            return;
+          }
+          // Attach handlers before assigning src; only reveal once it loads.
+          img.addEventListener("load", () => setState("ready"), { once: true });
+          img.addEventListener("error", () => setState("error"), {
+            once: true,
+          });
+          img.src = data.url;
+        })
+        .catch(() => setState("error"));
+    });
+  }
+
+  initWebcam();
+  document.addEventListener("astro:page-load", initWebcam);
+</script>
 
 <style media="screen">
   .webcam-wrapper {
@@ -32,20 +66,34 @@ const { webcam } = Astro.props;
     display: grid;
   }
 
-  img {
+  /* Every child occupies the same cell; visibility is controlled per state. */
+  .webcam-wrapper > * {
     grid-area: 1 / 1;
-    z-index: 1;
   }
 
-  .spinner,
-  .not-available {
-    grid-area: 1 / 1;
+  /* Hidden by default — each state below reveals exactly one child. */
+  .webcam-wrapper img {
+    display: none;
+    z-index: 1;
+  }
+  .webcam-wrapper .spinner,
+  .webcam-wrapper .not-available {
+    display: none;
     align-self: center;
     justify-self: center;
-    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+  }
+
+  .webcam-wrapper[data-state="ready"] img {
+    display: block;
+  }
+  .webcam-wrapper[data-state="loading"] .spinner {
+    display: flex;
+  }
+  .webcam-wrapper[data-state="error"] .not-available {
+    display: flex;
   }
 
   @keyframes gradient {
@@ -60,8 +108,10 @@ const { webcam } = Astro.props;
     }
   }
 
+  /* Animate the placeholder only while loading; stop once settled to avoid
+     continuous repaint. */
   @media (prefers-reduced-motion: no-preference) {
-    .webcam-wrapper:not(:has(.not-available)) {
+    .webcam-wrapper[data-state="loading"] {
       animation: gradient 2s ease infinite;
     }
   }

@@ -16,9 +16,9 @@ const galleryItems = await Promise.all(
   gallery.map(async (photo) => {
     const lightbox = await getImage({
       src: photo.src,
-      width: 2500,
+      width: 1920,
       format: "avif",
-      quality: 85,
+      quality: 72,
     });
 
     const thumbMaxWidth = Math.min(photo.src.width, 640);
