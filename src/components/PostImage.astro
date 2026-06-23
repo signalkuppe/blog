@@ -22,7 +22,8 @@ const inlineWidths = [720, 1100, 1400].filter((width) => width <= inlineMaxWidth
     widths={inlineWidths}
     format="webp"
     quality={65}
-    priority
+    loading="lazy"
+    decoding="async"
   />
 </picture>
 {

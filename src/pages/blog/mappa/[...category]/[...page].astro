@@ -1,6 +1,7 @@
 ---
 import "leaflet/dist/leaflet.css";
 import { getCollection } from "astro:content";
+import { getImage } from "astro:assets";
 import { categories, defaultOgImage, siteTitle } from "../../../../constants";
 import InfoIcon from "../../../../icons/Info.svg";
 import Spinner from "../../../../components/Spinner.astro";
@@ -40,6 +41,31 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 
+// Precompute small WebP popup thumbnails (not the full-res original) for each
+// marker. WebP avoids the postbuild AVIF/JPG cleanup.
+const markers = await Promise.all(
+  page.data.map(async (post) => {
+    const thumb = await getImage({
+      src: post.data.cover.src,
+      width: 160,
+      height: 160,
+      fit: "cover",
+      format: "webp",
+      quality: 60,
+    });
+    return {
+      id: post.id,
+      title: post.data.title,
+      description: post.data.description,
+      slug: contentEntrySlug(post),
+      category: post.data.category[0],
+      lat: post.data.location.lat,
+      lon: post.data.location.lon,
+      image: { url: thumb.src },
+    };
+  }),
+);
+
 let pageTitle = "Mappa delle uscite";
 
 if (category) {
@@ -67,20 +93,7 @@ if (category) {
         <section
           id="map"
           aria-abel="Mappa"
-          data-markers={JSON.stringify(
-            page.data.map((post) => ({
-              id: post.id,
-              title: post.data.title,
-              description: post.data.description,
-              slug: contentEntrySlug(post),
-              category: post.data.category[0],
-              lat: post.data.location.lat,
-              lon: post.data.location.lon,
-              image: {
-                url: post.data.cover.src.src,
-              },
-            })),
-          )}
+          data-markers={JSON.stringify(markers)}
         >
           <Spinner size="2rem" />
         </section>
@@ -158,7 +171,7 @@ if (category) {
 
     const popupHtml = `
             <div class="popup-wrapper">
-              <img width="80" height="80" loading="lazy" decoding="async" src="${marker.image.url}?w=96&h=96&fit=thumb&q=70&fm=avif" alt="" />
+              <img width="80" height="80" loading="lazy" decoding="async" src="${marker.image.url}" alt="" />
               <div class="popup-right">
                 <a href="/${marker.slug}" class="popup-title">${marker.title}</a>
                 <p>${marker.description}</p>

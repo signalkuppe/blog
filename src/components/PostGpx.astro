@@ -295,7 +295,9 @@ const gpxUrl = `/gpx/${gpxFile}`;
             position: "topright",
           },
         });
-        mymap.setView([46, 10], 9);
+        // No generic initial view: the first view is set by fitBounds() once the
+        // GPX loads, so we never flash an off-track location (and skip loading
+        // tiles for an area we'll immediately leave).
       }
 
       mymap.addControl(new L.Control.Fullscreen());
@@ -350,7 +352,9 @@ const gpxUrl = `/gpx/${gpxFile}`;
         },
       })
         .on("loaded", function (e) {
-          mymap.fitBounds(e.target.getBounds());
+          // Snap (no animation) so the map is already centered on the track when
+          // the spinner is removed — avoids the visible pan from a default view.
+          mymap.fitBounds(e.target.getBounds(), { animate: false });
           const gain = Math.round(
             correctedElevationGain ?? e.target.get_elevation_gain(),
           );

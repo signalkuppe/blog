@@ -2,6 +2,7 @@
 import { siteTitle } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import { getCollection, render } from "astro:content";
+import { getImage } from "astro:assets";
 import { newsletterUrl } from "../constants";
 import Layout from "../layouts/Layout.astro";
 import PostHeader from "../components/PostHeader.astro";
@@ -39,13 +40,43 @@ const postGpxTrack = post.data.gpxTracks?.[0];
 const postSlug = contentEntrySlug(post);
 const prevSlug = prev ? contentEntrySlug(prev) : "";
 const nextSlug = next ? contentEntrySlug(next) : "";
+
+// Optimized social-share image instead of the full-res original cover.
+const ogImg = await getImage({
+  src: post.data.cover.src,
+  width: 1200,
+  format: "jpg",
+  quality: 75,
+});
+
+// LCP hero. Generated here (not just in PostCover) so the exact responsive set
+// can be preloaded in <head> at high priority.
+const heroMaxWidth = Math.min(post.data.cover.src.width, 1920);
+const heroWidths = [640, 1280, 1920].filter((width) => width <= heroMaxWidth);
+const hero = await getImage({
+  src: post.data.cover.src,
+  width: heroMaxWidth,
+  widths: heroWidths,
+  sizes: "100vw",
+  format: "webp",
+  quality: 78,
+});
 ---
 
 <Layout
   title={headPageTitle(post.data.title, siteTitle)}
   description={post.data.description}
-  ogImage={post.data.cover.src.src}
+  ogImage={ogImg.src}
 >
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      imagesrcset={hero.srcSet.attribute}
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+  </Fragment>
   <div class="cage header">
     <PostHeader
       title={post.data.title}
@@ -55,7 +86,7 @@ const nextSlug = next ? contentEntrySlug(next) : "";
   </div>
 
   <div class="cover">
-    <PostCover cover={post.data.cover} />
+    <PostCover cover={post.data.cover} hero={hero} />
   </div>
 
   <nav aria-label="sezioni" id="post-nav">

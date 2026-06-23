@@ -19,18 +19,13 @@ const GRAPH_DATE_FORMAT = "YYYY-MM-DD HH:mm";
 
 export default async function weatherlink() {
   try {
-    const [
-      { sensors: currentSensors },
-      { sensors: oneDayBeforeSensors },
-      webcam,
-    ] = await Promise.all([
-      fetchCurrentData(),
-      fetchHistoricData(ONE_DAY_BEFORE, NOW),
-      fetchWebcam().catch((err) => {
-        console.error("Webcam fetch failed:", err.message);
-        return null;
-      }),
-    ]);
+    // The webcam is fetched client-side via /api/webcam so its slow third-party
+    // source never blocks this server render.
+    const [{ sensors: currentSensors }, { sensors: oneDayBeforeSensors }] =
+      await Promise.all([
+        fetchCurrentData(),
+        fetchHistoricData(ONE_DAY_BEFORE, NOW),
+      ]);
 
     const weatherlinkConsole = sensorData(currentSensors, CONSOLE_SENSOR_ID);
     const pratoCurrent = sensorData(currentSensors, PRATO_SENSOR_ID);
@@ -70,7 +65,6 @@ export default async function weatherlink() {
     const readableData = {
       ok: true,
       current: {
-        webcam,
         last_data_day: formatDate(
           tettoCurrent.last_packet_received_timestamp,
           "DD/MM/YYYY",
@@ -301,29 +295,6 @@ async function fetchHistoricData(startTimeStamp, endTimeStamp) {
   );
   const jsonData = await response.json();
   return jsonData;
-}
-
-async function fetchWebcam() {
-  const timeoutPromise = new Promise(
-    (_, reject) =>
-      setTimeout(
-        () => reject(new Error("Timeout while fetching webcam data")),
-        5000,
-      ), // 5 seconds timeout
-  );
-
-  try {
-    const response = await Promise.race([
-      fetch(`https://www.caiseregno.it/webcam_concenedo/webcam.php`),
-      timeoutPromise,
-    ]);
-
-    const jsonData = await response.json();
-    return jsonData;
-  } catch (error) {
-    console.error("Error fetching webcam data:", error.message);
-    return null; // Fallback value
-  }
 }
 
 function sensorData(sensors, sensorId, historic) {

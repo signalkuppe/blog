@@ -15,12 +15,13 @@
     "generate-post": "node scripts/generate-post.js"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.4",
-    "@astrojs/netlify": "^7.0.8",
+    "@astrojs/markdown-satteri": "^0.3.1",
+    "@astrojs/mdx": "^7.0.0",
+    "@astrojs/netlify": "^8.0.0",
     "@astrojs/rss": "^4.0.18",
     "@floating-ui/dom": "^1.7.1",
-    "@sentry/astro": "^10.51.0",
-    "astro": "^6.2.2",
+    "@sentry/astro": "^10.60.0",
+    "astro": "^7.0.0",
     "autoprefixer": "^10.4.21",
     "chart.js": "^4.5.0",
     "chartjs-adapter-dayjs-4": "^1.0.4",

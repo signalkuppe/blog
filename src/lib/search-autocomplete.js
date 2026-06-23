@@ -8,7 +8,29 @@ export async function initSearchAutocomplete(root = document) {
   const trigger = form.querySelector("#search-input");
   const results = form.querySelector("#results");
   const arrowElement = form.querySelector("#arrow");
-  const posts = JSON.parse(form.getAttribute("data-posts"));
+  const searchSrc = form.getAttribute("data-search-src") || "/search-index.json";
+  let posts = [];
+  let postsPromise;
+
+  function loadPosts() {
+    if (!postsPromise) {
+      postsPromise = fetch(searchSrc)
+        .then((res) => res.json())
+        .then((data) => {
+          posts = data;
+          return data;
+        })
+        .catch(() => {
+          posts = [];
+          return [];
+        });
+    }
+    return postsPromise;
+  }
+
+  // Warm the index as soon as the user focuses the field, before they type.
+  trigger.addEventListener("focus", loadPosts, { once: true });
+
   const resultList = document.createElement("ul");
   const hint = document.createElement("p");
   hint.classList.add("hint");
@@ -62,7 +84,7 @@ export async function initSearchAutocomplete(root = document) {
     }
   });
 
-  trigger.addEventListener("keyup", function (e) {
+  trigger.addEventListener("keyup", async function (e) {
     if (["ArrowDown", "ArrowUp", "Enter", "Escape"].includes(e.key)) {
       return;
     }
@@ -72,6 +94,7 @@ export async function initSearchAutocomplete(root = document) {
     showResults();
 
     if (query.length > 2) {
+      await loadPosts();
       const allMatches = posts.filter(
         (post) =>
           post.title.toLowerCase().includes(query.toLowerCase()) ||

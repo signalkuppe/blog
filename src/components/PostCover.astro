@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import Spinner from "./Spinner.astro";
 
 interface Props {
@@ -7,13 +6,12 @@ interface Props {
     src: ImageMetadata;
     alt: string;
   };
+  // Precomputed getImage() result, generated in the page so the same responsive
+  // set can be preloaded in <head> for a faster LCP.
+  hero: any;
 }
 
-const { cover } = Astro.props;
-const heroMaxWidth = Math.min(cover.src.width, 2560);
-const heroWidths = [640, 1280, 1920, 2500].filter(
-  (width) => width <= heroMaxWidth,
-);
+const { cover, hero } = Astro.props;
 ---
 
 <div class="cover">
@@ -21,16 +19,17 @@ const heroWidths = [640, 1280, 1920, 2500].filter(
     <Spinner size="2rem" />
     <span>Carico la copertina...</span>
   </div>
-  <Image
-    src={cover.src}
-    alt={cover.alt}
-    width={heroMaxWidth}
-    widths={heroWidths}
+  <img
+    src={hero.src}
+    srcset={hero.srcSet.attribute}
     sizes="100vw"
-    format="webp"
-    quality={85}
+    alt={cover.alt}
+    width={hero.attributes.width}
+    height={hero.attributes.height}
+    loading="eager"
+    decoding="sync"
+    fetchpriority="high"
     class="cover-picture"
-    priority
   />
   <p aria-hidden="true" class="caption">{cover.alt}</p>
 </div>

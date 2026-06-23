@@ -1,21 +1,12 @@
 ---
-import { getCollection } from "astro:content";
 import SearchIcon from "../icons/Search.svg";
 
-const posts = await getCollection("posts");
-posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-const dataset = posts.map((post) => ({
-  title: post.data.title,
-  slug: (post.id ?? "").replace(/\.(md|mdx)$/i, ""),
-  tags: post.data.tags || [],
-  date: post.data.date.toISOString(),
-  description: post.data.description,
-  image: post.data.cover.src.src,
-}));
+// The search dataset is served separately as /search-index.json and fetched
+// lazily on first use (see src/lib/search-autocomplete.js), so it is no longer
+// inlined into every page.
 ---
 
-<form id="search-form" role="search" data-posts={JSON.stringify(dataset)}>
+<form id="search-form" role="search" data-search-src="/search-index.json">
   <label for="search-input" class="visually-hidden">Cerca un'uscita</label>
   <input
     type="text"

@@ -2,10 +2,15 @@
   command = "npm run build"
   publish = "dist"
 
+# Allow the third-party Concenedo webcam through Netlify Image CDN so it can be
+# resized/optimized on the fly (see src/pages/api/webcam.js).
+[images]
+  remote_images = ["https://www\\.caiseregno\\.it/.*"]
+
 [build.environment]
   NODE_OPTIONS = "--max-old-space-size=4096"
-  NODE_VERSION = "20"
-  AWS_LAMBDA_JS_RUNTIME = "nodejs20.x"
+  NODE_VERSION = "22"
+  AWS_LAMBDA_JS_RUNTIME = "nodejs22.x"
 
 [[redirects]]
   from = "/portfolio"
@@ -30,9 +35,15 @@
   [headers.values]
     Cache-Control = "public, max-age=604800"
 
-# Public images (og, favicon, etc.)
+# Public images (og, favicon, etc.) — rarely change
 [[headers]]
   for = "/images/*"
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=2592000"
+
+# Search index — rebuilt each deploy, not content-hashed
+[[headers]]
+  for = "/search-index.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
 
