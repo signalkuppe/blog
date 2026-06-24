@@ -156,9 +156,11 @@ const { title } = Astro.props;
         const article = button.closest("article");
         if (!canvas) return;
         try {
-          const blob = await chartToPngBlob(canvas);
+          // Pass a Promise<Blob> to ClipboardItem and call write() synchronously
+          // inside the click — Safari/iOS loses the user-gesture context (and
+          // rejects the write) if you await the blob first.
           await navigator.clipboard.write([
-            new ClipboardItem({ "image/png": blob }),
+            new ClipboardItem({ "image/png": chartToPngBlob(canvas) }),
           ]);
           showFeedback(article, "Immagine copiata");
         } catch (error) {
