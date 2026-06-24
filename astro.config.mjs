@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import netlify from "@astrojs/netlify";
 import mdx from "@astrojs/mdx";
-import sentry from "@sentry/astro";
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,14 +11,7 @@ export default defineConfig({
   compressHTML: true,
   prefetch: true,
   adapter: netlify({ imageCDN: false }),
-  integrations: [
-    mdx(),
-    sentry({
-      project: "signalkuppe",
-      org: "signalkuppe",
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-    }),
-  ],
+  integrations: [mdx()],
   build: {
     inlineStylesheets: "auto",
   },
