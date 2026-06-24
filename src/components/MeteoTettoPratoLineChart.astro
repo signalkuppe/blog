@@ -32,7 +32,7 @@ const { data } = Astro.props;
           index === 1
             ? getCssVar("--accent")
             : WEATHER_CONSTANTS.GRAPH_ALT_LINE_COLOR,
-        borderWidth: 2,
+        borderWidth: 1.5,
         tension: 0.1, // Optional: adds smooth curves
         pointRadius: 0, // Remove the dots
       })),
@@ -44,11 +44,13 @@ const { data } = Astro.props;
       options: {
         responsive: true,
         aspectRatio: 1.33,
+        interaction: { mode: "index", intersect: false },
         scales: {
           x: {
             type: "time", // Use the time scale
             time: {
               parser: "YYYY-MM-DD HH:mm", // Format of your time data
+              tooltipFormat: "DD/MM HH:mm",
               unit: "hour", // Granularity (e.g., minute, hour, day)
               round: "minute",
               displayFormats: {

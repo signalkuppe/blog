@@ -2,11 +2,7 @@
 const { data } = Astro.props;
 ---
 
-<canvas
-  class="meteo-wind-chart"
-  width="400"
-  height="200"
-  data-points={JSON.stringify(data)}></canvas>
+<canvas class="meteo-week-chart" data-points={JSON.stringify(data)}></canvas>
 
 <script>
   // @ts-nocheck
@@ -16,34 +12,29 @@ const { data } = Astro.props;
   import { getCssVar } from "../lib/utils";
   Chart.register(...registerables);
 
-  const canvas = document.querySelector(".meteo-wind-chart");
+  const canvas = document.querySelectorAll(".meteo-week-chart");
+  // On mobile the chart is a single column, so a wide ratio looks stretched.
+  const mobile = window.matchMedia("(max-width: 40rem)");
   let charts = [];
 
   function drawChart(ctx, dataset) {
-    const uniqueDirections = [...new Set(dataset.map((item) => item.dir))];
-
-    const chartData = dataset.map((item) => ({
-      x: item.x,
-      y: item.dir, // Use direction directly as category label
-    }));
     const chart = new Chart(ctx, {
-      type: "line", // Specify chart type
+      type: "line",
       data: {
         datasets: [
           {
-            label: "Gradi (°C)",
-            data: chartData, // Use your data here
+            data: dataset,
             borderColor: getCssVar(WEATHER_CONSTANTS.GRAPH_LINE_COLOR),
             backgroundColor: "none",
             borderWidth: 1.5,
-            tension: 0.4, // Optional: adds smooth curves
-            pointRadius: 0, // Remove the dots
+            tension: 0.1,
+            pointRadius: 0,
           },
         ],
       },
       options: {
         responsive: true,
-        aspectRatio: 1.5,
+        aspectRatio: mobile.matches ? 1.4 : 2.4,
         interaction: { mode: "index", intersect: false },
         plugins: {
           legend: false,
@@ -55,42 +46,36 @@ const { data } = Astro.props;
         },
         scales: {
           x: {
-            type: "time", // Use the time scale
+            type: "time",
             time: {
-              parser: "YYYY-MM-DD HH:mm", // Format of your time data
+              parser: "YYYY-MM-DD HH:mm",
               tooltipFormat: "DD/MM HH:mm",
-              unit: "hour", // Granularity (e.g., minute, hour, day)
-              round: "minute",
+              unit: "day", // Granularità giornaliera sui 7 giorni
               displayFormats: {
-                hour: "HH", // Format for displaying labels
+                day: "DD/MM",
               },
             },
             ticks: {
-              stepSize: 2, // Sample every two hours
-            },
-            title: {
-              display: false,
-              text: "Ora",
+              maxRotation: 0,
+              autoSkip: true,
             },
             grid: {
               color: getCssVar(WEATHER_CONSTANTS.GRAPH_GRID_COLOR),
             },
           },
           y: {
-            type: "category", // Use category scale for distinct labels
-            labels: uniqueDirections,
-            title: {
-              display: false,
-              text: "Temperatura (°C)",
-            },
             grid: {
               color: getCssVar(WEATHER_CONSTANTS.GRAPH_GRID_COLOR),
+            },
+            ticks: {
+              callback: function (value) {
+                return value;
+              },
             },
           },
         },
       },
     });
-
     charts.push(chart);
   }
 
@@ -98,10 +83,11 @@ const { data } = Astro.props;
     if (charts.length) {
       charts.forEach((chart) => chart.destroy());
     }
-
-    const ctx = canvas.getContext("2d");
-    const dataset = JSON.parse(canvas.getAttribute("data-points"));
-    drawChart(ctx, dataset);
+    canvas.forEach((canva) => {
+      const ctx = canva.getContext("2d");
+      const dataset = JSON.parse(canva.getAttribute("data-points"));
+      drawChart(ctx, dataset);
+    });
   }
 
   init();
@@ -110,4 +96,7 @@ const { data } = Astro.props;
     // otherwise getCssVar is not re-evaluated
     init();
   });
+
+  // Re-init when crossing the mobile breakpoint so the aspect ratio updates.
+  mobile.addEventListener("change", () => init());
 </script>

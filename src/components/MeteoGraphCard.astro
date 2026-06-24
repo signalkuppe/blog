@@ -1,16 +1,201 @@
 ---
+import CopyIcon from "../icons/Copy.svg";
+import DownloadIcon from "../icons/Download.svg";
 const { title } = Astro.props;
 ---
 
 <article>
-  <h3>{title}</h3>
+  <div class="graph-head">
+    <h3>{title}</h3>
+    <div class="graph-actions">
+      <button
+        class="chart-action copy-chart"
+        type="button"
+        aria-label="Copia il grafico come immagine"
+        title="Copia come immagine"
+      >
+        <CopyIcon aria-hidden="true" />
+      </button>
+      <button
+        class="chart-action download-chart"
+        type="button"
+        aria-label="Scarica il grafico come PNG"
+        title="Scarica PNG"
+      >
+        <DownloadIcon aria-hidden="true" />
+      </button>
+    </div>
+  </div>
   <slot />
+  <span class="copy-feedback" role="status" aria-live="polite"></span>
 </article>
 
 <style media="screen">
+  article {
+    position: relative;
+  }
+
+  .graph-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
   h3 {
     font-size: 0.7rem;
     font-family: var(--fontFamilyMono);
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+  }
+
+  .graph-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  .chart-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--textLight, var(--text));
+    padding: 0.25rem;
+    border-radius: 6px;
+    transition: color 0.15s ease;
+  }
+
+  .chart-action:hover,
+  .chart-action:focus-visible {
+    color: var(--textAccent);
+  }
+
+  .chart-action svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .copy-feedback {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--accent);
+    color: var(--accentContrastColor);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    opacity: 0;
+    transform: translateY(-0.25rem);
+    pointer-events: none;
+    transition:
+      opacity 0.15s ease,
+      transform 0.15s ease;
+  }
+
+  .copy-feedback.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
+
+<script>
+  function chartCanvas(button) {
+    return button.closest("article")?.querySelector("canvas");
+  }
+
+  function chartToPngBlob(canvas) {
+    // Paint the chart onto an opaque background so the saved/pasted image isn't transparent.
+    const out = document.createElement("canvas");
+    out.width = canvas.width;
+    out.height = canvas.height;
+    const ctx = out.getContext("2d");
+    const bg =
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--surface")
+        .trim() || "#ffffff";
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, out.width, out.height);
+    ctx.drawImage(canvas, 0, 0);
+    return new Promise((resolve, reject) => {
+      out.toBlob(
+        (blob) => (blob ? resolve(blob) : reject(new Error("toBlob failed"))),
+        "image/png",
+      );
+    });
+  }
+
+  function slugify(text) {
+    return (
+      text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "") || "grafico"
+    );
+  }
+
+  function showFeedback(article, text) {
+    const feedback = article?.querySelector(".copy-feedback");
+    if (!feedback) return;
+    feedback.textContent = text;
+    feedback.classList.add("is-visible");
+    clearTimeout(feedback._timeout);
+    feedback._timeout = setTimeout(
+      () => feedback.classList.remove("is-visible"),
+      1800,
+    );
+  }
+
+  function setupChartActions() {
+    document.querySelectorAll(".copy-chart").forEach((button) => {
+      if (button.dataset.bound === "true") return;
+      button.dataset.bound = "true";
+      button.addEventListener("click", async () => {
+        const canvas = chartCanvas(button);
+        const article = button.closest("article");
+        if (!canvas) return;
+        try {
+          const blob = await chartToPngBlob(canvas);
+          await navigator.clipboard.write([
+            new ClipboardItem({ "image/png": blob }),
+          ]);
+          showFeedback(article, "Immagine copiata");
+        } catch (error) {
+          console.error("Copia grafico fallita:", error);
+          showFeedback(article, "Copia non riuscita");
+        }
+      });
+    });
+
+    document.querySelectorAll(".download-chart").forEach((button) => {
+      if (button.dataset.bound === "true") return;
+      button.dataset.bound = "true";
+      button.addEventListener("click", async () => {
+        const canvas = chartCanvas(button);
+        const article = button.closest("article");
+        if (!canvas) return;
+        try {
+          const blob = await chartToPngBlob(canvas);
+          const title =
+            article?.querySelector("h3")?.textContent?.trim() ?? "grafico";
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = `meteo-concenedo-${slugify(title)}.png`;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+          showFeedback(article, "Immagine scaricata");
+        } catch (error) {
+          console.error("Download grafico fallito:", error);
+          showFeedback(article, "Download non riuscito");
+        }
+      });
+    });
+  }
+
+  setupChartActions();
+  document.addEventListener("astro:page-load", setupChartActions);
+</script>

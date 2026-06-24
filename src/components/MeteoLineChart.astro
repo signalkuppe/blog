@@ -24,7 +24,7 @@ const { data } = Astro.props;
             data: dataset, // Use your data here
             borderColor: getCssVar(WEATHER_CONSTANTS.GRAPH_LINE_COLOR),
             backgroundColor: "none",
-            borderWidth: 2,
+            borderWidth: 1.5,
             tension: 0.1, // Optional: adds smooth curves
             pointRadius: 0, // Remove the dots
           },
@@ -33,14 +33,21 @@ const { data } = Astro.props;
       options: {
         responsive: true,
         aspectRatio: 1.5,
+        interaction: { mode: "index", intersect: false },
         plugins: {
           legend: false,
+          tooltip: {
+            callbacks: {
+              label: (ctx) => `${ctx.formattedValue}`,
+            },
+          },
         },
         scales: {
           x: {
             type: "time", // Use the time scale
             time: {
               parser: "YYYY-MM-DD HH:mm", // Format of your time data
+              tooltipFormat: "DD/MM HH:mm",
               unit: "hour", // Granularity (e.g., minute, hour, day)
               round: "minute",
               displayFormats: {

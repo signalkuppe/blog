@@ -14,6 +14,7 @@ const API_KEY = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_APIKEY;
 const API_SECRET = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_SECRET;
 const START_OF_TODAY = dayjs().startOf("day").unix();
 const ONE_DAY_BEFORE = dayjs().subtract(24, "hours").unix();
+const SEVEN_DAYS_BEFORE = dayjs().subtract(7, "days").unix();
 const NOW = dayjs().unix();
 const GRAPH_DATE_FORMAT = "YYYY-MM-DD HH:mm";
 
@@ -21,30 +22,42 @@ export default async function weatherlink() {
   try {
     // The webcam is fetched client-side via /api/webcam so its slow third-party
     // source never blocks this server render.
-    const [{ sensors: currentSensors }, { sensors: oneDayBeforeSensors }] =
+    //
+    // The WeatherLink historic endpoint accepts at most a 24h window per request,
+    // so the last 7 days are fetched as 7 windowed calls (in parallel) and merged.
+    const historicWindows = buildHistoricWindows(SEVEN_DAYS_BEFORE, NOW);
+    const [{ sensors: currentSensors }, ...historicResponses] =
       await Promise.all([
         fetchCurrentData(),
-        fetchHistoricData(ONE_DAY_BEFORE, NOW),
+        ...historicWindows.map(([start, end]) =>
+          fetchHistoricData(start, end).catch((err) => {
+            console.error("Historic window failed:", err.message);
+            return { sensors: [] };
+          }),
+        ),
       ]);
 
     const weatherlinkConsole = sensorData(currentSensors, CONSOLE_SENSOR_ID);
     const pratoCurrent = sensorData(currentSensors, PRATO_SENSOR_ID);
     const tettoCurrent = sensorData(currentSensors, TETTO_SENSOR_ID);
 
-    const consoleOneDayBefore = sensorData(
-      oneDayBeforeSensors,
+    // Merged last 7 days per sensor (chronological, de-duplicated by timestamp).
+    const consoleSevenDays = mergeSensorData(
+      historicResponses,
       CONSOLE_SENSOR_ID,
-      true,
     );
-    const pratoOneDayBefore = sensorData(
-      oneDayBeforeSensors,
-      PRATO_SENSOR_ID,
-      true,
+    const pratoSevenDays = mergeSensorData(historicResponses, PRATO_SENSOR_ID);
+    const tettoSevenDays = mergeSensorData(historicResponses, TETTO_SENSOR_ID);
+
+    // Existing graphs keep showing the last 24h — slice it from the 7-day data.
+    const consoleOneDayBefore = consoleSevenDays.filter(
+      (d) => d.ts >= ONE_DAY_BEFORE,
     );
-    const tettoOneDayBefore = sensorData(
-      oneDayBeforeSensors,
-      TETTO_SENSOR_ID,
-      true,
+    const pratoOneDayBefore = pratoSevenDays.filter(
+      (d) => d.ts >= ONE_DAY_BEFORE,
+    );
+    const tettoOneDayBefore = tettoSevenDays.filter(
+      (d) => d.ts >= ONE_DAY_BEFORE,
     );
 
     // filter day values
@@ -195,21 +208,21 @@ export default async function weatherlink() {
         ),
         graph_temperature: _.map(tettoOneDayBefore, (v) => ({
           x: unixToGraphTime(v.ts),
-          y: parseFloat(convertTemperature(v.temp_last)),
+          y: parseFloat(convertTemperature(v.temp_hi)),
         })),
         graph_temperature_tetto_prato: [
           {
             id: "2m",
             data: _.map(pratoOneDayBefore, (v) => ({
               x: unixToGraphTime(v.ts),
-              y: parseFloat(convertTemperature(v.temp_last)),
+              y: parseFloat(convertTemperature(v.temp_hi)),
             })),
           },
           {
             id: "12m",
             data: _.map(tettoOneDayBefore, (v) => ({
               x: unixToGraphTime(v.ts),
-              y: parseFloat(convertTemperature(v.temp_last)),
+              y: parseFloat(convertTemperature(v.temp_hi)),
             })),
           },
         ],
@@ -248,6 +261,12 @@ export default async function weatherlink() {
         graph_solar_radiation: _.map(tettoOneDayBefore, (v) => ({
           x: unixToGraphTime(v.ts),
           y: parseFloat(v.solar_rad_avg),
+        })),
+        // Last 7 days: one point per hour at that hour's peak (temp_hi), so the
+        // daily maxima on the chart match the reported maxima.
+        graph_temperature_week: _.map(hourlyTempPeaks(tettoSevenDays), (v) => ({
+          x: unixToGraphTime(v.ts),
+          y: parseFloat(convertTemperature(v.temp_hi)),
         })),
       },
     };
@@ -300,6 +319,47 @@ async function fetchHistoricData(startTimeStamp, endTimeStamp) {
 function sensorData(sensors, sensorId, historic) {
   const sensor = sensors?.find((sensor) => sensor?.lsid === sensorId);
   return !historic ? sensor?.data[0] : sensor?.data;
+}
+
+// Split a [start, end] range into <=24h windows (WeatherLink historic max per request).
+function buildHistoricWindows(startUnix, endUnix, maxSpan = 86400) {
+  const windows = [];
+  let start = startUnix;
+  while (start < endUnix) {
+    const end = Math.min(start + maxSpan, endUnix);
+    windows.push([start, end]);
+    start = end;
+  }
+  return windows;
+}
+
+// Merge a single sensor's data records across multiple historic responses,
+// de-duplicated by timestamp and sorted chronologically.
+function mergeSensorData(historicResponses, sensorId) {
+  const byTimestamp = new Map();
+  for (const response of historicResponses) {
+    const sensor = response?.sensors?.find((s) => s?.lsid === sensorId);
+    if (!sensor?.data) continue;
+    for (const record of sensor.data) byTimestamp.set(record.ts, record);
+  }
+  return [...byTimestamp.values()].sort((a, b) => a.ts - b.ts);
+}
+
+// Keep one record per hour — the one with the highest interval-high temperature —
+// so a long series is thinned without losing the daily peaks (temp_hi).
+function hourlyTempPeaks(data) {
+  const byHour = new Map();
+  for (const record of data) {
+    const hour = Math.floor(record.ts / 3600);
+    const current = byHour.get(hour);
+    if (
+      !current ||
+      (record.temp_hi ?? -Infinity) > (current.temp_hi ?? -Infinity)
+    ) {
+      byHour.set(hour, record);
+    }
+  }
+  return [...byHour.values()].sort((a, b) => a.ts - b.ts);
 }
 
 function convertPressure(pressure) {
