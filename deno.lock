@@ -11,20 +11,18 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
-        "npm:@astrojs/markdown-satteri@~0.3.1",
+        "npm:@astrojs/markdown-satteri@~0.3.2",
         "npm:@astrojs/mdx@7",
         "npm:@astrojs/netlify@8",
         "npm:@astrojs/rss@^4.0.18",
         "npm:@floating-ui/dom@^1.7.1",
-        "npm:@sentry/astro@^10.60.0",
-        "npm:astro@7",
+        "npm:astro@^7.0.2",
         "npm:autoprefixer@^10.4.21",
         "npm:chart.js@^4.5.0",
         "npm:chartjs-adapter-dayjs-4@^1.0.4",
         "npm:chartjs-plugin-datalabels@^2.2.0",
         "npm:dayjs@^1.11.13",
         "npm:glob@^13.0.3",
-        "npm:hammerjs@^2.0.8",
         "npm:jszip@^3.10.1",
         "npm:leaflet-fullscreen@^1.0.2",
         "npm:leaflet-gpx@^2.2.0",
@@ -35,8 +33,7 @@
         "npm:photoswipe@^5.4.4",
         "npm:sharp@~0.34.5",
         "npm:simplify-js@^1.2.4",
-        "npm:slug@11",
-        "npm:underscore@^1.13.7"
+        "npm:slug@11"
       ]
     }
   }

@@ -419,6 +419,11 @@ const gpxUrl = `/gpx/${gpxFile}`;
         aspectRatio: isDesktop ? 1.7 : 1.3,
         plugins: {
           legend: false,
+          tooltip: {
+            callbacks: {
+              label: (context) => `${Math.round(context.parsed.y)}m`,
+            },
+          },
         },
         animations: {
           tension: {
@@ -453,7 +458,7 @@ const gpxUrl = `/gpx/${gpxFile}`;
             ticks: {
               // Include a dollar sign in the ticks
               callback: function (value) {
-                return `${value}m`;
+                return `${Math.round(value)}m`;
               },
               stepSize: 100,
             },
