@@ -10,7 +10,9 @@ const { src, alt } = Astro.props;
 const inlineMaxWidth = Math.min(src.width, 1400);
 const inlineSizes =
   "(max-width: 720px) calc(100vw - 3rem), (max-width: 1200px) 90vw, 1100px";
-const inlineWidths = [720, 1100, 1400].filter((width) => width <= inlineMaxWidth);
+const inlineWidths = [720, 1100, 1400].filter(
+  (width) => width <= inlineMaxWidth,
+);
 ---
 
 <picture>
@@ -33,11 +35,3 @@ const inlineWidths = [720, 1100, 1400].filter((width) => width <= inlineMaxWidth
     </p>
   )
 }
-
-<style>
-  .img-caption {
-    font-size: 0.75rem;
-    margin-top: 0.4rem;
-    text-align: right;
-  }
-</style>

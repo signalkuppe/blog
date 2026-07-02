@@ -1,12 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import { categories, defaultOgImage, siteTitle } from "../../../constants";
-import Layout from "../../../layouts/Layout.astro";
-import BlogLayout from "../../../layouts/BlogLayout.astro";
-import BlogCategories from "../../../components/BlogCategories.astro";
-import Pager from "../../../components/Pager.astro";
-import PostCard from "../../../components/PostCard.astro";
-import { headPageTitle } from "../../../lib/utils";
 
 interface Props {
   page: any;
@@ -49,64 +43,6 @@ if (page.currentPage > 1 || categoryPage > 1) {
 }
 ---
 
-<Layout
-  title={headPageTitle(pageTitle, siteTitle)}
-  description="Elenco completo di tutte le uscite"
-  ogImage={defaultOgImage}
->
-  <BlogLayout pageTitle={pageTitle} activeTab="elenco">
-    <div slot="left">
-      <ul role="list" class="post-list">
-        {
-          page.data.map((post, i) => (
-            <li>
-              <PostCard post={post} imageProps={{ priority: i <= 5 }} />
-            </li>
-          ))
-        }
-      </ul>
-      <nav aria-label="Pagine" class="post-pager">
-        <Pager page={page} />
-        <p class="count">{page.data[0].postsCount} Relazioni</p>
-      </nav>
-    </div>
-    <nav aria-label="categorie" class="post-categories" slot="right">
-      <BlogCategories activeCategory={category} />
-    </nav>
-  </BlogLayout>
-</Layout>
+<h1>{pageTitle}</h1>
 
-<style media="screen">
-  .post-pager {
-    margin-top: 3rem;
-  }
-  .count {
-    margin-top: 1rem;
-    font-size: 0.85rem;
-  }
-
-  @media screen and (width < 48rem) {
-    .post-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-bottom: 8rem;
-    }
-  }
-
-  @media screen and (width > 48rem) {
-    .post-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 1.5rem;
-      row-gap: 1.5rem;
-      margin-bottom: 8rem;
-    }
-  }
-
-  @media screen and (width > 80rem) {
-    .post-list {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-</style>
+<pre>{JSON.stringify(page.data, null, 2)}</pre>
