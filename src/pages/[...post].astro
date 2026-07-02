@@ -1,5 +1,9 @@
 ---
+import { getImage } from "astro:assets";
 import { getCollection, render } from "astro:content";
+import { headPageTitle } from "../lib/utils";
+import { siteTitle } from "../constants";
+import Layout from "../layouts/Layout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -28,6 +32,19 @@ const postGpxTrack = post.data.gpxTracks?.[0];
 const postSlug = post.id;
 const prevSlug = prev ? prev.id : "";
 const nextSlug = next ? next.id : "";
+
+const ogImg = await getImage({
+  src: post.data.cover.src,
+  width: 1200,
+  format: "jpg",
+  quality: 75,
+});
 ---
 
-<h1>{post.data.title}</h1>
+<Layout
+  title={headPageTitle(post.data.title, siteTitle)}
+  description={post.data.description}
+  ogImage={ogImg.src}
+>
+  <h1>{post.data.title}</h1>
+</Layout>

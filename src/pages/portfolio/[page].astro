@@ -1,5 +1,8 @@
 ---
 import { getCollection } from "astro:content";
+import { headPageTitle } from "../../lib/utils";
+import Layout from "../../layouts/Layout.astro";
+import { siteSlogan } from "../../constants";
 
 export async function getStaticPaths({ paginate }) {
   const photos = await getCollection("portfolio");
@@ -34,5 +37,11 @@ if (page.currentPage > 1) {
 const description = "Una raccolta delle mie foto più belle";
 ---
 
-<h1>{pageTitle}</h1>
-<pre>{JSON.stringify(page.data, null, 2)}</pre>
+<Layout
+  title={headPageTitle(pageTitle, siteSlogan)}
+  description={description}
+  ogImage="/og-image.jpg"
+>
+  <h1>{pageTitle}</h1>
+  <pre>{JSON.stringify(page.data, null, 2)}</pre>
+</Layout>

@@ -1,5 +1,15 @@
 ---
+import { siteTitle, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import Layout from "../layouts/Layout.astro";
+---
 
 ---
 
-<h1>Pagina non trovata 🥲</h1>
+<Layout
+  title={headPageTitle("Pagina non trovata", siteTitle)}
+  description=""
+  ogImage={defaultOgImage}
+>
+  <h1>Pagina non trovata 🥲</h1>
+</Layout>

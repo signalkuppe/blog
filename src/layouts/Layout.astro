@@ -1,0 +1,39 @@
+---
+import GlobalStyles from "../components/GlobalStyles.astro";
+import { prodSiteUrl } from "../constants";
+
+const { title, description, ogImage, ogType, canonical } = Astro.props;
+const canonicalURL = canonical || new URL(Astro.url.pathname, prodSiteUrl).href;
+---
+
+<!doctype html>
+<html lang="it" id="top">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="apple-mobile-web-app-title" content="Signalkuppe" />
+    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="og:image" content={ogImage} />
+    <meta name="og:url" content={canonicalURL} />
+    <meta property="og:type" content={ogType || "website"} />
+
+    <title>{title}</title>
+    <slot name="head" />
+    <GlobalStyles />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

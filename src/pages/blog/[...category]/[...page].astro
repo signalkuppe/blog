@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import { categories, defaultOgImage, siteTitle } from "../../../constants";
+import { headPageTitle } from "../../../lib/utils";
+import Layout from "../../../layouts/Layout.astro";
 
 interface Props {
   page: any;
@@ -43,6 +45,12 @@ if (page.currentPage > 1 || categoryPage > 1) {
 }
 ---
 
-<h1>{pageTitle}</h1>
+<Layout
+  title={headPageTitle(pageTitle, siteTitle)}
+  description="Elenco completo di tutte le uscite"
+  ogImage={defaultOgImage}
+>
+  <h1>{pageTitle}</h1>
 
-<pre>{JSON.stringify(page.data, null, 2)}</pre>
+  <pre>{JSON.stringify(page.data, null, 2)}</pre>
+</Layout>

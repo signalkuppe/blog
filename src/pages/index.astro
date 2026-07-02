@@ -1,5 +1,13 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import { siteTitle, siteSlogan, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
 ---
 
-<h1>Homepage</h1>
+<Layout
+  title={headPageTitle(siteTitle, siteSlogan)}
+  description="Blog personale di Matteo Leoni"
+  ogImage={defaultOgImage}
+>
+  <h1>Homepage</h1>
+</Layout>

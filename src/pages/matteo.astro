@@ -1,5 +1,13 @@
 ---
-
+import { siteSlogan, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<h1>Matteo</h1>
+<Layout
+  title={headPageTitle("Matteo", siteSlogan)}
+  description="Presento le mie passioni e il mio lavoro"
+  ogImage={defaultOgImage}
+>
+  <h1>Matteo</h1>
+</Layout>

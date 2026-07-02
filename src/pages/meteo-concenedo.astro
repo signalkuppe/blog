@@ -1,12 +1,20 @@
 ---
 export const prerender = false;
 import { siteTitle } from "../constants";
+import { headPageTitle } from "../lib/utils";
 import weatherlink from "../lib/weatherlink";
+import Layout from "../layouts/Layout.astro";
 const title = "Meteo Concenedo";
 const description =
   "Dati meteo in diretta e webcam da Concenedo (Barzio) in Valsassina";
 const { hasLostSignal, current, day, ok } = await weatherlink();
 ---
 
-<h1>{title}</h1>
-<pre>{JSON.stringify({ hasLostSignal, current, day, ok }, null, 2)}</pre>
+<Layout
+  title={headPageTitle(title, siteTitle)}
+  description={description}
+  ogImage="https://images.ctfassets.net/rotmy72mdop6/3Qy2Qb0G2cePauRLnhCb5U/8caa3ae7eb25d77cee90be9278524877/2.jpg"
+>
+  <h1>{title}</h1>
+  <pre>{JSON.stringify({ hasLostSignal, current, day, ok }, null, 2)}</pre>
+</Layout>

@@ -1,6 +1,16 @@
 ---
-
+import { siteTitle, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import Layout from "../layouts/Layout.astro";
 ---
 
-Messaggio ricevuto!
-
+<Layout
+  title={headPageTitle("Messaggio inviato", siteTitle)}
+  description=""
+  ogImage={defaultOgImage}
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+  </Fragment>
+  Messaggio ricevuto!
+</Layout>
