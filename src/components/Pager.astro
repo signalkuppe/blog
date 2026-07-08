@@ -1,0 +1,100 @@
+---
+interface Props {
+  page: any;
+}
+const { page } = Astro.props;
+
+const before = [
+  { url: page.url.first, symbol: "«", label: "Pagina iniziale" },
+  { url: page.url.prev, symbol: "‹", label: "Precedente" },
+];
+const after = [
+  { url: page.url.next, symbol: "›", label: "Successiva" },
+  { url: page.url.last, symbol: "»", label: "Ultima pagina" },
+];
+---
+
+<ul>
+  {
+    before.map((item) => (
+      <li>
+        {item.url ? (
+          <a href={item.url} class="pager-item">
+            <span aria-hidden="true" set:html={item.symbol} />
+            <span class="visually-hidden">{item.label}</span>
+          </a>
+        ) : (
+          <span class="pager-item is-disabled" aria-disabled="true">
+            <span aria-hidden="true" set:html={item.symbol} />
+            <span class="visually-hidden">{item.label} (non disponibile)</span>
+          </span>
+        )}
+      </li>
+    ))
+  }
+  <li class="pager-info">
+    Pagina <span aria-current="page">{page.currentPage}</span> di {
+      page.lastPage
+    }
+  </li>
+  {
+    after.map((item, i) => (
+      <li class={i === 0 ? "next" : ""}>
+        {item.url ? (
+          <a href={item.url} class="pager-item">
+            <span aria-hidden="true" set:html={item.symbol} />
+            <span class="visually-hidden">{item.label}</span>
+          </a>
+        ) : (
+          <span class="pager-item is-disabled" aria-disabled="true">
+            <span aria-hidden="true" set:html={item.symbol} />
+            <span class="visually-hidden">{item.label} (non disponibile)</span>
+          </span>
+        )}
+      </li>
+    ))
+  }
+</ul>
+
+<style media="screen">
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .pager-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    text-decoration: none;
+    padding: 0.25rem 0.8rem;
+    margin-left: -0.8rem;
+    line-height: 1rem;
+  }
+
+  li.next .pager-item {
+    margin-left: 0rem;
+  }
+
+  li.pager-info {
+    margin-bottom: -0.2rem;
+  }
+
+  span[aria-hidden="true"] {
+    font-size: 1.5rem;
+  }
+
+  .is-disabled {
+    cursor: not-allowed;
+    color: var(--color-subtle);
+    opacity: 0.5;
+  }
+
+  [aria-current="page"] {
+    font-weight: 900;
+  }
+</style>

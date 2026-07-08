@@ -2,8 +2,10 @@
 import { getImage } from "astro:assets";
 import { getCollection, render } from "astro:content";
 import { headPageTitle } from "../lib/utils";
-import { siteTitle } from "../constants";
+import { siteTitle, categories, newsletterUrl } from "../constants";
 import Layout from "../layouts/Layout.astro";
+import PostGallery from "../components/PostGallery.astro";
+import PostGpx from "../components/PostGpx.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -32,6 +34,9 @@ const postGpxTrack = post.data.gpxTracks?.[0];
 const postSlug = post.id;
 const prevSlug = prev ? prev.id : "";
 const nextSlug = next ? next.id : "";
+const hasGallery = post.data.gallery && post.data.gallery.length > 0;
+
+const postCategory = categories.find((c) => c.title === post.data.category[0]);
 
 const ogImg = await getImage({
   src: post.data.cover.src,
@@ -46,5 +51,173 @@ const ogImg = await getImage({
   description={post.data.description}
   ogImage={ogImg.src}
 >
-  <h1>{post.data.title}</h1>
+  <article>
+    <nav class="breadcrumb" aria-label="Percorso di navigazione">
+      <ol>
+        <li><a href="/">Home</a></li>
+        {
+          postCategory && (
+            <li>
+              <a href={`/${postCategory.slug}`}>{postCategory.title}</a>
+            </li>
+          )
+        }
+        <li aria-current="page">{post.data.title}</li>
+      </ol>
+    </nav>
+    <time datetime={post.data.date.toISOString()}>
+      {
+        post.data.date.toLocaleDateString("it-IT", {
+          year: "numeric",
+          month: "long",
+          day: "2-digit",
+        })
+      }
+    </time>
+    <h1>{post.data.title}</h1>
+    <p class="post-description">{post.data.description}</p><Content />
+    <aside class="post-aside">
+      {
+        hasGallery && (
+          <details>
+            <summary>Galleria fotografica</summary>
+            <PostGallery gallery={post.data.gallery} />
+          </details>
+        )
+      }
+      {
+        postGpxTrack && (
+          <details>
+            <summary>Mappa e Traccia GPS</summary>
+            <PostGpx
+              track={postGpxTrack}
+              title={post.data.title}
+              minimumAltitude={post.data.minimumAltitude}
+              maximumAltitude={post.data.maximumAltitude}
+              elevationGain={post.data.elevationGain}
+              distance={post.data.distance}
+            />
+          </details>
+        )
+      }
+      <details>
+        <summary>Disclaimer</summary>
+        <div class="disclaimer">
+          <p>
+            La rilevazione gps potrebbe non essere sempre precisa e riportare
+            valori errati. Le attività in montagna sono pericolose, informati
+            bene prima di affrontarle e non fare affidamento solo sui dati
+            riportati in questa pagina. Non mi assumo alcuna responsabilità per
+            eventuali incidenti o problemi che potrebbero verificarsi durante
+            una delle attività descritte in questo blog.
+          </p>
+        </div>
+      </details>
+
+      <nav class="post-pager">
+        <ul role="list">
+          {
+            prev && (
+              <li>
+                <span>Uscita precedente</span>
+                <a href={`/${prevSlug}`}>{prev.data.title}</a>
+              </li>
+            )
+          }
+          {
+            next && (
+              <li>
+                <span>Uscita successiva</span>
+                <a href={`/${nextSlug}`}>{next.data.title}</a>
+              </li>
+            )
+          }
+        </ul>
+      </nav>
+
+      <p class="post-newsletter">
+        Vuoi rimanere aggiornato sulle nuove uscite? <br /><a
+          href={newsletterUrl}>Iscriviti alla newsletter</a
+        >
+      </p>
+    </aside>
+  </article>
+
+  <style>
+    .breadcrumb {
+      margin-bottom: 3rem;
+    }
+
+    .breadcrumb ol {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .breadcrumb li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 0;
+    }
+
+    .breadcrumb li + li::before {
+      content: "›";
+      color: var(--color-subtle);
+    }
+
+    .breadcrumb [aria-current="page"] {
+      color: var(--color-subtle);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .post-description {
+      font-size: 1.125rem;
+      color: var(--color-subtle);
+      margin-top: 1rem;
+    }
+
+    article {
+      max-width: 40rem;
+    }
+
+    article .post-aside {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    time {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .disclaimer {
+      color: var(--color-subtle);
+      font-size: 0.85rem;
+    }
+
+    .post-newsletter {
+      font-size: 0.85rem;
+    }
+
+    .post-pager ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .post-pager span {
+      display: block;
+      font-weight: 700;
+    }
+  </style>
 </Layout>

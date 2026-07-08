@@ -1,0 +1,423 @@
+---
+import { mapTilesUrl } from "../constants";
+
+interface Props {
+  track: {
+    src: string;
+    fileName: string;
+  };
+  title: string;
+  minimumAltitude?: number;
+  maximumAltitude?: number;
+  elevationGain?: number;
+  distance?: number;
+}
+
+const {
+  track,
+  title,
+  minimumAltitude,
+  maximumAltitude,
+  elevationGain,
+  distance,
+} = Astro.props;
+const gpxUrl = `/gpx/${track.src}`;
+---
+
+<div class="post-gpx-container">
+  <dl>
+    <dt>Quota minima</dt>
+    <dd>{minimumAltitude}m</dd>
+    <dt>Quota massima</dt>
+    <dd>{maximumAltitude}m</dd>
+    <dt>Dislivello</dt>
+    <dd>{elevationGain}m</dd>
+    <dt>Distanza</dt>
+    <dd>{distance}km</dd>
+  </dl>
+  <a href={gpxUrl} download> Scarica la traccia GPS </a>
+  <div class="buttons">
+    <button
+      type="button"
+      command="show-modal"
+      commandfor="post-map-dialog"
+      class="open-map-button"
+      hidden
+    >
+      Apri la Mappa
+    </button>
+    <button
+      type="button"
+      command="show-modal"
+      commandfor="post-chart-dialog"
+      class="open-chart-button"
+      hidden
+    >
+      Mostra il Grafico
+    </button>
+  </div>
+
+  <dialog id="post-map-dialog" class="post-map-dialog" closedby="any">
+    <button commandfor="post-map-dialog" command="close" class="close-button">
+      <span aria-hidden="true">&times;</span>
+      <span class="visually-hidden">Chiudi</span>
+    </button>
+    <div class="post-map-canvas" data-gpx={gpxUrl} data-tiles={mapTilesUrl}>
+    </div>
+    <footer>
+      <span>{title}</span>
+    </footer>
+  </dialog>
+
+  <dialog id="post-chart-dialog" class="post-chart-dialog" closedby="any">
+    <button commandfor="post-chart-dialog" command="close" class="close-button">
+      <span aria-hidden="true">&times;</span>
+      <span class="visually-hidden">Chiudi</span>
+    </button>
+    <div class="post-chart-canvas" data-gpx={gpxUrl}>
+      <canvas></canvas>
+    </div>
+    <footer>
+      <span>{title}</span>
+    </footer>
+  </dialog>
+</div>
+
+<style>
+  .post-gpx-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .post-map-dialog,
+  .post-chart-dialog {
+    --viewport-gap: 1rem; /* breathing room around the dialog */
+    --dialog-footer-height: 4rem; /* title + close button row */
+    width: calc(100vw - var(--viewport-gap) * 2);
+    height: calc(100dvh - var(--viewport-gap) * 2);
+    max-width: calc(100vw - var(--viewport-gap) * 2);
+    max-height: calc(100dvh - var(--viewport-gap) * 2);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* sits behind the content while chunks load;
+     removed once the map/chart is drawn */
+  .post-map-dialog::before,
+  .post-chart-dialog::before {
+    position: absolute;
+    inset: 0 0 var(--dialog-footer-height) 0;
+    display: grid;
+    place-items: center;
+    color: var(--color-subtle);
+  }
+
+  .post-map-dialog::before {
+    content: "Carico la mappa…" / "";
+  }
+
+  .post-chart-dialog::before {
+    content: "Carico il grafico…" / "";
+  }
+
+  .post-map-dialog.is-loaded::before,
+  .post-chart-dialog.is-loaded::before {
+    content: none;
+  }
+
+  .post-map-canvas,
+  .post-chart-canvas {
+    position: relative;
+    width: 100%;
+    height: calc(100% - var(--dialog-footer-height));
+  }
+
+  .post-chart-canvas {
+    padding: 1rem;
+    /* resolved by the script: color for the chart labels,
+       border-color (never drawn) for the grid lines */
+    color: var(--color-subtle);
+    border-color: var(--color-graph-grid);
+  }
+
+  .post-map-dialog footer,
+  .post-chart-dialog footer {
+    height: var(--dialog-footer-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .post-map-dialog .close-button,
+  .post-chart-dialog .close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1001; /* Leaflet controls go up to 1000 */
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 1;
+    background-color: Canvas;
+  }
+</style>
+
+<script>
+  function setupMapDialog() {
+    const dialog =
+      document.querySelector<HTMLDialogElement>("#post-map-dialog");
+    if (!dialog || dialog.dataset.mapBound) return;
+    dialog.dataset.mapBound = "true";
+
+    // the map is JS-only: reveal the open button now that we can handle it
+    document
+      .querySelectorAll<HTMLButtonElement>(
+        '[commandfor="post-map-dialog"][command="show-modal"]',
+      )
+      .forEach((button) => (button.hidden = false));
+
+    const canvas = dialog.querySelector<HTMLElement>(".post-map-canvas")!;
+    let map: any = null;
+    let loading = false;
+
+    dialog.addEventListener("toggle", async (event) => {
+      if ((event as ToggleEvent).newState !== "open") return;
+
+      if (map) {
+        map.invalidateSize();
+        return;
+      }
+      if (loading) return;
+      loading = true;
+
+      try {
+        const [{ default: L }] = await Promise.all([
+          import("leaflet"),
+          import("leaflet/dist/leaflet.css"),
+        ]);
+        // leaflet-gpx is a classic plugin: it augments the L global
+        (globalThis as any).L = L;
+        await import("leaflet-gpx");
+
+        // closed while downloading: bail, imports are cached for next open
+        if (!dialog.open) return;
+
+        map = L.map(canvas, {
+          tap: false,
+          attributionControl: false,
+          zoomControl: false,
+        });
+        map.scrollWheelZoom.disable();
+        L.control.zoom({ position: "topleft" }).addTo(map);
+        // re-measure once layout settles: a map sized before the dialog
+        // finishes laying out requests tiles for a smaller region
+        requestAnimationFrame(() => map?.invalidateSize());
+
+        const tiles = L.tileLayer(canvas.dataset.tiles!);
+        // Leaflet never retries failed tiles (throttling, flaky network),
+        // leaving gray squares: retry each failed tile once
+        tiles.on("tileerror", (event: any) => {
+          const tile = event.tile as HTMLImageElement;
+          if (tile.dataset.retried) return;
+          tile.dataset.retried = "true";
+          const retrySrc = `${tile.src}&retry=1`;
+          setTimeout(() => {
+            tile.src = retrySrc;
+          }, 1000);
+        });
+        tiles.addTo(map);
+
+        new (L as any).GPX(canvas.dataset.gpx!, {
+          async: true,
+          markers: {
+            startIcon: "/images/start-marker.png",
+            endIcon: "/images/end-marker.png",
+            wptIcons: false,
+          },
+          marker_options: { iconSize: [38, 38] },
+          polyline_options: {
+            color: "red",
+            opacity: 1,
+            weight: 4,
+            lineCap: "round",
+          },
+        })
+          .on("loaded", (e: any) => {
+            map.fitBounds(e.target.getBounds(), { animate: false });
+            dialog.classList.add("is-loaded");
+          })
+          .addTo(map);
+      } catch (error) {
+        console.error("Errore nel caricamento della mappa:", error);
+      } finally {
+        loading = false;
+      }
+    });
+  }
+
+  function setupChartDialog() {
+    const dialog =
+      document.querySelector<HTMLDialogElement>("#post-chart-dialog");
+    if (!dialog || dialog.dataset.chartBound) return;
+    dialog.dataset.chartBound = "true";
+
+    // the chart is JS-only: reveal the open button now that we can handle it
+    document
+      .querySelectorAll<HTMLButtonElement>(
+        '[commandfor="post-chart-dialog"][command="show-modal"]',
+      )
+      .forEach((button) => (button.hidden = false));
+
+    const container = dialog.querySelector<HTMLElement>(".post-chart-canvas")!;
+    const canvas = container.querySelector("canvas")!;
+    let chart: any = null;
+    let loading = false;
+
+    dialog.addEventListener("toggle", async (event) => {
+      if ((event as ToggleEvent).newState !== "open") return;
+
+      if (chart) {
+        chart.resize();
+        return;
+      }
+      if (loading) return;
+      loading = true;
+
+      try {
+        const [{ default: Chart }, { default: simplify }, gpxText] =
+          await Promise.all([
+            import("chart.js/auto"),
+            import("simplify-js"),
+            fetch(container.dataset.gpx!).then((response) => response.text()),
+          ]);
+
+        // closed while downloading: bail, imports are cached for next open
+        if (!dialog.open) return;
+
+        const points = elevationProfile(gpxText);
+
+        const lineColor = resolveColorVar("--color-accent");
+        const gridColor = resolveColorVar("--color-graph-grid");
+        const labelColor = resolveColorVar("--color-subtle");
+        chart = new Chart(canvas, {
+          type: "line",
+          data: {
+            datasets: [
+              {
+                data: simplify(points, 0.02, true),
+                borderColor: lineColor,
+                borderWidth: 2,
+                pointRadius: 0,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  title: (items: any) => `${items[0].parsed.x.toFixed(1)}km`,
+                  label: (item: any) => `${Math.round(item.parsed.y)}m`,
+                },
+              },
+            },
+            scales: {
+              x: {
+                type: "linear",
+                ticks: {
+                  stepSize: 2,
+                  callback: (value: any) => `${value}km`,
+                  color: labelColor,
+                },
+                grid: { color: gridColor },
+                border: { color: gridColor },
+              },
+              y: {
+                type: "linear",
+                ticks: {
+                  stepSize: 100,
+                  callback: (value: any) => `${Math.round(value)}m`,
+                  color: labelColor,
+                },
+                grid: { color: gridColor },
+                border: { color: gridColor },
+              },
+            },
+          },
+        });
+        dialog.classList.add("is-loaded");
+      } catch (error) {
+        console.error("Errore nel caricamento del grafico:", error);
+      } finally {
+        loading = false;
+      }
+    });
+  }
+
+  /* cumulative distance (km) vs elevation (m) from the GPX track points */
+  function elevationProfile(gpxText: string) {
+    const xml = new DOMParser().parseFromString(gpxText, "application/xml");
+    const points: { x: number; y: number }[] = [];
+    let distance = 0;
+    let prev: { lat: number; lon: number } | null = null;
+    for (const trkpt of xml.querySelectorAll("trkpt")) {
+      const lat = parseFloat(trkpt.getAttribute("lat") ?? "");
+      const lon = parseFloat(trkpt.getAttribute("lon") ?? "");
+      const ele = parseFloat(trkpt.querySelector("ele")?.textContent ?? "");
+      if (
+        !Number.isFinite(lat) ||
+        !Number.isFinite(lon) ||
+        !Number.isFinite(ele)
+      ) {
+        continue;
+      }
+      if (prev) {
+        distance += haversineKm(prev.lat, prev.lon, lat, lon);
+      }
+      prev = { lat, lon };
+      points.push({ x: distance, y: ele });
+    }
+    return points;
+  }
+
+  function haversineKm(lat1: number, lon1: number, lat2: number, lon2: number) {
+    const toRad = (deg: number) => (deg * Math.PI) / 180;
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+    return 12742 * Math.asin(Math.sqrt(a)); // 12742 = Earth diameter in km
+  }
+
+  function resolveColorVar(name) {
+    const probe = document.createElement("div");
+    probe.style.color = `var(${name})`;
+    document.documentElement.appendChild(probe);
+
+    const value = getComputedStyle(probe).color;
+
+    probe.remove();
+    return value;
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    setupMapDialog();
+    setupChartDialog();
+  });
+</script>

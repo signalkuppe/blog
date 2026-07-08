@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders, svgoOptimizer } from "astro/config";
 import netlify from "@astrojs/netlify";
 import mdx from "@astrojs/mdx";
 
@@ -17,4 +17,14 @@ export default defineConfig({
       allowedHosts: [".ngrok-free.app"],
     },
   },
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "JetBrains Mono",
+      cssVariable: "--base-font",
+      weights: ["400 700 900"],
+      styles: ["normal"],
+      subsets: ["latin"],
+    },
+  ],
 });

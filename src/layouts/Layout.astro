@@ -1,14 +1,22 @@
 ---
+import { ClientRouter } from "astro:transitions";
+import { Font } from "astro:assets";
+import CssReset from "../components/CssReset.astro";
 import GlobalStyles from "../components/GlobalStyles.astro";
 import { prodSiteUrl } from "../constants";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 const { title, description, ogImage, ogType, canonical } = Astro.props;
 const canonicalURL = canonical || new URL(Astro.url.pathname, prodSiteUrl).href;
+const hasAside = Astro.slots.has("aside");
 ---
 
 <!doctype html>
 <html lang="it" id="top">
   <head>
+    <Font cssVariable="--base-font" />
+    <ClientRouter />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
@@ -31,9 +39,78 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, prodSiteUrl).href;
 
     <title>{title}</title>
     <slot name="head" />
+    <CssReset />
     <GlobalStyles />
   </head>
   <body>
-    <slot />
+    <a href="#main" class="visually-hidden">Vai al contenuto</a>
+    <div class="container">
+      <header>
+        <Header />
+      </header>
+
+      <div class:list={["wrapper", { "with-aside": hasAside }]}>
+        <main id="main">
+          <slot />
+        </main>
+        <aside>
+          <slot name="aside" />
+        </aside>
+      </div>
+
+      <footer>
+        <Footer />
+      </footer>
+    </div>
   </body>
 </html>
+
+<style is:global>
+  :root {
+    --sidebar-width: 12rem;
+    --sidebar-gutter: 4rem;
+  }
+</style>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    margin: 0 auto;
+    height: 100svh;
+    padding: 2rem;
+    @media (orientation: portrait) {
+      padding: 1.5rem;
+    }
+  }
+
+  .wrapper {
+    margin: 4rem 0;
+    flex: 1;
+  }
+
+  .with-aside {
+    display: flex;
+    flex-direction: row;
+    gap: var(--sidebar-gutter);
+    aside {
+      order: 1;
+    }
+    main {
+      order: 2;
+    }
+  }
+
+  main {
+    flex: 1;
+  }
+
+  aside {
+    width: var(--sidebar-width);
+  }
+
+  footer {
+    padding: 6rem 0;
+  }
+</style>

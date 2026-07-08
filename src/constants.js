@@ -8,6 +8,9 @@ export const defaultOgImage = "/og-image.jpg";
 
 export const pageTitleSeparator = "-";
 
+export const paypalDonateUrl =
+  "https://www.paypal.com/donate/?hosted_button_id=77MXKAB84XP8L";
+
 export const categories = [
   {
     title: "Alpinismo",
@@ -40,6 +43,10 @@ export const categories = [
     icon: "Globe",
   },
 ];
+
+export const thunderforestApiKey = "f890f7037bd243ee9602a36c56fc6dc2";
+
+export const mapTilesUrl = `https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=${thunderforestApiKey}`;
 
 export const newsletterUrl =
   "https://signalkuppe.us17.list-manage.com/subscribe?u=c87438aa22d9c1bffb8b5e482&id=b177d839f1";

@@ -1,50 +1,55 @@
 ---
-
+import { siteTitle } from "../constants";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<form
-  action="/grazie"
-  name="contact"
-  method="POST"
-  autocomplete="off"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
->
-  <label class="visually-hidden">
-    Non compilarlo se sei umano: <input name="bot-field" />
-  </label>
+<Layout title={`Contatti - ${siteTitle}`} description="Contatta Matteo Leoni">
+  <h1>Contatti</h1>
 
-  <div>
-    <label for="email" slot="label">Email</label>
-    <input
-      id="email"
-      required
-      name="email"
-      type="email"
-      autocapitalize="off"
-      placeholder="es: info@miaemail.it"
-      slot="input"
-    />
-  </div>
-  <div>
-    <label for="message" slot="label">Messaggio</label>
-    <textarea
-      required
-      id="message"
-      name="message"
-      spellcheck="false"
-      autocorrect="off"
-      autocomplete="off"
-      autocapitalize="off"
-      rows="5"
-      cols="50"
-      slot="input"></textarea>
-  </div>
-  <div>
-    <label>
-      <input type="checkbox" required name="policy" />
-      Ho letto la <a href="/privacy">la privacy policy</a>
+  <form
+    action="/grazie"
+    name="contact"
+    method="POST"
+    autocomplete="off"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+  >
+    <label class="visually-hidden">
+      Non compilarlo se sei umano: <input name="bot-field" />
     </label>
-  </div>
-  <button type="submit" class="btn">Invia il messaggio</button>
-</form>
+
+    <div>
+      <label for="email" slot="label">Email</label>
+      <input
+        id="email"
+        required
+        name="email"
+        type="email"
+        autocapitalize="off"
+        placeholder="es: info@miaemail.it"
+        slot="input"
+      />
+    </div>
+    <div>
+      <label for="message" slot="label">Messaggio</label>
+      <textarea
+        required
+        id="message"
+        name="message"
+        spellcheck="false"
+        autocorrect="off"
+        autocomplete="off"
+        autocapitalize="off"
+        rows="5"
+        cols="50"
+        slot="input"></textarea>
+    </div>
+    <div>
+      <label>
+        <input type="checkbox" required name="policy" />
+        Ho letto la <a href="/privacy">la privacy policy</a>
+      </label>
+    </div>
+    <button type="submit" class="btn">Invia il messaggio</button>
+  </form>
+</Layout>

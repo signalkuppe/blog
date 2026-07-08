@@ -1,0 +1,132 @@
+---
+import {
+  newsletterUrl,
+  githubUrl,
+  instagramUrl,
+  stravaUrl,
+  paypalDonateUrl,
+} from "../constants";
+
+const url = Astro.url.pathname;
+---
+
+<nav aria-labelledby="footer-links">
+  <h2 class="visually-hidden">Link utili</h2>
+  <ul role="list">
+    <li>
+      <button type="button" command="show-modal" commandfor="paypal-dialog"
+        >Sostieni il sito</button
+      >
+    </li>
+    <li>
+      <a href={newsletterUrl}> Newsletter </a>
+    </li>
+    <li>
+      <a href="/rss.xml"> Feed Rss </a>
+    </li>
+    <li>
+      <a href={githubUrl} aria-current={url === githubUrl ? "page" : false}>
+        Github
+      </a>
+    </li>
+    <li>
+      <a
+        href={instagramUrl}
+        aria-current={url === instagramUrl ? "page" : false}
+      >
+        Instagram
+      </a>
+    </li>
+    <li>
+      <a href={stravaUrl} aria-current={url === stravaUrl ? "page" : false}>
+        Strava
+      </a>
+    </li>
+  </ul>
+</nav>
+<dialog id="paypal-dialog">
+  <p>
+    Il tuo supporto aiuta a mantenere questo sito online, senza pubblicità e
+    sempre aggiornato.
+  </p>
+  <p>
+    Ogni contributo, anche piccolo, fa davvero la differenza per coprire i costi
+    di gestione e continuare a pubblicare nuovi contenuti.
+  </p>
+  <p>Grazie ancora per il tuo aiuto e per far parte di questa comunita.</p>
+  <div class="modal-footer">
+    <a
+      href={paypalDonateUrl}
+      target="_blank"
+      rel="noopener"
+      class="paypal-link-button"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154.728 190.5">
+        <path
+          fill="#001c64"
+          d="M60.529 38.103a5.49 5.49 0 0 0-5.423 4.633l-9.013 57.15-8.281 52.514-.005.044.01-.044 8.281-52.514c.421-2.669 2.719-4.633 5.42-4.633h26.404c26.573 0 49.127-19.387 53.246-45.658.314-1.996.482-3.973.52-5.924v-.003h-.003c-6.753-3.543-14.683-5.565-23.372-5.565z"
+        ></path>
+        <path
+          fill="#0070e0"
+          d="M131.686 43.669c-.037 1.951-.207 3.93-.52 5.926-4.119 26.271-26.673 45.658-53.246 45.658H51.516c-2.701 0-4.999 1.964-5.42 4.633L37.815 152.4l-5.197 32.947a4.46 4.46 0 0 0 4.405 5.153h28.66a5.49 5.49 0 0 0 5.423-4.633l7.55-47.881c.423-2.669 2.722-4.636 5.423-4.636h16.876c26.573 0 49.124-19.386 53.243-45.655 2.924-18.649-6.46-35.614-22.511-44.026z"
+        ></path>
+        <path
+          fill="#003087"
+          d="M27.967 0a5.49 5.49 0 0 0-5.423 4.636L.055 147.244A4.46 4.46 0 0 0 4.46 152.4h33.351l8.281-52.514 9.013-57.15a5.49 5.49 0 0 1 5.423-4.633h47.782c8.691 0 16.621 2.025 23.375 5.563C132.145 19.749 112.41 0 85.273 0z"
+        ></path>
+      </svg> Dona con PayPal</a
+    >
+    <button commandfor="paypal-dialog" command="close">No Grazie</button>
+  </div>
+</dialog>
+
+<style>
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  a {
+    padding: 0.5rem 0.5rem;
+    margin-left: -0.5rem;
+    text-decoration: none;
+  }
+
+  button[command="show-modal"] {
+    all: unset;
+    cursor: pointer;
+  }
+  button[command="show-modal"]:hover {
+    color: var(--color-subtle);
+  }
+
+  dialog {
+    max-width: 30rem;
+    max-height: 90vh;
+    padding: 2rem;
+  }
+
+  .modal-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .paypal-link-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    background-color: #ffc439;
+    color: #001c64;
+    text-decoration: none;
+  }
+
+  .paypal-link-button svg {
+    width: 1rem;
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import { siteTitle } from "../constants";
+
+const allPosts = await getCollection("posts");
+allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<div class="header-container">
+  <nav>
+    <a href="/" class="siteName">{siteTitle}</a>
+    <ul role="list">
+      <li><a href="/matteo">Matteo</a></li>
+      <li><a href="/meteo-concenedo">Meteo</a></li>
+      <li><a href="/contatti">Contatti</a></li>
+    </ul>
+    <form action="/cerca">
+      <label for="search">
+        <span class="visually-hidden">Cerca un’uscita</span>
+        <input
+          type="search"
+          id="search"
+          name="search"
+          placeholder="es: Monte Rosa"
+        /></label
+      >
+      <button type="submit" aria-label="Cerca"> Cerca </button>
+    </form>
+  </nav>
+</div>
+<style>
+  .header-container {
+    container-type: inline-size;
+  }
+
+  nav {
+    display: flex;
+    @container (width > 50rem) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @container (width < 50rem) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  .siteName {
+    font-weight: 900;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    width: calc(var(--sidebar-width) + var(--sidebar-gutter));
+  }
+
+  ul {
+    font-size: 0.875rem;
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  li a {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 0.5rem;
+    margin-left: -0.5rem;
+  }
+
+  form {
+    margin-left: auto;
+  }
+</style>

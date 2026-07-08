@@ -1,0 +1,145 @@
+---
+import { getCollection } from "astro:content";
+import {
+  categories,
+  defaultOgImage,
+  siteTitle,
+  siteSlogan,
+} from "../../constants";
+import { headPageTitle } from "../../lib/utils";
+import Layout from "../../layouts/Layout.astro";
+import Pager from "../../components/Pager.astro";
+
+interface Props {
+  page: any;
+}
+
+const { page } = Astro.props;
+const { category } = Astro.params;
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await getCollection("posts");
+  posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return [undefined, ...categories].flatMap((cat) => {
+    const filteredPosts = posts.filter((post) => {
+      return cat ? post.data.category[0] === cat.title : true;
+    });
+    const output = filteredPosts.map((p) => ({
+      ...p,
+      postsCount: filteredPosts.length,
+    }));
+
+    return paginate(output, {
+      params: { category: cat?.slug },
+      pageSize: 8,
+    });
+  });
+}
+
+const currentCategory = category
+  ? categories.find((c) => c.slug === category)
+  : undefined;
+const pageSuffix = page.currentPage > 1 ? `, pagina ${page.currentPage}` : "";
+
+let pageTitle = (currentCategory?.title ?? "Tutte le uscite") + pageSuffix;
+
+let headTitle =
+  currentCategory || pageSuffix
+    ? `${pageTitle} - ${siteTitle}`
+    : headPageTitle(siteTitle, siteSlogan);
+
+let headDescription = currentCategory
+  ? `Uscite di Matteo Leoni nella categoria ${currentCategory.title}`
+  : "Blog personale di Matteo Leoni";
+---
+
+<Layout
+  title={headTitle}
+  description={headDescription}
+  ogImage={defaultOgImage}
+>
+  <h1>{pageTitle}</h1>
+  <ul class="posts">
+    {
+      page.data.map((post) => (
+        <li>
+          <article>
+            <time datetime={post.data.date.toISOString()}>
+              {post.data.date.toLocaleDateString("it-IT", {
+                day: "2-digit",
+                month: "2-digit",
+                year: "2-digit",
+              })}
+            </time>
+            <>
+              <span>-</span>
+              <a href={`/${post.id}`}>{post.data.title}</a>
+            </>
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="pager">
+    <Pager page={page} />
+  </div>
+
+  <Fragment slot="aside">
+    <h2 class="visually-hidden">Categorie</h2>
+    <ul class="categories">
+      {
+        categories.map((c) => (
+          <li>
+            <a
+              href={`/${c.slug}`}
+              aria-current={
+                currentCategory?.slug === c.slug ? "page" : undefined
+              }
+            >
+              {c.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Fragment>
+</Layout>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  h1 {
+    margin-top: -0.25rem;
+    margin-bottom: 3rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  ul.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  ul.categories li a[aria-current="page"] {
+    font-weight: 900;
+  }
+
+  .pager {
+    margin-top: 4rem;
+  }
+</style>

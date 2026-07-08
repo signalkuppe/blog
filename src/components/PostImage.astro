@@ -15,23 +15,19 @@ const inlineWidths = [720, 1100, 1400].filter(
 );
 ---
 
-<picture>
-  <Image
-    src={src}
-    alt={alt}
-    width={inlineMaxWidth}
-    sizes={inlineSizes}
-    widths={inlineWidths}
-    format="webp"
-    quality={65}
-    loading="lazy"
-    decoding="async"
-  />
-</picture>
-{
-  alt && (
-    <p class="img-caption" aria-hidden="true">
-      {alt}
-    </p>
-  )
-}
+<figure>
+  <picture>
+    <Image
+      src={src}
+      alt={alt}
+      width={inlineMaxWidth}
+      sizes={inlineSizes}
+      widths={inlineWidths}
+      format="webp"
+      quality={65}
+      loading="eager"
+      decoding="async"
+    />
+  </picture>
+  {alt && <figcaption>{alt}</figcaption>}
+</figure>
