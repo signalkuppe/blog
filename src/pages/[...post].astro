@@ -53,7 +53,7 @@ const ogImg = await getImage({
 >
   <article>
     <nav class="breadcrumb" aria-label="Percorso di navigazione">
-      <ol>
+      <ol class="hide-scrollbar" role="list">
         <li><a href="/">Home</a></li>
         {
           postCategory && (
@@ -62,7 +62,7 @@ const ogImg = await getImage({
             </li>
           )
         }
-        <li aria-current="page">{post.data.title}</li>
+        <li aria-current="page" class="visually-hidden">{post.data.title}</li>
       </ol>
     </nav>
     <time datetime={post.data.date.toISOString()}>
@@ -100,19 +100,18 @@ const ogImg = await getImage({
           </details>
         )
       }
-      <details>
-        <summary>Disclaimer</summary>
-        <div class="disclaimer">
-          <p>
-            La rilevazione gps potrebbe non essere sempre precisa e riportare
-            valori errati. Le attività in montagna sono pericolose, informati
-            bene prima di affrontarle e non fare affidamento solo sui dati
-            riportati in questa pagina. Non mi assumo alcuna responsabilità per
-            eventuali incidenti o problemi che potrebbero verificarsi durante
-            una delle attività descritte in questo blog.
-          </p>
-        </div>
-      </details>
+
+      <div class="disclaimer">
+        <strong>Disclaimer</strong>
+        <p>
+          La rilevazione gps potrebbe non essere sempre precisa e riportare
+          valori errati. Le attività in montagna sono pericolose, informati bene
+          prima di affrontarle e non fare affidamento solo sui dati riportati in
+          questa pagina. Non mi assumo alcuna responsabilità per eventuali
+          incidenti o problemi che potrebbero verificarsi durante una delle
+          attività descritte in questo blog.
+        </p>
+      </div>
 
       <nav class="post-pager">
         <ul role="list">
@@ -145,6 +144,7 @@ const ogImg = await getImage({
 
   <style>
     .breadcrumb {
+      font-size: 0.85rem;
       margin-bottom: 3rem;
     }
 
@@ -155,11 +155,14 @@ const ogImg = await getImage({
       list-style: none;
       margin: 0;
       padding: 0;
+      max-width: 40rem;
+      overflow: auto;
     }
 
     .breadcrumb li {
       display: flex;
       align-items: center;
+      flex-shrink: 0;
       gap: 0.5rem;
       min-width: 0;
     }
@@ -169,15 +172,14 @@ const ogImg = await getImage({
       color: var(--color-subtle);
     }
 
-    .breadcrumb [aria-current="page"] {
-      color: var(--color-subtle);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    @media (orientation: portrait) {
+      .breadcrumb {
+        margin-bottom: 2rem;
+      }
     }
 
     .post-description {
-      font-size: 1.125rem;
+      font-size: 1rem;
       color: var(--color-subtle);
       margin-top: 1rem;
     }
@@ -200,7 +202,7 @@ const ogImg = await getImage({
 
     .disclaimer {
       color: var(--color-subtle);
-      font-size: 0.85rem;
+      font-size: 0.75rem;
     }
 
     .post-newsletter {
@@ -217,7 +219,11 @@ const ogImg = await getImage({
 
     .post-pager span {
       display: block;
-      font-weight: 700;
+      font-weight: 900;
+    }
+
+    .post-pager a {
+      text-decoration: none;
     }
   </style>
 </Layout>

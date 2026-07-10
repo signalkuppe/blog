@@ -8,12 +8,15 @@ allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 <div class="header-container">
   <nav>
-    <a href="/" class="siteName">{siteTitle}</a>
-    <ul role="list">
-      <li><a href="/matteo">Matteo</a></li>
-      <li><a href="/meteo-concenedo">Meteo</a></li>
-      <li><a href="/contatti">Contatti</a></li>
-    </ul>
+    <div class="header-left">
+      <a href="/" class="siteName">{siteTitle}</a>
+      <ul role="list">
+        <li><a href="/matteo">Matteo</a></li>
+        <li><a href="/meteo-concenedo">Meteo</a></li>
+        <li><a href="/contatti">Contatti</a></li>
+      </ul>
+    </div>
+
     <form action="/cerca">
       <label for="search">
         <span class="visually-hidden">Cerca un’uscita</span>
@@ -33,13 +36,25 @@ allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
     container-type: inline-size;
   }
 
+  .header-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    @container (width < 50rem) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+
   nav {
     display: flex;
+    justify-content: space-between;
     @container (width > 50rem) {
       flex-direction: row;
       align-items: center;
     }
-
     @container (width < 50rem) {
       flex-direction: column;
       gap: 1rem;
@@ -49,14 +64,15 @@ allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
   .siteName {
     font-weight: 900;
     font-size: 1.25rem;
+    margin: 0;
     text-transform: uppercase;
     text-decoration: none;
     display: block;
-    width: calc(var(--sidebar-width) + var(--sidebar-gutter));
   }
 
   ul {
     font-size: 0.875rem;
+    font-weight: 900;
     list-style: none;
     display: flex;
     gap: 1.5rem;
@@ -69,9 +85,5 @@ allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
     text-decoration: none;
     padding: 0.5rem 0.5rem;
     margin-left: -0.5rem;
-  }
-
-  form {
-    margin-left: auto;
   }
 </style>

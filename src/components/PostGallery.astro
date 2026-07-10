@@ -54,7 +54,7 @@ const { gallery } = Astro.props;
             style={`--ar: ${(image.src.width / image.src.height).toFixed(4)}`}
           />
           <footer>
-            <span>{image.alt}</span>
+            <span class="caption">{image.alt}</span>
             <div class="dialog-nav">
               {index > 0 && (
                 <button
@@ -95,6 +95,13 @@ const { gallery } = Astro.props;
     width: 80px;
     height: 80px;
     object-fit: cover;
+  }
+
+  @media (orientation: portrait) {
+    .gallery-image {
+      width: 67px;
+      height: 70px;
+    }
   }
 
   .gallery .open-modal-button {
@@ -140,10 +147,12 @@ const { gallery } = Astro.props;
 
   .gallery-image-dialog .close-button {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 0rem;
+    right: 0rem;
     z-index: 1;
     background-color: Canvas;
+    border: none;
+    font-size: 1.5rem;
   }
 
   .gallery-image-dialog footer {

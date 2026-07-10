@@ -32,7 +32,7 @@ export async function getStaticPaths({ paginate }) {
 
     return paginate(output, {
       params: { category: cat?.slug },
-      pageSize: 8,
+      pageSize: 12,
     });
   });
 }
@@ -42,7 +42,7 @@ const currentCategory = category
   : undefined;
 const pageSuffix = page.currentPage > 1 ? `, pagina ${page.currentPage}` : "";
 
-let pageTitle = (currentCategory?.title ?? "Tutte le uscite") + pageSuffix;
+let pageTitle = (currentCategory?.title ?? "Ultime uscite") + pageSuffix;
 
 let headTitle =
   currentCategory || pageSuffix
@@ -59,23 +59,24 @@ let headDescription = currentCategory
   description={headDescription}
   ogImage={defaultOgImage}
 >
-  <h1>{pageTitle}</h1>
+  <h1 class="h2">{pageTitle}</h1>
   <ul class="posts">
     {
       page.data.map((post) => (
         <li>
           <article>
-            <time datetime={post.data.date.toISOString()}>
-              {post.data.date.toLocaleDateString("it-IT", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "2-digit",
-              })}
-            </time>
-            <>
-              <span>-</span>
-              <a href={`/${post.id}`}>{post.data.title}</a>
-            </>
+            <header>
+              <time datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString("it-IT", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "2-digit",
+                })}
+              </time>
+              <span aria-hidden="true">-</span>
+            </header>
+
+            <a href={`/${post.id}`}>{post.data.title}</a>
           </article>
         </li>
       ))
@@ -87,7 +88,7 @@ let headDescription = currentCategory
   </div>
 
   <Fragment slot="aside">
-    <h2 class="visually-hidden">Categorie</h2>
+    <h2>Categorie</h2>
     <ul class="categories">
       {
         categories.map((c) => (
@@ -112,9 +113,9 @@ let headDescription = currentCategory
     text-decoration: none;
   }
 
-  h1 {
-    margin-top: -0.25rem;
-    margin-bottom: 3rem;
+  h1,
+  h2 {
+    margin-bottom: 2rem;
   }
 
   ul {
@@ -129,6 +130,10 @@ let headDescription = currentCategory
     gap: 1.5rem;
   }
 
+  ul.posts time {
+    font-weight: 900;
+  }
+
   ul.categories {
     display: flex;
     flex-direction: column;
@@ -141,5 +146,21 @@ let headDescription = currentCategory
 
   .pager {
     margin-top: 4rem;
+  }
+
+  article {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  @media (orientation: portrait) {
+    article {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    article header span {
+      display: none;
+    }
   }
 </style>

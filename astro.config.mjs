@@ -7,10 +7,12 @@ export default defineConfig({
   output: "static",
   compressHTML: true,
   prefetch: true,
-  adapter: netlify(),
+  adapter: netlify({
+    imageCDN: false,
+  }), // https://docs.astro.build/en/guides/deploy/netlify/#image-cdn
   integrations: [mdx()],
   build: {
-    inlineStylesheets: "auto",
+    inlineStylesheets: "always",
   },
   vite: {
     server: {

@@ -1,4 +1,5 @@
 ---
+import leafletCssUrl from "leaflet/dist/leaflet.css?url";
 import { mapTilesUrl } from "../constants";
 
 interface Props {
@@ -62,7 +63,12 @@ const gpxUrl = `/gpx/${track.src}`;
       <span aria-hidden="true">&times;</span>
       <span class="visually-hidden">Chiudi</span>
     </button>
-    <div class="post-map-canvas" data-gpx={gpxUrl} data-tiles={mapTilesUrl}>
+    <div
+      class="post-map-canvas"
+      data-gpx={gpxUrl}
+      data-tiles={mapTilesUrl}
+      data-leaflet-css={leafletCssUrl}
+    >
     </div>
     <footer>
       <span>{title}</span>
@@ -78,7 +84,7 @@ const gpxUrl = `/gpx/${track.src}`;
       <canvas></canvas>
     </div>
     <footer>
-      <span>{title}</span>
+      <span class="caption">{title}</span>
     </footer>
   </dialog>
 </div>
@@ -204,9 +210,12 @@ const gpxUrl = `/gpx/${track.src}`;
       loading = true;
 
       try {
+        /* the stylesheet is injected as a <link> instead of a dynamic
+           import("...css"): Vite drops the CSS wrapper chunk in production
+           builds but can leave the import pointing at it (404) */
         const [{ default: L }] = await Promise.all([
           import("leaflet"),
-          import("leaflet/dist/leaflet.css"),
+          loadStylesheet(canvas.dataset.leafletCss!),
         ]);
         // leaflet-gpx is a classic plugin: it augments the L global
         (globalThis as any).L = L;
@@ -369,6 +378,20 @@ const gpxUrl = `/gpx/${track.src}`;
     });
   }
 
+  function loadStylesheet(href: string) {
+    const existing = document.querySelector(`link[href="${href}"]`);
+    if (existing) return Promise.resolve();
+    return new Promise<void>((resolve, reject) => {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = href;
+      link.onload = () => resolve();
+      link.onerror = () =>
+        reject(new Error(`Impossibile caricare il foglio di stile ${href}`));
+      document.head.append(link);
+    });
+  }
+
   /* cumulative distance (km) vs elevation (m) from the GPX track points */
   function elevationProfile(gpxText: string) {
     const xml = new DOMParser().parseFromString(gpxText, "application/xml");
@@ -405,7 +428,7 @@ const gpxUrl = `/gpx/${track.src}`;
     return 12742 * Math.asin(Math.sqrt(a)); // 12742 = Earth diameter in km
   }
 
-  function resolveColorVar(name) {
+  function resolveColorVar(name: string) {
     const probe = document.createElement("div");
     probe.style.color = `var(${name})`;
     document.documentElement.appendChild(probe);

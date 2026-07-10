@@ -1,7 +1,9 @@
 ---
-import { siteSlogan, defaultOgImage } from "../constants";
+import { Image } from "astro:assets";
+import { siteSlogan, defaultOgImage, newsletterUrl } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import Layout from "../layouts/Layout.astro";
+import MatteoPortrait from "../images/matteo-leoni-landscape.jpg";
 ---
 
 <Layout
@@ -9,5 +11,75 @@ import Layout from "../layouts/Layout.astro";
   description="Presento le mie passioni e il mio lavoro"
   ogImage={defaultOgImage}
 >
-  <h1>Matteo</h1>
+  <article>
+    <h1>Piacere, Matteo</h1>
+    <Image
+      src={MatteoPortrait}
+      alt="Ritratto di Matteo Leoni"
+      width={800}
+      loading="eager"
+      quality={75}
+    />
+    <p>
+      La <b>montagna</b> è una delle mie più grandi passioni, trasmessami da mio padre,
+      che mi ha introdotto a questo affascinante universo. Da quel momento, ho continuato
+      a cercare nuove avventure senza sosta. Tra tutte le attività, lo scialpinismo
+      è quella che mi coinvolge di più: affrontare la montagna d'inverno, lontano
+      dai percorsi battuti, scivolando sulla neve. Anche la corsa in montagna e l'alpinismo
+      classico mi regalano una sensazione unica di libertà.
+    </p>
+    <p>
+      La mia passione per la <b>meteorologia</b> è iniziata da bambino, quando mi
+      alzavo nel cuore della notte per guardare dalla finestra la neve cadere. Devo
+      ammettere che ancora oggi non ho perso questa abitudine. Ho posizionato una
+      stazione meteo, <a href="/meteo-concenedo"
+        >qui trovate la pagina con i dati in diretta.</a
+      >
+    </p>
+    <p>
+      Amo la <b>fotografia,</b> senza alcuna ambizione professionale. Sentitevi liberi
+      di usare tutte le mie foto come preferite. Non è necessario citare la fonte,
+      anche se un gesto di cortesia sarebbe certamente apprezzato.
+    </p>
+    <p>
+      <a href="https://it.wikipedia.org/wiki/Punta_Gnifetti" rel="noopener"
+        >Signalkuppe</a
+      ><em> — il mio nickname — </em> è il nome in tedesco della Punta Gnifetti.
+    </p>
+
+    <h2>Il mio lavoro</h2>
+    <p>
+      Lavoro come <b>Front-End Engineer,</b> trasformando i design in applicazioni
+      web con particolare attenzione a performance, usabilità e accessibilità. Il
+      mio obiettivo è mantenere la semplicità, scegliendo di volta in volta la tecnologia
+      più adatta al contesto e alle esigenze del progetto. <br /><br />Integro i
+      nuovi strumenti di <b>intelligenza artificiale</b> nel mio workflow per lavorare
+      in modo più efficiente, sempre controllando la qualità del risultato finale.
+      <br /><br />Se volete
+      <a
+        aria-label="Il codice sorgente di questo sito su Github"
+        href="https://github.com/signalkuppe/blog">Su Github</a
+      > potete spluciare il sorgente di questo sito, realizzato con Astro. Solo html,
+      css e javascript, per un blog rimane la scelta migliore 😉
+    </p>
+
+    <h2>Per rimanere in contatto</h2>
+    <p>
+      Esiste <a href={newsletterUrl}>una newsletter</a> con gli ultimi aggiornamenti
+      del sito, e un <a href="/rss.xml">feed rss</a> con l’elenco completo delle relazioni.
+    </p>
+    <p>
+      <a href="/contatti">Scrivetemi</a> per parlare di un vostro progetto o di montagna!
+    </p>
+  </article>
 </Layout>
+
+<style>
+  article {
+    max-width: 65ch;
+  }
+
+  article img {
+    margin-bottom: 2rem;
+  }
+</style>
