@@ -3,18 +3,276 @@ export const prerender = false;
 import { siteTitle } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import weatherlink from "../lib/weatherlink";
+import forecast from "../lib/forecast";
 import Layout from "../layouts/Layout.astro";
-const title = "Meteo Concenedo";
+import MeteoCurrent from "../components/MeteoCurrent.astro";
+import MeteoForecast from "../components/MeteoForecast.astro";
+import MeteoDataGrid from "../components/MeteoDataGrid.astro";
+import MeteoGraphs from "../components/MeteoGraphs.astro";
+const title = "Concenedo, Barzio 922m";
 const description =
   "Dati meteo in diretta e webcam da Concenedo (Barzio) in Valsassina";
-const { hasLostSignal, current, day, ok } = await weatherlink();
+const [{ hasLostSignal, current, day, ok }, forecastData] = await Promise.all([
+  weatherlink(),
+  forecast(),
+]);
+
+// Edge-cache the rendered page so visitors never wait on the 8 WeatherLink
+// API calls: serve from CDN for 60s, then serve stale while re-rendering in
+// the background for up to 5 more minutes. Failures cache only briefly so a
+// broken upstream self-heals.
+if (ok) {
+  Astro.response.headers.set(
+    "Netlify-CDN-Cache-Control",
+    "public, durable, s-maxage=60, stale-while-revalidate=300",
+  );
+} else {
+  Astro.response.headers.set(
+    "Netlify-CDN-Cache-Control",
+    "public, s-maxage=30",
+  );
+}
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, max-age=0, must-revalidate",
+);
 ---
 
 <Layout
   title={headPageTitle(title, siteTitle)}
   description={description}
-  ogImage="https://images.ctfassets.net/rotmy72mdop6/3Qy2Qb0G2cePauRLnhCb5U/8caa3ae7eb25d77cee90be9278524877/2.jpg"
+  ogImage="/images/meteo-og-image.jpg"
 >
-  <h1>{title}</h1>
-  <pre>{JSON.stringify({ hasLostSignal, current, day, ok }, null, 2)}</pre>
+  <div class="page-head">
+    <h1 class="h2">{title}</h1>
+    {
+      ok && (
+        <p class="updated">
+          aggiornato alle <strong>{current.last_data_hour}</strong> del{" "}
+          <strong>{current.last_data_day}</strong>
+        </p>
+      )
+    }
+  </div>
+
+  {
+    ok ? (
+      <MeteoCurrent current={current} sky={forecastData.current} />
+    ) : (
+      <p class="unavailable">
+        I dati della stazione non sono al momento disponibili, riprova fra
+        qualche minuto 🫤
+      </p>
+    )
+  }
+
+  {
+    forecastData.ok && (
+      <section class="forecast" aria-labelledby="previsioni">
+        <h2 id="previsioni" class="visually-hidden">
+          Prossimi 3 giorni
+        </h2>
+        <MeteoForecast days={forecastData.days} />
+      </section>
+    )
+  }
+
+  {
+    ok && (
+      <>
+        <section class="dati" aria-labelledby="dati">
+          <h2 id="dati" class="visually-hidden">
+            Dati completi
+          </h2>
+          <MeteoDataGrid current={current} day={day} />
+        </section>
+        <section class="grafici" aria-labelledby="grafici">
+          <h2 id="grafici" class="visually-hidden">
+            Grafici
+          </h2>
+          {hasLostSignal && (
+            <p class="alert">
+              ⚠️ C'è stata una mancata ricezione del segnale, alcuni grafici
+              potrebbero essere incompleti
+            </p>
+          )}
+          <MeteoGraphs day={day} />
+        </section>
+      </>
+    )
+  }
+
+  <details>
+    <summary>La stazione meteo</summary>
+    <article class="details-body">
+      <aside>
+        <!-- plain <img> from public/: astro:assets <Image> can't be
+             processed at runtime on this server-rendered route -->
+        <img
+          src="/images/stazione-meteo-1.jpg"
+          alt="La stazione meteo posizionata sul prato"
+          width="2000"
+          height="2667"
+          loading="lazy"
+          decoding="async"
+        />
+        <img
+          src="/images/stazione-meteo-2.jpg"
+          alt="La stazione meteo posizionata sul tetto"
+          width="2000"
+          height="2667"
+          loading="lazy"
+          decoding="async"
+        />
+      </aside>
+      <div class="details-right">
+        <h3>La stazione</h3>
+        <p>
+          La stazione è posizionata nel comune di Barzio nella località di
+          Concenedo a 922m di quota. È la località più alta dell’altipiano
+          valsassinese. La stazione è una Davis Vantage Pro 2 Plus e ha due
+          unità: una posizionata su prato a 180cm dal suolo, secondo le norme{
+            " "
+          }
+          <abbr title="Organizzazione meteorologica mondiale">
+            <a
+              href="https://it.wikipedia.org/wiki/Stazione_meteorologica#:~:text=Stazione%20a%20norma%20OMM,-Lo%20stesso%20argomento&text=la%20stazione%20dev'essere%20installata,alto%20(per%20evitare%20turbolenze)."
+              title="Organizzazione meteorologica mondiale"
+            >
+              OMM
+            </a>
+          </abbr>
+          , l’altra (la principale) sul tetto a circa 12m di quota. L'unità sul tetto
+          è dotata di uno schermo solare ventilato, per avere una rilevazione più
+          precisa di temperatura e umidità.
+        </p>
+        <p>
+          L’unità sul tetto dispone di un pluviometro riscaldato tramite una
+          resistenza, in modo da misurare l’equivalente in mm della
+          precipitazione nevosa.
+        </p>
+        <h3>Il microclima di Concenedo</h3>
+        <p>
+          La stazione è situata nel punto più alto dell’altopiano Valsassinese a
+          922mt di altitudine, nelle Prealpi Lecchesi.
+        </p>
+        <p>
+          Essendo Concenedo una località rivolta a W/SW risulta fra i paesi più
+          soleggiati della Valsassina; conseguentemente le temperature massime
+          sono piuttosto miti per la quota.
+        </p>
+        <p>
+          Durante l'inverno, le temperature minime notturne risultano spesso più
+          elevate rispetto al fondovalle, a causa del fenomeno dell'inversione
+          termica. Il raffreddamento notturno viene frequentemente interrotto in
+          inverno dalla brezza proveniente da est, che scende dai Piani di
+          Bobbio. In occasione delle nevicate, l'altitudine più elevata rispetto
+          ad altre località favorisce accumuli nevosi maggiori. Al contrario, in
+          caso di richiamo mite sostenuto, specialmente da SE (scirocco)
+          quest’area risulta tra le più esposte all’innalzamento termico
+          proveniente dalla valle. In queste situazioni, la neve tende a
+          trasformarsi in pioggia prima che nelle zone dell'alta valle,
+          generalmente più protette dai venti meridionali dal Gruppo delle
+          Grigne.
+        </p>
+        <p>
+          Il vento prevalente è la brezza pomeridiana da sud, mentre nelle notti
+          serene la direzione prevalente è quella della brezza di monte da est.
+          Eccezione va fatta ovviamente nei giorni con föhn, che ricorrono con
+          una certa frequenza, in particolare nel periodo invernale e
+          soprattutto primaverile.
+        </p>
+        <p>
+          Concenedo, come tutto l’altopiano e la bassa Valsassina, è una
+          località estremamente piovosa. Le precipitazioni medie annue ammontano
+          a circa 1900mm, ma non è raro superare i 2000mm annui. Si concentrano
+          sopratutto in primavera, estate e autunno, mentre il trimestre
+          invernale è un periodo generalmente secco. L’altipiano è generalmente
+          molto più piovoso rispetto all’alta valle. Le correnti umide in arrivo
+          dalla pianura impattano direttamente sulle prime prealpi, scaricando
+          gli apporti precipitativi maggiori. Anche i temporali sono più
+          frequenti rispetto all’alta valle.
+        </p>
+      </div>
+    </article>
+  </details>
 </Layout>
+
+<style media="screen">
+  .page-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .updated {
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  .unavailable {
+    font-weight: 700;
+  }
+
+  .forecast,
+  .dati,
+  .grafici {
+    margin-top: 3rem;
+  }
+
+  .alert {
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  details {
+    margin-top: 4rem;
+  }
+
+  .details-body {
+    font-size: 0.85rem;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  details aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  details aside img {
+    height: auto;
+  }
+
+  details h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  details p {
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  details p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (width > 60rem) {
+    .details-body {
+      flex-direction: row;
+    }
+
+    details aside {
+      flex: 0.5;
+    }
+
+    .details-right {
+      flex: 1;
+    }
+  }
+</style>

@@ -11,6 +11,20 @@ export const pageTitleSeparator = "-";
 export const paypalDonateUrl =
   "https://www.paypal.com/donate/?hosted_button_id=77MXKAB84XP8L";
 
+export const WEATHER_CONSTANTS = {
+  TEMPERATURE_UNIT: "°C",
+  HUMIDITY_UNIT: "%",
+  WIND_UNIT: "km/h",
+  PRESSURE_UNIT: "hPa",
+  RAIN_UNIT: "mm",
+  RAIN_RATE_UNIT: "mm/h",
+  SOLAR_RADIATION_UNIT: "W/m²",
+  MIN_LABEL: "Minima",
+  MIN_LABEL_ABBR: "Min",
+  MAX_LABEL: "Massima",
+  MAX_LABEL_ABBR: "Max",
+};
+
 export const categories = [
   {
     title: "Alpinismo",

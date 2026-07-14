@@ -1,0 +1,126 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { headPageTitle } from "../../lib/utils";
+import { siteSlogan, defaultOgImage } from "../../constants";
+import Layout from "../../layouts/Layout.astro";
+import Pager from "../../components/Pager.astro";
+import GalleryModal from "../../components/GalleryModal.astro";
+
+export async function getStaticPaths({ paginate }) {
+  const photos = await getCollection("portfolio");
+  const getFolderNumber = (entry) =>
+    Number.parseInt(entry.id.split("/")[0], 10);
+  photos.sort((a, b) => {
+    const aFolder = getFolderNumber(a);
+    const bFolder = getFolderNumber(b);
+    if (Number.isFinite(aFolder) && Number.isFinite(bFolder)) {
+      return bFolder - aFolder;
+    }
+    return b.data.date.getTime() - a.data.date.getTime();
+  });
+
+  return paginate(photos, {
+    pageSize: 12,
+  });
+}
+
+interface Props {
+  page?: any;
+}
+
+const { page } = Astro.props;
+
+let pageTitle = "Portfolio";
+
+if (page.currentPage > 1) {
+  pageTitle = `${pageTitle}, pagina ${page.currentPage}`;
+}
+
+const description = "Una raccolta delle mie foto più belle";
+---
+
+<Layout
+  title={headPageTitle(pageTitle, siteSlogan)}
+  description={description}
+  ogImage={defaultOgImage}
+>
+  <h1 class="h2">{pageTitle}</h1>
+
+  <ul class="photos">
+    {
+      page.data.map((photo, index) => (
+        <li>
+          <button
+            type="button"
+            command="show-modal"
+            commandfor={`gallery-image-${index}`}
+            class="open-modal-button"
+          >
+            <span class="visually-hidden">Apri {photo.data.title}</span>
+            <Image
+              src={photo.data.photo.src}
+              alt={photo.data.photo.alt}
+              width={800}
+              quality={80}
+              loading={index === 0 ? "eager" : "lazy"}
+              class="photo"
+            />
+          </button>
+          <GalleryModal
+            index={index}
+            count={page.data.length}
+            image={photo.data.photo}
+            caption={photo.data.title}
+          />
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="pager">
+    <Pager page={page} />
+  </div>
+</Layout>
+
+<style>
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  ul.photos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  ul.photos li {
+    break-inside: avoid;
+  }
+
+  .open-modal-button {
+    all: unset;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+  }
+
+  .photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    will-change: transform;
+  }
+
+  .photo:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .pager {
+    margin-top: 4rem;
+  }
+</style>

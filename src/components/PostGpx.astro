@@ -177,7 +177,7 @@ const gpxUrl = `/gpx/${track.src}`;
     align-items: center;
     padding: 0;
     line-height: 1;
-    background-color: Canvas;
+    background-color: var(--color-bg);
   }
 </style>
 
@@ -295,6 +295,13 @@ const gpxUrl = `/gpx/${track.src}`;
     let chart: any = null;
     let loading = false;
 
+    // Chart colors are resolved at creation: drop the cached chart when the
+    // theme flips so the next open rebuilds it with the new palette.
+    document.addEventListener("theme-change", () => {
+      chart?.destroy();
+      chart = null;
+    });
+
     dialog.addEventListener("toggle", async (event) => {
       if ((event as ToggleEvent).newState !== "open") return;
 
@@ -318,7 +325,7 @@ const gpxUrl = `/gpx/${track.src}`;
 
         const points = elevationProfile(gpxText);
 
-        const lineColor = resolveColorVar("--color-accent");
+        const lineColor = resolveColorVar("--color-graph-line");
         const gridColor = resolveColorVar("--color-graph-grid");
         const labelColor = resolveColorVar("--color-subtle");
         chart = new Chart(canvas, {
@@ -439,8 +446,6 @@ const gpxUrl = `/gpx/${track.src}`;
     return value;
   }
 
-  document.addEventListener("astro:page-load", () => {
-    setupMapDialog();
-    setupChartDialog();
-  });
+  setupMapDialog();
+  setupChartDialog();
 </script>

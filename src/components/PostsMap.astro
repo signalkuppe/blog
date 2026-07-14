@@ -1,0 +1,245 @@
+---
+import { getCollection } from "astro:content";
+import leafletCssUrl from "leaflet/dist/leaflet.css?url";
+import { mapTilesUrl } from "../constants";
+
+const posts = await getCollection("posts");
+const markers = posts.flatMap((post) =>
+  post.data.location
+    ? [
+        {
+          lat: post.data.location.lat,
+          lon: post.data.location.lon,
+          title: post.data.title,
+          url: `/${post.id}`,
+        },
+      ]
+    : [],
+);
+---
+
+<button
+  type="button"
+  command="show-modal"
+  commandfor="posts-map-dialog"
+  class="open-posts-map-button"
+  hidden
+>
+  Mappa uscite
+</button>
+
+<dialog id="posts-map-dialog" class="posts-map-dialog" closedby="any">
+  <button commandfor="posts-map-dialog" command="close" class="close-button">
+    <span aria-hidden="true">&times;</span>
+    <span class="visually-hidden">Chiudi</span>
+  </button>
+  <div
+    class="posts-map-canvas"
+    data-tiles={mapTilesUrl}
+    data-leaflet-css={leafletCssUrl}
+  >
+  </div>
+  <footer>
+    <span>Usa lo zoom per vedere i post extra-europei</span>
+  </footer>
+</dialog>
+
+{/* escaped so a title can never close the tag early */}
+<script
+  is:inline
+  type="application/json"
+  id="posts-map-data"
+  set:html={JSON.stringify(markers).replace(/</g, "\\u003c")}
+/>
+
+<style>
+  .posts-map-dialog {
+    --viewport-gap: 1rem; /* breathing room around the dialog */
+    --dialog-footer-height: 4rem; /* title + close button row */
+    width: calc(100vw - var(--viewport-gap) * 2);
+    height: calc(100dvh - var(--viewport-gap) * 2);
+    max-width: calc(100vw - var(--viewport-gap) * 2);
+    max-height: calc(100dvh - var(--viewport-gap) * 2);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* sits behind the content while chunks load;
+     removed once the map is drawn */
+  .posts-map-dialog::before {
+    content: "Carico la mappa…" / "";
+    position: absolute;
+    inset: 0 0 var(--dialog-footer-height) 0;
+    display: grid;
+    place-items: center;
+    color: var(--color-subtle);
+  }
+
+  .posts-map-dialog.is-loaded::before {
+    content: none;
+  }
+
+  .posts-map-canvas {
+    position: relative;
+    width: 100%;
+    height: calc(100% - var(--dialog-footer-height));
+  }
+
+  .posts-map-dialog footer {
+    font-size: 0.85rem;
+    height: var(--dialog-footer-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .posts-map-dialog .close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1001; /* Leaflet controls go up to 1000 */
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    line-height: 1;
+    background-color: var(--color-bg);
+  }
+
+  /* CSS wins over the SVG presentation attributes Leaflet sets,
+     and var() only resolves in CSS, not in attributes */
+  :global(.posts-map-marker) {
+    stroke: var(--color-map-marker);
+    fill: var(--color-map-marker);
+  }
+
+  :global(.leaflet-container .leaflet-popup-content a) {
+    color: inherit;
+    text-decoration: none;
+    font-family: var(--base-font) !important;
+    font-weight: 900 !important;
+  }
+</style>
+
+<script>
+  function setupPostsMapDialog() {
+    const dialog =
+      document.querySelector<HTMLDialogElement>("#posts-map-dialog");
+    if (!dialog || dialog.dataset.mapBound) return;
+    dialog.dataset.mapBound = "true";
+
+    // the map is JS-only: reveal the open button now that we can handle it
+    document
+      .querySelectorAll<HTMLButtonElement>(
+        '[commandfor="posts-map-dialog"][command="show-modal"]',
+      )
+      .forEach((button) => (button.hidden = false));
+
+    const canvas = dialog.querySelector<HTMLElement>(".posts-map-canvas")!;
+    const markers = JSON.parse(
+      document.querySelector("#posts-map-data")!.textContent!,
+    ) as { lat: number; lon: number; title: string; url: string }[];
+    let map: any = null;
+    let loading = false;
+
+    dialog.addEventListener("toggle", async (event) => {
+      if ((event as ToggleEvent).newState !== "open") return;
+
+      if (map) {
+        map.invalidateSize();
+        return;
+      }
+      if (loading) return;
+      loading = true;
+
+      try {
+        /* the stylesheet is injected as a <link> instead of a dynamic
+           import("...css"): Vite drops the CSS wrapper chunk in production
+           builds but can leave the import pointing at it (404) */
+        const [{ default: L }] = await Promise.all([
+          import("leaflet"),
+          loadStylesheet(canvas.dataset.leafletCss!),
+        ]);
+
+        // closed while downloading: bail, imports are cached for next open
+        if (!dialog.open) return;
+
+        map = L.map(canvas, {
+          tap: false,
+          attributionControl: false,
+          zoomControl: false,
+        });
+        map.scrollWheelZoom.disable();
+        L.control.zoom({ position: "topleft" }).addTo(map);
+        // re-measure once layout settles: a map sized before the dialog
+        // finishes laying out requests tiles for a smaller region
+        requestAnimationFrame(() => map?.invalidateSize());
+
+        const tiles = L.tileLayer(canvas.dataset.tiles!);
+        // Leaflet never retries failed tiles (throttling, flaky network),
+        // leaving gray squares: retry each failed tile once
+        tiles.on("tileerror", (event: any) => {
+          const tile = event.tile as HTMLImageElement;
+          if (tile.dataset.retried) return;
+          tile.dataset.retried = "true";
+          const retrySrc = `${tile.src}&retry=1`;
+          setTimeout(() => {
+            tile.src = retrySrc;
+          }, 1000);
+        });
+        tiles.addTo(map);
+
+        /* circle markers instead of the default icon: Leaflet's stock
+           marker images don't survive bundling, circles need no assets */
+        L.featureGroup(
+          markers.map((marker) => {
+            const link = document.createElement("a");
+            link.href = marker.url;
+            link.textContent = marker.title;
+            return L.circleMarker([marker.lat, marker.lon], {
+              // red is only the fallback: the .posts-map-marker CSS rule
+              // recolors stroke and fill with var(--color-map-marker)
+              className: "posts-map-marker",
+              radius: 7,
+              color: "red",
+              weight: 2,
+              fillColor: "red",
+              fillOpacity: 0.5,
+            }).bindPopup(link);
+          }),
+        ).addTo(map);
+        // fixed view on the Alps instead of fitting the markers: a single
+        // faraway outing would otherwise zoom the whole map out; portrait
+        // screens are narrow, so step back one zoom level to keep the
+        // same stretch of the Alps in frame
+        const portrait = matchMedia("(orientation: portrait)").matches;
+        map.setView([45.5, 9.8], portrait ? 7 : 8);
+        dialog.classList.add("is-loaded");
+      } catch (error) {
+        console.error("Errore nel caricamento della mappa:", error);
+      } finally {
+        loading = false;
+      }
+    });
+  }
+
+  function loadStylesheet(href: string) {
+    const existing = document.querySelector(`link[href="${href}"]`);
+    if (existing) return Promise.resolve();
+    return new Promise<void>((resolve, reject) => {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = href;
+      link.onload = () => resolve();
+      link.onerror = () =>
+        reject(new Error(`Impossibile caricare il foglio di stile ${href}`));
+      document.head.append(link);
+    });
+  }
+
+  setupPostsMapDialog();
+</script>

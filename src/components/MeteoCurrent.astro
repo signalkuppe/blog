@@ -1,0 +1,146 @@
+---
+// Hero widget: the current sky condition (Open-Meteo icon + description)
+// next to the live station readings, plus the webcam dialog trigger.
+import WeatherIcon from "./WeatherIcon.astro";
+import MeteoWebcamDialog from "./MeteoWebcamDialog.astro";
+import { WEATHER_CONSTANTS } from "../constants";
+const { current, sky } = Astro.props;
+---
+
+<div class="current">
+  {
+    sky && (
+      <div class="sky">
+        <WeatherIcon
+          icon={sky.icon}
+          isDay={sky.isDay}
+          size={96}
+          label={sky.description}
+        />
+        <span class="sky-description">{sky.description}</span>
+      </div>
+    )
+  }
+  <div class="reading">
+    <span class="temperature">
+      {current.temperature}{WEATHER_CONSTANTS.TEMPERATURE_UNIT}
+    </span>
+    <dl class="conditions">
+      <dt>Umidità</dt>
+      <dd>{current.humidity}{WEATHER_CONSTANTS.HUMIDITY_UNIT}</dd>
+      <dt>Vento</dt>
+      <dd>
+        {current.wind}
+        {WEATHER_CONSTANTS.WIND_UNIT}
+        {current.wind > 0 && current.wind_direction}
+      </dd>
+      <dt>Pressione</dt>
+      <dd>
+        {current.pressure}
+        {WEATHER_CONSTANTS.PRESSURE_UNIT}
+        <small>({current.pressure_trend?.toLowerCase()})</small>
+      </dd>
+      {
+        current.rain_rate > 0 && (
+          <>
+            <dt>Pioggia</dt>
+            <dd>
+              {current.rain_rate} {WEATHER_CONSTANTS.RAIN_RATE_UNIT}{" "}
+              <small>({current.rain_rate_text})</small>
+            </dd>
+          </>
+        )
+      }
+    </dl>
+  </div>
+  <div class="side">
+    <MeteoWebcamDialog />
+  </div>
+</div>
+
+<style media="screen">
+  .current {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* tight column gap: the icon's viewBox padding already adds visual
+       space between the artwork and the temperature */
+    gap: 1.5rem 0.75rem;
+    padding: 0;
+  }
+
+  .sky {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sky-description {
+    font-size: 0.75rem;
+    font-weight: 700;
+    /* the icon's viewBox has generous internal padding: pull the label
+       up under the visible artwork */
+    margin-top: -1rem;
+  }
+
+  .reading {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .temperature {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .conditions {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    gap: 0.1rem 1rem;
+  }
+
+  .conditions small {
+    color: var(--color-subtle);
+    /* wrap as a unit ("(in diminuzione)"), never mid-phrase */
+    white-space: nowrap;
+  }
+
+  .side {
+    margin-inline-start: auto;
+  }
+
+  /* On small screens the icon sits beside the data: .sky on the left,
+     temperature stacked over the conditions on the right, webcam below. */
+  @media screen and (width < 40rem) {
+    .current {
+      align-items: flex-start;
+      gap: 1rem 2rem;
+    }
+
+    .sky {
+      /* compensate the icon viewBox's internal top padding so its visible
+         artwork tops out level with the temperature */
+      margin-top: -1rem;
+    }
+
+    .reading {
+      flex: 1;
+      min-width: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .temperature {
+      font-size: 2.5rem;
+    }
+
+    .side {
+      flex-basis: 100%;
+      margin-inline-start: 0;
+    }
+  }
+</style>

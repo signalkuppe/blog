@@ -1,0 +1,488 @@
+---
+// Last-24h (and 7-day) graphs. Chart.js is lazy-loaded via dynamic import
+// only when the section approaches the viewport, so it costs nothing on
+// initial page load. Data rides on each canvas as JSON; the x values are
+// pre-formatted "YYYY-MM-DD HH:mm" strings rendered on a category axis
+// (no time-scale adapter needed).
+import MeteoGraphCard from "./MeteoGraphCard.astro";
+import { WEATHER_CONSTANTS } from "../constants";
+const { day } = Astro.props;
+---
+
+<ul class="meteo-graphs">
+  <li>
+    <MeteoGraphCard
+      title={`Temperatura (${WEATHER_CONSTANTS.TEMPERATURE_UNIT})`}
+    >
+      <canvas
+        data-chart="line"
+        data-points={JSON.stringify(day.graph_temperature)}></canvas>
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard title={`Umidità (${WEATHER_CONSTANTS.HUMIDITY_UNIT})`}>
+      <canvas data-chart="line" data-points={JSON.stringify(day.graph_humidity)}
+      ></canvas>
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard title={`Pressione (${WEATHER_CONSTANTS.PRESSURE_UNIT})`}>
+      <canvas data-chart="line" data-points={JSON.stringify(day.graph_pressure)}
+      ></canvas>
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard
+      title={`Velocità del vento (${WEATHER_CONSTANTS.WIND_UNIT})`}
+    >
+      <canvas
+        data-chart="line"
+        data-y-min="0"
+        data-points={JSON.stringify(day.graph_wind)}></canvas>
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard title="Direzione del vento">
+      <canvas
+        data-chart="wind-dir"
+        data-points={JSON.stringify(day.graph_wind_dir)}></canvas>
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard
+      title={`Intensità della pioggia (${WEATHER_CONSTANTS.RAIN_RATE_UNIT})`}
+    >
+      <canvas
+        data-chart="line"
+        data-y-min="0"
+        data-points={JSON.stringify(day.graph_rain_rate)}></canvas>
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard
+      title={`Radiazione solare (${WEATHER_CONSTANTS.SOLAR_RADIATION_UNIT})`}
+    >
+      <canvas
+        data-chart="line"
+        data-y-min="0"
+        data-points={JSON.stringify(day.graph_solar_radiation)}></canvas>
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard
+      title={`Temperatura 2m/12m (${WEATHER_CONSTANTS.TEMPERATURE_UNIT})`}
+    >
+      <canvas
+        data-chart="tetto-prato"
+        data-points={JSON.stringify(day.graph_temperature_tetto_prato)}
+      ></canvas>
+    </MeteoGraphCard>
+  </li>
+  <li>
+    <MeteoGraphCard title="Distribuzione del vento">
+      <canvas
+        data-chart="pie"
+        data-points={JSON.stringify(day.graph_wind_dir_pie)}></canvas>
+    </MeteoGraphCard>
+  </li>
+  <li class="full-width">
+    <MeteoGraphCard
+      title={`Temperatura ultimi 7 giorni (${WEATHER_CONSTANTS.TEMPERATURE_UNIT})`}
+    >
+      <canvas
+        data-chart="week"
+        data-points={JSON.stringify(day.graph_temperature_week)}></canvas>
+    </MeteoGraphCard>
+  </li>
+</ul>
+
+<script>
+  // @ts-nocheck
+  function setupMeteoGraphs() {
+    const section = document.querySelector(".meteo-graphs");
+    if (!section || section.dataset.graphsBound) return;
+    section.dataset.graphsBound = "true";
+
+    let charts = [];
+    let ChartLib = null;
+
+    // light-dark()/color-mix() variables aren't canvas-parseable: resolve
+    // them through a probe element's computed color (same trick as PostGpx).
+    function resolveColorVar(name) {
+      const probe = document.createElement("div");
+      probe.style.color = `var(${name})`;
+      document.documentElement.appendChild(probe);
+      const value = getComputedStyle(probe).color;
+      probe.remove();
+      return value;
+    }
+
+    function themeColors() {
+      return {
+        text: getComputedStyle(document.documentElement).color,
+        line: resolveColorVar("--color-graph-line"),
+        grid: resolveColorVar("--color-graph-grid"),
+        altLine: resolveColorVar("--color-weather-graph-alt-line"),
+      };
+    }
+
+    const hourTick = (chart) =>
+      function (value) {
+        // "YYYY-MM-DD HH:mm" → two-digit hour ("08", "14")
+        return this.getLabelForValue(value).slice(11, 13);
+      };
+
+    const tooltipTitle = (items) => {
+      const label = items[0]?.label ?? "";
+      // "YYYY-MM-DD HH:mm" → "DD/MM HH:mm"
+      return `${label.slice(8, 10)}/${label.slice(5, 7)} ${label.slice(11)}`;
+    };
+
+    function baseScales(colors, labels, tickCallback) {
+      return {
+        x: {
+          type: "category",
+          labels,
+          ticks: {
+            maxRotation: 0,
+            autoSkip: true,
+            maxTicksLimit: 12,
+            callback: tickCallback,
+          },
+          grid: { color: colors.grid },
+        },
+        y: {
+          // integer-only tick values (no "1,023.8")
+          ticks: { precision: 0 },
+          grid: { color: colors.grid },
+        },
+      };
+    }
+
+    function lineChart(canvas, colors, dataset) {
+      const scales = baseScales(
+        colors,
+        dataset.map((point) => point.x),
+        hourTick(),
+      );
+      // Non-negative quantities (rain rate, wind, radiation) declare
+      // data-y-min="0" so a flat series doesn't pad the axis below zero.
+      if (canvas.dataset.yMin !== undefined) {
+        scales.y.min = Number(canvas.dataset.yMin);
+      }
+      return new ChartLib.Chart(canvas.getContext("2d"), {
+        type: "line",
+        data: {
+          labels: dataset.map((point) => point.x),
+          datasets: [
+            {
+              data: dataset,
+              borderColor: colors.line,
+              borderWidth: 1.5,
+              tension: 0.1,
+              pointRadius: 0,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          aspectRatio: 1.5,
+          interaction: { mode: "index", intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                title: tooltipTitle,
+                label: (ctx) => `${ctx.formattedValue}`,
+              },
+            },
+          },
+          scales,
+        },
+      });
+    }
+
+    function windDirChart(canvas, colors, dataset) {
+      const uniqueDirections = [
+        ...new Set(dataset.map((point) => point.dir)),
+      ].filter(Boolean);
+      const chartData = dataset.map((point) => ({ x: point.x, y: point.dir }));
+      const scales = baseScales(
+        colors,
+        dataset.map((point) => point.x),
+        hourTick(),
+      );
+      scales.y = {
+        type: "category",
+        labels: uniqueDirections,
+        grid: { color: colors.grid },
+      };
+      return new ChartLib.Chart(canvas.getContext("2d"), {
+        type: "line",
+        data: {
+          labels: dataset.map((point) => point.x),
+          datasets: [
+            {
+              data: chartData,
+              borderColor: colors.line,
+              borderWidth: 1.5,
+              tension: 0.4,
+              pointRadius: 0,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          aspectRatio: 1.5,
+          interaction: { mode: "index", intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                title: tooltipTitle,
+                label: (ctx) => `${ctx.formattedValue}`,
+              },
+            },
+          },
+          scales,
+        },
+      });
+    }
+
+    function tettoPratoChart(canvas, colors, dataset) {
+      // Union of both sensors' timestamps, in case one has gaps.
+      const labels = [
+        ...new Set(dataset.flatMap((series) => series.data.map((p) => p.x))),
+      ].sort();
+      return new ChartLib.Chart(canvas.getContext("2d"), {
+        type: "line",
+        data: {
+          labels,
+          datasets: dataset.map((series, index) => ({
+            label: series.id,
+            data: series.data,
+            borderColor: index === 1 ? colors.line : colors.altLine,
+            backgroundColor: index === 1 ? colors.line : colors.altLine,
+            borderWidth: 1.5,
+            tension: 0.1,
+            pointRadius: 0,
+          })),
+        },
+        options: {
+          responsive: true,
+          aspectRatio: 1.33,
+          interaction: { mode: "index", intersect: false },
+          scales: baseScales(colors, labels, hourTick()),
+          plugins: {
+            tooltip: { callbacks: { title: tooltipTitle } },
+            legend: {
+              position: "bottom",
+              labels: {
+                usePointStyle: true,
+                pointStyle: "circle",
+                radius: 6,
+              },
+            },
+          },
+        },
+      });
+    }
+
+    function windPieChart(canvas, colors, dataset) {
+      const total = dataset.reduce((sum, item) => sum + item.value, 0);
+      // Slice palette comes from the --color-weather-pie-* root variables.
+      const sliceColors = dataset.map((item, index) =>
+        resolveColorVar(`--color-weather-pie-${(index % 8) + 1}`),
+      );
+      return new ChartLib.Chart(canvas.getContext("2d"), {
+        type: "pie",
+        data: {
+          labels: dataset.map((item) => item.label),
+          datasets: [
+            {
+              data: dataset.map((item) => item.value),
+              backgroundColor: sliceColors,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          layout: {
+            padding: { top: 60, bottom: 60, left: 80, right: 80 },
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: false },
+          },
+        },
+        plugins: [
+          {
+            // Radial "label percentage" callouts around the pie.
+            id: "radialLabels",
+            afterDraw(chart) {
+              const { ctx, chartArea } = chart;
+              const centerX = (chartArea.left + chartArea.right) / 2;
+              const centerY = (chartArea.top + chartArea.bottom) / 2;
+              const meta = chart.getDatasetMeta(0);
+              chart.data.datasets[0].data.forEach((value, index) => {
+                const arc = meta.data[index];
+                const percentage = Math.round((value / total) * 100);
+                const label = chart.data.labels[index];
+                const color = arc.options.backgroundColor;
+                const middleAngle = (arc.startAngle + arc.endAngle) / 2;
+                const radius = arc.outerRadius;
+                const offset = radius + 15;
+                const x = centerX + Math.cos(middleAngle) * radius;
+                const y = centerY + Math.sin(middleAngle) * radius;
+                const externalX = centerX + Math.cos(middleAngle) * offset;
+                const externalY = centerY + Math.sin(middleAngle) * offset;
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(externalX, externalY);
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = color;
+                ctx.stroke();
+                ctx.fillStyle = colors.text;
+                ctx.textAlign = externalX > centerX ? "left" : "right";
+                ctx.fillText(
+                  `${label} ${percentage}%`,
+                  externalX + (externalX > centerX ? 8 : -8),
+                  externalY,
+                );
+              });
+            },
+          },
+        ],
+      });
+    }
+
+    function weekChart(canvas, colors, dataset) {
+      // Single column on mobile: a wide ratio would look stretched.
+      const mobile = window.matchMedia("(max-width: 40rem)");
+      const labels = dataset.map((point) => point.x);
+      return new ChartLib.Chart(canvas.getContext("2d"), {
+        type: "line",
+        data: {
+          labels,
+          datasets: [
+            {
+              data: dataset,
+              borderColor: colors.line,
+              borderWidth: 1.5,
+              tension: 0.1,
+              pointRadius: 0,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          aspectRatio: mobile.matches ? 1.4 : 2.4,
+          interaction: { mode: "index", intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                title: tooltipTitle,
+                label: (ctx) => `${ctx.formattedValue}`,
+              },
+            },
+          },
+          scales: baseScales(colors, labels, function (value) {
+            // "YYYY-MM-DD HH:mm" → "DD/MM", one tick per day
+            const label = this.getLabelForValue(value);
+            return label.slice(11) === "00:00" || value === 0
+              ? `${label.slice(8, 10)}/${label.slice(5, 7)}`
+              : null;
+          }),
+        },
+      });
+    }
+
+    const builders = {
+      line: lineChart,
+      "wind-dir": windDirChart,
+      "tetto-prato": tettoPratoChart,
+      pie: windPieChart,
+      week: weekChart,
+    };
+
+    function init() {
+      charts.forEach((chart) => chart.destroy());
+      charts = [];
+      const colors = themeColors();
+      ChartLib.Chart.defaults.color = colors.text;
+      ChartLib.Chart.defaults.font.family = getComputedStyle(
+        document.body,
+      ).fontFamily;
+      section.querySelectorAll("canvas[data-chart]").forEach((canvas) => {
+        const dataset = JSON.parse(canvas.getAttribute("data-points"));
+        if (!dataset?.length) return;
+        const build = builders[canvas.dataset.chart];
+        if (build) charts.push(build(canvas, colors, dataset));
+      });
+    }
+
+    async function load() {
+      if (ChartLib) return;
+      const { Chart, registerables } = await import("chart.js");
+      Chart.register(...registerables);
+      ChartLib = { Chart };
+      init();
+
+      // Colors are resolved at draw time: redraw when the theme flips,
+      // whether via the OS or the footer theme select.
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", init);
+      document.addEventListener("theme-change", init);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          load();
+        }
+      },
+      { rootMargin: "400px" },
+    );
+    observer.observe(section);
+  }
+
+  setupMeteoGraphs();
+</script>
+
+<style media="screen">
+  .meteo-graphs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media screen and (width > 40rem) {
+    .meteo-graphs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    /* The 7-day chart spans the full width for readability. */
+    .full-width {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media screen and (width > 60rem) {
+    .meteo-graphs {
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    }
+  }
+</style>

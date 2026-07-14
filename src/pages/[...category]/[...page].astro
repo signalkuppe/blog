@@ -9,6 +9,8 @@ import {
 import { headPageTitle } from "../../lib/utils";
 import Layout from "../../layouts/Layout.astro";
 import Pager from "../../components/Pager.astro";
+import PostCard from "../../components/PostCard.astro";
+import PostsMap from "../../components/PostsMap.astro";
 
 interface Props {
   page: any;
@@ -64,20 +66,7 @@ let headDescription = currentCategory
     {
       page.data.map((post) => (
         <li>
-          <article>
-            <header>
-              <time datetime={post.data.date.toISOString()}>
-                {post.data.date.toLocaleDateString("it-IT", {
-                  day: "2-digit",
-                  month: "2-digit",
-                  year: "2-digit",
-                })}
-              </time>
-              <span aria-hidden="true">-</span>
-            </header>
-
-            <a href={`/${post.id}`}>{post.data.title}</a>
-          </article>
+          <PostCard post={post} />
         </li>
       ))
     }
@@ -105,6 +94,9 @@ let headDescription = currentCategory
         ))
       }
     </ul>
+    <div class="posts-map">
+      <PostsMap />
+    </div>
   </Fragment>
 </Layout>
 
@@ -113,9 +105,13 @@ let headDescription = currentCategory
     text-decoration: none;
   }
 
-  h1,
+  h1 {
+    margin-bottom: 3rem;
+  }
+
   h2 {
     margin-bottom: 2rem;
+    margin-top: 4.5rem;
   }
 
   ul {
@@ -127,11 +123,7 @@ let headDescription = currentCategory
   ul.posts {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  ul.posts time {
-    font-weight: 900;
+    gap: 2rem;
   }
 
   ul.categories {
@@ -145,22 +137,26 @@ let headDescription = currentCategory
   }
 
   .pager {
-    margin-top: 4rem;
+    margin-top: 6rem;
   }
 
-  article {
-    display: flex;
-    gap: 0.5rem;
+  .posts-map {
+    margin-top: 2.5rem;
   }
 
   @media (orientation: portrait) {
-    article {
-      flex-direction: column;
-      gap: 0.25rem;
+    h1 {
+      margin-bottom: 2rem;
     }
 
-    article header span {
-      display: none;
+    h2 {
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ul.categories {
+      flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 </style>

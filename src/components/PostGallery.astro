@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import GalleryModal from "./GalleryModal.astro";
 
 interface Props {
   gallery: {
@@ -32,53 +33,7 @@ const { gallery } = Astro.props;
             class="gallery-image"
           />
         </button>
-        <dialog
-          id={`gallery-image-${index}`}
-          class="gallery-image-dialog"
-          closedby="any"
-        >
-          <button
-            commandfor={`gallery-image-${index}`}
-            command="close"
-            class="close-button"
-          >
-            <span aria-hidden="true">&times;</span>
-            <span class="visually-hidden">Chiudi</span>
-          </button>
-          <Image
-            src={image.src}
-            alt={image.alt}
-            width={1600}
-            loading="lazy"
-            quality={85}
-            style={`--ar: ${(image.src.width / image.src.height).toFixed(4)}`}
-          />
-          <footer>
-            <span class="caption">{image.alt}</span>
-            <div class="dialog-nav">
-              {index > 0 && (
-                <button
-                  commandfor={`gallery-image-${index}`}
-                  command="--previous"
-                  hidden
-                >
-                  <span aria-hidden="true">&lsaquo;</span>
-                  <span class="visually-hidden">Immagine precedente</span>
-                </button>
-              )}
-              {index < gallery.length - 1 && (
-                <button
-                  commandfor={`gallery-image-${index}`}
-                  command="--next"
-                  hidden
-                >
-                  <span aria-hidden="true">&rsaquo;</span>
-                  <span class="visually-hidden">Immagine successiva</span>
-                </button>
-              )}
-            </div>
-          </footer>
-        </dialog>
+        <GalleryModal index={index} count={gallery.length} image={image} />
       </Fragment>
     ))
   }
@@ -108,99 +63,4 @@ const { gallery } = Astro.props;
     all: unset;
     cursor: pointer;
   }
-
-  .gallery-image-dialog {
-    --viewport-gap: 1rem; /* breathing room around the dialog */
-    --dialog-footer-height: 5rem; /* caption + close button row */
-    max-width: calc(100vw - var(--viewport-gap) * 2);
-    max-height: calc(100dvh - var(--viewport-gap) * 2);
-    padding: 0;
-    overflow: hidden;
-  }
-
-  /* sits behind the transparent image box while it loads;
-     the photo covers it once painted */
-  .gallery-image-dialog::before {
-    content: "Carico l’immagine…" / "";
-    position: absolute;
-    inset: 0 0 var(--dialog-footer-height) 0;
-    display: grid;
-    place-items: center;
-    color: var(--color-subtle);
-  }
-
-  .gallery-image-dialog img {
-    position: relative;
-    display: block;
-    /* As wide as the viewport allows, unless the height cap kicks in first:
-       (available height × aspect ratio) = the width at which the image
-       exactly fills the available height. */
-    width: min(
-      calc(100vw - var(--viewport-gap) * 2),
-      calc(
-        (100dvh - var(--viewport-gap) * 2 - var(--dialog-footer-height)) *
-          var(--ar)
-      )
-    );
-    height: auto;
-  }
-
-  .gallery-image-dialog .close-button {
-    position: absolute;
-    top: 0rem;
-    right: 0rem;
-    z-index: 1;
-    background-color: Canvas;
-    border: none;
-    font-size: 1.5rem;
-  }
-
-  .gallery-image-dialog footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.85rem 1rem;
-  }
-
-  .gallery-image-dialog button {
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    line-height: 1;
-  }
-
-  .gallery-image-dialog .dialog-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-shrink: 0;
-  }
 </style>
-
-<script>
-  document.addEventListener("astro:page-load", () => {
-    document
-      .querySelectorAll<HTMLDialogElement>(".gallery-image-dialog")
-      .forEach((dialog) => {
-        dialog
-          .querySelectorAll<HTMLButtonElement>("[command^='--']")
-          .forEach((button) => (button.hidden = false));
-        dialog.addEventListener("command", (event) => {
-          const command = (event as Event & { command?: string }).command;
-          if (command !== "--next" && command !== "--previous") return;
-          const index = Number(dialog.id.replace("gallery-image-", ""));
-          const offset = command === "--next" ? 1 : -1;
-          const target = document.getElementById(
-            `gallery-image-${index + offset}`,
-          );
-          if (!(target instanceof HTMLDialogElement)) return;
-          dialog.close();
-          target.showModal();
-        });
-      });
-  });
-</script>

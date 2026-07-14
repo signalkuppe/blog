@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+const { post } = Astro.props;
+---
+
+<article>
+  <header>
+    <time datetime={post.data.date.toISOString()}>
+      {
+        post.data.date.toLocaleDateString("it-IT", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "2-digit",
+        })
+      }
+    </time>
+    <span aria-hidden="true">-</span>
+  </header>
+
+  <a href={`/${post.id}`}>{post.data.title}</a>
+</article>
+
+<style>
+  article {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  time {
+    font-weight: 900;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  @media (orientation: portrait) {
+    article {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    header span {
+      display: none;
+    }
+  }
+</style>

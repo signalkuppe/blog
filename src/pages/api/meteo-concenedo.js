@@ -3,13 +3,10 @@ export const prerender = false;
 import weatherlinkData from "../../lib/weatherlink.js";
 
 export async function GET() {
-  let data;
-  try {
-    data = await weatherlinkData();
-  } catch (error) {
-    console.error("Weatherlink error:", error);
-    return new Response(JSON.stringify(error), {
-      status: 400,
+  const data = await weatherlinkData();
+  if (!data?.ok) {
+    return new Response(JSON.stringify({ ok: false }), {
+      status: 502,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Cache-Control": "no-cache, no-store, must-revalidate",

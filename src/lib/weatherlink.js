@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import dayjs from "dayjs";
 import _ from "lodash";
 import utc from "dayjs/plugin/utc";
@@ -12,7 +11,8 @@ const TETTO_SENSOR_ID = 656258;
 const PRATO_SENSOR_ID = 653403;
 const API_KEY = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_APIKEY;
 const API_SECRET = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_SECRET;
-const START_OF_TODAY = dayjs().startOf("day").unix();
+// "Today" must start at midnight in Rome, not midnight UTC (the server TZ).
+const START_OF_TODAY = dayjs().tz(TIMEZONE).startOf("day").unix();
 const ONE_DAY_BEFORE = dayjs().subtract(24, "hours").unix();
 const SEVEN_DAYS_BEFORE = dayjs().subtract(7, "days").unix();
 const NOW = dayjs().unix();
@@ -30,7 +30,7 @@ export default async function weatherlink() {
       await Promise.all([
         fetchCurrentData(),
         ...historicWindows.map(([start, end]) =>
-          fetchHistoricData(start, end).catch((err) => {
+          fetchHistoricDataCached(start, end).catch((err) => {
             console.error("Historic window failed:", err.message);
             return { sensors: [] };
           }),
@@ -91,7 +91,7 @@ export default async function weatherlink() {
         temperature: convertTemperature(tettoCurrent.temp),
         temperature_prato: convertTemperature(pratoCurrent.temp),
         humidity: tettoCurrent.hum ? Math.round(tettoCurrent.hum) : null,
-        humidity_tetto: tettoCurrent.hum ? Math.round(tettoCurrent.hum) : null,
+        humidity_prato: pratoCurrent.hum ? Math.round(pratoCurrent.hum) : null,
         dew_point: convertTemperature(tettoCurrent.dew_point),
         wind_chill: convertTemperature(tettoCurrent.wind_chill),
         wet_bulb: convertTemperature(tettoCurrent.wet_bulb),
@@ -145,7 +145,7 @@ export default async function weatherlink() {
           findLastMinPropertyItem(tettoDailyValues, "hum_lo")["hum_lo"],
         ),
         humidity_min_at: unixToHourAndMinutes(
-          findLastMinPropertyItem(tettoDailyValues, "hum_lo")["hum_hi_at"],
+          findLastMinPropertyItem(tettoDailyValues, "hum_lo")["hum_lo_at"],
         ),
         humidity_prato_max: Math.round(
           findLastMaxPropertyItem(pratoDailyValues, "hum_hi")["hum_hi"],
@@ -273,14 +273,14 @@ export default async function weatherlink() {
 
     return {
       ...readableData,
-      hasLostSignal: _.some(
-        readableData.day.graph_temperature,
-        (t) => t.y === null,
+      // Missing readings come through as NaN (parseFloat of a null reading).
+      hasLostSignal: _.some(readableData.day.graph_temperature, (t) =>
+        Number.isNaN(t.y),
       ),
     };
   } catch (err) {
-    console.log(err);
-    return err;
+    console.error(err);
+    return { ok: false, hasLostSignal: false, current: null, day: null };
   }
 }
 
@@ -294,9 +294,26 @@ async function fetchCurrentData() {
       },
     },
   );
-  const jsonData = await response.json();
+  if (!response.ok) {
+    throw new Error(`WeatherLink current request failed: ${response.status}`);
+  }
+  return response.json();
+}
 
-  return jsonData;
+// Historic data for fully-elapsed windows never changes: cache it in module
+// scope so warm invocations only refetch the most recent window.
+const historicCache = new Map();
+
+async function fetchHistoricDataCached(startTimeStamp, endTimeStamp) {
+  const key = `${startTimeStamp}-${endTimeStamp}`;
+  if (historicCache.has(key)) {
+    return historicCache.get(key);
+  }
+  const data = await fetchHistoricData(startTimeStamp, endTimeStamp);
+  if (endTimeStamp < Date.now() / 1000 - 3600) {
+    historicCache.set(key, data);
+  }
+  return data;
 }
 
 async function fetchHistoricData(startTimeStamp, endTimeStamp) {
@@ -312,13 +329,15 @@ async function fetchHistoricData(startTimeStamp, endTimeStamp) {
       },
     },
   );
-  const jsonData = await response.json();
-  return jsonData;
+  if (!response.ok) {
+    throw new Error(`WeatherLink historic request failed: ${response.status}`);
+  }
+  return response.json();
 }
 
 function sensorData(sensors, sensorId, historic) {
   const sensor = sensors?.find((sensor) => sensor?.lsid === sensorId);
-  return !historic ? sensor?.data[0] : sensor?.data;
+  return !historic ? sensor?.data?.[0] : sensor?.data;
 }
 
 // Split a [start, end] range into <=24h windows (WeatherLink historic max per request).
@@ -364,7 +383,7 @@ function hourlyTempPeaks(data) {
 
 function convertPressure(pressure) {
   /** Inches of mercury to hectopascal */
-  return pressure ? Math.round(pressure * 33.863889532610884) : null;
+  return pressure != null ? Math.round(pressure * 33.863889532610884) : null;
 }
 
 function convertPressureTrend(pressureTrend) {
@@ -403,19 +422,17 @@ function rainRateText(rate) {
 }
 
 function convertTemperature(temperature) {
-  /** Fahrenheit to Celsius */
-  return temperature
-    ? ((temperature - 32) * (5 / 9)).toFixed(1).toLocaleString("it-IT")
+  /** Fahrenheit to Celsius. Keeps the "." decimal separator: callers
+   * parseFloat these values for the graphs, so localization must happen
+   * at display time, not here. */
+  return temperature != null
+    ? ((temperature - 32) * (5 / 9)).toFixed(1)
     : null;
 }
 
 function convertWindSpeed(mph) {
   /** MPH to km/h */
-  return mph > 0 ? (mph * 1.60934).toFixed(1) : 0;
-}
-
-function normalizeDegrees(degrees) {
-  return ((degrees % 360) + 360) % 360; // Ensures positive degrees in [0, 360)
+  return mph != null ? (mph * 1.60934).toFixed(1) : null;
 }
 
 export const convertWindDirection = (degrees) => {
@@ -464,40 +481,33 @@ function unixToGraphTime(ts) {
 }
 
 function findLastMaxPropertyItem(arr, property) {
-  if (arr.length === 0) {
-    return {};
-  }
-
   let maxItem = null;
   let maxValue = -Infinity;
 
   for (let i = arr.length - 1; i >= 0; i--) {
     const currentItemValue = arr[i][property];
-    if (currentItemValue >= maxValue && currentItemValue !== null) {
+    if (currentItemValue != null && currentItemValue >= maxValue) {
       maxValue = currentItemValue;
       maxItem = arr[i];
     }
   }
 
-  return maxItem;
+  return maxItem ?? {};
 }
 
 function findLastMinPropertyItem(arr, property) {
-  if (arr.length === 0) {
-    return {}; // Return null if the array is empty
-  }
+  let minItem = null;
+  let minValue = Infinity;
 
-  let minItem = arr[arr.length - 1]; // Start with the last item
-  let minValue = arr[arr.length - 1][property];
-
-  for (let i = arr.length - 2; i >= 0; i--) {
-    if (arr[i][property] <= minValue && arr[i][property] !== null) {
-      minValue = arr[i][property];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    const currentItemValue = arr[i][property];
+    if (currentItemValue != null && currentItemValue <= minValue) {
+      minValue = currentItemValue;
       minItem = arr[i];
     }
   }
 
-  return minItem;
+  return minItem ?? {};
 }
 
 function maxTemperature(arr, property) {

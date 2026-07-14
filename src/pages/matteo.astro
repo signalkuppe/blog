@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import { siteSlogan, defaultOgImage, newsletterUrl } from "../constants";
 import { headPageTitle } from "../lib/utils";
 import Layout from "../layouts/Layout.astro";
-import MatteoPortrait from "../images/matteo-leoni-landscape.jpg";
+import MatteoPortrait from "../assets/images/matteo-leoni-landscape.jpg";
 ---
 
 <Layout
@@ -12,7 +12,7 @@ import MatteoPortrait from "../images/matteo-leoni-landscape.jpg";
   ogImage={defaultOgImage}
 >
   <article>
-    <h1>Piacere, Matteo</h1>
+    <h1 class="h2">Piacere, Matteo</h1>
     <Image
       src={MatteoPortrait}
       alt="Ritratto di Matteo Leoni"

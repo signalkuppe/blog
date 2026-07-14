@@ -101,18 +101,6 @@ const ogImg = await getImage({
         )
       }
 
-      <div class="disclaimer">
-        <strong>Disclaimer</strong>
-        <p>
-          La rilevazione gps potrebbe non essere sempre precisa e riportare
-          valori errati. Le attività in montagna sono pericolose, informati bene
-          prima di affrontarle e non fare affidamento solo sui dati riportati in
-          questa pagina. Non mi assumo alcuna responsabilità per eventuali
-          incidenti o problemi che potrebbero verificarsi durante una delle
-          attività descritte in questo blog.
-        </p>
-      </div>
-
       <nav class="post-pager">
         <ul role="list">
           {
@@ -133,13 +121,25 @@ const ogImg = await getImage({
           }
         </ul>
       </nav>
-
+    </aside>
+    <footer class="post-footer">
+      <div class="disclaimer">
+        <strong>Disclaimer</strong>
+        <p>
+          La rilevazione gps potrebbe non essere sempre precisa e riportare
+          valori errati. Le attività in montagna sono pericolose, informati bene
+          prima di affrontarle e non fare affidamento solo sui dati riportati in
+          questa pagina. Non mi assumo alcuna responsabilità per eventuali
+          incidenti o problemi che potrebbero verificarsi durante una delle
+          attività descritte in questo blog.
+        </p>
+      </div>
       <p class="post-newsletter">
         Vuoi rimanere aggiornato sulle nuove uscite? <br /><a
           href={newsletterUrl}>Iscriviti alla newsletter</a
         >
       </p>
-    </aside>
+    </footer>
   </article>
 
   <style>
@@ -224,6 +224,13 @@ const ogImg = await getImage({
 
     .post-pager a {
       text-decoration: none;
+    }
+
+    .post-footer {
+      margin-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
   </style>
 </Layout>

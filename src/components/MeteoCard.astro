@@ -1,0 +1,162 @@
+---
+// A single weather-data card: title, big current value, two footer rows.
+// The optional "tooltip" slot renders as a native popover (Popover API,
+// no JS): anchored under the ⓘ button where CSS anchor positioning is
+// supported, centered in the viewport (UA default) elsewhere.
+import InfoIcon from "../assets/icons/Info.svg";
+const { title } = Astro.props;
+const _id =
+  globalThis.crypto?.randomUUID?.() ??
+  `id-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+---
+
+<article>
+  <header>
+    <h3>{title}</h3>
+    {
+      Astro.slots.has("tooltip") && (
+        <>
+          <button
+            type="button"
+            class="info-trigger"
+            popovertarget={`info-${_id}`}
+            style={`anchor-name: --info-${_id}`}
+          >
+            <span class="visually-hidden">Cos'è questa grandezza?</span>
+            <InfoIcon aria-hidden="true" width="16" />
+          </button>
+          <div
+            class="info-popover"
+            popover
+            id={`info-${_id}`}
+            style={`position-anchor: --info-${_id}`}
+          >
+            <slot name="tooltip" />
+          </div>
+        </>
+      )
+    }
+  </header>
+  <div class="body">
+    <span class="value"><slot /></span>
+    {
+      Astro.slots.has("sub-value") && (
+        <span class="subvalue">
+          <slot name="sub-value" />
+        </span>
+      )
+    }
+  </div>
+  <footer>
+    <div>
+      <slot name="footer-top" />
+    </div>
+    <div>
+      <slot name="footer-bottom" />
+    </div>
+  </footer>
+</article>
+
+<style media="screen">
+  article {
+    --headerFooterPadding: 0.8rem 1rem;
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--color-weather-card-bg);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--headerFooterPadding);
+  }
+
+  h3 {
+    line-height: 1;
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  .body {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35em;
+    padding: 1rem;
+  }
+
+  .value {
+    font-weight: 900;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .subvalue {
+    font-size: 0.65rem;
+    line-height: 1;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    padding: var(--headerFooterPadding);
+  }
+
+  .info-trigger {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    margin: -0.25rem;
+    display: inline-flex;
+    color: inherit;
+    cursor: pointer;
+    color: var(--color-subtle);
+  }
+
+  .info-trigger:active {
+    transform: none;
+  }
+
+  .info-popover {
+    border: 1px solid var(--color-subtle);
+    background: var(--color-bg);
+    color: var(--color-text);
+    padding: 1rem;
+    max-width: 320px;
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .info-popover::backdrop {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  .info-popover :global(p) {
+    margin-bottom: 0.75rem;
+  }
+
+  .info-popover :global(p:last-child),
+  .info-popover :global(ul:last-child) {
+    margin-bottom: 0;
+  }
+
+  /* Anchor the popover under its ⓘ button where supported; elsewhere the
+     UA default (viewport-centered) applies, which is fine on mobile too. */
+  @supports (anchor-name: --a) {
+    .info-popover {
+      margin: 0.5rem 0 0;
+      inset: auto;
+      position-area: block-end span-inline-start;
+      position-try-fallbacks: flip-block, flip-inline;
+    }
+
+    .info-popover::backdrop {
+      background: none;
+    }
+  }
+</style>

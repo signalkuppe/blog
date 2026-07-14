@@ -8,3 +8,8 @@
   NODE_VERSION = "22"
   AWS_LAMBDA_JS_RUNTIME = "nodejs22.x"
 
+# Allow the Concenedo webcam source through Netlify Image CDN
+# (/.netlify/images?url=... rejects remote domains not listed here).
+[images]
+  remote_images = ["https://www\\.caiseregno\\.it/webcam_concenedo/.*"]
+

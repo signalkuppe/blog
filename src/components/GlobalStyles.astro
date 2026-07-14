@@ -1,44 +1,51 @@
 <style is:global>
-  img {
-    max-width: 100%;
-    height: auto;
-    background-color: color-mix(in oklab, currentColor 2%, transparent);
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    img {
-      animation: img-placeholder-pulse 1s ease-in-out infinite alternate;
-    }
-  }
-
-  @keyframes img-placeholder-pulse {
-    from {
-      background-color: color-mix(in oklab, currentColor 2%, transparent);
-    }
-    to {
-      background-color: color-mix(in oklab, currentColor 8%, transparent);
-    }
-  }
   /* 11. variables */
 
   :root {
     color-scheme: light dark;
-    --color-borders: color-mix(in oklab, currentColor 15%, transparent);
+    --color-bg: light-dark(#f8f9fa, #1e1e1e);
+    --color-text: light-dark(#2c3e50, #e2e8f0);
     --color-subtle: light-dark(
-      color-mix(in oklab, currentColor, white 50%),
+      color-mix(in oklab, currentColor, white 25%),
       color-mix(in oklab, currentColor, black 25%)
     );
-    --color-accent: crimson;
+    --color-buttons: light-dark(#e9ecef, #2c2c2c);
+    --color-input-bg: light-dark(#fff, #2c2c2c);
+    --color-map-marker: red;
     --color-graph-grid: color-mix(in oklab, currentColor 10%, transparent);
+    --color-graph-line: #1082e8;
+    --color-weather-card-bg: light-dark(
+      color-mix(in oklab, var(--color-bg), black 2.5%),
+      color-mix(in oklab, var(--color-bg), black 10%)
+    );
+    --color-weather-graph-alt-line: orange;
+    --color-weather-min-value: #1082e8;
+    --color-weather-max-value: red;
+    --color-weather-alt-value: #f300ff;
+    --color-weather-alt-value-2: light-dark(#0b9918, #00ff00);
+    --color-weather-pie-1: #36a2eb;
+    --color-weather-pie-2: #ff6384;
+    --color-weather-pie-3: #ff9f40;
+    --color-weather-pie-4: #ffcd56;
+    --color-weather-pie-5: #4bc0c0;
+    --color-weather-pie-6: #9966ff;
+    --color-weather-pie-7: #c9cbcf;
+    --color-weather-pie-8: #7acbf9;
   }
 
   /* 12. base styles */
+
+  @view-transition {
+    navigation: auto;
+  }
 
   html {
     font-family: var(--base-font); /** defined in astro config */
     font-size: 100%;
     line-height: 1.5;
     scrollbar-gutter: stable;
+    color: var(--color-text);
+    background-color: var(--color-bg);
   }
 
   body {
@@ -48,6 +55,26 @@
 
   a {
     color: inherit;
+  }
+
+  :focus-visible {
+    /* auto = the browser's native focus ring; !important so focus can
+       never be suppressed by all:unset resets (e.g. Footer and
+       PostGallery buttons), whose expanded outline:unset otherwise
+       wins on specificity */
+    outline: auto !important;
+  }
+
+  /* the skip-link target: focus lands here programmatically,
+     a ring around the whole content column would be noise */
+  main:focus-visible {
+    outline: none !important;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    background-color: color-mix(in oklab, currentColor 5%, currentColor 2%);
   }
 
   p {
@@ -65,6 +92,7 @@
     border-color: currentColor;
     border-width: 1px;
     border-style: solid;
+    background-color: var(--color-input-bg);
   }
 
   h1,
@@ -84,7 +112,7 @@
   .h2 {
     margin-top: 0rem;
     margin-bottom: 0.85rem;
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
 
   figure {
@@ -103,11 +131,21 @@
 
   button {
     appearance: none;
-    background-color: Canvas; /* or Canvas */
+    background-color: var(--color-buttons);
     color: inherit;
     padding: 0.25rem 0.5rem;
     border: 1px solid currentColor;
     border-radius: 0;
+  }
+
+  button:disabled {
+    background-color: color-mix(in oklab, currentColor 15%, transparent);
+    border-color: color-mix(in oklab, currentColor 15%, transparent);
+    cursor: not-allowed;
+  }
+
+  button:active {
+    transform: translate(1px, 1px);
   }
 
   summary {
@@ -122,6 +160,8 @@
   dialog {
     border: 2px solid var(--color-subtle);
     overscroll-behavior: contain;
+    /* the UA default is Canvas, which is browser-specific */
+    background-color: var(--color-bg);
   }
 
   dialog::backdrop {
@@ -145,6 +185,12 @@
     margin: 0;
   }
 
+  label {
+    display: block;
+    font-weight: 900;
+    margin-bottom: 0.25rem;
+  }
+
   /* 13. utilities */
 
   .visually-hidden {
@@ -159,5 +205,24 @@
 
   .hide-scrollbar {
     scrollbar-width: none;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-bg);
+  }
+
+  .skip-link:not(:focus) {
+    /* same recipe as .visually-hidden until keyboard-focused */
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    white-space: nowrap;
   }
 </style>

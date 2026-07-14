@@ -1,0 +1,172 @@
+---
+// Webcam in a native <dialog>. The image URL comes from /api/webcam (cached
+// proxy) and is fetched only when the dialog is first opened, so the slow
+// third-party source costs nothing on page load. The trigger is hidden until
+// JS can drive it.
+---
+
+<button
+  type="button"
+  command="show-modal"
+  commandfor="webcam-dialog"
+  class="webcam-trigger"
+  hidden
+>
+  Webcam ▸
+</button>
+
+<dialog id="webcam-dialog" class="webcam-dialog" closedby="any">
+  <button commandfor="webcam-dialog" command="close" class="close-button">
+    <span aria-hidden="true">&times;</span>
+    <span class="visually-hidden">Chiudi</span>
+  </button>
+  <div class="webcam-body" data-state="loading">
+    <img
+      alt="Webcam in diretta da Concenedo (Barzio)"
+      width="3840"
+      height="2160"
+    />
+    <span class="loading" aria-hidden="true">Carico la webcam…</span>
+    <span class="not-available">Webcam non disponibile 🫤</span>
+  </div>
+  <footer>
+    <span>Webcam in diretta da Concenedo (Barzio)</span>
+  </footer>
+</dialog>
+
+<script>
+  function setupWebcamDialog() {
+    const dialog = document.querySelector<HTMLDialogElement>("#webcam-dialog");
+    if (!dialog || dialog.dataset.webcamBound) return;
+    dialog.dataset.webcamBound = "true";
+
+    document
+      .querySelectorAll<HTMLButtonElement>(
+        '[commandfor="webcam-dialog"][command="show-modal"]',
+      )
+      .forEach((button) => (button.hidden = false));
+
+    const body = dialog.querySelector<HTMLElement>(".webcam-body");
+    const img = dialog.querySelector("img");
+    let loaded = false;
+
+    const setState = (state: string) => {
+      if (body) body.dataset.state = state;
+    };
+
+    dialog.addEventListener("toggle", (event) => {
+      if ((event as ToggleEvent).newState !== "open") return;
+      if (loaded || !img) return;
+      loaded = true;
+
+      fetch("/api/webcam")
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data?.url) {
+            setState("error");
+            return;
+          }
+          // Attach handlers before assigning src; reveal only once loaded.
+          img.addEventListener("load", () => setState("ready"), {
+            once: true,
+          });
+          img.addEventListener("error", () => setState("error"), {
+            once: true,
+          });
+          img.src = data.url;
+        })
+        .catch(() => setState("error"));
+    });
+  }
+
+  setupWebcamDialog();
+</script>
+
+<style media="screen">
+  .webcam-dialog {
+    --viewport-gap: 1rem;
+    border: 2px solid var(--color-subtle);
+    background: var(--color-bg);
+    color: var(--color-text);
+    padding: 0;
+    max-width: min(70rem, calc(100vw - var(--viewport-gap) * 2));
+  }
+
+  .webcam-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1;
+    line-height: 1;
+  }
+
+  .webcam-body {
+    background: linear-gradient(
+      -45deg,
+      var(--color-bg),
+      var(--color-buttons)
+    );
+    background-size: 400% 400%;
+    aspect-ratio: 3840 / 2160;
+    display: grid;
+  }
+
+  /* Every child occupies the same cell; visibility is per state. */
+  .webcam-body > * {
+    grid-area: 1 / 1;
+  }
+
+  .webcam-body img {
+    display: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .webcam-body .loading,
+  .webcam-body .not-available {
+    display: none;
+    align-self: center;
+    justify-self: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .webcam-body[data-state="ready"] img {
+    display: block;
+  }
+  .webcam-body[data-state="loading"] .loading {
+    display: block;
+  }
+  .webcam-body[data-state="error"] .not-available {
+    display: block;
+  }
+
+  footer {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Animate the placeholder only while loading. */
+  @media (prefers-reduced-motion: no-preference) {
+    .webcam-body[data-state="loading"] {
+      animation: gradient 2s ease infinite;
+    }
+  }
+</style>
