@@ -1,16 +1,28 @@
 import { defineConfig, fontProviders, svgoOptimizer } from "astro/config";
 import netlify from "@astrojs/netlify";
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://www.signalkuppe.com",
   output: "static",
   compressHTML: true,
-  prefetch: true,
+  // every internal link prefetches on hover/tap; the Meteo header link
+  // overrides this with "load" to mask its slow server render
+  prefetch: {
+    prefetchAll: true,
+  },
   adapter: netlify({
     imageCDN: false,
   }), // https://docs.astro.build/en/guides/deploy/netlify/#image-cdn
-  integrations: [mdx()],
+  integrations: [
+    mdx(),
+    sitemap({
+      // SSR pages are excluded automatically; meteo is worth indexing
+      customPages: ["https://www.signalkuppe.com/meteo-concenedo/"],
+    }),
+  ],
   build: {
     inlineStylesheets: "always",
   },

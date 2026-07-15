@@ -11,10 +11,15 @@ allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
     <div class="header-left">
       <a href="/" class="siteName">{siteTitle}</a>
       <ul role="list">
-        <li><a href="/matteo">Matteo</a></li>
-        <li><a href="/portfolio">Foto</a></li>
-        <li><a href="/meteo-concenedo">Meteo</a></li>
-        <li><a href="/contatti">Contatti</a></li>
+        <li><a href="/matteo" data-astro-prefetch="load">Matteo</a></li>
+        <li><a href="/portfolio" data-astro-prefetch="load">Foto</a></li>
+        <li>
+          <!-- prefetch on every page view: warms the CDN cache (and
+               triggers the stale-while-revalidate refresh) so the slow
+               server render is done before anyone clicks -->
+          <a href="/meteo-concenedo" data-astro-prefetch="load">Meteo</a>
+        </li>
+        <li><a href="/contatti" data-astro-prefetch="load">Contatti</a></li>
       </ul>
     </div>
 

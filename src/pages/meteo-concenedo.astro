@@ -17,14 +17,15 @@ const [{ hasLostSignal, current, day, ok }, forecastData] = await Promise.all([
   forecast(),
 ]);
 
-// Edge-cache the rendered page so visitors never wait on the 8 WeatherLink
-// API calls: serve from CDN for 60s, then serve stale while re-rendering in
-// the background for up to 5 more minutes. Failures cache only briefly so a
-// broken upstream self-heals.
+// Edge-cache the rendered page so visitors never wait on the WeatherLink
+// API calls: fresh for 60s, then served stale (instantly) for up to a day
+// while re-rendering in the background. Only the very first visitor after
+// a deploy or a full cache eviction pays the slow render. Failures cache
+// only briefly so a broken upstream self-heals.
 if (ok) {
   Astro.response.headers.set(
     "Netlify-CDN-Cache-Control",
-    "public, durable, s-maxage=60, stale-while-revalidate=300",
+    "public, durable, s-maxage=60, stale-while-revalidate=86400",
   );
 } else {
   Astro.response.headers.set(

@@ -387,13 +387,24 @@ const { day } = Astro.props;
               },
             },
           },
-          scales: baseScales(colors, labels, function (value) {
-            // "YYYY-MM-DD HH:mm" → "DD/MM", one tick per day
-            const label = this.getLabelForValue(value);
-            return label.slice(11) === "00:00" || value === 0
-              ? `${label.slice(8, 10)}/${label.slice(5, 7)}`
-              : null;
-          }),
+          scales: (() => {
+            const scales = baseScales(colors, labels, function (value) {
+              // One tick per day: the series has one point per hour, so
+              // match the midnight HOUR — the point's minutes vary (it's
+              // each hour's warmest 15-min record, e.g. "00:45").
+              const label = this.getLabelForValue(value);
+              return label.slice(11, 13) === "00"
+                ? `${label.slice(8, 10)}/${label.slice(5, 7)}`
+                : null;
+            });
+            // autoSkip samples ticks BEFORE the callback runs, so with it on
+            // a day only shows if the sampling happens to land on its
+            // midnight. Evaluate every tick and let the callback keep
+            // exactly one per day.
+            scales.x.ticks.autoSkip = false;
+            delete scales.x.ticks.maxTicksLimit;
+            return scales;
+          })(),
         },
       });
     }

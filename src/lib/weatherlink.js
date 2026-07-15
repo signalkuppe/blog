@@ -11,14 +11,19 @@ const TETTO_SENSOR_ID = 656258;
 const PRATO_SENSOR_ID = 653403;
 const API_KEY = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_APIKEY;
 const API_SECRET = process.env.SIGNALKUPPE_WEBSITE_WEATHERLINK_SECRET;
-// "Today" must start at midnight in Rome, not midnight UTC (the server TZ).
-const START_OF_TODAY = dayjs().tz(TIMEZONE).startOf("day").unix();
-const ONE_DAY_BEFORE = dayjs().subtract(24, "hours").unix();
-const SEVEN_DAYS_BEFORE = dayjs().subtract(7, "days").unix();
-const NOW = dayjs().unix();
 const GRAPH_DATE_FORMAT = "YYYY-MM-DD HH:mm";
 
 export default async function weatherlink() {
+  // Computed per call, NOT at module scope: warm serverless instances reuse
+  // the loaded module for hours, and frozen timestamps freeze the data
+  // window (the 7-day graph stopped at the day the instance booted).
+  const NOW = dayjs().unix();
+  // "Today" starts at midnight in Rome, not midnight UTC (the server TZ).
+  const START_OF_TODAY = dayjs().tz(TIMEZONE).startOf("day").unix();
+  const ONE_DAY_BEFORE = NOW - 24 * 3600;
+  // Hour-aligned so the six elapsed windows keep stable boundaries from one
+  // call to the next and the module-scope historic cache still hits.
+  const SEVEN_DAYS_BEFORE = Math.floor(NOW / 3600) * 3600 - 7 * 86400;
   try {
     // The webcam is fetched client-side via /api/webcam so its slow third-party
     // source never blocks this server render.
@@ -311,6 +316,10 @@ async function fetchHistoricDataCached(startTimeStamp, endTimeStamp) {
   }
   const data = await fetchHistoricData(startTimeStamp, endTimeStamp);
   if (endTimeStamp < Date.now() / 1000 - 3600) {
+    // window keys slide hourly on a warm instance: cap stale-key growth
+    if (historicCache.size > 64) {
+      historicCache.clear();
+    }
     historicCache.set(key, data);
   }
   return data;

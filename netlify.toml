@@ -13,3 +13,54 @@
 [images]
   remote_images = ["https://www\\.caiseregno\\.it/webcam_concenedo/.*"]
 
+# ── SEO redirects ──────────────────────────────────────────────────────
+# The redesign moved the post listings from /blog/* to the site root:
+# /blog → /, /blog/scialpinismo → /scialpinismo, /blog/2 → /2, and the
+# /blog/mappa/* map views merged into the category pages. Old URLs are
+# indexed and linked from outside: 301 them to their new homes.
+
+[[redirects]]
+  from = "/blog"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/mappa"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/blog/mappa/*"
+  to = "/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/:splat"
+  status = 301
+
+# Portfolio page 1 used to live at /portfolio/1 (master redirected
+# /portfolio there); the redesign inverts it: page 1 is /portfolio.
+[[redirects]]
+  from = "/portfolio/1"
+  to = "/portfolio"
+  status = 301
+
+# ── Cache headers ──────────────────────────────────────────────────────
+# Astro-generated assets have content hashes in filenames — cache forever
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# GPX files rarely change — cache for 7 days
+[[headers]]
+  for = "/gpx/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Public images (og, favicon, etc.) — rarely change
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
