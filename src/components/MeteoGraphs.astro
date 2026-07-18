@@ -98,6 +98,8 @@ const { day } = Astro.props;
 
 <script>
   // @ts-nocheck
+  import { resolveColorVar } from "../lib/dom.js";
+
   function setupMeteoGraphs() {
     const section = document.querySelector(".meteo-graphs");
     if (!section || section.dataset.graphsBound) return;
@@ -105,17 +107,6 @@ const { day } = Astro.props;
 
     let charts = [];
     let ChartLib = null;
-
-    // light-dark()/color-mix() variables aren't canvas-parseable: resolve
-    // them through a probe element's computed color (same trick as PostGpx).
-    function resolveColorVar(name) {
-      const probe = document.createElement("div");
-      probe.style.color = `var(${name})`;
-      document.documentElement.appendChild(probe);
-      const value = getComputedStyle(probe).color;
-      probe.remove();
-      return value;
-    }
 
     function themeColors() {
       return {
@@ -356,9 +347,11 @@ const { day } = Astro.props;
       });
     }
 
+    // Single column on mobile: a wide ratio would look stretched. Charts
+    // are rebuilt when this flips (listener registered in load()).
+    const mobile = window.matchMedia("(max-width: 40rem)");
+
     function weekChart(canvas, colors, dataset) {
-      // Single column on mobile: a wide ratio would look stretched.
-      const mobile = window.matchMedia("(max-width: 40rem)");
       const labels = dataset.map((point) => point.x);
       return new ChartLib.Chart(canvas.getContext("2d"), {
         type: "line",
@@ -441,11 +434,13 @@ const { day } = Astro.props;
       init();
 
       // Colors are resolved at draw time: redraw when the theme flips,
-      // whether via the OS or the footer theme select.
+      // whether via the OS or the footer theme select. Redraw also when
+      // crossing the mobile breakpoint so the week chart's ratio updates.
       window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", init);
       document.addEventListener("theme-change", init);
+      mobile.addEventListener("change", init);
     }
 
     const observer = new IntersectionObserver(

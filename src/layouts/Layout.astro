@@ -2,7 +2,8 @@
 import { Font } from "astro:assets";
 import CssReset from "../components/CssReset.astro";
 import GlobalStyles from "../components/GlobalStyles.astro";
-import { prodSiteUrl } from "../constants";
+import PrintStyles from "../components/PrintStyles.astro";
+import { prodSiteUrl, THEME_STORAGE_KEY } from "../constants";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
@@ -14,26 +15,47 @@ const hasAside = Astro.slots.has("aside");
 <!doctype html>
 <html lang="it" id="top">
   <head>
-    <Font cssVariable="--base-font" />
+    <Font cssVariable="--base-font" preload />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="apple-mobile-web-app-title" content="Signalkuppe" />
     <meta name="color-scheme" content="light dark" />
-    <script is:inline>
+    <script is:inline define:vars={{ THEME_STORAGE_KEY }}>
       // Apply the saved theme choice before first paint so a visitor who
       // overrode the OS preference never sees the wrong theme flash.
       // The whole theming system rides on color-scheme + light-dark() vars.
       (() => {
-        const theme = localStorage.getItem("theme");
+        const theme = localStorage.getItem(THEME_STORAGE_KEY);
         if (theme === "light" || theme === "dark") {
           document.documentElement.style.colorScheme = theme;
+          // hook for non-color theme CSS (light-dark() is colors-only)
+          document.documentElement.dataset.theme = theme;
         }
       })();
     </script>
-    <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      href="/images/favicon-light.ico"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/images/favicon-dark.ico"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="og:title" content={title} />
@@ -51,6 +73,7 @@ const hasAside = Astro.slots.has("aside");
     <slot name="head" />
     <CssReset />
     <GlobalStyles />
+    <PrintStyles />
   </head>
   <body>
     <a href="#main" class="skip-link">Vai al contenuto</a>
@@ -60,7 +83,9 @@ const hasAside = Astro.slots.has("aside");
       </header>
 
       <div class:list={["wrapper", { "with-aside": hasAside }]}>
-        <main id="main" tabindex="-1">
+        <!-- skip-link target: browsers move the sequential focus starting
+             point to fragment targets, no tabindex needed -->
+        <main id="main">
           <slot />
         </main>
         <aside>

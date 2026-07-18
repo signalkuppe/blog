@@ -290,7 +290,6 @@ export default async function weatherlink() {
 }
 
 async function fetchCurrentData() {
-  console.log("Feching current data");
   const response = await fetch(
     `https://api.weatherlink.com/v2/current/${STATION_ID}?api-key=${API_KEY}`,
     {
@@ -326,10 +325,6 @@ async function fetchHistoricDataCached(startTimeStamp, endTimeStamp) {
 }
 
 async function fetchHistoricData(startTimeStamp, endTimeStamp) {
-  console.log("Feching historical data", {
-    start: startTimeStamp,
-    end: endTimeStamp,
-  });
   const response = await fetch(
     `https://api.weatherlink.com/v2/historic/${STATION_ID}?api-key=${API_KEY}&start-timestamp=${startTimeStamp}&end-timestamp=${endTimeStamp}`,
     {

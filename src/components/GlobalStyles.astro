@@ -65,12 +65,6 @@
     outline: auto !important;
   }
 
-  /* the skip-link target: focus lands here programmatically,
-     a ring around the whole content column would be noise */
-  main:focus-visible {
-    outline: none !important;
-  }
-
   img {
     max-width: 100%;
     height: auto;
@@ -98,7 +92,7 @@
   h1,
   h2,
   h3 {
-    font-weight: 900;
+    font-weight: 800;
     line-height: 1.25;
   }
 
@@ -150,7 +144,7 @@
 
   summary {
     cursor: pointer;
-    font-weight: 900;
+    font-weight: 800;
   }
 
   details:open > summary {
@@ -177,7 +171,7 @@
 
   dt {
     grid-column: 1;
-    font-weight: 900;
+    font-weight: 800;
   }
 
   dd {
@@ -187,11 +181,18 @@
 
   label {
     display: block;
-    font-weight: 900;
+    font-weight: 800;
     margin-bottom: 0.25rem;
   }
 
   /* 13. utilities */
+
+  /* the hidden attribute hides via the UA stylesheet, which any author
+     display (e.g. .theme-toggle's flex) silently overrides — make it
+     unconditional */
+  [hidden] {
+    display: none !important;
+  }
 
   .visually-hidden {
     clip: rect(0 0 0 0);

@@ -3,36 +3,23 @@
 // the icons cost zero HTTP requests. The source files all use id="a", "b", …
 // for their gradients, which collide when several icons share a document, so
 // ids are namespaced with the icon file name.
+import { WEATHER_ICON_FILES } from "../lib/weatherIcons";
+
 const files = import.meta.glob("../assets/weather-icons/*.svg", {
   query: "?raw",
   import: "default",
   eager: true,
 });
 
-// forecast.js icon key → [day file, night file]
-const ICON_FILES = {
-  clear: ["clear-day", "clear-night"],
-  "mostly-clear": ["partly-cloudy-day", "partly-cloudy-night"],
-  "partly-cloudy": ["overcast-day", "overcast-night"],
-  cloudy: ["overcast", "overcast"],
-  fog: ["fog-day", "fog-night"],
-  drizzle: ["drizzle", "drizzle"],
-  rain: ["rain", "rain"],
-  "freezing-rain": ["sleet", "sleet"],
-  snow: ["snow", "snow"],
-  showers: ["partly-cloudy-day-rain", "partly-cloudy-night-rain"],
-  "snow-showers": ["partly-cloudy-day-snow", "partly-cloudy-night-snow"],
-  thunderstorm: ["thunderstorms-day-rain", "thunderstorms-night-rain"],
-  "thunderstorm-hail": ["hail", "hail"],
-};
-
 const { icon, isDay = true, size = 64, label } = Astro.props;
-const name = (ICON_FILES[icon] ?? ICON_FILES.cloudy)[isDay ? 0 : 1];
+const name = (WEATHER_ICON_FILES[icon] ?? WEATHER_ICON_FILES.cloudy)[
+  isDay ? 0 : 1
+];
 
 const svg = files[`../assets/weather-icons/${name}.svg`]
-  .replaceAll(/id="([a-z0-9]+)"/g, `id="${name}-$1"`)
-  .replaceAll(/url\(#([a-z0-9]+)\)/g, `url(#${name}-$1)`)
-  .replaceAll(/href="#([a-z0-9]+)"/g, `href="#${name}-$1"`)
+  .replaceAll(/id="([\w-]+)"/g, `id="${name}-$1"`)
+  .replaceAll(/url\(#([\w-]+)\)/g, `url(#${name}-$1)`)
+  .replaceAll(/href="#([\w-]+)"/g, `href="#${name}-$1"`)
   .replace(
     "<svg ",
     `<svg width="${size}" height="${size}" ${

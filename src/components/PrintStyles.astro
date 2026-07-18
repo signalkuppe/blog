@@ -1,0 +1,59 @@
+<!-- Ink-friendly print output, adapted from the old site's print styles:
+     posts print as clean text (system font, black on white) with the site
+     chrome, galleries, maps and pagers hidden. -->
+<style is:global>
+  @media print {
+    @page {
+      margin: 1.5cm;
+    }
+
+    html,
+    body {
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif;
+      color: black;
+      background: white;
+      font-size: 6pt;
+      line-height: 1.5;
+    }
+
+    /* hide the site chrome and interactive-only elements */
+    .container > header,
+    .container > footer,
+    .skip-link,
+    .breadcrumb,
+    .post-aside,
+    .wrapper aside,
+    dialog,
+    button,
+    form,
+    img,
+    canvas {
+      display: none !important;
+    }
+
+    .container,
+    .wrapper,
+    main {
+      display: block;
+      max-width: 16cm;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 9pt;
+    }
+
+    h2,
+    h3 {
+      font-size: 7pt;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+</style>

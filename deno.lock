@@ -15,6 +15,7 @@
         "npm:@astrojs/mdx@^7.0.1",
         "npm:@astrojs/netlify@^8.1.0",
         "npm:@astrojs/rss@^4.0.19",
+        "npm:@astrojs/sitemap@^3.7.3",
         "npm:astro@^7.0.5",
         "npm:chart.js@^4.5.1",
         "npm:dayjs@^1.11.21",

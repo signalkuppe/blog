@@ -19,7 +19,7 @@ import Layout from "../layouts/Layout.astro";
     </label>
 
     <div>
-      <label for="email" slot="label">Email</label>
+      <label for="email">Email</label>
       <input
         id="email"
         required
@@ -27,11 +27,10 @@ import Layout from "../layouts/Layout.astro";
         type="email"
         autocapitalize="off"
         placeholder="es: info@miaemail.it"
-        slot="input"
       />
     </div>
     <div>
-      <label for="message" slot="label">Messaggio</label>
+      <label for="message">Messaggio</label>
       <textarea
         required
         id="message"
@@ -41,8 +40,7 @@ import Layout from "../layouts/Layout.astro";
         autocomplete="off"
         autocapitalize="off"
         rows="5"
-        cols="50"
-        slot="input"></textarea>
+        cols="50"></textarea>
     </div>
     <div>
       <label>
@@ -60,5 +58,21 @@ import Layout from "../layouts/Layout.astro";
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
+    max-width: 40rem;
+  }
+
+  form > div {
+    width: 100%;
+  }
+
+  input[type="email"],
+  textarea {
+    width: 100%;
+  }
+
+  /* rows/cols are only fallback hints; CSS owns the width, and vertical-only
+     resize keeps the textarea from being dragged out of the layout */
+  textarea {
+    resize: vertical;
   }
 </style>

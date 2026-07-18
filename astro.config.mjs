@@ -24,7 +24,7 @@ export default defineConfig({
     }),
   ],
   build: {
-    inlineStylesheets: "always",
+    inlineStylesheets: "auto",
   },
   vite: {
     server: {
@@ -36,9 +36,13 @@ export default defineConfig({
       provider: fontProviders.fontsource(),
       name: "JetBrains Mono",
       cssVariable: "--base-font",
-      weights: ["400 700 900"],
+      // JetBrains Mono tops out at ExtraBold 800 (there is no 900); this
+      // range serves the variable font covering every weight the CSS uses
+      weights: ["400 800"],
       styles: ["normal"],
       subsets: ["latin"],
+      formats: ["woff2"],
+      fallbacks: ["monospace"],
     },
   ],
 });

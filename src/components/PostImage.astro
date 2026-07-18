@@ -13,6 +13,13 @@ const inlineSizes =
 const inlineWidths = [720, 1100, 1400].filter(
   (width) => width <= inlineMaxWidth,
 );
+
+// Only the first content image on the page (usually the LCP) loads eagerly
+// with high priority; the rest lazy-load. Astro.locals is scoped to the
+// single page render, so the counter resets per page.
+const locals = Astro.locals as { postImageCount?: number };
+locals.postImageCount = (locals.postImageCount ?? 0) + 1;
+const isFirst = locals.postImageCount === 1;
 ---
 
 <figure>
@@ -25,7 +32,8 @@ const inlineWidths = [720, 1100, 1400].filter(
       widths={inlineWidths}
       format="webp"
       quality={65}
-      loading="eager"
+      loading={isFirst ? "eager" : "lazy"}
+      fetchpriority={isFirst ? "high" : undefined}
       decoding="async"
     />
   </picture>

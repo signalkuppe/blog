@@ -4,12 +4,16 @@ export const prodSiteUrl = "https://www.signalkuppe.com";
 
 export const siteSlogan = "Parole oltre i 4000m";
 
-export const defaultOgImage = "/og-image.jpg";
+export const defaultOgImage = "/images/og-image.jpg";
 
 export const pageTitleSeparator = "-";
 
 export const paypalDonateUrl =
   "https://www.paypal.com/donate/?hosted_button_id=77MXKAB84XP8L";
+
+// localStorage key for the visitor's light/dark override (read pre-paint in
+// Layout.astro, written by the Footer theme select).
+export const THEME_STORAGE_KEY = "theme";
 
 export const WEATHER_CONSTANTS = {
   TEMPERATURE_UNIT: "°C",

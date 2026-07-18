@@ -54,6 +54,8 @@ let headTitle =
 let headDescription = currentCategory
   ? `Uscite di Matteo Leoni nella categoria ${currentCategory.title}`
   : "Blog personale di Matteo Leoni";
+
+const isHome = !currentCategory && page.currentPage === 1;
 ---
 
 <Layout
@@ -62,6 +64,15 @@ let headDescription = currentCategory
   ogImage={defaultOgImage}
 >
   <h1 class="h2">{pageTitle}</h1>
+  {
+    isHome && (
+      <p class="intro">
+        Mi chiamo <b>Matteo</b> e la montagna è la mia più grande passione.
+        Queste pagine vogliono essere un semplice diario delle mie uscite con la
+        speranza di poter essere utile a chi vorrà seguirle.
+      </p>
+    )
+  }
   <ul class="posts">
     {
       page.data.map((post) => (
@@ -106,12 +117,25 @@ let headDescription = currentCategory
   }
 
   h1 {
+    margin-bottom: 2rem;
+  }
+
+  .intro {
+    max-width: 65ch;
     margin-bottom: 3rem;
+    color: var(--color-subtle);
+    margin-top: 0rem;
+  }
+
+  .intro a {
+    text-decoration: underline;
   }
 
   h2 {
     margin-bottom: 2rem;
-    margin-top: 4.5rem;
+    /* top-align "Categorie" with the content under the page title: the h1
+       is one heading line tall (same .h2 sizing as this h2) + its margin */
+    margin-top: calc(1.1lh + 2rem);
   }
 
   ul {
@@ -133,7 +157,7 @@ let headDescription = currentCategory
   }
 
   ul.categories li a[aria-current="page"] {
-    font-weight: 900;
+    font-weight: 800;
   }
 
   .pager {
@@ -146,6 +170,10 @@ let headDescription = currentCategory
 
   @media (orientation: portrait) {
     h1 {
+      margin-bottom: 1.5rem;
+    }
+
+    .intro {
       margin-bottom: 2rem;
     }
 

@@ -1,6 +1,7 @@
 // 3-day forecast for Concenedo from Open-Meteo (free, no API key).
 // Fetched server-side during the page render; the page's CDN caching means
 // visitors never wait on this call.
+import { WEATHER_ICON_FILES } from "./weatherIcons.js";
 const LATITUDE = 45.942644;
 const LONGITUDE = 9.478628;
 // Station altitude: Open-Meteo corrects temperatures to this height instead
@@ -41,6 +42,13 @@ const WMO_CODES = {
   96: { icon: "thunderstorm-hail", description: "Temporale con grandine" },
   99: { icon: "thunderstorm-hail", description: "Temporale con grandine forte" },
 };
+
+// An emitted icon key must exist in the shared icon map, otherwise
+// WeatherIcon would silently render its fallback.
+function iconFor(code) {
+  const icon = WMO_CODES[code]?.icon;
+  return WEATHER_ICON_FILES[icon] ? icon : "cloudy";
+}
 
 // Module-scope cache: warm invocations within the TTL skip the network call.
 let cache = null;
@@ -95,7 +103,7 @@ export default async function forecast() {
           timeZone: TIMEZONE,
         }).format(new Date(date)),
         weatherCode: code,
-        icon: WMO_CODES[code]?.icon ?? "cloudy",
+        icon: iconFor(code),
         description: WMO_CODES[code]?.description ?? "Variabile",
         temperatureMax: daily.temperature_2m_max[index],
         temperatureMin: daily.temperature_2m_min[index],
@@ -110,7 +118,7 @@ export default async function forecast() {
       ok: true,
       current: {
         weatherCode: currentCode,
-        icon: WMO_CODES[currentCode]?.icon ?? "cloudy",
+        icon: iconFor(currentCode),
         description: WMO_CODES[currentCode]?.description ?? "Variabile",
         isDay: current?.is_day === 1,
       },

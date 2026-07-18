@@ -50,6 +50,7 @@ const ogImg = await getImage({
   title={headPageTitle(post.data.title, siteTitle)}
   description={post.data.description}
   ogImage={ogImg.src}
+  ogType="article"
 >
   <article>
     <nav class="breadcrumb" aria-label="Percorso di navigazione">
@@ -219,7 +220,7 @@ const ogImg = await getImage({
 
     .post-pager span {
       display: block;
-      font-weight: 900;
+      font-weight: 800;
     }
 
     .post-pager a {

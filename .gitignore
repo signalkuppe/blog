@@ -29,6 +29,7 @@ pnpm-debug.log*
 
 .agents/
 .claude/
+CLAUDE.md
 skills-lock.json
 .playwright-mcp/
 .husky/
