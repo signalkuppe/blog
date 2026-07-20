@@ -1,15 +1,9 @@
 ---
-let { time, label, labelAbbr, value, valueColor, unit } = Astro.props;
+// valueColor is any CSS color, typically one of the --color-*-value tokens
+// defined in GlobalStyles (e.g. "var(--color-min-value)").
+const { time, label, labelAbbr, value, valueColor, unit } = Astro.props;
 
-let valueColorStyle;
-
-if (typeof valueColor === "string") {
-  valueColorStyle = `color: ${valueColor}`;
-}
-// light-dark
-if (typeof valueColor === "object") {
-  valueColorStyle = `color: light-dark(${valueColor.light}, ${valueColor.dark})`;
-}
+const valueColorStyle = valueColor ? `color: ${valueColor}` : undefined;
 ---
 
 <div class="container">
@@ -42,7 +36,7 @@ if (typeof valueColor === "object") {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: var(--font-bold);
+    font-weight: 700;
     font-size: 0.7rem;
   }
 
@@ -79,7 +73,3 @@ if (typeof valueColor === "object") {
     display: block;
   }
 </style>
-
-<script>
-  //@ts-nocheck
-</script>

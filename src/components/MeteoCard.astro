@@ -1,5 +1,9 @@
 ---
-import InfoIcon from "../icons/Info.svg";
+// A single weather-data card: title, big current value, two footer rows.
+// The optional "tooltip" slot renders as a native popover (Popover API,
+// no JS): anchored under the ⓘ button where CSS anchor positioning is
+// supported, centered in the viewport (UA default) elsewhere.
+import InfoIcon from "../assets/icons/Info.svg";
 const { title } = Astro.props;
 const _id =
   globalThis.crypto?.randomUUID?.() ??
@@ -13,17 +17,21 @@ const _id =
       Astro.slots.has("tooltip") && (
         <>
           <button
-            class="tooltip-trigger"
-            aria-controls={`tooltip-${_id}`}
-            aria-expanded="false"
+            type="button"
+            class="info-trigger"
+            popovertarget={`info-${_id}`}
+            style={`anchor-name: --info-${_id}`}
           >
             <span class="visually-hidden">Cos'è questa grandezza?</span>
-            <InfoIcon aria-hidden="true" width="20" />
+            <InfoIcon aria-hidden="true" width="16" />
           </button>
-          <div class="tooltip" role="tooltip" id={`tooltip-${_id}`}>
-            <div class="tooltip-text">
-              <slot name="tooltip" />
-            </div>
+          <div
+            class="info-popover"
+            popover
+            id={`info-${_id}`}
+            style={`position-anchor: --info-${_id}`}
+          >
+            <slot name="tooltip" />
           </div>
         </>
       )
@@ -51,16 +59,12 @@ const _id =
 
 <style media="screen">
   article {
-    --headerFooterPadding: 0.8rem 1rem;
-    --tooltipBg: black;
-    --tooltipColor: white;
-    font-family: var(--fontFamilyMono);
-    background: var(--surfaceAccent);
-    border-radius: 15px;
+    --headerFooterPadding: 1rem;
     font-size: 0.75rem;
     display: flex;
     flex-direction: column;
     height: 100%;
+    background: var(--color-weather-card-bg);
   }
 
   header {
@@ -72,11 +76,11 @@ const _id =
 
   h3 {
     line-height: 1;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
+    margin: 0;
   }
 
   .body {
-    background: var(--surface);
     height: 100px;
     display: flex;
     flex-direction: column;
@@ -84,19 +88,16 @@ const _id =
     justify-content: center;
     gap: 0.35em;
     padding: 1rem;
-    border-left: 2px solid var(--surfaceAccent);
-    border-right: 2px solid var(--surfaceAccent);
   }
 
   .value {
-    font-weight: var(--font-bold);
-    font-size: 1.25rem;
+    font-weight: 800;
+    font-size: 1.5rem;
     line-height: 1;
-    color: var(--textAccent);
   }
 
   .subvalue {
-    font-size: 0.5rem;
+    font-size: 0.65rem;
     line-height: 1;
   }
 
@@ -104,91 +105,59 @@ const _id =
     display: flex;
     flex-direction: column;
     padding: var(--headerFooterPadding);
+    color: var(--color-subtle);
   }
 
-  .tooltip {
-    display: none;
-    font-family: var(--fontFamily);
-    background: var(--tooltipBg);
-    color: var(--tooltipColor);
+  .info-trigger {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    margin: -0.25rem;
+    display: inline-flex;
+    color: inherit;
+    cursor: pointer;
+    color: var(--color-subtle);
+  }
+
+  .info-trigger:active {
+    transform: none;
+  }
+
+  .info-popover {
+    border: 1px solid var(--color-subtle);
+    background: var(--color-bg);
+    color: var(--color-text);
     padding: 1rem;
-    border-radius: 4px;
-    width: max-content;
-    position: absolute;
     max-width: 320px;
-    z-index: 2;
-  }
-
-  .tooltip-trigger {
-    color: var(--text);
-  }
-
-  .tooltip-trigger[aria-expanded="true"] + .tooltip {
-    display: block;
-  }
-
-  .tooltip-text {
     font-size: 0.75rem;
-    color: var(--text);
-    text-wrap: balance;
+    line-height: 1.6;
   }
 
-  .tooltip-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  .info-popover::backdrop {
+    background: rgba(0, 0, 0, 0.35);
   }
 
-  .tooltip-text strong {
-    color: var(--textAccent);
+  .info-popover :global(p) {
+    margin-bottom: 0.75rem;
+  }
+
+  .info-popover :global(p:last-child),
+  .info-popover :global(ul:last-child) {
+    margin-bottom: 0;
+  }
+
+  /* Anchor the popover under its ⓘ button where supported; elsewhere the
+     UA default (viewport-centered) applies, which is fine on mobile too. */
+  @supports (anchor-name: --a) {
+    .info-popover {
+      margin: 0.5rem 0 0;
+      inset: auto;
+      position-area: block-end span-inline-start;
+      position-try-fallbacks: flip-block, flip-inline;
+    }
+
+    .info-popover::backdrop {
+      background: none;
+    }
   }
 </style>
-
-<script>
-  //@ts-nocheck
-  import {
-    computePosition,
-    offset,
-    arrow,
-    flip,
-    shift,
-    autoPlacement,
-  } from "@floating-ui/dom";
-  const buttons = document.querySelectorAll(".tooltip-trigger");
-
-  function update(button, tooltip) {
-    computePosition(button, tooltip, {
-      placement: "bottom",
-      middleware: [offset(16), flip(), shift(5)],
-    }).then(({ x, y, placement, middlewareData }) => {
-      Object.assign(tooltip.style, {
-        left: `${x}px`,
-        top: `${y}px`,
-      });
-    });
-  }
-
-  function showTooltip(button) {
-    button.setAttribute("aria-expanded", "true");
-    const tooltip = button.nextElementSibling;
-    tooltip.style.display = "block";
-    update(button, tooltip);
-  }
-
-  function hideTooltip(button) {
-    const tooltip = button.nextElementSibling;
-    tooltip.style.display = "none";
-    button.setAttribute("aria-expanded", "false");
-  }
-
-  [
-    ["mouseenter", (button) => showTooltip(button)],
-    ["mouseleave", (button) => hideTooltip(button)],
-    ["focus", (button) => showTooltip(button)],
-    ["blur", (button) => hideTooltip(button)],
-  ].forEach(([event, listener]) => {
-    buttons.forEach((button) =>
-      button.addEventListener(event, () => listener(button)),
-    );
-  });
-</script>

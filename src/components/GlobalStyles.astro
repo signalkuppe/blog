@@ -1,312 +1,229 @@
-<style is:global is:inline media="screen">
-  @font-face {
-    font-family: "Fira Sans";
-    src: url("/fonts/fira-sans-400.woff2") format("woff2");
-    font-weight: 400;
-    font-display: optional;
-  }
-
-  @font-face {
-    font-family: "Fira Sans";
-    src: url("/fonts/fira-sans-700.woff2") format("woff2");
-    font-weight: 700;
-    font-display: optional;
-  }
-
-  @font-face {
-    font-family: "Fira Sans";
-    src: url("/fonts/fira-sans-800.woff2") format("woff2");
-    font-weight: 800;
-    font-display: optional;
-  }
-
-  @font-face {
-    font-family: "Martian Mono";
-    font-style: normal;
-    font-weight: 600;
-    font-stretch: 100%;
-    font-display: optional;
-    src: url("/fonts/MartianMono.woff2") format("woff2");
-    unicode-range:
-      U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-      U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-      U+2212, U+2215, U+FEFF, U+FFFD;
-  }
+<style is:global>
+  /* 11. variables */
 
   :root {
-    color-scheme: dark;
-    --fontFamily:
-      "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-    --fontFamilyMono:
-      "Martian Mono", ui-monospace, Menlo, Monaco, "Cascadia Mono",
-      "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono",
-      "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Consolas",
-      "Courier New", monospace;
-    --font-bold: 700;
-    --font-bolder: 800;
-    --hue: 210;
-    --saturation: 50%;
-    --accent: hsl(var(--hue) 70% 35%);
-    --accentHover: hsl(var(--hue) 100% 20%);
-    --accentContrastColor: hsl(var(--hue) 100% 100%);
-    --text: hsl(var(--hue) calc(var(--saturation) / 4) 75%);
-    --textAccent: hsl(var(--hue) var(--saturation) 100%);
-    --surface: hsl(var(--hue) var(--saturation) 2.5%);
-    --surfaceAccent: hsl(var(--hue) var(--saturation) 15%);
-    --focusOutlineWidth: 3px;
+    color-scheme: light dark;
+    --color-bg: light-dark(#f8f9fa, #1e1e1e);
+    --color-text: light-dark(#2c3e50, #e2e8f0);
+    --color-subtle: light-dark(
+      color-mix(in oklab, currentColor, white 25%),
+      color-mix(in oklab, currentColor, black 25%)
+    );
+    --color-buttons: light-dark(#e9ecef, #2c2c2c);
+    --color-input-bg: light-dark(#fff, #2c2c2c);
+    --color-map-marker: red;
+    --color-graph-grid: color-mix(in oklab, currentColor 10%, transparent);
+    --color-graph-line: #1082e8;
+    --color-weather-card-bg: light-dark(
+      color-mix(in oklab, var(--color-bg), black 2.5%),
+      color-mix(in oklab, var(--color-bg), black 10%)
+    );
+    --color-weather-graph-alt-line: orange;
+    --color-weather-min-value: #1082e8;
+    --color-weather-max-value: red;
+    --color-weather-alt-value: #f300ff;
+    --color-weather-alt-value-2: light-dark(#0b9918, #00ff00);
+    --color-weather-pie-1: #36a2eb;
+    --color-weather-pie-2: #ff6384;
+    --color-weather-pie-3: #ff9f40;
+    --color-weather-pie-4: #ffcd56;
+    --color-weather-pie-5: #4bc0c0;
+    --color-weather-pie-6: #9966ff;
+    --color-weather-pie-7: #c9cbcf;
+    --color-weather-pie-8: #7acbf9;
   }
 
-  html[data-theme="dark"] {
-    color-scheme: dark;
-  }
+  /* 12. base styles */
 
-  html[data-theme="light"] {
-    color-scheme: light;
-    --saturation: 0%;
-    --text: hsl(var(--hue) calc(var(--saturation) / 4) 30%);
-    --textAccent: hsl(var(--hue) var(--saturation) 10%);
-    --surface: hsl(var(--hue) var(--saturation) 98%);
-    --surfaceAccent: hsl(var(--hue) var(--saturation) 88%);
+  @view-transition {
+    navigation: auto;
   }
 
   html {
-    background-color: var(--surface);
-    color: var(--text);
-    transition: background-color 0.2s ease-in-out;
+    font-family: var(--base-font); /** defined in astro config */
+    font-size: 100%;
+    line-height: 1.5;
+    scrollbar-gutter: stable;
+    color: var(--color-text);
+    background-color: var(--color-bg);
   }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
+  body {
+    font-size: 1rem;
+    line-height: 1.85;
   }
 
-  *:not(:focus-visible) {
-    outline: none;
+  a {
+    color: inherit;
   }
 
   :focus-visible {
-    outline: var(--focusOutlineWidth) solid var(--accent);
-    outline-offset: var(--focusOutlineWidth);
-  }
-
-  img,
-  picture,
-  video,
-  canvas,
-  svg {
-    display: block;
-    max-width: 100%;
-  }
-  input,
-  button,
-  textarea,
-  select {
-    font: inherit;
-    font-size: 100%;
-    accent-color: var(--accent);
-  }
-
-  input,
-  textarea,
-  select,
-  label,
-  a {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    color: var(--text);
-  }
-
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    border-radius: 50px;
-    border: none;
-    background: var(--surfaceAccent);
-    padding: 0.5rem 1rem;
-  }
-
-  textarea {
-    border-radius: 25px;
-  }
-
-  ::placeholder {
-    font-size: 0.8rem;
-  }
-
-  input[type="radio"] {
-    height: 1em;
-    width: 1em;
-  }
-
-  a {
-    text-decoration-thickness: 0.1em;
-    text-underline-offset: 0.2em;
-    font-weight: var(--font-bold);
-    color: var(--textAccent);
-  }
-
-  a:hover,
-  a:focus-visible {
-    color: var(--textAccent);
-  }
-
-  button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-  }
-
-  label input[type="radio"] {
-    transform: translateY(-0.1em);
-  }
-
-  label:has(input[type="radio"]) {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    overflow-wrap: break-word;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    line-height: 1.1;
-    font-weight: var(--font-bolder);
-  }
-
-  legend,
-  label,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--textAccent);
+    /* auto = the browser's native focus ring; !important so focus can
+       never be suppressed by all:unset resets (e.g. Footer and
+       PostGallery buttons), whose expanded outline:unset otherwise
+       wins on specificity */
+    outline: auto !important;
   }
 
   img {
     max-width: 100%;
     height: auto;
-    display: block;
+    background-color: color-mix(in oklab, currentColor 5%, currentColor 2%);
   }
 
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  p {
+    margin-bottom: 2rem;
   }
 
-  html {
-    height: 100%;
-    font-size: 100%;
-    scrollbar-gutter: stable;
-    overflow-y: scroll;
+  a:hover {
+    color: var(--color-subtle);
   }
 
-  html {
-    font-size: 100%;
+  input,
+  textarea,
+  select {
+    padding: 0.25rem 0.5rem;
+    border-color: currentColor;
+    border-width: 1px;
+    border-style: solid;
+    background-color: var(--color-input-bg);
   }
 
-  @media screen and (min-width: 100rem) {
-    html {
-      font-size: 125%;
-    }
+  h1,
+  h2,
+  h3 {
+    font-weight: 800;
+    line-height: 1.25;
   }
 
-  body {
-    font-family: var(--fontFamily);
-    line-height: 1.65;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-feature-settings:
-      "kern" 1,
-      "liga" 1,
-      "calt" 1;
+  h1 {
+    font-size: 1.5rem;
+    margin-top: 0rem;
+    margin-bottom: 1.5rem;
   }
 
-  .visually-hidden:not(:focus-visible):not(:active) {
-    position: absolute;
-    top: auto;
-    overflow: hidden;
-    clip: rect(1px 1px 1px 1px); /* IE 6/7 */
-    clip: rect(1px, 1px, 1px, 1px);
-    width: 1px;
-    height: 1px;
-    white-space: nowrap;
-  }
-  .visually-hidden:focus-visible {
-    position: absolute;
+  h2,
+  .h2 {
+    margin-top: 0rem;
+    margin-bottom: 0.85rem;
+    font-size: 1.125rem;
   }
 
-  .hidden {
-    display: none;
+  figure {
+    margin-bottom: 2rem;
   }
 
-  .cage {
-    margin-inline: auto;
-    max-width: 85rem;
-    padding-inline: 1.5rem;
+  figcaption,
+  .caption {
+    font-size: 0.85rem;
+    color: var(--color-subtle);
   }
 
-  @media screen and (min-width: 40rem) {
-    .cage {
-      padding-inline: 2rem;
-    }
+  figure figcaption {
+    margin-top: 0.5rem;
   }
 
-  @media screen and (min-width: 50rem) {
-    .cage {
-      padding-inline: 3rem;
-    }
+  button {
+    appearance: none;
+    background-color: var(--color-buttons);
+    color: inherit;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid currentColor;
+    border-radius: 0;
   }
 
-  .btn {
+  button:disabled {
+    background-color: color-mix(in oklab, currentColor 15%, transparent);
+    border-color: color-mix(in oklab, currentColor 15%, transparent);
+    cursor: not-allowed;
+  }
+
+  button:active {
+    transform: translate(1px, 1px);
+  }
+
+  summary {
     cursor: pointer;
-    border: none;
-    background: var(--accent);
-    text-decoration: none;
-    padding: 1rem 1.5rem;
-    border-radius: 50px;
-    font-size: 90%;
-    font-weight: var(--font-bold);
-    color: var(--accentContrastColor);
-    line-height: 1;
+    font-weight: 800;
   }
 
-  .btn:disabled {
-    opacity: 0.5;
+  details:open > summary {
+    margin-bottom: 1rem;
   }
 
-  .btn:hover {
-    background: var(--accentHover);
+  dialog {
+    border: 2px solid var(--color-subtle);
+    overscroll-behavior: contain;
+    /* the UA default is Canvas, which is browser-specific */
+    background-color: var(--color-bg);
   }
 
-  .hide-scrollbars {
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    scrollbar-width: none; /* Firefox */
-  }
-  .hide-scrollbars::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+  dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.85);
   }
 
-  .print-only {
-    display: none;
+  dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.25rem 1.5rem;
+    margin: 0;
+  }
+
+  dt {
+    grid-column: 1;
+    font-weight: 800;
+  }
+
+  dd {
+    grid-column: 2;
+    margin: 0;
+  }
+
+  label {
+    display: block;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+  }
+
+  /* 13. utilities */
+
+  /* the hidden attribute hides via the UA stylesheet, which any author
+     display (e.g. .theme-toggle's flex) silently overrides — make it
+     unconditional */
+  [hidden] {
+    display: none !important;
+  }
+
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-bg);
+  }
+
+  .skip-link:not(:focus) {
+    /* same recipe as .visually-hidden until keyboard-focused */
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    white-space: nowrap;
   }
 </style>

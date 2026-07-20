@@ -1,6 +1,6 @@
 ---
-import CopyIcon from "../icons/Copy.svg";
-import DownloadIcon from "../icons/Download.svg";
+import CopyIcon from "../assets/icons/Copy.svg";
+import DownloadIcon from "../assets/icons/Download.svg";
 const { title } = Astro.props;
 ---
 
@@ -40,13 +40,12 @@ const { title } = Astro.props;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   h3 {
-    font-size: 0.7rem;
-    font-family: var(--fontFamilyMono);
-    margin-bottom: 0;
+    font-size: 0.85rem;
+    margin: 0;
   }
 
   .graph-actions {
@@ -60,15 +59,17 @@ const { title } = Astro.props;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--textLight, var(--text));
+    background: none;
+    border: none;
+    color: inherit;
     padding: 0.25rem;
-    border-radius: 6px;
+    cursor: pointer;
     transition: color 0.15s ease;
   }
 
   .chart-action:hover,
   .chart-action:focus-visible {
-    color: var(--textAccent);
+    color: var(--color-subtle);
   }
 
   .chart-action svg {
@@ -78,13 +79,11 @@ const { title } = Astro.props;
 
   .copy-feedback {
     position: absolute;
-    top: 0;
-    right: 0;
-    background: var(--accent);
-    color: var(--accentContrastColor);
+    top: 0.5rem;
+    right: 0.5rem;
+    background: var(--color-weather-card-bg);
     font-size: 0.7rem;
     padding: 0.25rem 0.5rem;
-    border-radius: 6px;
     opacity: 0;
     transform: translateY(-0.25rem);
     pointer-events: none;
@@ -100,20 +99,21 @@ const { title } = Astro.props;
 </style>
 
 <script>
+  // @ts-nocheck
   function chartCanvas(button) {
     return button.closest("article")?.querySelector("canvas");
   }
 
   function chartToPngBlob(canvas) {
-    // Paint the chart onto an opaque background so the saved/pasted image isn't transparent.
+    // Paint the chart onto an opaque background so the saved/pasted image
+    // isn't transparent. The page background is resolved (light-dark() vars
+    // aren't canvas-parseable) from the computed <html> style.
     const out = document.createElement("canvas");
     out.width = canvas.width;
     out.height = canvas.height;
     const ctx = out.getContext("2d");
     const bg =
-      getComputedStyle(document.documentElement)
-        .getPropertyValue("--surface")
-        .trim() || "#ffffff";
+      getComputedStyle(document.documentElement).backgroundColor || "#ffffff";
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, out.width, out.height);
     ctx.drawImage(canvas, 0, 0);
@@ -156,9 +156,10 @@ const { title } = Astro.props;
         const article = button.closest("article");
         if (!canvas) return;
         try {
-          // Pass a Promise<Blob> to ClipboardItem and call write() synchronously
-          // inside the click — Safari/iOS loses the user-gesture context (and
-          // rejects the write) if you await the blob first.
+          // Pass a Promise<Blob> to ClipboardItem and call write()
+          // synchronously inside the click — Safari/iOS loses the
+          // user-gesture context (and rejects the write) if you await
+          // the blob first.
           await navigator.clipboard.write([
             new ClipboardItem({ "image/png": chartToPngBlob(canvas) }),
           ]);
@@ -199,5 +200,4 @@ const { title } = Astro.props;
   }
 
   setupChartActions();
-  document.addEventListener("astro:page-load", setupChartActions);
 </script>

@@ -1,0 +1,124 @@
+---
+import { getCollection } from "astro:content";
+import { siteSlogan, defaultOgImage } from "../constants";
+import { headPageTitle } from "../lib/utils";
+import Layout from "../layouts/Layout.astro";
+import PostCard from "../components/PostCard.astro";
+
+export const prerender = false;
+
+const MIN_QUERY_LENGTH = 3;
+const MAX_RESULTS = 50;
+
+const query = Astro.url.searchParams.get("search")?.trim() ?? "";
+
+// Case- and accent-insensitive matching (e.g. "cevedale" finds "Cévedale")
+const normalize = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+
+let results = [];
+
+if (query.length >= MIN_QUERY_LENGTH) {
+  const needle = normalize(query);
+  const posts = await getCollection("posts");
+
+  results = posts
+    .map((post) => {
+      let score = 0;
+      if (normalize(post.data.title).includes(needle)) score += 100;
+      if (post.data.tags?.some((tag) => normalize(tag).includes(needle)))
+        score += 50;
+      if (normalize(post.data.description).includes(needle)) score += 25;
+      return { post, score };
+    })
+    .filter(({ score }) => score > 0)
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        b.post.data.date.getTime() - a.post.data.date.getTime(),
+    )
+    .slice(0, MAX_RESULTS)
+    .map(({ post }) => post);
+}
+
+// Results only change on deploy: let Netlify's CDN cache each query URL
+Astro.response.headers.set(
+  "Netlify-CDN-Cache-Control",
+  "public, s-maxage=3600, stale-while-revalidate=86400",
+);
+
+const hasQuery = query.length >= MIN_QUERY_LENGTH;
+---
+
+<Layout
+  title={headPageTitle("Cerca", siteSlogan)}
+  description="Cerca un’uscita sul blog"
+  ogImage={defaultOgImage}
+>
+  <meta slot="head" name="robots" content="noindex" />
+
+  <h1 class="h2">
+    {
+      hasQuery ? (
+        <>
+          Risultati per <mark>“{query}”</mark>
+        </>
+      ) : (
+        "Cerca un’uscita"
+      )
+    }
+  </h1>
+
+  {
+    hasQuery ? (
+      results.length > 0 ? (
+        <>
+          <p class="results-count">
+            {results.length === 1
+              ? "1 uscita trovata"
+              : `${results.length} uscite trovate`}
+          </p>
+          <ul class="posts">
+            {results.map((post) => (
+              <li>
+                <PostCard post={post} />
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p class="results-count">Nessun risultato</p>
+      )
+    ) : (
+      <p class="results-count">
+        Digita almeno {MIN_QUERY_LENGTH} caratteri per cercare
+      </p>
+    )
+  }
+</Layout>
+
+<style>
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  form {
+    margin-bottom: 3rem;
+  }
+
+  .results-count {
+    margin-bottom: 2rem;
+  }
+
+  ul.posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+</style>

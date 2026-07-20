@@ -1,0 +1,190 @@
+---
+import { getCollection } from "astro:content";
+import {
+  categories,
+  defaultOgImage,
+  siteTitle,
+  siteSlogan,
+} from "../../constants";
+import { headPageTitle } from "../../lib/utils";
+import Layout from "../../layouts/Layout.astro";
+import Pager from "../../components/Pager.astro";
+import PostCard from "../../components/PostCard.astro";
+import PostsMap from "../../components/PostsMap.astro";
+
+interface Props {
+  page: any;
+}
+
+const { page } = Astro.props;
+const { category } = Astro.params;
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await getCollection("posts");
+  posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return [undefined, ...categories].flatMap((cat) => {
+    const filteredPosts = posts.filter((post) => {
+      return cat ? post.data.category[0] === cat.title : true;
+    });
+    const output = filteredPosts.map((p) => ({
+      ...p,
+      postsCount: filteredPosts.length,
+    }));
+
+    return paginate(output, {
+      params: { category: cat?.slug },
+      pageSize: 12,
+    });
+  });
+}
+
+const currentCategory = category
+  ? categories.find((c) => c.slug === category)
+  : undefined;
+const pageSuffix = page.currentPage > 1 ? `, pagina ${page.currentPage}` : "";
+
+let pageTitle = (currentCategory?.title ?? "Ultime uscite") + pageSuffix;
+
+let headTitle =
+  currentCategory || pageSuffix
+    ? `${pageTitle} - ${siteTitle}`
+    : headPageTitle(siteTitle, siteSlogan);
+
+let headDescription = currentCategory
+  ? `Uscite di Matteo Leoni nella categoria ${currentCategory.title}`
+  : "Blog personale di Matteo Leoni";
+
+const isHome = !currentCategory && page.currentPage === 1;
+---
+
+<Layout
+  title={headTitle}
+  description={headDescription}
+  ogImage={defaultOgImage}
+>
+  <h1 class="h2">{pageTitle}</h1>
+  {
+    isHome && (
+      <p class="intro">
+        Mi chiamo <b>Matteo</b> e la montagna è la mia più grande passione.
+        Queste pagine vogliono essere un semplice diario delle mie uscite con la
+        speranza di poter essere utile a chi vorrà seguirle.
+      </p>
+    )
+  }
+  <ul class="posts">
+    {
+      page.data.map((post) => (
+        <li>
+          <PostCard post={post} />
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="pager">
+    <Pager page={page} />
+  </div>
+
+  <Fragment slot="aside">
+    <h2>Categorie</h2>
+    <ul class="categories">
+      {
+        categories.map((c) => (
+          <li>
+            <a
+              href={`/${c.slug}`}
+              aria-current={
+                currentCategory?.slug === c.slug ? "page" : undefined
+              }
+            >
+              {c.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="posts-map">
+      <PostsMap />
+    </div>
+  </Fragment>
+</Layout>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  .intro {
+    max-width: 65ch;
+    margin-bottom: 3rem;
+    color: var(--color-subtle);
+    margin-top: 0rem;
+  }
+
+  .intro a {
+    text-decoration: underline;
+  }
+
+  h2 {
+    margin-bottom: 2rem;
+    /* top-align "Categorie" with the content under the page title: the h1
+       is one heading line tall (same .h2 sizing as this h2) + its margin */
+    margin-top: calc(1.1lh + 2rem);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  ul.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  ul.categories li a[aria-current="page"] {
+    font-weight: 800;
+  }
+
+  .pager {
+    margin-top: 6rem;
+  }
+
+  .posts-map {
+    margin-top: 2.5rem;
+  }
+
+  @media (orientation: portrait) {
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+
+    .intro {
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ul.categories {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+</style>

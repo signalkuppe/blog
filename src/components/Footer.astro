@@ -1,182 +1,142 @@
 ---
-import Signature from "./Signature.astro";
-import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher.astro";
-import ArrowUpIcon from "../icons/ArrowUp.svg";
 import {
   newsletterUrl,
   githubUrl,
   instagramUrl,
   stravaUrl,
+  paypalDonateUrl,
 } from "../constants";
 
 const url = Astro.url.pathname;
-const links = [
-  {
-    href: "#sostieni-questo-progetto",
-    text: "Sostieni questo progetto",
-    description: "Fai una donazione",
-    modalTrigger: true,
-  },
-  {
-    href: "/matteo",
-    text: "Conosciamoci meglio",
-    description: "Qualcosa in più su di me e su cosa faccio",
-    prefetch: true,
-  },
-  {
-    href: newsletterUrl,
-    text: "Newsletter",
-    description: "Iscriviti per ricevere le ultime uscite pubblicate",
-  },
-  {
-    href: "/rss.xml",
-    text: "Feed Rss",
-    description:
-      "Iscriviti al mio feed RSS per ricevere gli ultimi aggiornamenti.",
-  },
-  {
-    href: githubUrl,
-    text: "Github",
-    description: "Seguimi su Github",
-  },
-  {
-    href: instagramUrl,
-    text: "Instagram",
-    description: "Il mio canale Instagram",
-  },
-  {
-    href: stravaUrl,
-    text: "Strava",
-    description: "Segui i miei allenamenti su Strava",
-  },
-];
 ---
 
 <nav aria-labelledby="footer-links">
-  <h2 id="footer-links">Link utili</h2>
+  <h2 class="visually-hidden">Link utili</h2>
   <ul role="list">
-    {
-      links.map((link, i) => (
-        <li>
-          {link.modalTrigger ? (
-            <a
-              href={link.href}
-              aria-describedby={`footer-link-${i + 1}`}
-              data-donation-modal-trigger
-            >
-              {link.text}
-            </a>
-          ) : (
-            <a
-              href={link.href}
-              aria-current={url === link.href ? "page" : false}
-              aria-describedby={`footer-link-${i + 1}`}
-              data-astro-prefetch={link.prefetch}
-            >
-              {link.text}
-            </a>
-          )}
-          {link.description && (
-            <p id={`footer-link-${i + 1}`}>{link.description}</p>
-          )}
-        </li>
-      ))
-    }
+    <li><a href="/privacy">Privacy policy</a></li>
+    <li>
+      <button type="button" command="show-modal" commandfor="paypal-dialog"
+        >Sostieni il sito</button
+      >
+    </li>
+    <li>
+      <a href={newsletterUrl}> Newsletter </a>
+    </li>
+    <li>
+      <a href="/rss.xml"> Feed Rss </a>
+    </li>
+    <li>
+      <a href={githubUrl} aria-current={url === githubUrl ? "page" : false}>
+        Github
+      </a>
+    </li>
+    <li>
+      <a
+        href={instagramUrl}
+        aria-current={url === instagramUrl ? "page" : false}
+      >
+        Instagram
+      </a>
+    </li>
+    <li>
+      <a href={stravaUrl} aria-current={url === stravaUrl ? "page" : false}>
+        Strava
+      </a>
+    </li>
   </ul>
 </nav>
+<dialog id="paypal-dialog">
+  <p>
+    Il tuo supporto aiuta a mantenere questo sito online, senza pubblicità e
+    sempre aggiornato.
+  </p>
+  <p>
+    Ogni contributo, anche piccolo, fa davvero la differenza per coprire i costi
+    di gestione e continuare a pubblicare nuovi contenuti.
+  </p>
+  <p>Grazie ancora per il tuo aiuto e per far parte di questa comunita.</p>
+  <div class="modal-footer">
+    <a
+      href={paypalDonateUrl}
+      target="_blank"
+      rel="noopener"
+      class="paypal-link-button"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154.728 190.5">
+        <path
+          fill="#001c64"
+          d="M60.529 38.103a5.49 5.49 0 0 0-5.423 4.633l-9.013 57.15-8.281 52.514-.005.044.01-.044 8.281-52.514c.421-2.669 2.719-4.633 5.42-4.633h26.404c26.573 0 49.127-19.387 53.246-45.658.314-1.996.482-3.973.52-5.924v-.003h-.003c-6.753-3.543-14.683-5.565-23.372-5.565z"
+        ></path>
+        <path
+          fill="#0070e0"
+          d="M131.686 43.669c-.037 1.951-.207 3.93-.52 5.926-4.119 26.271-26.673 45.658-53.246 45.658H51.516c-2.701 0-4.999 1.964-5.42 4.633L37.815 152.4l-5.197 32.947a4.46 4.46 0 0 0 4.405 5.153h28.66a5.49 5.49 0 0 0 5.423-4.633l7.55-47.881c.423-2.669 2.722-4.636 5.423-4.636h16.876c26.573 0 49.124-19.386 53.243-45.655 2.924-18.649-6.46-35.614-22.511-44.026z"
+        ></path>
+        <path
+          fill="#003087"
+          d="M27.967 0a5.49 5.49 0 0 0-5.423 4.636L.055 147.244A4.46 4.46 0 0 0 4.46 152.4h33.351l8.281-52.514 9.013-57.15a5.49 5.49 0 0 1 5.423-4.633h47.782c8.691 0 16.621 2.025 23.375 5.563C132.145 19.749 112.41 0 85.273 0z"
+        ></path>
+      </svg> Dona con PayPal</a
+    >
+    <button commandfor="paypal-dialog" command="close">No Grazie</button>
+  </div>
+</dialog>
 
-<ThemeSwitcher class="theme-switcher" />
-
-<p class="copyright">
-  2006 - <span id="js-year"></span>
-  <b>signalkuppe.com.</b>
-  <br />Contenuti pubblicati sotto licenza <a
-    href=""
-    rel="noreferrer"
-    href="https://choosealicense.com/licenses/agpl-3.0/"
-  >
-    Gnu AGPLv3.</a
-  ><br />
-
-  <a href="/privacy">Privacy policy</a><br />
-  <a href="#top" class="go-top">
-    Torna in cima <ArrowUpIcon aria-hidden="true" /></a
-  >
-  <Signature aria-hidden="true" class="signature" />
-</p>
-
-<!--css and scripts for theme switcher in layout's head tag to avoid fuoc -->
-<style media="screen">
-  footer {
-    padding-top: 3rem;
-  }
-
-  h2 {
-    margin-bottom: 1rem;
+<style>
+  nav {
+    container-type: inline-size;
   }
   ul {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1.5rem;
-  }
-
-  ul p {
-    color: var(--textLight);
-    font-size: 0.85rem;
+    padding: 0;
     margin: 0;
-  }
-
-  .theme-switcher {
-    padding: 4rem 0;
-  }
-
-  .copyright {
-    margin-bottom: 3rem;
+    list-style: none;
     font-size: 0.85rem;
+    @container (width < 50rem) {
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 
-  .go-top {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    margin-top: 1rem;
-  }
-
-  .go-top svg {
-    display: inline-block;
-    height: 1rem;
-  }
-
-  .signature {
-    width: 140px;
-    margin-top: 2rem;
+  a {
+    padding: 0.5rem 0.5rem;
     margin-left: -0.5rem;
-    color: var(--textAccent);
+    text-decoration: none;
   }
 
-  @media screen and (width > 51rem) {
-    ul {
-      display: block;
+  button[command="show-modal"] {
+    all: unset;
+    cursor: pointer;
+  }
+  button[command="show-modal"]:hover {
+    color: var(--color-subtle);
+  }
 
-      columns: 2;
-    }
+  dialog {
+    max-width: 30rem;
+    max-height: 90vh;
+    padding: 2rem;
+  }
 
-    li {
-      break-inside: avoid;
-      page-break-inside: avoid;
-      -webkit-column-break-inside: avoid;
-      padding-bottom: 1.5rem;
-    }
+  .modal-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .paypal-link-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    background-color: #ffc439;
+    color: #001c64;
+    text-decoration: none;
+  }
+
+  .paypal-link-button svg {
+    width: 1rem;
   }
 </style>
-
-<script>
-  document.getElementById("js-year").innerText = `${new Date().getFullYear()}`;
-
-  document.querySelectorAll("[data-donation-modal-trigger]").forEach((link) => {
-    link.addEventListener("click", (event) => {
-      event.preventDefault();
-      document.dispatchEvent(new CustomEvent("donation-modal:open"));
-    });
-  });
-</script>

@@ -1,0 +1,115 @@
+---
+// 3-day outlook from Open-Meteo (lib/forecast.js).
+import WeatherIcon from "./WeatherIcon.astro";
+import UmbrellaIcon from "../assets/icons/Umbrella.svg";
+import WindIcon from "../assets/icons/Wind.svg";
+import { WEATHER_CONSTANTS } from "../constants";
+const { days } = Astro.props;
+
+// Screen readers get the full day name ("mercoledì 15") instead of "mer".
+const longWeekday = (date) =>
+  new Intl.DateTimeFormat("it-IT", {
+    weekday: "long",
+    day: "numeric",
+    timeZone: "Europe/Rome",
+  }).format(new Date(date));
+---
+
+<ul class="forecast">
+  {
+    days.map((day) => (
+      <li>
+        <span class="weekday" aria-hidden="true">{day.weekday}</span>
+        <span class="visually-hidden">{longWeekday(day.date)}</span>
+        <WeatherIcon icon={day.icon} size={64} label={day.description} />
+        <span class="description" aria-hidden="true">{day.description}</span>
+        <span class="temperatures">
+          <span class="min">
+            <span class="visually-hidden">minima</span>
+            {Math.round(day.temperatureMin)}°
+          </span>
+          <span aria-hidden="true">{" / "}</span>
+          <span class="max">
+            <span class="visually-hidden">massima</span>
+            {Math.round(day.temperatureMax)}°
+          </span>
+        </span>
+        <span class="detail">
+          <UmbrellaIcon aria-hidden="true" width="12" height="12" />
+          <span class="visually-hidden">Probabilità di pioggia</span>
+          {day.precipitationProbability}%
+          {day.precipitation > 0 &&
+            ` · ${day.precipitation < 1 ? "<1" : Math.round(day.precipitation)} mm`}
+        </span>
+        <span class="detail">
+          <WindIcon aria-hidden="true" width="12" height="12" />
+          <span class="visually-hidden">Vento</span>
+          {day.windMax} {WEATHER_CONSTANTS.WIND_UNIT}
+        </span>
+      </li>
+    ))
+  }
+</ul>
+
+<style media="screen">
+  .forecast {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  .weekday {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+
+  .description {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+
+  .temperatures {
+    font-size: 0.85rem;
+    font-weight: 800;
+  }
+
+  .temperatures .min {
+    color: var(--color-weather-min-value);
+  }
+
+  .temperatures .max {
+    color: var(--color-weather-max-value);
+  }
+
+  .detail {
+    font-size: 0.7rem;
+    color: var(--color-subtle);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  @media screen and (width < 30rem) {
+    li {
+      padding: 0.5rem;
+    }
+
+    .description {
+      display: none;
+    }
+  }
+</style>

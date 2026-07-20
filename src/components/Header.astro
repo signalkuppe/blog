@@ -1,167 +1,537 @@
 ---
-import { categories } from "../constants";
-import DesktopMenu from "./DesktopMenu.astro";
-import MobileMenu from "./MobileMenu.astro";
-import Search from "./Search.astro";
-const url = Astro.url.pathname;
-const links = [
-  {
-    href: "/matteo",
-    text: "Matteo",
-    prefetch: true,
-    active: url.indexOf("/matteo") !== -1,
-  },
-  {
-    href: "/blog",
-    text: "Uscite",
-    prefetch: true,
-    active:
-      url.indexOf("/blog") !== -1 ||
-      categories.find((c) => url.indexOf(c.slug) !== -1),
-  },
-  {
-    href: "/portfolio/1",
-    text: "Foto",
-    prefetch: true,
-    active: url.indexOf("/portfolio") !== -1,
-  },
-  {
-    href: "/meteo-concenedo",
-    text: "Meteo Concenedo",
-    active: url.indexOf("/meteo-concenedo") !== -1,
-    prefetch: true,
-  },
-  {
-    href: "/contatti",
-    text: "Contatti",
-    prefetch: true,
-    active: url.indexOf("/contatti") !== -1 || url.indexOf("/grazie") !== -1,
-  },
-];
-const navLabel = "Sito";
+import { siteTitle } from "../constants";
+import SearchIcon from "../assets/icons/Search.svg";
+import HamburgerIcon from "../assets/icons/Hamburger.svg";
+import SunIcon from "../assets/icons/Sun.svg";
+import MoonIcon from "../assets/icons/Moon.svg";
 ---
 
-<div class="header">
-  <a
-    href="/"
-    class="back-home-link"
-    aria-label="Pagina principale"
-    data-astro-prefetch
-  >
-    <img
-      src="/images/matteo-leoni-signalkuppe.avif"
-      alt=""
-      width="140"
-      height="140"
-      loading="eager"
-      decoding="async"
-      aria-hidden="true"
-    />
-  </a>
-  <div class="header-right">
-    <div class="mobile-menu">
-      <MobileMenu links={links} navLabel={navLabel} />
+<div class="header-container">
+  <nav>
+    <div class="header-left">
+      <a href="/" class="siteName">{siteTitle}</a>
+      <ul role="list" class="nav-links">
+        <li><a href="/matteo" data-astro-prefetch="load">Chi sono</a></li>
+        <li><a href="/portfolio" data-astro-prefetch="load">Le mie foto</a></li>
+        <li>
+          <!-- "load" prefetch: warms the CDN cache (and triggers the
+               stale-while-revalidate refresh) so the slow server render
+               is done before anyone clicks -->
+          <a href="/meteo-concenedo" data-astro-prefetch="load">Meteo</a>
+        </li>
+        <li><a href="/contatti" data-astro-prefetch="load">Contatti</a></li>
+      </ul>
     </div>
-    <div class="desktop-menu">
-      <DesktopMenu links={links} navLabel={navLabel} />
+
+    <div class="header-right">
+      <!-- Toggle button (aria-pressed) rather than a switch/checkbox: a
+           plain button announces name + state in every screen reader. The
+           two visual segments are decorative (aria-hidden); the accessible
+           name + pressed state carry the meaning. JS-only control, so it
+           stays hidden until the script binds it. -->
+      <button
+        type="button"
+        class="theme-toggle"
+        aria-pressed="false"
+        hidden
+        data-theme-toggle
+      >
+        <!-- labels are screen-reader-only: together they name the button
+             "Tema chiaro Tema scuro"; aria-pressed carries the state -->
+        <span class="visually-hidden">Tema chiaro</span>
+        <span class="switch" aria-hidden="true">
+          <span class="knob">
+            <SunIcon class="icon-sun" />
+            <MoonIcon class="icon-moon" />
+          </span>
+        </span>
+        <span class="visually-hidden">Tema scuro</span>
+      </button>
+
+      <!-- Search lives behind its icon at every size; the menu collapses
+           behind the hamburger only on small screens. Open/close is the
+           native Invoker Commands API, zero JS -->
+      <div class="header-actions">
+        <button
+          type="button"
+          command="show-modal"
+          commandfor="search-dialog"
+          class="icon-button"
+        >
+          <span class="visually-hidden">Cerca un’uscita</span>
+          <SearchIcon aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          popovertarget="menu-popover"
+          class="icon-button menu-trigger"
+        >
+          <span class="visually-hidden">Apri il menu</span>
+          <HamburgerIcon aria-hidden="true" />
+        </button>
+
+        <!-- Popover (not dialog) so it anchors to the hamburger; closes on
+             outside tap / ESC via native light dismiss, zero JS -->
+        <div popover id="menu-popover" class="menu-popover" aria-label="Menu">
+          <ul role="list" class="menu-links">
+            <li><a href="/matteo">Matteo</a></li>
+            <li><a href="/portfolio">Foto</a></li>
+            <li><a href="/meteo-concenedo">Meteo</a></li>
+            <li><a href="/contatti">Contatti</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="search">
-      <Search />
-    </div>
-  </div>
+  </nav>
 </div>
-<style media="screen">
-  .header,
+
+<dialog id="search-dialog" closedby="any" aria-labelledby="search-dialog-title">
+  <button commandfor="search-dialog" command="close" class="close-button">
+    <span aria-hidden="true">&times;</span>
+    <span class="visually-hidden">Chiudi</span>
+  </button>
+  <h2 id="search-dialog-title" class="search-dialog-title">Cerca un’uscita</h2>
+  <form action="/cerca">
+    <label for="search-mobile" class="visually-hidden">Cerca un’uscita</label>
+    <input
+      type="search"
+      id="search-mobile"
+      name="search"
+      placeholder="es: Monte Rosa"
+      required
+      minlength="3"
+      autofocus
+    />
+    <button type="submit" data-loading-label="Cerco...">Cerca</button>
+  </form>
+</dialog>
+
+<script>
+  import { THEME_STORAGE_KEY } from "../constants";
+
+  // ── Theme toggle ─────────────────────────────────────────────────────
+  function setupThemeToggle() {
+    const button = document.querySelector<HTMLButtonElement>(
+      "[data-theme-toggle]",
+    );
+    if (!button || button.dataset.bound) return;
+    button.dataset.bound = "true";
+
+    // Initial state: the saved choice, or the OS preference. Set while the
+    // button is still display:none so the knob doesn't visibly slide into
+    // its restored position on page load.
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
+    const dark =
+      saved === "dark" ||
+      (saved !== "light" && matchMedia("(prefers-color-scheme: dark)").matches);
+    button.setAttribute("aria-pressed", String(dark));
+    button.hidden = false;
+
+    // Enable the knob transition only once the initial state has actually
+    // been painted (double rAF = at least one rendered frame), so restoring
+    // a saved theme can never animate, in any browser.
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => button.classList.add("is-ready")),
+    );
+
+    // Keep in sync with the .knob transition duration in the CSS below:
+    // the page cross-fade starts once the knob has finished sliding.
+    const KNOB_ANIMATION_MS = 200;
+
+    button.addEventListener("click", () => {
+      const dark = button.getAttribute("aria-pressed") !== "true";
+      button.setAttribute("aria-pressed", String(dark));
+      const theme = dark ? "dark" : "light";
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
+
+      const apply = () => {
+        document.documentElement.style.colorScheme = theme;
+        // hook for non-color theme CSS (light-dark() is colors-only)
+        document.documentElement.dataset.theme = theme;
+        // canvas charts resolve their colors at draw time: tell them
+        document.dispatchEvent(new CustomEvent("theme-change"));
+      };
+
+      // Cross-fade the switch where View Transitions are supported.
+      const start = () => {
+        if (document.startViewTransition) {
+          document.documentElement.classList.add("theme-transition");
+          const transition = document.startViewTransition(apply);
+          transition.finished.finally(() =>
+            document.documentElement.classList.remove("theme-transition"),
+          );
+        } else {
+          apply();
+        }
+      };
+
+      // No knob animation under reduced motion → no reason to wait.
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        start();
+      } else {
+        setTimeout(start, KNOB_ANIMATION_MS);
+      }
+    });
+  }
+
+  setupThemeToggle();
+
+  // ── Search warm-up ───────────────────────────────────────────────────
+  // Hold the navigation while a fetch warms the CDN, then leave: with a
+  // warm cache we navigate almost instantly, with a cold one we wait only
+  // as long as the render actually takes (capped as a safety net)
+  const MAX_WAIT_MS = 4000;
+
+  const searchForms = () =>
+    document.querySelectorAll<HTMLFormElement>('form[action="/cerca"]');
+
+  searchForms().forEach((form) => {
+    const input = form.querySelector<HTMLInputElement>('input[type="search"]');
+    const button = form.querySelector<HTMLButtonElement>(
+      'button[type="submit"]',
+    );
+    if (!input || !button) return;
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      input.disabled = true;
+      button.textContent = button.dataset.loadingLabel ?? "Cerco...";
+
+      const url = new URL(form.action);
+      url.searchParams.set("search", input.value);
+
+      const warmup = fetch(url).catch(() => {});
+      const cap = new Promise((resolve) => setTimeout(resolve, MAX_WAIT_MS));
+      Promise.race([warmup, cap]).then(() => location.assign(url));
+    });
+  });
+
+  // restore the forms when navigating back via the bfcache
+  window.addEventListener("pageshow", () => {
+    searchForms().forEach((form) => {
+      const input = form.querySelector<HTMLInputElement>(
+        'input[type="search"]',
+      );
+      const button = form.querySelector<HTMLButtonElement>(
+        'button[type="submit"]',
+      );
+      if (!input || !button) return;
+      input.disabled = false;
+      button.disabled = false;
+      button.textContent = "Cerca";
+    });
+  });
+</script>
+
+<style>
+  .header-container {
+    container-type: inline-size;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .header-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .siteName {
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+  }
+
+  ul {
+    font-size: 0.875rem;
+    font-weight: 800;
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  li a {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 0.5rem;
+    margin-left: -0.5rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  /* invisible copy of the loading label so the button is always as wide
+     as its widest state and swapping the text causes no layout shift */
+  form button::after {
+    content: attr(data-loading-label);
+    display: block;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+  }
+
   .header-right {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 0.75rem;
   }
 
-  .header {
-    gap: 1rem;
-    min-height: 70px;
+  .header-actions {
+    display: flex;
+    align-items: center;
   }
 
-  .back-home-link {
-    text-decoration: none;
-    display: block;
+  /* iOS-style switch: pill track with a sliding knob carrying the current
+     theme's icon; the two labels sit outside the track */
+  .theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+    background: none;
+    border: none;
+    color: inherit;
+  }
+
+  .theme-toggle:active {
+    transform: none;
+  }
+
+  .switch {
+    position: relative;
+    width: 2.75rem;
+    height: 1.5rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    background: var(--color-buttons);
     flex-shrink: 0;
   }
 
-  .back-home-link img {
-    width: 70px;
-    height: 70px;
+  .knob {
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    translate: 0 -50%;
+    width: 1.1rem;
+    height: 1.1rem;
     border-radius: 50%;
-    object-fit: cover;
-    background: var(--surfaceAccent);
+    background: var(--color-text);
+    color: var(--color-bg);
+    display: grid;
+    place-items: center;
   }
 
-  .search {
-    min-width: 12rem;
-    min-height: 2.25rem;
+  .theme-toggle[aria-pressed="true"] .knob {
+    /* track width - knob - inset on both sides */
+    translate: calc(2.75rem - 1.1rem - 8px) -50%;
   }
 
-  @media screen and (width < 24rem) {
-    .search {
-      min-width: 9rem;
+  /* The transition is enabled only after the script has painted the
+     restored state (.is-ready, added one frame later): otherwise the knob
+     visibly slides into position on every page load in dark mode. */
+  @media (prefers-reduced-motion: no-preference) {
+    .theme-toggle.is-ready .knob {
+      transition: translate 0.2s ease;
     }
   }
 
-  @media screen and (width < 60rem) {
-    .mobile-menu {
-      display: block;
-      order: 2;
-      min-width: 1.5rem;
-      min-height: 1.5rem;
-    }
-    .desktop-menu {
+  .knob svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  /* the knob's icon shows the active theme */
+  .knob .icon-moon,
+  .theme-toggle[aria-pressed="true"] .knob .icon-sun {
+    display: none;
+  }
+
+  .theme-toggle[aria-pressed="true"] .knob .icon-moon {
+    display: block;
+  }
+
+  .icon-button {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    display: inline-flex;
+    color: inherit;
+  }
+
+  .icon-button:active {
+    transform: none;
+  }
+
+  .icon-button svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  /* Small screens: links collapse behind the hamburger */
+  @container (width < 60rem) {
+    .nav-links {
       display: none;
     }
+  }
 
-    .search {
-      order: 1;
-    }
-
-    .header-right {
-      gap: 1rem;
+  /* Wide screens: links are visible, the hamburger is redundant */
+  @container (width >= 60rem) {
+    .menu-trigger {
+      display: none;
     }
   }
 
-  @media screen and (width > 60rem) {
-    .mobile-menu {
-      display: none;
-    }
-    .desktop-menu {
-      display: block;
+  dialog {
+    padding: 1rem;
+    min-width: min(20rem, calc(100vw - 1rem));
+    /* open near the top (where the search icon lives) instead of the
+       vertically-centered UA default; left/right stay auto-centered */
+    margin-block-start: clamp(3rem, 12vh, 6rem);
+    margin-block-end: auto;
+  }
+
+  /* Enter/exit animation for the search dialog (same idiom as the
+     gallery modal): fade + slight scale, backdrop fades along.
+     allow-discrete lets display/overlay wait for the transition. */
+  @media (prefers-reduced-motion: no-preference) {
+    dialog {
+      opacity: 0;
+      scale: 0.96;
+      transition:
+        opacity 0.2s ease,
+        scale 0.2s ease,
+        overlay 0.2s ease allow-discrete,
+        display 0.2s ease allow-discrete;
     }
 
-    .header-right {
-      gap: 3rem;
+    dialog[open] {
+      opacity: 1;
+      scale: 1;
     }
+
+    @starting-style {
+      dialog[open] {
+        opacity: 0;
+        scale: 0.96;
+      }
+    }
+
+    dialog::backdrop {
+      opacity: 0;
+      transition:
+        opacity 0.2s ease,
+        overlay 0.2s ease allow-discrete,
+        display 0.2s ease allow-discrete;
+    }
+
+    dialog[open]::backdrop {
+      opacity: 1;
+    }
+
+    @starting-style {
+      dialog[open]::backdrop {
+        opacity: 0;
+      }
+    }
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    line-height: 1;
+  }
+
+  .menu-trigger {
+    anchor-name: --menu-trigger;
+  }
+
+  .menu-popover {
+    border: 1px solid var(--color-subtle);
+    background: var(--color-bg);
+    color: var(--color-text);
+    padding: 1rem 1.5rem;
+  }
+
+  .menu-popover::backdrop {
+    background: rgba(0, 0, 0, 0.35);
+  }
+
+  /* Anchor the menu under its button where supported; elsewhere the
+     UA default (viewport-centered) applies */
+  @supports (anchor-name: --a) {
+    .menu-popover {
+      margin: 0.25rem 0 0;
+      inset: auto;
+      position-anchor: --menu-trigger;
+      position-area: block-end span-inline-start;
+      position-try-fallbacks: flip-block, flip-inline;
+    }
+
+    .menu-popover::backdrop {
+      background: none;
+    }
+  }
+
+  .menu-links {
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1rem;
+  }
+
+  /* Menu popover: fade + slide down from the hamburger */
+  @media (prefers-reduced-motion: no-preference) {
+    .menu-popover {
+      opacity: 0;
+      translate: 0 -0.35rem;
+      transition:
+        opacity 0.15s ease,
+        translate 0.15s ease,
+        overlay 0.15s ease allow-discrete,
+        display 0.15s ease allow-discrete;
+    }
+
+    .menu-popover:popover-open {
+      opacity: 1;
+      translate: 0 0;
+    }
+
+    @starting-style {
+      .menu-popover:popover-open {
+        opacity: 0;
+        translate: 0 -0.35rem;
+      }
+    }
+  }
+
+  .search-dialog-title {
+    font-size: 1rem;
   }
 </style>
 
-<script>
-  let searchInitPromise;
-
-  function initSearchOnDemand() {
-    if (searchInitPromise) return searchInitPromise;
-    searchInitPromise = import("../lib/search-autocomplete.js").then(
-      ({ initSearchAutocomplete }) => initSearchAutocomplete(),
-    );
-    return searchInitPromise;
+<style is:global>
+  /* Slower cross-fade for theme switches only (the class lives on <html>
+     just for the duration of the transition); page-navigation view
+     transitions keep the browser default. */
+  html.theme-transition::view-transition-old(root),
+  html.theme-transition::view-transition-new(root) {
+    animation-duration: 0.45s;
+    animation-timing-function: ease-in-out;
   }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.querySelector("#search-input");
-    if (!searchInput) return;
-
-    searchInput.addEventListener("focus", initSearchOnDemand, { once: true });
-    searchInput.addEventListener("pointerdown", initSearchOnDemand, {
-      once: true,
-      passive: true,
-    });
-    searchInput.addEventListener("keydown", initSearchOnDemand, { once: true });
-  });
-</script>
+</style>

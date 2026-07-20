@@ -1,111 +1,147 @@
 ---
-import LayoutCommon from "./LayoutCommon.astro";
+import { Font } from "astro:assets";
+import CssReset from "../components/CssReset.astro";
+import GlobalStyles from "../components/GlobalStyles.astro";
+import PrintStyles from "../components/PrintStyles.astro";
+import { prodSiteUrl, THEME_STORAGE_KEY } from "../constants";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import DonationBanner from "../components/DonationBanner.astro";
 
-interface Props {
-  title: string;
-  description: string;
-  ogImage: string;
-}
-
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogImage, ogType, canonical } = Astro.props;
+const canonicalURL = canonical || new URL(Astro.url.pathname, prodSiteUrl).href;
+const hasAside = Astro.slots.has("aside");
 ---
 
-<LayoutCommon title={title} description={description} ogImage={ogImage}>
-  <Fragment slot="head"><slot name="head" /></Fragment>
-  <a href="#main" class="visually-hidden skip-link"
-    >Vai al contenuto principale</a
-  >
-  <header id="header">
-    <div class="cage">
-      <Header />
+<!doctype html>
+<html lang="it" id="top">
+  <head>
+    <Font cssVariable="--base-font" preload />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="apple-mobile-web-app-title" content="Signalkuppe" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline define:vars={{ THEME_STORAGE_KEY }}>
+      // Apply the saved theme choice before first paint so a visitor who
+      // overrode the OS preference never sees the wrong theme flash.
+      // The whole theming system rides on color-scheme + light-dark() vars.
+      (() => {
+        const theme = localStorage.getItem(THEME_STORAGE_KEY);
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.style.colorScheme = theme;
+          // hook for non-color theme CSS (light-dark() is colors-only)
+          document.documentElement.dataset.theme = theme;
+        }
+      })();
+    </script>
+    <link
+      rel="icon"
+      href="/images/favicon-light.ico"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="icon"
+      href="/images/favicon-dark.ico"
+      media="(prefers-color-scheme: dark)"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="og:title" content={title} />
+    <meta name="twitter:title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="og:image" content={ogImage} />
+    <meta name="og:url" content={canonicalURL} />
+    <meta property="og:type" content={ogType || "website"} />
+
+    <title>{title}</title>
+    <slot name="head" />
+    <CssReset />
+    <GlobalStyles />
+    <PrintStyles />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Vai al contenuto</a>
+    <div class="container">
+      <header>
+        <Header />
+      </header>
+
+      <div class:list={["wrapper", { "with-aside": hasAside }]}>
+        <!-- skip-link target: browsers move the sequential focus starting
+             point to fragment targets, no tabindex needed -->
+        <main id="main">
+          <slot />
+        </main>
+        <aside>
+          <slot name="aside" />
+        </aside>
+      </div>
+
+      <footer>
+        <Footer />
+      </footer>
     </div>
-  </header>
+  </body>
+</html>
 
-  <main id="main" tabindex="-1">
-    <slot />
-  </main>
-  <DonationBanner />
-  <footer id="footer">
-    <div class="cage"><Footer /></div>
-  </footer>
-</LayoutCommon>
-
-<style media="screen">
-  header {
-    padding-block: 1.5rem;
-    overflow-x: clip;
-    border-bottom: 1px solid var(--surfaceAccent);
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    margin: 0 auto;
+    height: 100svh;
+    padding: 2rem;
+    @media (orientation: portrait) {
+      padding: 1.5rem;
+    }
   }
 
-  header.menu-is-open {
-    overflow: none;
-    position: static;
-    backdrop-filter: none;
+  .wrapper {
+    margin: 5rem 0;
+    flex: 1;
+    @media (orientation: portrait) {
+      margin: 3rem 0;
+    }
   }
 
-  header.remove-sticky {
-    position: static;
+  .with-aside {
+    display: flex;
+    flex-direction: row;
+    @media (orientation: portrait) {
+      flex-direction: column;
+      gap: 3rem;
+    }
   }
 
   main {
-    padding-top: 2rem;
-    padding-bottom: 6rem;
+    flex: 1;
+  }
+
+  aside {
+    width: 12rem;
+    @media (orientation: portrait) {
+      width: auto;
+    }
   }
 
   footer {
-    padding-bottom: 6rem;
-    padding-top: 3rem;
-    border-top: 1px solid var(--surfaceAccent);
-  }
-
-  .svg-background {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    z-index: -1;
-  }
-
-  .skip-link:focus {
-    z-index: 4;
-  }
-
-  @media screen and (width > 60rem) {
-    main {
-      padding-top: 3rem;
-      padding-bottom: 9rem;
-    }
+    padding: 6rem 0;
   }
 </style>
-
-<script>
-  const header = document.getElementById("header");
-
-  document.addEventListener("menu-toggle", (event) => {
-    if (!header) return;
-    if (event.detail?.isOpen) {
-      header.classList.add("menu-is-open");
-    } else {
-      header.classList.remove("menu-is-open");
-    }
-  });
-
-  const root = document.documentElement;
-  const observer = new MutationObserver((event) => {
-    document.dispatchEvent(
-      new CustomEvent("theme-change", {
-        detail: { mode: event[0].target.getAttribute("data-theme") },
-      }),
-    );
-  });
-
-  observer.observe(root, {
-    attributes: true,
-    attributeFilter: ["data-theme"],
-    childList: false,
-    characterData: false,
-  });
-</script>

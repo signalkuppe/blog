@@ -1,60 +1,58 @@
 ---
-import DoubleChevronRightIcon from "../icons/DoubleChevronRight.svg";
-import DoubleChevronLeftIcon from "../icons/DoubleChevronLeft.svg";
-import ChevronRightIcon from "../icons/ChevronRight.svg";
-import ChevronLeftIcon from "../icons/ChevronLeft.svg";
-
 interface Props {
   page: any;
 }
 const { page } = Astro.props;
+
+const before = [
+  { url: page.url.first, symbol: "«", label: "Pagina iniziale" },
+  { url: page.url.prev, symbol: "‹", label: "Precedente" },
+];
+const after = [
+  { url: page.url.next, symbol: "›", label: "Successiva" },
+  { url: page.url.last, symbol: "»", label: "Ultima pagina" },
+];
 ---
 
 <ul>
   {
-    page.url.first && (
+    before.map((item) => (
       <li>
-        <a href={page.url.first}>
-          <DoubleChevronLeftIcon aria-hidden="true" />
-          <span class="visually-hidden">Pagina iniziale</span>
-        </a>
+        {item.url ? (
+          <a href={item.url} class="pager-item">
+            <span aria-hidden="true" set:html={item.symbol} />
+            <span class="visually-hidden">{item.label}</span>
+          </a>
+        ) : (
+          <span class="pager-item is-disabled" aria-disabled="true">
+            <span aria-hidden="true" set:html={item.symbol} />
+            <span class="visually-hidden">{item.label} (non disponibile)</span>
+          </span>
+        )}
       </li>
-    )
+    ))
   }
-  {
-    page.url.prev && (
-      <li>
-        <a href={page.url.prev}>
-          <ChevronLeftIcon aria-hidden="true" />
-          <span class="visually-hidden">Precedente</span>
-        </a>
-      </li>
-    )
-  }
-  <li>
+  <li class="pager-info">
     Pagina <span aria-current="page">{page.currentPage}</span> di {
       page.lastPage
     }
   </li>
   {
-    page.url.next && (
-      <li>
-        <a href={page.url.next}>
-          <ChevronRightIcon aria-hidden="true" />
-          <span class="visually-hidden">Successiva</span>
-        </a>
+    after.map((item, i) => (
+      <li class={i === 0 ? "next" : ""}>
+        {item.url ? (
+          <a href={item.url} class="pager-item">
+            <span aria-hidden="true" set:html={item.symbol} />
+            <span class="visually-hidden">{item.label}</span>
+          </a>
+        ) : (
+          <span class="pager-item is-disabled" aria-disabled="true">
+            <span aria-hidden="true" set:html={item.symbol} />
+            <span class="visually-hidden">{item.label} (non disponibile)</span>
+          </span>
+        )}
       </li>
-    )
-  }
-  {
-    page.url.last && (
-      <li>
-        <a href={page.url.last}>
-          <DoubleChevronRightIcon aria-hidden="true" />
-          <span class="visually-hidden">Ultima pagina</span>
-        </a>
-      </li>
-    )
+    ))
   }
 </ul>
 
@@ -63,19 +61,40 @@ const { page } = Astro.props;
     display: flex;
     align-items: center;
     gap: 0.85rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
-  ul a {
+
+  .pager-item {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    border: var(--surfaceAccent);
+    text-decoration: none;
+    padding: 0.25rem 0.8rem;
+    margin-left: -0.8rem;
+    line-height: 1rem;
   }
-  ul svg {
-    width: 1em;
+
+  li.next .pager-item {
+    margin-left: 0rem;
+  }
+
+  li.pager-info {
+    margin-bottom: -0.2rem;
+  }
+
+  span[aria-hidden="true"] {
+    font-size: 1.5rem;
+  }
+
+  .is-disabled {
+    cursor: not-allowed;
+    color: var(--color-subtle);
+    opacity: 0.5;
   }
 
   [aria-current="page"] {
-    color: var(--textAccent);
-    font-weight: var(--font-bold);
+    font-weight: 800;
   }
 </style>

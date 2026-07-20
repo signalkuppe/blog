@@ -1,8 +1,6 @@
 ---
 import { siteTitle, defaultOgImage } from "../constants";
 import { headPageTitle } from "../lib/utils";
-import { ClientRouter } from "astro:transitions";
-import PageTitle from "../components/PageTitle.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -13,13 +11,7 @@ import Layout from "../layouts/Layout.astro";
 >
   <Fragment slot="head">
     <meta name="robots" content="noindex" />
-    <ClientRouter />
   </Fragment>
-  <div class="cage">
-    <div class="animation">
-      <PageTitle subTitle="Cercherò di risponderti il prima possibile 🙂">
-        Messaggio ricevuto!
-      </PageTitle>
-    </div>
-  </div>
+  <h1 class="h2">Messaggio ricevuto!</h1>
+  <p>Cercherò di risponderti il prima possibile 🙂</p>
 </Layout>

@@ -4,9 +4,30 @@ export const prodSiteUrl = "https://www.signalkuppe.com";
 
 export const siteSlogan = "Parole oltre i 4000m";
 
-export const defaultOgImage = "/og-image.jpg";
+export const defaultOgImage = "/images/og-image.jpg";
 
 export const pageTitleSeparator = "-";
+
+export const paypalDonateUrl =
+  "https://www.paypal.com/donate/?hosted_button_id=77MXKAB84XP8L";
+
+// localStorage key for the visitor's light/dark override (read pre-paint in
+// Layout.astro, written by the Footer theme select).
+export const THEME_STORAGE_KEY = "theme";
+
+export const WEATHER_CONSTANTS = {
+  TEMPERATURE_UNIT: "°C",
+  HUMIDITY_UNIT: "%",
+  WIND_UNIT: "km/h",
+  PRESSURE_UNIT: "hPa",
+  RAIN_UNIT: "mm",
+  RAIN_RATE_UNIT: "mm/h",
+  SOLAR_RADIATION_UNIT: "W/m²",
+  MIN_LABEL: "Minima",
+  MIN_LABEL_ABBR: "Min",
+  MAX_LABEL: "Massima",
+  MAX_LABEL_ABBR: "Max",
+};
 
 export const categories = [
   {
@@ -41,6 +62,10 @@ export const categories = [
   },
 ];
 
+export const thunderforestApiKey = "f890f7037bd243ee9602a36c56fc6dc2";
+
+export const mapTilesUrl = `https://tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=${thunderforestApiKey}`;
+
 export const newsletterUrl =
   "https://signalkuppe.us17.list-manage.com/subscribe?u=c87438aa22d9c1bffb8b5e482&id=b177d839f1";
 
@@ -49,24 +74,3 @@ export const githubUrl = "https://github.com/signalkuppe";
 export const instagramUrl = "https://www.instagram.com/signalkuppe/";
 
 export const stravaUrl = "https://www.strava.com/athletes/9211798";
-
-export const WEATHER_CONSTANTS = {
-  ICON_SIZE: 16,
-  TEMPERATURE_UNIT: "°C",
-  HUMIDITY_UNIT: "%",
-  WIND_UNIT: "km/h",
-  PRESSURE_UNIT: "hPa",
-  RAIN_UNIT: "mm",
-  RAIN_RATE_UNIT: "mm/h",
-  MIN_VALUE_COLOR: "#1082e8",
-  MIN_LABEL: "Minima",
-  MIN_LABEL_ABBR: "Min",
-  MAX_VALUE_COLOR: "red",
-  MAX_LABEL: "Massima",
-  MAX_LABEL_ABBR: "Max",
-  ALT_COLOR: "#f300ff",
-  ALT_COLOR_2: { light: "#0b9918", dark: "#00ff00" },
-  GRAPH_GRID_COLOR: "--surfaceAccent",
-  GRAPH_LINE_COLOR: "--accent",
-  GRAPH_ALT_LINE_COLOR: "orange",
-};

@@ -2,11 +2,13 @@
 dist/
 tmp
 
+
 # generated types
 .astro/
 .site/
 .cache/
 .netlify/
+deno.lock
 
 # dependencies
 node_modules/
@@ -29,4 +31,7 @@ pnpm-debug.log*
 
 .agents/
 .claude/
+CLAUDE.md
 skills-lock.json
+.playwright-mcp/
+.husky/

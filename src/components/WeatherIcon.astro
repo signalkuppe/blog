@@ -1,0 +1,31 @@
+---
+// Meteocons (MIT — https://bas.dev/work/meteocons) inlined at render time so
+// the icons cost zero HTTP requests. The source files all use id="a", "b", …
+// for their gradients, which collide when several icons share a document, so
+// ids are namespaced with the icon file name.
+import { WEATHER_ICON_FILES } from "../lib/weatherIcons";
+
+const files = import.meta.glob("../assets/weather-icons/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+
+const { icon, isDay = true, size = 64, label } = Astro.props;
+const name = (WEATHER_ICON_FILES[icon] ?? WEATHER_ICON_FILES.cloudy)[
+  isDay ? 0 : 1
+];
+
+const svg = files[`../assets/weather-icons/${name}.svg`]
+  .replaceAll(/id="([\w-]+)"/g, `id="${name}-$1"`)
+  .replaceAll(/url\(#([\w-]+)\)/g, `url(#${name}-$1)`)
+  .replaceAll(/href="#([\w-]+)"/g, `href="#${name}-$1"`)
+  .replace(
+    "<svg ",
+    `<svg width="${size}" height="${size}" ${
+      label ? `role="img" aria-label="${label}"` : 'aria-hidden="true"'
+    } `,
+  );
+---
+
+<Fragment set:html={svg} />

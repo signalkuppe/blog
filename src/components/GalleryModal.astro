@@ -1,0 +1,202 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  index: number;
+  count: number;
+  image: {
+    src: ImageMetadata;
+    alt: string;
+  };
+  caption?: string;
+}
+
+const { index, count, image, caption = image.alt } = Astro.props;
+---
+
+<dialog
+  id={`gallery-image-${index}`}
+  class="gallery-image-dialog"
+  closedby="any"
+>
+  <button
+    commandfor={`gallery-image-${index}`}
+    command="close"
+    class="close-button"
+  >
+    <span aria-hidden="true">&times;</span>
+    <span class="visually-hidden">Chiudi</span>
+  </button>
+  <Image
+    src={image.src}
+    alt={image.alt}
+    width={2400}
+    widths={[1024, 2400]}
+    sizes="100vw"
+    loading="lazy"
+    quality={85}
+  />
+  {
+    index > 0 && (
+      <button commandfor={`gallery-image-${index}`} command="--previous" hidden>
+        <span aria-hidden="true">&lsaquo;</span>
+        <span class="visually-hidden">Immagine precedente</span>
+      </button>
+    )
+  }
+  {
+    index < count - 1 && (
+      <button commandfor={`gallery-image-${index}`} command="--next" hidden>
+        <span aria-hidden="true">&rsaquo;</span>
+        <span class="visually-hidden">Immagine successiva</span>
+      </button>
+    )
+  }
+  <footer>
+    <span class="caption">{caption}</span>
+  </footer>
+</dialog>
+
+<style>
+  /* fullscreen dark overlay, like the old PhotoSwipe lightbox */
+  .gallery-image-dialog {
+    --controls-inset: 2rem; /* distance of the buttons from the screen edges */
+    width: 100vw;
+    height: 100dvh;
+    max-width: 100vw;
+    max-height: 100dvh;
+    padding: 0;
+    border: none;
+    background: rgb(0 0 0 / 0.9);
+  }
+
+  /* the transition lives only on the open state so it runs on enter
+     (from @starting-style) but not on close, which stays instant;
+     dialogs opened via prev/next are tagged by the script to skip it */
+  .gallery-image-dialog[open]:not(.no-enter-animation) {
+    transition:
+      opacity 0.2s ease,
+      scale 0.2s ease;
+    opacity: 1;
+    scale: 1;
+    @starting-style {
+      opacity: 0.8;
+      scale: 0.8;
+    }
+  }
+
+  @media (orientation: portrait) {
+    .gallery-image-dialog {
+      --controls-inset: 0.5rem;
+    }
+  }
+
+  /* only style the open state: the UA's display: none must keep
+     applying when the dialog is closed */
+  .gallery-image-dialog[open] {
+    display: grid;
+    place-items: center;
+  }
+
+  /* sits behind the transparent image box while it loads;
+     the photo covers it once painted */
+  .gallery-image-dialog::before {
+    content: "Carico l’immagine…" / "";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: white;
+  }
+
+  .gallery-image-dialog img {
+    position: relative; /* paints over the loading message */
+    display: block;
+    max-width: 100vw;
+    max-height: 100dvh;
+    width: auto;
+    height: auto;
+  }
+
+  .gallery-image-dialog button {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    line-height: 1;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.6);
+    cursor: pointer;
+  }
+
+  .gallery-image-dialog .close-button {
+    top: var(--controls-inset);
+    right: var(--controls-inset);
+  }
+
+  button[command^="--"] {
+    top: 50%;
+    translate: 0 -50%;
+    font-size: 3rem;
+  }
+
+  button[command="--previous"] {
+    left: var(--controls-inset);
+  }
+
+  button[command="--next"] {
+    right: var(--controls-inset);
+  }
+
+  /* caption pill, centered at the bottom over the photo */
+  .gallery-image-dialog footer {
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+    translate: -50%;
+    max-width: calc(100vw - 2rem);
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: black;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+  }
+</style>
+
+<script>
+  document
+    .querySelectorAll<HTMLDialogElement>(".gallery-image-dialog")
+    .forEach((dialog) => {
+      dialog
+        .querySelectorAll<HTMLButtonElement>("[command^='--']")
+        .forEach((button) => (button.hidden = false));
+      dialog.addEventListener("command", (event) => {
+        const command = (event as Event & { command?: string }).command;
+        if (command !== "--next" && command !== "--previous") return;
+        const index = Number(dialog.id.replace("gallery-image-", ""));
+        const offset = command === "--next" ? 1 : -1;
+        const target = document.getElementById(
+          `gallery-image-${index + offset}`,
+        );
+        if (!(target instanceof HTMLDialogElement)) return;
+        dialog.close();
+        // hopping between photos should feel like swapping the image,
+        // not re-opening the lightbox: skip the enter animation
+        target.classList.add("no-enter-animation");
+        target.addEventListener(
+          "close",
+          () => target.classList.remove("no-enter-animation"),
+          { once: true },
+        );
+        target.showModal();
+      });
+    });
+</script>
