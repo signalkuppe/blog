@@ -46,6 +46,17 @@
   to = "/portfolio"
   status = 301
 
+# Pre-redesign per-photo permalinks (e.g. .../post-slug/photo-3 or
+# .../post-slug/some-caption-slug-id) lived one segment under the post URL.
+# The gallery is now an in-page <dialog>, so that segment no longer routes
+# anywhere; still-indexed/crawled links 404. Post URLs are always exactly
+# /category/year/month/day/slug (5 segments), so any 6th+ segment is a
+# leftover photo permalink — send it back to the post.
+[[redirects]]
+  from = "/:category/:year/:month/:day/:slug/*"
+  to = "/:category/:year/:month/:day/:slug"
+  status = 301
+
 # ── Cache headers ──────────────────────────────────────────────────────
 # Astro-generated assets have content hashes in filenames — cache forever
 [[headers]]
