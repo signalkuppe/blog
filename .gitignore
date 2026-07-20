@@ -2,11 +2,13 @@
 dist/
 tmp
 
+
 # generated types
 .astro/
 .site/
 .cache/
 .netlify/
+deno.lock
 
 # dependencies
 node_modules/

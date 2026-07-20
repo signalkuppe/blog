@@ -56,7 +56,3 @@ The redesign (branch `redesign-26`) systematically removed UI libraries in favor
 - Dynamic `import()` for the remaining heavy deps (chart.js, leaflet) so they never block first paint.
 
 Design language: JetBrains Mono everywhere, heavy (800/900) headings, fully **flat** cards — no backgrounds, borders, radius, or shadows; whitespace separates sections (a `--color-surface` token was tried and explicitly dropped). Colors are `:root` tokens in `GlobalStyles.astro` using `light-dark()`, never JS constants; page-specific tokens are prefixed (`--color-weather-*`); cross-page chart colors are exactly two tokens: `--color-graph-bg` and `--color-graph-line`. Theme override is stored in localStorage under the key in `src/constants.js` and read pre-paint in `Layout.astro`.
-
-## Known staleness
-
-`README.md` predates the redesign in places: it says Astro 5, and references `scripts/generate-post.js`, a `postbuild` cleanup-avif step, photoswipe, and @floating-ui/dom — none of which exist on this branch. Trust the code over the README where they disagree.

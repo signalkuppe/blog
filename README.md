@@ -1,16 +1,17 @@
 # Signalkuppe.com - Mountain Adventure Blog
 
-Personal blog about mountain adventures, ski touring, hiking, and alpine photography by Matteo Leoni. Built with Astro and deployed on Netlify.
+Personal blog about mountain adventures, ski touring, hiking, and alpine photography by Matteo Leoni. Built with Astro and deployed on Netlify. All content and UI copy is in Italian.
 
 ## 🏔️ Tech Stack
 
-- **Framework**: [Astro 5](https://astro.build) - SSR via Netlify adapter with content collections
+- **Framework**: [Astro 7](https://astro.build) - `output: "static"` with the Netlify adapter (`imageCDN: false`, Sharp processes images at build time); four routes opt out of prerendering for SSR (`/meteo-concenedo`, `/cerca`, `/api/meteo-concenedo`, `/api/webcam`)
 - **Content**: MDX files with frontmatter and co-located media
-- **Styling**: Custom CSS with CSS variables for theming (dark/light mode)
+- **Styling**: Custom CSS with `light-dark()` CSS variables for theming, JetBrains Mono everywhere, fully flat cards (no backgrounds/borders/radius/shadows)
 - **Hosting**: Netlify
 - **Image Format**: AVIF for optimized file sizes
 - **Maps**: Leaflet with GPX track visualization
-- **Charts**: Chart.js for elevation profiles
+- **Charts**: Chart.js for elevation profiles and weather graphs
+- **UI**: No component/UI libraries — native `<dialog>`, the Popover API, and `command`/`commandfor` invokers instead (see "UI philosophy" below)
 
 ## 📁 Project Structure
 
@@ -25,10 +26,12 @@ Personal blog about mountain adventures, ski touring, hiking, and alpine photogr
 │   ├── content/
 │   │   ├── posts/        # Blog posts (MDX + images)
 │   │   └── portfolio/    # Portfolio photos
+│   ├── content.config.ts # Content collection schemas (glob loaders)
+│   ├── constants.js      # Site-wide config: title, categories, map tiles, social links
 │   ├── layouts/          # Page layouts
 │   ├── pages/            # Routes (file-based routing)
-│   ├── lib/              # Utilities and helpers
-│   └── icons/            # SVG icons
+│   ├── lib/              # Utilities and helpers (weatherlink, forecast, dom, etc.)
+│   └── assets/           # Weather icons and other bundled assets
 ├── netlify.toml          # Netlify configuration
 └── package.json
 ```
@@ -37,8 +40,8 @@ Personal blog about mountain adventures, ski touring, hiking, and alpine photogr
 
 ### Prerequisites
 
-- Node.js 18+
-- npm or equivalent package manager
+- Node.js 22+
+- npm
 
 ### Installation
 
@@ -52,11 +55,13 @@ npm run dev
 
 The site will be available at `http://localhost:4321`
 
+The SSR-only meteo page needs two env vars locally: `SIGNALKUPPE_WEBSITE_WEATHERLINK_APIKEY` and `SIGNALKUPPE_WEBSITE_WEATHERLINK_SECRET` (WeatherLink API credentials).
+
 ## 📝 Content Management
 
 ### Blog Posts
 
-Posts are stored in `src/content/posts/` as MDX files with co-located images:
+Posts are stored in `src/content/posts/` as MDX files with co-located images. There is no post-generation script — folders and frontmatter are created by hand:
 
 ```
 src/content/posts/
@@ -68,6 +73,8 @@ src/content/posts/
     └── ...
 ```
 
+The folder name doesn't drive the URL — the page route comes from the frontmatter `slug` (e.g. `scialpinismo/2025/12/13/testa-dei-fra`).
+
 #### Post Frontmatter Structure
 
 ```yaml
@@ -77,7 +84,7 @@ description: "Brief description for SEO and previews"
 date: "2025-12-13T00:00"
 slug: "category/2025/12/13/post-slug"
 category:
-  - "Scialpinismo"  # or Alpinismo, Trekking, etc.
+  - "Scialpinismo"  # or Alpinismo, Trekking, etc. — see src/constants.js
 tags:
   - "tag1"
   - "tag2"
@@ -121,33 +128,7 @@ Why AVIF is kept in Git:
 - **Location**: `public/gpx/`
 - **Format**: Standard GPX files
 - **Usage**: Referenced in post frontmatter via filename
-- **Features**: Interactive map + elevation chart
-
-## 🤖 Script Workflows
-
-### Generate a New Post From JPG Files
-
-Use `scripts/generate-post.js` through:
-
-```bash
-# From project root
-npm run generate-post src/content/posts/YYYY-MM-DD-post-slug
-
-# Or from inside a post folder
-cd src/content/posts/YYYY-MM-DD-post-slug
-npm run generate-post
-```
-
-What it does:
-
-1. Converts JPG files to AVIF (quality 85)
-2. Renames output files to `gallery-0.avif`, `gallery-1.avif`, ...
-3. Picks a random cover image from gallery files
-4. Picks a random inline image from gallery files
-5. Generates a starter MDX file with frontmatter and placeholder sections
-6. Deletes original JPG files after successful conversion
-
-After running the script, update title/description, category, tags, slug, alt text, and optional GPX/location metadata.
+- **Features**: Interactive Leaflet map + Chart.js elevation profile (rendered by `PostGpx.astro`)
 
 ## 🎨 Features
 
@@ -159,28 +140,43 @@ After running the script, update title/description, category, tags, slug, alt te
 - Alt text on all images
 - Focus management for dialogs
 
-### Search
-- Real-time search by title and tags
+### Search (`/cerca`)
+- SSR route, real-time search by title and tags
 - Keyboard navigation (↑/↓ arrows, Enter, Escape)
 - Visual highlighting of selected results
-- Autocomplete suggestions
 
 ### Image Galleries
-- PhotoSwipe lightbox integration
+- Native `<dialog>`-based lightbox (`GalleryModal.astro`) — no lightbox library
 - Touch/swipe support
 - Keyboard navigation
 - Lazy loading
 
 ### Maps & GPX
-- Interactive Leaflet maps
+- Interactive Leaflet maps (posts map on category listings, per-post GPX map)
 - GPX track overlay with start/end markers
 - Elevation profile chart with smooth curves
 - Statistics: elevation gain, distance, min/max altitude
 
+### Meteo (`/meteo-concenedo`)
+- SSR page pulling live data from a personal WeatherLink station, edge-cached via `Netlify-CDN-Cache-Control`
+- 3-day forecast from Open-Meteo
+- Cached webcam proxy (`/api/webcam`) shown in a native `<dialog>`
+- Chart.js graphs on a category axis, lazy-loaded via `IntersectionObserver`
+
 ### Theme
-- Dark/light mode with system preference detection
-- Persistent theme selection (localStorage)
-- CSS custom properties for easy theming
+- Dark/light mode with system preference detection via `light-dark()` CSS
+- Persistent theme override (localStorage), read pre-paint in `Layout.astro`
+- No JS color constants — every color is a `:root` token in `GlobalStyles.astro`
+
+## 🧭 UI philosophy
+
+This site deliberately avoids UI component/interaction libraries in favor of native platform features:
+
+- Native `<dialog>`, the Popover API (with CSS anchor positioning + a centered fallback), `command`/`commandfor` invokers, `<details>`
+- Vanilla inline `<script>` in Astro components; `src/lib/dom.js` holds shared client helpers
+- Dynamic `import()` for the remaining heavy deps (chart.js, leaflet) so they never block first paint
+
+Libraries like photoswipe and @floating-ui/dom were removed in favor of the above and should not be reintroduced.
 
 ## 🛠️ Development Commands
 
@@ -190,30 +186,15 @@ After running the script, update title/description, category, tags, slug, alt te
 | `npm run build` | Build production site to `./dist/` |
 | `npm run preview` | Preview production build locally |
 | `npm run astro` | Run Astro CLI commands |
-| `npm run deploy:test` | Build and deploy test alias |
-| `npm run generate-post` | Generate post starter content from JPG files |
-| `npm run deploy:prod` | Build and deploy production |
+| `npm run api` | Serve Netlify functions locally |
+| `npm run deploy:test` | Build and deploy to `test--signalkuppe.netlify.app` |
+| `npm run deploy:prod` | Build and deploy to production |
 
-### Cleanup Unreferenced AVIF Files (`scripts/cleanup-avif.js`)
-
-Astro emits the original source file for every imported image alongside the processed variants (resized WebP thumbnails). These originals are never linked in any HTML — they are dead weight that inflates deploy size by ~5 GB.
-
-This script runs automatically as part of `postbuild`:
-
-1. Collects all `*.avif` files from `dist/_astro/`
-2. Scans all HTML and JS output files for `/_astro/*.avif` references
-3. Deletes any AVIF not referenced anywhere
-
-Output example:
-```
-cleanup-avif: removed 4348 files, saved 5400.0 MB
-```
+There is no lint script and no test suite. Type errors surface via `npm run dev` (or your editor's TS server) — a full `npm run build` is slow enough that it's not a good feedback loop for quick checks.
 
 ## 🚢 Deployment
 
 Deployment is done with Netlify CLI from the local machine.
-
-### Deploy Commands
 
 ```bash
 # Test deploy (stable alias URL: test--signalkuppe.netlify.app)
@@ -223,10 +204,7 @@ npm run deploy:test
 npm run deploy:prod
 ```
 
-### Deployment Process
-
-1. `astro build` creates `dist/`
-2. Netlify CLI deploys the generated output
+Both commands run `astro build` and then have the Netlify CLI deploy the generated `dist/` output.
 
 ## ⚙️ Configuration
 
@@ -239,30 +217,33 @@ npm run deploy:prod
 
 [build.environment]
   NODE_OPTIONS = "--max-old-space-size=4096"
+  NODE_VERSION = "22"
+  AWS_LAMBDA_JS_RUNTIME = "nodejs22.x"
 
-[[redirects]]
-  from = "/portfolio"
-  to = "/portfolio/1"
-  status = 301
+# Allow the Concenedo webcam source through Netlify Image CDN
+[images]
+  remote_images = ["https://www\\.caiseregno\\.it/webcam_concenedo/.*"]
 ```
+
+It also carries the redesign's SEO redirects (old `/blog/*` URLs → their root equivalents, `/portfolio/1` → `/portfolio`) and long-lived cache headers for `/_astro/*`, `/gpx/*`, and `/images/*`. See the file for the full list — keep the redirects intact if you touch this file.
 
 ### Astro Configuration (`astro.config.mjs`)
 
-- **Adapter**: `@astrojs/netlify` for serverless deployment (`imageCDN: false` — uses Sharp at build time instead of Netlify's on-demand image CDN)
-- **Integrations**: `@astrojs/mdx` for MDX support
-- **Image Service**: Sharp (build-time processing, static output)
+- **Output**: `static`, with `prefetch: { prefetchAll: true }` (every internal link prefetches on hover/tap)
+- **Adapter**: `@astrojs/netlify` (`imageCDN: false` — uses Sharp at build time instead of Netlify's on-demand image CDN)
+- **Integrations**: `@astrojs/mdx`, `@astrojs/sitemap` (SSR pages are excluded automatically; `/meteo-concenedo` is added back as a custom page)
+- **Fonts**: JetBrains Mono via `fontProviders.fontsource()`, variable weight range `400 800`
 
 ### Content Collections Schema
 
-Located in `src/content/config.ts`:
-- **Posts**: Full blog posts with images, GPX tracks, metadata
-- **Portfolio**: Photo portfolio items
+Located in `src/content.config.ts` (glob loaders):
+- **posts** — ~320 folders in `src/content/posts/YYYY-MM-DD-slug/`, full blog posts with images, GPX tracks, metadata
+- **portfolio** — numbered folders, one photo each
 
 ## 📊 Build Output
 
 - **Size**: ~7GB (mostly images)
-- **Files**: ~6,000 files
-- **Build Time**: First build: 10–20+ minutes locally (Sharp generates all image variants); subsequent builds: fast thanks to Astro's image cache
+- **Build Time**: First build: 10–20+ minutes locally (Sharp generates all image variants for ~320 posts); subsequent builds: fast thanks to Astro's image cache
 - **Upload Time**: First deploy: varies by connection; subsequent: <2 minutes
 
 ## 🔧 Troubleshooting
@@ -284,6 +265,10 @@ npm run dev
 - Verify filename matches frontmatter `gpxTracks.src`
 - Check browser console for network errors
 
+### Meteo page shows stale/frozen data
+
+The WeatherLink historic-window timestamps in `src/lib/weatherlink.js` must be computed per request, not cached at module scope — computing them once froze the data window on warm serverless instances. If this regresses, check that code path first.
+
 ### Build Memory Issues
 
 Increase Node memory if needed:
@@ -297,12 +282,11 @@ npm run build
 - `astro` - Static site generator
 - `@astrojs/netlify` - Netlify adapter
 - `@astrojs/mdx` - MDX support
-- `leaflet` - Interactive maps
-- `leaflet-gpx` - GPX track rendering
-- `chart.js` - Elevation charts
-- `photoswipe` - Image lightbox
-- `@floating-ui/dom` - Tooltips and popovers
-- `netlify-cli` - Manual deployment
+- `@astrojs/sitemap` - Sitemap generation
+- `leaflet` / `leaflet-gpx` - Interactive maps and GPX track rendering
+- `chart.js` - Elevation and weather charts
+- `dayjs`, `lodash`, `simplify-js` - General utilities (GPX simplification, dates)
+- `netlify-cli` - Manual deployment (dev dependency)
 
 ## 🎯 Performance
 
@@ -310,7 +294,7 @@ npm run build
 - **Image Optimization**: Sharp at build time (all size variants pre-generated as static files)
 - **Lazy Loading**: Images below fold
 - **Code Splitting**: Automatic via Astro
-- **CSS**: Scoped component styles
+- **CSS**: Scoped component styles, no UI framework/runtime overhead
 
 ## 📄 License
 
