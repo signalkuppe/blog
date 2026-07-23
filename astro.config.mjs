@@ -8,11 +8,13 @@ export default defineConfig({
   site: "https://www.signalkuppe.com",
   output: "static",
   compressHTML: true,
-  // every internal link prefetches on hover/tap; the Meteo header link
-  // overrides this with "load" to mask its slow server render
-  prefetch: {
-    prefetchAll: true,
-  },
+  // every internal link prefetches on tap (not hover: hover + Netlify's
+  // must-revalidate HTML caching hit a Chromium race where the real
+  // navigation right after a prefetch occasionally lands on an empty
+  // response body — a blank page with no console error, self-healing
+  // on reload). The Meteo header link overrides this with "load" to
+  // mask its slow server render.
+  prefetch: true,
   adapter: netlify({
     imageCDN: false,
   }), // https://docs.astro.build/en/guides/deploy/netlify/#image-cdn

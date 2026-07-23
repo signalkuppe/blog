@@ -11,15 +11,15 @@ import MoonIcon from "../assets/icons/Moon.svg";
     <div class="header-left">
       <a href="/" class="siteName">{siteTitle}</a>
       <ul role="list" class="nav-links">
-        <li><a href="/matteo" data-astro-prefetch="load">Chi sono</a></li>
-        <li><a href="/portfolio" data-astro-prefetch="load">Le mie foto</a></li>
+        <li><a href="/matteo" data-astro-prefetch>Chi sono</a></li>
+        <li><a href="/portfolio" data-astro-prefetch>Le mie foto</a></li>
         <li>
           <!-- "load" prefetch: warms the CDN cache (and triggers the
                stale-while-revalidate refresh) so the slow server render
                is done before anyone clicks -->
           <a href="/meteo-concenedo" data-astro-prefetch="load">Meteo</a>
         </li>
-        <li><a href="/contatti" data-astro-prefetch="load">Contatti</a></li>
+        <li><a href="/contatti" data-astro-prefetch>Contatti</a></li>
       </ul>
     </div>
 

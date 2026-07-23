@@ -22,7 +22,7 @@ const { post } = Astro.props;
     <span aria-hidden="true">-</span>
   </header>
 
-  <a href={`/${post.id}`}>{post.data.title}</a>
+  <a href={`/${post.id}`} data-astro-prefetch>{post.data.title}</a>
 </article>
 
 <style>
