@@ -50,10 +50,32 @@
 # .../post-slug/some-caption-slug-id) lived one segment under the post URL.
 # The gallery is now an in-page <dialog>, so that segment no longer routes
 # anywhere; still-indexed/crawled links 404. Post URLs are always exactly
-# /category/year/month/day/slug (5 segments), so any 6th+ segment is a
+# /category/year/month/day/slug (5 segments), so a 6th segment is a
 # leftover photo permalink — send it back to the post.
+#
+# NB: this MUST use a named 6th placeholder (:photo), not a trailing splat.
+# Netlify matches redirects trailing-slash-insensitively and a splat also
+# matches the empty string, so `/:slug/*` matched the canonical post URL
+# itself (`/…/slug/`) and 301'd it to `/…/slug`, which normalizes straight
+# back — an infinite loop that broke every post. `:photo` requires a real
+# segment, so it can never match the bare post URL.
+#
+# `astro dev` runs the Netlify edge dev emulator, which applies these
+# redirects locally too. The rule below collapses ANY 6-segment path to 5,
+# and Vite's internal dev module URLs under /@id are 6 segments (e.g.
+# /@id/astro/runtime/client/dev-toolbar/entrypoint.js) — without this
+# passthrough that URL 301s and the dev toolbar silently fails to load.
+# First match wins, so /@* modules are served (via Vite) before the collapse
+# rule is reached. Production never receives /@* requests, so it's a no-op
+# there. NB: do NOT add a /node_modules/* passthrough — the emulator would
+# serve those raw off disk, bypassing Vite's transform (breaks env.mjs's
+# __DEFINES__), and those internal paths aren't 6 segments anyway.
 [[redirects]]
-  from = "/:category/:year/:month/:day/:slug/*"
+  from = "/@*"
+  to = "/@:splat"
+  status = 200
+[[redirects]]
+  from = "/:category/:year/:month/:day/:slug/:photo"
   to = "/:category/:year/:month/:day/:slug"
   status = 301
 

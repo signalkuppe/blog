@@ -199,6 +199,9 @@ const ogImg = await getImage({
     time {
       display: block;
       margin-bottom: 0.5rem;
+      /* it-IT renders the long month lowercase ("agosto"); capitalize it
+         ("10 Agosto 2025"). Numbers are unaffected. */
+      text-transform: capitalize;
     }
 
     .disclaimer {
