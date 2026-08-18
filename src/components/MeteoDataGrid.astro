@@ -4,7 +4,7 @@ import MeteoCardFooterRow from "./MeteoCardFooterRow.astro";
 import MaxIcon from "../assets/icons/Max.svg";
 import MinIcon from "../assets/icons/Min.svg";
 import PaperIcon from "../assets/icons/Paper.svg";
-import ArrowUp from "../assets/icons/ArrowUp.svg";
+import WindIcon from "../assets/icons/Wind.svg";
 import { WEATHER_CONSTANTS } from "../constants";
 const { current, day } = Astro.props;
 ---
@@ -160,7 +160,7 @@ const { current, day } = Astro.props;
         value={day.wind_prevailing_dir}
         valueColor="var(--color-weather-alt-value)"
       >
-        <ArrowUp slot="icon" />
+        <WindIcon slot="icon" />
       </MeteoCardFooterRow>
     </MeteoCard>
   </li>

@@ -4,6 +4,7 @@ import SearchIcon from "../assets/icons/Search.svg";
 import HamburgerIcon from "../assets/icons/Hamburger.svg";
 import SunIcon from "../assets/icons/Sun.svg";
 import MoonIcon from "../assets/icons/Moon.svg";
+import CloseButton from "./CloseButton.astro";
 ---
 
 <div class="header-container">
@@ -86,10 +87,7 @@ import MoonIcon from "../assets/icons/Moon.svg";
 </div>
 
 <dialog id="search-dialog" closedby="any" aria-labelledby="search-dialog-title">
-  <button commandfor="search-dialog" command="close" class="close-button">
-    <span aria-hidden="true">&times;</span>
-    <span class="visually-hidden">Chiudi</span>
-  </button>
+  <CloseButton dialog="search-dialog" />
   <h2 id="search-dialog-title" class="search-dialog-title">Cerca un’uscita</h2>
   <form action="/cerca">
     <label for="search-mobile" class="visually-hidden">Cerca un’uscita</label>
@@ -451,11 +449,11 @@ import MoonIcon from "../assets/icons/Moon.svg";
     }
   }
 
-  .close-button {
+  /* :global() because scoped styles don't reach a child component's root */
+  #search-dialog :global(.close-button) {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    line-height: 1;
   }
 
   .menu-trigger {

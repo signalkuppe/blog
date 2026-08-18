@@ -1,6 +1,7 @@
 ---
 import leafletCssUrl from "leaflet/dist/leaflet.css?url";
 import { mapTilesUrl } from "../constants";
+import CloseButton from "./CloseButton.astro";
 
 interface Props {
   track: {
@@ -42,7 +43,6 @@ const gpxUrl = `/gpx/${track.src}`;
       type="button"
       command="show-modal"
       commandfor="post-map-dialog"
-      class="open-map-button"
       hidden
     >
       Apri la Mappa
@@ -51,7 +51,6 @@ const gpxUrl = `/gpx/${track.src}`;
       type="button"
       command="show-modal"
       commandfor="post-chart-dialog"
-      class="open-chart-button"
       hidden
     >
       Mostra il Grafico
@@ -59,10 +58,7 @@ const gpxUrl = `/gpx/${track.src}`;
   </div>
 
   <dialog id="post-map-dialog" class="post-map-dialog" closedby="any">
-    <button commandfor="post-map-dialog" command="close" class="close-button">
-      <span aria-hidden="true">&times;</span>
-      <span class="visually-hidden">Chiudi</span>
-    </button>
+    <CloseButton dialog="post-map-dialog" />
     <div
       class="post-map-canvas"
       data-gpx={gpxUrl}
@@ -76,10 +72,7 @@ const gpxUrl = `/gpx/${track.src}`;
   </dialog>
 
   <dialog id="post-chart-dialog" class="post-chart-dialog" closedby="any">
-    <button commandfor="post-chart-dialog" command="close" class="close-button">
-      <span aria-hidden="true">&times;</span>
-      <span class="visually-hidden">Chiudi</span>
-    </button>
+    <CloseButton dialog="post-chart-dialog" />
     <div class="post-chart-canvas" data-gpx={gpxUrl}>
       <canvas></canvas>
     </div>
@@ -164,20 +157,13 @@ const gpxUrl = `/gpx/${track.src}`;
     padding: 0.85rem 1rem;
   }
 
-  .post-map-dialog .close-button,
-  .post-chart-dialog .close-button {
+  /* :global() because scoped styles don't reach a child component's root */
+  .post-map-dialog :global(.close-button),
+  .post-chart-dialog :global(.close-button) {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
     z-index: 1001; /* Leaflet controls go up to 1000 */
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    line-height: 1;
-    background-color: var(--color-bg);
   }
 </style>
 

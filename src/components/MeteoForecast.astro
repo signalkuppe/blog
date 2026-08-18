@@ -19,10 +19,14 @@ const longWeekday = (date) =>
   {
     days.map((day) => (
       <li>
-        <span class="weekday" aria-hidden="true">{day.weekday}</span>
+        <span class="weekday" aria-hidden="true">
+          {day.weekday}
+        </span>
         <span class="visually-hidden">{longWeekday(day.date)}</span>
         <WeatherIcon icon={day.icon} size={64} label={day.description} />
-        <span class="description" aria-hidden="true">{day.description}</span>
+        <span class="description" aria-hidden="true">
+          {day.description}
+        </span>
         <span class="temperatures">
           <span class="min">
             <span class="visually-hidden">minima</span>
@@ -77,7 +81,7 @@ const longWeekday = (date) =>
   }
 
   .description {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 700;
     text-wrap: balance;
   }
@@ -96,7 +100,7 @@ const longWeekday = (date) =>
   }
 
   .detail {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--color-subtle);
     display: inline-flex;
     align-items: center;

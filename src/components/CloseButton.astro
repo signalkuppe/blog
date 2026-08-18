@@ -1,0 +1,39 @@
+---
+import CloseIcon from "../assets/icons/Close.svg";
+
+// The close affordance shared by the dialogs (the gallery lightbox keeps its
+// own bare-over-the-photo controls). Look and feel only — each dialog
+// positions it itself. The icon is decorative; the accessible name comes from
+// the visually-hidden label.
+
+interface Props {
+  /** id of the dialog this button closes */
+  dialog: string;
+}
+
+const { dialog } = Astro.props;
+---
+
+<button type="button" commandfor={dialog} command="close" class="close-button">
+  <CloseIcon aria-hidden="true" />
+  <span class="visually-hidden">Chiudi</span>
+</button>
+
+<style>
+  .close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    line-height: 1;
+    background-color: var(--color-bg);
+  }
+
+  .close-button svg {
+    /* the raw SVG carries width/height="24" attributes, so both are needed */
+    width: 1rem;
+    height: 1rem;
+  }
+</style>

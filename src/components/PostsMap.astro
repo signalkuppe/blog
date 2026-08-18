@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import leafletCssUrl from "leaflet/dist/leaflet.css?url";
 import { mapTilesUrl } from "../constants";
+import MapPinIcon from "../assets/icons/MapPin.svg";
+import CloseButton from "./CloseButton.astro";
 
 const posts = await getCollection("posts");
 const markers = posts.flatMap((post) =>
@@ -25,14 +27,11 @@ const markers = posts.flatMap((post) =>
   class="open-posts-map-button"
   hidden
 >
-  Mappa uscite
+  Mappa uscite <MapPinIcon />
 </button>
 
 <dialog id="posts-map-dialog" class="posts-map-dialog" closedby="any">
-  <button commandfor="posts-map-dialog" command="close" class="close-button">
-    <span aria-hidden="true">&times;</span>
-    <span class="visually-hidden">Chiudi</span>
-  </button>
+  <CloseButton dialog="posts-map-dialog" />
   <div
     class="posts-map-canvas"
     data-tiles={mapTilesUrl}
@@ -53,6 +52,15 @@ const markers = posts.flatMap((post) =>
 />
 
 <style>
+  .open-posts-map-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .open-posts-map-button svg {
+    height: 1rem;
+  }
   .posts-map-dialog {
     --viewport-gap: 1rem; /* breathing room around the dialog */
     --dialog-footer-height: 4rem; /* title + close button row */
@@ -95,19 +103,12 @@ const markers = posts.flatMap((post) =>
     padding: 0.85rem 1rem;
   }
 
-  .posts-map-dialog .close-button {
+  /* :global() because scoped styles don't reach a child component's root */
+  .posts-map-dialog :global(.close-button) {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
     z-index: 1001; /* Leaflet controls go up to 1000 */
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    line-height: 1;
-    background-color: var(--color-bg);
   }
 
   /* CSS wins over the SVG presentation attributes Leaflet sets,

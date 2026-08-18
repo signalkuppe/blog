@@ -3,8 +3,8 @@
 
   :root {
     color-scheme: light dark;
-    --color-bg: light-dark(#f8f9fa, #1e1e1e);
-    --color-text: light-dark(#2c3e50, #e2e8f0);
+    --color-bg: light-dark(#f2f2f2, #1e1e1e);
+    --color-text: light-dark(#2c3e50, #ced0d1);
     --color-subtle: light-dark(
       color-mix(in oklab, currentColor, white 25%),
       color-mix(in oklab, currentColor, black 25%)
@@ -93,7 +93,7 @@
   h2,
   h3 {
     font-weight: 800;
-    line-height: 1.25;
+    line-height: 1.5;
   }
 
   h1 {
@@ -127,9 +127,10 @@
     appearance: none;
     background-color: var(--color-buttons);
     color: inherit;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.85rem;
     border: 1px solid currentColor;
     border-radius: 0;
+    font-weight: 700;
   }
 
   button:disabled {

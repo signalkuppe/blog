@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import CloseIcon from "../assets/icons/Close.svg";
 
 interface Props {
   index: number;
@@ -24,7 +25,7 @@ const { index, count, image, caption = image.alt } = Astro.props;
     command="close"
     class="close-button"
   >
-    <span aria-hidden="true">&times;</span>
+    <CloseIcon aria-hidden="true" />
     <span class="visually-hidden">Chiudi</span>
   </button>
   <Image
@@ -118,6 +119,8 @@ const { index, count, image, caption = image.alt } = Astro.props;
     height: auto;
   }
 
+  /* the lightbox controls float bare over the photo, so they keep their own
+     look instead of the boxed CloseButton the other dialogs share */
   .gallery-image-dialog button {
     position: absolute;
     z-index: 1;
@@ -139,6 +142,13 @@ const { index, count, image, caption = image.alt } = Astro.props;
   .gallery-image-dialog .close-button {
     top: var(--controls-inset);
     right: var(--controls-inset);
+  }
+
+  .gallery-image-dialog .close-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    /* text-shadow can't reach the stroke of an SVG */
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.6));
   }
 
   button[command^="--"] {

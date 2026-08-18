@@ -1,4 +1,6 @@
 ---
+import WebcamIcon from "../assets/icons/Webcam.svg";
+import CloseButton from "./CloseButton.astro";
 // Webcam in a native <dialog>. The image URL comes from /api/webcam (cached
 // proxy) and is fetched only when the dialog is first opened, so the slow
 // third-party source costs nothing on page load. The trigger is hidden until
@@ -12,14 +14,11 @@
   class="webcam-trigger"
   hidden
 >
-  Webcam ▸
+  Webcam <WebcamIcon class="icon" aria-hidden="true" />
 </button>
 
 <dialog id="webcam-dialog" class="webcam-dialog" closedby="any">
-  <button commandfor="webcam-dialog" command="close" class="close-button">
-    <span aria-hidden="true">&times;</span>
-    <span class="visually-hidden">Chiudi</span>
-  </button>
+  <CloseButton dialog="webcam-dialog" />
   <div class="webcam-body" data-state="loading">
     <img
       alt="Webcam in diretta da Concenedo (Barzio)"
@@ -83,6 +82,15 @@
 </script>
 
 <style media="screen">
+  .webcam-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .webcam-trigger svg {
+    height: 0.85rem;
+  }
   .webcam-dialog {
     --viewport-gap: 1rem;
     border: 2px solid var(--color-subtle);
@@ -96,20 +104,16 @@
     background-color: rgba(0, 0, 0, 0.85);
   }
 
-  .close-button {
+  /* :global() because scoped styles don't reach a child component's root */
+  .webcam-dialog :global(.close-button) {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
     z-index: 1;
-    line-height: 1;
   }
 
   .webcam-body {
-    background: linear-gradient(
-      -45deg,
-      var(--color-bg),
-      var(--color-buttons)
-    );
+    background: linear-gradient(-45deg, var(--color-bg), var(--color-buttons));
     background-size: 400% 400%;
     aspect-ratio: 3840 / 2160;
     display: grid;
