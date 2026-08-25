@@ -85,6 +85,17 @@ const { day } = Astro.props;
         data-points={JSON.stringify(day.graph_wind_dir_pie)}></canvas>
     </MeteoGraphCard>
   </li>
+  <li>
+    <MeteoGraphCard
+      title={`Pioggia cumulata (${WEATHER_CONSTANTS.RAIN_UNIT})`}
+    >
+      <canvas
+        data-chart="line"
+        data-y-min="0"
+        data-hour-step="2"
+        data-points={JSON.stringify(day.graph_rain_cumulative)}></canvas>
+    </MeteoGraphCard>
+  </li>
   <li class="full-width">
     <MeteoGraphCard
       title={`Temperatura ultimi 7 giorni (${WEATHER_CONSTANTS.TEMPERATURE_UNIT})`}
@@ -151,11 +162,24 @@ const { day } = Astro.props;
     }
 
     function lineChart(canvas, colors, dataset) {
+      // Series with one point per hour (instead of one per 15 min) are too
+      // short for autoSkip to land on a 2-hour spacing like the other 24h
+      // charts: declare the step and keep exactly those hours.
+      const hourStep = Number(canvas.dataset.hourStep) || 0;
       const scales = baseScales(
         colors,
         dataset.map((point) => point.x),
-        hourTick(),
+        hourStep
+          ? function (value) {
+              const hour = this.getLabelForValue(value).slice(11, 13);
+              return Number(hour) % hourStep === 0 ? hour : null;
+            }
+          : hourTick(),
       );
+      if (hourStep) {
+        scales.x.ticks.autoSkip = false;
+        delete scales.x.ticks.maxTicksLimit;
+      }
       // Non-negative quantities (rain rate, wind, radiation) declare
       // data-y-min="0" so a flat series doesn't pad the axis below zero.
       if (canvas.dataset.yMin !== undefined) {
@@ -298,8 +322,15 @@ const { day } = Astro.props;
         },
         options: {
           responsive: true,
+          // Pie defaults to a square canvas, so the circle — sized by the
+          // narrower horizontal space left by the callout padding — floated in
+          // a tall box, far from the title. A wider ratio plus tighter
+          // top/bottom padding closes that gap without shrinking the circle:
+          // the side padding still has to fit a "NNW 12%" callout, the
+          // top/bottom one only the 10px leader line and the text height.
+          aspectRatio: 1.35,
           layout: {
-            padding: { top: 60, bottom: 60, left: 80, right: 80 },
+            padding: { top: 24, bottom: 24, left: 80, right: 80 },
           },
           plugins: {
             legend: { display: false },
@@ -322,7 +353,7 @@ const { day } = Astro.props;
                 const color = arc.options.backgroundColor;
                 const middleAngle = (arc.startAngle + arc.endAngle) / 2;
                 const radius = arc.outerRadius;
-                const offset = radius + 15;
+                const offset = radius + 10;
                 const x = centerX + Math.cos(middleAngle) * radius;
                 const y = centerY + Math.sin(middleAngle) * radius;
                 const externalX = centerX + Math.cos(middleAngle) * offset;

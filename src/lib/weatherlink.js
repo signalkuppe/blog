@@ -263,6 +263,13 @@ export default async function weatherlink() {
           x: unixToGraphTime(v.ts),
           y: v.rain_rate_hi_mm,
         })),
+        graph_rain_cumulative: _.map(
+          hourlyCumulativeRain(tettoOneDayBefore),
+          (v) => ({
+            x: unixToGraphTime(v.ts),
+            y: v.mm,
+          }),
+        ),
         graph_solar_radiation: _.map(tettoOneDayBefore, (v) => ({
           x: unixToGraphTime(v.ts),
           y: parseFloat(v.solar_rad_avg),
@@ -383,6 +390,30 @@ function hourlyTempPeaks(data) {
     }
   }
   return [...byHour.values()].sort((a, b) => a.ts - b.ts);
+}
+
+// Running total of the rain fallen in the window, one point per hour. Archive
+// records timestamp the END of their interval, so a 12:00 record belongs to the
+// 11:00 hour; each hour is plotted at its last reading — the moment its
+// cumulative total is actually reached (the current, still-open hour included).
+function hourlyCumulativeRain(data) {
+  const byHour = new Map();
+  for (const record of data) {
+    const hour = Math.floor((record.ts - 1) / 3600);
+    const bucket = byHour.get(hour) ?? { ts: record.ts, mm: 0 };
+    bucket.ts = Math.max(bucket.ts, record.ts);
+    bucket.mm += record.rainfall_mm ?? 0;
+    byHour.set(hour, bucket);
+  }
+  let total = 0;
+  return _.map(
+    _.sortBy([...byHour.entries()], ([hour]) => hour),
+    ([, bucket]) => {
+      total += bucket.mm;
+      // float sums of 0.2mm clicks drift ("1.2000000000000002")
+      return { ts: bucket.ts, mm: Math.round(total * 10) / 10 };
+    },
+  );
 }
 
 function convertPressure(pressure) {
