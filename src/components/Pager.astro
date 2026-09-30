@@ -4,13 +4,18 @@ interface Props {
 }
 const { page } = Astro.props;
 
+// paginate() emits URLs without a trailing slash, but Netlify serves static
+// pages at /path/ and 301s the bare form: link to the final URL directly
+const withSlash = (url?: string) =>
+  url && !url.endsWith("/") ? `${url}/` : url;
+
 const before = [
-  { url: page.url.first, symbol: "«", label: "Pagina iniziale" },
-  { url: page.url.prev, symbol: "‹", label: "Precedente" },
+  { url: withSlash(page.url.first), symbol: "«", label: "Pagina iniziale" },
+  { url: withSlash(page.url.prev), symbol: "‹", label: "Precedente" },
 ];
 const after = [
-  { url: page.url.next, symbol: "›", label: "Successiva" },
-  { url: page.url.last, symbol: "»", label: "Ultima pagina" },
+  { url: withSlash(page.url.next), symbol: "›", label: "Successiva" },
+  { url: withSlash(page.url.last), symbol: "»", label: "Ultima pagina" },
 ];
 ---
 

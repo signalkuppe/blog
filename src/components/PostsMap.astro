@@ -13,7 +13,7 @@ const markers = posts.flatMap((post) =>
           lat: post.data.location.lat,
           lon: post.data.location.lon,
           title: post.data.title,
-          url: `/${post.id}`,
+          url: `/${post.id}/`,
         },
       ]
     : [],

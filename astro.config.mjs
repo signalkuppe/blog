@@ -22,7 +22,8 @@ export default defineConfig({
     mdx(),
     sitemap({
       // SSR pages are excluded automatically; meteo is worth indexing
-      customPages: ["https://www.signalkuppe.com/meteo-concenedo/"],
+      // no trailing slash: must match the page's canonical and header links
+      customPages: ["https://www.signalkuppe.com/meteo-concenedo"],
     }),
   ],
   build: {

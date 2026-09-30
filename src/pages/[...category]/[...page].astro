@@ -99,7 +99,7 @@ const postsCountLabel = `${page.total} ${page.total === 1 ? "uscita" : "uscite"}
         categories.map((c) => (
           <li>
             <a
-              href={`/${c.slug}`}
+              href={`/${c.slug}/`}
               aria-current={
                 currentCategory?.slug === c.slug ? "page" : undefined
               }

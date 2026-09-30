@@ -59,7 +59,7 @@ const ogImg = await getImage({
         {
           postCategory && (
             <li>
-              <a href={`/${postCategory.slug}`}>{postCategory.title}</a>
+              <a href={`/${postCategory.slug}/`}>{postCategory.title}</a>
             </li>
           )
         }
@@ -108,7 +108,7 @@ const ogImg = await getImage({
             prev && (
               <li>
                 <span>Uscita precedente</span>
-                <a href={`/${prevSlug}`}>{prev.data.title}</a>
+                <a href={`/${prevSlug}/`}>{prev.data.title}</a>
               </li>
             )
           }
@@ -116,7 +116,7 @@ const ogImg = await getImage({
             next && (
               <li>
                 <span>Uscita successiva</span>
-                <a href={`/${nextSlug}`}>{next.data.title}</a>
+                <a href={`/${nextSlug}/`}>{next.data.title}</a>
               </li>
             )
           }
