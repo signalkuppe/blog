@@ -56,6 +56,10 @@ let headDescription = currentCategory
   : "Blog personale di Matteo Leoni";
 
 const isHome = !currentCategory && page.currentPage === 1;
+
+const postsCountLabel = `${page.total} ${page.total === 1 ? "uscita" : "uscite"}${
+  currentCategory ? ` in ${currentCategory.title}` : ""
+}`;
 ---
 
 <Layout
@@ -85,6 +89,7 @@ const isHome = !currentCategory && page.currentPage === 1;
 
   <div class="pager">
     <Pager page={page} />
+    <p class="caption posts-count">{postsCountLabel}</p>
   </div>
 
   <Fragment slot="aside">
@@ -162,6 +167,10 @@ const isHome = !currentCategory && page.currentPage === 1;
 
   .pager {
     margin-top: 6rem;
+  }
+
+  .posts-count {
+    margin: 2rem 0;
   }
 
   .posts-map {

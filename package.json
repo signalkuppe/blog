@@ -12,12 +12,12 @@
     "deploy:prod": "netlify deploy --build --prod"
   },
   "dependencies": {
-    "@astrojs/markdown-satteri": "^0.3.6",
-    "@astrojs/mdx": "^7.0.6",
-    "@astrojs/netlify": "^8.2.2",
+    "@astrojs/markdown-satteri": "^0.4.2",
+    "@astrojs/mdx": "^8.0.2",
+    "@astrojs/netlify": "^8.2.6",
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.2.3",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.5",
     "chart.js": "^4.5.1",
     "dayjs": "^1.11.21",
     "leaflet": "^1.9.4",
