@@ -38,6 +38,13 @@ if (page.currentPage > 1) {
 }
 
 const description = "Una raccolta delle mie foto più belle";
+
+// Le anteprime crescono con lo schermo (vedi --photo-min nel CSS): serve una
+// variante più grande per gli schermi larghi/retina, senza mai superare
+// la larghezza dell'originale.
+const thumbWidths = [800, 1200];
+const thumbSizes =
+  "(min-width: 2560px) 480px, (min-width: 1160px) 25vw, (min-width: 880px) 33vw, (min-width: 600px) 50vw, 100vw";
 ---
 
 <Layout
@@ -62,6 +69,10 @@ const description = "Una raccolta delle mie foto più belle";
               src={photo.data.photo.src}
               alt={photo.data.photo.alt}
               width={800}
+              widths={thumbWidths.filter(
+                (width) => width <= photo.data.photo.src.width,
+              )}
+              sizes={thumbSizes}
               quality={80}
               loading={index === 0 ? "eager" : "lazy"}
               class="photo"
@@ -91,14 +102,51 @@ const description = "Una raccolta delle mie foto più belle";
   ul.photos {
     list-style: none;
     padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5rem;
+    /* Masonry via multi-column: funziona ovunque, ma l'ordine scorre
+       dall'alto in basso colonna per colonna. Lo spazio verticale è un
+       padding (i margini a fine colonna vengono troncati in modo diverso
+       tra browser) e il margine negativo compensa quello dell'ultima foto. */
+    margin: 0 0 calc(var(--photos-gap) * -1);
+    --photos-gap: 1.5rem;
+    /* larghezza minima di una colonna: cresce con lo schermo, così le
+       anteprime si ingrandiscono invece di moltiplicare le colonne */
+    --photo-min: clamp(16rem, 20vw, 30rem);
+    columns: var(--photo-min);
+    column-gap: var(--photos-gap);
+  }
+
+  /* Oltre la larghezza del contenitore (1024px + padding) la griglia esce
+     dal contenitore e occupa tutta la pagina; il titolo resta
+     allineato all'header. Il margine laterale assorbe anche l'eventuale
+     scrollbar, che 100vw include. */
+  @media (min-width: 1088px) {
+    ul.photos {
+      --photos-gutter: 2rem;
+      margin-inline: calc(50% - 50vw + var(--photos-gutter));
+    }
   }
 
   ul.photos li {
     break-inside: avoid;
+    padding-bottom: var(--photos-gap);
+  }
+
+  /* Masonry nativo dove supportato: mantiene l'ordine da sinistra a destra */
+  @supports (display: grid-lanes) {
+    ul.photos {
+      display: grid-lanes;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(min(100%, var(--photo-min)), 1fr)
+      );
+      gap: var(--photos-gap);
+      columns: auto;
+      margin-bottom: 0;
+    }
+
+    ul.photos li {
+      padding-bottom: 0;
+    }
   }
 
   .open-modal-button {
@@ -122,5 +170,15 @@ const description = "Una raccolta delle mie foto più belle";
 
   .pager {
     margin-top: 4rem;
+  }
+
+  /* con la griglia a tutta pagina (stesso breakpoint di ul.photos) il pager
+     si centra sotto le foto, con più respiro */
+  @media (min-width: 1088px) {
+    .pager {
+      display: flex;
+      justify-content: center;
+      margin-top: 6rem;
+    }
   }
 </style>
