@@ -1,6 +1,7 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import CloseIcon from "../assets/icons/Close.svg";
+import DownloadIcon from "../assets/icons/Download.svg";
 
 interface Props {
   index: number;
@@ -10,9 +11,21 @@ interface Props {
     alt: string;
   };
   caption?: string;
+  // opt-in: offers a full-resolution JPEG (e.g. for wallpapers); generated
+  // at build time, so keep it to small collections like the portfolio
+  download?: { filename: string };
 }
 
-const { index, count, image, caption = image.alt } = Astro.props;
+const { index, count, image, caption = image.alt, download } = Astro.props;
+
+const fullResolution = download
+  ? await getImage({
+      src: image.src,
+      format: "jpg",
+      width: image.src.width,
+      quality: 90,
+    })
+  : undefined;
 ---
 
 <dialog
@@ -28,6 +41,18 @@ const { index, count, image, caption = image.alt } = Astro.props;
     <CloseIcon aria-hidden="true" />
     <span class="visually-hidden">Chiudi</span>
   </button>
+  {
+    download && fullResolution && (
+      <a
+        href={fullResolution.src}
+        download={download.filename}
+        class="download-button"
+      >
+        <DownloadIcon aria-hidden="true" />
+        <span class="visually-hidden">Scarica la foto in alta risoluzione</span>
+      </a>
+    )
+  }
   <Image
     src={image.src}
     alt={image.alt}
@@ -121,7 +146,8 @@ const { index, count, image, caption = image.alt } = Astro.props;
 
   /* the lightbox controls float bare over the photo, so they keep their own
      look instead of the boxed CloseButton the other dialogs share */
-  .gallery-image-dialog button {
+  .gallery-image-dialog button,
+  .gallery-image-dialog .download-button {
     position: absolute;
     z-index: 1;
     display: flex;
@@ -144,7 +170,15 @@ const { index, count, image, caption = image.alt } = Astro.props;
     right: var(--controls-inset);
   }
 
-  .gallery-image-dialog .close-button svg {
+  /* sits just left of the close button */
+  .gallery-image-dialog .download-button {
+    top: var(--controls-inset);
+    right: calc(var(--controls-inset) + 3rem);
+    text-decoration: none;
+  }
+
+  .gallery-image-dialog .close-button svg,
+  .gallery-image-dialog .download-button svg {
     width: 1.5rem;
     height: 1.5rem;
     /* text-shadow can't reach the stroke of an SVG */

@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import { headPageTitle } from "../../lib/utils";
+import { headPageTitle, slugify } from "../../lib/utils";
 import { siteSlogan, defaultOgImage } from "../../constants";
 import Layout from "../../layouts/Layout.astro";
 import Pager from "../../components/Pager.astro";
@@ -83,6 +83,9 @@ const thumbSizes =
             count={page.data.length}
             image={photo.data.photo}
             caption={photo.data.title}
+            download={{
+              filename: `signalkuppe-${slugify(photo.data.title)}.jpg`,
+            }}
           />
         </li>
       ))
@@ -173,11 +176,9 @@ const thumbSizes =
   }
 
   /* con la griglia a tutta pagina (stesso breakpoint di ul.photos) il pager
-     si centra sotto le foto, con più respiro */
+     prende più respiro dalle foto */
   @media (min-width: 1088px) {
     .pager {
-      display: flex;
-      justify-content: center;
       margin-top: 6rem;
     }
   }

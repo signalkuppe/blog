@@ -6,6 +6,7 @@ import { siteTitle, categories, newsletterUrl } from "../constants";
 import Layout from "../layouts/Layout.astro";
 import PostGallery from "../components/PostGallery.astro";
 import PostGpx from "../components/PostGpx.astro";
+import PostImage from "../components/PostImage.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -76,7 +77,13 @@ const ogImg = await getImage({
       }
     </time>
     <h1>{post.data.title}</h1>
-    <p class="post-description">{post.data.description}</p><Content />
+    <p class="post-description">{post.data.description}</p>
+    <!-- rendered through PostImage so it's counted as the page's first image:
+         it loads eagerly as the LCP and the body images fall back to lazy -->
+    <div class="post-cover">
+      <PostImage src={post.data.cover.src} alt={post.data.cover.alt} />
+    </div>
+    <Content />
     <aside class="post-aside">
       {
         hasGallery && (
@@ -183,6 +190,10 @@ const ogImg = await getImage({
       font-size: 1rem;
       color: var(--color-subtle);
       margin-top: 1rem;
+    }
+
+    .post-cover {
+      margin-top: 2rem;
     }
 
     article {
