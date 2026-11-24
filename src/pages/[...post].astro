@@ -35,6 +35,14 @@ const postGpxTrack = post.data.gpxTracks?.[0];
 const postSlug = post.id;
 const prevSlug = prev ? prev.id : "";
 const nextSlug = next ? next.id : "";
+
+// same short format as the home listing (PostCard): 09/11/26
+const pagerDate = (date: Date) =>
+  date.toLocaleDateString("it-IT", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit",
+  });
 const hasGallery = post.data.gallery && post.data.gallery.length > 0;
 
 const postCategory = categories.find((c) => c.title === post.data.category[0]);
@@ -72,12 +80,16 @@ const ogImg = await getImage({
         post.data.date.toLocaleDateString("it-IT", {
           year: "numeric",
           month: "long",
-          day: "2-digit",
+          day: "numeric",
         })
       }
     </time>
     <h1>{post.data.title}</h1>
-    <p class="post-description">{post.data.description}</p>
+    {
+      post.data.description && (
+        <p class="post-description">{post.data.description}</p>
+      )
+    }
     <!-- rendered through PostImage so it's counted as the page's first image:
          it loads eagerly as the LCP and the body images fall back to lazy -->
     <div class="post-cover">
@@ -111,19 +123,34 @@ const ogImg = await getImage({
 
       <nav class="post-pager">
         <ul role="list">
+          {/* posts are sorted newest first: `next` is the older outing */}
           {
-            prev && (
-              <li>
-                <span>Uscita precedente</span>
-                <a href={`/${prevSlug}/`}>{prev.data.title}</a>
+            next && (
+              <li class="older">
+                <a href={`/${nextSlug}/`}>
+                  <span class="pager-label">
+                    Uscita precedente
+                  </span>
+                  <span class="pager-title">{next.data.title}</span>
+                  <time datetime={next.data.date.toISOString()}>
+                    {pagerDate(next.data.date)}
+                  </time>
+                </a>
               </li>
             )
           }
           {
-            next && (
-              <li>
-                <span>Uscita successiva</span>
-                <a href={`/${nextSlug}/`}>{next.data.title}</a>
+            prev && (
+              <li class="newer">
+                <a href={`/${prevSlug}/`}>
+                  <span class="pager-label">
+                    Uscita successiva
+                  </span>
+                  <span class="pager-title">{prev.data.title}</span>
+                  <time datetime={prev.data.date.toISOString()}>
+                    {pagerDate(prev.data.date)}
+                  </time>
+                </a>
               </li>
             )
           }
@@ -186,59 +213,157 @@ const ogImg = await getImage({
       }
     }
 
+    /* 40rem ≈ 67 monospace characters per line */
+    article {
+      max-width: 40rem;
+    }
+
+    .breadcrumb {
+      color: var(--color-subtle);
+    }
+
+    time {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--color-subtle);
+    }
+
+    h1 {
+      font-size: 1.625rem;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
     .post-description {
       font-size: 1rem;
+      line-height: 1.6;
       color: var(--color-subtle);
-      margin-top: 1rem;
+      margin-top: 0;
+      margin-bottom: 2rem;
     }
 
     .post-cover {
       margin-top: 2rem;
     }
 
-    article {
-      max-width: 40rem;
+    /* body typography: paragraphs sit closer together, headings carry their
+       own space above, so sections read as blocks */
+    article :global(p) {
+      margin-bottom: 1.5rem;
+    }
+
+    article :global(h2) {
+      font-size: 1.125rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    article :global(figure) {
+      margin-bottom: 2rem;
     }
 
     article .post-aside {
-      margin-top: 3rem;
+      margin-top: 6rem;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 3rem;
     }
 
-    time {
-      display: block;
-      margin-bottom: 0.5rem;
-      /* it-IT renders the long month lowercase ("agosto"); capitalize it
-         ("10 Agosto 2025"). Numbers are unaffected. */
-      text-transform: capitalize;
+    /* the appendices (gallery, GPS) read as sections, not as UI widgets */
+    .post-aside summary {
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+
+    @media (orientation: portrait) {
+      article {
+        /* monospace at 16px gives only ~34 characters per line on a phone */
+        font-size: 0.9375rem;
+      }
+
+      h1 {
+        font-size: 1.375rem;
+      }
+
+      article .post-aside {
+        margin-top: 4rem;
+        gap: 3rem;
+      }
     }
 
     .disclaimer {
       color: var(--color-subtle);
-      font-size: 0.75rem;
+      font-size: 0.85rem;
+      line-height: 1.5;
     }
 
     .post-newsletter {
       font-size: 0.85rem;
     }
 
+    /* navigation, not another appendix: sits further from the details
+       (aside gap + this = 4rem) */
+    .post-pager {
+      margin-top: 1rem;
+    }
+
     .post-pager ul {
       list-style: none;
       padding: 0;
+      margin: 0;
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      gap: 2rem;
     }
 
-    .post-pager span {
-      display: block;
-      font-weight: 800;
+    .post-pager li {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    @media (orientation: portrait) {
+      .post-pager ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* the newer outing sits on the right even when it's the only one */
+    .post-pager .newer {
+      margin-left: auto;
+      text-align: right;
     }
 
     .post-pager a {
+      display: block;
       text-decoration: none;
+    }
+
+    .post-pager .pager-label,
+    .post-pager time {
+      display: block;
+      margin: 0;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--color-subtle);
+    }
+
+    .post-pager .pager-title {
+      display: block;
+      margin: 0.25rem 0;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .post-pager a:hover .pager-title {
+      text-decoration: underline;
+    }
+
+    @media (orientation: portrait) {
+      .post-pager .newer {
+        margin-left: 0;
+        text-align: left;
+      }
     }
 
     .post-footer {

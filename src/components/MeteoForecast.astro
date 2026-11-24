@@ -42,8 +42,19 @@ const longWeekday = (date) =>
           <UmbrellaIcon aria-hidden="true" width="12" height="12" />
           <span class="visually-hidden">Probabilità di pioggia</span>
           {day.precipitationProbability}%
-          {day.precipitation > 0 &&
-            ` · ${day.precipitation < 1 ? "<1" : Math.round(day.precipitation)} mm`}
+          {/* always rendered: on phones the amount gets its own line, and
+              an empty (hidden) one keeps the wind rows aligned across days */}
+          <span
+            class:list={["amount", { "is-empty": !(day.precipitation > 0) }]}
+            aria-hidden={day.precipitation > 0 ? undefined : "true"}
+          >
+            <span class="separator" aria-hidden="true">
+              {" · "}
+            </span>
+            {day.precipitation > 0
+              ? `${day.precipitation < 1 ? "<1" : Math.round(day.precipitation)} mm`
+              : "0 mm"}
+          </span>
         </span>
         <span class="detail">
           <WindIcon aria-hidden="true" width="12" height="12" />
@@ -107,9 +118,38 @@ const longWeekday = (date) =>
     gap: 0.25rem;
   }
 
+  .amount {
+    white-space: nowrap;
+  }
+
+  .amount.is-empty {
+    display: none;
+  }
+
   @media screen and (width < 30rem) {
     li {
       padding: 0.5rem;
+    }
+
+    /* "100% · 19 mm" doesn't fit a third of a phone: the amount moves to
+       its own line instead of wrapping mid-value */
+    .detail:has(.amount) {
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 0;
+    }
+
+    .amount {
+      flex-basis: 100%;
+    }
+
+    .amount .separator {
+      display: none;
+    }
+
+    .amount.is-empty {
+      display: block;
+      visibility: hidden;
     }
 
     .description {

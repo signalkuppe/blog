@@ -1,8 +1,11 @@
 ---
-// Meteocons (MIT — https://bas.dev/work/meteocons) inlined at render time so
-// the icons cost zero HTTP requests. The source files all use id="a", "b", …
-// for their gradients, which collide when several icons share a document, so
-// ids are namespaced with the icon file name.
+// Meteocons (MIT — https://bas.dev/work/meteocons) embedded as data-URI
+// <img>s: still zero HTTP requests, but each icon is its own SVG document.
+// That matters for the SMIL animations: an inline <svg>'s animation clock
+// stays frozen at 0 until the whole page fires `load`, so on a slow load the
+// icons sat still and then started with a jerk. An SVG image runs its own
+// clock from the moment it's decoded. Separate documents also mean the
+// files' colliding id="a" gradients no longer need namespacing.
 import { WEATHER_ICON_FILES } from "../lib/weatherIcons";
 
 const files = import.meta.glob("../assets/weather-icons/*.svg", {
@@ -16,16 +19,23 @@ const name = (WEATHER_ICON_FILES[icon] ?? WEATHER_ICON_FILES.cloudy)[
   isDay ? 0 : 1
 ];
 
-const svg = files[`../assets/weather-icons/${name}.svg`]
-  .replaceAll(/id="([\w-]+)"/g, `id="${name}-$1"`)
-  .replaceAll(/url\(#([\w-]+)\)/g, `url(#${name}-$1)`)
-  .replaceAll(/href="#([\w-]+)"/g, `href="#${name}-$1"`)
-  .replace(
-    "<svg ",
-    `<svg width="${size}" height="${size}" ${
-      label ? `role="img" aria-label="${label}"` : 'aria-hidden="true"'
-    } `,
-  );
+const svg = files[`../assets/weather-icons/${name}.svg`];
+const src = `data:image/svg+xml,${encodeURIComponent(svg)}`;
 ---
 
-<Fragment set:html={svg} />
+<img
+  src={src}
+  width={size}
+  height={size}
+  alt={label ?? ""}
+  decoding="sync"
+  class="weather-icon"
+/>
+
+<style>
+  /* no loading placeholder (global img rule): the icon is decoded inline
+     and has a transparent background */
+  .weather-icon {
+    background: none;
+  }
+</style>

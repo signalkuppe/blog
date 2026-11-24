@@ -67,7 +67,7 @@ const postsCountLabel = `${page.total} ${page.total === 1 ? "uscita" : "uscite"}
   description={headDescription}
   ogImage={defaultOgImage}
 >
-  <h1 class="h2">{pageTitle}</h1>
+  <h1>{pageTitle}</h1>
   {
     isHome && (
       <p class="intro">
@@ -119,10 +119,6 @@ const postsCountLabel = `${page.total} ${page.total === 1 ? "uscita" : "uscite"}
 <style>
   a {
     text-decoration: none;
-  }
-
-  h1 {
-    margin-bottom: 2rem;
   }
 
   .intro {
@@ -178,10 +174,6 @@ const postsCountLabel = `${page.total} ${page.total === 1 ? "uscita" : "uscite"}
   }
 
   @media (orientation: portrait) {
-    h1 {
-      margin-bottom: 1.5rem;
-    }
-
     .intro {
       margin-bottom: 2rem;
     }

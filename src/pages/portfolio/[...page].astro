@@ -39,7 +39,7 @@ if (page.currentPage > 1) {
 
 const description = "Una raccolta delle mie foto più belle";
 
-// Le anteprime crescono con lo schermo (vedi --photo-min nel CSS): serve una
+// Le anteprime crescono con lo schermo (vedi --masonry-min nel CSS): serve una
 // variante più grande per gli schermi larghi/retina, senza mai superare
 // la larghezza dell'originale.
 const thumbWidths = [800, 1200];
@@ -52,9 +52,9 @@ const thumbSizes =
   description={description}
   ogImage={defaultOgImage}
 >
-  <h1 class="h2">{pageTitle}</h1>
+  <h1 class="visually-hidden">{pageTitle}</h1>
 
-  <ul class="photos">
+  <ul class="photos masonry">
     {
       page.data.map((photo, index) => (
         <li>
@@ -98,24 +98,10 @@ const thumbSizes =
 </Layout>
 
 <style>
-  h1 {
-    margin-bottom: 2rem;
-  }
-
+  /* colonne: la larghezza minima cresce con lo schermo, così le anteprime
+     si ingrandiscono invece di moltiplicare le colonne */
   ul.photos {
-    list-style: none;
-    padding: 0;
-    /* Masonry via multi-column: funziona ovunque, ma l'ordine scorre
-       dall'alto in basso colonna per colonna. Lo spazio verticale è un
-       padding (i margini a fine colonna vengono troncati in modo diverso
-       tra browser) e il margine negativo compensa quello dell'ultima foto. */
-    margin: 0 0 calc(var(--photos-gap) * -1);
-    --photos-gap: 1.5rem;
-    /* larghezza minima di una colonna: cresce con lo schermo, così le
-       anteprime si ingrandiscono invece di moltiplicare le colonne */
-    --photo-min: clamp(16rem, 20vw, 30rem);
-    columns: var(--photo-min);
-    column-gap: var(--photos-gap);
+    --masonry-min: clamp(16rem, 20vw, 30rem);
   }
 
   /* Oltre la larghezza del contenitore (1024px + padding) la griglia esce
@@ -126,29 +112,6 @@ const thumbSizes =
     ul.photos {
       --photos-gutter: 2rem;
       margin-inline: calc(50% - 50vw + var(--photos-gutter));
-    }
-  }
-
-  ul.photos li {
-    break-inside: avoid;
-    padding-bottom: var(--photos-gap);
-  }
-
-  /* Masonry nativo dove supportato: mantiene l'ordine da sinistra a destra */
-  @supports (display: grid-lanes) {
-    ul.photos {
-      display: grid-lanes;
-      grid-template-columns: repeat(
-        auto-fill,
-        minmax(min(100%, var(--photo-min)), 1fr)
-      );
-      gap: var(--photos-gap);
-      columns: auto;
-      margin-bottom: 0;
-    }
-
-    ul.photos li {
-      padding-bottom: 0;
     }
   }
 
@@ -176,10 +139,17 @@ const thumbSizes =
   }
 
   /* con la griglia a tutta pagina (stesso breakpoint di ul.photos) il pager
-     prende più respiro dalle foto */
+     prende più respiro dalle foto e si centra sulla riga dei link del
+     footer. 46.7rem è la larghezza di quella riga (i 7 link di Footer.astro
+     a 0.85rem): se cambiano i link del footer, va aggiornata. */
   @media (min-width: 1088px) {
     .pager {
       margin-top: 6rem;
+      max-width: 46.7rem;
+    }
+
+    .pager :global(ul) {
+      justify-content: center;
     }
   }
 </style>

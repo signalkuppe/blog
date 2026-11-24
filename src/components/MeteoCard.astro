@@ -108,6 +108,20 @@ const _id =
     color: var(--color-subtle);
   }
 
+  /* phones (one card per row, see MeteoDataGrid): same layout, but the
+     value box hugs its content instead of a fixed 100px and the padding
+     tightens, so the stack of 12 cards is much shorter */
+  @media screen and (width <= 40rem) {
+    article {
+      --headerFooterPadding: 0.75rem 1rem;
+    }
+
+    .body {
+      height: auto;
+      padding: 0.25rem 1rem;
+    }
+  }
+
   .info-trigger {
     background: none;
     border: none;

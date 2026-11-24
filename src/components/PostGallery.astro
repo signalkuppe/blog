@@ -12,10 +12,10 @@ interface Props {
 const { gallery } = Astro.props;
 ---
 
-<div class="gallery">
+<ul class="gallery masonry" role="list">
   {
     gallery.map((image, index) => (
-      <Fragment>
+      <li>
         <button
           type="button"
           command="show-modal"
@@ -26,41 +26,35 @@ const { gallery } = Astro.props;
           <Image
             src={image.src}
             alt={image.alt}
-            width={160}
-            height={160}
+            width={400}
             loading="lazy"
             quality={75}
             class="gallery-image"
           />
         </button>
         <GalleryModal index={index} count={gallery.length} image={image} />
-      </Fragment>
+      </li>
     ))
   }
-</div>
+</ul>
 
 <style>
+  /* 5 columns in the 40rem text column, 3 on a phone */
   .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .gallery-image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-  }
-
-  @media (orientation: portrait) {
-    .gallery-image {
-      width: 67px;
-      height: 70px;
-    }
+    --masonry-min: 6.25rem;
+    --masonry-gap: 0.75rem;
   }
 
   .gallery .open-modal-button {
     all: unset;
     cursor: pointer;
+    display: block;
+    width: 100%;
+  }
+
+  .gallery-image {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 </style>

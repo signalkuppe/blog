@@ -4,7 +4,7 @@
   :root {
     color-scheme: light dark;
     --color-bg: light-dark(#f8f9fa, #1e1e1e);
-    --color-text: light-dark(#2c3e50, #e2e8f0);
+    --color-text: light-dark(#2c3e50, #cbd5e1);
     --color-subtle: light-dark(
       color-mix(in oklab, currentColor, white 25%),
       color-mix(in oklab, currentColor, black 25%)
@@ -19,10 +19,12 @@
       color-mix(in oklab, var(--color-bg), black 10%)
     );
     --color-weather-graph-alt-line: orange;
-    --color-weather-min-value: #1082e8;
-    --color-weather-max-value: red;
-    --color-weather-alt-value: #f300ff;
-    --color-weather-alt-value-2: light-dark(#0b9918, #00ff00);
+    /* text colors: each variant keeps the hue and is tuned to ≥4.5:1 (WCAG
+       AA) on both the page and the card background of its theme */
+    --color-weather-min-value: light-dark(#0e6ec4, #1688ef);
+    --color-weather-max-value: light-dark(#de0000, #ff3636);
+    --color-weather-alt-value: light-dark(#c000c9, #f300ff);
+    --color-weather-alt-value-2: light-dark(#097f14, #00ff00);
     --color-weather-pie-1: #36a2eb;
     --color-weather-pie-2: #ff6384;
     --color-weather-pie-3: #ff9f40;
@@ -96,17 +98,37 @@
     line-height: 1.5;
   }
 
+  /* the UA's "bolder" (700) barely stands out from 400 in JetBrains Mono,
+     especially light-on-dark: use the font's heaviest weight, like headings */
+  strong,
+  b {
+    font-weight: 800;
+  }
+
+  /* page titles share the h2 size; only posts set a bigger one, since there
+     the title is the content */
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     margin-top: 0rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (orientation: portrait) {
+    h1 {
+      margin-bottom: 1.5rem;
+    }
   }
 
   h2,
   .h2 {
     margin-top: 0rem;
-    margin-bottom: 0.85rem;
+    margin-bottom: 1rem;
     font-size: 1.125rem;
+  }
+
+  h3 {
+    margin-top: 0rem;
+    font-size: 1rem;
   }
 
   figure {
@@ -116,6 +138,8 @@
   figcaption,
   .caption {
     font-size: 0.85rem;
+    /* small text doesn't need the body's 1.85 */
+    line-height: 1.5;
     color: var(--color-subtle);
   }
 
@@ -193,6 +217,45 @@
      unconditional */
   [hidden] {
     display: none !important;
+  }
+
+  /* Masonry grid for photos. Baseline is multi-column (works everywhere,
+     items flow down each column); where the browser supports native
+     masonry (display: grid-lanes) items flow left-to-right instead.
+     Vertical spacing is a padding on the items, compensated by the
+     container's negative margin: margins at column ends get truncated
+     differently across browsers, padding doesn't.
+     Tune per use with --masonry-min (column min width) and --masonry-gap. */
+  .masonry {
+    --masonry-min: 16rem;
+    --masonry-gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 calc(var(--masonry-gap) * -1);
+    columns: var(--masonry-min);
+    column-gap: var(--masonry-gap);
+  }
+
+  .masonry > * {
+    break-inside: avoid;
+    padding-bottom: var(--masonry-gap);
+  }
+
+  @supports (display: grid-lanes) {
+    .masonry {
+      display: grid-lanes;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(min(100%, var(--masonry-min)), 1fr)
+      );
+      gap: var(--masonry-gap);
+      columns: auto;
+      margin-bottom: 0;
+    }
+
+    .masonry > * {
+      padding-bottom: 0;
+    }
   }
 
   .visually-hidden {

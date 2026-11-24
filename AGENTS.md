@@ -43,7 +43,7 @@ SSR page edge-cached via `Netlify-CDN-Cache-Control` (s-maxage=60 + stale-while-
 
 - `src/lib/weatherlink.js` — fetches the personal weather station data (~8 WeatherLink API calls). Elapsed 24h historic windows are cached at module scope; timestamps must be computed **per call** with the 7-day window start hour-aligned — computing them at module scope froze the data window on warm serverless instances (a bug that already happened once).
 - `src/lib/forecast.js` — 3-day forecast from Open-Meteo (free, keyless), fetched server-side, 15-min module cache, WMO code → icon/Italian-description map.
-- `src/lib/weatherIcons.js` + `WeatherIcon.astro` — Meteocons *line*-style SVGs from `src/assets/weather-icons/`, inlined with their colliding `id="a"` gradients namespaced per icon.
+- `src/lib/weatherIcons.js` + `WeatherIcon.astro` — Meteocons *line*-style SVGs from `src/assets/weather-icons/`, embedded as data-URI `<img>`s, not inline SVG: inline SMIL animations stay frozen until window `load`, so the icons started with a jerk on slow loads.
 - `/api/webcam` — cached proxy to the caiseregno.it webcam PHP script (can't be bypassed: image filenames are timestamped). Shown in a native `<dialog>`, fetched on first open. The remote domain is allowlisted under `[images]` in `netlify.toml`.
 - `MeteoGraphs.astro` — bare chart.js on a **category axis** (no date adapter, no datalabels plugin — deliberately removed, don't re-add), lazy-loaded via IntersectionObserver. Chart colors are resolved at draw time from computed styles because `light-dark()` CSS values aren't canvas-parseable.
 
